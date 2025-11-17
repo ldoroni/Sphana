@@ -178,3 +178,4 @@ pytest -m ingestion  # focuses on ingestion + validation logic
 - After every `workflow run`, review `target/artifacts/workflow-report.json` for a consolidated summary (stage outputs, metrics, manifest) that can be attached to notebook runs or deployment PRs.
 - `sphana-trainer workflow status` summarizes the latest successful stage per workspace, and `artifacts bundle` copies ONNX + metadata into a portable directory for manual delivery to the .NET team.
 - Makefile shortcuts (`make unit`, `make integration`, `make wiki-train`, `make sweep-embedding`) simplify local workflows.
+- Full offline documentation (HTML/CSS/JS) lives under [`docs/`](docs/index.html) for easy browsing in a browser.
