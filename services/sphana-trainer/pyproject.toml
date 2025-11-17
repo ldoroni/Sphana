@@ -49,6 +49,14 @@ sphana-trainer = "sphana_trainer.cli:app"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sphana_trainer"]
+include = [
+    "src/sphana_trainer/schemas/**/*.json",
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/sphana_trainer/schemas/**/*.json",
+]
 
 [tool.pytest.ini_options]
 markers = [

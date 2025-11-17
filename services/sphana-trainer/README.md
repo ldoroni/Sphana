@@ -18,9 +18,11 @@ The Sphana Trainer is a Python 3.11 CLI that produces every neural artifact requ
   - **Relation Extraction:** entity-marked sequence classification with Hugging Face Transformers, macro-F1 early stopping, ONNX export.
   - **GNN Ranker:** listwise ListNet optimization over per-query candidate subgraphs, dynamic-axes ONNX export for the GGNN reasoner.
 - Artifact registry: each run writes structured metadata + manifests under `target/artifacts/`, enabling the `.NET` service (and the `export`/`package` commands) to discover the correct ONNX payloads by version.
-- Release pipeline: `sphana-trainer export` validates that all requested components are trained, composes the manifest defined in `manifests/model-manifest.schema.json`, and `sphana-trainer package` bundles the manifest plus ONNX binaries into a tarball ready for publication.
+- Release pipeline: `sphana-trainer export` validates that all requested components are trained, composes the manifest defined in `src/sphana_trainer/schemas/manifests/model-manifest.schema.json`, and `sphana-trainer package` bundles the manifest plus ONNX binaries into a tarball ready for publication.
 
 ## Quick Start
+
+### 1. Preconditions (run once per session)
 ```powershell
 cd services/sphana-trainer
 $env:PYTHONPATH="src"     # (PowerShell) ensures `python -m sphana_trainer.cli` can be imported
@@ -30,7 +32,12 @@ python -m venv .venv
 .\.venv\Scripts\activate
 python.exe -m pip install --upgrade pip
 pip3 install -r .\requirements.txt
+```
 
+### 2. Train Models
+
+#### Manual Per-Stage Commands
+```powershell
 # Train individual components (uses the bundled smoke datasets under src/tests/data)
 python -m sphana_trainer.cli train embedding --config configs/embedding/base.yaml
 python -m sphana_trainer.cli train relation  --config configs/relation/base.yaml
@@ -47,8 +54,8 @@ python -m sphana_trainer.cli dataset-build-from-ingest target/wiki/ingest --outp
 
 # Run ingestion validation (checks counts + files + relation schema)
 python -m sphana_trainer.cli ingest-validate --config configs/ingest/base.yaml --stats `
-    --chunks-schema schemas/ingestion/chunks.schema.json `
-    --relations-schema schemas/ingestion/relations.schema.json
+    --chunks-schema src/sphana_trainer/schemas/ingestion/chunks.schema.json `
+    --relations-schema src/sphana_trainer/schemas/ingestion/relations.schema.json
 
 # Distributed training example (optional, requires >=2 GPUs + torchrun)
 # torchrun --nproc_per_node=2 python -m sphana_trainer.cli train embedding --config configs/embedding/base.yaml --resume latest
@@ -61,8 +68,10 @@ python -m sphana_trainer.cli artifacts bundle embedding 0.1.0 target/bundles/emb
 # Validate datasets before training
 python -m sphana_trainer.cli dataset-validate src/tests/data/embedding/train.jsonl --type embedding
 python -m sphana_trainer.cli dataset-stats src/tests/data/embedding/train.jsonl
+```
 
-# Orchestrate the full workflow (ingest -> train -> export -> package -> promote)
+#### Single Workflow Command  (training → export → ingestion → validation → artifact ops)
+```powershell
 python -m sphana_trainer.cli workflow run `
     --ingest-config configs/ingest/base.yaml `
     --embedding-config configs/embedding/base.yaml `
@@ -75,7 +84,10 @@ python -m sphana_trainer.cli workflow run `
     --manifest target/manifests/latest.json `
     --build-datasets `
     --dataset-output-dir target/datasets/wiki
+```
 
+#### Wiki Workflow Commands
+```powershell
 # Run the high-fidelity Wiki workflow (spaCy/Stanza + MLflow logging)
 python -m sphana_trainer.cli workflow wiki --artifact-root target/artifacts
 
@@ -104,7 +116,7 @@ Place datasets anywhere and override the paths via `dataset_path`, `train_file`,
 
 ### Artifacts & Manifests
 - Training commands write to `target/artifacts/<component>/<version>/` (version defaults to a timestamp if not provided) and update `target/artifacts/<component>/latest.json`.
-- `export` reads the latest metadata for the requested components, generates `target/manifests/latest.json` (schema in `manifests/model-manifest.schema.json`), and records metrics + ONNX locations.
+- `export` reads the latest metadata for the requested components, generates `target/manifests/latest.json` (schema in `src/sphana_trainer/schemas/manifests/model-manifest.schema.json`), and records metrics + ONNX locations.
 - `package` tars the manifest plus each component artifact into `<manifest>.tar.gz` so CI/CD can push a single file to blob storage.
 - `artifacts parity-samples ...` emits input/output JSON for ONNX inference so the .NET gRPC service can run parity checks with its own runtime.
 
@@ -113,8 +125,6 @@ Place datasets anywhere and override the paths via `dataset_path`, `train_file`,
 services/sphana-trainer
 ├── configs/                 # YAML configs (embedding/relation/gnn/export)
 ├── data/                    # Seed/public corpora checked into the repo
-├── manifests/               # Manifest schema
-├── schemas/                 # JSON Schemas for ingestion/dataset validation and manifests
 ├── src/
 │   ├── sphana_trainer/
 │   │   ├── cli.py           # Typer entrypoint
@@ -124,6 +134,7 @@ services/sphana-trainer
 │   │   ├── models/          # Embedding encoder + GGNN implementations
 │   │   ├── tasks/           # CLI task wrappers
 │   │   ├── training/        # Training loops for each component
+│   │   ├── schemas/         # JSON schemas (ingestion/datasets/manifests) consumed at runtime
 │   │   └── utils/           # Metadata, seeding, filesystem helpers
 │   └── tests/
 │       ├── conftest.py
@@ -159,8 +170,8 @@ pytest -m ingestion  # focuses on ingestion + validation logic
   - `parser: stanza` → `pip install stanza` + `python -m stanza.download en`.
 - Distributed runs: launch with `torchrun --nproc_per_node=<gpus>` and set `ddp: true` plus `precision: fp16/bf16` in the component config to enable synchronized training. Non-primary ranks automatically skip artifact export and metadata writes.
 - Quality gates: set `metric_threshold` within a component config to enforce minimum validation cosine/F1 or maximum GNN validation loss; runs without a validation split will raise if a threshold is requested.
-- Use `schemas/ingestion/*.schema.json` with `ingest-validate --chunks-schema ... --relations-schema ...` to enforce data contracts on generated JSONL files.
-- Dataset contracts are also available for training splits (`schemas/datasets/*.schema.json`); run `sphana-trainer dataset-validate` before training to catch malformed inputs.
+- Use `src/sphana_trainer/schemas/ingestion/*.schema.json` with `ingest-validate --chunks-schema ... --relations-schema ...` to enforce data contracts on generated JSONL files.
+- Dataset contracts are also available for training splits (`src/sphana_trainer/schemas/datasets/*.schema.json`); run `sphana-trainer dataset-validate` before training to catch malformed inputs.
 - Structured metrics (`metrics.jsonl`) capture epoch timing, throughput, and device stats per run; dataset fingerprints and workflow state are stored under each artifact root so `workflow run` can resume or skip stages intelligently.
 - For centralized experiment tracking, set `log_to_mlflow: true` (plus optional `mlflow_tracking_uri`, `mlflow_experiment`, `mlflow_run_name`) in any component config; the CLI handles initializing MLflow runs and logging hyperparameters/metrics from the primary rank. Use `train sweep` to iterate through small parameter grids without scripting.
 - Enable profiling per component via `profile_steps: <N>` to capture PyTorch profiler traces stored alongside each run.

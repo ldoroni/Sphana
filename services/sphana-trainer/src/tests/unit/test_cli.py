@@ -30,6 +30,7 @@ from sphana_trainer.cli import (
 from sphana_trainer.data.pipeline import IngestionResult  # type: ignore[import]
 
 TEST_DATA_ROOT = (Path(__file__).resolve().parents[1] / "data").resolve()
+SCHEMA_ROOT = Path(__file__).resolve().parents[2] / "sphana_trainer" / "schemas"
 EMBED_DATA = TEST_DATA_ROOT / "embedding"
 RELATION_DATA = TEST_DATA_ROOT / "relation"
 GRAPHS_DATA = TEST_DATA_ROOT / "graphs"
@@ -129,8 +130,8 @@ def test_ingest_validate_command(monkeypatch, tmp_path):
             return fake_result
 
     monkeypatch.setattr("sphana_trainer.cli.IngestionPipeline", FakePipeline)
-    chunk_schema = Path("schemas/ingestion/chunks.schema.json")
-    relation_schema = Path("schemas/ingestion/relations.schema.json")
+    chunk_schema = SCHEMA_ROOT / "ingestion" / "chunks.schema.json"
+    relation_schema = SCHEMA_ROOT / "ingestion" / "relations.schema.json"
     result = runner.invoke(
         app,
         [

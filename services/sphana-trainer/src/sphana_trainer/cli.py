@@ -56,14 +56,16 @@ workflow_app = typer.Typer(help="End-to-end workflow automation")
 metrics_app = typer.Typer(help="Metrics and observability utilities")
 profile_app = typer.Typer(help="Profiler trace helpers")
 REPO_ROOT = Path(__file__).resolve().parents[2]
+PACKAGE_ROOT = Path(__file__).resolve().parent
+SCHEMA_ROOT = PACKAGE_ROOT / "schemas"
 OUTPUT_ROOT = Path("target")
 DEFAULT_ARTIFACT_ROOT = OUTPUT_ROOT / "artifacts"
 DEFAULT_DATA_ROOT = OUTPUT_ROOT / "data"
 DEFAULT_DATASETS_ROOT = OUTPUT_ROOT / "datasets"
 DATASET_SCHEMAS = {
-    "embedding": REPO_ROOT / "schemas" / "datasets" / "embedding.schema.json",
-    "relation": REPO_ROOT / "schemas" / "datasets" / "relation.schema.json",
-    "gnn": REPO_ROOT / "schemas" / "datasets" / "gnn.schema.json",
+    "embedding": SCHEMA_ROOT / "datasets" / "embedding.schema.json",
+    "relation": SCHEMA_ROOT / "datasets" / "relation.schema.json",
+    "gnn": SCHEMA_ROOT / "datasets" / "gnn.schema.json",
 }
 PARITY_SAMPLE_FILES = {
     "embedding": REPO_ROOT / "data" / "public" / "embedding_samples.jsonl",
