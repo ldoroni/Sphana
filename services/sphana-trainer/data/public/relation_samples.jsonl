@@ -1,0 +1,3 @@
+{"text": "Alice Bootstrapped NRDB.", "entity1": {"text": "Alice"}, "entity2": {"text": "NRDB"}, "label": "founder_of"}
+{"text": "NRDB uses ONNX Runtime for inference acceleration.", "entity1": {"text": "NRDB"}, "entity2": {"text": "ONNX Runtime"}, "label": "uses"}
+

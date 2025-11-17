@@ -1,0 +1,22 @@
+workspace_dir: target/wiki/workspace
+artifact_root: target/wiki/artifacts
+relation:
+  model_name: hf-internal-testing/tiny-random-bert
+  dataset_path: target/datasets/wiki/relation
+  train_file: target/datasets/wiki/relation/train.jsonl
+  validation_file: target/datasets/wiki/relation/validation.jsonl
+  output_dir: target/wiki/artifacts/relation
+  version: wiki-relation
+  dependency_cache: target/wiki/cache/dep
+  batch_size: 16
+  eval_batch_size: 16
+  learning_rate: 3e-5
+  epochs: 3
+  max_seq_length: 256
+  negative_sampling_ratio: 0.4
+  precision: fp16
+  log_to_mlflow: true
+  mlflow_experiment: sphana-wiki
+  early_stopping_patience: 1
+  profile_steps: 0
+

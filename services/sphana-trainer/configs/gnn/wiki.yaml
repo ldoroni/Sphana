@@ -1,0 +1,26 @@
+workspace_dir: target/wiki/workspace
+artifact_root: target/wiki/artifacts
+gnn:
+  model_name: sphana/ggnn-test
+  dataset_path: target/datasets/wiki/gnn
+  train_file: target/datasets/wiki/gnn/train.jsonl
+  validation_file: target/datasets/wiki/gnn/validation.jsonl
+  output_dir: target/wiki/artifacts/gnn
+  version: wiki-gnn
+  batch_size: 1
+  learning_rate: 1e-3
+  epochs: 2
+  hidden_dim: 64
+  num_layers: 3
+  dropout: 0.1
+  listwise_loss: listnet
+  export_opset: 18
+  quantize: false
+  max_nodes: 64
+  max_edges: 256
+  temperature: 1.0
+  precision: fp16
+  log_to_mlflow: true
+  mlflow_experiment: sphana-wiki
+  profile_steps: 0
+

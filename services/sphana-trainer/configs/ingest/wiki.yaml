@@ -1,0 +1,15 @@
+ingest:
+  source: target/data/wiki/docs.jsonl
+  output_dir: target/wiki/ingest
+  cache_dir: target/wiki/cache
+  cache_enabled: true
+  chunk_size: 160
+  chunk_overlap: 24
+  parser: simple
+  parser_model: en_core_web_sm
+  language: en
+  relation_threshold: 0.45
+  relation_model: hf-internal-testing/tiny-random-bert
+  relation_max_length: 256
+  relation_calibration: configs/ingest/wiki-calibration.json
+

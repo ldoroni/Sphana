@@ -1,0 +1,22 @@
+workspace_dir: target/workspace
+artifact_root: target/artifacts
+gnn:
+  model_name: sphana/ggnn-base
+  output_dir: target/artifacts/gnn
+  dataset_path: src/tests/data/graphs
+  train_file: src/tests/data/graphs/train.jsonl
+  validation_file: src/tests/data/graphs/validation.jsonl
+  version: "0.1.0"
+  batch_size: 1
+  learning_rate: 1.0e-3
+  epochs: 1
+  hidden_dim: 64
+  num_layers: 2
+  dropout: 0.1
+  listwise_loss: listnet
+  export_opset: 17
+  quantize: false
+  max_nodes: 32
+  max_edges: 64
+  temperature: 1.0
+

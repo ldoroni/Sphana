@@ -1,0 +1,20 @@
+workspace_dir: target/workspace
+artifact_root: target/artifacts
+relation:
+  model_name: hf-internal-testing/tiny-random-bert
+  output_dir: target/artifacts/relation
+  dataset_path: src/tests/data/relation
+  train_file: src/tests/data/relation/train.jsonl
+  validation_file: src/tests/data/relation/validation.jsonl
+  version: "0.1.0"
+  dependency_cache: target/cache/dep
+  batch_size: 2
+  learning_rate: 5.0e-4
+  epochs: 1
+  negative_sampling_ratio: 0.5
+  export_opset: 17
+  quantize: true
+  max_seq_length: 256
+  eval_batch_size: 2
+  early_stopping_patience: 2
+

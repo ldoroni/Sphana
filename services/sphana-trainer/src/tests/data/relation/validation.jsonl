@@ -1,0 +1,3 @@
+{"text": "Bob maintains the NRDB trainer.", "entity1": {"text": "Bob", "start": 0, "end": 3}, "entity2": {"text": "NRDB trainer", "start": 19, "end": 31}, "label": "uses"}
+{"text": "CUDA 12.8.0 accelerates ONNXRuntime.", "entity1": {"text": "CUDA 12.8.0", "start": 0, "end": 11}, "entity2": {"text": "ONNXRuntime", "start": 24, "end": 36}, "label": "stored_in"}
+

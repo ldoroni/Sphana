@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EmbeddingDatasetRecord",
+  "type": "object",
+  "required": ["query", "positive"],
+  "properties": {
+    "query": {"type": "string"},
+    "positive": {"type": "string"},
+    "negative": {"type": "string"}
+  },
+  "additionalProperties": true
+}
+

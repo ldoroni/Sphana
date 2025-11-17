@@ -1,0 +1,6 @@
+{
+  "founder_of": {"scale": 1.1, "bias": 0.05},
+  "uses": {"scale": 1.0, "bias": 0.0},
+  "stored_in": {"scale": 0.9, "bias": -0.05}
+}
+

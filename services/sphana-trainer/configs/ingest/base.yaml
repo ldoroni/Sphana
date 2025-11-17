@@ -1,0 +1,12 @@
+ingest:
+  input_dir: src/tests/data/ingest_sample
+  output_dir: target/ingest
+  cache_dir: target/ingest/cache
+  cache_enabled: true
+  chunk_size: 64
+  chunk_overlap: 16
+  parser: simple
+  parser_model: en_core_web_sm
+  language: en
+  relation_threshold: 0.6
+

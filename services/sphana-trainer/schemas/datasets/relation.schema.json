@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RelationDatasetRecord",
+  "type": "object",
+  "required": ["text", "entity1", "entity2", "label"],
+  "properties": {
+    "text": {"type": "string"},
+    "entity1": {"type": "object"},
+    "entity2": {"type": "object"},
+    "label": {"type": "string"}
+  },
+  "additionalProperties": true
+}
+

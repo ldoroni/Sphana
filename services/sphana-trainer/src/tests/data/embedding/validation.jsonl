@@ -1,0 +1,3 @@
+{"query": "Why is quantization required?", "positive": "Quantization halves memory use so the service can stay within latency budgets."}
+{"query": "Which models run in the trainer?", "positive": "Embedding, relation extraction, and GNN ranker models are produced in ONNX format."}
+

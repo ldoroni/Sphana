@@ -1,0 +1,4 @@
+{"query": "What is the NRDB project?", "positive": "The NRDB is a neural retrieval-augmented database for structured reasoning."}
+{"query": "How does the KG improve answers?", "positive": "The KG links entities so that multi-hop reasoning becomes verifiable for the LLM."}
+{"query": "What optimizations are enforced?", "positive": "All models are quantized to int8 ONNX to keep latency under 50 milliseconds."}
+

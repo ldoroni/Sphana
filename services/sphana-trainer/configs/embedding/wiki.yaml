@@ -1,0 +1,21 @@
+workspace_dir: target/wiki/workspace
+artifact_root: target/wiki/artifacts
+embedding:
+  model_name: sentence-transformers/all-MiniLM-L6-v2
+  dataset_path: target/datasets/wiki/embedding
+  train_file: target/datasets/wiki/embedding/train.jsonl
+  validation_file: target/datasets/wiki/embedding/validation.jsonl
+  output_dir: target/wiki/artifacts/embedding
+  version: wiki-embedding
+  batch_size: 32
+  gradient_accumulation: 2
+  learning_rate: 2e-5
+  epochs: 3
+  max_seq_length: 512
+  pooling_strategy: mean
+  precision: fp16
+  eval_subset_size: 512
+  log_to_mlflow: true
+  mlflow_experiment: sphana-wiki
+  profile_steps: 0
+

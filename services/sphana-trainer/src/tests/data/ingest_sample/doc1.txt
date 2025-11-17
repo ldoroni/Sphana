@@ -1,0 +1,2 @@
+Alice built NRDB in 2024. NRDB is the neural retrieval system for Sphana.
+

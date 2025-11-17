@@ -1,0 +1,1 @@
+Start to develop the python application that responsible to train the models under .\services folder.

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sphana Model Manifest",
+  "type": "object",
+  "required": ["components", "artifacts"],
+  "properties": {
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["embedding", "relation", "gnn", "llm", "re_ranker"]
+      }
+    },
+    "publish_uri": {
+      "type": ["string", "null"],
+      "description": "Remote URI where artifacts are uploaded."
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "description": "Filesystem path or URI to the artifact file."
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "description": "Per-component metadata (version, metrics, etc.)."
+      }
+    }
+  }
+}
+
