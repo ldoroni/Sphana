@@ -62,6 +62,8 @@ OUTPUT_ROOT = Path("target")
 DEFAULT_ARTIFACT_ROOT = OUTPUT_ROOT / "artifacts"
 DEFAULT_DATA_ROOT = OUTPUT_ROOT / "data"
 DEFAULT_DATASETS_ROOT = OUTPUT_ROOT / "datasets"
+DEFAULT_MLFLOW_PATH = (REPO_ROOT / "target" / "mlruns").resolve()
+DEFAULT_MLFLOW_URI = DEFAULT_MLFLOW_PATH.as_uri()
 DATASET_SCHEMAS = {
     "embedding": SCHEMA_ROOT / "datasets" / "embedding.schema.json",
     "relation": SCHEMA_ROOT / "datasets" / "relation.schema.json",
@@ -99,6 +101,15 @@ app.add_typer(artifacts_app, name="artifacts")
 app.add_typer(workflow_app, name="workflow")
 app.add_typer(metrics_app, name="metrics")
 app.add_typer(profile_app, name="profile")
+
+
+def _normalize_tracking_uri(value: Optional[str], default_base: Optional[Path] = None) -> str:
+    if value:
+        if "://" in value:
+            return value
+        return Path(value).expanduser().resolve().as_uri()
+    base = (default_base or DEFAULT_MLFLOW_PATH).expanduser().resolve()
+    return base.as_uri()
 
 
 @app.callback()
@@ -466,9 +477,9 @@ def train_sweep(
     if not overrides_list:  # pragma: no cover - _build_sweep_grid always returns at least one combo
         overrides_list = [{}]
     console.print(f"[cyan]Launching {len(overrides_list)} sweep runs for {component}[/cyan]")
-    default_tracking_uri = (
-        mlflow_tracking_uri or cfg.mlflow_tracking_uri or trainer_cfg.tracking_uri or str(Path(artifact_root) / "mlruns")
-    )
+    sweep_base = Path(artifact_root) / "mlruns"
+    candidate_uri = mlflow_tracking_uri or cfg.mlflow_tracking_uri or trainer_cfg.tracking_uri
+    default_tracking_uri = _normalize_tracking_uri(candidate_uri, default_base=sweep_base)
     for idx, overrides in enumerate(overrides_list):
         run_cfg = cfg.model_copy(deep=True)
         for key, value in overrides.items():
@@ -749,11 +760,17 @@ def workflow_run(
     ),
     publish_url: Optional[str] = typer.Option(None, "--publish-url", help="Optional service URL to publish manifest."),
     artifact_root: Path = typer.Option(DEFAULT_ARTIFACT_ROOT, "--artifact-root", help="Artifact root for promotion."),
+    mlflow_tracking_uri: Optional[str] = typer.Option(
+        None,
+        "--mlflow-tracking-uri",
+        help="MLflow tracking URI (defaults to target/mlruns).",
+    ),
     promote_publish: bool = typer.Option(False, "--publish", help="Publish manifest after promotion."),
     force: bool = typer.Option(False, "--force", help="Re-run all stages regardless of state"),
     force_stage: List[str] = typer.Option([], "--force-stage", help="Stage names to force re-run"),
     force_lock: bool = typer.Option(False, "--force-lock", help="Override the active workflow lock if present."),
 ) -> None:
+    tracking_uri = _normalize_tracking_uri(mlflow_tracking_uri)
     report_path = run_workflow(
         ingest_config=ingest_config,
         build_datasets=build_datasets,
@@ -775,6 +792,7 @@ def workflow_run(
         force=force,
         force_stage=force_stage,
         force_lock=force_lock,
+        mlflow_tracking_uri=tracking_uri,
     )
     console.print(f"[cyan]Workflow report saved to {report_path}[/cyan]")
 
@@ -784,6 +802,11 @@ def workflow_wiki(
     artifact_root: Path = typer.Option(DEFAULT_ARTIFACT_ROOT, "--artifact-root", help="Artifact root directory."),
     parity: bool = typer.Option(True, "--parity/--no-parity", help="Generate parity fixtures after completion."),
     force_lock: bool = typer.Option(False, "--force-lock", help="Override the active workflow lock if present."),
+    mlflow_tracking_uri: Optional[str] = typer.Option(
+        None,
+        "--mlflow-tracking-uri",
+        help="MLflow tracking URI (defaults to target/mlruns).",
+    ),
 ) -> None:
     ingest_cfg = REPO_ROOT / "configs" / "ingest" / "wiki.yaml"
     dataset_dir = DEFAULT_DATASETS_ROOT / "wiki"
@@ -791,6 +814,7 @@ def workflow_wiki(
     relation_cfg = REPO_ROOT / "configs" / "relation" / "wiki.yaml"
     gnn_cfg = REPO_ROOT / "configs" / "gnn" / "wiki.yaml"
     manifest_path = artifact_root / "manifests" / "wiki-latest.json"
+    tracking_uri = _normalize_tracking_uri(mlflow_tracking_uri)
     report_path = run_workflow(
         ingest_config=ingest_cfg,
         build_datasets=True,
@@ -812,6 +836,7 @@ def workflow_wiki(
         force=False,
         force_stage=[],
         force_lock=force_lock,
+        mlflow_tracking_uri=tracking_uri,
     )
     console.print(f"[cyan]Wiki workflow report saved to {report_path}[/cyan]")
     if parity:
@@ -906,6 +931,7 @@ def run_workflow(
     force: bool,
     force_stage: List[str],
     force_lock: bool,
+    mlflow_tracking_uri: Optional[str],
 ) -> Path:
     artifact_root = artifact_root.expanduser().resolve()
     state_path = artifact_root / "workflow-state.json"
@@ -938,6 +964,7 @@ def run_workflow(
             promote_publish=promote_publish,
             force=force,
             force_stage=force_stage,
+        mlflow_tracking_uri=mlflow_tracking_uri,
         )
     except Exception as exc:  # pragma: no cover - surfaced in CLI tests
         error = exc
@@ -971,6 +998,7 @@ def _workflow_impl(
     promote_publish: bool,
     force: bool,
     force_stage: List[str],
+    mlflow_tracking_uri: Optional[str],
 ) -> None:
     force_set = {stage.lower() for stage in force_stage}
     ingest_cfg = load_ingest_config(ingest_config) if ingest_config else None
@@ -1028,14 +1056,20 @@ def _workflow_impl(
 
     if embedding_config:
         embedding_cfg, embedding_art_root = _resolve_component_config(embedding_config, "embedding")
+        if mlflow_tracking_uri:
+            embedding_cfg.mlflow_tracking_uri = embedding_cfg.mlflow_tracking_uri or mlflow_tracking_uri
         _execute("embedding", True, Path(embedding_cfg.output_dir), lambda: EmbeddingTask(embedding_cfg, embedding_art_root).run())
 
     if relation_config:
         relation_cfg, relation_art_root = _resolve_component_config(relation_config, "relation")
+        if mlflow_tracking_uri:
+            relation_cfg.mlflow_tracking_uri = relation_cfg.mlflow_tracking_uri or mlflow_tracking_uri
         _execute("relation", True, Path(relation_cfg.output_dir), lambda: RelationExtractionTask(relation_cfg, relation_art_root).run())
 
     if gnn_config:
         gnn_cfg, gnn_art_root = _resolve_component_config(gnn_config, "gnn")
+        if mlflow_tracking_uri:
+            gnn_cfg.mlflow_tracking_uri = gnn_cfg.mlflow_tracking_uri or mlflow_tracking_uri
         _execute("gnn", True, Path(gnn_cfg.output_dir), lambda: GNNTask(gnn_cfg, gnn_art_root).run())
 
     if export_config:
