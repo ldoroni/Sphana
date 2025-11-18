@@ -33,8 +33,13 @@ class MlflowLogger:
         except ImportError as exc:  # pragma: no cover - executed only when dependency missing
             raise RuntimeError("MLflow logging requested but 'mlflow' is not installed.") from exc
         self._mlflow = mlflow
-        if self.tracking_uri:
-            mlflow.set_tracking_uri(self.tracking_uri)
+        # Always set tracking URI, default to target/mlruns if not specified
+        tracking_uri = self.tracking_uri
+        if not tracking_uri:
+            from sphana_trainer.cli import DEFAULT_MLFLOW_URI
+            tracking_uri = DEFAULT_MLFLOW_URI
+        if tracking_uri:
+            mlflow.set_tracking_uri(tracking_uri)
         if self.experiment:
             mlflow.set_experiment(self.experiment)
         self._active_run = mlflow.start_run(run_name=self.run_name, tags=self.tags or None)
