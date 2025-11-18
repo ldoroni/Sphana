@@ -262,7 +262,7 @@ pip install -r requirements.txt</code></pre>
                         <button class="copy-btn" data-target="download-wiki-summaries">Copy</button>
                     </div>
                     <pre><code id="download-wiki-summaries">python -m sphana_trainer.cli dataset-download-wiki `
-    --output target\data\wiki\docs.jsonl `
+    --output target\data\docs.jsonl `
     --title "Machine learning" `
     --title "Deep learning" `
     --title "Natural language processing" `
@@ -276,10 +276,10 @@ pip install -r requirements.txt</code></pre>
                         <button class="copy-btn" data-target="download-wiki-full">Copy</button>
                     </div>
                     <pre><code id="download-wiki-full">python -m sphana_trainer.cli dataset-download-wiki `
-    --output target\data\wiki\full-docs.jsonl `
+    --output target\data\docs.jsonl `
     --titles-file samples\ai-ml-wiki-titles.medium.txt `
     --full-content `
-    --limit 100</code></pre>
+    --limit 10000</code></pre>
                 </div>
                     
                 <div class="success-box">
@@ -310,8 +310,8 @@ python -m sphana_trainer.cli ingest --config configs\ingest\wiki.yaml
 
 # Build training datasets from ingestion outputs
 python -m sphana_trainer.cli dataset-build-from-ingest `
-    target\wiki\ingest `
-    --output-dir target\datasets\wiki `
+    target\ingest `
+    --output-dir target\datasets `
     --min-confidence 0.3 `
     --val-ratio 0.2</code></pre>
                 </div>
@@ -786,19 +786,22 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                         <span class="code-label">Summaries (default, fast)</span>
                     </div>
                     <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
-    --output target\data\wiki\docs.jsonl `
+    --output target\data\docs.jsonl `
     --title "Machine learning" `
-    --title "Deep learning"</code></pre>
+    --title "Deep learning" `
+    --title "Natural language processing" `
+    --title "Neural network" `
+    --full-content</code></pre>
                 </div>
                 <div class="code-block">
                     <div class="code-header">
                         <span class="code-label">Full content (comprehensive)</span>
                     </div>
                     <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
-    --output target\data\wiki\full-docs.jsonl `
-    --titles-file samples\ai-ml-wiki-titles.txt `
+    --output target\data\docs.jsonl `
+    --titles-file samples\ai-ml-wiki-titles.medium.txt `
     --full-content `
-    --limit 100</code></pre>
+    --limit 10000</code></pre>
                 </div>
             </section>
 
@@ -1164,7 +1167,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                             </ul>
                             <strong>Options:</strong>
                             <ul>
-                                <li><code>--output PATH</code> - Destination JSONL file (default: target\data\wiki\docs.jsonl)</li>
+                                <li><code>--output PATH</code> - Destination JSONL file (default: target\data\docs.jsonl)</li>
                                 <li><code>--limit N</code> - Maximum number of pages to fetch from the title list</li>
                                 <li><code>--shuffle/--no-shuffle</code> - Shuffle the title list before downloading (default: shuffle)</li>
                                 <li><code>--full-content</code> - Download full article content instead of summaries (slower but comprehensive)</li>

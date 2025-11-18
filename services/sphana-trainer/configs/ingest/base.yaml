@@ -1,12 +1,63 @@
 ingest:
+  ######################################################
+  # Input Source (one of source or input_dir required) #
+  ######################################################
+  
+  # Path to JSONL file where each line is a document with 'text' field
+  # source: null  # Optional JSONL file containing documents (default: null)
+  
+  # Directory containing .txt, .md, or .json files to process
   input_dir: src/tests/data/ingest_sample
+  
+  ########################
+  # Output Configuration #
+  ########################
+  
+  # Directory where ingestion outputs (chunks.jsonl, relations.jsonl) will be saved
   output_dir: target/ingest
+  
+  # Directory for caching parsed documents and intermediate results
   cache_dir: target/ingest/cache
+  
+  # Enable caching of parsed documents to speed up re-runs
   cache_enabled: true
+  
+  #####################
+  # Chunking Settings #
+  #####################
+  
+  # Target size in tokens for each text chunk
   chunk_size: 64
+  
+  # Number of overlapping tokens between consecutive chunks
   chunk_overlap: 16
+  
+  ########################
+  # Parser Configuration #
+  ########################
+  
+  # Relation extraction backend: simple (regex), spacy, or stanza
   parser: simple
+  
+  # spaCy model name (used when parser=spacy)
   parser_model: en_core_web_sm
+  
+  # Language code for Stanza parser (used when parser=stanza)
   language: en
+  
+  ################################
+  # Relation Extraction Settings #
+  ################################
+  
+  # Minimum confidence score to keep extracted relations (0.0 to 1.0)
   relation_threshold: 0.6
+  
+  # Optional Hugging Face model for classifying and scoring relations
+  # relation_model: null  # Optional Hugging Face model for scoring relations (default: null)
+  
+  # Maximum sequence length for relation classification model
+  # relation_max_length: 256  # Max sequence length for relation model (default: 256)
+  
+  # Path to JSON file with per-label calibration coefficients (scale and bias)
+  # relation_calibration: null  # Optional JSON file with label calibration coefficients (default: null)
 

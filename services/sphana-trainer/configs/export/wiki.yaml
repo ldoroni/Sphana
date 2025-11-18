@@ -1,10 +1,35 @@
-workspace_dir: target/wiki/workspace
-artifact_root: target/wiki/artifacts
+# Workspace directory for temporary files and artifacts
+workspace_dir: target/workspace
+
+# Root directory for storing trained model artifacts
+artifact_root: target/artifacts
+
 export:
-  manifest_path: target/wiki/manifests/latest.json
+  ##########################
+  # Manifest Configuration #
+  ##########################
+  
+  # Path where the manifest JSON file will be written
+  manifest_path: target/manifests/latest.json
+  
+  ###################
+  # Model Selection #
+  ###################
+  
+  # List of component models to include in the export manifest
+  # Valid values: embedding, relation, gnn
   include_models:
     - embedding
     - relation
     - gnn
+  
+  #######################
+  # Publishing Settings #
+  #######################
+  
+  # Remote artifact store URI for publishing (e.g., s3://bucket/path)
   publish_uri: null
+  
+  # Root directory where artifacts are stored (can override global artifact_root)
+  # artifact_root: target/artifacts  # Artifact root directory (default: target/artifacts)
 

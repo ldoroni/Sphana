@@ -1,21 +1,130 @@
-workspace_dir: target/wiki/workspace
-artifact_root: target/wiki/artifacts
+# Workspace directory for temporary files and artifacts
+workspace_dir: target/workspace
+
+# Root directory for storing trained model artifacts
+artifact_root: target/artifacts
+
 embedding:
+  ##########################
+  # Required Configuration #
+  ##########################
+  
+  # Hugging Face model identifier or path to base model
   model_name: sentence-transformers/all-MiniLM-L6-v2
-  dataset_path: target/datasets/wiki/embedding
-  train_file: target/datasets/wiki/embedding/train.jsonl
-  validation_file: target/datasets/wiki/embedding/validation.jsonl
-  output_dir: target/wiki/artifacts/embedding
-  version: wiki-embedding
+  
+  # Directory where checkpoints and artifacts will be saved
+  output_dir: target/artifacts/embedding
+  
+  # Path to dataset directory or file
+  dataset_path: target/datasets/embedding
+  
+  #################
+  # Dataset Files #
+  #################
+  
+  # Path to training data JSONL file
+  train_file: target/datasets/embedding/train.jsonl
+  
+  # Path to validation data JSONL file
+  validation_file: target/datasets/embedding/validation.jsonl
+  
+  # Alternative validation dataset path (overrides dataset_path for validation)
+  # validation_path: null  # Optional explicit validation dataset path (default: null)
+  
+  ##############
+  # Versioning #
+  ##############
+  
+  # Semantic version for this model artifact
+  version: "0.1.0"
+  
+  ############################
+  # Training Hyperparameters #
+  ############################
+  
+  # Number of samples per batch
   batch_size: 32
-  gradient_accumulation: 2
+  
+  # Initial learning rate for optimizer
   learning_rate: 2e-5
+  
+  # Number of training epochs
   epochs: 3
+  
+  # Random seed for reproducibility
+  # seed: 42  # Random seed (default: 42)
+  
+  # Proportion of training for linear learning rate warmup
+  # warmup_ratio: 0.1  # Learning rate warmup ratio (default: 0.1)
+  
+  # Number of steps to accumulate gradients before updating weights
+  gradient_accumulation: 2
+  
+  ###########################
+  # Model-Specific Settings #
+  ###########################
+  
+  # Maximum sequence length for tokenization
   max_seq_length: 512
+  
+  # Pooling strategy for sentence embeddings: mean, max, cls
   pooling_strategy: mean
-  precision: fp16
+  
+  # Temperature parameter for contrastive loss
+  # temperature: 0.05  # Temperature parameter for contrastive loss (default: 0.05)
+  
+  ###################
+  # Export Settings #
+  ###################
+  
+  # ONNX opset version for model export
+  # export_opset: 17 # ONNX opset version for model export (default: 17)
+  
+  # Enable 8-bit quantization for exported ONNX model
+  # quantize: true  # Enable 8-bit quantization for exported ONNX model (default: true)
+
+  #######################
+  # Validation Settings #
+  #######################
+  
+  # Maximum number of validation samples to evaluate (for speed)
   eval_subset_size: 512
+  
+  # Minimum cosine similarity required to pass validation
+  # metric_threshold: null  # Minimum acceptable validation cosine similarity (default: null)
+  
+  #############################
+  # Advanced Training Options #
+  #############################
+  
+  # Enable distributed data parallel training across multiple GPUs
+  # ddp: false  # Enable torch.distributed training (default: false)
+  
+  # Training precision: fp32 (full), fp16 (half), bf16 (bfloat16)
+  precision: fp16
+  
+  # Path to checkpoint directory to resume training from
+  # resume_from: null  # Checkpoint directory to resume from (default: null)
+  
+  # Maximum number of checkpoint directories to keep
+  # max_checkpoints: 5  # Number of historical checkpoints to retain (default: 5)
+  
+  # Number of training steps to profile with PyTorch profiler (0 to disable)
+  # profile_steps: 0  # Number of training steps to capture with PyTorch profiler, 0 disables (default: 0)
+  
+  ######################
+  # MLflow Integration #
+  ######################
+  
+  # Enable experiment tracking with MLflow
   log_to_mlflow: true
+  
+  # MLflow tracking server URI (uses default if not specified)
+  # mlflow_tracking_uri: null  # Optional MLflow tracking URI override (default: null)
+  
+  # MLflow experiment name for organizing runs
   mlflow_experiment: sphana-wiki
-  profile_steps: 0
+  
+  # Custom name for this MLflow run
+  # mlflow_run_name: null  # Optional MLflow run name override (default: null)
 
