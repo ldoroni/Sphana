@@ -4,6 +4,412 @@
     'use strict';
 
     // ====================
+    // Multi-Page Navigation
+    // ====================
+    const PageNavigator = {
+        currentPage: null,
+        pages: {},
+        pageOrder: [
+            'overview',
+            'installation',
+            'quick-start',
+            'architecture',
+            'components',
+            'workflow',
+            'data-preparation',
+            'training',
+            'export-package',
+            'workflows',
+            'cli-reference',
+            'configuration',
+            'api',
+            'distributed',
+            'mlflow',
+            'optimization'
+        ],
+
+        init() {
+            this.indexPages();
+            this.addNavigationButtons();
+            this.setupNavigationHandlers();
+            this.loadInitialPage();
+            window.addEventListener('popstate', () => this.loadPageFromHash());
+        },
+
+        indexPages() {
+            document.querySelectorAll('.section').forEach(section => {
+                const id = section.id;
+                if (id) {
+                    this.pages[id] = {
+                        element: section,
+                        title: section.querySelector('h2')?.textContent || id,
+                        navLinks: document.querySelectorAll(`.nav-link[href="#${id}"]`)
+                    };
+                }
+            });
+        },
+
+        addNavigationButtons() {
+            this.pageOrder.forEach((pageId, index) => {
+                const page = this.pages[pageId];
+                if (!page) return;
+
+                const navContainer = document.createElement('div');
+                navContainer.className = 'page-navigation';
+
+                const prevPage = index > 0 ? this.pages[this.pageOrder[index - 1]] : null;
+                const nextPage = index < this.pageOrder.length - 1 ? this.pages[this.pageOrder[index + 1]] : null;
+
+                if (prevPage) {
+                    const prevBtn = this.createNavButton(this.pageOrder[index - 1], prevPage.title, 'prev');
+                    navContainer.appendChild(prevBtn);
+                }
+
+                if (nextPage) {
+                    const nextBtn = this.createNavButton(this.pageOrder[index + 1], nextPage.title, 'next');
+                    navContainer.appendChild(nextBtn);
+                }
+
+                if (prevPage || nextPage) {
+                    page.element.appendChild(navContainer);
+                }
+            });
+        },
+
+        createNavButton(pageId, title, direction) {
+            const button = document.createElement('button');
+            button.className = `page-nav-btn ${direction}`;
+            button.setAttribute('data-page', pageId);
+
+            const leftArrow = `<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>`;
+            const rightArrow = `<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>`;
+
+            if (direction === 'prev') {
+                button.innerHTML = `
+                    ${leftArrow}
+                    <div style="text-align: left;">
+                        <div class="page-nav-label">Previous</div>
+                        <div class="page-nav-title">${title}</div>
+                    </div>
+                `;
+            } else {
+                button.innerHTML = `
+                    <div style="text-align: right;">
+                        <div class="page-nav-label">Next</div>
+                        <div class="page-nav-title">${title}</div>
+                    </div>
+                    ${rightArrow}
+                `;
+            }
+
+            button.addEventListener('click', () => {
+                this.navigateToPage(pageId);
+            });
+
+            return button;
+        },
+
+        setupNavigationHandlers() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const hash = link.getAttribute('href').substring(1);
+                    this.navigateToPage(hash);
+                });
+            });
+        },
+
+        navigateToPage(pageId) {
+            if (!this.pages[pageId]) {
+                console.warn('Page not found:', pageId);
+                return;
+            }
+
+            // Hide all sections
+            Object.values(this.pages).forEach(page => {
+                page.element.classList.remove('active');
+                page.navLinks.forEach(link => link.classList.remove('active'));
+            });
+
+            // Show current section
+            const page = this.pages[pageId];
+            page.element.classList.add('active');
+            page.navLinks.forEach(link => link.classList.add('active'));
+
+            // Update URL hash
+            history.pushState(null, '', `#${pageId}`);
+
+            // Update document title
+            document.title = `${page.title} - Sphana Trainer Documentation`;
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            this.currentPage = pageId;
+        },
+
+        loadInitialPage() {
+            const hash = window.location.hash.substring(1);
+            const defaultPage = 'overview';
+            this.navigateToPage(hash || defaultPage);
+        },
+
+        loadPageFromHash() {
+            const hash = window.location.hash.substring(1);
+            if (hash && this.pages[hash]) {
+                this.navigateToPage(hash);
+            }
+        }
+    };
+
+    // ====================
+    // Autocomplete Search
+    // ====================
+    const AutocompleteSearch = {
+        searchInput: null,
+        resultsContainer: null,
+        searchIndex: [],
+        selectedIndex: -1,
+        debounceTimeout: null,
+
+        init() {
+            this.searchInput = document.getElementById('search');
+            this.resultsContainer = document.getElementById('searchResults');
+
+            if (!this.searchInput || !this.resultsContainer) return;
+
+            this.buildSearchIndex();
+            this.setupEventListeners();
+        },
+
+        buildSearchIndex() {
+            // Index all sections, headings, and commands
+            document.querySelectorAll('.section').forEach(section => {
+                const sectionId = section.id;
+                const sectionTitle = section.querySelector('h2')?.textContent || '';
+                const category = this.getSectionCategory(sectionId);
+
+                // Index section itself
+                this.searchIndex.push({
+                    type: 'section',
+                    id: sectionId,
+                    title: sectionTitle,
+                    category: category,
+                    path: sectionTitle,
+                    keywords: [sectionTitle.toLowerCase()]
+                });
+
+                // Index h3 headings
+                section.querySelectorAll('h3').forEach(h3 => {
+                    const title = h3.textContent;
+                    this.searchIndex.push({
+                        type: 'heading',
+                        id: sectionId,
+                        title: title,
+                        category: category,
+                        path: `${sectionTitle} > ${title}`,
+                        keywords: [title.toLowerCase(), sectionTitle.toLowerCase()]
+                    });
+                });
+
+                // Index commands
+                section.querySelectorAll('.command-ref h4 code, .code-label').forEach(code => {
+                    const title = code.textContent;
+                    if (title.includes('python') || title.includes('sphana')) {
+                        this.searchIndex.push({
+                            type: 'command',
+                            id: sectionId,
+                            title: title,
+                            category: 'Command',
+                            path: `${sectionTitle} > Commands`,
+                            keywords: [title.toLowerCase(), 'cli', 'command']
+                        });
+                    }
+                });
+            });
+        },
+
+        getSectionCategory(sectionId) {
+            const categories = {
+                'overview': 'Getting Started',
+                'installation': 'Getting Started',
+                'quick-start': 'Getting Started',
+                'architecture': 'Core Concepts',
+                'components': 'Core Concepts',
+                'workflow': 'Core Concepts',
+                'data-preparation': 'User Guide',
+                'training': 'User Guide',
+                'export-package': 'User Guide',
+                'workflows': 'User Guide',
+                'cli-reference': 'Reference',
+                'configuration': 'Reference',
+                'api': 'Reference',
+                'distributed': 'Advanced',
+                'mlflow': 'Advanced',
+                'optimization': 'Advanced'
+            };
+            return categories[sectionId] || 'Documentation';
+        },
+
+        setupEventListeners() {
+            this.searchInput.addEventListener('input', (e) => {
+                clearTimeout(this.debounceTimeout);
+                this.debounceTimeout = setTimeout(() => {
+                    this.performSearch(e.target.value);
+                }, 200);
+            });
+
+            this.searchInput.addEventListener('keydown', (e) => {
+                this.handleKeyNavigation(e);
+            });
+
+            this.searchInput.addEventListener('focus', () => {
+                if (this.searchInput.value) {
+                    this.performSearch(this.searchInput.value);
+                }
+            });
+
+            // Close results when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!this.searchInput.contains(e.target) && !this.resultsContainer.contains(e.target)) {
+                    this.hideResults();
+                }
+            });
+
+            // Close on Escape
+            this.searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    this.hideResults();
+                    this.searchInput.blur();
+                }
+            });
+        },
+
+        performSearch(query) {
+            if (!query || query.length < 2) {
+                this.hideResults();
+                return;
+            }
+
+            const queryLower = query.toLowerCase();
+            const results = this.searchIndex
+                .filter(item => {
+                    return item.keywords.some(keyword => keyword.includes(queryLower)) ||
+                           item.title.toLowerCase().includes(queryLower);
+                })
+                .slice(0, 10); // Limit to 10 results
+
+            this.displayResults(results, query);
+        },
+
+        displayResults(results, query) {
+            if (results.length === 0) {
+                this.resultsContainer.innerHTML = `
+                    <div class="search-no-results">
+                        <svg style="width: 48px; height: 48px; margin: 0 auto 1rem; opacity: 0.3; display: block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="M21 21l-4.35-4.35"/>
+                        </svg>
+                        <div>No results found for "${query}"</div>
+                    </div>
+                `;
+                this.resultsContainer.classList.add('visible');
+                return;
+            }
+
+            const html = results.map((result, index) => {
+                const highlightedTitle = this.highlightMatch(result.title, query);
+                const icon = this.getTypeIcon(result.type);
+                
+                return `
+                    <div class="search-result-item ${index === 0 ? 'selected' : ''}" 
+                         data-index="${index}" 
+                         data-page-id="${result.id}">
+                        <div class="search-result-category">${icon} ${result.category}</div>
+                        <div class="search-result-title">${highlightedTitle}</div>
+                        <div class="search-result-path">${result.path}</div>
+                    </div>
+                `;
+            }).join('');
+
+            this.resultsContainer.innerHTML = html;
+            this.resultsContainer.classList.add('visible');
+            this.selectedIndex = 0;
+
+            // Add click handlers
+            this.resultsContainer.querySelectorAll('.search-result-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const pageId = item.getAttribute('data-page-id');
+                    this.navigateToResult(pageId);
+                });
+            });
+        },
+
+        highlightMatch(text, query) {
+            const regex = new RegExp(`(${this.escapeRegex(query)})`, 'gi');
+            return text.replace(regex, '<strong style="color: var(--color-primary); font-weight: 700;">$1</strong>');
+        },
+
+        escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        },
+
+        getTypeIcon(type) {
+            const icons = {
+                'section': '📄',
+                'heading': '📌',
+                'command': '⚡'
+            };
+            return icons[type] || '📄';
+        },
+
+        handleKeyNavigation(e) {
+            const items = this.resultsContainer.querySelectorAll('.search-result-item');
+            if (items.length === 0) return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                this.selectedIndex = Math.min(this.selectedIndex + 1, items.length - 1);
+                this.updateSelection(items);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                this.selectedIndex = Math.max(this.selectedIndex - 1, 0);
+                this.updateSelection(items);
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                const selectedItem = items[this.selectedIndex];
+                if (selectedItem) {
+                    const pageId = selectedItem.getAttribute('data-page-id');
+                    this.navigateToResult(pageId);
+                }
+            }
+        },
+
+        updateSelection(items) {
+            items.forEach((item, index) => {
+                if (index === this.selectedIndex) {
+                    item.classList.add('selected');
+                    item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
+        },
+
+        navigateToResult(pageId) {
+            this.hideResults();
+            this.searchInput.value = '';
+            this.searchInput.blur();
+            PageNavigator.navigateToPage(pageId);
+        },
+
+        hideResults() {
+            this.resultsContainer.classList.remove('visible');
+            this.selectedIndex = -1;
+        }
+    };
+
+    // ====================
     // Theme Management
     // ====================
     const ThemeManager = {
@@ -498,9 +904,31 @@
                 }
             },
             't': () => ThemeManager.toggle(),
+            'n': () => {
+                // Navigate to next page
+                const currentIndex = PageNavigator.pageOrder.indexOf(PageNavigator.currentPage);
+                if (currentIndex >= 0 && currentIndex < PageNavigator.pageOrder.length - 1) {
+                    PageNavigator.navigateToPage(PageNavigator.pageOrder[currentIndex + 1]);
+                }
+            },
+            'p': () => {
+                // Navigate to previous page
+                const currentIndex = PageNavigator.pageOrder.indexOf(PageNavigator.currentPage);
+                if (currentIndex > 0) {
+                    PageNavigator.navigateToPage(PageNavigator.pageOrder[currentIndex - 1]);
+                }
+            },
             'g': {
-                'h': () => scrollToSection('#overview'),
+                'h': () => PageNavigator.navigateToPage('overview'),
                 'g': () => window.scrollTo({ top: 0, behavior: 'smooth' })
+            },
+            'escape': () => {
+                // Close search results
+                const searchInput = document.getElementById('search');
+                if (searchInput) {
+                    searchInput.blur();
+                }
+                AutocompleteSearch.hideResults();
             }
         };
 
@@ -842,11 +1270,13 @@
 
         try {
             addAnimationStyles();
+            PageNavigator.init(); // Initialize multi-page navigation
+            AutocompleteSearch.init(); // Initialize autocomplete search
             ThemeManager.init();
             initCopyButtons();
-            initActiveNav();
-            initSmoothScroll();
-            initSearch();
+            // initActiveNav(); // Disabled - PageNavigator handles this now
+            // initSmoothScroll(); // Disabled - Not needed for multi-page
+            // initSearch(); // Disabled - Replaced by AutocompleteSearch
             initKeyboardShortcuts();
             initBackToTop();
             enhanceCodeBlocks();
@@ -857,7 +1287,7 @@
 
             console.log('%c✓ Documentation ready!', 
                 'color: #10b981; font-weight: bold;');
-            console.log('%cKeyboard shortcuts: Ctrl+K (search), T (theme), GG (top)', 
+            console.log('%cKeyboard shortcuts: Ctrl+K (search), T (theme), N (next), P (prev), GH (home), GG (top)', 
                 'color: #94a3b8; font-size: 0.9em;');
         } catch (error) {
             console.error('Error initializing documentation:', error);

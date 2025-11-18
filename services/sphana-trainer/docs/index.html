@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sphana Trainer Documentation</title>
@@ -8,18 +8,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header class="header">
         <div class="header-content">
             <div class="header-left">
                 <h1 class="logo">Sphana Trainer</h1>
                 <p class="tagline">Neural Model Training CLI for NRDB</p>
-            </div>
+      </div>
             <div class="header-right">
-                <input type="search" id="search" placeholder="Search documentation..." aria-label="Search">
-            </div>
+                <div class="search-wrapper">
+                    <input type="search" id="search" placeholder="Search documentation..." aria-label="Search" autocomplete="off">
+                    <div class="search-results" id="searchResults"></div>
+      </div>
+      </div>
         </div>
         <!-- Dark mode toggle will be added by JavaScript -->
     </header>
@@ -29,7 +32,7 @@
     <!-- Main Layout -->
     <div class="layout">
         <!-- Sidebar -->
-        <aside class="sidebar">
+      <aside class="sidebar">
             <nav class="nav">
                 <div class="nav-section">
                     <h3 class="nav-title">Getting Started</h3>
@@ -66,8 +69,8 @@
                     <a href="#mlflow" class="nav-link">MLflow Integration</a>
                     <a href="#optimization" class="nav-link">Optimization</a>
                 </div>
-            </nav>
-        </aside>
+        </nav>
+      </aside>
 
         <!-- Main Content -->
         <main class="main-content">
@@ -126,12 +129,12 @@
                     <li><strong>Distributed Training:</strong> Multi-GPU training with automatic device management</li>
                     <li><strong>MLflow Integration:</strong> Experiment tracking, metrics logging, and artifact management</li>
                     <li><strong>Workflow Automation:</strong> Complete pipelines from ingestion to packaging</li>
-                </ul>
+        </ul>
 
                 <div class="info-box" style="padding-left: 3.5rem;">
                     <strong>Note:</strong> This documentation covers the Python training CLI only. For the complete NRDB architecture including the .NET gRPC service, see the design documents in <code>design/</code>.
-                </div>
-            </section>
+        </div>
+      </section>
 
             <!-- Installation -->
             <section id="installation" class="section">
@@ -156,7 +159,7 @@
                 </div>
 
                 <h3>Installation Steps</h3>
-                <div class="code-block">
+        <div class="code-block">
                     <div class="code-header">
                         <span class="code-label">PowerShell - Run in order</span>
                         <button class="copy-btn" data-target="setup-code">Copy</button>
@@ -174,7 +177,7 @@ python -m venv .venv
 # 4. Upgrade pip and install dependencies
 python -m pip install --upgrade pip
 pip install -r requirements.txt</code></pre>
-                </div>
+        </div>
 
                 <div class="info-box">
                     <strong>What gets installed?</strong>
@@ -213,7 +216,7 @@ pip install -r requirements.txt</code></pre>
                         <li><strong>Out of disk space:</strong> Free up at least 5GB before installation</li>
                     </ul>
                 </div>
-            </section>
+      </section>
 
             <!-- Quick Start -->
             <section id="quick-start" class="section">
@@ -273,14 +276,14 @@ python -m sphana_trainer.cli dataset-build-from-ingest \
                         <li><strong>Relation Extraction:</strong> Relationships between entities are discovered</li>
                         <li><strong>Knowledge Graph Construction:</strong> Triples (subject, predicate, object) are created</li>
                         <li><strong>Dataset Splitting:</strong> Data is split into training/validation sets for each model type</li>
-                    </ol>
+        </ol>
                     Output: Three ready-to-train JSONL datasets (embedding, relation, GNN).
-                </div>
+        </div>
 
                 <h3>Step 2: Configure Training Parameters</h3>
                 <p>Review and adjust configuration files in <code>configs/</code> based on your needs:</p>
 
-                <div class="code-block">
+        <div class="code-block">
                     <div class="code-header">
                         <span class="code-label">configs/embedding/base.yaml (example adjustments)</span>
                     </div>
@@ -302,7 +305,7 @@ metric_threshold: 0.75      # Minimum cosine similarity to export model
 # MLflow tracking (optional)
 log_to_mlflow: true
 mlflow_experiment: "embedding-training"</code></pre>
-                </div>
+        </div>
 
                 <div class="warning-box">
                     <strong>Important Configuration Notes:</strong>
@@ -312,7 +315,7 @@ mlflow_experiment: "embedding-training"</code></pre>
                         <li><strong>CPU training:</strong> Set <code>precision: "fp32"</code> (fp16/bf16 require GPU)</li>
                         <li><strong>Epochs:</strong> Sample data needs 2-3 epochs; production data may need 5-10+</li>
                         <li><strong>Validation:</strong> Always provide a validation set to monitor overfitting and enable early stopping</li>
-                    </ul>
+        </ul>
                 </div>
 
                 <h3>Step 3: Train All Models</h3>
@@ -322,7 +325,7 @@ mlflow_experiment: "embedding-training"</code></pre>
                     <div class="code-header">
                         <span class="code-label">Train all components sequentially</span>
                         <button class="copy-btn" data-target="train-all">Copy</button>
-                    </div>
+        </div>
                     <pre><code id="train-all"># 1. Embedding encoder (dense semantic vectors)
 python -m sphana_trainer.cli train embedding --config configs/embedding/base.yaml
 
@@ -340,20 +343,20 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                         <li><code>target/artifacts/&lt;component&gt;/latest.json</code> - Pointer to the most recent version</li>
                         <li><code>target/logs/trainer.log</code> - Detailed training logs</li>
                         <li><code>target/mlruns/</code> - MLflow experiment data (if enabled)</li>
-                    </ul>
+        </ul>
                     Training time: ~2-5 minutes per model on sample data (GPU), 10-30 minutes on CPU.
                 </div>
 
                 <h3>Step 4: Export to ONNX Format</h3>
                 <p>Convert trained PyTorch models to ONNX with INT8 quantization for production deployment:</p>
 
-                <div class="code-block">
+        <div class="code-block">
                     <div class="code-header">
                         <span class="code-label">Export and quantize models</span>
                         <button class="copy-btn" data-target="export-code">Copy</button>
-                    </div>
+        </div>
                     <pre><code id="export-code">python -m sphana_trainer.cli export --config configs/export/base.yaml</code></pre>
-                </div>
+          </div>
 
                 <div class="info-box">
                     <strong>What happens during export?</strong>
@@ -373,8 +376,8 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                         <li>If export fails with "model not found", ensure all three models completed training successfully</li>
                         <li>If parity check fails, your model may have non-deterministic operations - check training logs</li>
                         <li>Review <code>configs/export/base.yaml</code> to specify which component versions to export</li>
-                    </ul>
-                </div>
+        </ul>
+      </div>
 
                 <h3>Step 5: Package for Deployment</h3>
                 <p>Bundle the manifest and ONNX files into a single tarball for deployment:</p>
@@ -383,7 +386,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                     <div class="code-header">
                         <span class="code-label">Create deployment package</span>
                         <button class="copy-btn" data-target="package-code">Copy</button>
-                    </div>
+        </div>
                     <pre><code id="package-code">python -m sphana_trainer.cli package --config configs/export/base.yaml</code></pre>
                 </div>
 
@@ -396,7 +399,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                         <li>Manifest JSON with model metadata and versions</li>
                         <li>ONNX files for all three components (standard + quantized)</li>
                         <li>Calibration data for the .NET runtime</li>
-                    </ul>
+          </ul>
                     Deploy this file to your .NET gRPC service to serve the models in production.
                 </div>
 
@@ -430,7 +433,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                         <li><strong>Error recovery:</strong> Use <code>--force</code> to retry failed stages</li>
                         <li><strong>Artifact promotion:</strong> Automatically promotes specified component versions</li>
                         <li><strong>Report generation:</strong> Creates <code>target/artifacts/workflow-report.json</code> with summary</li>
-                    </ul>
+          </ul>
                 </div>
 
                 <h3>Next Steps</h3>
@@ -442,7 +445,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                         <li>🚀 <strong>Deploy:</strong> Upload <code>latest.tar.gz</code> to your .NET gRPC service</li>
                         <li>🔄 <strong>Iterate:</strong> Adjust hyperparameters with <code>train sweep</code> for better results</li>
                         <li>📚 <strong>Production setup:</strong> See <a href="#workflows">Workflows</a> section for advanced automation</li>
-                    </ul>
+          </ul>
                 </div>
             </section>
 
@@ -486,7 +489,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                     <li><strong>Hybrid Retrieval:</strong> Combine vector similarity with knowledge graph reasoning</li>
                     <li><strong>Production Ready:</strong> Export to ONNX with INT8 quantization for deployment</li>
                     <li><strong>Reproducible:</strong> Configuration-driven with deterministic seeding and fingerprinting</li>
-                </ul>
+            </ul>
             </section>
 
             <!-- Components -->
@@ -595,7 +598,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                             <li>Extract entities and relations</li>
                             <li>Create knowledge graph triples</li>
                             <li>Cache parsed data for reuse</li>
-                        </ul>
+          </ul>
                         <div class="code-snippet">
                             <code>python -m sphana_trainer.cli ingest --config configs/ingest/wiki.yaml</code>
                         </div>
@@ -614,7 +617,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                             <li>Build relation classification samples</li>
                             <li>Generate GNN training subgraphs</li>
                             <li>Split into train/validation sets</li>
-                        </ul>
+          </ul>
                         <div class="code-snippet">
                             <code>python -m sphana_trainer.cli dataset-build-from-ingest &lt;ingest_dir&gt;</code>
                         </div>
@@ -633,7 +636,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                             <li>Mixed precision training (fp16/bf16)</li>
                             <li>Early stopping and checkpointing</li>
                             <li>Optional MLflow experiment tracking</li>
-                        </ul>
+          </ul>
                         <div class="code-snippet">
                             <code>python -m sphana_trainer.cli train embedding --config configs/embedding/base.yaml</code>
                         </div>
@@ -652,7 +655,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                             <li>Apply INT8 quantization</li>
                             <li>Generate manifest with metadata</li>
                             <li>Package into deployment tarball</li>
-                        </ul>
+          </ul>
                         <div class="code-snippet">
                             <code>python -m sphana_trainer.cli export --config configs/export/base.yaml</code>
                         </div>
@@ -674,7 +677,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                     <li><code>.txt</code> - Plain text files</li>
                     <li><code>.md</code> - Markdown documents</li>
                     <li><code>.json</code>/<code>.jsonl</code> - Structured data with <code>title</code> and <code>content</code></li>
-                </ul>
+          </ul>
 
                 <h4>Configure Ingestion</h4>
                 <p>Edit <code>configs/ingest/base.yaml</code> or create your own:</p>
@@ -705,7 +708,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                     <li><code>chunks.jsonl</code> - Text chunks with embeddings</li>
                     <li><code>relations.jsonl</code> - Extracted knowledge graph triples</li>
                     <li><code>cache/</code> - Cached parses for reproducibility</li>
-                </ul>
+          </ul>
 
                 <h3>Dataset Building</h3>
                 <p>Convert ingestion outputs into training-ready datasets:</p>
@@ -726,7 +729,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                     <li><code>relation/train.jsonl</code> - Entity-relation-entity triples</li>
                     <li><code>gnn/train.jsonl</code> - Knowledge subgraphs with rankings</li>
                     <li>Corresponding validation sets</li>
-                </ul>
+          </ul>
 
                 <h3>Download Wikipedia Data</h3>
                 <p>For quick testing, download a curated Wikipedia corpus:</p>
@@ -773,36 +776,36 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
 
                 <h3>Training Options</h3>
                 <table class="options-table">
-                    <thead>
-                        <tr>
+            <thead>
+              <tr>
                             <th>Option</th>
-                            <th>Description</th>
+                <th>Description</th>
                             <th>Example</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
                             <td><code>--precision</code></td>
                             <td>Training precision</td>
                             <td><code>fp32</code>, <code>fp16</code>, <code>bf16</code></td>
-                        </tr>
-                        <tr>
+              </tr>
+              <tr>
                             <td><code>--grad-accum</code></td>
                             <td>Gradient accumulation steps</td>
                             <td><code>--grad-accum 4</code></td>
-                        </tr>
-                        <tr>
+              </tr>
+              <tr>
                             <td><code>--profile-steps</code></td>
                             <td>Profile N training steps</td>
                             <td><code>--profile-steps 10</code></td>
-                        </tr>
-                        <tr>
-                            <td><code>--mlflow-tracking-uri</code></td>
+              </tr>
+              <tr>
+                <td><code>--mlflow-tracking-uri</code></td>
                             <td>MLflow server URL</td>
                             <td><code>file:///path/to/mlruns</code></td>
-                        </tr>
-                    </tbody>
-                </table>
+              </tr>
+            </tbody>
+          </table>
 
                 <h3>Hyperparameter Sweeps</h3>
                 <p>Run grid search over hyperparameters:</p>
@@ -824,7 +827,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                     <li><strong>Checkpoints:</strong> Saved to <code>target/artifacts/&lt;component&gt;/</code></li>
                     <li><strong>MLflow:</strong> View at <code>target/mlruns</code> (or your tracking URI)</li>
                     <li><strong>Metrics:</strong> Validation metrics saved to <code>metrics.jsonl</code></li>
-                </ul>
+            </ul>
             </section>
 
             <!-- Export & Package -->
@@ -846,7 +849,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                     <li>Applies INT8 dynamic quantization to reduce size</li>
                     <li>Validates ONNX output against PyTorch reference</li>
                     <li>Generates a deployment manifest at <code>target/manifests/latest.json</code></li>
-                </ul>
+          </ul>
 
                 <h3>Create Deployment Package</h3>
                 <p>Bundle ONNX models and manifest into a single tarball:</p>
@@ -991,7 +994,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--precision {fp32,fp16,bf16}</code> - Training precision</li>
                                 <li><code>--grad-accum N</code> - Gradient accumulation steps</li>
                                 <li><code>--profile-steps N</code> - Enable profiling for N steps</li>
-                            </ul>
+          </ul>
                         </div>
                     </div>
 
@@ -1008,7 +1011,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--precision {fp32,fp16,bf16}</code> - Training precision</li>
                                 <li><code>--grad-accum N</code> - Gradient accumulation steps</li>
                                 <li><code>--profile-steps N</code> - Enable profiling for N steps</li>
-                            </ul>
+          </ul>
                         </div>
                     </div>
 
@@ -1025,7 +1028,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--precision {fp32,fp16,bf16}</code> - Training precision</li>
                                 <li><code>--grad-accum N</code> - Gradient accumulation steps</li>
                                 <li><code>--profile-steps N</code> - Enable profiling for N steps</li>
-                            </ul>
+          </ul>
                         </div>
                     </div>
 
@@ -1045,7 +1048,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--hidden-dim INT</code> - GNN hidden dimensions (GNN only, can be repeated)</li>
                                 <li><code>--grid-file PATH</code> - YAML file describing sweep overrides</li>
                                 <li><code>--mlflow-tracking-uri URI</code> - Override MLflow tracking URI for sweep runs</li>
-                            </ul>
+          </ul>
                         </div>
                         <div class="command-example">
                             <strong>Example:</strong>
@@ -1082,7 +1085,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--extra-relation PATH</code> - Additional relation JSONL files (can be repeated)</li>
                                 <li><code>--extra-gnn PATH</code> - Additional GNN JSONL files (can be repeated)</li>
                                 <li><code>--parses-dir PATH</code> - Optional directory containing cached parse JSON files</li>
-                            </ul>
+          </ul>
                         </div>
                     </div>
 
@@ -1100,7 +1103,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--limit N</code> - Maximum number of pages to fetch</li>
                                 <li><code>--titles-file PATH</code> - Optional file with titles (one per line)</li>
                                 <li><code>--shuffle/--no-shuffle</code> - Shuffle the title list before downloading (default: shuffle)</li>
-                            </ul>
+          </ul>
                         </div>
                     </div>
 
@@ -1150,7 +1153,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--relation-model</code> - Hugging Face model ID (e.g., hf-internal-testing/tiny-random-bert)</li>
                                 <li><code>--spacy-model</code> - spaCy pipeline name (e.g., en_core_web_sm)</li>
                                 <li><code>--stanza-lang</code> - Stanza language code (e.g., en)</li>
-                            </ul>
+          </ul>
                         </div>
                         <div class="command-example">
                             <strong>Example:</strong>
@@ -1210,7 +1213,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--artifact-root PATH</code> - Artifact root directory (default: target/artifacts)</li>
                                 <li><code>--manifest PATH</code> - Optional manifest file to update after promotion</li>
                                 <li><code>--publish-url URL</code> - Optional URL of the .NET service to publish manifests to</li>
-                            </ul>
+          </ul>
                         </div>
                     </div>
 
@@ -1268,7 +1271,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--manifest</code> - Output manifest path</li>
                                 <li><code>--build-datasets</code> - Build datasets from ingestion</li>
                                 <li><code>--dataset-output-dir</code> - Where to write derived datasets</li>
-                            </ul>
+          </ul>
                         </div>
                     </div>
 
@@ -1308,7 +1311,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--metrics-dir</code> - Directory containing metrics JSON files (default: target/metrics)</li>
                                 <li><code>--component</code> - Filter by component name (embedding, relation, gnn)</li>
                                 <li><code>--latest</code> - Show only the most recent run per component</li>
-                            </ul>
+          </ul>
                         </div>
                     </div>
 
@@ -1325,7 +1328,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                                 <li><code>--component</code> - Filter to specific component traces</li>
                                 <li><code>--open</code> - Launch Chrome trace viewer</li>
                                 <li><code>--export</code> - Export trace to specified path</li>
-                            </ul>
+          </ul>
                         </div>
                     </div>
 
@@ -1341,7 +1344,7 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                         </div>
                     </div>
                 </div>
-            </section>
+      </section>
 
             <!-- Configuration -->
             <section id="configuration" class="section">
@@ -1368,128 +1371,128 @@ export:
 
                 <h3>Embedding Configuration</h3>
                 <table class="config-table">
-                    <thead>
-                        <tr>
+          <thead>
+            <tr>
                             <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Default</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>model_name</code></td>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>model_name</code></td>
                             <td>string</td>
                             <td>all-MiniLM-L6-v2</td>
                             <td>Base model identifier</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>batch_size</code></td>
                             <td>int</td>
                             <td>32</td>
                             <td>Training batch size</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>learning_rate</code></td>
                             <td>float</td>
                             <td>5e-5</td>
                             <td>Learning rate</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>epochs</code></td>
                             <td>int</td>
                             <td>3</td>
                             <td>Number of training epochs</td>
-                        </tr>
-                        <tr>
-                            <td><code>max_seq_length</code></td>
+            </tr>
+            <tr>
+              <td><code>max_seq_length</code></td>
                             <td>int</td>
-                            <td>512</td>
+              <td>512</td>
                             <td>Maximum sequence length</td>
-                        </tr>
-                        <tr>
-                            <td><code>temperature</code></td>
+            </tr>
+            <tr>
+              <td><code>temperature</code></td>
                             <td>float</td>
-                            <td>0.05</td>
+              <td>0.05</td>
                             <td>Contrastive loss temperature</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>quantize</code></td>
                             <td>bool</td>
                             <td>true</td>
                             <td>Enable INT8 quantization</td>
-                        </tr>
-                    </tbody>
-                </table>
+            </tr>
+          </tbody>
+        </table>
 
                 <h3>Relation Extraction Configuration</h3>
                 <table class="config-table">
-                    <thead>
-                        <tr>
+          <thead>
+            <tr>
                             <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Default</th>
+              <th>Type</th>
+              <th>Default</th>
                             <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
                             <td><code>model_name</code></td>
                             <td>string</td>
                             <td>(required)</td>
                             <td>BERT-based model</td>
-                        </tr>
-                        <tr>
-                            <td><code>max_seq_length</code></td>
-                            <td>int</td>
-                            <td>256</td>
+            </tr>
+            <tr>
+              <td><code>max_seq_length</code></td>
+              <td>int</td>
+              <td>256</td>
                             <td>Maximum sequence length</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>negative_sampling_ratio</code></td>
                             <td>float</td>
                             <td>0.5</td>
                             <td>Ratio of negative samples</td>
-                        </tr>
-                        <tr>
-                            <td><code>early_stopping_patience</code></td>
-                            <td>int</td>
-                            <td>2</td>
+            </tr>
+            <tr>
+              <td><code>early_stopping_patience</code></td>
+              <td>int</td>
+              <td>2</td>
                             <td>Early stopping patience</td>
-                        </tr>
-                        <tr>
-                            <td><code>metric_threshold</code></td>
-                            <td>float</td>
+            </tr>
+            <tr>
+              <td><code>metric_threshold</code></td>
+              <td>float</td>
                             <td>null</td>
                             <td>Minimum macro F1 score</td>
-                        </tr>
-                    </tbody>
-                </table>
+            </tr>
+          </tbody>
+        </table>
 
                 <h3>GNN Configuration</h3>
                 <table class="config-table">
-                    <thead>
-                        <tr>
+          <thead>
+            <tr>
                             <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Default</th>
+              <th>Type</th>
+              <th>Default</th>
                             <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>hidden_dim</code></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>hidden_dim</code></td>
                             <td>int</td>
-                            <td>256</td>
+              <td>256</td>
                             <td>Hidden layer dimension</td>
-                        </tr>
-                        <tr>
-                            <td><code>num_layers</code></td>
+            </tr>
+            <tr>
+              <td><code>num_layers</code></td>
                             <td>int</td>
-                            <td>4</td>
+              <td>4</td>
                             <td>Number of GNN layers</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>dropout</code></td>
                             <td>float</td>
                             <td>0.1</td>
@@ -1500,14 +1503,14 @@ export:
                             <td>string</td>
                             <td>listnet</td>
                             <td>Ranking loss function</td>
-                        </tr>
-                        <tr>
-                            <td><code>temperature</code></td>
-                            <td>float</td>
-                            <td>1.0</td>
+            </tr>
+            <tr>
+              <td><code>temperature</code></td>
+              <td>float</td>
+              <td>1.0</td>
                             <td>Ranking temperature</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>max_nodes</code></td>
                             <td>int</td>
                             <td>128</td>
@@ -1518,49 +1521,49 @@ export:
                             <td>int</td>
                             <td>512</td>
                             <td>Maximum edges per graph</td>
-                        </tr>
-                    </tbody>
-                </table>
+            </tr>
+          </tbody>
+        </table>
 
                 <h3>Common Parameters</h3>
                 <table class="config-table">
-                    <thead>
-                        <tr>
+          <thead>
+            <tr>
                             <th>Parameter</th>
                             <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
                             <td><code>seed</code></td>
                             <td>Random seed for reproducibility</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>warmup_ratio</code></td>
                             <td>Learning rate warmup ratio (0.0-1.0)</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>gradient_accumulation</code></td>
                             <td>Steps to accumulate gradients</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>ddp</code></td>
                             <td>Enable distributed training</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>precision</code></td>
                             <td>Training precision (fp32, fp16, bf16)</td>
-                        </tr>
-                        <tr>
+            </tr>
+            <tr>
                             <td><code>max_checkpoints</code></td>
                             <td>Number of checkpoints to keep</td>
                         </tr>
                         <tr>
                             <td><code>log_to_mlflow</code></td>
                             <td>Enable MLflow experiment tracking</td>
-                        </tr>
-                    </tbody>
-                </table>
+            </tr>
+          </tbody>
+        </table>
             </section>
 
             <!-- API -->
@@ -1573,7 +1576,7 @@ export:
                 <div class="code-block">
                     <div class="code-header">
                         <span class="code-label">Python</span>
-                    </div>
+        </div>
                     <pre><code>from sphana_trainer.config import load_config
 from sphana_trainer.tasks import EmbeddingTask
 
@@ -1648,12 +1651,12 @@ task.execute()</code></pre>
                     <li><strong>Learning Rate:</strong> May need adjustment for larger effective batch sizes</li>
                     <li><strong>Checkpointing:</strong> Only rank 0 saves checkpoints</li>
                     <li><strong>Logging:</strong> MLflow logging only from rank 0</li>
-                </ul>
+        </ul>
 
                 <div class="warning-box" style="padding-left: 3.5rem;">
                     <strong>Important:</strong> Ensure all GPUs have the same architecture and memory capacity for optimal performance.
                 </div>
-            </section>
+      </section>
 
             <!-- MLflow -->
             <section id="mlflow" class="section">
@@ -1689,7 +1692,7 @@ task.execute()</code></pre>
                     <li><strong>Metrics:</strong> Training/validation loss, F1, cosine similarity, etc.</li>
                     <li><strong>Artifacts:</strong> Model checkpoints, ONNX exports, configs</li>
                     <li><strong>System Metrics:</strong> GPU utilization, memory usage</li>
-                </ul>
+        </ul>
 
                 <h3>Remote Tracking</h3>
                 <p>Use a remote MLflow server:</p>
@@ -1699,8 +1702,8 @@ task.execute()</code></pre>
                     </div>
                     <pre><code>embedding:
   mlflow_tracking_uri: https://mlflow.example.com</code></pre>
-                </div>
-            </section>
+        </div>
+      </section>
 
             <!-- Optimization -->
             <section id="optimization" class="section">
@@ -1712,7 +1715,7 @@ task.execute()</code></pre>
                 <div class="code-block">
                     <div class="code-header">
                         <span class="code-label">YAML</span>
-                    </div>
+      </div>
                     <pre><code>embedding:
   precision: bf16  # or fp16</code></pre>
                 </div>
@@ -1746,7 +1749,7 @@ task.execute()</code></pre>
                     <li><strong>ONNX Export:</strong> Platform-independent format optimized for inference</li>
                     <li><strong>INT8 Quantization:</strong> ~4x smaller models, minimal accuracy loss</li>
                     <li><strong>Dynamic Axes:</strong> Support variable-length inputs efficiently</li>
-                </ul>
+        </ul>
 
                 <h3>Quality Thresholds</h3>
                 <p>Prevent poor models from being exported:</p>
@@ -1763,7 +1766,7 @@ relation:
 gnn:
   metric_threshold: 0.5  # Maximum validation loss</code></pre>
                 </div>
-            </section>
+      </section>
 
             <!-- Footer -->
             <footer class="footer">
@@ -1774,11 +1777,11 @@ gnn:
                         <a href="#overview">Documentation</a> ·
                         <a href="mailto:support@example.com">Support</a>
                     </p>
-                </div>
+      </div>
             </footer>
-        </main>
-    </div>
+    </main>
+  </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
