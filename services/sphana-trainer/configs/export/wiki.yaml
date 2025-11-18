@@ -1,0 +1,10 @@
+workspace_dir: target/wiki/workspace
+artifact_root: target/wiki/artifacts
+export:
+  manifest_path: target/wiki/manifests/latest.json
+  include_models:
+    - embedding
+    - relation
+    - gnn
+  publish_uri: null
+

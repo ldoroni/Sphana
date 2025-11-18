@@ -48,7 +48,7 @@ python -m sphana_trainer.cli export  --config configs/export/base.yaml
 python -m sphana_trainer.cli package --config configs/export/base.yaml
 
 # Preprocess raw documents + turn them into datasets
-python -m sphana_trainer.cli dataset-download-wiki --output target/data/wiki/docs.jsonl
+python -m sphana_trainer.cli dataset-download-wiki --titles-file samples/ai-ml-wiki-titles.small.txt --output target/data/wiki/docs.jsonl
 python -m sphana_trainer.cli ingest --config configs/ingest/wiki.yaml
 python -m sphana_trainer.cli dataset-build-from-ingest target/wiki/ingest --output-dir target/datasets/wiki
 
@@ -106,8 +106,8 @@ python -m sphana_trainer.cli workflow status --artifact-root target/artifacts
 
 ### Dataset Expectations
 - **Ingestion (`ingest` command):** point `input_dir` at a directory of `.txt/.md/.json` files. The pipeline emits `chunks.jsonl` and `relations.jsonl` plus cached chunks under `artifact_root/cache`, and (for spaCy/Stanza) stores dependency parses under `cache/parses` for later inspection.
-- A ready-to-use Wikipedia slice ships in `data/wiki/docs.jsonl` for quick smoke tests; the CLI downloads fresh content into `target/data/wiki/docs.jsonl` by default, which is what `configs/ingest/wiki.yaml` consumes.
-- Use `sphana-trainer dataset-build-from-ingest <ingest_dir>` to convert `chunks.jsonl`/`relations.jsonl` into training-ready splits for embedding, relation, and GNN models (outputs under `target/datasets` by default). Add curated corpora via `--extra-embedding`, `--extra-relation`, and `--extra-gnn` (sample files in `data/public/`). Cached parse files are consumed automatically (override via `--parses-dir`).
+- Use `dataset-download-wiki` to download Wikipedia articles using titles from `samples/ai-ml-wiki-titles.*.txt`. The CLI downloads content into `target/data/wiki/docs.jsonl`, which is what `configs/ingest/wiki.yaml` consumes.
+- Use `sphana-trainer dataset-build-from-ingest <ingest_dir>` to convert `chunks.jsonl`/`relations.jsonl` into training-ready splits for embedding, relation, and GNN models (outputs under `target/datasets` by default). Add curated corpora via `--extra-embedding`, `--extra-relation`, and `--extra-gnn` by providing paths to your sample JSONL files. Cached parse files are consumed automatically (override via `--parses-dir`).
 - **Embedding (`train_file`, `validation_file`):** JSONL where each line contains `{"query": "...", "positive": "..."}` (additional keys like `anchor`/`context` are accepted). Validation is optional but recommended to monitor cosine similarity.
 - **Relation (`train/validation`):** JSONL with `text`, `entity1`, `entity2`, and `label`. Each entity can specify `{"text": "...", "start": int, "end": int}`; spans are wrapped with `[E1]...[/E1]` and `[E2]...[/E2]` before tokenization.
 - **GNN (`train/validation`):** JSONL where each record represents a query and contains `{"query_id": "...", "candidates": [{"node_features": [[...]], "edge_index": [[src, dst], ...], "edge_directions": [0/1], "label": float}, ...]}`. All candidates for a query are trained jointly via listwise loss.

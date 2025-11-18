@@ -1,3 +1,0 @@
-{"query": "Explain what a neural graph is.", "positive": "A neural graph captures entities and relations as nodes and edges, enabling GNN reasoning."}
-{"query": "How do embeddings help?", "positive": "Embeddings map text into dense vectors so similarity can be computed efficiently."}
-

@@ -271,6 +271,7 @@ def test_run_workflow_executes_stages(monkeypatch, tmp_path):
         force=True,
         force_stage=[],
         force_lock=True,
+        mlflow_tracking_uri=None,
     )
     assert report.exists()
     assert "ingest" in calls
@@ -313,6 +314,7 @@ def test_workflow_impl_skips_completed_stage(monkeypatch, tmp_path, capsys):
         promote_publish=False,
         force=False,
         force_stage=[],
+        mlflow_tracking_uri=None,
     )
     captured = capsys.readouterr()
     assert "Skipping embedding" in captured.out

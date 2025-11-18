@@ -1,0 +1,1473 @@
+# AI/ML/Neural Networks Wikipedia Titles
+# This file contains 1000+ Wikipedia article titles for AI, Machine Learning, Deep Learning, and related topics
+# Usage: python -m sphana_trainer.cli dataset-download-wiki --titles-file samples/ai-ml-wiki-titles-medium.txt
+
+# === Core AI/ML Concepts ===
+Artificial intelligence
+Machine learning
+Deep learning
+Artificial neural network
+Neural network
+Supervised learning
+Unsupervised learning
+Semi-supervised learning
+Reinforcement learning
+Transfer learning
+Meta-learning
+Few-shot learning
+Zero-shot learning
+One-shot learning
+Active learning
+Online machine learning
+Ensemble learning
+Multi-task learning
+Curriculum learning
+Self-supervised learning
+Contrastive learning
+Metric learning
+Representation learning
+Feature learning
+Dictionary learning
+Sparse coding
+Manifold learning
+Dimensionality reduction
+
+# === Neural Network Architectures ===
+Convolutional neural network
+Recurrent neural network
+Long short-term memory
+Gated recurrent unit
+Transformer (machine learning model)
+Attention (machine learning)
+Self-attention
+Multi-head attention
+Feedforward neural network
+Multilayer perceptron
+Autoencoder
+Variational autoencoder
+Generative adversarial network
+Capsule neural network
+Neural Turing machine
+Differentiable neural computer
+Memory network
+Hopfield network
+Boltzmann machine
+Restricted Boltzmann machine
+Deep belief network
+Radial basis function network
+Echo state network
+Liquid state machine
+Spiking neural network
+Neuromorphic engineering
+Reservoir computing
+Extreme learning machine
+Kohonen network
+Self-organizing map
+Growing neural gas
+Neural gas
+Adaptive resonance theory
+Neocognitron
+Cascade correlation
+Neural architecture search
+Hypernetwork
+Graph neural network
+Spatial transformer network
+U-Net
+ResNet
+VGGNet
+AlexNet
+GoogLeNet
+Inception
+MobileNet
+EfficientNet
+DenseNet
+SqueezeNet
+ShuffleNet
+NASNet
+SENet
+Xception
+Vision Transformer
+BERT (language model)
+GPT-2
+GPT-3
+GPT-4
+T5 (language model)
+RoBERTa
+ELECTRA
+ALBERT (language model)
+XLNet
+DistilBERT
+Wav2Vec
+HuBERT
+Whisper (speech recognition system)
+
+# === Deep Learning Concepts ===
+Backpropagation
+Gradient descent
+Stochastic gradient descent
+Adam (optimization algorithm)
+RMSprop
+AdaGrad
+Momentum (machine learning)
+Batch normalization
+Layer normalization
+Group normalization
+Instance normalization
+Dropout (neural networks)
+Weight decay
+Early stopping
+Learning rate
+Activation function
+Rectifier (neural networks)
+Sigmoid function
+Hyperbolic tangent
+Softmax function
+Swish function
+GELU
+Loss function
+Cross entropy
+Mean squared error
+Hinge loss
+Contrastive loss
+Triplet loss
+Focal loss
+Regularization (mathematics)
+L1 regularization
+L2 regularization
+Elastic net regularization
+Data augmentation
+Gradient clipping
+Vanishing gradient problem
+Exploding gradient problem
+Residual neural network
+Skip connection
+Depthwise separable convolution
+Dilated convolution
+Transposed convolution
+Pooling layer
+Max pooling
+Average pooling
+Global average pooling
+Flattening
+Embedding
+Word embedding
+Word2vec
+GloVe
+FastText
+ELMo
+Sentence embedding
+Document embedding
+Image embedding
+Knowledge graph embedding
+
+# === Computer Vision ===
+Computer vision
+Image processing
+Object detection
+Image segmentation
+Semantic segmentation
+Instance segmentation
+Panoptic segmentation
+Image classification
+Image recognition
+Facial recognition system
+Optical character recognition
+Feature detection
+Edge detection
+Corner detection
+Blob detection
+Ridge detection
+Scale-invariant feature transform
+Speeded up robust features
+Histogram of oriented gradients
+Local binary patterns
+Bag-of-words model in computer vision
+Region-based convolutional neural network
+Fast R-CNN
+Faster R-CNN
+Mask R-CNN
+YOLO (object detection)
+Single Shot MultiBox Detector
+Feature Pyramid Network
+Deformable Convolutional Networks
+Non-maximum suppression
+Intersection over union
+Mean average precision
+DeepFace
+FaceNet
+OpenFace
+Siamese neural network
+Style transfer
+Neural style transfer
+Image-to-image translation
+Pix2Pix
+CycleGAN
+StarGAN
+StyleGAN
+Progressive GAN
+Image super-resolution
+Depth estimation
+Pose estimation
+Action recognition
+Video analysis
+3D reconstruction
+Structure from motion
+Simultaneous localization and mapping
+Visual odometry
+Image captioning
+Visual question answering
+
+# === Natural Language Processing ===
+Natural language processing
+Computational linguistics
+Speech recognition
+Speech synthesis
+Text-to-speech
+Machine translation
+Neural machine translation
+Named entity recognition
+Part-of-speech tagging
+Parsing
+Dependency parsing
+Constituency parsing
+Coreference resolution
+Relation extraction
+Information extraction
+Question answering
+Reading comprehension
+Sentiment analysis
+Text classification
+Document classification
+Topic model
+Latent Dirichlet allocation
+Probabilistic latent semantic analysis
+Latent semantic analysis
+Text generation
+Language model
+N-gram
+Perplexity
+Tokenization (lexical analysis)
+Stemming
+Lemmatisation
+Stop word
+TF-IDF
+BM25
+Bag-of-words model
+Word sense disambiguation
+Semantic similarity
+Semantic role labeling
+Textual entailment
+Natural language understanding
+Natural language generation
+Dialogue system
+Chatbot
+Virtual assistant
+Intent recognition
+Slot filling
+Sequence-to-sequence model
+Encoder-decoder
+Beam search
+Attention mechanism
+Pointer network
+Copy mechanism
+Coverage mechanism
+Byte pair encoding
+SentencePiece
+Subword tokenization
+
+# === Reinforcement Learning ===
+Q-learning
+Deep Q-network
+Double Q-learning
+Dueling network architecture
+Temporal difference learning
+SARSA
+Actor-critic
+Advantage actor-critic
+Asynchronous advantage actor-critic
+Proximal policy optimization
+Trust region policy optimization
+Deep deterministic policy gradient
+Twin delayed deep deterministic policy gradient
+Soft actor-critic
+Monte Carlo tree search
+AlphaGo
+AlphaZero
+MuZero
+OpenAI Five
+Model-free reinforcement learning
+Model-based reinforcement learning
+Policy gradient
+Value function
+Bellman equation
+Markov decision process
+Partially observable Markov decision process
+Multi-armed bandit
+Exploration-exploitation dilemma
+Epsilon-greedy strategy
+Upper confidence bound
+Thompson sampling
+Reward shaping
+Inverse reinforcement learning
+Imitation learning
+Behavioral cloning
+Generative adversarial imitation learning
+Hierarchical reinforcement learning
+Multi-agent reinforcement learning
+Offline reinforcement learning
+Hindsight experience replay
+Prioritized experience replay
+Curiosity-driven learning
+
+# === Classical Machine Learning ===
+Decision tree
+Random forest
+Gradient boosting
+XGBoost
+LightGBM
+CatBoost
+AdaBoost
+Support vector machine
+Kernel method
+Radial basis function kernel
+Polynomial kernel
+K-nearest neighbors algorithm
+Naive Bayes classifier
+Logistic regression
+Linear regression
+Ridge regression
+Lasso (statistics)
+Gaussian process
+Bayesian network
+Hidden Markov model
+Conditional random field
+Expectation-maximization algorithm
+K-means clustering
+Hierarchical clustering
+DBSCAN
+Mean shift
+Gaussian mixture model
+Principal component analysis
+Independent component analysis
+Factor analysis
+Non-negative matrix factorization
+t-distributed stochastic neighbor embedding
+Uniform manifold approximation and projection
+Isomap
+Locally linear embedding
+Multidimensional scaling
+Canonical correlation analysis
+Linear discriminant analysis
+Quadratic discriminant analysis
+
+# === Optimization & Mathematics ===
+Mathematical optimization
+Convex optimization
+Nonlinear programming
+Quadratic programming
+Linear programming
+Integer programming
+Dynamic programming
+Combinatorial optimization
+Constraint satisfaction problem
+Genetic algorithm
+Evolutionary algorithm
+Differential evolution
+Particle swarm optimization
+Simulated annealing
+Ant colony optimization
+Tabu search
+Hill climbing
+Newton's method
+Quasi-Newton method
+Conjugate gradient method
+BFGS method
+L-BFGS
+Coordinate descent
+Proximal gradient method
+Subgradient method
+Mirror descent
+Natural gradient
+Fisher information matrix
+Hessian matrix
+Jacobian matrix
+Automatic differentiation
+Numerical differentiation
+Finite difference
+Backpropagation through time
+Real-time recurrent learning
+Calculus of variations
+Lagrange multiplier
+Karush-Kuhn-Tucker conditions
+Duality (optimization)
+Convex function
+Concave function
+Lipschitz continuity
+Gradient
+Subdifferential
+Proximal operator
+
+# === Probability & Statistics ===
+Probability theory
+Statistics
+Bayesian statistics
+Bayesian inference
+Prior probability
+Posterior probability
+Likelihood function
+Maximum likelihood estimation
+Maximum a posteriori estimation
+Markov chain Monte Carlo
+Gibbs sampling
+Metropolis-Hastings algorithm
+Hamiltonian Monte Carlo
+Variational Bayesian methods
+Variational inference
+Evidence lower bound
+Kullback-Leibler divergence
+Jensen-Shannon divergence
+Wasserstein metric
+Cross entropy (information theory)
+Mutual information
+Information theory
+Entropy (information theory)
+Differential entropy
+Maximum entropy probability distribution
+Exponential family
+Conjugate prior
+Beta distribution
+Dirichlet distribution
+Gamma distribution
+Normal distribution
+Multivariate normal distribution
+Student's t-distribution
+Cauchy distribution
+Laplace distribution
+Poisson distribution
+Binomial distribution
+Bernoulli distribution
+Categorical distribution
+Multinomial distribution
+Probability distribution
+Cumulative distribution function
+Probability density function
+Moment-generating function
+Characteristic function
+Central limit theorem
+Law of large numbers
+Concentration inequality
+Hoeffding's inequality
+Chernoff bound
+Markov's inequality
+Chebyshev's inequality
+Hypothesis testing
+P-value
+Statistical significance
+Confidence interval
+Bootstrap (statistics)
+Cross-validation (statistics)
+Bias-variance tradeoff
+Overfitting
+Underfitting
+Curse of dimensionality
+Occam's razor
+Model selection
+Akaike information criterion
+Bayesian information criterion
+Minimum description length
+
+# === Data Science & Big Data ===
+Data science
+Big data
+Data mining
+Knowledge discovery
+Pattern recognition
+Cluster analysis
+Anomaly detection
+Outlier detection
+Novelty detection
+Time series
+Time series forecasting
+Autoregressive model
+Moving average
+ARIMA
+Exponential smoothing
+State space model
+Kalman filter
+Particle filter
+Recommender system
+Collaborative filtering
+Content-based filtering
+Matrix factorization
+Singular value decomposition
+Tensor decomposition
+Association rule learning
+Apriori algorithm
+FP-growth algorithm
+Frequent pattern mining
+Sequential pattern mining
+Graph mining
+Link prediction
+Community detection
+Network analysis
+Social network analysis
+Sentiment analysis
+Opinion mining
+Text mining
+Web mining
+Clickstream analysis
+A/B testing
+Causal inference
+Propensity score matching
+Regression discontinuity design
+Difference in differences
+Instrumental variable
+Granger causality
+Directed acyclic graph
+Structural equation modeling
+Treatment effect
+Counterfactual
+Simpson's paradox
+Confounding
+Selection bias
+Survivorship bias
+
+# === AI Applications ===
+Autonomous vehicle
+Self-driving car
+Robotics
+Robot learning
+Simultaneous localization and mapping
+Path planning
+Motion planning
+Inverse kinematics
+Forward kinematics
+Control theory
+PID controller
+Model predictive control
+Adaptive control
+Optimal control
+Game artificial intelligence
+AlphaGo Zero
+AlphaStar
+OpenAI
+DeepMind
+Google Brain
+Meta AI
+Microsoft Research
+IBM Watson
+Healthcare artificial intelligence
+Drug discovery
+Protein folding
+AlphaFold
+Medical diagnosis
+Radiology
+Pathology
+Precision medicine
+Personalized medicine
+Bioinformatics
+Computational biology
+Genomics
+Proteomics
+Systems biology
+Computational chemistry
+Molecular dynamics
+Quantum chemistry
+Materials science
+Drug design
+Virtual screening
+Quantitative structure-activity relationship
+Financial technology
+Algorithmic trading
+High-frequency trading
+Risk management
+Credit scoring
+Fraud detection
+Anti-money laundering
+Portfolio optimization
+Robo-advisor
+Cryptocurrency
+Blockchain
+Smart contract
+Natural language processing applications
+Machine translation services
+Google Translate
+DeepL
+Grammarly
+Spell checker
+Grammar checker
+Plagiarism detection
+Content generation
+GPT (language model)
+Text summarization
+Extractive summarization
+Abstractive summarization
+Automatic summarization
+Document retrieval
+Information retrieval
+Search engine
+Web search engine
+Semantic search
+Question answering system
+Virtual assistant applications
+Amazon Alexa
+Google Assistant
+Apple Siri
+Microsoft Cortana
+IBM Watson Assistant
+
+# === AI Frameworks & Tools ===
+TensorFlow
+PyTorch
+Keras
+JAX (software)
+MXNet
+Caffe (software)
+Theano (software)
+CNTK
+PaddlePaddle
+Chainer
+scikit-learn
+XGBoost
+LightGBM
+CatBoost
+FastAI
+Hugging Face
+spaCy
+NLTK
+Gensim
+OpenCV
+Pillow (Python library)
+Matplotlib
+Seaborn
+Plotly
+Bokeh (software)
+NumPy
+SciPy
+pandas (software)
+Dask (software)
+Apache Spark
+Hadoop
+Apache Flink
+Apache Kafka
+Jupyter Notebook
+Google Colab
+Kaggle
+MLflow
+Kubeflow
+TensorBoard
+Weights & Biases
+Neptune.ai
+ClearML
+DVC (software)
+Apache Airflow
+Luigi (software)
+Prefect (software)
+Ray (software)
+Horovod
+DeepSpeed
+FairScale
+Megatron-LM
+ONNX
+TensorRT
+OpenVINO
+TVM (compiler)
+TensorFlow Lite
+Core ML
+ML Kit
+
+# === Programming & Computing ===
+Python (programming language)
+R (programming language)
+Julia (programming language)
+MATLAB
+C++ (programming language)
+Java (programming language)
+JavaScript
+Scala (programming language)
+Go (programming language)
+Rust (programming language)
+CUDA
+OpenCL
+Vulkan
+DirectX
+Metal (API)
+SYCL
+ROCm
+Tensor processing unit
+Graphics processing unit
+Field-programmable gate array
+Application-specific integrated circuit
+Central processing unit
+Vector processor
+Single instruction, multiple data
+Multiple instruction, multiple data
+SIMD
+AVX
+ARM architecture
+x86
+RISC-V
+Parallel computing
+Distributed computing
+Cloud computing
+Edge computing
+Fog computing
+High-performance computing
+Supercomputer
+Cluster computing
+Grid computing
+Quantum computing
+Quantum machine learning
+Quantum neural network
+Quantum annealing
+Neuromorphic computing
+Memristor
+Analog computing
+
+# === Datasets ===
+ImageNet
+CIFAR-10 and CIFAR-100
+MNIST database
+Fashion MNIST
+COCO (dataset)
+Pascal VOC
+Open Images
+Visual Genome
+Places (dataset)
+SUN database
+Cityscapes
+KITTI
+Waymo Open Dataset
+nuScenes
+BDD100K
+ADE20K
+LSUN
+CelebA
+FFHQ
+WikiText
+Common Crawl
+BookCorpus
+Pile (dataset)
+GLUE (benchmark)
+SuperGLUE (benchmark)
+SQuAD
+Natural Questions
+MS MARCO
+TriviaQA
+HotpotQA
+CommonsenseQA
+RACE (dataset)
+MultiNLI
+SNLI
+XNLI
+CoNLL
+Universal Dependencies
+Penn Treebank
+PropBank
+OntoNotes
+WordNet
+ConceptNet
+Freebase
+DBpedia
+Wikidata
+YAGO (database)
+Knowledge graph
+Atari (video games dataset)
+OpenAI Gym
+MuJoCo
+PyBullet
+Unity ML-Agents
+Starcraft II
+Dota 2
+NetHack
+Procgen
+AudioSet
+LibriSpeech
+Common Voice
+VoxCeleb
+Speech Commands
+TIMIT
+MovieLens
+Netflix Prize
+Amazon product data
+Yelp Dataset Challenge
+
+# === Research Labs & Organizations ===
+Allen Institute for Artificial Intelligence
+Partnership on AI
+Montreal Institute for Learning Algorithms
+Vector Institute
+CIFAR
+Element AI
+Borealis AI
+Alberta Machine Intelligence Institute
+AAAI
+Association for Computational Linguistics
+IEEE Computer Society
+NeurIPS
+International Conference on Machine Learning
+International Conference on Learning Representations
+Computer Vision and Pattern Recognition
+European Conference on Computer Vision
+International Conference on Computer Vision
+Empirical Methods in Natural Language Processing
+Annual Meeting of the Association for Computational Linguistics
+SIGKDD
+Conference on Knowledge Discovery and Data Mining
+International Joint Conference on Artificial Intelligence
+Association for the Advancement of Artificial Intelligence
+arXiv
+Papers with Code
+
+# === Researchers & Pioneers ===
+Geoffrey Hinton
+Yann LeCun
+Yoshua Bengio
+Andrew Ng
+Ian Goodfellow
+Andrej Karpathy
+Fei-Fei Li
+Jitendra Malik
+Yejin Choi
+Pieter Abbeel
+Sergey Levine
+Chelsea Finn
+Ilya Sutskever
+Oriol Vinyals
+Demis Hassabis
+Shane Legg
+David Silver
+Jurgen Schmidhuber
+Sepp Hochreiter
+Alex Graves
+Kaiming He
+Shaoqing Ren
+Jian Sun
+Ross Girshick
+Karol Gregor
+Kyunghyun Cho
+Dzmitry Bahdanau
+Ashish Vaswani
+Jakob Uszkoreit
+Noam Shazeer
+Niki Parmar
+Llion Jones
+Aidan Gomez
+Lukasz Kaiser
+Illia Polosukhin
+Colin Raffel
+Alec Radford
+Jeff Dean
+Samy Bengio
+Oriol Vinyals
+Quoc Le
+Tomas Mikolov
+Christopher Manning
+Dan Jurafsky
+Percy Liang
+Richard Socher
+Daphne Koller
+Michael I. Jordan
+Stuart Russell
+Peter Norvig
+Judea Pearl
+David Rumelhart
+John Hopfield
+Marvin Minsky
+Frank Rosenblatt
+Warren McCulloch
+Walter Pitts
+Alan Turing
+Claude Shannon
+John von Neumann
+Norbert Wiener
+Arthur Samuel
+
+# === AI Ethics & Safety ===
+AI safety
+AI alignment
+Machine ethics
+Artificial general intelligence
+Superintelligence
+Existential risk from artificial general intelligence
+AI takeover
+Friendly artificial intelligence
+Value alignment problem
+Instrumental convergence
+Orthogonality thesis
+Intelligence explosion
+Technological singularity
+AI box
+Oracle (artificial intelligence)
+Corrigibility
+Mesa-optimization
+Inner alignment
+Outer alignment
+Reward hacking
+Specification gaming
+Goodhart's law
+AI capability control
+AI goal alignment
+Comprehensive AI Services
+AI arms race
+Lethal autonomous weapon
+Campaign to Stop Killer Robots
+Algorithmic bias
+Fairness (machine learning)
+Explainable artificial intelligence
+Interpretable machine learning
+Right to explanation
+Algorithmic transparency
+AI accountability
+Privacy-preserving machine learning
+Federated learning
+Differential privacy
+Homomorphic encryption
+Secure multi-party computation
+Adversarial machine learning
+Adversarial examples
+Backdoor attack
+Data poisoning
+Model inversion attack
+Membership inference attack
+Model extraction
+Trojan attack
+Byzantine fault
+Robust statistics
+Adversarial training
+Certified defense
+Randomized smoothing
+AI governance
+AI policy
+AI regulation
+General Data Protection Regulation
+California Consumer Privacy Act
+AI ethics principles
+IEEE Global Initiative on Ethics
+Montreal Declaration
+Asilomar AI Principles
+Toronto Declaration
+Beijing AI Principles
+OECD AI Principles
+EU AI Act
+Algorithmic Justice League
+AI Now Institute
+Center for AI Safety
+Machine Intelligence Research Institute
+Future of Humanity Institute
+Center for Human-Compatible AI
+Leverhulme Centre for the Future of Intelligence
+Future of Life Institute
+
+# === Misc AI Topics ===
+Turing test
+Chinese room
+Moravec's paradox
+AI winter
+AI effect
+Symbolic artificial intelligence
+Expert system
+Knowledge representation
+Ontology (information science)
+Semantic network
+Frame (artificial intelligence)
+Production system
+Rule-based system
+Forward chaining
+Backward chaining
+Fuzzy logic
+Fuzzy set
+Rough set
+Soft computing
+Neuro-fuzzy
+Swarm intelligence
+Ant colony optimization algorithms
+Particle swarm optimization
+Artificial life
+Cellular automaton
+Conway's Game of Life
+Genetic programming
+Evolutionary computation
+Neuroevolution
+NEAT (genetic algorithm)
+HyperNEAT
+Developmental robotics
+Embodied cognitive science
+Situated cognition
+Distributed cognition
+Extended mind thesis
+Connectionism
+Parallel distributed processing
+Cognitive architecture
+ACT-R
+SOAR (cognitive architecture)
+CLARION (cognitive architecture)
+Subsumption architecture
+Behavior-based robotics
+Hybrid intelligent system
+Intelligent agent
+Multi-agent system
+Agent-based model
+Belief-desire-intention model
+Planning Domain Definition Language
+Hierarchical task network
+STRIPS
+Heuristic search
+Greedy algorithm
+Branch and bound
+Best-first search
+Breadth-first search
+Depth-first search
+Iterative deepening depth-first search
+Dijkstra's algorithm
+A* search algorithm
+Admissible heuristic
+Consistent heuristic
+Minimax
+Alpha-beta pruning
+Negamax
+Negascout
+MTD(f)
+Proof-number search
+Game tree
+Extensive-form game
+Normal-form game
+Nash equilibrium
+Correlated equilibrium
+Mechanism design
+Auction theory
+Voting theory
+Social choice theory
+Arrow's impossibility theorem
+Gibbard-Satterthwaite theorem
+Revelation principle
+
+# === Graph Theory & Networks ===
+Graph theory
+Network theory
+Complex network
+Scale-free network
+Small-world network
+Random graph
+Erdos-Renyi model
+Barabasi-Albert model
+Watts-Strogatz model
+Degree distribution
+Clustering coefficient
+Betweenness centrality
+Closeness centrality
+Eigenvector centrality
+PageRank
+HITS algorithm
+Label propagation algorithm
+Spectral clustering
+Graph partition
+Minimum cut
+Maximum flow
+Shortest path problem
+Traveling salesman problem
+Hamiltonian path
+Eulerian path
+Graph coloring
+Clique problem
+Independent set
+Vertex cover
+Dominating set
+Graph isomorphism
+Subgraph isomorphism
+Graph matching
+Network motif
+Graphlet
+Graph kernel
+Message passing
+Belief propagation
+Sum-product algorithm
+Max-product algorithm
+Graph convolution
+Spectral graph theory
+Graph Laplacian
+Adjacency matrix
+Incidence matrix
+Laplacian matrix
+Random walk
+Markov chain
+Absorbing Markov chain
+Ergodic theory
+Stationary distribution
+Mixing time
+Spectral gap
+Perron-Frobenius theorem
+Matrix tree theorem
+Kirchhoff's theorem
+Spanning tree
+Minimum spanning tree
+Steiner tree
+Network flow
+Multi-commodity flow problem
+Bipartite graph
+Matching (graph theory)
+Hungarian algorithm
+Stable marriage problem
+Hall's marriage theorem
+Konig's theorem
+Menger's theorem
+Max-flow min-cut theorem
+Ford-Fulkerson algorithm
+Edmonds-Karp algorithm
+Dinic's algorithm
+Push-relabel algorithm
+
+# === Information Retrieval & NLP Systems ===
+Information retrieval
+Search engine indexing
+Inverted index
+Forward index
+Document-term matrix
+Vector space model
+Boolean model
+Probabilistic relevance model
+Okapi BM25
+Language model (information retrieval)
+Relevance feedback
+Pseudo-relevance feedback
+Query expansion
+Query reformulation
+Faceted search
+Federated search
+Meta search engine
+Enterprise search
+Desktop search
+Vertical search engine
+Web crawler
+Web scraping
+Robots exclusion standard
+Sitemap
+Link analysis
+HITS algorithm
+TrustRank
+Spam filtering
+Email filtering
+Content-based filtering
+Bayesian spam filtering
+Sender Policy Framework
+DomainKeys Identified Mail
+DMARC
+Named-entity recognition
+Entity linking
+Entity resolution
+Record linkage
+Duplicate detection
+Fuzzy matching
+Edit distance
+Levenshtein distance
+Hamming distance
+Jaro-Winkler distance
+Soundex
+Metaphone
+Double Metaphone
+Knowledge extraction
+Ontology learning
+Taxonomy (general)
+Thesaurus
+Controlled vocabulary
+Metadata
+Dublin Core
+RDF
+SPARQL
+OWL
+Semantic Web
+Linked data
+DBpedia
+YAGO
+Cyc
+OpenCyc
+
+# === Audio & Speech ===
+Speech recognition
+Automatic speech recognition
+Hidden Markov model
+Gaussian mixture model
+Deep neural network-HMM
+Connectionist temporal classification
+RNN-Transducer
+Listen, Attend and Spell
+Speech synthesis
+Text-to-speech
+Concatenative synthesis
+Formant synthesis
+Articulatory synthesis
+WaveNet
+Tacotron
+FastSpeech
+Parallel WaveGAN
+MelGAN
+Vocoder
+Linear predictive coding
+Mel-frequency cepstrum
+Perceptual linear prediction
+Feature extraction
+Acoustic model
+Language model
+Pronunciation dictionary
+Phoneme
+Phone (phonetics)
+Prosody (linguistics)
+Pitch (music)
+Formant
+Spectrogram
+Mel scale
+Bark scale
+Cepstrum
+Sound localization
+Source separation
+Blind signal separation
+Cocktail party effect
+Independent component analysis
+Non-negative matrix factorization
+Music information retrieval
+Audio fingerprinting
+Beat detection
+Onset detection
+Pitch detection
+Chord recognition
+Music genre classification
+Automatic music transcription
+Singing voice synthesis
+Voice conversion
+Speaker recognition
+Speaker verification
+Speaker diarization
+Voice activity detection
+Noise reduction
+Echo cancellation
+Beamforming
+Microphone array
+Audio signal processing
+Digital signal processing
+Fast Fourier transform
+Discrete cosine transform
+Wavelet transform
+Short-time Fourier transform
+Constant-Q transform
+Chromagram
+Tonnetz
+
+# === Robotics & Control ===
+Mobile robot
+Wheeled robot
+Legged robot
+Humanoid robot
+Industrial robot
+Service robot
+Medical robot
+Surgical robot
+Agricultural robot
+Underwater robot
+Aerial robot
+Unmanned aerial vehicle
+Quadcopter
+Robot kinematics
+Robot dynamics
+Jacobian matrix and determinant
+Manipulator
+End-effector
+Degrees of freedom
+Workspace
+Dexterity
+Singularity (mathematics)
+Configuration space
+C-space
+Collision detection
+Collision avoidance
+Obstacle avoidance
+Navigation
+Localization
+Mapping
+Occupancy grid mapping
+FastSLAM
+EKF SLAM
+Graph SLAM
+ORB-SLAM
+Visual SLAM
+LiDAR
+Radar
+Sonar
+Inertial measurement unit
+Global Positioning System
+Sensor fusion
+Multi-sensor data fusion
+Odometry
+Wheel encoder
+Optical flow
+Place recognition
+Loop closure
+Pose graph optimization
+Bundle adjustment
+Trajectory optimization
+Spline (mathematics)
+Bezier curve
+B-spline
+Clothoid
+Dubins path
+Reeds-Shepp curve
+Rapidly-exploring random tree
+Probabilistic roadmap
+Potential field
+Artificial potential field
+Sampling-based planning
+Configuration space planning
+Visibility graph
+Voronoi diagram
+Cell decomposition
+Wavefront algorithm
+D* algorithm
+Anytime algorithm
+ARA*
+AD*
+Field D*
+Theta*
+Hybrid A*
+Lattice-based planning
+State lattice
+Frenet frame
+Model-free learning
+Model-based learning
+Learning from demonstration
+Programming by demonstration
+Kinesthetic teaching
+Teleoperation
+Haptic technology
+Force control
+Impedance control
+Compliance
+Grasping
+Grasp planning
+Grasp synthesis
+Parallel jaw gripper
+Multi-fingered hand
+Soft robotics
+Compliant mechanism
+Pneumatic actuator
+Hydraulic actuator
+Electric motor
+Servo motor
+Stepper motor
+Brushless DC motor
+Harmonic drive
+Cycloidal drive
+Planetary gearbox
+Timing belt
+Lead screw
+Ball screw
+Rack and pinion
+Four-bar linkage
+Six-bar linkage
+
+# === Additional Core Topics ===
+Cognitive science
+Computational neuroscience
+Artificial consciousness
+Philosophy of artificial intelligence
+Computational theory of mind
+Functionalism (philosophy of mind)
+Multiple realizability
+Emergentism
+Weak AI
+Strong AI
+AI-complete
+Computational complexity theory
+P versus NP problem
+NP-completeness
+NP-hardness
+Reduction (complexity)
+Time complexity
+Space complexity
+Big O notation
+Algorithm
+Heuristic
+Metaheuristic
+No free lunch theorem
+Universal approximation theorem
+Vapnik-Chervonenkis dimension
+Rademacher complexity
+PAC learning
+Sample complexity
+Computational learning theory
+Online learning
+Regret (decision theory)
+Multi-armed bandit problem
+Contextual bandit
+Adversarial bandit
+Bandit algorithm
+Thompson sampling algorithm
+Gittins index
+Gaussian process bandit
+Neural tangent kernel
+Lottery ticket hypothesis
+Double descent
+Grokking
+Mode collapse
+Catastrophic forgetting
+Continual learning
+Lifelong learning
+Task-incremental learning
+Domain-incremental learning
+Class-incremental learning
+Memory consolidation
+Elastic weight consolidation
+Progressive neural networks
+PackNet
+Piggyback
+Neural module network
+Modular neural network
+Mixture of experts
+Switch Transformer
+Sparsely-gated mixture of experts
+Hierarchical softmax
+Noise contrastive estimation
+Negative sampling
+Importance sampling
+Inverse transform sampling
+Rejection sampling
+Gibbs sampling algorithm
+Slice sampling
+Elliptical slice sampling
+No-U-Turn sampler
+Sequential Monte Carlo
+Annealed importance sampling
+Tempered transitions
+Parallel tempering
+Replica exchange
+Simulated tempering
+Wang-Landau algorithm
+Flat histogram method
+Multicanonical ensemble
+Umbrella sampling
+Free energy perturbation
+Thermodynamic integration
+Bennett acceptance ratio
+Jarzynski equality
+Crooks fluctuation theorem
+Fluctuation theorem
+Second law of thermodynamics
+Entropy production
+Information geometry
+Natural parameter
+Expectation parameter
+Divergence (statistics)
+f-divergence
+Alpha divergence
+Renyi divergence
+Bhattacharyya distance
+Hellinger distance
+Total variation distance
+Hilbert space
+Reproducing kernel Hilbert space
+Kernel embedding of distributions
+Mean map
+Kernel mean matching
+Maximum mean discrepancy
+Characteristic kernel
+Universal kernel
+Mercer's theorem
+

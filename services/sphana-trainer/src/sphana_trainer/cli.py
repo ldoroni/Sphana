@@ -69,10 +69,11 @@ DATASET_SCHEMAS = {
     "relation": SCHEMA_ROOT / "datasets" / "relation.schema.json",
     "gnn": SCHEMA_ROOT / "datasets" / "gnn.schema.json",
 }
-PARITY_SAMPLE_FILES = {
-    "embedding": REPO_ROOT / "data" / "public" / "embedding_samples.jsonl",
-    "relation": REPO_ROOT / "data" / "public" / "relation_samples.jsonl",
-    "gnn": REPO_ROOT / "data" / "public" / "gnn_samples.jsonl",
+# Parity sample files must be provided explicitly via command arguments
+PARITY_SAMPLE_FILES: Dict[str, Optional[Path]] = {
+    "embedding": None,
+    "relation": None,
+    "gnn": None,
 }
 app.add_typer(train_app, name="train")
 app.add_typer(artifacts_app, name="artifacts")
@@ -255,6 +256,60 @@ def _fetch_wiki_summary(session: requests.Session, title: str, *, attempts: int 
     return None
 
 
+def _fetch_wiki_full_content(session: requests.Session, title: str, *, attempts: int = 3, backoff: float = 1.5):
+    """Fetch full Wikipedia article content using the MediaWiki API."""
+    url = "https://en.wikipedia.org/w/api.php"
+    params = {
+        "action": "query",
+        "format": "json",
+        "titles": title,
+        "prop": "extracts|pageprops",
+        "explaintext": True,  # Plain text, no HTML
+        "redirects": 1,
+    }
+    
+    for attempt in range(1, attempts + 1):
+        try:
+            response = session.get(url, params=params, timeout=30)
+        except requests.RequestException:
+            if attempt == attempts:
+                raise
+            time.sleep(backoff * attempt)
+            continue
+        
+        if response.status_code != 200:
+            if attempt == attempts:
+                return None
+            time.sleep(backoff * attempt)
+            continue
+        
+        data = response.json()
+        pages = data.get("query", {}).get("pages", {})
+        
+        if not pages:
+            return None
+        
+        # Get the first (and should be only) page
+        page_id, page_data = next(iter(pages.items()))
+        
+        # Check if it's a missing page
+        if page_id == "-1" or "missing" in page_data:
+            return None
+        
+        text = page_data.get("extract", "")
+        if not text:
+            return None
+        
+        return {
+            "id": int(page_id),
+            "title": page_data.get("title", title),
+            "text": text,
+            "source": "wikipedia",
+        }
+    
+    return None
+
+
 @app.command("ingest-cache-models")
 def ingest_cache_models(
     relation_model: Optional[str] = typer.Option(None, "--relation-model", help="Hugging Face relation model to cache."),
@@ -283,6 +338,7 @@ def dataset_download_wiki(
         None, "--titles-file", exists=True, file_okay=True, dir_okay=False, help="Optional file with titles (one per line)."
     ),
     shuffle: bool = typer.Option(True, "--shuffle/--no-shuffle", help="Shuffle the title list before downloading."),
+    full_content: bool = typer.Option(False, "--full-content", help="Download full article content instead of summaries."),
 ) -> None:
     """Download Wikipedia articles into JSONL format. Requires --title or --titles-file."""
 
@@ -309,18 +365,27 @@ def dataset_download_wiki(
     output = output.expanduser().resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     fetched = 0
+    
+    mode = "full content" if full_content else "summaries"
+    console.print(f"[cyan]Downloading {mode} for {len(titles)} titles...[/cyan]")
+    
     with output.open("w", encoding="utf-8") as handle:
-        for t in titles:
+        for i, t in enumerate(titles, 1):
             try:
-                record = _fetch_wiki_summary(session, t)
+                if full_content:
+                    record = _fetch_wiki_full_content(session, t)
+                else:
+                    record = _fetch_wiki_summary(session, t)
             except requests.RequestException as exc:
                 console.print(f"[yellow]Skipping {t}: {exc}[/yellow]")
                 continue
             if not record:
-                console.print(f"[yellow]Skipping {t}: no extract available[/yellow]")
+                console.print(f"[yellow]Skipping {t}: no content available[/yellow]")
                 continue
             handle.write(json.dumps(record, ensure_ascii=False) + "\n")
             fetched += 1
+            if i % 10 == 0:
+                console.print(f"[cyan]Progress: {fetched}/{i} successful ({len(titles) - i} remaining)[/cyan]")
 
     if fetched == 0:
         raise typer.BadParameter("No Wikipedia pages were downloaded.")
@@ -1159,7 +1224,8 @@ def _generate_parity_bundle(artifact_root: Path, parity_dir: Path) -> List[Path]
     parity_dir.mkdir(parents=True, exist_ok=True)
     outputs: List[Path] = []
     for component, sample_file in PARITY_SAMPLE_FILES.items():
-        if not sample_file.exists():
+        if sample_file is None or not sample_file.exists():
+            console.print(f"[yellow]Skipping {component} parity: no sample file configured[/yellow]")
             continue
         output = parity_dir / f"{component}-parity.json"
         report = generate_parity_sample(component, sample_file, artifact_root)

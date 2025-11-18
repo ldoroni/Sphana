@@ -46,13 +46,13 @@ dataset-from-ingest:
 	sphana-trainer dataset-build-from-ingest target/wiki/ingest --output-dir target/datasets/wiki
 
 dataset-download-wiki:
-	sphana-trainer dataset-download-wiki --output target/data/wiki/docs.jsonl
+	sphana-trainer dataset-download-wiki --titles-file samples/ai-ml-wiki-titles.small.txt --output target/data/wiki/docs.jsonl
 
 wiki-ingest:
 	sphana-trainer ingest --config configs/ingest/wiki.yaml --force
 
 wiki-datasets:
-	sphana-trainer dataset-build-from-ingest target/wiki/ingest --output-dir target/datasets/wiki --min-confidence 0.35 --extra-relation data/public/relation_samples.jsonl --extra-embedding data/public/embedding_samples.jsonl --extra-gnn data/public/gnn_samples.jsonl
+	sphana-trainer dataset-build-from-ingest target/wiki/ingest --output-dir target/datasets/wiki --min-confidence 0.35
 
 wiki-train:
 	sphana-trainer train embedding --config configs/embedding/wiki.yaml
