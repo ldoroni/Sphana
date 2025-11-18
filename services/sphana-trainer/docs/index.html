@@ -242,14 +242,50 @@ pip install -r requirements.txt</code></pre>
                 <h4>Option B: Build Custom Dataset from Documents (Production)</h4>
                 <p>For production models, ingest your own documents or download Wikipedia data:</p>
 
+                <div class="info-box">
+                    <strong>📥 What this downloads:</strong>
+                    <ul>
+                        <li><strong>Data Source:</strong> Wikipedia article <em>summaries</em> (1-3 paragraphs per article, not full text)</li>
+                        <li><strong>API Used:</strong> Wikipedia REST API (<code>en.wikipedia.org/api/rest_v1/page/summary/</code>)</li>
+                        <li><strong>Required Input:</strong> You must provide titles via <code>--title</code> or <code>--titles-file</code></li>
+                        <li><strong>Output Format:</strong> JSONL file with id, title, text, and source fields</li>
+                    </ul>
+                </div>
+
                 <div class="code-block">
                     <div class="code-header">
-                        <span class="code-label">Download Wikipedia sample</span>
-                        <button class="copy-btn" data-target="download-wiki">Copy</button>
+                        <span class="code-label">Option 1: Provide specific titles</span>
+                        <button class="copy-btn" data-target="download-wiki-titles">Copy</button>
                     </div>
-                    <pre><code id="download-wiki">python -m sphana_trainer.cli dataset-download-wiki `
+                    <pre><code id="download-wiki-titles"># Use inline titles
+python -m sphana_trainer.cli dataset-download-wiki `
     --output target\data\wiki\docs.jsonl `
-    --limit 100</code></pre>
+    --title "Machine learning" `
+    --title "Deep learning" `
+    --title "Natural language processing" `
+    --title "Neural network"</code></pre>
+                </div>
+                    
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Option 2: Use a titles file (recommended for bulk downloads)</span>
+                        <button class="copy-btn" data-target="download-wiki-file">Copy</button>
+                    </div>
+                    <pre><code id="download-wiki-file"># Create titles.txt with one title per line (e.g., 1000+ titles)
+python -m sphana_trainer.cli dataset-download-wiki `
+    --output target\data\wiki\docs.jsonl `
+    --titles-file titles.txt `
+    --limit 5000</code></pre>
+                </div>
+                    
+                <div class="info-box">
+                    <strong>📋 Example output format:</strong> Each line is a JSON document:
+                    <pre style="margin-top: 0.5rem;"><code>{
+  "id": 233488,
+  "title": "Machine learning",
+  "text": "Machine learning (ML) is a field of study...",
+  "source": "wikipedia"
+}</code></pre>
                 </div>
 
                 <div class="code-block">
@@ -732,12 +768,24 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
           </ul>
 
                 <h3>Download Wikipedia Data</h3>
-                <p>For quick testing, download a curated Wikipedia corpus:</p>
+                <p>Download Wikipedia article summaries by providing titles:</p>
                 <div class="code-block">
                     <div class="code-header">
-                        <span class="code-label">Command</span>
+                        <span class="code-label">Using specific titles</span>
                     </div>
-                    <pre><code>python -m sphana_trainer.cli dataset-download-wiki --output target/data/wiki/docs.jsonl</code></pre>
+                    <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
+    --output target\data\wiki\docs.jsonl `
+    --title "Machine learning" `
+    --title "Deep learning" `
+    --title "Neural network"</code></pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Using a titles file</span>
+                    </div>
+                    <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
+    --output target\data\wiki\docs.jsonl `
+    --titles-file titles.txt</code></pre>
                 </div>
             </section>
 
@@ -1091,19 +1139,31 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
 
                     <div class="command-ref">
                         <h4><code>dataset-download-wiki</code></h4>
-                        <p>Download a small Wikipedia subset into JSONL format.</p>
+                        <p>Download Wikipedia article summaries into JSONL format. Requires <code>--title</code> or <code>--titles-file</code>.</p>
                         <div class="command-syntax">
-                            <strong>Syntax:</strong> <code>dataset-download-wiki [options]</code>
+                            <strong>Syntax:</strong> <code>dataset-download-wiki --title TEXT | --titles-file PATH [options]</code>
                         </div>
                         <div class="command-options">
+                            <strong>Required (at least one):</strong>
+                            <ul>
+                                <li><code>--title TEXT</code> - Specific Wikipedia titles to download (can be repeated for multiple titles)</li>
+                                <li><code>--titles-file PATH</code> - File with titles (one per line)</li>
+                            </ul>
                             <strong>Options:</strong>
                             <ul>
-                                <li><code>--output PATH</code> - Destination JSONL file (default: target/data/wiki/docs.jsonl)</li>
-                                <li><code>--title TEXT</code> - Specific Wikipedia titles to download (can be repeated)</li>
-                                <li><code>--limit N</code> - Maximum number of pages to fetch</li>
-                                <li><code>--titles-file PATH</code> - Optional file with titles (one per line)</li>
+                                <li><code>--output PATH</code> - Destination JSONL file (default: target\data\wiki\docs.jsonl)</li>
+                                <li><code>--limit N</code> - Maximum number of pages to fetch from the title list</li>
                                 <li><code>--shuffle/--no-shuffle</code> - Shuffle the title list before downloading (default: shuffle)</li>
           </ul>
+                        </div>
+                        <div class="info-box">
+                            <strong>📝 Note:</strong> This command fetches article <em>summaries</em> (1-3 paragraphs), not full articles, using the Wikipedia REST API.
+                            <br><br>
+                            <strong>Example:</strong>
+                            <pre style="margin-top: 0.5rem;"><code>python -m sphana_trainer.cli dataset-download-wiki `
+    --title "Python (programming language)" `
+    --title "JavaScript" `
+    --output wiki-articles.jsonl</code></pre>
                         </div>
                     </div>
 

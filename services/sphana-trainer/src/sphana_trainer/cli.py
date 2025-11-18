@@ -74,28 +74,6 @@ PARITY_SAMPLE_FILES = {
     "relation": REPO_ROOT / "data" / "public" / "relation_samples.jsonl",
     "gnn": REPO_ROOT / "data" / "public" / "gnn_samples.jsonl",
 }
-DEFAULT_WIKI_TITLES = [
-    "Artificial intelligence",
-    "Machine learning",
-    "Deep learning",
-    "Natural language processing",
-    "Neural network",
-    "Computer vision",
-    "Knowledge graph",
-    "Reinforcement learning",
-    "Data science",
-    "Information retrieval",
-    "Graph theory",
-    "Probability theory",
-    "Quantum computing",
-    "High-performance computing",
-    "Optimization (mathematics)",
-    "Bayesian inference",
-    "Statistics",
-    "Edge computing",
-    "Cloud computing",
-    "Information theory",
-]
 app.add_typer(train_app, name="train")
 app.add_typer(artifacts_app, name="artifacts")
 app.add_typer(workflow_app, name="workflow")
@@ -306,12 +284,19 @@ def dataset_download_wiki(
     ),
     shuffle: bool = typer.Option(True, "--shuffle/--no-shuffle", help="Shuffle the title list before downloading."),
 ) -> None:
-    """Download a small Wikipedia subset into JSONL format."""
+    """Download Wikipedia articles into JSONL format. Requires --title or --titles-file."""
 
-    titles = list(title) or list(DEFAULT_WIKI_TITLES)
+    titles = list(title)
     if titles_file:
         extra_titles = [line.strip() for line in titles_file.read_text(encoding="utf-8").splitlines() if line.strip()]
         titles.extend(extra_titles)
+    
+    if not titles:
+        raise typer.BadParameter(
+            "No Wikipedia titles provided. Use --title to specify individual articles "
+            "or --titles-file to provide a file with titles (one per line)."
+        )
+    
     if shuffle:
         import random
 
