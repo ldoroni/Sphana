@@ -247,8 +247,8 @@ pip install -r requirements.txt</code></pre>
                         <span class="code-label">Download Wikipedia sample</span>
                         <button class="copy-btn" data-target="download-wiki">Copy</button>
                     </div>
-                    <pre><code id="download-wiki">python -m sphana_trainer.cli dataset-download-wiki \
-    --output target/data/wiki/docs.jsonl \
+                    <pre><code id="download-wiki">python -m sphana_trainer.cli dataset-download-wiki `
+    --output target\data\wiki\docs.jsonl `
     --limit 100</code></pre>
                 </div>
 
@@ -258,13 +258,13 @@ pip install -r requirements.txt</code></pre>
                         <button class="copy-btn" data-target="ingest-docs">Copy</button>
                     </div>
                     <pre><code id="ingest-docs"># Run ingestion pipeline (extracts entities, relations, builds knowledge graph)
-python -m sphana_trainer.cli ingest --config configs/ingest/wiki.yaml
+python -m sphana_trainer.cli ingest --config configs\ingest\wiki.yaml
 
 # Build training datasets from ingestion outputs
-python -m sphana_trainer.cli dataset-build-from-ingest \
-    target/wiki/ingest \
-    --output-dir target/datasets/wiki \
-    --min-confidence 0.3 \
+python -m sphana_trainer.cli dataset-build-from-ingest `
+    target\wiki\ingest `
+    --output-dir target\datasets\wiki `
+    --min-confidence 0.3 `
     --val-ratio 0.2</code></pre>
                 </div>
 
@@ -327,13 +327,13 @@ mlflow_experiment: "embedding-training"</code></pre>
                         <button class="copy-btn" data-target="train-all">Copy</button>
         </div>
                     <pre><code id="train-all"># 1. Embedding encoder (dense semantic vectors)
-python -m sphana_trainer.cli train embedding --config configs/embedding/base.yaml
+python -m sphana_trainer.cli train embedding --config configs\embedding\base.yaml
 
 # 2. Relation extraction classifier (entity-centric relationships)
-python -m sphana_trainer.cli train relation --config configs/relation/base.yaml
+python -m sphana_trainer.cli train relation --config configs\relation\base.yaml
 
 # 3. GNN ranker (graph neural network for re-ranking)
-python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pre>
+python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pre>
                 </div>
 
                 <div class="info-box">
@@ -355,7 +355,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                         <span class="code-label">Export and quantize models</span>
                         <button class="copy-btn" data-target="export-code">Copy</button>
         </div>
-                    <pre><code id="export-code">python -m sphana_trainer.cli export --config configs/export/base.yaml</code></pre>
+                    <pre><code id="export-code">python -m sphana_trainer.cli export --config configs\export\base.yaml</code></pre>
           </div>
 
                 <div class="info-box">
@@ -387,7 +387,7 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                         <span class="code-label">Create deployment package</span>
                         <button class="copy-btn" data-target="package-code">Copy</button>
         </div>
-                    <pre><code id="package-code">python -m sphana_trainer.cli package --config configs/export/base.yaml</code></pre>
+                    <pre><code id="package-code">python -m sphana_trainer.cli package --config configs\export\base.yaml</code></pre>
                 </div>
 
                 <div class="success-box">
@@ -411,18 +411,18 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pr
                         <span class="code-label">Complete end-to-end workflow</span>
                         <button class="copy-btn" data-target="workflow-code">Copy</button>
                     </div>
-                    <pre><code id="workflow-code">python -m sphana_trainer.cli workflow run \
-    --ingest-config configs/ingest/base.yaml \
-    --embedding-config configs/embedding/base.yaml \
-    --relation-config configs/relation/base.yaml \
-    --gnn-config configs/gnn/base.yaml \
-    --export-config configs/export/base.yaml \
-    --package-config configs/export/base.yaml \
-    --promote-component embedding \
-    --promote-version 0.1.0 \
-    --manifest target/manifests/latest.json \
-    --build-datasets \
-    --dataset-output-dir target/datasets/wiki</code></pre>
+                    <pre><code id="workflow-code">python -m sphana_trainer.cli workflow run `
+    --ingest-config configs\ingest\base.yaml `
+    --embedding-config configs\embedding\base.yaml `
+    --relation-config configs\relation\base.yaml `
+    --gnn-config configs\gnn\base.yaml `
+    --export-config configs\export\base.yaml `
+    --package-config configs\export\base.yaml `
+    --promote-component embedding `
+    --promote-version 0.1.0 `
+    --manifest target\manifests\latest.json `
+    --build-datasets `
+    --dataset-output-dir target\datasets\wiki</code></pre>
                 </div>
 
                 <div class="info-box">
