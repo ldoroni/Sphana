@@ -184,27 +184,199 @@ pip install -r requirements.txt</code></pre>
             <section id="quick-start" class="section">
                 <h2>Quick Start</h2>
                 
-                <p>Get started with a simple training pipeline in three steps:</p>
+                <p>This guide walks you through the complete process of training, exporting, and packaging neural models for the Sphana NRDB. Follow these steps to go from raw data to production-ready ONNX models.</p>
 
-                <h3>1. Train a Model</h3>
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="code-label">Train embedding model</span>
-                        <button class="copy-btn" data-target="train-code">Copy</button>
-                    </div>
-                    <pre><code id="train-code">python -m sphana_trainer.cli train embedding --config configs/embedding/base.yaml</code></pre>
+                <div class="warning-box">
+                    <strong>Prerequisites:</strong> Before starting, ensure you have:
+                    <ul>
+                        <li>Python 3.11+ installed</li>
+                        <li>CUDA 12.8 drivers (for GPU training, optional but recommended)</li>
+                        <li>At least 8GB RAM (16GB+ recommended)</li>
+                        <li>~5GB free disk space for models and datasets</li>
+                    </ul>
                 </div>
 
-                <h3>2. Export to ONNX</h3>
+                <h3>Step 1: Environment Setup (One-Time)</h3>
+                <p>Set up your Python environment and install dependencies:</p>
                 <div class="code-block">
                     <div class="code-header">
-                        <span class="code-label">Export models</span>
+                        <span class="code-label">PowerShell Setup</span>
+                        <button class="copy-btn" data-target="setup-powershell">Copy</button>
+                    </div>
+                    <pre><code id="setup-powershell">cd services/sphana-trainer
+$env:PYTHONPATH="src"
+
+# Create and activate virtual environment
+python -m venv .venv
+.\.venv\Scripts\activate
+
+# Install dependencies
+python.exe -m pip install --upgrade pip
+pip3 install -r .\requirements.txt</code></pre>
+                </div>
+
+                <div class="success-box">
+                    <strong>Verify installation:</strong> Run <code>python -m sphana_trainer.cli --help</code> to confirm the CLI is working.
+                </div>
+
+                <h3>Step 2: Obtain Training Data</h3>
+                <p>You have two options for getting training data:</p>
+
+                <h4>Option A: Use Built-in Sample Data (Fastest)</h4>
+                <p>The repository includes small sample datasets in <code>src/tests/data/</code> for quick testing. These are automatically used by the base configurations.</p>
+                <div class="info-box">
+                    <strong>Sample datasets:</strong>
+                    <ul>
+                        <li><code>src/tests/data/embedding/train.jsonl</code> - 50+ query-context pairs</li>
+                        <li><code>src/tests/data/relation/train.jsonl</code> - 40+ relation examples</li>
+                        <li><code>src/tests/data/graphs/train.jsonl</code> - 30+ graph structures for GNN</li>
+                    </ul>
+                    These datasets are suitable for smoke testing but won't produce production-quality models.
+                </div>
+
+                <h4>Option B: Build Custom Dataset from Documents (Production)</h4>
+                <p>For production models, ingest your own documents or download Wikipedia data:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Download Wikipedia sample</span>
+                        <button class="copy-btn" data-target="download-wiki">Copy</button>
+                    </div>
+                    <pre><code id="download-wiki">python -m sphana_trainer.cli dataset-download-wiki \
+    --output target/data/wiki/docs.jsonl \
+    --limit 100</code></pre>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Ingest and process documents</span>
+                        <button class="copy-btn" data-target="ingest-docs">Copy</button>
+                    </div>
+                    <pre><code id="ingest-docs"># Run ingestion pipeline (extracts entities, relations, builds knowledge graph)
+python -m sphana_trainer.cli ingest --config configs/ingest/wiki.yaml
+
+# Build training datasets from ingestion outputs
+python -m sphana_trainer.cli dataset-build-from-ingest \
+    target/wiki/ingest \
+    --output-dir target/datasets/wiki \
+    --min-confidence 0.3 \
+    --val-ratio 0.2</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>What's happening during ingestion?</strong>
+                    <ol>
+                        <li><strong>Parsing:</strong> Documents are tokenized and analyzed (simple/spaCy/Stanza parsers)</li>
+                        <li><strong>Entity Extraction:</strong> Named entities are identified and typed</li>
+                        <li><strong>Relation Extraction:</strong> Relationships between entities are discovered</li>
+                        <li><strong>Knowledge Graph Construction:</strong> Triples (subject, predicate, object) are created</li>
+                        <li><strong>Dataset Splitting:</strong> Data is split into training/validation sets for each model type</li>
+                    </ol>
+                    Output: Three ready-to-train JSONL datasets (embedding, relation, GNN).
+                </div>
+
+                <h3>Step 3: Configure Training Parameters</h3>
+                <p>Review and adjust configuration files in <code>configs/</code> based on your needs:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">configs/embedding/base.yaml (example adjustments)</span>
+                    </div>
+                    <pre><code>version: "0.1.0"
+model_name: "sentence-transformers/all-MiniLM-L6-v2"  # Change model if needed
+batch_size: 32              # Reduce if GPU memory is limited (e.g., 8 or 16)
+learning_rate: 2e-5         # Adjust for your dataset size
+epochs: 3                   # Increase for better convergence (5-10 for production)
+precision: "fp16"           # Use "fp32" on CPU, "bf16" on modern GPUs
+max_length: 128             # Token limit per input
+
+# Dataset paths (update if using custom data)
+train_file: "src/tests/data/embedding/train.jsonl"      # Change to custom path
+validation_file: "src/tests/data/embedding/val.jsonl"   # Optional but recommended
+
+# Quality gates
+metric_threshold: 0.75      # Minimum cosine similarity to export model
+
+# MLflow tracking (optional)
+log_to_mlflow: true
+mlflow_experiment: "embedding-training"</code></pre>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Important Configuration Notes:</strong>
+                    <ul>
+                        <li><strong>Dataset paths:</strong> If you built custom datasets in Step 2, update <code>train_file</code> and <code>validation_file</code> to point to <code>target/datasets/wiki/embedding/train.jsonl</code></li>
+                        <li><strong>GPU memory:</strong> If training fails with OOM errors, reduce <code>batch_size</code> or increase <code>gradient_accumulation</code></li>
+                        <li><strong>CPU training:</strong> Set <code>precision: "fp32"</code> (fp16/bf16 require GPU)</li>
+                        <li><strong>Epochs:</strong> Sample data needs 2-3 epochs; production data may need 5-10+</li>
+                        <li><strong>Validation:</strong> Always provide a validation set to monitor overfitting and enable early stopping</li>
+                    </ul>
+                </div>
+
+                <h3>Step 4: Train All Models</h3>
+                <p>Train the three neural components required by the NRDB:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Train all components sequentially</span>
+                        <button class="copy-btn" data-target="train-all">Copy</button>
+                    </div>
+                    <pre><code id="train-all"># 1. Embedding encoder (dense semantic vectors)
+python -m sphana_trainer.cli train embedding --config configs/embedding/base.yaml
+
+# 2. Relation extraction classifier (entity-centric relationships)
+python -m sphana_trainer.cli train relation --config configs/relation/base.yaml
+
+# 3. GNN ranker (graph neural network for re-ranking)
+python -m sphana_trainer.cli train gnn --config configs/gnn/base.yaml</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>Training outputs:</strong> Each command creates:
+                    <ul>
+                        <li><code>target/artifacts/&lt;component&gt;/&lt;version&gt;/</code> - Model checkpoint, ONNX export, metadata</li>
+                        <li><code>target/artifacts/&lt;component&gt;/latest.json</code> - Pointer to the most recent version</li>
+                        <li><code>target/logs/trainer.log</code> - Detailed training logs</li>
+                        <li><code>target/mlruns/</code> - MLflow experiment data (if enabled)</li>
+                    </ul>
+                    Training time: ~2-5 minutes per model on sample data (GPU), 10-30 minutes on CPU.
+                </div>
+
+                <h3>Step 5: Export to ONNX Format</h3>
+                <p>Convert trained PyTorch models to ONNX with INT8 quantization for production deployment:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Export and quantize models</span>
                         <button class="copy-btn" data-target="export-code">Copy</button>
                     </div>
                     <pre><code id="export-code">python -m sphana_trainer.cli export --config configs/export/base.yaml</code></pre>
                 </div>
 
-                <h3>3. Package for Deployment</h3>
+                <div class="info-box">
+                    <strong>What happens during export?</strong>
+                    <ol>
+                        <li><strong>Validation:</strong> Checks that all required components (embedding, relation, GNN) are trained</li>
+                        <li><strong>ONNX Conversion:</strong> PyTorch models → ONNX format with dynamic axes</li>
+                        <li><strong>Quantization:</strong> Applies INT8 quantization for 4x faster inference with minimal accuracy loss</li>
+                        <li><strong>Parity Check:</strong> Verifies ONNX outputs match PyTorch (within 1% tolerance)</li>
+                        <li><strong>Manifest Creation:</strong> Generates <code>target/manifests/latest.json</code> with metadata</li>
+                    </ol>
+                    Output: <code>*.onnx</code> and <code>*.int8.onnx</code> files ready for the .NET gRPC service.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Troubleshooting export issues:</strong>
+                    <ul>
+                        <li>If export fails with "model not found", ensure all three models completed training successfully</li>
+                        <li>If parity check fails, your model may have non-deterministic operations - check training logs</li>
+                        <li>Review <code>configs/export/base.yaml</code> to specify which component versions to export</li>
+                    </ul>
+                </div>
+
+                <h3>Step 6: Package for Deployment</h3>
+                <p>Bundle the manifest and ONNX files into a single tarball for deployment:</p>
+
                 <div class="code-block">
                     <div class="code-header">
                         <span class="code-label">Create deployment package</span>
@@ -213,20 +385,25 @@ pip install -r requirements.txt</code></pre>
                     <pre><code id="package-code">python -m sphana_trainer.cli package --config configs/export/base.yaml</code></pre>
                 </div>
 
-                <div class="info-box">
-                    <strong>What just happened?</strong>
-                    <ol>
-                        <li>Trained an embedding model on sample data</li>
-                        <li>Exported it to ONNX format with INT8 quantization</li>
-                        <li>Packaged it into a tarball at <code>target/manifests/latest.tar.gz</code></li>
-                    </ol>
+                <div class="success-box">
+                    <strong>✅ Success!</strong> Your production-ready package is at:
+                    <br><code>target/manifests/latest.tar.gz</code>
+                    <br><br>
+                    This tarball contains:
+                    <ul>
+                        <li>Manifest JSON with model metadata and versions</li>
+                        <li>ONNX files for all three components (standard + quantized)</li>
+                        <li>Calibration data for the .NET runtime</li>
+                    </ul>
+                    Deploy this file to your .NET gRPC service to serve the models in production.
                 </div>
 
-                <h3>Run Complete Workflow</h3>
-                <p>For a full end-to-end pipeline with all three models:</p>
+                <h3>Alternative: Single Command Workflow</h3>
+                <p>For advanced users, run the entire pipeline (Steps 2-6) with one command:</p>
+
                 <div class="code-block">
                     <div class="code-header">
-                        <span class="code-label">Complete workflow</span>
+                        <span class="code-label">Complete end-to-end workflow</span>
                         <button class="copy-btn" data-target="workflow-code">Copy</button>
                     </div>
                     <pre><code id="workflow-code">python -m sphana_trainer.cli workflow run \
@@ -241,6 +418,29 @@ pip install -r requirements.txt</code></pre>
     --manifest target/manifests/latest.json \
     --build-datasets \
     --dataset-output-dir target/datasets/wiki</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>Workflow automation benefits:</strong>
+                    <ul>
+                        <li><strong>State tracking:</strong> Resumes from last successful stage if interrupted</li>
+                        <li><strong>Dependency management:</strong> Automatically skips stages that are up-to-date</li>
+                        <li><strong>Error recovery:</strong> Use <code>--force</code> to retry failed stages</li>
+                        <li><strong>Artifact promotion:</strong> Automatically promotes specified component versions</li>
+                        <li><strong>Report generation:</strong> Creates <code>target/artifacts/workflow-report.json</code> with summary</li>
+                    </ul>
+                </div>
+
+                <h3>Next Steps</h3>
+                <div class="success-box">
+                    <strong>After completing the Quick Start:</strong>
+                    <ul>
+                        <li>📊 <strong>Review metrics:</strong> Check <code>target/logs/trainer.log</code> and MLflow UI for training curves</li>
+                        <li>🔍 <strong>Validate quality:</strong> Use <code>artifacts parity-samples</code> to generate test cases for the .NET service</li>
+                        <li>🚀 <strong>Deploy:</strong> Upload <code>latest.tar.gz</code> to your .NET gRPC service</li>
+                        <li>🔄 <strong>Iterate:</strong> Adjust hyperparameters with <code>train sweep</code> for better results</li>
+                        <li>📚 <strong>Production setup:</strong> See <a href="#workflows">Workflows</a> section for advanced automation</li>
+                    </ul>
                 </div>
             </section>
 
