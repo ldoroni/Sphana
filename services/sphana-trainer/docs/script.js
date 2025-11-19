@@ -142,10 +142,61 @@
             // Update document title
             document.title = `${page.title} - Sphana Trainer Documentation`;
 
+            // Generate table of contents for this page
+            this.generateTableOfContents(pageId);
+
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             this.currentPage = pageId;
+        },
+
+        generateTableOfContents(pageId) {
+            const tocContainer = document.getElementById('page-toc');
+            const tocNav = tocContainer.querySelector('.toc-nav');
+            const section = this.pages[pageId]?.element;
+
+            if (!section || !tocNav) return;
+
+            // Find only h3 and h4 headings (2 levels only)
+            const headings = section.querySelectorAll('h3, h4');
+
+            // Clear previous TOC
+            tocNav.innerHTML = '';
+
+            // If no headings or only 1-2 headings, hide TOC
+            if (headings.length < 3) {
+                tocContainer.style.display = 'none';
+                return;
+            }
+
+            // Generate TOC links
+            headings.forEach((heading, index) => {
+                // Create an ID if the heading doesn't have one
+                if (!heading.id) {
+                    const text = heading.textContent.trim();
+                    const id = `${pageId}-${text.toLowerCase().replace(/[^\w]+/g, '-')}`;
+                    heading.id = id;
+                }
+
+                const link = document.createElement('a');
+                link.href = `#${heading.id}`;
+                link.textContent = heading.textContent.trim();
+                link.className = `toc-${heading.tagName.toLowerCase()}`;
+
+                // Handle click to scroll smoothly
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Update URL hash without triggering page navigation
+                    history.replaceState(null, '', `#${pageId}`);
+                });
+
+                tocNav.appendChild(link);
+            });
+
+            // Show TOC
+            tocContainer.style.display = 'block';
         },
 
         loadInitialPage() {
