@@ -1250,10 +1250,10 @@
         const progressBar = document.createElement('div');
         progressBar.style.cssText = `
             position: fixed;
-            top: var(--header-height);
+            top: 64px;
             left: 0;
             width: 0%;
-            height: 3px;
+            height: 2px;
             background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
             transition: width 0.1s ease;
             z-index: 999;
