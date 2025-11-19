@@ -996,18 +996,202 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
 
                 <p><strong>Note:</strong> These are approximate guidelines. Quality matters more than quantity — 10,000 diverse, well-written documents are better than 100,000 low-quality or repetitive ones.</p>
 
-                <h4>Topic Diversity: How Should Documents Relate?</h4>
-                
-                <div class="info-box">
-                    <strong>Key Principle:</strong> Your documents should be <strong>domain-consistent</strong> but <strong>topic-diverse</strong> within that domain.
+                <h4>Choosing Your Training Data Scope</h4>
+
+                <div class="warning-box">
+                    <strong>CRITICAL QUESTION:</strong> Who will use the trained models, and will they retrain?
+                    <ul>
+                        <li><strong>You/known users on a specific domain</strong> → Use <strong>Strategy A: Single-Domain Training</strong></li>
+                        <li><strong>Unknown users on varied domains WITHOUT retraining</strong> → Use <strong>Strategy B: Multi-Domain Training</strong></li>
+                    </ul>
                 </div>
 
-                <p><strong>What This Means:</strong></p>
+                <h5>Strategy A: Single-Domain Training</h5>
+
+                <p><strong>When to use:</strong></p>
                 <ul>
-                    <li><strong>Domain-Consistent:</strong> All documents from the same general field (e.g., "machine learning", "corporate law", "cardiology")</li>
-                    <li><strong>Topic-Diverse:</strong> Within that domain, cover many different subtopics, concepts, and entities</li>
-                    <li><strong>Multiple Documents per Topic:</strong> Having 5-20 documents about the same subtopic reinforces learning</li>
+                    <li>You're building a RAG for a specific, known domain (ML, medicine, law, etc.)</li>
+                    <li>You control what domain the system will query</li>
+                    <li>Users will retrain models for their own specific domain</li>
                 </ul>
+
+                <p><strong>The Rule: Domain-Consistent but Topic-Diverse</strong></p>
+                <ul>
+                    <li><strong>Domain-Consistent:</strong> ALL documents from the SAME general field (e.g., "machine learning")</li>
+                    <li><strong>Topic-Diverse:</strong> Within that domain, cover MANY different subtopics (CNNs, RNNs, optimization, frameworks, etc.)</li>
+                    <li><strong>5-20 docs per subtopic:</strong> Multiple documents about each subtopic to reinforce learning</li>
+                </ul>
+
+                <p><strong>Benefits:</strong></p>
+                <ul>
+                    <li>✅ <strong>Higher Accuracy:</strong> 70-85% F1 on in-domain queries</li>
+                    <li>✅ <strong>Focused Learning:</strong> Models learn domain-specific terminology deeply</li>
+                    <li>✅ <strong>Faster Training:</strong> Quicker convergence</li>
+                    <li>✅ <strong>Efficient Data Use:</strong> All examples contribute to target domain</li>
+                </ul>
+
+                <p><strong>Example: ML/AI Domain</strong></p>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Single Domain with Topic Diversity</span>
+                    </div>
+                    <pre><code># All Machine Learning domain, but diverse subtopics:
+- Neural networks (CNNs, RNNs, Transformers) - 100 docs
+- Optimization algorithms (SGD, Adam, learning rate) - 80 docs  
+- Model architectures (ResNet, BERT, GPT) - 120 docs
+- Training techniques (regularization, dropout, batch norm) - 90 docs
+- Evaluation metrics (accuracy, F1, precision, recall) - 60 docs
+- Applications (NLP, computer vision, speech) - 150 docs
+- Deep learning frameworks (PyTorch, TensorFlow) - 100 docs
+- Research papers and implementations - 200 docs
+Total: 900 docs, all within ML/AI domain, covering 20+ subtopics</code></pre>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Download ML Wikipedia corpus</span>
+                    </div>
+                    <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
+    --titles-file samples\ai-ml-wiki-titles.medium.txt `
+    --full-content `
+    --output target\data\ml-docs.jsonl `
+    --limit 10000</code></pre>
+                </div>
+                <p>This downloads 1,470 ML/AI Wikipedia articles — all within the ML domain but covering diverse subtopics (neural networks, deep learning, NLP, computer vision, optimization, etc.).</p>
+
+                <h5>Strategy B: Multi-Domain Training</h5>
+
+                <p><strong>When to use:</strong></p>
+                <ul>
+                    <li><strong>End users will NOT retrain the models</strong></li>
+                    <li><strong>Users will index documents from unknown/varied domains</strong></li>
+                    <li><strong>System must work "out of the box" for any topic</strong></li>
+                    <li>Building a general encyclopedia or Wikipedia-like RAG</li>
+                    <li>Deploying a product where customers control the content</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Critical:</strong> If you train on ONLY machine learning data but your users index medical documents, the models will perform poorly! Models trained on domain X do NOT generalize well to domain Y without retraining.
+                </div>
+
+                <p><strong>Example Scenario:</strong></p>
+                <blockquote>
+                    <p><em>"I'm building a RAG database product. I'll train the models on ML/AI topics for testing, but my customers might use it for medical records, legal documents, cooking recipes, or any other domain — and they won't retrain the models."</em></p>
+                    <p><strong>→ You MUST train on multiple diverse domains!</strong></p>
+                </blockquote>
+
+                <p><strong>The Rule: Cross-Domain Coverage with Balanced Distribution</strong></p>
+                <ul>
+                    <li><strong>8-10 Major Domains:</strong> Science, medicine, history, arts, business, law, sports, misc</li>
+                    <li><strong>Balanced Coverage:</strong> Each domain gets adequate representation (10-20% of total)</li>
+                    <li><strong>Topic Diversity WITHIN Each Domain:</strong> Still cover subtopics within each domain</li>
+                </ul>
+
+                <p><strong>Benefits:</strong></p>
+                <ul>
+                    <li>✅ Works "out of the box" for users on any domain</li>
+                    <li>✅ Users don't need ML expertise to retrain</li>
+                    <li>✅ Deployable as general-purpose product</li>
+                </ul>
+
+                <p><strong>Trade-offs:</strong></p>
+                <ul>
+                    <li>⚠️ Lower per-domain accuracy: 70% F1 (single) → 55-60% F1 (multi)</li>
+                    <li>⚠️ Requires 10-100x more data (90,000+ documents minimum)</li>
+                    <li>⚠️ 5-10x longer training time</li>
+                    <li>⚠️ Harder to evaluate across diverse domains</li>
+                </ul>
+
+                <p><strong>Example: Multi-Domain Corpus</strong></p>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Balanced Multi-Domain Distribution</span>
+                    </div>
+                    <pre><code># Coverage across 8+ major domains:
+- Science & Technology (ML, physics, engineering) - 20,000 docs
+- Medicine & Health (diseases, treatments, anatomy) - 15,000 docs
+- History & Geography (events, places, cultures) - 15,000 docs
+- Arts & Literature (books, music, visual arts) - 10,000 docs
+- Business & Economics (finance, management, trade) - 10,000 docs
+- Law & Politics (legal systems, governance) - 10,000 docs
+- Sports & Entertainment (games, media, celebrities) - 5,000 docs
+- Miscellaneous (food, travel, hobbies) - 5,000 docs
+Total: 90,000 docs across 8 major domains (each domain has subtopic diversity)</code></pre>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Download broad Wikipedia corpus</span>
+                    </div>
+                    <pre><code># Create a titles file with diverse domains, then:
+python -m sphana_trainer.cli dataset-download-wiki `
+    --titles-file samples\general-wiki-titles.txt `
+    --full-content `
+    --output target\data\general-docs.jsonl `
+    --limit 100000</code></pre>
+                </div>
+
+                <h5>Which Strategy Should You Use?</h5>
+
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Your Situation</th>
+                            <th>Strategy</th>
+                            <th>Data Scope</th>
+                            <th>Expected Accuracy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>You control the domain (ML for yourself)</td>
+                            <td><strong>A: Single-Domain</strong></td>
+                            <td>ML only, 20+ subtopics</td>
+                            <td>70-85% F1</td>
+                        </tr>
+                        <tr>
+                            <td>Building for specific users (doctors, lawyers)</td>
+                            <td><strong>A: Single-Domain</strong></td>
+                            <td>Medicine/law only</td>
+                            <td>70-85% F1</td>
+                        </tr>
+                        <tr>
+                            <td>Users will retrain for their domain</td>
+                            <td><strong>A: Single-Domain</strong></td>
+                            <td>Any single domain as example</td>
+                            <td>70-85% F1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Users WON'T retrain</strong> + unknown domains</td>
+                            <td><strong>⚠️ B: Multi-Domain</strong></td>
+                            <td>8-10 major domains</td>
+                            <td>55-65% F1</td>
+                        </tr>
+                        <tr>
+                            <td>General encyclopedia/search product</td>
+                            <td><strong>B: Multi-Domain</strong></td>
+                            <td>All major domains</td>
+                            <td>55-65% F1</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="warning-box">
+                    <strong>Common Mistakes:</strong>
+                    <ul>
+                        <li><strong>Mistake 1:</strong> Using Strategy A (ML-only) when building a product for users who will index medical/legal/other documents without retraining → Models fail on non-ML content!</li>
+                        <li><strong>Mistake 2:</strong> Using Strategy B (multi-domain) when you control the domain → Wastes data, lower accuracy!</li>
+                    </ul>
+                    <p><strong>The Fix:</strong> Match your strategy to your deployment scenario!</p>
+                </div>
+
+                <div class="success-box">
+                    <strong>Summary:</strong>
+                    <ul>
+                        <li><strong>Strategy A (Single-Domain):</strong> Higher accuracy, less data needed, but only works for that domain</li>
+                        <li><strong>Strategy B (Multi-Domain):</strong> Works for any domain, but lower accuracy and 10-100x more data required</li>
+                    </ul>
+                </div>
 
                 <p><strong>Examples of Good Diversity:</strong></p>
                 <table class="options-table">
@@ -1114,34 +1298,133 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                     <li>✅ <strong>Balanced coverage:</strong> Not all documents about one narrow subtopic</li>
                 </ul>
 
-                <h4>Example: Wikipedia as Training Data</h4>
+                <h4>Wikipedia-Only vs. Mixed Data Sources</h4>
+
+                <p><strong>Is it okay to use only Wikipedia for training?</strong></p>
+
+                <div class="success-box">
+                    <strong>Short Answer:</strong> Yes! Wikipedia is <strong>excellent</strong> training data and sufficient for most use cases.
+                </div>
+
+                <h5>Why Wikipedia is Excellent Training Data</h5>
+                <ul>
+                    <li><strong>Clean Structure:</strong> Well-formatted, consistent style across articles</li>
+                    <li><strong>Rich in Entities:</strong> Lots of named entities (people, places, organizations) with explicit relations</li>
+                    <li><strong>Factual Content:</strong> Encyclopedic, objective style — not opinion pieces</li>
+                    <li><strong>Good Grammar:</strong> Professional writing quality, complete sentences</li>
+                    <li><strong>Broad Coverage:</strong> Comprehensive coverage of any major domain</li>
+                    <li><strong>Free & Legal:</strong> No licensing issues, publicly available</li>
+                    <li><strong>Regularly Updated:</strong> Community-maintained, reasonably current</li>
+                </ul>
+
+                <h5>When Wikipedia Alone is SUFFICIENT</h5>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Use Case</th>
+                            <th>Why Wikipedia Works</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Prototyping & POC</strong></td>
+                            <td>Always start with Wikipedia — fast, easy, high-quality</td>
+                        </tr>
+                        <tr>
+                            <td><strong>General domain knowledge</strong></td>
+                            <td>ML, history, science, technology — Wikipedia has excellent coverage</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Entity-centric applications</strong></td>
+                            <td>Rich in facts about people, places, organizations, events</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Educational/informational RAG</strong></td>
+                            <td>Knowledge bases, Q&A systems, tutoring applications</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5>When to SUPPLEMENT (Not Replace) Wikipedia</h5>
+                <p>Add non-Wikipedia sources in these scenarios:</p>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>What to Add</th>
+                            <th>Why</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Specialized jargon</strong></td>
+                            <td>Domain-specific texts (medical papers, legal docs)</td>
+                            <td>Wikipedia is "accessible" — may lack technical depth</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Proprietary knowledge</strong></td>
+                            <td>Internal docs, company processes, product manuals</td>
+                            <td>Wikipedia doesn't cover private/confidential information</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Specific writing style</strong></td>
+                            <td>Style-matched corpus (formal legal, casual tech blogs)</td>
+                            <td>Match the style your RAG will encounter in production</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cutting-edge info</strong></td>
+                            <td>ArXiv papers, recent blog posts, news articles</td>
+                            <td>Wikipedia may lag 6-12 months behind latest developments</td>
+                        </tr>
+                        <tr>
+                            <td><strong>API/framework specifics</strong></td>
+                            <td>Official documentation (PyTorch, TensorFlow, React)</td>
+                            <td>Need exact function signatures, parameters, examples</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5>Recommended Approach</h5>
+
+                <p><strong>Phase 1: Start with Wikipedia (Always) ✅</strong></p>
                 <div class="code-block">
                     <div class="code-header">
-                        <span class="code-label">Download Wikipedia articles</span>
+                        <span class="code-label">Download domain-specific Wikipedia corpus</span>
                     </div>
                     <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
     --output target\data\docs.jsonl `
-    --titles-file samples\ai-ml-wiki-titles.txt `
+    --titles-file samples\ai-ml-wiki-titles.medium.txt `
     --full-content `
     --limit 10000</code></pre>
                 </div>
-
-                <p><strong>Why Wikipedia works well:</strong></p>
                 <ul>
-                    <li>Clean, well-structured text</li>
-                    <li>Rich in named entities and explicit relations</li>
-                    <li>Factual, encyclopedic style</li>
-                    <li>Good sentence structure and grammar</li>
-                    <li>Covers diverse topics</li>
+                    <li>✅ Fast to set up</li>
+                    <li>✅ High-quality baseline</li>
+                    <li>✅ Comprehensive domain coverage</li>
+                    <li>✅ Train and evaluate your models</li>
                 </ul>
 
-                <p><strong>When to go beyond Wikipedia:</strong></p>
+                <p><strong>Phase 2: Evaluate Performance</strong></p>
                 <ul>
-                    <li>Your domain requires specialized knowledge (medical, legal, technical manuals)</li>
-                    <li>You need recent information (Wikipedia may be outdated)</li>
-                    <li>You need domain-specific terminology and writing style</li>
-                    <li>Your use case requires confidential or proprietary knowledge</li>
+                    <li>Test your RAG system with real queries</li>
+                    <li>Identify gaps: "Can't answer X", "Lacks detail on Y", "Style mismatch for Z"</li>
+                    <li>If Wikipedia-trained models meet your requirements → <strong>you're done!</strong></li>
                 </ul>
+
+                <p><strong>Phase 3: Supplement ONLY if Needed</strong></p>
+                <ul>
+                    <li>Add targeted sources to fill specific gaps</li>
+                    <li>Keep Wikipedia as your base (80-90% of data)</li>
+                    <li>Add supplements (10-20% of data) for specific needs</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Pro Tip:</strong> For an ML/AI RAG, Wikipedia + ArXiv abstracts + PyTorch/TensorFlow docs is a powerful combination. But start with Wikipedia only and add others only if you find specific gaps!
+                </div>
+
+                <div class="warning-box">
+                    <strong>Don't Over-Engineer:</strong> Many developers waste time collecting diverse sources when Wikipedia alone would work fine. Start simple, measure performance, then add complexity only if needed.
+                </div>
 
                 <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
 
