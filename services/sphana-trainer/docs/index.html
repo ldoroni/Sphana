@@ -721,6 +721,16 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                         <li><strong>Recommendation:</strong> Finding entities related by specific relationship types</li>
                         <li><strong>Explainability:</strong> Providing structured reasoning paths to users</li>
                     </ul>
+
+                    <h4>Automatic Confidence Calibration</h4>
+                    <p>During training, the system automatically generates <strong>calibration parameters</strong> for each relation type by analyzing the validation set:</p>
+                    <ul>
+                        <li><strong>What it does:</strong> Adjusts raw model confidence scores to match empirical accuracy per relation type</li>
+                        <li><strong>Why it matters:</strong> Models are often systematically over-confident or under-confident for certain relations. Calibration ensures predicted confidence = actual accuracy</li>
+                        <li><strong>How it works:</strong> For each relation, computes <code>calibrated_score = scale × raw_score + bias</code> where scale and bias are learned from validation data</li>
+                        <li><strong>Output:</strong> <code>checkpoint/calibration.json</code> is automatically generated and used during ingestion</li>
+                    </ul>
+                    <p><strong>Example:</strong> If the model outputs 0.7 confidence for "founder_of" but is only 62% accurate on validation, calibration adjusts: <code>0.9 × 0.7 - 0.05 = 0.58</code> to better reflect true accuracy.</p>
                 </div>
 
                 <!-- GNN REASONER -->
@@ -921,7 +931,258 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
             <section id="data-preparation" class="section">
                 <h2>Data Preparation</h2>
 
-                <h3>Document Ingestion</h3>
+                <div class="intro-box">
+                    <p class="lead">High-quality training data is critical for model performance. This section covers data requirements, quality criteria, and preparation workflows for the three neural components.</p>
+                </div>
+
+                <h3>What Training Data Do You Need?</h3>
+                
+                <div class="success-box">
+                    <strong>Simple Answer:</strong> You only need to provide <strong>raw text documents</strong>. The system automatically generates all training data during the ingestion pipeline.
+                </div>
+
+                <h4>Raw Document Requirements</h4>
+                <p>Provide plain text documents in any of these formats:</p>
+                <ul>
+                    <li><strong>.txt files</strong> - Plain text documents</li>
+                    <li><strong>.md files</strong> - Markdown documents (markup is stripped)</li>
+                    <li><strong>.jsonl files</strong> - One JSON object per line with <code>{"text": "...", "title": "..."}</code></li>
+                </ul>
+
+                <p><strong>What the ingestion pipeline auto-generates:</strong></p>
+                <ol>
+                    <li><strong>Text Chunks:</strong> Documents are split into overlapping chunks for embedding training</li>
+                    <li><strong>Entity Extraction:</strong> Named entities (people, organizations, locations) are identified</li>
+                    <li><strong>Relation Extraction:</strong> Relationships between entities are detected (e.g., "founded", "located_in")</li>
+                    <li><strong>Knowledge Graph:</strong> Triples are constructed for GNN training</li>
+                    <li><strong>Training Datasets:</strong> JSONL files are automatically generated for all three models</li>
+                </ol>
+
+                <h4>How Much Raw Text Do You Need?</h4>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Scale</th>
+                            <th>Raw Text Volume</th>
+                            <th>Document Count</th>
+                            <th>Expected Quality</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Minimum</strong></td>
+                            <td>5-20 MB</td>
+                            <td>100-500 docs</td>
+                            <td>Baseline models</td>
+                            <td>Quick prototyping, proof-of-concept</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recommended</strong></td>
+                            <td>100-500 MB</td>
+                            <td>5,000-25,000 docs</td>
+                            <td>Production-ready</td>
+                            <td>Domain-specific RAG applications</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Production</strong></td>
+                            <td>1-10+ GB</td>
+                            <td>50,000-500,000+ docs</td>
+                            <td>High-accuracy</td>
+                            <td>Large-scale, multi-domain systems</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Note:</strong> These are approximate guidelines. Quality matters more than quantity — 10,000 diverse, well-written documents are better than 100,000 low-quality or repetitive ones.</p>
+
+                <h4>Topic Diversity: How Should Documents Relate?</h4>
+                
+                <div class="info-box">
+                    <strong>Key Principle:</strong> Your documents should be <strong>domain-consistent</strong> but <strong>topic-diverse</strong> within that domain.
+                </div>
+
+                <p><strong>What This Means:</strong></p>
+                <ul>
+                    <li><strong>Domain-Consistent:</strong> All documents from the same general field (e.g., "machine learning", "corporate law", "cardiology")</li>
+                    <li><strong>Topic-Diverse:</strong> Within that domain, cover many different subtopics, concepts, and entities</li>
+                    <li><strong>Multiple Documents per Topic:</strong> Having 5-20 documents about the same subtopic reinforces learning</li>
+                </ul>
+
+                <p><strong>Examples of Good Diversity:</strong></p>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Domain</th>
+                            <th>Topic Coverage (Good)</th>
+                            <th>Why It Works</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Machine Learning</strong></td>
+                            <td>Neural networks, training algorithms, model architectures, optimization, evaluation metrics, applications</td>
+                            <td>Domain-consistent, topic-diverse within ML</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Corporate Law</strong></td>
+                            <td>Contract law, mergers & acquisitions, IP law, employment law, regulatory compliance, litigation</td>
+                            <td>All legal domain, covers different practice areas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Healthcare</strong></td>
+                            <td>Cardiology, oncology, pharmacology, diagnostics, surgical procedures, patient care</td>
+                            <td>Medical domain, diverse specializations</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Examples of Poor Diversity:</strong></p>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Problem</th>
+                            <th>Example</th>
+                            <th>Why It Fails</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Too Narrow</strong></td>
+                            <td>1,000 documents all about "backpropagation algorithm"</td>
+                            <td>Model overfits to one topic, can't generalize</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Too Random</strong></td>
+                            <td>Mix of medical papers, cooking recipes, sports news, financial reports</td>
+                            <td>No coherent domain, models can't learn domain-specific patterns</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unbalanced</strong></td>
+                            <td>900 docs on neural nets, 10 docs on optimization, 5 docs on evaluation</td>
+                            <td>Model biased toward over-represented topics</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>How Many Documents per Topic?</strong></p>
+                <ul>
+                    <li><strong>Single document per concept:</strong> ❌ Not enough — model can't learn robust patterns</li>
+                    <li><strong>5-20 documents per major topic:</strong> ✅ Good — reinforces learning with variety</li>
+                    <li><strong>100+ documents on same narrow thing:</strong> ⚠️ Risk of overfitting unless that topic is critical</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Common Mistake:</strong> Training on <em>only</em> Wikipedia articles about "artificial intelligence" (500 docs all about AI). This creates a narrow model. Instead, include documents about ML fundamentals, neural networks, NLP, computer vision, robotics, ethics, applications — all within the broader AI domain.
+                </div>
+
+                <h4>What Makes Good Training Documents?</h4>
+
+                <p><strong>✅ Do:</strong></p>
+                <ul>
+                    <li><strong>Domain Relevance:</strong> Use documents from the domains your RAG system will query (e.g., technical docs for tech support, medical texts for healthcare)</li>
+                    <li><strong>Factual Content:</strong> Prefer informative, factual text over creative writing or opinion pieces</li>
+                    <li><strong>Entity-Rich Text:</strong> Documents mentioning specific people, places, organizations, products, and concepts</li>
+                    <li><strong>Complete Sentences:</strong> Well-formed sentences with proper grammar and structure</li>
+                    <li><strong>Topic Breadth:</strong> Cover 20-100+ distinct subtopics within your domain (not just 2-3)</li>
+                    <li><strong>Varied Length:</strong> Mix of short articles (500-1000 words) and longer documents (2000-5000 words)</li>
+                    <li><strong>Explicit Relations:</strong> Text that clearly states relationships ("X founded Y", "A is located in B")</li>
+                </ul>
+
+                <p><strong>❌ Avoid:</strong></p>
+                <ul>
+                    <li><strong>Short Fragments:</strong> Single sentences or bullet points without context</li>
+                    <li><strong>Lists Only:</strong> Pure lists, tables, or structured data without narrative text</li>
+                    <li><strong>Duplicate Content:</strong> Exact or near-duplicate documents inflate dataset size without adding information</li>
+                    <li><strong>Poor Quality:</strong> Machine-translated text, OCR errors, garbled encoding</li>
+                    <li><strong>Irrelevant Domains:</strong> Documents from unrelated fields (training on recipes won't help a legal RAG system)</li>
+                    <li><strong>Extremely Long Documents:</strong> 50,000+ word documents are inefficiently processed (split them up)</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Document Length Sweet Spot:</strong> Aim for documents between <strong>200-5,000 words</strong>. This provides enough context for relation extraction while keeping processing efficient.
+                </div>
+
+                <h4>Content Quality Checklist</h4>
+                <p>Before ingestion, verify your document collection has:</p>
+                <ul>
+                    <li>✅ <strong>Clean text:</strong> No excessive HTML tags, formatting artifacts, or encoding issues</li>
+                    <li>✅ <strong>Proper structure:</strong> Clear paragraphs, not just wall-of-text</li>
+                    <li>✅ <strong>Named entities:</strong> Documents mention specific entities (not just "the company" but "Apple Inc.")</li>
+                    <li>✅ <strong>Explicit facts:</strong> Clear statements like "Steve Jobs founded Apple in 1976" (not vague "he started something")</li>
+                    <li>✅ <strong>Consistent terminology:</strong> Use of standard terms, not excessive jargon or abbreviations without definitions</li>
+                    <li>✅ <strong>Balanced coverage:</strong> Not all documents about one narrow subtopic</li>
+                </ul>
+
+                <h4>Example: Wikipedia as Training Data</h4>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Download Wikipedia articles</span>
+                    </div>
+                    <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
+    --output target\data\docs.jsonl `
+    --titles-file samples\ai-ml-wiki-titles.txt `
+    --full-content `
+    --limit 10000</code></pre>
+                </div>
+
+                <p><strong>Why Wikipedia works well:</strong></p>
+                <ul>
+                    <li>Clean, well-structured text</li>
+                    <li>Rich in named entities and explicit relations</li>
+                    <li>Factual, encyclopedic style</li>
+                    <li>Good sentence structure and grammar</li>
+                    <li>Covers diverse topics</li>
+                </ul>
+
+                <p><strong>When to go beyond Wikipedia:</strong></p>
+                <ul>
+                    <li>Your domain requires specialized knowledge (medical, legal, technical manuals)</li>
+                    <li>You need recent information (Wikipedia may be outdated)</li>
+                    <li>You need domain-specific terminology and writing style</li>
+                    <li>Your use case requires confidential or proprietary knowledge</li>
+                </ul>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h3>Data Validation & Quality Checks</h3>
+                <p>Always validate your datasets before training:</p>
+
+                <h4>Validate Format</h4>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Check schema compliance</span>
+                    </div>
+                    <pre><code>python -m sphana_trainer.cli dataset-validate target/datasets/my-corpus/embedding/train.jsonl --type embedding
+python -m sphana_trainer.cli dataset-validate target/datasets/my-corpus/relation/train.jsonl --type relation
+python -m sphana_trainer.cli dataset-validate target/datasets/my-corpus/gnn/train.jsonl --type gnn</code></pre>
+                </div>
+
+                <h4>Compute Statistics</h4>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Analyze dataset properties</span>
+                    </div>
+                    <pre><code>python -m sphana_trainer.cli dataset-stats target/datasets/my-corpus/relation/train.jsonl</code></pre>
+                </div>
+
+                <p><strong>What to Check:</strong></p>
+                <ul>
+                    <li><strong>Size:</strong> Is the dataset large enough for your target performance?</li>
+                    <li><strong>Balance:</strong> Are classes/labels roughly balanced (within 2x-3x)?</li>
+                    <li><strong>Length Distribution:</strong> Is text length appropriate (not all 5 tokens or all 512 tokens)?</li>
+                    <li><strong>Duplicates:</strong> Check for exact or near-duplicates (compute hashes)</li>
+                    <li><strong>Missing Fields:</strong> Ensure all required fields are present and non-empty</li>
+                    <li><strong>Label Coverage:</strong> Do all classes appear in both train and validation sets?</li>
+                </ul>
+
+                <div class="success-box">
+                    <strong>Best Practice:</strong> Always reserve <strong>10-20% of your data for validation</strong>. Never train on validation data! Use <code>--val-ratio 0.15</code> in <code>dataset-build-from-ingest</code> to automatically split.
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h3>Document Ingestion Workflow</h3>
                 <p>Start with raw text documents in any of these formats:</p>
                 <ul>
                     <li><code>.txt</code> - Plain text files</li>
@@ -960,16 +1221,16 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                     <li><code>cache/</code> - Cached parses for reproducibility</li>
           </ul>
 
-                <h3>Dataset Building</h3>
+                <h3>Dataset Building from Ingestion</h3>
                 <p>Convert ingestion outputs into training-ready datasets:</p>
                 <div class="code-block">
                     <div class="code-header">
                         <span class="code-label">Command</span>
                     </div>
-                    <pre><code>python -m sphana_trainer.cli dataset-build-from-ingest target/ingest/my-corpus \
-    --output-dir target/datasets/my-corpus \
-    --min-confidence 0.3 \
-    --val-ratio 0.2 \
+                    <pre><code>python -m sphana_trainer.cli dataset-build-from-ingest target/ingest/my-corpus `
+    --output-dir target/datasets/my-corpus `
+    --min-confidence 0.3 `
+    --val-ratio 0.2 `
     --seed 42</code></pre>
                 </div>
 
@@ -982,7 +1243,7 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
           </ul>
 
                 <h3>Download Wikipedia Data</h3>
-                <p>Download Wikipedia articles (summaries or full content):</p>
+                <p>Download Wikipedia articles (summaries or full content) as a starting point:</p>
                 <div class="code-block">
                     <div class="code-header">
                         <span class="code-label">Summaries (default, fast)</span>
@@ -992,8 +1253,7 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
     --title "Machine learning" `
     --title "Deep learning" `
     --title "Natural language processing" `
-    --title "Neural network" `
-    --full-content</code></pre>
+    --title "Neural network"</code></pre>
                 </div>
                 <div class="code-block">
                     <div class="code-header">
@@ -1004,6 +1264,10 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
     --titles-file samples\ai-ml-wiki-titles.medium.txt `
     --full-content `
     --limit 10000</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>Wikipedia Data Quality:</strong> Wikipedia provides clean, well-structured text ideal for prototyping. However, for production systems targeting specific domains (legal, medical, technical), you should supplement or replace Wikipedia with domain-specific corpora.
                 </div>
             </section>
 

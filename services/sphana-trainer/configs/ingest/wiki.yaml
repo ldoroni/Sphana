@@ -59,4 +59,5 @@ ingest:
   relation_max_length: 256
   
   # Path to JSON file with per-label calibration coefficients (scale and bias)
-  relation_calibration: configs/ingest/wiki-calibration.json
+  # Auto-generated during relation training and saved in checkpoint/calibration.json
+  relation_calibration: target/artifacts/relation/latest/checkpoint/calibration.json

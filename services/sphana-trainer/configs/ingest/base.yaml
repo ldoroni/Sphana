@@ -59,5 +59,7 @@ ingest:
   # relation_max_length: 256  # Max sequence length for relation model (default: 256)
   
   # Path to JSON file with per-label calibration coefficients (scale and bias)
+  # Auto-generated during 'train relation' and saved to checkpoint/calibration.json
+  # Calibration adjusts model confidence scores to match empirical accuracy per relation type
   # relation_calibration: null  # Optional JSON file with label calibration coefficients (default: null)
 

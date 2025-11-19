@@ -40,7 +40,7 @@ pip3 install -r .\requirements.txt
 ```powershell
 # Train individual components (uses the bundled smoke datasets under src/tests/data)
 python -m sphana_trainer.cli train embedding --config configs/embedding/base.yaml
-python -m sphana_trainer.cli train relation  --config configs/relation/base.yaml
+python -m sphana_trainer.cli train relation  --config configs/relation/base.yaml  # Auto-generates calibration.json
 python -m sphana_trainer.cli train gnn       --config configs/gnn/base.yaml
 
 # Produce manifest + tarball once training finishes

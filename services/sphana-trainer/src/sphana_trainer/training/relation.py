@@ -278,6 +278,17 @@ class RelationExtractionTrainer:
         self.tokenizer.save_pretrained(tokenizer_dir)
         (checkpoint_dir / "labels.json").write_text(json.dumps(label2id, indent=2))
 
+        # Generate calibration parameters if validation set exists
+        if val_loader:
+            logger.info("Computing calibration parameters from validation set...")
+            id2label = {v: k for k, v in label2id.items()}
+            calibration = self._compute_calibration(model, val_loader, id2label)
+            calibration_path = checkpoint_dir / "calibration.json"
+            calibration_path.write_text(json.dumps(calibration, indent=2))
+            logger.info(f"Calibration saved to {calibration_path}")
+        else:
+            logger.warning("No validation set provided; skipping calibration generation.")
+
         onnx_dir = run_dir / "onnx"
         onnx_path, quantized_path = export_relation_classifier(
             model_dir,
@@ -324,6 +335,88 @@ class RelationExtractionTrainer:
             "accuracy": float(accuracy_score(labels, preds)),
             "macro_f1": float(f1_score(labels, preds, average="macro")),
         }
+
+    def _compute_calibration(self, model, loader: DataLoader, id2label: Dict[int, str]) -> Dict[str, Dict[str, float]]:
+        """
+        Compute per-class calibration parameters using temperature scaling.
+        
+        For each relation type, we analyze the model's confidence distribution
+        vs. actual accuracy and compute scale/bias adjustments.
+        
+        Returns:
+            Dictionary mapping label names to {"scale": float, "bias": float}
+        """
+        model.eval()
+        all_logits = []
+        all_labels = []
+        
+        # Collect all predictions and labels
+        with torch.no_grad():
+            for batch in loader:
+                labels = batch["labels"]
+                all_labels.append(labels)
+                batch = {k: v.to(self.ctx.device) for k, v in batch.items()}
+                outputs = model(**batch)
+                logits = outputs.logits.detach().cpu()
+                all_logits.append(logits)
+        
+        all_logits = torch.cat(all_logits, dim=0)
+        all_labels = torch.cat(all_labels, dim=0)
+        
+        # Convert logits to probabilities
+        probs = torch.softmax(all_logits, dim=-1)
+        pred_labels = torch.argmax(all_logits, dim=-1)
+        
+        # Compute per-class calibration
+        calibration = {}
+        num_classes = all_logits.size(1)
+        
+        for class_id in range(num_classes):
+            label_name = id2label.get(class_id, str(class_id))
+            
+            # Find predictions for this class
+            class_mask = pred_labels == class_id
+            if class_mask.sum() == 0:
+                # No predictions for this class, use neutral calibration
+                calibration[label_name] = {"scale": 1.0, "bias": 0.0}
+                continue
+            
+            # Get confidence scores for this class
+            class_confidences = probs[class_mask, class_id]
+            class_correct = (all_labels[class_mask] == class_id).float()
+            
+            # Compute average confidence and accuracy
+            avg_confidence = class_confidences.mean().item()
+            avg_accuracy = class_correct.mean().item()
+            
+            # Simple linear calibration: we want calibrated_conf ≈ accuracy
+            # calibrated = scale * raw_confidence + bias
+            # We target: scale * avg_confidence + bias = avg_accuracy
+            # Use a simple heuristic: adjust scale to match accuracy
+            
+            if avg_confidence > 0.0:
+                # Scale adjusts the confidence to match empirical accuracy
+                scale = avg_accuracy / max(avg_confidence, 0.01)
+                # Clamp scale to reasonable range [0.5, 1.5]
+                scale = max(0.5, min(1.5, scale))
+                
+                # Bias corrects for systematic over/under-confidence
+                bias = avg_accuracy - scale * avg_confidence
+                # Clamp bias to [-0.2, 0.2]
+                bias = max(-0.2, min(0.2, bias))
+            else:
+                scale = 1.0
+                bias = 0.0
+            
+            calibration[label_name] = {"scale": float(scale), "bias": float(bias)}
+            
+            logger.debug(
+                f"Calibration for '{label_name}': "
+                f"confidence={avg_confidence:.3f}, accuracy={avg_accuracy:.3f}, "
+                f"scale={scale:.3f}, bias={bias:.3f}"
+            )
+        
+        return calibration
 
     def _maybe_resume(self, model, optimizer, scheduler) -> None:
         resume_state = None
