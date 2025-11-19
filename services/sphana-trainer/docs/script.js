@@ -9,6 +9,7 @@
     const PageNavigator = {
         currentPage: null,
         pages: {},
+        scrollSpyListener: null,
         pageOrder: [
             'overview',
             'installation',
@@ -116,6 +117,16 @@
                     const hash = link.getAttribute('href').substring(1);
                     this.navigateToPage(hash);
                 });
+
+                // Add double-click to toggle subnav
+                link.addEventListener('dblclick', (e) => {
+                    e.preventDefault();
+                    const subnav = link.nextElementSibling;
+                    if (subnav && subnav.classList.contains('subnav')) {
+                        link.classList.toggle('expanded');
+                        subnav.classList.toggle('expanded');
+                    }
+                });
             });
         },
 
@@ -142,8 +153,8 @@
             // Update document title
             document.title = `${page.title} - Sphana Trainer Documentation`;
 
-            // Generate table of contents for this page
-            this.generateTableOfContents(pageId);
+            // Update nested navigation
+            this.updateNestedNav(pageId);
 
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -151,52 +162,123 @@
             this.currentPage = pageId;
         },
 
-        generateTableOfContents(pageId) {
-            const tocContainer = document.getElementById('page-toc');
-            const tocNav = tocContainer.querySelector('.toc-nav');
+        updateNestedNav(pageId) {
+            // First, collapse all other nav items
+            document.querySelectorAll('.nav-link.expanded').forEach(link => {
+                link.classList.remove('expanded');
+            });
+            document.querySelectorAll('.subnav.expanded').forEach(subnav => {
+                subnav.classList.remove('expanded');
+            });
+
+            // Find the nav link for this page
+            const navLink = document.querySelector(`.nav-link[href="#${pageId}"]`);
+            if (!navLink) return;
+
+            // Get the section element
             const section = this.pages[pageId]?.element;
+            if (!section) return;
 
-            if (!section || !tocNav) return;
+            // Check if subnav already exists
+            let subnav = navLink.nextElementSibling;
+            if (!subnav || !subnav.classList.contains('subnav')) {
+                // Create subnav if it doesn't exist
+                subnav = document.createElement('div');
+                subnav.className = 'subnav';
+                navLink.parentNode.insertBefore(subnav, navLink.nextSibling);
+            }
 
-            // Find only h3 and h4 headings (2 levels only)
-            const headings = section.querySelectorAll('h3, h4');
+            // Clear existing subnav
+            subnav.innerHTML = '';
 
-            // Clear previous TOC
-            tocNav.innerHTML = '';
+            // Get h3 headings within this section
+            const headings = section.querySelectorAll('h3');
 
-            // If no headings or only 1-2 headings, hide TOC
-            if (headings.length < 3) {
-                tocContainer.style.display = 'none';
+            if (headings.length === 0) {
+                // Remove subnav indicator if no headings
+                navLink.classList.remove('has-subnav');
                 return;
             }
 
-            // Generate TOC links
+            // Add subnav indicator
+            navLink.classList.add('has-subnav');
+
+            // Build subnav links
             headings.forEach((heading, index) => {
-                // Create an ID if the heading doesn't have one
+                const text = heading.textContent;
+
+                // Create unique ID if not exists
                 if (!heading.id) {
-                    const text = heading.textContent.trim();
-                    const id = `${pageId}-${text.toLowerCase().replace(/[^\w]+/g, '-')}`;
-                    heading.id = id;
+                    heading.id = `${pageId}-heading-${index}`;
                 }
 
                 const link = document.createElement('a');
                 link.href = `#${heading.id}`;
-                link.textContent = heading.textContent.trim();
-                link.className = `toc-${heading.tagName.toLowerCase()}`;
+                link.textContent = text;
+                link.className = 'subnav-link';
 
-                // Handle click to scroll smoothly
+                // Smooth scroll on click with proper offset
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Update URL hash without triggering page navigation
-                    history.replaceState(null, '', `#${pageId}`);
+                    const headerHeight = 72; // var(--header-height)
+                    const offset = 20; // extra space
+                    const elementPosition = heading.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerHeight - offset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 });
 
-                tocNav.appendChild(link);
+                subnav.appendChild(link);
             });
 
-            // Show TOC
-            tocContainer.style.display = 'block';
+            // Auto-expand the subnav for the active page
+            navLink.classList.add('expanded');
+            subnav.classList.add('expanded');
+            
+            // Initialize scroll spy for this page
+            this.initScrollSpy(pageId);
+        },
+
+        initScrollSpy(pageId) {
+            // Remove previous scroll listener if any
+            if (this.scrollSpyListener) {
+                window.removeEventListener('scroll', this.scrollSpyListener);
+            }
+
+            // Create new scroll spy listener
+            this.scrollSpyListener = () => {
+                const section = this.pages[pageId]?.element;
+                if (!section) return;
+
+                const headings = section.querySelectorAll('h3');
+                const scrollPosition = window.scrollY + 100; // offset for header
+
+                // Find which heading is currently visible
+                let currentHeading = null;
+                headings.forEach(heading => {
+                    if (heading.offsetTop <= scrollPosition) {
+                        currentHeading = heading;
+                    }
+                });
+
+                // Update active state for subnav links
+                const subnavLinks = document.querySelectorAll('.subnav-link');
+                subnavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (currentHeading && link.href.includes(`#${currentHeading.id}`)) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            // Add scroll listener
+            window.addEventListener('scroll', this.scrollSpyListener, { passive: true });
+            
+            // Run once immediately
+            this.scrollSpyListener();
         },
 
         loadInitialPage() {
