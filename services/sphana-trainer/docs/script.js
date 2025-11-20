@@ -130,7 +130,7 @@
             });
         },
 
-        navigateToPage(pageId) {
+        navigateToPage(pageId, preserveHash = false) {
             if (!this.pages[pageId]) {
                 console.warn('Page not found:', pageId);
                 return;
@@ -147,8 +147,10 @@
             page.element.classList.add('active');
             page.navLinks.forEach(link => link.classList.add('active'));
 
-            // Update URL hash
-            history.pushState(null, '', `#${pageId}`);
+            // Update URL hash (but preserve heading hash if specified)
+            if (!preserveHash) {
+                history.pushState(null, '', `#${pageId}`);
+            }
 
             // Update document title
             document.title = `${page.title} - Sphana Trainer Documentation`;
@@ -156,8 +158,10 @@
             // Update nested navigation
             this.updateNestedNav(pageId);
 
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Scroll to top (unless we're preserving hash for a heading)
+            if (!preserveHash) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
 
             this.currentPage = pageId;
         },
@@ -229,6 +233,9 @@
                         top: offsetPosition,
                         behavior: 'smooth'
                     });
+                    
+                    // Update URL hash to point to this subtitle
+                    history.pushState(null, '', `#${heading.id}`);
                 });
 
                 subnav.appendChild(link);
@@ -252,14 +259,20 @@
             this.scrollSpyListener = () => {
                 const section = this.pages[pageId]?.element;
                 if (!section) return;
+                
+                // Only update if this is still the current page
+                if (this.currentPage !== pageId) return;
 
-                const headings = section.querySelectorAll('h3');
-                const scrollPosition = window.scrollY + 100; // offset for header
+                const headings = section.querySelectorAll('h3[id]');
+                if (headings.length === 0) return;
+                
+                const scrollPosition = window.scrollY + 150; // offset for header + buffer
 
                 // Find which heading is currently visible
                 let currentHeading = null;
                 headings.forEach(heading => {
-                    if (heading.offsetTop <= scrollPosition) {
+                    const headingTop = heading.offsetParent ? heading.offsetTop : 0;
+                    if (headingTop <= scrollPosition) {
                         currentHeading = heading;
                     }
                 });
@@ -268,29 +281,81 @@
                 const subnavLinks = document.querySelectorAll('.subnav-link');
                 subnavLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (currentHeading && link.href.includes(`#${currentHeading.id}`)) {
+                    if (currentHeading && link.href.endsWith(`#${currentHeading.id}`)) {
                         link.classList.add('active');
                     }
                 });
             };
 
-            // Add scroll listener
+            // Add scroll listener with passive for better performance
             window.addEventListener('scroll', this.scrollSpyListener, { passive: true });
             
-            // Run once immediately
-            this.scrollSpyListener();
+            // Run once immediately after a short delay to let page settle
+            setTimeout(() => this.scrollSpyListener(), 100);
         },
 
         loadInitialPage() {
             const hash = window.location.hash.substring(1);
             const defaultPage = 'overview';
-            this.navigateToPage(hash || defaultPage);
+            
+            // Check if hash is a page ID or a heading ID
+            if (hash && this.pages[hash]) {
+                this.navigateToPage(hash);
+            } else if (hash) {
+                // It might be a heading ID, find which page contains it
+                const element = document.getElementById(hash);
+                if (element) {
+                    const section = element.closest('.section');
+                    if (section && section.id && this.pages[section.id]) {
+                        // Navigate to page but preserve the heading hash in URL
+                        this.navigateToPage(section.id, true);
+                        // After page loads, scroll to the specific heading
+                        setTimeout(() => {
+                            const headerHeight = 72;
+                            const offset = 20;
+                            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = elementPosition - headerHeight - offset;
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }, 300);
+                        return;
+                    }
+                }
+                this.navigateToPage(defaultPage);
+            } else {
+                this.navigateToPage(defaultPage);
+            }
         },
 
         loadPageFromHash() {
             const hash = window.location.hash.substring(1);
+            
+            // Check if hash is a page ID or a heading ID
             if (hash && this.pages[hash]) {
                 this.navigateToPage(hash);
+            } else if (hash) {
+                // It might be a heading ID, find which page contains it
+                const element = document.getElementById(hash);
+                if (element) {
+                    const section = element.closest('.section');
+                    if (section && section.id && this.pages[section.id]) {
+                        // Navigate to page but preserve the heading hash in URL
+                        this.navigateToPage(section.id, true);
+                        // After page loads, scroll to the specific heading
+                        setTimeout(() => {
+                            const headerHeight = 72;
+                            const offset = 20;
+                            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = elementPosition - headerHeight - offset;
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }, 300);
+                    }
+                }
             }
         }
     };
@@ -621,6 +686,7 @@
     // Copy to Clipboard (Enhanced)
     // ====================
     function initCopyButtons() {
+        // First, handle existing copy buttons
         document.querySelectorAll('.copy-btn').forEach(button => {
             button.addEventListener('click', async function() {
                 const targetId = this.getAttribute('data-target');
@@ -659,6 +725,104 @@
                     }, 2000);
                 }
             });
+        });
+
+        // Now add copy buttons to code blocks that don't have them
+        document.querySelectorAll('pre code').forEach((codeElement, index) => {
+            const pre = codeElement.parentElement;
+            const codeBlock = pre.closest('.code-block');
+            
+            // Skip if this code block already has a copy button
+            if (codeBlock && codeBlock.querySelector('.copy-btn')) {
+                return;
+            }
+            
+            // Skip if code is inside an info box or warning box (inline examples)
+            if (pre.closest('.info-box, .warning-box, .success-box')) {
+                return;
+            }
+            
+            // Generate a unique ID if not present
+            if (!codeElement.id) {
+                codeElement.id = `code-block-${index}`;
+            }
+            
+            // Create copy button with same styling as existing buttons
+            const button = document.createElement('button');
+            button.className = 'copy-btn';
+            button.setAttribute('data-target', codeElement.id);
+            button.textContent = 'Copy';
+            
+            // Add click handler (same as existing buttons)
+            button.addEventListener('click', async function() {
+                try {
+                    const text = codeElement.textContent.trim();
+                    await navigator.clipboard.writeText(text);
+                    
+                    const originalText = this.textContent;
+                    const originalBg = this.style.background;
+                    
+                    this.textContent = '✓ Copied!';
+                    this.style.background = 'rgba(16, 185, 129, 0.4)';
+                    this.style.borderColor = 'rgba(16, 185, 129, 0.6)';
+                    
+                    createRipple(this);
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = originalBg;
+                        this.style.borderColor = '';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy:', err);
+                    this.textContent = '✗ Failed';
+                    setTimeout(() => {
+                        this.textContent = 'Copy';
+                    }, 2000);
+                }
+            });
+            
+            // Determine where to place the button
+            if (codeBlock) {
+                // This is inside a .code-block div
+                let codeHeader = codeBlock.querySelector('.code-header');
+                
+                if (!codeHeader) {
+                    // Create a code-header if it doesn't exist
+                    codeHeader = document.createElement('div');
+                    codeHeader.className = 'code-header';
+                    
+                    // Add a default label
+                    const label = document.createElement('span');
+                    label.className = 'code-label';
+                    label.textContent = 'Code';
+                    codeHeader.appendChild(label);
+                    
+                    // Insert before the pre element
+                    codeBlock.insertBefore(codeHeader, pre);
+                }
+                
+                // Add button to the header (same location as old buttons)
+                codeHeader.appendChild(button);
+            } else {
+                // No .code-block wrapper, create one
+                const newCodeBlock = document.createElement('div');
+                newCodeBlock.className = 'code-block';
+                
+                const codeHeader = document.createElement('div');
+                codeHeader.className = 'code-header';
+                
+                const label = document.createElement('span');
+                label.className = 'code-label';
+                label.textContent = 'Code';
+                codeHeader.appendChild(label);
+                codeHeader.appendChild(button);
+                
+                // Wrap the pre element
+                pre.parentNode.insertBefore(newCodeBlock, pre);
+                newCodeBlock.appendChild(codeHeader);
+                newCodeBlock.appendChild(pre);
+            }
         });
     }
 
