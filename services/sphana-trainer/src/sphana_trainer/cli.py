@@ -337,20 +337,33 @@ def dataset_download_wiki(
     titles_file: Optional[Path] = typer.Option(
         None, "--titles-file", exists=True, file_okay=True, dir_okay=False, help="Optional file with titles (one per line)."
     ),
+    titles_dir: Optional[Path] = typer.Option(
+        None, "--titles-dir", exists=True, file_okay=False, dir_okay=True, help="Optional directory with title files (*.txt)."
+    ),
     shuffle: bool = typer.Option(True, "--shuffle/--no-shuffle", help="Shuffle the title list before downloading."),
     full_content: bool = typer.Option(False, "--full-content", help="Download full article content instead of summaries."),
 ) -> None:
-    """Download Wikipedia articles into JSONL format. Requires --title or --titles-file."""
+    """Download Wikipedia articles into JSONL format. Requires --title, --titles-file, or --titles-dir."""
 
     titles = list(title)
     if titles_file:
         extra_titles = [line.strip() for line in titles_file.read_text(encoding="utf-8").splitlines() if line.strip()]
         titles.extend(extra_titles)
     
+    if titles_dir:
+        title_files = sorted(titles_dir.glob("*.txt"))
+        if not title_files:
+            console.print(f"[yellow]Warning: No .txt files found in {titles_dir}[/yellow]")
+        for tf in title_files:
+            console.print(f"[dim]Reading titles from {tf.name}...[/dim]")
+            extra_titles = [line.strip() for line in tf.read_text(encoding="utf-8").splitlines() if line.strip()]
+            titles.extend(extra_titles)
+    
     if not titles:
         raise typer.BadParameter(
-            "No Wikipedia titles provided. Use --title to specify individual articles "
-            "or --titles-file to provide a file with titles (one per line)."
+            "No Wikipedia titles provided. Use --title to specify individual articles, "
+            "--titles-file to provide a file with titles (one per line), "
+            "or --titles-dir to provide a directory containing .txt files with titles."
         )
     
     if shuffle:

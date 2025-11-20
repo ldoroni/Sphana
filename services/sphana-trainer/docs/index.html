@@ -282,7 +282,7 @@ pip install -r requirements.txt</code></pre>
                                 <li><strong>Full Content (<code>--full-content</code>):</strong> Complete article text - comprehensive, better for production training</li>
                             </ul>
                         </li>
-                        <li><strong>Required Input:</strong> You must provide titles via <code>--title</code> or <code>--titles-file</code></li>
+                        <li><strong>Required Input:</strong> You must provide titles via <code>--title</code>, <code>--titles-file</code>, or <code>--titles-dir</code></li>
                         <li><strong>Output Format:</strong> JSONL file with id, title, text, and source fields</li>
                     </ul>
                 </div>
@@ -308,9 +308,21 @@ pip install -r requirements.txt</code></pre>
                     </div>
                     <pre><code id="download-wiki-full">python -m sphana_trainer.cli dataset-download-wiki `
     --output target\data\docs.jsonl `
-    --titles-file samples\medium\ai-ml-wiki-titles.medium.txt `
+    --titles-file samples\ai-ml-wiki-titles.medium.txt `
     --full-content `
     --limit 10000</code></pre>
+                </div>
+                    
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Download from multiple domain files (directory)</span>
+                        <button class="copy-btn" data-target="download-wiki-dir">Copy</button>
+                    </div>
+                    <pre><code id="download-wiki-dir">python -m sphana_trainer.cli dataset-download-wiki `
+    --output target\data\multi-domain-docs.jsonl `
+    --titles-dir samples\large `
+    --full-content `
+    --limit 50000</code></pre>
                 </div>
                     
                 <div class="success-box">
@@ -318,6 +330,15 @@ pip install -r requirements.txt</code></pre>
                     <ul>
                         <li><strong>Summaries (default):</strong> Ideal for rapid experimentation, hyperparameter tuning, and pipeline validation. Downloads complete 10-100x faster while maintaining representative content coverage.</li>
                         <li><strong>Full content (<code>--full-content</code>):</strong> Essential for production deployments requiring high model accuracy. Provides comprehensive contextual information with longer documents, significantly improving semantic understanding and relation extraction quality.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>📁 Title Input Options:</strong>
+                    <ul>
+                        <li><strong><code>--title</code>:</strong> Specify individual titles inline (can be repeated multiple times)</li>
+                        <li><strong><code>--titles-file</code>:</strong> Provide a single file with titles (one per line)</li>
+                        <li><strong><code>--titles-dir</code>:</strong> Provide a directory containing multiple <code>.txt</code> files — all files will be read and combined automatically. Perfect for multi-domain training with the 100 domain files in <code>samples\large\</code>!</li>
                     </ul>
                 </div>
 
@@ -1155,14 +1176,18 @@ Total: 90,000 docs across 8 major domains (each domain has subtopic diversity)</
 
                 <div class="code-block">
                     <div class="code-header">
-                        <span class="code-label">Download broad Wikipedia corpus</span>
+                        <span class="code-label">Download broad multi-domain Wikipedia corpus (using directory)</span>
                     </div>
-                    <pre><code># Create a titles file with diverse domains, then:
+                    <pre><code># Use the 100 domain files in samples\large\ directory:
 python -m sphana_trainer.cli dataset-download-wiki `
-    --titles-file samples\general-wiki-titles.txt `
+    --titles-dir samples\large `
     --full-content `
-    --output target\data\general-docs.jsonl `
+    --output target\data\multi-domain-docs.jsonl `
     --limit 100000</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Tip:</strong> The <code>samples\large\</code> directory contains 100 domain-specific title files covering diverse fields (science, medicine, history, arts, business, law, etc.). Using <code>--titles-dir</code> automatically reads all <code>.txt</code> files and combines them — perfect for multi-domain training!
                 </div>
 
                 <h5>Which Strategy Should You Use?</h5>
@@ -1574,13 +1599,27 @@ python -m sphana_trainer.cli dataset-validate target/datasets/my-corpus/gnn/trai
                 </div>
                 <div class="code-block">
                     <div class="code-header">
-                        <span class="code-label">Full content (comprehensive)</span>
+                        <span class="code-label">Full content from single file</span>
                     </div>
                     <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
     --output target\data\docs.jsonl `
-    --titles-file samples\medium\ai-ml-wiki-titles.medium.txt `
+    --titles-file samples\ai-ml-wiki-titles.medium.txt `
     --full-content `
     --limit 10000</code></pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-label">Multi-domain from directory</span>
+                    </div>
+                    <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
+    --output target\data\multi-domain-docs.jsonl `
+    --titles-dir samples\large `
+    --full-content `
+    --limit 50000</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>Input Options:</strong> Use <code>--title</code> for inline titles, <code>--titles-file</code> for a single file, or <code>--titles-dir</code> for a directory containing multiple <code>.txt</code> files.
                 </div>
 
                 <div class="info-box">
@@ -1938,15 +1977,16 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
 
                     <div class="command-ref">
                         <h4><code>dataset-download-wiki</code></h4>
-                        <p>Download Wikipedia articles (summaries or full content) into JSONL format. Requires <code>--title</code> or <code>--titles-file</code>.</p>
+                        <p>Download Wikipedia articles (summaries or full content) into JSONL format. Requires <code>--title</code>, <code>--titles-file</code>, or <code>--titles-dir</code>.</p>
                         <div class="command-syntax">
-                            <strong>Syntax:</strong> <code>dataset-download-wiki --title TEXT | --titles-file PATH [options]</code>
+                            <strong>Syntax:</strong> <code>dataset-download-wiki --title TEXT | --titles-file PATH | --titles-dir PATH [options]</code>
                         </div>
                         <div class="command-options">
                             <strong>Required (at least one):</strong>
                             <ul>
                                 <li><code>--title TEXT</code> - Specific Wikipedia titles to download (can be repeated for multiple titles)</li>
                                 <li><code>--titles-file PATH</code> - File with titles (one per line)</li>
+                                <li><code>--titles-dir PATH</code> - Directory containing multiple <code>.txt</code> files with titles (automatically reads all files)</li>
                             </ul>
                             <strong>Options:</strong>
                             <ul>
@@ -1964,17 +2004,24 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                             </ul>
                             <br>
                             <strong>Examples:</strong>
-                            <pre style="margin-top: 0.5rem;"><code># Summaries (fast)
+                            <pre style="margin-top: 0.5rem;"><code># Summaries (fast, inline titles)
 python -m sphana_trainer.cli dataset-download-wiki `
     --title "Machine learning" `
     --output wiki-summaries.jsonl
 
-# Full content (comprehensive)
+# Full content from single file
 python -m sphana_trainer.cli dataset-download-wiki `
     --titles-file samples\ai-ml-wiki-titles.txt `
     --full-content `
     --limit 500 `
-    --output wiki-full.jsonl</code></pre>
+    --output wiki-full.jsonl
+
+# Multi-domain from directory (100 domain files)
+python -m sphana_trainer.cli dataset-download-wiki `
+    --titles-dir samples\large `
+    --full-content `
+    --limit 50000 `
+    --output multi-domain.jsonl</code></pre>
                         </div>
                     </div>
 
