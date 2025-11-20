@@ -1,0 +1,928 @@
+Surgery
+Surgical procedure
+Operation
+Operative procedure
+General surgery
+Surgical subspecialty
+Cardiothoracic surgery
+Cardiac surgery
+Thoracic surgery
+Vascular surgery
+Neurosurgery
+Orthopedic surgery
+Plastic surgery
+Reconstructive surgery
+Cosmetic surgery
+Aesthetic surgery
+Oral and maxillofacial surgery
+Otolaryngology
+ENT surgery
+Head and neck surgery
+Ophthalmology
+Ophthalmic surgery
+Urology
+Gynecologic surgery
+Obstetric surgery
+Colorectal surgery
+Pediatric surgery
+Transplant surgery
+Trauma surgery
+Acute care surgery
+Surgical oncology
+Breast surgery
+Endocrine surgery
+Hepatobiliary surgery
+Bariatric surgery
+Weight loss surgery
+Hand surgery
+Microvascular surgery
+Burn surgery
+Minimally invasive surgery
+Laparoscopic surgery
+Laparoscopy
+Robotic surgery
+Robotic-assisted surgery
+Da Vinci surgery
+Endoscopic surgery
+Thoracoscopic surgery
+Video-assisted thoracoscopic surgery
+VATS
+Arthroscopic surgery
+Arthroscopy
+Open surgery
+Traditional surgery
+Elective surgery
+Emergency surgery
+Urgent surgery
+Outpatient surgery
+Ambulatory surgery
+Same-day surgery
+Inpatient surgery
+Preoperative
+Preoperative evaluation
+Preoperative assessment
+Medical clearance
+Surgical clearance
+Preoperative testing
+History and physical
+H&P
+Electrocardiogram
+ECG
+EKG
+Chest X-ray
+CXR
+Laboratory tests
+Complete blood count
+CBC
+Basic metabolic panel
+BMP
+Coagulation studies
+PT
+INR
+PTT
+Type and screen
+Type and cross
+Crossmatch
+Informed consent
+Surgical consent
+Risks
+Benefits
+Alternatives
+NPO
+Nothing by mouth
+Fasting
+Preoperative medications
+Prophylactic antibiotics
+Antibiotic prophylaxis
+Surgical site infection prophylaxis
+Bowel preparation
+Bowel prep
+Mechanical bowel prep
+Anticoagulation management
+Bridging anticoagulation
+Operating room
+OR
+Operating theater
+Surgical team
+Surgeon
+Assistant surgeon
+Scrub nurse
+Scrub technician
+Circulating nurse
+Anesthesiologist
+Anesthetist
+Certified registered nurse anesthetist
+CRNA
+Surgical safety checklist
+WHO surgical checklist
+Time out
+Universal protocol
+Patient positioning
+Supine
+Prone
+Lateral
+Lithotomy
+Trendelenburg
+Reverse Trendelenburg
+Surgical preparation
+Surgical site marking
+Site marking
+Surgical scrub
+Hand washing
+Surgical hand antisepsis
+Chlorhexidine
+Betadine
+Povidone-iodine
+Sterile field
+Sterile technique
+Aseptic technique
+Surgical draping
+Sterile drapes
+Anesthesia
+General anesthesia
+Regional anesthesia
+Local anesthesia
+Spinal anesthesia
+Epidural anesthesia
+Nerve block
+Peripheral nerve block
+Monitored anesthesia care
+MAC
+Conscious sedation
+Moderate sedation
+Deep sedation
+Induction
+Maintenance
+Emergence
+Intubation
+Endotracheal intubation
+Extubation
+Laryngeal mask airway
+LMA
+Mechanical ventilation
+Positive pressure ventilation
+Anesthetic agents
+Inhalational anesthetic
+Sevoflurane
+Desflurane
+Isoflurane
+Nitrous oxide
+Intravenous anesthetic
+Propofol
+Etomidate
+Ketamine
+Neuromuscular blocker
+Paralytic
+Succinylcholine
+Rocuronium
+Vecuronium
+Reversal agent
+Neostigmine
+Sugammadex
+Opioid
+Fentanyl
+Remifentanil
+Sufentanil
+Morphine
+Hydromorphone
+Benzodiazepine
+Midazolam
+Vasopressor
+Phenylephrine
+Ephedrine
+Norepinephrine
+Vasodilator
+Nitroglycerin
+Nitroprusside
+Antiemetic
+Ondansetron
+Dexamethasone
+Airway management
+Difficult airway
+Rapid sequence intubation
+RSI
+Crash intubation
+Cricothyrotomy
+Tracheostomy
+Hemodynamic monitoring
+Blood pressure monitoring
+Arterial line
+A-line
+Central venous catheter
+CVC
+Central line
+Pulmonary artery catheter
+Swan-Ganz catheter
+Cardiac output monitoring
+Pulse oximetry
+SpO2
+Oxygen saturation
+Capnography
+End-tidal CO2
+ETCO2
+Temperature monitoring
+Neuromuscular monitoring
+Train-of-four
+TOF
+Bispectral index
+BIS
+Depth of anesthesia
+Surgical instruments
+Scalpel
+Knife
+Blade
+Forceps
+Hemostatic forceps
+Clamp
+Kelly clamp
+Kocher clamp
+Mosquito clamp
+Needle holder
+Needle driver
+Scissors
+Retractor
+Self-retaining retractor
+Handheld retractor
+Army-Navy retractor
+Richardson retractor
+Deaver retractor
+Balfour retractor
+Bookwalter retractor
+Speculum
+Suction
+Yankauer suction
+Poole suction
+Electrocautery
+Cautery
+Bovie
+Monopolar cautery
+Bipolar cautery
+Argon beam coagulator
+Harmonic scalpel
+Ultrasonic scalpel
+LigaSure
+Vessel sealing device
+Surgical stapler
+Linear stapler
+Circular stapler
+Skin stapler
+Laparoscopic instruments
+Trocar
+Port
+Laparoscope
+Camera
+Video laparoscope
+Grasper
+Dissector
+Clip applier
+Endo bag
+Specimen retrieval bag
+Robotic instruments
+Robotic arms
+Console
+Patient cart
+Vision cart
+EndoWrist instruments
+Surgical technique
+Incision
+Surgical incision
+Midline incision
+Paramedian incision
+Transverse incision
+Pfannenstiel incision
+McBurney incision
+Kocher incision
+Chevron incision
+Mercedes incision
+Thoracotomy incision
+Sternotomy
+Median sternotomy
+Clamshell incision
+Dissection
+Sharp dissection
+Blunt dissection
+Electrocautery dissection
+Ultrasonic dissection
+Plane of dissection
+Tissue plane
+Hemostasis
+Bleeding control
+Ligation
+Suture ligation
+Tie
+Stick tie
+Transfixion suture
+Clip application
+Metal clip
+Hemoclip
+Surgical clip
+Cauterization
+Coagulation
+Packing
+Topical hemostatic agent
+Gelfoam
+Surgicel
+Fibrin glue
+Thrombin
+Surgical anastomosis
+Anastomosis
+End-to-end anastomosis
+End-to-side anastomosis
+Side-to-side anastomosis
+Hand-sewn anastomosis
+Stapled anastomosis
+Suturing
+Suture
+Suture material
+Absorbable suture
+Nonabsorbable suture
+Monofilament
+Multifilament
+Braided
+Silk
+Nylon
+Prolene
+Polypropylene
+Vicryl
+Polyglactin
+PDS
+Polydioxanone
+Chromic gut
+Plain gut
+Suture technique
+Continuous suture
+Running suture
+Interrupted suture
+Simple interrupted
+Mattress suture
+Horizontal mattress
+Vertical mattress
+Subcuticular suture
+Buried suture
+Purse-string suture
+Figure-of-eight suture
+Surgical knot
+Square knot
+Surgeon's knot
+Instrument tie
+Hand tie
+Two-hand tie
+One-hand tie
+Stapling
+Skin staples
+Surgical tape
+Steri-Strips
+Tissue adhesive
+Dermabond
+Cyanoacrylate
+Wound closure
+Primary closure
+Secondary closure
+Tertiary closure
+Delayed primary closure
+Wound healing by primary intention
+Wound healing by secondary intention
+Surgical drain
+Drain
+Closed suction drain
+Jackson-Pratt drain
+JP drain
+Hemovac
+Blake drain
+Penrose drain
+Chest tube
+Thoracostomy tube
+Foley catheter
+Urinary catheter
+Nasogastric tube
+NG tube
+Orogastric tube
+OG tube
+Surgical dressing
+Sterile dressing
+Occlusive dressing
+Absorptive dressing
+Compression dressing
+Pressure dressing
+Bandage
+Gauze
+Abdominal pad
+ABD pad
+Sponge
+Lap sponge
+Ray-Tec
+4x4
+Tegaderm
+Transparent film
+Postoperative
+Postoperative care
+Recovery
+Post-anesthesia care unit
+PACU
+Recovery room
+Postoperative monitoring
+Vital signs
+Pain assessment
+Pain scale
+Numeric rating scale
+Visual analog scale
+Postoperative pain
+Acute pain
+Incisional pain
+Pain management
+Multimodal analgesia
+Patient-controlled analgesia
+PCA
+Epidural analgesia
+Nerve block
+Peripheral nerve block
+Opioid
+Morphine
+Hydromorphone
+Dilaudid
+Oxycodone
+Hydrocodone
+Nonsteroidal anti-inflammatory drug
+NSAID
+Ketorolac
+Toradol
+Ibuprofen
+Acetaminophen
+Tylenol
+Local anesthetic
+Lidocaine
+Bupivacaine
+Postoperative nausea and vomiting
+PONV
+Antiemetic
+Ondansetron
+Zofran
+Metoclopramide
+Reglan
+Prochlorperazine
+Compazine
+Promethazine
+Phenergan
+Scopolamine patch
+Dexamethasone
+Aprepitant
+Emend
+Deep vein thrombosis prophylaxis
+DVT prophylaxis
+Sequential compression device
+SCD
+Pneumatic compression device
+Intermittent pneumatic compression
+IPC
+Compression stockings
+TED hose
+Anticoagulation
+Subcutaneous heparin
+Low molecular weight heparin
+LMWH
+Enoxaparin
+Lovenox
+Fondaparinux
+Arixtra
+Early mobilization
+Ambulation
+Out of bed
+OOB
+Up in chair
+Incentive spirometry
+IS
+Respiratory therapy
+Chest physiotherapy
+Deep breathing
+Coughing
+Splinting
+Pulmonary toilet
+Diet advancement
+NPO
+Clear liquids
+Full liquids
+Regular diet
+Bowel function
+Flatus
+Passing gas
+Bowel movement
+BM
+Urinary function
+Voiding
+Urination
+Urinary retention
+Straight catheterization
+Foley catheter
+Wound care
+Incision care
+Dressing change
+Drain care
+Drain output
+Surgical site
+Staple removal
+Suture removal
+Discharge planning
+Discharge instructions
+Activity restrictions
+Lifting restrictions
+Driving restrictions
+Return to work
+Follow-up appointment
+Postoperative visit
+Wound check
+Surgical complications
+Complication
+Adverse event
+Bleeding
+Hemorrhage
+Postoperative bleeding
+Hematoma
+Seroma
+Infection
+Surgical site infection
+SSI
+Superficial incisional SSI
+Deep incisional SSI
+Organ/space SSI
+Wound infection
+Abscess
+Cellulitis
+Fasciitis
+Necrotizing fasciitis
+Sepsis
+Severe sepsis
+Septic shock
+Wound dehiscence
+Fascial dehiscence
+Evisceration
+Anastomotic leak
+Leak
+Fistula
+Enterocutaneous fistula
+Ileus
+Postoperative ileus
+Paralytic ileus
+Small bowel obstruction
+SBO
+Adhesions
+Adhesive disease
+Bowel obstruction
+Large bowel obstruction
+LBO
+Deep vein thrombosis
+DVT
+Pulmonary embolism
+PE
+Venous thromboembolism
+VTE
+Atelectasis
+Pneumonia
+Hospital-acquired pneumonia
+HAP
+Ventilator-associated pneumonia
+VAP
+Aspiration pneumonia
+Respiratory failure
+Acute respiratory distress syndrome
+ARDS
+Pneumothorax
+Hemothorax
+Pleural effusion
+Myocardial infarction
+MI
+Heart attack
+Arrhythmia
+Atrial fibrillation
+AFib
+Cardiac arrest
+Stroke
+Cerebrovascular accident
+CVA
+Urinary tract infection
+UTI
+Catheter-associated UTI
+CAUTI
+Acute kidney injury
+AKI
+Renal failure
+Delirium
+Postoperative delirium
+Pressure ulcer
+Decubitus ulcer
+Bedsore
+Nerve injury
+Neuropraxia
+Mortality
+Death
+Reoperation
+Return to OR
+Readmission
+Hospital readmission
+30-day readmission
+Specific procedures
+Appendectomy
+Laparoscopic appendectomy
+Open appendectomy
+Cholecystectomy
+Laparoscopic cholecystectomy
+Lap chole
+Open cholecystectomy
+Hernia repair
+Inguinal hernia repair
+Umbilical hernia repair
+Incisional hernia repair
+Ventral hernia repair
+Hiatal hernia repair
+Fundoplication
+Nissen fundoplication
+Laparoscopic Nissen
+Colectomy
+Hemicolectomy
+Right hemicolectomy
+Left hemicolectomy
+Sigmoid colectomy
+Total colectomy
+Subtotal colectomy
+Low anterior resection
+LAR
+Abdominoperineal resection
+APR
+Hartmann procedure
+Colostomy
+End colostomy
+Loop colostomy
+Ileostomy
+End ileostomy
+Loop ileostomy
+Stoma
+Ostomy
+Ostomy reversal
+Stoma closure
+Bowel resection
+Small bowel resection
+Gastrectomy
+Partial gastrectomy
+Total gastrectomy
+Billroth I
+Billroth II
+Roux-en-Y
+Esophagectomy
+Ivor Lewis esophagectomy
+Transhiatal esophagectomy
+Whipple procedure
+Pancreaticoduodenectomy
+Distal pancreatectomy
+Splenectomy
+Liver resection
+Hepatectomy
+Right hepatectomy
+Left hepatectomy
+Hepatic lobectomy
+Wedge resection
+Nephrectomy
+Radical nephrectomy
+Partial nephrectomy
+Cystectomy
+Radical cystectomy
+Prostatectomy
+Radical prostatectomy
+Open prostatectomy
+Laparoscopic prostatectomy
+Robotic prostatectomy
+Transurethral resection of prostate
+TURP
+Hysterectomy
+Total hysterectomy
+Subtotal hysterectomy
+Supracervical hysterectomy
+Radical hysterectomy
+Abdominal hysterectomy
+Vaginal hysterectomy
+Laparoscopic hysterectomy
+Robotic hysterectomy
+Oophorectomy
+Salpingectomy
+Salpingo-oophorectomy
+Bilateral salpingo-oophorectomy
+BSO
+Cesarean section
+C-section
+Cesarean delivery
+Mastectomy
+Simple mastectomy
+Modified radical mastectomy
+Radical mastectomy
+Skin-sparing mastectomy
+Nipple-sparing mastectomy
+Lumpectomy
+Partial mastectomy
+Breast-conserving surgery
+Sentinel lymph node biopsy
+SLNB
+Axillary lymph node dissection
+ALND
+Thyroidectomy
+Total thyroidectomy
+Hemithyroidectomy
+Lobectomy
+Parathyroidectomy
+Adrenalectomy
+Carotid endarterectomy
+CEA
+Coronary artery bypass grafting
+CABG
+Bypass surgery
+Valve replacement
+Aortic valve replacement
+Mitral valve replacement
+Valve repair
+Mitral valve repair
+Pericardial window
+Lung resection
+Lobectomy
+Pneumonectomy
+Wedge resection
+Video-assisted thoracoscopic surgery
+VATS
+Craniotomy
+Craniectomy
+Decompressive craniectomy
+Burr hole
+Ventriculostomy
+External ventricular drain
+EVD
+Spinal fusion
+Laminectomy
+Laminotomy
+Discectomy
+Microdiscectomy
+Foraminotomy
+Vertebroplasty
+Kyphoplasty
+Joint replacement
+Total knee replacement
+TKR
+Total knee arthroplasty
+TKA
+Total hip replacement
+THR
+Total hip arthroplasty
+THA
+Hip resurfacing
+Shoulder replacement
+Total shoulder arthroplasty
+Arthroscopy
+Knee arthroscopy
+Shoulder arthroscopy
+Hip arthroscopy
+Meniscectomy
+Partial meniscectomy
+Total meniscectomy
+ACL reconstruction
+Anterior cruciate ligament reconstruction
+Rotator cuff repair
+Carpal tunnel release
+Tendon repair
+Fracture fixation
+Internal fixation
+External fixation
+Open reduction internal fixation
+ORIF
+Intramedullary nail
+IM nail
+Plate and screws
+Percutaneous pinning
+Amputation
+Above-knee amputation
+AKA
+Below-knee amputation
+BKA
+Toe amputation
+Finger amputation
+Revision amputation
+Skin graft
+Split-thickness skin graft
+STSG
+Full-thickness skin graft
+FTSG
+Flap
+Local flap
+Regional flap
+Free flap
+Microvascular free flap
+Muscle flap
+Fasciocutaneous flap
+Perforator flap
+Debridement
+Wound debridement
+Sharp debridement
+Surgical debridement
+Mechanical debridement
+Enzymatic debridement
+Autolytic debridement
+Tracheostomy
+Percutaneous tracheostomy
+Open tracheostomy
+Gastrostomy tube
+G-tube
+PEG
+Percutaneous endoscopic gastrostomy
+Jejunostomy tube
+J-tube
+Feeding tube
+Vascular access
+Central venous catheter
+CVC
+Peripherally inserted central catheter
+PICC
+Port
+Port-a-Cath
+Implantable venous access device
+Arteriovenous fistula
+AV fistula
+Dialysis access
+Embolectomy
+Thrombectomy
+Endarterectomy
+Bypass
+Peripheral bypass
+Femoral-popliteal bypass
+Fem-pop bypass
+Aortobifemoral bypass
+Angioplasty
+Stenting
+Endovascular repair
+Endovascular aneurysm repair
+EVAR
+Thoracic endovascular aortic repair
+TEVAR
+Varicose vein surgery
+Vein stripping
+Sclerotherapy
+Endovenous laser ablation
+EVLA
+Radiofrequency ablation
+RFA
+Mastoidectomy
+Tympanoplasty
+Myringotomy
+Tympanostomy tube
+PE tube
+Pressure equalization tube
+Septoplasty
+Turbinectomy
+Sinus surgery
+Functional endoscopic sinus surgery
+FESS
+Tonsillectomy
+Adenoidectomy
+T&A
+Tonsillectomy and adenoidectomy
+Thyroid surgery
+Parotidectomy
+Neck dissection
+Lymph node dissection
+Cataract surgery
+Phacoemulsification
+Intraocular lens
+IOL
+Vitrectomy
+Retinal detachment repair
+Glaucoma surgery
+Trabeculectomy
+Corneal transplant
+Keratoplasty
+Refractive surgery
+LASIK
+PRK
+Photorefractive keratectomy
+Strabismus surgery
+Blepharoplasty
+Eyelid surgery
+Ptosis repair
+Rhinoplasty
+Nose job
+Facelift
+Rhytidectomy
+Brow lift
+Forehead lift
+Liposuction
+Suction-assisted lipectomy
+Abdominoplasty
+Tummy tuck
+Breast augmentation
+Breast implants
+Breast reduction
+Reduction mammaplasty
+Breast lift
+Mastopexy
+Lip augmentation
+Cheek augmentation
+Chin augmentation
+Genioplasty
+Otoplasty
+Ear surgery
+Hair transplant
+Follicular unit extraction
+FUE
+

@@ -1,0 +1,1014 @@
+Mechanical engineering
+Mechanics
+Classical mechanics
+Newtonian mechanics
+Statics
+Dynamics
+Kinematics
+Kinetics
+Force
+Newton's laws of motion
+Mass
+Weight
+Momentum
+Linear momentum
+Angular momentum
+Impulse
+Velocity
+Acceleration
+Displacement
+Position
+Motion
+Linear motion
+Rotational motion
+Circular motion
+Projectile motion
+Harmonic motion
+Simple harmonic motion
+Damped harmonic motion
+Forced oscillation
+Resonance
+Friction
+Static friction
+Kinetic friction
+Rolling friction
+Coefficient of friction
+Normal force
+Tension
+Compression
+Shear
+Torque
+Moment
+Couple
+Center of mass
+Center of gravity
+Centroid
+Moment of inertia
+Radius of gyration
+Parallel axis theorem
+Perpendicular axis theorem
+Work
+Energy
+Kinetic energy
+Potential energy
+Gravitational potential energy
+Elastic potential energy
+Conservation of energy
+Power
+Efficiency
+Mechanical advantage
+Simple machines
+Lever
+Wheel and axle
+Pulley
+Inclined plane
+Wedge
+Screw
+Gear
+Spur gear
+Helical gear
+Bevel gear
+Worm gear
+Planetary gear
+Gear ratio
+Gear train
+Transmission
+Linkage
+Four-bar linkage
+Slider-crank mechanism
+Cam
+Cam follower
+Cam profile
+Belt drive
+Chain drive
+Clutch
+Brake
+Bearing
+Ball bearing
+Roller bearing
+Journal bearing
+Thrust bearing
+Lubrication
+Fluid mechanics
+Fluid dynamics
+Fluid statics
+Hydrostatics
+Hydrodynamics
+Aerodynamics
+Gas dynamics
+Compressible flow
+Incompressible flow
+Viscosity
+Dynamic viscosity
+Kinematic viscosity
+Newtonian fluid
+Non-Newtonian fluid
+Density
+Specific gravity
+Pressure
+Atmospheric pressure
+Gauge pressure
+Absolute pressure
+Hydrostatic pressure
+Pascal's principle
+Buoyancy
+Archimedes' principle
+Flow
+Laminar flow
+Turbulent flow
+Transitional flow
+Reynolds number
+Boundary layer
+Velocity profile
+Flow rate
+Volumetric flow rate
+Mass flow rate
+Continuity equation
+Bernoulli's equation
+Venturi effect
+Pitot tube
+Drag
+Drag coefficient
+Lift
+Lift coefficient
+Airfoil
+Wing
+Circulation
+Vortex
+Wake
+Flow separation
+Stall
+Cavitation
+Water hammer
+Pipe flow
+Open channel flow
+Navier-Stokes equations
+Computational fluid dynamics
+CFD
+Fluid simulation
+Thermodynamics
+Laws of thermodynamics
+First law of thermodynamics
+Second law of thermodynamics
+Third law of thermodynamics
+Zeroth law of thermodynamics
+Temperature
+Heat
+Internal energy
+Enthalpy
+Entropy
+Gibbs free energy
+Helmholtz free energy
+Thermal equilibrium
+Thermodynamic system
+Closed system
+Open system
+Isolated system
+Thermodynamic process
+Isothermal process
+Adiabatic process
+Isobaric process
+Isochoric process
+Reversible process
+Irreversible process
+Thermodynamic cycle
+Carnot cycle
+Rankine cycle
+Brayton cycle
+Otto cycle
+Diesel cycle
+Stirling cycle
+Heat engine
+Thermal efficiency
+Carnot efficiency
+Heat pump
+Refrigeration cycle
+Refrigerator
+Air conditioning
+Coefficient of performance
+COP
+Heat transfer
+Conduction
+Convection
+Radiation
+Thermal conductivity
+Thermal resistance
+R-value
+U-value
+Heat flux
+Fourier's law
+Newton's law of cooling
+Stefan-Boltzmann law
+Emissivity
+Blackbody
+Heat exchanger
+Counterflow heat exchanger
+Parallel flow heat exchanger
+Shell and tube heat exchanger
+Plate heat exchanger
+Finned surface
+Extended surface
+Insulation
+Thermal insulation
+Phase change
+Melting
+Freezing
+Boiling
+Condensation
+Sublimation
+Latent heat
+Heat of fusion
+Heat of vaporization
+Specific heat capacity
+Thermal expansion
+Coefficient of thermal expansion
+Materials science
+Material properties
+Mechanical properties
+Physical properties
+Chemical properties
+Stress
+Normal stress
+Shear stress
+Tensile stress
+Compressive stress
+Strain
+Normal strain
+Shear strain
+Stress-strain curve
+Elastic region
+Plastic region
+Yield point
+Yield strength
+Ultimate tensile strength
+UTS
+Breaking strength
+Ductility
+Elongation
+Reduction in area
+Brittleness
+Toughness
+Hardness
+Brinell hardness
+Rockwell hardness
+Vickers hardness
+Mohs hardness
+Elasticity
+Hooke's law
+Young's modulus
+Elastic modulus
+Modulus of elasticity
+Shear modulus
+Bulk modulus
+Poisson's ratio
+Plasticity
+Plastic deformation
+Work hardening
+Strain hardening
+Annealing
+Tempering
+Quenching
+Normalizing
+Heat treatment
+Fatigue
+Fatigue failure
+Fatigue life
+S-N curve
+Endurance limit
+Fatigue limit
+Cyclic loading
+Creep
+Creep strain
+Creep rate
+Stress relaxation
+Fracture
+Brittle fracture
+Ductile fracture
+Fracture toughness
+Stress concentration
+Notch sensitivity
+Crack propagation
+Fracture mechanics
+Linear elastic fracture mechanics
+LEFM
+Stress intensity factor
+Critical stress intensity factor
+Metals
+Ferrous metals
+Non-ferrous metals
+Iron
+Steel
+Carbon steel
+Alloy steel
+Stainless steel
+Cast iron
+Gray cast iron
+Ductile iron
+Malleable iron
+Aluminum
+Aluminum alloy
+Copper
+Brass
+Bronze
+Titanium
+Titanium alloy
+Nickel
+Magnesium
+Zinc
+Lead
+Tin
+Alloy
+Composite material
+Composite
+Fiber-reinforced composite
+Carbon fiber
+Glass fiber
+Kevlar
+Aramid fiber
+Matrix
+Resin
+Epoxy
+Polymer
+Thermoplastic
+Thermoset
+Plastic
+Polyethylene
+Polypropylene
+Polyvinyl chloride
+PVC
+Polystyrene
+Nylon
+Polyester
+Ceramic
+Oxide ceramic
+Carbide
+Nitride
+Porcelain
+Glass
+Tempered glass
+Laminated glass
+Wood
+Hardwood
+Softwood
+Plywood
+Engineered wood
+Manufacturing
+Manufacturing process
+Production
+Machining
+Turning
+Lathe
+Milling
+Milling machine
+CNC machine
+Computer numerical control
+Drilling
+Drill press
+Boring
+Reaming
+Tapping
+Threading
+Grinding
+Grinder
+Surface grinding
+Cylindrical grinding
+Cutting
+Sawing
+Shearing
+Punching
+Blanking
+Forming
+Bending
+Rolling
+Forging
+Extrusion
+Drawing
+Wire drawing
+Stamping
+Deep drawing
+Hydroforming
+Casting
+Sand casting
+Die casting
+Investment casting
+Lost-wax casting
+Permanent mold casting
+Centrifugal casting
+Continuous casting
+Welding
+Arc welding
+Gas metal arc welding
+GMAW
+MIG welding
+Gas tungsten arc welding
+GTAW
+TIG welding
+Shielded metal arc welding
+SMAW
+Stick welding
+Submerged arc welding
+SAW
+Resistance welding
+Spot welding
+Seam welding
+Friction welding
+Friction stir welding
+Laser welding
+Electron beam welding
+Brazing
+Soldering
+Additive manufacturing
+3D printing
+Fused deposition modeling
+FDM
+Stereolithography
+SLA
+Selective laser sintering
+SLS
+Binder jetting
+Powder bed fusion
+Direct metal laser sintering
+DMLS
+Electron beam melting
+EBM
+Rapid prototyping
+Quality control
+Inspection
+Metrology
+Dimensional metrology
+Measurement
+Precision
+Accuracy
+Tolerance
+Geometric dimensioning and tolerancing
+GD&T
+Surface finish
+Surface roughness
+Roughness average
+Ra
+Coordinate measuring machine
+CMM
+Caliper
+Micrometer
+Gauge
+Go/no-go gauge
+Statistical process control
+SPC
+Control chart
+Process capability
+Six Sigma
+Lean manufacturing
+Kaizen
+Just-in-time
+JIT
+Total quality management
+TQM
+ISO 9001
+Machine design
+Mechanical design
+Design process
+Engineering design process
+Conceptual design
+Preliminary design
+Detailed design
+Design for manufacturing
+DFM
+Design for assembly
+DFA
+Design for X
+DFX
+Computer-aided design
+CAD
+SolidWorks
+AutoCAD
+CATIA
+Creo
+Inventor
+Fusion 360
+Parametric modeling
+3D modeling
+Solid modeling
+Surface modeling
+Assembly modeling
+Drawing
+Engineering drawing
+Technical drawing
+Blueprint
+Dimensioning
+Annotation
+Bill of materials
+BOM
+Finite element analysis
+FEA
+Finite element method
+FEM
+Mesh
+Meshing
+Element
+Node
+Stress analysis
+Structural analysis
+Modal analysis
+Vibration analysis
+Thermal analysis
+Computational simulation
+Factor of safety
+Safety factor
+Design margin
+Failure modes and effects analysis
+FMEA
+Failure mode
+Failure analysis
+Root cause analysis
+Reliability
+Reliability engineering
+Mean time between failures
+MTBF
+Mean time to failure
+MTTF
+Fault tree analysis
+FTA
+Mechatronics
+Automation
+Control systems
+Control theory
+Feedback control
+Feedforward control
+Open-loop control
+Closed-loop control
+Proportional control
+Integral control
+Derivative control
+PID controller
+Proportional-integral-derivative controller
+Transfer function
+Block diagram
+Laplace transform
+Frequency response
+Bode plot
+Nyquist plot
+Root locus
+Stability
+Steady-state error
+Transient response
+Rise time
+Settling time
+Overshoot
+Damping ratio
+Natural frequency
+State-space representation
+Controllability
+Observability
+Actuator
+Electric actuator
+Hydraulic actuator
+Pneumatic actuator
+Linear actuator
+Rotary actuator
+Servo motor
+Servomotor
+Stepper motor
+DC motor
+Brushed DC motor
+Brushless DC motor
+BLDC motor
+AC motor
+Induction motor
+Synchronous motor
+Sensor
+Transducer
+Position sensor
+Displacement sensor
+Proximity sensor
+Encoder
+Optical encoder
+Rotary encoder
+Linear encoder
+Potentiometer
+Linear variable differential transformer
+LVDT
+Velocity sensor
+Tachometer
+Acceleration sensor
+Accelerometer
+Force sensor
+Load cell
+Strain gauge
+Torque sensor
+Pressure sensor
+Pressure transducer
+Temperature sensor
+Thermocouple
+Resistance temperature detector
+RTD
+Thermistor
+Infrared sensor
+Photoelectric sensor
+Ultrasonic sensor
+Laser sensor
+Vision sensor
+Camera
+Machine vision
+Image processing
+Programmable logic controller
+PLC
+Microcontroller
+Embedded system
+Arduino
+Raspberry Pi
+Real-time system
+Human-machine interface
+HMI
+SCADA
+Supervisory control and data acquisition
+Robotics
+Industrial robot
+Robot manipulator
+Robot arm
+Robotic arm
+Articulated robot
+SCARA robot
+Cartesian robot
+Gantry robot
+Delta robot
+Parallel robot
+Collaborative robot
+Cobot
+End effector
+Gripper
+Robot kinematics
+Forward kinematics
+Inverse kinematics
+Jacobian
+Singularity
+Workspace
+Reachability
+Dexterity
+Trajectory planning
+Path planning
+Motion planning
+Robot control
+Joint space control
+Cartesian space control
+Force control
+Impedance control
+Robot programming
+Teach pendant
+Offline programming
+Robot simulation
+Automotive engineering
+Automobile
+Car
+Vehicle
+Engine
+Internal combustion engine
+ICE
+Piston engine
+Reciprocating engine
+Four-stroke engine
+Two-stroke engine
+Gasoline engine
+Petrol engine
+Diesel engine
+Compression ignition
+Spark ignition
+Cylinder
+Piston
+Connecting rod
+Crankshaft
+Camshaft
+Valve
+Intake valve
+Exhaust valve
+Valve train
+Overhead cam
+OHC
+Overhead valve
+OHV
+Pushrod
+Rocker arm
+Combustion chamber
+Fuel injection
+Fuel injector
+Direct injection
+Port injection
+Carburetor
+Air-fuel ratio
+Stoichiometric ratio
+Ignition system
+Spark plug
+Distributor
+Ignition coil
+Timing
+Ignition timing
+Valve timing
+Variable valve timing
+VVT
+Lubrication system
+Oil pump
+Oil filter
+Cooling system
+Radiator
+Water pump
+Thermostat
+Coolant
+Antifreeze
+Exhaust system
+Exhaust manifold
+Catalytic converter
+Muffler
+Silencer
+Tailpipe
+Turbocharger
+Supercharger
+Intercooler
+Forced induction
+Boost pressure
+Transmission system
+Manual transmission
+Automatic transmission
+Continuously variable transmission
+CVT
+Dual-clutch transmission
+DCT
+Gearbox
+Clutch
+Torque converter
+Differential
+Limited-slip differential
+LSD
+Transfer case
+Driveshaft
+Propeller shaft
+Axle
+Drive axle
+Front-wheel drive
+FWD
+Rear-wheel drive
+RWD
+All-wheel drive
+AWD
+Four-wheel drive
+4WD
+Suspension system
+Spring
+Coil spring
+Leaf spring
+Torsion bar
+Shock absorber
+Damper
+Strut
+MacPherson strut
+Independent suspension
+Solid axle
+Live axle
+Air suspension
+Adaptive suspension
+Steering system
+Rack and pinion
+Recirculating ball
+Power steering
+Electric power steering
+EPS
+Hydraulic power steering
+Steering column
+Steering wheel
+Braking system
+Brake
+Disc brake
+Drum brake
+Brake pad
+Brake shoe
+Brake caliper
+Brake rotor
+Brake disc
+Master cylinder
+Brake fluid
+Hydraulic brake
+Antilock braking system
+ABS
+Electronic stability control
+ESC
+Traction control system
+TCS
+Regenerative braking
+Wheel
+Tire
+Tyre
+Tread
+Sidewall
+Rim
+Wheel alignment
+Camber
+Caster
+Toe
+Chassis
+Frame
+Unibody
+Body-on-frame
+Monocoque
+Aerodynamics
+Drag coefficient
+Downforce
+Spoiler
+Wing
+Diffuser
+Automotive safety
+Crashworthiness
+Crash test
+Crumple zone
+Safety cage
+Airbag
+Seatbelt
+Rollover protection
+Aerospace engineering
+Aircraft
+Airplane
+Aeroplane
+Helicopter
+Glider
+Unmanned aerial vehicle
+UAV
+Drone
+Rocket
+Spacecraft
+Satellite
+Aerodynamics
+Airfoil
+Wing
+Lift
+Drag
+Induced drag
+Parasitic drag
+Profile drag
+Wave drag
+Angle of attack
+Stall
+Aspect ratio
+Wing loading
+Airspeed
+True airspeed
+Indicated airspeed
+Mach number
+Subsonic
+Transonic
+Supersonic
+Hypersonic
+Shock wave
+Sonic boom
+Compressibility
+Flight mechanics
+Forces on aircraft
+Lift force
+Drag force
+Thrust
+Weight
+Flight dynamics
+Longitudinal stability
+Lateral stability
+Directional stability
+Roll
+Pitch
+Yaw
+Control surfaces
+Aileron
+Elevator
+Rudder
+Flap
+Slat
+Spoiler
+Trim tab
+Propulsion
+Jet engine
+Turbojet
+Turbofan
+Turboprop
+Turboshaft
+Ramjet
+Scramjet
+Rocket engine
+Liquid rocket
+Solid rocket
+Hybrid rocket
+Thrust vectoring
+Nozzle
+Convergent-divergent nozzle
+Aircraft structure
+Fuselage
+Empennage
+Tail
+Horizontal stabilizer
+Vertical stabilizer
+Landing gear
+Undercarriage
+Retractable landing gear
+Nose gear
+Main gear
+Energy systems
+Power generation
+Power plant
+Thermal power plant
+Steam power plant
+Boiler
+Steam turbine
+Condenser
+Cooling tower
+Gas turbine
+Gas turbine engine
+Brayton cycle
+Combustion chamber
+Compressor
+Axial compressor
+Centrifugal compressor
+Turbine
+Axial turbine
+Radial turbine
+Combined cycle
+Combined cycle power plant
+Cogeneration
+Combined heat and power
+CHP
+Renewable energy
+Solar energy
+Solar thermal
+Solar collector
+Concentrating solar power
+CSP
+Parabolic trough
+Solar tower
+Wind energy
+Wind turbine
+Wind farm
+Horizontal axis wind turbine
+HAWT
+Vertical axis wind turbine
+VAWT
+Rotor
+Blade
+Pitch control
+Yaw control
+Hydroelectric power
+Hydropower
+Dam
+Reservoir
+Penstock
+Francis turbine
+Kaplan turbine
+Pelton wheel
+Pumped-storage hydroelectricity
+Geothermal energy
+Geothermal power plant
+Biomass energy
+Biofuel
+HVAC
+Heating, ventilation, and air conditioning
+Air conditioning
+Air conditioner
+Chiller
+Evaporator
+Compressor
+Condenser
+Expansion valve
+Refrigerant
+Heat pump
+Heating system
+Furnace
+Boiler
+Radiator
+Radiant heating
+Forced air
+Duct
+Ventilation
+Natural ventilation
+Mechanical ventiation
+Air handling unit
+AHU
+Fresh air
+Exhaust air
+Air filter
+Thermostat
+Building automation
+Energy efficiency
+Coefficient of performance
+COP
+Energy efficiency ratio
+EER
+Seasonal energy efficiency ratio
+SEER
+Maintenance
+Preventive maintenance
+Predictive maintenance
+Condition monitoring
+Vibration analysis
+Oil analysis
+Thermography
+Ultrasonic testing
+Reliability-centered maintenance
+RCM
+Total productive maintenance
+TPM
+Mean time to repair
+MTTR
+Spare parts
+Inventory management
+

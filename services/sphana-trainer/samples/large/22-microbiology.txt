@@ -1,0 +1,935 @@
+Microbiology
+Microorganism
+Microbe
+Bacteriology
+Virology
+Mycology
+Parasitology
+Protozoology
+Microbial ecology
+Environmental microbiology
+Medical microbiology
+Clinical microbiology
+Industrial microbiology
+Food microbiology
+Agricultural microbiology
+Aquatic microbiology
+Soil microbiology
+Extremophile
+Thermophile
+Psychrophile
+Halophile
+Acidophile
+Alkaliphile
+Barophile
+Xerophile
+Bacteria
+Prokaryote
+Cell wall
+Peptidoglycan
+Murein
+Gram stain
+Gram-positive
+Gram-negative
+Cell membrane
+Plasma membrane
+Cytoplasm
+Nucleoid
+Plasmid
+Ribosome
+70S ribosome
+Flagellum
+Flagella
+Pilus
+Pili
+Fimbria
+Fimbriae
+Capsule
+Slime layer
+Glycocalyx
+Endospore
+Spore
+Sporulation
+Germination
+Bacterial growth
+Binary fission
+Generation time
+Doubling time
+Growth curve
+Lag phase
+Log phase
+Exponential phase
+Stationary phase
+Death phase
+Batch culture
+Continuous culture
+Chemostat
+Turbidostat
+Colony
+Colony-forming unit
+CFU
+Pure culture
+Mixed culture
+Axenic culture
+Culture medium
+Growth medium
+Nutrient medium
+Defined medium
+Synthetic medium
+Complex medium
+Undefined medium
+Enriched medium
+Selective medium
+Differential medium
+Nutrient agar
+Blood agar
+MacConkey agar
+EMB agar
+Eosin methylene blue
+Mannitol salt agar
+Chocolate agar
+Sabouraud agar
+Thioglycollate broth
+Anaerobic culture
+Aerobic culture
+Facultative anaerobe
+Obligate anaerobe
+Obligate aerobe
+Microaerophile
+Capnophile
+Anaerobic jar
+GasPak
+Candle jar
+Incubation
+Incubator
+Aseptic technique
+Sterile technique
+Sterilization
+Autoclaving
+Autoclave
+Pasteurization
+Filtration
+Membrane filter
+HEPA filter
+UV irradiation
+Disinfection
+Disinfectant
+Antiseptic
+Antimicrobial agent
+Bactericidal
+Bacteriostatic
+Antibiotic
+Antibacterial
+Penicillin
+Beta-lactam
+Cephalosporin
+Carbapenem
+Monobactam
+Aminoglycoside
+Tetracycline
+Macrolide
+Fluoroquinolone
+Sulfonamide
+Trimethoprim
+Glycopeptide
+Vancomycin
+Metronidazole
+Rifampin
+Isoniazid
+Mechanism of action
+Cell wall synthesis inhibition
+Protein synthesis inhibition
+DNA replication inhibition
+RNA synthesis inhibition
+Folate synthesis inhibition
+Antibiotic resistance
+Drug resistance
+Multidrug resistance
+MDR
+Extensively drug-resistant
+XDR
+Pandrug-resistant
+PDR
+Resistance mechanism
+Beta-lactamase
+Extended-spectrum beta-lactamase
+ESBL
+Carbapenemase
+MRSA
+Methicillin-resistant Staphylococcus aureus
+VRE
+Vancomycin-resistant Enterococcus
+Minimum inhibitory concentration
+MIC
+Minimum bactericidal concentration
+MBC
+Kirby-Bauer test
+Disk diffusion test
+Zone of inhibition
+E-test
+Broth dilution test
+Microbial taxonomy
+Classification
+Nomenclature
+Binomial nomenclature
+Genus
+Species
+Strain
+Type strain
+Bergey's Manual
+Domain
+Kingdom
+Phylum
+Class
+Order
+Family
+Tribe
+Bacterial phyla
+Proteobacteria
+Alpha-proteobacteria
+Beta-proteobacteria
+Gamma-proteobacteria
+Delta-proteobacteria
+Epsilon-proteobacteria
+Firmicutes
+Actinobacteria
+Bacteroidetes
+Cyanobacteria
+Spirochaetes
+Chlamydiae
+Planctomycetes
+Fusobacteria
+Archaea
+Archaebacteria
+Euryarchaeota
+Crenarchaeota
+Methanogens
+Halophiles
+Thermoacidophiles
+Bacterial morphology
+Coccus
+Cocci
+Bacillus
+Bacilli
+Rod
+Spirillum
+Spirilla
+Spiral
+Spirochete
+Vibrio
+Comma-shaped
+Coccobacillus
+Pleomorphic
+Diplococcus
+Streptococcus
+Staphylococcus
+Tetrad
+Sarcina
+Streptobacillus
+Palisade
+Common bacteria
+Escherichia coli
+E. coli
+Staphylococcus aureus
+S. aureus
+Streptococcus pyogenes
+S. pyogenes
+Group A Streptococcus
+GAS
+Streptococcus pneumoniae
+S. pneumoniae
+Pneumococcus
+Streptococcus agalactiae
+Group B Streptococcus
+GBS
+Enterococcus faecalis
+Enterococcus faecium
+Bacillus subtilis
+Bacillus anthracis
+Anthrax
+Bacillus cereus
+Clostridium botulinum
+Botulism
+Clostridium tetani
+Tetanus
+Clostridium difficile
+C. difficile
+C. diff
+Pseudomembranous colitis
+Clostridium perfringens
+Gas gangrene
+Listeria monocytogenes
+Listeriosis
+Corynebacterium diphtheriae
+Diphtheria
+Mycobacterium tuberculosis
+M. tuberculosis
+Tuberculosis
+TB
+Acid-fast bacillus
+AFB
+Ziehl-Neelsen stain
+Mycobacterium leprae
+Leprosy
+Hansen's disease
+Mycobacterium avium complex
+MAC
+Nocardia
+Actinomyces
+Pseudomonas aeruginosa
+P. aeruginosa
+Burkholderia cepacia
+Acinetobacter baumannii
+Vibrio cholerae
+Cholera
+Vibrio parahaemolyticus
+Vibrio vulnificus
+Campylobacter jejuni
+Helicobacter pylori
+H. pylori
+Peptic ulcer
+Salmonella
+Salmonella enterica
+Salmonellosis
+Typhoid fever
+Salmonella typhi
+Shigella
+Shigellosis
+Dysentery
+Yersinia pestis
+Plague
+Bubonic plague
+Yersinia enterocolitica
+Klebsiella pneumoniae
+Proteus mirabilis
+Enterobacter
+Serratia marcescens
+Citrobacter
+Morganella morganii
+Haemophilus influenzae
+H. influenzae
+Neisseria meningitidis
+Meningococcus
+Meningitis
+Neisseria gonorrhoeae
+Gonococcus
+Gonorrhea
+Moraxella catarrhalis
+Bordetella pertussis
+Whooping cough
+Pertussis
+Francisella tularensis
+Tularemia
+Brucella
+Brucellosis
+Legionella pneumophila
+Legionnaires' disease
+Coxiella burnetii
+Q fever
+Rickettsia
+Rickettsiosis
+Rocky Mountain spotted fever
+Ehrlichia
+Ehrlichiosis
+Anaplasma
+Anaplasmosis
+Chlamydia trachomatis
+Chlamydia
+Chlamydia pneumoniae
+Mycoplasma pneumoniae
+Walking pneumonia
+Mycoplasma genitalium
+Ureaplasma urealyticum
+Treponema pallidum
+Syphilis
+Borrelia burgdorferi
+Lyme disease
+Leptospira
+Leptospirosis
+Bacteriophage
+Phage
+Virus
+Viral structure
+Virion
+Capsid
+Capsomere
+Envelope
+Enveloped virus
+Non-enveloped virus
+Naked virus
+Spike protein
+Glycoprotein
+Nucleocapsid
+Genome
+DNA virus
+RNA virus
+Double-stranded DNA
+dsDNA
+Single-stranded DNA
+ssDNA
+Double-stranded RNA
+dsRNA
+Single-stranded RNA
+ssRNA
+Positive-sense RNA
+Negative-sense RNA
+Ambisense RNA
+Retrovirus
+Reverse transcriptase
+Baltimore classification
+Viral replication
+Attachment
+Adsorption
+Penetration
+Entry
+Uncoating
+Replication
+Assembly
+Maturation
+Release
+Lytic cycle
+Lysogenic cycle
+Prophage
+Temperate phage
+Virulent phage
+Latency
+Latent infection
+Persistent infection
+Cytopathic effect
+CPE
+Plaque
+Plaque assay
+Hemagglutination
+Hemagglutinin
+Neuraminidase
+Viral culture
+Cell culture
+Tissue culture
+Embryonated egg
+Viral load
+Viral titer
+TCID50
+Tissue culture infectious dose
+PFU
+Plaque-forming unit
+Antiviral drug
+Antiviral agent
+Nucleoside analog
+Acyclovir
+Ganciclovir
+Ribavirin
+Neuraminidase inhibitor
+Oseltamivir
+Tamiflu
+Zanamivir
+Protease inhibitor
+Reverse transcriptase inhibitor
+Integrase inhibitor
+Fusion inhibitor
+Entry inhibitor
+Common viruses
+Influenza virus
+Flu
+Influenza A
+Influenza B
+H1N1
+H3N2
+Avian influenza
+Bird flu
+Swine flu
+Pandemic influenza
+Seasonal influenza
+Antigenic drift
+Antigenic shift
+Reassortment
+Respiratory syncytial virus
+RSV
+Parainfluenza virus
+Adenovirus
+Rhinovirus
+Common cold
+Coronavirus
+SARS-CoV
+SARS
+Severe acute respiratory syndrome
+MERS-CoV
+MERS
+Middle East respiratory syndrome
+SARS-CoV-2
+COVID-19
+Coronavirus disease 2019
+Spike protein
+ACE2 receptor
+Herpes simplex virus
+HSV
+HSV-1
+HSV-2
+Herpes
+Cold sore
+Genital herpes
+Varicella-zoster virus
+VZV
+Chickenpox
+Varicella
+Shingles
+Herpes zoster
+Cytomegalovirus
+CMV
+Epstein-Barr virus
+EBV
+Infectious mononucleosis
+Mono
+Glandular fever
+Human herpesvirus 6
+HHV-6
+Roseola
+Human herpesvirus 8
+HHV-8
+Kaposi's sarcoma-associated herpesvirus
+KSHV
+Human papillomavirus
+HPV
+Wart
+Genital wart
+Cervical cancer
+Papilloma
+Polyomavirus
+JC virus
+BK virus
+Parvovirus B19
+Fifth disease
+Erythema infectiosum
+Measles virus
+Measles
+Rubeola
+Mumps virus
+Mumps
+Rubella virus
+Rubella
+German measles
+Poxvirus
+Smallpox
+Variola virus
+Vaccinia virus
+Cowpox
+Monkeypox
+Molluscum contagiosum
+Rotavirus
+Gastroenteritis
+Norovirus
+Norwalk virus
+Astrovirus
+Calicivirus
+Enterovirus
+Poliovirus
+Polio
+Poliomyelitis
+Coxsackievirus
+Echovirus
+Hepatitis A virus
+HAV
+Hepatitis A
+Hepatitis B virus
+HBV
+Hepatitis B
+HBsAg
+Hepatitis B surface antigen
+Hepatitis C virus
+HCV
+Hepatitis C
+Hepatitis D virus
+HDV
+Hepatitis D
+Delta agent
+Hepatitis E virus
+HEV
+Hepatitis E
+Flavivirus
+Yellow fever virus
+Yellow fever
+Dengue virus
+Dengue fever
+Dengue hemorrhagic fever
+West Nile virus
+West Nile fever
+Zika virus
+Zika
+Japanese encephalitis virus
+Tick-borne encephalitis virus
+Togavirus
+Rubella virus
+Alphavirus
+Chikungunya virus
+Chikungunya
+Eastern equine encephalitis
+Western equine encephalitis
+Bunyavirus
+Hantavirus
+Hantavirus pulmonary syndrome
+Rift Valley fever virus
+Arenavirus
+Lymphocytic choriomeningitis virus
+LCMV
+Lassa fever virus
+Lassa fever
+Filovirus
+Ebola virus
+Ebola
+Marburg virus
+Marburg hemorrhagic fever
+Hemorrhagic fever
+Rabies virus
+Rabies
+Lyssavirus
+Human immunodeficiency virus
+HIV
+HIV-1
+HIV-2
+AIDS
+Acquired immunodeficiency syndrome
+CD4
+T cell
+Helper T cell
+Viral load
+Antiretroviral therapy
+ART
+HAART
+Highly active antiretroviral therapy
+Human T-lymphotropic virus
+HTLV
+HTLV-1
+Adult T-cell leukemia
+Tropical spastic paraparesis
+Prion
+Prion disease
+Transmissible spongiform encephalopathy
+TSE
+Creutzfeldt-Jakob disease
+CJD
+Variant CJD
+vCJD
+Mad cow disease
+Bovine spongiform encephalopathy
+BSE
+Scrapie
+Kuru
+Fatal familial insomnia
+Gerstmann-Sträussler-Scheinker syndrome
+Fungus
+Fungi
+Mycology
+Yeast
+Mold
+Mushroom
+Hypha
+Hyphae
+Mycelium
+Septate hypha
+Aseptate hypha
+Coenocytic hypha
+Spore
+Sporangium
+Conidium
+Conidia
+Conidiophore
+Ascus
+Ascospore
+Basidium
+Basidiospore
+Sexual reproduction
+Asexual reproduction
+Budding
+Dimorphic fungus
+Dimorphism
+Yeast form
+Mold form
+Common fungi
+Candida
+Candida albicans
+Candidiasis
+Thrush
+Yeast infection
+Candida auris
+Aspergillus
+Aspergillus fumigatus
+Aspergillosis
+Aspergilloma
+Mucor
+Mucormycosis
+Zygomycosis
+Rhizopus
+Cryptococcus neoformans
+Cryptococcosis
+Cryptococcal meningitis
+Histoplasma capsulatum
+Histoplasmosis
+Blastomyces dermatitidis
+Blastomycosis
+Coccidioides immitis
+Coccidioidomycosis
+Valley fever
+Paracoccidioides brasiliensis
+Paracoccidioidomycosis
+Sporothrix schenckii
+Sporotrichosis
+Dermatophyte
+Tinea
+Ringworm
+Trichophyton
+Microsporum
+Epidermophyton
+Tinea pedis
+Athlete's foot
+Tinea cruris
+Jock itch
+Tinea capitis
+Scalp ringworm
+Tinea corporis
+Body ringworm
+Tinea unguium
+Onychomycosis
+Nail fungus
+Pneumocystis jirovecii
+Pneumocystis pneumonia
+PCP
+Malassezia
+Pityriasis versicolor
+Antifungal drug
+Antifungal agent
+Polyene
+Amphotericin B
+Nystatin
+Azole
+Imidazole
+Triazole
+Fluconazole
+Itraconazole
+Voriconazole
+Posaconazole
+Echinocandin
+Caspofungin
+Micafungin
+Anidulafungin
+Terbinafine
+Flucytosine
+Griseofulvin
+Protozoa
+Protozoan
+Protist
+Parasitology
+Parasite
+Parasitism
+Ectoparasite
+Endoparasite
+Definitive host
+Intermediate host
+Reservoir host
+Vector
+Life cycle
+Trophozoite
+Cyst
+Oocyst
+Sporozoite
+Merozoite
+Schizont
+Gametocyte
+Common protozoa
+Plasmodium
+Malaria
+Plasmodium falciparum
+Plasmodium vivax
+Plasmodium ovale
+Plasmodium malariae
+Plasmodium knowlesi
+Anopheles mosquito
+Antimalarial drug
+Chloroquine
+Mefloquine
+Artemisinin
+Quinine
+Primaquine
+Toxoplasma gondii
+Toxoplasmosis
+Trypanosoma brucei
+African trypanosomiasis
+Sleeping sickness
+Tsetse fly
+Trypanosoma cruzi
+Chagas disease
+American trypanosomiasis
+Kissing bug
+Triatomine bug
+Leishmania
+Leishmaniasis
+Cutaneous leishmaniasis
+Visceral leishmaniasis
+Kala-azar
+Sandfly
+Entamoeba histolytica
+Amebiasis
+Amebic dysentery
+Giardia lamblia
+Giardiasis
+Giardia intestinalis
+Cryptosporidium
+Cryptosporidiosis
+Cyclospora cayetanensis
+Cyclosporiasis
+Trichomonas vaginalis
+Trichomoniasis
+Balantidium coli
+Balantidiasis
+Naegleria fowleri
+Primary amebic meningoencephalitis
+Acanthamoeba
+Acanthamoeba keratitis
+Granulomatous amebic encephalitis
+Babesia
+Babesiosis
+Helminth
+Worm
+Nematode
+Roundworm
+Trematode
+Fluke
+Cestode
+Tapeworm
+Ascaris lumbricoides
+Ascariasis
+Roundworm infection
+Enterobius vermicularis
+Pinworm
+Threadworm
+Trichuris trichiura
+Whipworm
+Trichuriasis
+Ancylostoma duodenale
+Hookworm
+Necator americanus
+Hookworm
+Strongyloides stercoralis
+Strongyloidiasis
+Threadworm
+Trichinella spiralis
+Trichinosis
+Trichinellosis
+Wuchereria bancrofti
+Filariasis
+Lymphatic filariasis
+Elephantiasis
+Brugia malayi
+Filariasis
+Onchocerca volvulus
+Onchocerciasis
+River blindness
+Loa loa
+Loiasis
+African eye worm
+Dracunculus medinensis
+Dracunculiasis
+Guinea worm disease
+Schistosoma
+Schistosomiasis
+Bilharzia
+Schistosoma mansoni
+Schistosoma haematobium
+Schistosoma japonicum
+Fasciola hepatica
+Fascioliasis
+Liver fluke
+Clonorchis sinensis
+Clonorchiasis
+Chinese liver fluke
+Opisthorchis
+Opisthorchiasis
+Paragonimus westermani
+Paragonimiasis
+Lung fluke
+Taenia solium
+Taeniasis
+Pork tapeworm
+Cysticercosis
+Neurocysticercosis
+Taenia saginata
+Beef tapeworm
+Diphyllobothrium latum
+Fish tapeworm
+Echinococcus granulosus
+Echinococcosis
+Hydatid disease
+Cystic echinococcosis
+Echinococcus multilocularis
+Alveolar echinococcosis
+Hymenolepis nana
+Dwarf tapeworm
+Arthropod
+Vector-borne disease
+Mosquito
+Anopheles
+Aedes
+Culex
+Tick
+Ixodes
+Dermacentor
+Amblyomma
+Flea
+Louse
+Head louse
+Body louse
+Pubic louse
+Crab louse
+Pediculosis
+Mite
+Scabies
+Sarcoptes scabiei
+Fly
+Tsetse fly
+Sandfly
+Blackfly
+Immunology
+Immune system
+Innate immunity
+Adaptive immunity
+Antibody
+Immunoglobulin
+Antigen
+Lymphocyte
+T cell
+B cell
+Macrophage
+Neutrophil
+Eosinophil
+Basophil
+Natural killer cell
+NK cell
+Complement
+Cytokine
+Interferon
+Interleukin
+Inflammation
+Phagocytosis
+Opsonization
+Vaccination
+Vaccine
+Immunization
+Live attenuated vaccine
+Inactivated vaccine
+Killed vaccine
+Subunit vaccine
+Toxoid vaccine
+Conjugate vaccine
+mRNA vaccine
+Viral vector vaccine
+Herd immunity
+Serology
+Serological test
+Antibody titer
+ELISA
+Enzyme-linked immunosorbent assay
+Western blot
+Agglutination
+Hemagglutination
+Complement fixation
+Neutralization test
+Immunofluorescence
+

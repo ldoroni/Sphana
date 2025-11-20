@@ -1,0 +1,582 @@
+Fluid dynamics
+Fluid mechanics
+Fluid
+Liquid
+Gas
+Continuum
+Continuum hypothesis
+Density
+Mass density
+Specific weight
+Specific gravity
+Pressure
+Hydrostatic pressure
+Dynamic pressure
+Total pressure
+Stagnation pressure
+Atmospheric pressure
+Gauge pressure
+Absolute pressure
+Pressure gradient
+Viscosity
+Dynamic viscosity
+Absolute viscosity
+Kinematic viscosity
+Newtonian fluid
+Non-Newtonian fluid
+Shear stress
+Shear rate
+Shear-thinning
+Pseudoplastic
+Shear-thickening
+Dilatant
+Bingham plastic
+Thixotropic
+Rheopectic
+Viscoelastic
+Surface tension
+Interfacial tension
+Capillarity
+Capillary action
+Meniscus
+Contact angle
+Wetting
+Hydrophobic
+Hydrophilic
+Compressibility
+Incompressible flow
+Compressible flow
+Bulk modulus
+Speed of sound
+Mach number
+Subsonic
+Transonic
+Supersonic
+Hypersonic
+Fluid statics
+Hydrostatics
+Pascal's law
+Buoyancy
+Buoyant force
+Archimedes' principle
+Stability
+Metacenter
+Metacentric height
+Fluid kinematics
+Velocity
+Velocity field
+Flow field
+Streamline
+Pathline
+Streakline
+Timeline
+Steady flow
+Unsteady flow
+Transient flow
+Uniform flow
+Non-uniform flow
+Laminar flow
+Turbulent flow
+Transitional flow
+Reynolds number
+Re
+Critical Reynolds number
+Rotational flow
+Irrotational flow
+Vorticity
+Circulation
+Strain rate
+Deformation rate
+Volumetric flow rate
+Mass flow rate
+Discharge
+Continuity equation
+Conservation of mass
+Acceleration
+Convective acceleration
+Local acceleration
+Material derivative
+Substantial derivative
+Lagrangian description
+Eulerian description
+Bernoulli equation
+Bernoulli's principle
+Energy equation
+Mechanical energy
+Pressure head
+Velocity head
+Elevation head
+Total head
+Momentum equation
+Conservation of momentum
+Euler equation
+Navier-Stokes equation
+Navier-Stokes equations
+NSE
+Body force
+Gravity
+Inertial force
+Viscous force
+Pressure force
+External force
+Internal force
+Boundary condition
+No-slip condition
+Free-slip condition
+Wall
+Inlet
+Outlet
+Symmetry
+Periodic boundary
+Initial condition
+Pipe flow
+Internal flow
+Duct flow
+Channel flow
+Fully developed flow
+Entrance length
+Entrance region
+Friction factor
+Darcy friction factor
+Fanning friction factor
+Moody diagram
+Laminar pipe flow
+Hagen-Poiseuille equation
+Poiseuille flow
+Turbulent pipe flow
+Hydraulic diameter
+Pressure drop
+Head loss
+Major loss
+Minor loss
+Loss coefficient
+Valve
+Fitting
+Elbow
+Tee
+Contraction
+Expansion
+Sudden expansion
+Sudden contraction
+Gradual expansion
+Diffuser
+Nozzle
+Orifice
+Orifice plate
+Venturi meter
+Flow meter
+Open channel flow
+Free surface flow
+Channel
+Rectangular channel
+Trapezoidal channel
+Circular channel
+Uniform flow
+Varied flow
+Gradually varied flow
+Rapidly varied flow
+Critical flow
+Subcritical flow
+Supercritical flow
+Froude number
+Fr
+Hydraulic jump
+Weir
+Sharp-crested weir
+Broad-crested weir
+V-notch weir
+Rectangular weir
+Manning equation
+Chézy equation
+Roughness
+Manning roughness coefficient
+External flow
+Flow over bodies
+Drag
+Drag force
+Drag coefficient
+Cd
+Form drag
+Pressure drag
+Friction drag
+Skin friction
+Lift
+Lift force
+Lift coefficient
+Cl
+Circulation
+Lift-to-drag ratio
+L/D ratio
+Flow separation
+Boundary layer separation
+Separation point
+Wake
+Karman vortex street
+Vortex shedding
+Bluff body
+Streamlined body
+Airfoil
+Wing
+Cylinder
+Sphere
+Flat plate
+Boundary layer
+Laminar boundary layer
+Turbulent boundary layer
+Boundary layer thickness
+Displacement thickness
+Momentum thickness
+Boundary layer theory
+Blasius solution
+Prandtl boundary layer equations
+Transition
+Laminar-turbulent transition
+Transition Reynolds number
+Turbulence
+Turbulent flow
+Eddy
+Turbulent eddy
+Turbulent fluctuation
+Reynolds decomposition
+Reynolds-averaged Navier-Stokes
+RANS
+Turbulence model
+Turbulence modeling
+Closure problem
+Eddy viscosity
+Mixing length
+Prandtl mixing length
+k-epsilon model
+k-ω model
+k-omega model
+Reynolds stress model
+RSM
+Large eddy simulation
+LES
+Direct numerical simulation
+DNS
+Turbulent kinetic energy
+Dissipation rate
+Turbulence intensity
+Energy cascade
+Kolmogorov scale
+Inertial range
+Universal equilibrium
+Turbulent boundary layer
+Log law
+Law of the wall
+Viscous sublayer
+Buffer layer
+Overlap region
+Outer layer
+Roughness
+Hydraulically smooth
+Hydraulically rough
+Transitionally rough
+Equivalent sand grain roughness
+Compressible flow
+Gas dynamics
+Mach number
+Sonic flow
+Shock wave
+Normal shock
+Oblique shock
+Bow shock
+Shock angle
+Shock strength
+Expansion wave
+Prandtl-Meyer expansion
+Rarefaction wave
+Isentropic flow
+Adiabatic flow
+Nozzle flow
+Converging nozzle
+Diverging nozzle
+Converging-diverging nozzle
+De Laval nozzle
+Choked flow
+Sonic condition
+Critical condition
+Throat
+Mass flow rate
+Stagnation properties
+Stagnation temperature
+Stagnation density
+Total temperature
+Total density
+Static properties
+Fanno flow
+Rayleigh flow
+One-dimensional flow
+Multiphase flow
+Two-phase flow
+Gas-liquid flow
+Liquid-liquid flow
+Gas-solid flow
+Liquid-solid flow
+Three-phase flow
+Flow regime
+Flow pattern
+Bubbly flow
+Slug flow
+Annular flow
+Stratified flow
+Dispersed flow
+Homogeneous flow
+Separated flow
+Void fraction
+Quality
+Dryness fraction
+Slip ratio
+Drift flux
+Mixture density
+Interfacial area
+Interfacial friction
+Bubble
+Droplet
+Particle
+Suspension
+Slurry
+Emulsion
+Foam
+Cavitation
+Bubble dynamics
+Bubble formation
+Bubble growth
+Bubble collapse
+Vapor pressure
+Cavitation number
+Hydrodynamic cavitation
+Acoustic cavitation
+Erosion
+Pitting
+Noise
+Non-Newtonian fluid mechanics
+Rheology
+Shear-thinning fluid
+Shear-thickening fluid
+Yield stress
+Bingham fluid
+Power-law fluid
+Herschel-Bulkley model
+Carreau model
+Cross model
+Generalized Newtonian fluid
+Viscoelastic fluid
+Maxwell fluid
+Oldroyd-B fluid
+Weissenberg number
+Deborah number
+Normal stress
+First normal stress difference
+Second normal stress difference
+Die swell
+Extrudate swell
+Rod climbing
+Weissenberg effect
+Computational fluid dynamics
+CFD
+Numerical simulation
+Discretization
+Finite difference method
+FDM
+Finite volume method
+FVM
+Finite element method
+FEM
+Mesh
+Grid
+Structured mesh
+Unstructured mesh
+Adaptive mesh
+Grid generation
+Spatial discretization
+Temporal discretization
+Time integration
+Explicit method
+Implicit method
+Courant number
+CFL condition
+Courant-Friedrichs-Lewy condition
+Convergence
+Iterative method
+Residual
+SIMPLE algorithm
+PISO algorithm
+Pressure-velocity coupling
+Solver
+Linear solver
+Nonlinear solver
+Multigrid
+Conjugate gradient
+GMRES
+Preconditioner
+Postprocessing
+Visualization
+Streamline
+Contour
+Vector plot
+Verification
+Validation
+Experimental fluid mechanics
+Wind tunnel
+Water tunnel
+Flow visualization
+Smoke
+Dye
+Particle image velocimetry
+PIV
+Laser Doppler velocimetry
+LDV
+Hot-wire anemometry
+Pressure measurement
+Pitot tube
+Pitot-static tube
+Pressure tap
+Pressure transducer
+Manometer
+Force measurement
+Load cell
+Balance
+Lift and drag measurement
+Flow measurement
+Flowmeter
+Ultrasonic flowmeter
+Electromagnetic flowmeter
+Turbine flowmeter
+Vortex flowmeter
+Coriolis flowmeter
+Thermal flowmeter
+Differential pressure flowmeter
+Orifice meter
+Venturi meter
+Rotameter
+Dimensional analysis
+Buckingham Pi theorem
+Dimensionless number
+Dimensionless group
+Reynolds number
+Froude number
+Mach number
+Weber number
+We
+Capillary number
+Ca
+Bond number
+Bo
+Eotvos number
+Grashof number
+Gr
+Rayleigh number
+Ra
+Prandtl number
+Pr
+Nusselt number
+Nu
+Peclet number
+Pe
+Stokes number
+St
+Strouhal number
+Sr
+Richardson number
+Ri
+Rossby number
+Ro
+Dean number
+Knudsen number
+Kn
+Similarity
+Dynamic similarity
+Geometric similarity
+Kinematic similarity
+Model testing
+Scale model
+Prototype
+Scaling law
+Geophysical fluid dynamics
+Atmospheric dynamics
+Ocean dynamics
+Coriolis force
+Coriolis effect
+Rotation
+Rotating frame
+Geostrophic flow
+Geostrophic balance
+Ekman layer
+Ekman spiral
+Rossby wave
+Planetary wave
+Baroclinic instability
+Thermal wind
+Stratification
+Density stratification
+Stable stratification
+Unstable stratification
+Buoyancy
+Buoyancy frequency
+Brunt-Väisälä frequency
+Internal wave
+Gravity wave
+Richardson number
+Mixing
+Turbulent mixing
+Convection
+Natural convection
+Free convection
+Forced convection
+Mixed convection
+Rayleigh-Bénard convection
+Plume
+Thermal plume
+Jet
+Free jet
+Wall jet
+Plane jet
+Round jet
+Jet spreading
+Entrainment
+Momentum flux
+Mixing layer
+Shear layer
+Kelvin-Helmholtz instability
+Biofluid mechanics
+Blood flow
+Cardiovascular flow
+Hemodynamics
+Blood vessel
+Artery
+Vein
+Capillary
+Heart
+Cardiac output
+Stroke volume
+Pulse
+Pulsatile flow
+Womersley number
+Non-Newtonian blood
+Hematocrit
+Red blood cell
+Shear stress
+Wall shear stress
+Endothelial cell
+Atherosclerosis
+Stenosis
+Aneurysm
+Microfluidics
+Lab-on-a-chip
+Microchannel
+Capillary
+Droplet
+Microfluidic device
+Laminar flow
+Low Reynolds number
+Diffusion
+Taylor dispersion
+Electrokinetics
+Electroosmosis
+Electrophoresis
+Dielectrophoresis
+Droplet microfluidics
+Digital microfluidics
+

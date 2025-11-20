@@ -1,0 +1,999 @@
+Nutrition
+Nutrient
+Macronutrient
+Micronutrient
+Essential nutrient
+Nonessential nutrient
+Conditionally essential nutrient
+Dietary requirement
+Recommended dietary allowance
+RDA
+Adequate intake
+AI
+Tolerable upper intake level
+UL
+Estimated average requirement
+EAR
+Dietary reference intake
+DRI
+Carbohydrate
+Complex carbohydrate
+Simple carbohydrate
+Sugar
+Glucose
+Fructose
+Galactose
+Sucrose
+Lactose
+Maltose
+Monosaccharide
+Disaccharide
+Oligosaccharide
+Polysaccharide
+Starch
+Amylose
+Amylopectin
+Glycogen
+Fiber
+Dietary fiber
+Soluble fiber
+Insoluble fiber
+Functional fiber
+Total fiber
+Resistant starch
+Whole grain
+Refined grain
+Added sugar
+Free sugar
+Sugar-sweetened beverage
+Glycemic index
+GI
+Glycemic load
+GL
+Low glycemic
+High glycemic
+Blood glucose
+Blood sugar
+Insulin
+Insulin resistance
+Glucagon
+Protein
+Amino acid
+Essential amino acid
+Nonessential amino acid
+Conditionally essential amino acid
+Branched-chain amino acid
+BCAA
+Leucine
+Isoleucine
+Valine
+Complete protein
+Incomplete protein
+Complementary protein
+Protein quality
+Biological value
+BV
+Protein digestibility
+Protein digestibility-corrected amino acid score
+PDCAAS
+Digestible indispensable amino acid score
+DIAAS
+Animal protein
+Plant protein
+Whey protein
+Casein protein
+Soy protein
+Pea protein
+Hemp protein
+Rice protein
+Protein powder
+Protein supplement
+Nitrogen balance
+Positive nitrogen balance
+Negative nitrogen balance
+Protein synthesis
+Muscle protein synthesis
+Protein turnover
+Lipid
+Fat
+Fatty acid
+Saturated fatty acid
+Monounsaturated fatty acid
+MUFA
+Polyunsaturated fatty acid
+PUFA
+Trans fatty acid
+Trans fat
+Cis fatty acid
+Omega-3 fatty acid
+Alpha-linolenic acid
+ALA
+Eicosapentaenoic acid
+EPA
+Docosahexaenoic acid
+DHA
+Omega-6 fatty acid
+Linoleic acid
+Arachidonic acid
+Omega-9 fatty acid
+Oleic acid
+Essential fatty acid
+Medium-chain triglyceride
+MCT
+Long-chain triglyceride
+LCT
+Triglyceride
+Triacylglycerol
+Monoglyceride
+Diglyceride
+Phospholipid
+Cholesterol
+HDL cholesterol
+High-density lipoprotein
+LDL cholesterol
+Low-density lipoprotein
+VLDL cholesterol
+Very low-density lipoprotein
+Dietary cholesterol
+Blood cholesterol
+Serum cholesterol
+Hypercholesterolemia
+Hyperlipidemia
+Dyslipidemia
+Atherosclerosis
+Lipid profile
+Lipid panel
+Fat-soluble vitamin
+Water-soluble vitamin
+Vitamin A
+Retinol
+Beta-carotene
+Provitamin A
+Carotenoid
+Retinoid
+Night blindness
+Vitamin A deficiency
+Hypervitaminosis A
+Vitamin D
+Cholecalciferol
+Vitamin D3
+Ergocalciferol
+Vitamin D2
+Calcitriol
+25-hydroxyvitamin D
+Vitamin D deficiency
+Rickets
+Osteomalacia
+Vitamin D supplementation
+Sunshine vitamin
+UV exposure
+Sun exposure
+Vitamin E
+Tocopherol
+Alpha-tocopherol
+Antioxidant
+Free radical
+Oxidative stress
+Vitamin E deficiency
+Vitamin K
+Phylloquinone
+Vitamin K1
+Menaquinone
+Vitamin K2
+Blood clotting
+Coagulation
+Prothrombin
+Vitamin K deficiency
+Warfarin
+Vitamin C
+Ascorbic acid
+Ascorbate
+Collagen
+Scurvy
+Vitamin C deficiency
+Antioxidant
+Immune function
+Iron absorption
+Thiamin
+Vitamin B1
+Beriberi
+Wernicke-Korsakoff syndrome
+Riboflavin
+Vitamin B2
+Niacin
+Vitamin B3
+Nicotinic acid
+Niacinamide
+Pellagra
+Pantothenic acid
+Vitamin B5
+Pyridoxine
+Vitamin B6
+Pyridoxal
+Pyridoxamine
+Biotin
+Vitamin B7
+Vitamin H
+Folate
+Folic acid
+Vitamin B9
+Folate deficiency
+Neural tube defect
+Spina bifida
+Anencephaly
+Folic acid fortification
+Methylfolate
+5-methyltetrahydrofolate
+MTHFR
+Methylenetetrahydrofolate reductase
+Cobalamin
+Vitamin B12
+Cyanocobalamin
+Methylcobalamin
+Intrinsic factor
+Pernicious anemia
+Vitamin B12 deficiency
+Megaloblastic anemia
+Macrocytic anemia
+Neuropathy
+Vegan
+B12 supplementation
+Calcium
+Bone health
+Bone mineral density
+BMD
+Osteoporosis
+Osteopenia
+Bone formation
+Bone resorption
+Osteoblast
+Osteoclast
+Parathyroid hormone
+PTH
+Calcitonin
+Peak bone mass
+Calcium absorption
+Calcium supplementation
+Calcium carbonate
+Calcium citrate
+Hypercalcemia
+Hypocalcemia
+Kidney stone
+Nephrolithiasis
+Phosphorus
+Phosphate
+Calcium-phosphorus balance
+Magnesium
+Hypomagnesemia
+Hypermagnesemia
+Iron
+Heme iron
+Non-heme iron
+Ferrous iron
+Ferric iron
+Iron absorption
+Enhancers of iron absorption
+Inhibitors of iron absorption
+Phytate
+Phytic acid
+Tannin
+Iron deficiency
+Iron deficiency anemia
+Anemia
+Hemoglobin
+Hematocrit
+Ferritin
+Serum ferritin
+Transferrin
+Transferrin saturation
+Total iron-binding capacity
+TIBC
+Iron overload
+Hemochromatosis
+Hemosiderosis
+Iron supplementation
+Ferrous sulfate
+Ferrous fumarate
+Ferrous gluconate
+Zinc
+Zinc deficiency
+Zinc supplementation
+Immune function
+Wound healing
+Taste
+Smell
+Growth
+Development
+Iodine
+Thyroid
+Thyroid hormone
+Thyroxine
+T4
+Triiodothyronine
+T3
+Iodine deficiency
+Goiter
+Cretinism
+Hypothyroidism
+Iodized salt
+Salt iodization
+Selenium
+Selenoprotein
+Glutathione peroxidase
+Antioxidant
+Thyroid function
+Selenium deficiency
+Keshan disease
+Copper
+Ceruloplasmin
+Copper deficiency
+Wilson disease
+Manganese
+Chromium
+Glucose metabolism
+Insulin sensitivity
+Chromium picolinate
+Molybdenum
+Fluoride
+Dental health
+Tooth decay
+Cavity
+Dental caries
+Fluoridated water
+Water fluoridation
+Fluoride supplementation
+Fluorosis
+Dental fluorosis
+Sodium
+Salt
+Table salt
+Sodium chloride
+Electrolyte
+Fluid balance
+Blood pressure
+Hypertension
+Sodium intake
+Sodium restriction
+Low-sodium diet
+DASH diet
+Dietary Approaches to Stop Hypertension
+Potassium
+Hyperkalemia
+Hypokalemia
+Potassium supplementation
+Potassium-sodium ratio
+Blood pressure regulation
+Chloride
+Water
+Hydration
+Dehydration
+Fluid intake
+Water intake
+Thirst
+Urine
+Urine color
+Hyponatremia
+Electrolyte imbalance
+Sports drink
+Phytonutrient
+Phytochemical
+Bioactive compound
+Polyphenol
+Flavonoid
+Anthocyanin
+Catechin
+Quercetin
+Resveratrol
+Isoflavone
+Carotenoid
+Lycopene
+Lutein
+Zeaxanthin
+Beta-carotene
+Glucosinolate
+Isothiocyanate
+Sulforaphane
+Indole
+Allicin
+Organosulfur compound
+Antioxidant
+Oxidative stress
+Free radical
+Reactive oxygen species
+ROS
+Inflammation
+Anti-inflammatory
+Dietary pattern
+Healthy eating pattern
+Mediterranean diet
+DASH diet
+Dietary Approaches to Stop Hypertension
+Vegetarian diet
+Lacto-ovo-vegetarian
+Lacto-vegetarian
+Ovo-vegetarian
+Vegan diet
+Plant-based diet
+Whole-food plant-based diet
+WFPB
+Flexitarian
+Pescatarian
+Paleo diet
+Paleolithic diet
+Ketogenic diet
+Keto diet
+Low-carbohydrate diet
+Low-carb diet
+Atkins diet
+High-protein diet
+Low-fat diet
+High-fat diet
+Intermittent fasting
+Time-restricted eating
+Alternate-day fasting
+5:2 diet
+Fasting
+Caloric restriction
+Calorie restriction
+Energy balance
+Energy intake
+Energy expenditure
+Basal metabolic rate
+BMR
+Resting metabolic rate
+RMR
+Thermic effect of food
+TEF
+Physical activity energy expenditure
+PAEE
+Total daily energy expenditure
+TDEE
+Calorie
+Kilocalorie
+kcal
+Kilojoule
+kJ
+Energy density
+Nutrient density
+Empty calories
+Weight management
+Weight loss
+Weight gain
+Weight maintenance
+Body weight
+Body composition
+Body fat
+Body fat percentage
+Lean body mass
+Lean mass
+Fat-free mass
+Muscle mass
+Body mass index
+BMI
+Underweight
+Normal weight
+Overweight
+Obesity
+Class I obesity
+Class II obesity
+Class III obesity
+Severe obesity
+Morbid obesity
+Waist circumference
+Waist-to-hip ratio
+Central obesity
+Abdominal obesity
+Visceral fat
+Subcutaneous fat
+Adipose tissue
+White adipose tissue
+Brown adipose tissue
+Adipocyte
+Fat cell
+Adipogenesis
+Lipolysis
+Lipogenesis
+Appetite
+Hunger
+Satiety
+Satiation
+Fullness
+Hunger hormones
+Ghrelin
+Leptin
+Adiponectin
+Insulin
+Cholecystokinin
+CCK
+Peptide YY
+PYY
+Glucagon-like peptide-1
+GLP-1
+Appetite regulation
+Hunger cues
+Satiety cues
+Mindful eating
+Intuitive eating
+Emotional eating
+Stress eating
+Binge eating
+Overeating
+Undereating
+Portion size
+Portion control
+Serving size
+Food label
+Nutrition facts label
+Nutrition Facts
+Ingredient list
+Percent daily value
+%DV
+Nutrition claims
+Health claims
+Nutrient content claim
+Structure-function claim
+Front-of-package labeling
+Traffic light labeling
+Calorie labeling
+Menu labeling
+Dietary guidelines
+Dietary Guidelines for Americans
+Food pyramid
+Food Guide Pyramid
+MyPyramid
+MyPlate
+Eatwell Guide
+Food groups
+Fruits
+Vegetables
+Grains
+Protein foods
+Dairy
+Healthy eating plate
+Balanced diet
+Variety
+Moderation
+Nutrient adequacy
+Malnutrition
+Undernutrition
+Protein-energy malnutrition
+PEM
+Marasmus
+Kwashiorkor
+Stunting
+Wasting
+Underweight
+Micronutrient deficiency
+Hidden hunger
+Vitamin A deficiency
+Iron deficiency
+Iodine deficiency
+Zinc deficiency
+Folate deficiency
+Vitamin D deficiency
+Overnutrition
+Obesity
+Overweight
+Metabolic syndrome
+Insulin resistance
+Type 2 diabetes
+Cardiovascular disease
+Hypertension
+Dyslipidemia
+Fatty liver
+Non-alcoholic fatty liver disease
+NAFLD
+Non-alcoholic steatohepatitis
+NASH
+Nutritional assessment
+Anthropometry
+Height
+Weight
+BMI
+Body mass index
+Mid-upper arm circumference
+MUAC
+Skinfold thickness
+Waist circumference
+Bioelectrical impedance analysis
+BIA
+Dual-energy X-ray absorptiometry
+DEXA
+DXA scan
+Body composition analysis
+Dietary assessment
+Food frequency questionnaire
+FFQ
+24-hour dietary recall
+Food diary
+Food record
+Weighed food record
+Diet history
+Nutrition screening
+Malnutrition screening
+Nutrition diagnosis
+Nutrition intervention
+Medical nutrition therapy
+MNT
+Nutrition counseling
+Dietary counseling
+Nutritional counseling
+Meal planning
+Menu planning
+Therapeutic diet
+Renal diet
+Diabetic diet
+Cardiac diet
+Low-sodium diet
+Low-fat diet
+Low-cholesterol diet
+High-fiber diet
+Gluten-free diet
+Lactose-free diet
+Clear liquid diet
+Full liquid diet
+Soft diet
+Mechanical soft diet
+Pureed diet
+Texture-modified diet
+Enteral nutrition
+Tube feeding
+Nasogastric tube
+NG tube
+Gastrostomy tube
+G-tube
+PEG
+Percutaneous endoscopic gastrostomy
+Jejunostomy tube
+J-tube
+Enteral formula
+Elemental formula
+Polymeric formula
+Disease-specific formula
+Parenteral nutrition
+Total parenteral nutrition
+TPN
+Peripheral parenteral nutrition
+PPN
+Intravenous nutrition
+IV nutrition
+Central line
+PICC line
+Peripherally inserted central catheter
+Refeeding syndrome
+Nutritional support
+Malnutrition intervention
+Dietary supplement
+Supplement
+Multivitamin
+Multimineral
+Vitamin supplement
+Mineral supplement
+Herbal supplement
+Botanical
+Dietary Supplement Health and Education Act
+DSHEA
+Good Manufacturing Practice
+GMP
+Third-party testing
+USP
+United States Pharmacopeia
+NSF International
+ConsumerLab
+Supplement facts
+Dosage
+Tolerable upper intake level
+UL
+Toxicity
+Adverse effect
+Drug-nutrient interaction
+Food-drug interaction
+Omega-3 supplement
+Fish oil
+Krill oil
+Algal oil
+Calcium supplement
+Vitamin D supplement
+Iron supplement
+B12 supplement
+Probiotic
+Prebiotic
+Synbiotic
+Protein powder
+Creatine
+Beta-alanine
+Branched-chain amino acid
+BCAA
+Sports nutrition
+Exercise nutrition
+Athletic performance
+Pre-workout nutrition
+Post-workout nutrition
+Recovery nutrition
+Carbohydrate loading
+Glycogen
+Muscle glycogen
+Hydration
+Fluid replacement
+Electrolyte replacement
+Sports drink
+Protein intake
+Protein timing
+Anabolic window
+Muscle protein synthesis
+Ergogenic aid
+Performance-enhancing substance
+Dietary supplement
+Sports supplement
+Caffeine
+Creatine
+Beta-alanine
+Sodium bicarbonate
+Nitrate
+Beetroot juice
+Clinical nutrition
+Medical nutrition therapy
+Nutritional care
+Critical care nutrition
+Intensive care nutrition
+Enteral nutrition
+Parenteral nutrition
+Immunonutrition
+Omega-3 fatty acids
+Glutamine
+Arginine
+Antioxidants
+Cancer nutrition
+Cachexia
+Cancer cachexia
+Anorexia
+Weight loss
+Malnutrition
+Nutrition during chemotherapy
+Nutrition during radiation
+Nausea
+Vomiting
+Mucositis
+Dysphagia
+Taste changes
+Loss of appetite
+Cardiovascular nutrition
+Heart-healthy diet
+Mediterranean diet
+DASH diet
+Omega-3 fatty acids
+Plant sterols
+Phytosterols
+Fiber
+Soluble fiber
+Sodium restriction
+Potassium
+Diabetes nutrition
+Carbohydrate counting
+Glycemic index
+Glycemic load
+Insulin-to-carbohydrate ratio
+Continuous glucose monitoring
+CGM
+A1C
+Hemoglobin A1C
+Blood glucose monitoring
+Renal nutrition
+Kidney disease
+Chronic kidney disease
+CKD
+Protein restriction
+Phosphorus restriction
+Potassium restriction
+Sodium restriction
+Fluid restriction
+Dialysis
+Hemodialysis
+Peritoneal dialysis
+Gastrointestinal nutrition
+Celiac disease
+Gluten-free diet
+Wheat allergy
+Non-celiac gluten sensitivity
+Inflammatory bowel disease
+IBD
+Crohn's disease
+Ulcerative colitis
+Low-residue diet
+Low-fiber diet
+Lactose intolerance
+Lactose-free diet
+Irritable bowel syndrome
+IBS
+Low FODMAP diet
+FODMAP
+Fermentable oligosaccharides, disaccharides, monosaccharides, and polyols
+Food allergy
+Food intolerance
+Elimination diet
+Anaphylaxis
+Epinephrine
+EpiPen
+Eight major allergens
+Milk allergy
+Egg allergy
+Peanut allergy
+Tree nut allergy
+Fish allergy
+Shellfish allergy
+Wheat allergy
+Soy allergy
+Allergen labeling
+Pediatric nutrition
+Infant nutrition
+Breastfeeding
+Breast milk
+Human milk
+Lactation
+Formula feeding
+Infant formula
+Complementary feeding
+Introduction of solid foods
+Baby-led weaning
+Purees
+First foods
+Allergen introduction
+Child nutrition
+Toddler nutrition
+Preschool nutrition
+School-age nutrition
+Picky eating
+Growth chart
+Growth curve
+Failure to thrive
+Childhood obesity
+Geriatric nutrition
+Older adult nutrition
+Nutrition and aging
+Malnutrition in elderly
+Protein needs
+Vitamin B12 needs
+Vitamin D needs
+Calcium needs
+Sarcopenia
+Muscle loss
+Frailty
+Dysphagia
+Swallowing difficulty
+Texture modification
+Appetite changes
+Dental health
+Chewing difficulty
+Polypharmacy
+Drug-nutrient interaction
+Maternal nutrition
+Prenatal nutrition
+Preconception nutrition
+Nutrition during pregnancy
+Folic acid
+Iron
+Calcium
+Vitamin D
+DHA
+Omega-3
+Weight gain during pregnancy
+Gestational diabetes
+Nausea and vomiting of pregnancy
+Morning sickness
+Hyperemesis gravidarum
+Food safety during pregnancy
+Listeria
+Toxoplasma
+Mercury
+Fish consumption
+Postpartum nutrition
+Lactation nutrition
+Nutrition while breastfeeding
+Public health nutrition
+Community nutrition
+Population nutrition
+Nutrition policy
+Food policy
+Agricultural policy
+Nutrition program
+School nutrition
+School breakfast
+School lunch
+National School Lunch Program
+NSLP
+School Breakfast Program
+SBP
+Child and Adult Care Food Program
+CACFP
+Summer Food Service Program
+SFSP
+Supplemental Nutrition Assistance Program
+SNAP
+Food stamps
+WIC
+Women, Infants, and Children
+Special Supplemental Nutrition Program
+Nutrition education
+Food literacy
+Cooking skills
+Nutrition labeling
+Food marketing
+Food advertising
+Food environment
+Built environment
+Food access
+Food security
+Food insecurity
+Hunger
+Food desert
+Food swamp
+Healthy food access
+Grocery store
+Supermarket
+Farmers market
+Community garden
+Urban agriculture
+Food fortification
+Biofortification
+Iodization
+Salt iodization
+Flour fortification
+Folic acid fortification
+Iron fortification
+Vitamin A fortification
+Golden Rice
+Food safety
+Foodborne illness
+Food poisoning
+Salmonella
+E. coli
+Listeria
+Campylobacter
+Norovirus
+Hepatitis A
+Toxoplasma
+Staphylococcus aureus
+Clostridium perfringens
+Clostridium botulinum
+Botulism
+Food contamination
+Cross-contamination
+Safe food handling
+Hand washing
+Cooking temperature
+Food thermometer
+Refrigeration
+Food storage
+Expiration date
+Best by date
+Sell by date
+Use by date
+HACCP
+Hazard Analysis and Critical Control Points
+Food recall
+Eating disorder
+Anorexia nervosa
+Bulimia nervosa
+Binge eating disorder
+BED
+Avoidant/restrictive food intake disorder
+ARFID
+Other specified feeding or eating disorder
+OSFED
+Orthorexia
+Disordered eating
+Restricting
+Bingeing
+Purging
+Laxative abuse
+Diuretic abuse
+Excessive exercise
+Compulsive exercise
+Body image
+Body dissatisfaction
+Weight preoccupation
+Fear of weight gain
+Body dysmorphia
+Body dysmorphic disorder
+BDD
+

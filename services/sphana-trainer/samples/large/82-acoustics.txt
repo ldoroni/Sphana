@@ -1,0 +1,734 @@
+Acoustics
+Sound
+Sound wave
+Acoustic wave
+Mechanical wave
+Longitudinal wave
+Compression wave
+Pressure wave
+Vibration
+Oscillation
+Medium
+Acoustic medium
+Propagation
+Wave propagation
+Sound propagation
+Frequency
+Pitch
+Hertz
+Hz
+Audible frequency
+Audible range
+Infrasound
+Ultrasound
+Hypersound
+Low frequency
+High frequency
+Period
+Wavelength
+Lambda
+λ
+Amplitude
+Displacement amplitude
+Pressure amplitude
+Velocity amplitude
+Sound pressure
+Acoustic pressure
+Root mean square
+RMS
+RMS pressure
+Peak pressure
+Pascal
+Pa
+Microbar
+Sound pressure level
+SPL
+Level
+Decibel
+dB
+Reference pressure
+20 micropascals
+μPa
+Logarithmic scale
+Sound intensity
+Acoustic intensity
+Power
+Acoustic power
+Sound power
+Sound power level
+PWL
+Sound energy
+Energy density
+Sound speed
+Speed of sound
+Velocity of sound
+c
+Temperature dependence
+Mach number
+Sonic
+Subsonic
+Supersonic
+Hypersonic
+Particle velocity
+Acoustic impedance
+Specific acoustic impedance
+Characteristic impedance
+Z
+Z0
+Radiation impedance
+Reflection
+Reflection coefficient
+Reflectivity
+Echo
+Reverberation
+Transmission
+Transmission coefficient
+Transmissivity
+Absorption
+Absorption coefficient
+Sound absorption
+Absorptivity
+Attenuation
+Attenuation coefficient
+Distance attenuation
+Geometric spreading
+Spherical spreading
+Cylindrical spreading
+Material attenuation
+Viscous attenuation
+Molecular relaxation
+Refraction
+Snell's law
+Sound gradient
+Temperature gradient
+Wind gradient
+Diffraction
+Scattering
+Rayleigh scattering
+Mie scattering
+Interference
+Constructive interference
+Destructive interference
+Standing wave
+Node
+Antinode
+Beat
+Beat frequency
+Doppler effect
+Doppler shift
+Source motion
+Observer motion
+Red shift
+Blue shift
+Frequency shift
+Acoustic wave equation
+Wave equation
+Helmholtz equation
+Plane wave
+Spherical wave
+Cylindrical wave
+Near field
+Far field
+Fresnel zone
+Fraunhofer region
+Room acoustics
+Architectural acoustics
+Sound field
+Diffuse field
+Direct sound
+Reflected sound
+Early reflections
+Late reflections
+Reverberant sound
+Reverberation
+Reverberation time
+RT60
+T60
+Decay curve
+Sabine equation
+Eyring equation
+Critical distance
+Sound decay
+Flutter echo
+Standing wave pattern
+Room mode
+Axial mode
+Tangential mode
+Oblique mode
+Modal density
+Schroeder frequency
+Sound absorption material
+Absorber
+Porous absorber
+Fibrous material
+Foam
+Mineral wool
+Fiberglass
+Resonant absorber
+Helmholtz resonator
+Panel absorber
+Membrane absorber
+Bass trap
+Acoustic treatment
+Acoustic panel
+Sound diffuser
+Diffusion
+Scattering surface
+Quadratic residue diffuser
+QRD
+Skyline diffuser
+Background noise
+Ambient noise
+Noise criterion
+NC
+Noise rating
+NR
+Room criterion
+RC
+Speech intelligibility
+Intelligibility
+Articulation index
+AI
+Speech transmission index
+STI
+RASTI
+Rapid speech transmission index
+Clarity
+Definition
+D50
+C80
+Sound reinforcement
+Public address system
+PA system
+Loudspeaker
+Speaker
+Driver
+Woofer
+Tweeter
+Midrange
+Subwoofer
+Crossover
+Frequency response
+Sensitivity
+Impedance
+Directivity
+Dispersion
+Coverage
+Sound level
+Equalization
+EQ
+Graphic equalizer
+Parametric equalizer
+Delay
+Time alignment
+Feedback
+Acoustic feedback
+Howling
+Microphone
+Dynamic microphone
+Condenser microphone
+Electret microphone
+Ribbon microphone
+Cardioid
+Omnidirectional
+Bidirectional
+Figure-eight
+Hypercardioid
+Supercardioid
+Polar pattern
+Directional pattern
+Proximity effect
+Phantom power
+Wireless microphone
+Lavalier
+Shotgun microphone
+Microphone array
+Beamforming
+Sound recording
+Recording
+Audio recording
+Analog recording
+Digital recording
+Sampling
+Sample rate
+Sampling frequency
+Bit depth
+Quantization
+PCM
+Pulse code modulation
+Audio interface
+A/D converter
+Analog-to-digital
+D/A converter
+Digital-to-analog
+Dynamic range
+Signal-to-noise ratio
+SNR
+Clipping
+Distortion
+Harmonic distortion
+Total harmonic distortion
+THD
+Intermodulation distortion
+IMD
+Audio processing
+Signal processing
+Digital signal processing
+DSP
+Filter
+High-pass filter
+Low-pass filter
+Band-pass filter
+Band-stop filter
+Notch filter
+Compression
+Dynamic range compression
+Compressor
+Limiter
+Expander
+Gate
+Noise gate
+Reverb
+Artificial reverberation
+Delay
+Echo
+Chorus
+Flanger
+Phaser
+Pitch shifting
+Time stretching
+Psychoacoustics
+Hearing
+Auditory perception
+Auditory system
+Ear
+Outer ear
+Pinna
+Ear canal
+Middle ear
+Eardrum
+Tympanic membrane
+Ossicles
+Malleus
+Incus
+Stapes
+Inner ear
+Cochlea
+Basilar membrane
+Hair cell
+Organ of Corti
+Auditory nerve
+Auditory pathway
+Auditory cortex
+Frequency selectivity
+Critical band
+Critical bandwidth
+Bark scale
+Equivalent rectangular bandwidth
+ERB
+Tonotopy
+Place theory
+Temporal theory
+Masking
+Frequency masking
+Temporal masking
+Forward masking
+Backward masking
+Simultaneous masking
+Upward spread of masking
+Threshold
+Absolute threshold
+Hearing threshold
+Threshold of hearing
+Threshold of pain
+Dynamic range
+Equal-loudness contour
+Phon
+Sone
+Loudness
+Loudness level
+Perceived loudness
+Loudness summation
+Binaural summation
+Timbre
+Tone color
+Spectral envelope
+Harmonic structure
+Fundamental frequency
+F0
+Harmonic
+Partial
+Overtone
+Formant
+Missing fundamental
+Pitch perception
+Place pitch
+Temporal pitch
+Complex tone
+Pure tone
+Sine wave
+White noise
+Pink noise
+Brown noise
+Colored noise
+Localization
+Sound localization
+Spatial hearing
+Binaural hearing
+Interaural time difference
+ITD
+Interaural level difference
+ILD
+Interaural phase difference
+IPD
+Head-related transfer function
+HRTF
+Cone of confusion
+Precedence effect
+Haas effect
+Cocktail party effect
+Auditory scene analysis
+Auditory stream segregation
+Streaming
+Hearing loss
+Hearing impairment
+Deafness
+Conductive hearing loss
+Sensorineural hearing loss
+Mixed hearing loss
+Noise-induced hearing loss
+NIHL
+Age-related hearing loss
+Presbycusis
+Temporary threshold shift
+TTS
+Permanent threshold shift
+PTS
+Audiometry
+Audiogram
+Pure-tone audiometry
+Speech audiometry
+Tinnitus
+Hyperacusis
+Musical acoustics
+Music
+Musical sound
+Musical instrument
+String instrument
+Vibrating string
+String vibration
+Fundamental mode
+Harmonic series
+Overtone series
+Plucked string
+Bowed string
+Violin
+Guitar
+Piano
+Harp
+Wind instrument
+Brass instrument
+Woodwind instrument
+Reed
+Single reed
+Double reed
+Air column
+Tube
+Open tube
+Closed tube
+Resonance
+Resonant frequency
+Harmonic
+Register
+Flute
+Clarinet
+Saxophone
+Trumpet
+Trombone
+French horn
+Tuba
+Percussion instrument
+Membrane
+Drumhead
+Vibrating membrane
+Mode shape
+Circular membrane
+Rectangular membrane
+Bessel function
+Timpani
+Drum
+Cymbal
+Xylophone
+Marimba
+Bell
+Carillon
+Tuning
+Temperament
+Equal temperament
+Just intonation
+Musical scale
+Pitch
+Concert pitch
+A440
+Octave
+Semitone
+Cent
+Musical interval
+Consonance
+Dissonance
+Environmental noise
+Noise
+Noise pollution
+Sound pollution
+Unwanted sound
+Community noise
+Traffic noise
+Road traffic noise
+Railway noise
+Aircraft noise
+Industrial noise
+Construction noise
+Neighborhood noise
+Wind turbine noise
+Noise source
+Point source
+Line source
+Area source
+Noise level
+A-weighting
+dB(A)
+C-weighting
+dB(C)
+Equivalent continuous sound level
+Leq
+Day-night level
+Ldn
+DNL
+Statistical level
+L10
+L50
+L90
+Noise exposure
+Exposure level
+Dose
+Noise criteria
+Noise regulation
+Noise limit
+Noise ordinance
+Noise control
+Noise reduction
+Noise barrier
+Sound barrier
+Noise wall
+Absorption
+Diffraction
+Noise at source
+Path control
+Receiver protection
+Enclosure
+Silencer
+Muffler
+Exhaust silencer
+Dissipative silencer
+Reactive silencer
+Expansion chamber
+Resonator
+Active noise control
+ANC
+Active noise cancellation
+Antinoise
+Destructive interference
+Feedforward control
+Feedback control
+Underwater acoustics
+Hydroacoustics
+Sonar
+Sound navigation and ranging
+Active sonar
+Passive sonar
+Echo sounding
+Side-scan sonar
+Multibeam sonar
+Acoustic imaging
+Bathymetry
+Marine mammal
+Cetacean
+Dolphin
+Whale
+Whale song
+Echolocation
+Biosonar
+Click
+Whistle
+Sound speed profile
+Temperature profile
+Salinity
+Thermocline
+Sound channel
+SOFAR channel
+Sound fixing and ranging
+Convergence zone
+Surface duct
+Acoustic propagation
+Ray tracing
+Ray path
+Multipath
+Bottom bounce
+Surface bounce
+Transmission loss
+Spreading loss
+Ambient noise
+Sea state
+Shipping noise
+Biological noise
+Cavitation noise
+Transducer
+Hydrophone
+Projector
+Piezoelectric
+Magnetostrictive
+Array
+Linear array
+Planar array
+Volumetric array
+Beamforming
+Beam pattern
+Main lobe
+Side lobe
+Array gain
+Directivity index
+DI
+Target strength
+Reverberation
+Volume reverberation
+Surface reverberation
+Bottom reverberation
+Scattering strength
+Ultrasound
+Ultrasonic
+Medical ultrasound
+Diagnostic ultrasound
+Ultrasound imaging
+Sonography
+B-mode
+Brightness mode
+M-mode
+Motion mode
+Doppler ultrasound
+Color Doppler
+Pulsed Doppler
+Continuous wave Doppler
+Ultrasound transducer
+Probe
+Ultrasound gel
+Acoustic coupling
+Piezoelectric crystal
+Linear array
+Phased array
+Curvilinear array
+Sector scan
+Image resolution
+Axial resolution
+Lateral resolution
+Temporal resolution
+Speckle
+Acoustic impedance mismatch
+Reflection
+Attenuation
+Penetration depth
+Frequency
+High frequency
+Low frequency
+Obstetric ultrasound
+Cardiac ultrasound
+Echocardiography
+Vascular ultrasound
+Abdominal ultrasound
+Musculoskeletal ultrasound
+3D ultrasound
+4D ultrasound
+Contrast-enhanced ultrasound
+Therapeutic ultrasound
+High-intensity focused ultrasound
+HIFU
+Ultrasound therapy
+Phonophoresis
+Lithotripsy
+Shock wave
+Ultrasonic cleaning
+Cavitation
+Nondestructive testing
+NDT
+Ultrasonic testing
+UT
+Pulse-echo
+Through-transmission
+Flaw detection
+Crack detection
+Thickness measurement
+Time-of-flight
+A-scan
+Amplitude scan
+B-scan
+C-scan
+Phased array ultrasound
+Couplant
+Contact method
+Immersion method
+Calibration
+Reference standard
+Industrial ultrasound
+Material characterization
+Elastic modulus
+Attenuation measurement
+Velocity measurement
+Building acoustics
+Sound insulation
+Airborne sound insulation
+Impact sound insulation
+Sound reduction index
+R
+Weighted sound reduction index
+Rw
+Transmission class
+STC
+Sound transmission class
+Impact insulation class
+IIC
+Flanking transmission
+Structure-borne sound
+Vibration isolation
+Floating floor
+Resilient mount
+Mass law
+Coincidence effect
+Critical frequency
+Double-leaf partition
+Cavity
+Decoupling
+Damping
+Vibration damping
+Damping material
+Constrained layer damping
+Viscoelastic damping
+Loss factor
+Modal analysis
+Vibration measurement
+Accelerometer
+Velocity sensor
+Displacement sensor
+Frequency analyzer
+FFT analyzer
+Fast Fourier transform
+Spectrum
+Frequency spectrum
+Power spectral density
+PSD
+Octave band
+Third-octave band
+Sound level meter
+Integrating sound level meter
+Calibrator
+Acoustic calibrator
+Pistonphone
+

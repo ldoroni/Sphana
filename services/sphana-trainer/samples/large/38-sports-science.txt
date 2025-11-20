@@ -1,0 +1,999 @@
+Sports science
+Exercise science
+Kinesiology
+Human movement science
+Sport and exercise science
+Applied physiology
+Exercise physiology
+Cardiovascular physiology
+Respiratory physiology
+Muscle physiology
+Skeletal muscle
+Cardiac muscle
+Smooth muscle
+Muscle fiber
+Type I muscle fiber
+Slow-twitch fiber
+Type II muscle fiber
+Fast-twitch fiber
+Type IIa fiber
+Type IIb fiber
+Type IIx fiber
+Muscle fiber type
+Muscle fiber composition
+Myofibril
+Sarcomere
+Actin
+Myosin
+Troponin
+Tropomyosin
+Muscle contraction
+Sliding filament theory
+Excitation-contraction coupling
+Action potential
+Motor unit
+Motor neuron
+Neuromuscular junction
+Motor end plate
+Acetylcholine
+Muscle activation
+Muscle recruitment
+Size principle
+Henneman's size principle
+Muscle force
+Force production
+Force-velocity relationship
+Length-tension relationship
+Power output
+Muscle strength
+Maximal strength
+Absolute strength
+Relative strength
+Isometric strength
+Dynamic strength
+Concentric strength
+Eccentric strength
+Muscle power
+Power training
+Rate of force development
+RFD
+Explosive strength
+Muscle endurance
+Local muscular endurance
+Muscular fatigue
+Central fatigue
+Peripheral fatigue
+Metabolic fatigue
+Lactate accumulation
+Lactic acid
+Lactate threshold
+Anaerobic threshold
+Onset of blood lactate accumulation
+OBLA
+Ventilatory threshold
+VT1
+VT2
+First ventilatory threshold
+Second ventilatory threshold
+Aerobic capacity
+Aerobic fitness
+Cardiovascular fitness
+Cardiorespiratory fitness
+VO2max
+Maximal oxygen uptake
+Maximal oxygen consumption
+Peak oxygen uptake
+Aerobic power
+VO2peak
+Submaximal exercise
+Maximal exercise
+Exercise intensity
+Exercise duration
+Exercise frequency
+Exercise volume
+Training load
+Training volume
+Training intensity
+Training frequency
+Heart rate
+Resting heart rate
+RHR
+Maximal heart rate
+MHR
+Heart rate reserve
+HRR
+Target heart rate
+Training heart rate
+Heart rate zones
+Heart rate variability
+HRV
+Cardiac output
+Stroke volume
+Blood pressure
+Systolic blood pressure
+Diastolic blood pressure
+Mean arterial pressure
+MAP
+Oxygen delivery
+Arteriovenous oxygen difference
+a-vO2 diff
+Hemoglobin
+Hematocrit
+Blood volume
+Plasma volume
+Red blood cell
+Erythrocyte
+Oxygen transport
+Respiratory system
+Ventilation
+Minute ventilation
+Tidal volume
+Respiratory rate
+Breathing frequency
+Vital capacity
+Lung capacity
+Forced expiratory volume
+FEV1
+Peak expiratory flow
+PEF
+Pulmonary function
+Gas exchange
+Oxygen uptake
+Carbon dioxide production
+Respiratory exchange ratio
+RER
+Respiratory quotient
+RQ
+Energy metabolism
+Aerobic metabolism
+Anaerobic metabolism
+Oxidative phosphorylation
+Glycolysis
+Anaerobic glycolysis
+Krebs cycle
+Citric acid cycle
+TCA cycle
+Tricarboxylic acid cycle
+Electron transport chain
+ATP
+Adenosine triphosphate
+ATP-PC system
+Phosphagen system
+Creatine phosphate
+PCr
+Phosphocreatine
+Glycogen
+Muscle glycogen
+Liver glycogen
+Glycogenolysis
+Gluconeogenesis
+Lipolysis
+Fat oxidation
+Beta-oxidation
+Fatty acid oxidation
+Carbohydrate metabolism
+Fat metabolism
+Protein metabolism
+Metabolic rate
+Basal metabolic rate
+BMR
+Resting metabolic rate
+RMR
+Exercise metabolic rate
+Excess post-exercise oxygen consumption
+EPOC
+Oxygen debt
+Energy expenditure
+Caloric expenditure
+Energy systems
+Phosphagen system
+Glycolytic system
+Oxidative system
+Aerobic system
+Power system
+Capacity system
+Energy system contribution
+Endurance
+Aerobic endurance
+Anaerobic endurance
+Cardiovascular endurance
+Muscular endurance
+Stamina
+Speed
+Sprinting
+Acceleration
+Maximal velocity
+Speed endurance
+Power
+Explosive power
+Peak power
+Average power
+Power-to-weight ratio
+Agility
+Change of direction
+COD
+Reactive agility
+Flexibility
+Range of motion
+ROM
+Joint flexibility
+Static flexibility
+Dynamic flexibility
+Mobility
+Joint mobility
+Balance
+Static balance
+Dynamic balance
+Proprioception
+Kinesthetic awareness
+Coordination
+Motor coordination
+Hand-eye coordination
+Reaction time
+Simple reaction time
+Choice reaction time
+Movement time
+Response time
+Biomechanics
+Sports biomechanics
+Kinematics
+Kinetics
+Forces
+Ground reaction force
+GRF
+Linear motion
+Angular motion
+Velocity
+Acceleration
+Momentum
+Linear momentum
+Angular momentum
+Force platform
+Force plate
+Motion capture
+Motion analysis
+3D motion capture
+Video analysis
+Joint angles
+Joint torque
+Center of mass
+COM
+Center of gravity
+COG
+Base of support
+Posture
+Body position
+Movement pattern
+Movement mechanics
+Running mechanics
+Gait analysis
+Stride length
+Stride frequency
+Cadence
+Ground contact time
+Flight time
+Vertical oscillation
+Running economy
+Jumping mechanics
+Vertical jump
+Countermovement jump
+CMJ
+Squat jump
+SJ
+Drop jump
+DJ
+Jump height
+Takeoff velocity
+Landing mechanics
+Throwing mechanics
+Overhand throw
+Pitching
+Bowling
+Kicking mechanics
+Swimming biomechanics
+Stroke mechanics
+Cycling biomechanics
+Pedaling mechanics
+Rowing biomechanics
+Rowing stroke
+Strength training
+Resistance training
+Weight training
+Progressive overload
+Training adaptations
+Muscle hypertrophy
+Muscular hypertrophy
+Sarcoplasmic hypertrophy
+Myofibrillar hypertrophy
+Muscle growth
+Muscle protein synthesis
+Satellite cells
+Neural adaptations
+Motor unit recruitment
+Rate coding
+Synchronization
+Intermuscular coordination
+Intramuscular coordination
+Training principles
+Specificity
+SAID principle
+Specific Adaptation to Imposed Demands
+Overload
+Progressive overload
+Reversibility
+Detraining
+Variation
+Periodization
+Training periodization
+Macrocycle
+Mesocycle
+Microcycle
+Preparatory phase
+Competitive phase
+Transition phase
+Off-season
+Pre-season
+In-season
+Post-season
+Peaking
+Tapering
+Taper
+Block periodization
+Linear periodization
+Undulating periodization
+Daily undulating periodization
+DUP
+Concurrent training
+Interference effect
+Training volume
+Training intensity
+Training frequency
+Sets
+Repetitions
+Reps
+Load
+1RM
+One-repetition maximum
+Repetition maximum
+RM
+Relative intensity
+Absolute intensity
+Tempo
+Time under tension
+TUT
+Rest interval
+Rest period
+Recovery
+Active recovery
+Passive recovery
+Training split
+Full body training
+Upper/lower split
+Push/pull/legs split
+PPL
+Body part split
+Compound exercise
+Multi-joint exercise
+Isolation exercise
+Single-joint exercise
+Free weights
+Barbells
+Dumbbells
+Kettlebells
+Machines
+Resistance machines
+Cable machines
+Bodyweight exercises
+Calisthenics
+Plyometrics
+Plyometric training
+Jump training
+Stretch-shortening cycle
+SSC
+Eccentric phase
+Amortization phase
+Concentric phase
+Elastic energy
+Reactive strength
+Olympic weightlifting
+Olympic lifts
+Snatch
+Clean
+Clean and jerk
+Jerk
+Power clean
+Power snatch
+Hang clean
+Hang snatch
+Powerlifting
+Squat
+Bench press
+Deadlift
+Total
+Wilks coefficient
+Dots score
+Strongman
+Bodybuilding
+Hypertrophy training
+Muscle definition
+Muscle isolation
+Pump
+Muscle pump
+Cutting
+Bulking
+Aerobic training
+Cardio training
+Cardiovascular training
+Endurance training
+Continuous training
+Steady-state training
+Long slow distance
+LSD
+Interval training
+High-intensity interval training
+HIIT
+Sprint interval training
+SIT
+Tabata
+Fartlek
+Tempo runs
+Threshold training
+Lactate threshold training
+Tempo training
+Long runs
+Easy runs
+Recovery runs
+Base training
+Anaerobic training
+Sprint training
+Speed work
+Track work
+Repeated sprint training
+RST
+Cross-training
+Active rest
+Recovery training
+Flexibility training
+Stretching
+Static stretching
+Dynamic stretching
+Ballistic stretching
+Proprioceptive neuromuscular facilitation
+PNF stretching
+PNF
+Active stretching
+Passive stretching
+Foam rolling
+Self-myofascial release
+SMR
+Myofascial release
+Massage
+Sports massage
+Trigger points
+Muscle knots
+Recovery strategies
+Recovery methods
+Sleep
+Sleep quality
+Sleep duration
+Sleep deprivation
+Nap
+Nutrition
+Sports nutrition
+Hydration
+Fluid intake
+Water intake
+Dehydration
+Hypohydration
+Hyperhydration
+Electrolytes
+Sodium
+Potassium
+Carbohydrate intake
+Protein intake
+Fat intake
+Pre-exercise nutrition
+During-exercise nutrition
+Post-exercise nutrition
+Recovery nutrition
+Carbohydrate loading
+Glycogen loading
+Protein timing
+Anabolic window
+Supplements
+Dietary supplements
+Sports supplements
+Ergogenic aids
+Performance-enhancing supplements
+Caffeine
+Creatine
+Beta-alanine
+Sodium bicarbonate
+Nitrate
+Beetroot juice
+Protein powder
+Whey protein
+Casein protein
+Branched-chain amino acids
+BCAA
+Essential amino acids
+EAA
+Carbohydrate supplements
+Sports drinks
+Energy gels
+Energy bars
+Electrolyte drinks
+Compression garments
+Compression clothing
+Compression socks
+Ice baths
+Cold water immersion
+CWI
+Contrast water therapy
+CWT
+Cryotherapy
+Whole body cryotherapy
+WBC
+Heat therapy
+Sauna
+Infrared sauna
+Hot tub
+Jacuzzi
+Active recovery
+Cool-down
+Warm-down
+Exercise testing
+Fitness testing
+Performance testing
+Physical fitness test
+Anthropometry
+Body composition
+Body fat percentage
+Lean body mass
+Fat-free mass
+Skinfold measurement
+Bioelectrical impedance analysis
+BIA
+Dual-energy X-ray absorptiometry
+DEXA
+DXA
+Hydrostatic weighing
+Underwater weighing
+Bod Pod
+Air displacement plethysmography
+Height
+Weight
+Body mass index
+BMI
+Somatotype
+Endomorph
+Mesomorph
+Ectomorph
+Cardiovascular tests
+Graded exercise test
+GXT
+Maximal exercise test
+Submaximal exercise test
+VO2max test
+Treadmill test
+Cycle ergometer test
+Step test
+Bruce protocol
+Ramp protocol
+Wingate test
+Wingate anaerobic test
+Peak power
+Mean power
+Fatigue index
+Anaerobic capacity
+Lactate testing
+Blood lactate testing
+Lactate profile
+Functional threshold power
+FTP
+Critical power
+CP
+Strength testing
+1RM testing
+One-repetition maximum test
+Isometric strength test
+Isokinetic strength test
+Isokinetic dynamometry
+Grip strength
+Hand grip strength
+Dynamometer
+Vertical jump test
+Broad jump test
+Standing long jump
+Power testing
+Margaria-Kalamen test
+Speed testing
+Sprint test
+40-yard dash
+20-meter sprint
+Timing gates
+Laser timing
+Agility testing
+T-test
+Illinois agility test
+Pro agility test
+5-10-5 drill
+L-drill
+3-cone drill
+Flexibility testing
+Sit and reach test
+Shoulder flexibility test
+Goniometry
+Range of motion testing
+Balance testing
+Single-leg balance test
+Y-balance test
+YBT
+Star excursion balance test
+SEBT
+Functional movement screen
+FMS
+Functional testing
+Sport-specific testing
+Performance monitoring
+Training monitoring
+Athlete monitoring
+Load monitoring
+Internal load
+External load
+Session rating of perceived exertion
+sRPE
+RPE
+Rating of perceived exertion
+Borg scale
+Training impulse
+TRIMP
+Acute:chronic workload ratio
+ACWR
+Training stress balance
+TSB
+Fitness-fatigue model
+Performance management chart
+PMC
+GPS
+Global positioning system
+Accelerometry
+Gyroscope
+Distance
+Speed
+High-speed running
+HSR
+Sprint distance
+Acceleration
+Deceleration
+Metabolic power
+Jump monitoring
+Countermovement jump monitoring
+CMJ monitoring
+Wellness monitoring
+Readiness to train
+Fatigue monitoring
+Recovery monitoring
+Questionnaires
+Psychological questionnaires
+Profile of Mood States
+POMS
+Recovery-Stress Questionnaire
+REST-Q
+Total Quality Recovery
+TQR
+Perceived recovery status
+PRS
+Exercise psychology
+Sport psychology
+Mental training
+Psychological skills training
+PST
+Goal setting
+SMART goals
+Visualization
+Imagery
+Mental imagery
+Mental rehearsal
+Self-talk
+Positive self-talk
+Concentration
+Focus
+Attention
+Attentional focus
+Internal focus
+External focus
+Motivation
+Intrinsic motivation
+Extrinsic motivation
+Self-determination theory
+SDT
+Flow state
+Zone
+Confidence
+Self-efficacy
+Anxiety
+Pre-competition anxiety
+Arousal
+Optimal arousal
+Inverted-U hypothesis
+Yerkes-Dodson law
+Stress
+Eustress
+Distress
+Coping
+Coping strategies
+Relaxation techniques
+Progressive muscle relaxation
+PMR
+Breathing exercises
+Diaphragmatic breathing
+Box breathing
+Mindfulness
+Meditation
+Mental toughness
+Resilience
+Grit
+Team cohesion
+Leadership
+Communication
+Burnout
+Athlete burnout
+Overtraining syndrome
+OTS
+Overtraining
+Overreaching
+Functional overreaching
+Non-functional overreaching
+Underrecovery
+Staleness
+Performance decrement
+Mood disturbance
+Fatigue
+Persistent fatigue
+Sleep disturbance
+Immune suppression
+Illness
+Injury
+Sports injury
+Acute injury
+Chronic injury
+Overuse injury
+Traumatic injury
+Sprain
+Strain
+Contusion
+Bruise
+Laceration
+Fracture
+Stress fracture
+Dislocation
+Subluxation
+Tendinopathy
+Tendinitis
+Tendinosis
+Bursitis
+Muscle tear
+Muscle strain
+Hamstring strain
+Groin strain
+Calf strain
+Quadriceps strain
+Ligament injury
+ACL injury
+Anterior cruciate ligament
+ACL tear
+PCL injury
+Posterior cruciate ligament
+MCL injury
+Medial collateral ligament
+LCL injury
+Lateral collateral ligament
+Meniscus tear
+Cartilage injury
+Rotator cuff injury
+Shoulder impingement
+Tennis elbow
+Lateral epicondylitis
+Golfer's elbow
+Medial epicondylitis
+Shin splints
+Medial tibial stress syndrome
+MTSS
+Plantar fasciitis
+Achilles tendinopathy
+Achilles tendinitis
+IT band syndrome
+Iliotibial band syndrome
+ITBS
+Patellofemoral pain syndrome
+PFPS
+Runner's knee
+Jumper's knee
+Patellar tendinopathy
+Osgood-Schlatter disease
+Concussion
+Traumatic brain injury
+TBI
+Mild traumatic brain injury
+mTBI
+Head injury
+Second impact syndrome
+Chronic traumatic encephalopathy
+CTE
+Injury prevention
+Injury risk
+Risk factors
+Intrinsic risk factors
+Extrinsic risk factors
+Warm-up
+Dynamic warm-up
+General warm-up
+Specific warm-up
+Activation exercises
+Movement preparation
+Cool-down
+Stretching
+Flexibility work
+Strength training
+Resistance training
+Eccentric training
+Nordic hamstring exercise
+Balance training
+Proprioceptive training
+Neuromuscular training
+Landing mechanics
+Jump landing
+Cutting mechanics
+Change of direction mechanics
+Screening
+Movement screening
+Functional movement screen
+FMS
+Pre-participation physical examination
+PPE
+Rehabilitation
+Sports rehabilitation
+Injury rehabilitation
+Rehab
+Physical therapy
+Physiotherapy
+Athletic training
+Acute phase
+Subacute phase
+Chronic phase
+Return to play
+RTP
+Return to sport
+RTS
+Rehabilitation exercises
+Range of motion exercises
+ROM exercises
+Stretching
+Strengthening exercises
+Isometric exercises
+Concentric exercises
+Eccentric exercises
+Functional exercises
+Sport-specific exercises
+Progression
+Graded progression
+Criteria-based progression
+Functional testing
+Return to play testing
+Return to sport testing
+Re-injury
+Reinjury risk
+Ergonomics
+Workplace ergonomics
+Occupational health
+Posture
+Sitting posture
+Standing posture
+Lifting mechanics
+Proper lifting technique
+Lifting posture
+Repetitive strain injury
+RSI
+Repetitive motion injury
+Carpal tunnel syndrome
+Back pain
+Low back pain
+LBP
+Neck pain
+Exercise prescription
+Exercise programming
+Training program
+Training plan
+Workout program
+Individualization
+Needs analysis
+Goal setting
+Assessment
+Baseline testing
+Exercise selection
+Exercise order
+Load prescription
+Volume prescription
+Intensity prescription
+Frequency prescription
+Progression
+Periodization
+Program design
+Training design
+Special populations
+Youth athletes
+Children
+Adolescents
+Youth training
+Long-term athlete development
+LTAD
+Talent identification
+Talent development
+Early specialization
+Sport specialization
+Multi-sport participation
+Sampling
+Older adults
+Aging
+Masters athletes
+Veteran athletes
+Sarcopenia
+Osteoporosis
+Fall prevention
+Pregnant women
+Prenatal exercise
+Exercise during pregnancy
+Postpartum exercise
+Postnatal exercise
+Pelvic floor
+Diastasis recti
+Clinical populations
+Cardiac rehabilitation
+Pulmonary rehabilitation
+Cancer rehabilitation
+Diabetes management
+Exercise for diabetes
+Exercise for hypertension
+Exercise for obesity
+Weight management
+Weight loss
+Disabled athletes
+Paralympic athletes
+Adapted sport
+Adaptive sport
+Para sport
+Classification
+Doping
+Performance-enhancing drugs
+PED
+Anabolic steroids
+Testosterone
+Human growth hormone
+HGH
+Erythropoietin
+EPO
+Blood doping
+Stimulants
+Amphetamines
+Beta-2 agonists
+Diuretics
+Masking agents
+Gene doping
+Anti-doping
+World Anti-Doping Agency
+WADA
+Prohibited list
+Therapeutic use exemption
+TUE
+Drug testing
+Doping control
+Out-of-competition testing
+In-competition testing
+Biological passport
+Athlete biological passport
+ABP
+Sanctions
+Ban
+Suspension
+

@@ -1,0 +1,567 @@
+Particle physics
+High-energy physics
+Elementary particle
+Fundamental particle
+Subatomic particle
+Standard Model
+Standard Model of particle physics
+Particle
+Antiparticle
+Matter
+Antimatter
+Fermion
+Boson
+Spin
+Half-integer spin
+Integer spin
+Quantum number
+Charge
+Electric charge
+Mass
+Rest mass
+Energy
+Momentum
+Lepton
+Electron
+Muon
+Tau
+Tau lepton
+Neutrino
+Electron neutrino
+Muon neutrino
+Tau neutrino
+Lepton number
+Lepton flavor
+Quark
+Up quark
+Down quark
+Charm quark
+Strange quark
+Top quark
+Bottom quark
+Quark flavor
+Color charge
+Red
+Green
+Blue
+Anticolor
+Baryon
+Proton
+Neutron
+Baryon number
+Meson
+Pion
+Kaon
+B meson
+D meson
+Hadron
+Composite particle
+Gauge boson
+Force carrier
+Photon
+W boson
+Z boson
+Weak boson
+Gluon
+Graviton
+Higgs boson
+Higgs particle
+Higgs mechanism
+Higgs field
+Electroweak symmetry breaking
+Mass generation
+Fundamental interaction
+Fundamental force
+Electromagnetic force
+Electromagnetism
+Weak force
+Weak nuclear force
+Weak interaction
+Strong force
+Strong nuclear force
+Strong interaction
+Gravity
+Gravitational force
+Quantum electrodynamics
+QED
+Quantum chromodynamics
+QCD
+Electroweak theory
+Grand Unified Theory
+GUT
+Theory of Everything
+TOE
+Unification
+Force unification
+Symmetry
+Gauge symmetry
+Gauge theory
+Gauge field
+Yang-Mills theory
+Quantum field theory
+QFT
+Field
+Scalar field
+Vector field
+Tensor field
+Feynman diagram
+Vertex
+Propagator
+Loop
+Virtual particle
+Renormalization
+Regularization
+Ultraviolet divergence
+Infrared divergence
+Beta function
+Running coupling
+Coupling constant
+Fine structure constant
+Alpha
+αs
+Strong coupling constant
+Conservation law
+Energy conservation
+Momentum conservation
+Angular momentum conservation
+Charge conservation
+Lepton number conservation
+Baryon number conservation
+Parity
+Parity violation
+P violation
+Charge conjugation
+C symmetry
+Time reversal
+T symmetry
+CPT symmetry
+CP violation
+CP symmetry violation
+Decay
+Particle decay
+Radioactive decay
+Beta decay
+Beta-plus decay
+Beta-minus decay
+Electron capture
+Alpha decay
+Gamma decay
+Weak decay
+Strong decay
+Electromagnetic decay
+Decay mode
+Branching ratio
+Decay channel
+Lifetime
+Mean lifetime
+Half-life
+Decay rate
+Decay width
+Resonance
+Particle resonance
+Scattering
+Particle scattering
+Elastic scattering
+Inelastic scattering
+Deep inelastic scattering
+DIS
+Cross section
+Scattering cross section
+Differential cross section
+Total cross section
+Luminosity
+Integrated luminosity
+Collision
+Particle collision
+Center-of-mass energy
+Invariant mass
+Annihilation
+Pair production
+Pair annihilation
+Bremsstrahlung
+Synchrotron radiation
+Particle accelerator
+Accelerator
+Collider
+Particle collider
+Linear accelerator
+Linac
+Circular accelerator
+Synchrotron
+Cyclotron
+Betatron
+Large Hadron Collider
+LHC
+Tevatron
+LEP
+Large Electron-Positron Collider
+SLAC
+Stanford Linear Accelerator Center
+CERN
+European Organization for Nuclear Research
+Fermilab
+Beam
+Particle beam
+Proton beam
+Electron beam
+Bunch
+Beam energy
+Acceleration
+Electric field
+Magnetic field
+Dipole magnet
+Quadrupole magnet
+Bending magnet
+Focusing
+Beam optics
+Radiofrequency cavity
+RF cavity
+Vacuum
+Ultra-high vacuum
+Beam pipe
+Beam dump
+Target
+Fixed target
+Detector
+Particle detector
+Tracking detector
+Silicon detector
+Silicon strip detector
+Silicon pixel detector
+Time projection chamber
+TPC
+Drift chamber
+Wire chamber
+Multiwire proportional chamber
+MWPC
+Calorimeter
+Electromagnetic calorimeter
+ECAL
+Hadronic calorimeter
+HCAL
+Sampling calorimeter
+Homogeneous calorimeter
+Crystal calorimeter
+Muon detector
+Muon chamber
+Cherenkov detector
+Cherenkov radiation
+Ring-imaging Cherenkov
+RICH
+Time-of-flight detector
+TOF
+Scintillator
+Scintillation counter
+Photomultiplier tube
+PMT
+Silicon photomultiplier
+SiPM
+Trigger
+Trigger system
+Data acquisition
+DAQ
+Event
+Particle event
+Collision event
+Track
+Particle track
+Vertex
+Primary vertex
+Secondary vertex
+Jet
+Particle jet
+Quark jet
+Gluon jet
+Missing energy
+Missing transverse energy
+Reconstruction
+Event reconstruction
+Particle identification
+PID
+ATLAS
+A Toroidal LHC ApparatuS
+CMS
+Compact Muon Solenoid
+ALICE
+A Large Ion Collider Experiment
+LHCb
+Large Hadron Collider beauty
+Belle
+BaBar
+Neutrino experiment
+Neutrino detector
+Super-Kamiokande
+Super-K
+IceCube
+NOvA
+T2K
+Tokai to Kamioka
+Neutrino oscillation
+Flavor oscillation
+Mixing
+Neutrino mixing
+PMNS matrix
+Pontecorvo-Maki-Nakagawa-Sakata matrix
+Mixing angle
+Mass eigenstate
+Flavor eigenstate
+Neutrino mass
+Mass hierarchy
+Normal hierarchy
+Inverted hierarchy
+Sterile neutrino
+Majorana neutrino
+Dirac neutrino
+Cosmology
+Particle cosmology
+Dark matter
+Dark matter particle
+WIMP
+Weakly interacting massive particle
+Neutralino
+Axion
+Dark matter detection
+Direct detection
+Indirect detection
+Dark energy
+Cosmological constant
+Quintessence
+Big Bang
+Early universe
+Inflation
+Inflaton
+Baryogenesis
+Leptogenesis
+Nucleosynthesis
+Big Bang nucleosynthesis
+BBN
+Matter-antimatter asymmetry
+CP violation
+Baryon asymmetry
+Cosmic ray
+Ultra-high-energy cosmic ray
+UHECR
+Pierre Auger Observatory
+Shower
+Air shower
+Extensive air shower
+Beyond the Standard Model
+BSM
+New physics
+Supersymmetry
+SUSY
+Superpartner
+Squark
+Slepton
+Gaugino
+Neutralino
+Chargino
+Gluino
+Photino
+Wino
+Zino
+Higgsino
+Gravitino
+R-parity
+MSSM
+Minimal Supersymmetric Standard Model
+Extra dimension
+Large extra dimension
+Warped extra dimension
+Kaluza-Klein theory
+KK tower
+String theory
+Superstring theory
+M-theory
+Brane
+D-brane
+String
+Open string
+Closed string
+Heterotic string
+Type I string
+Type IIA string
+Type IIB string
+Compactification
+Calabi-Yau manifold
+Moduli
+Landscape
+Swampland
+Grand Unified Theory
+GUT
+SO(10)
+SU(5)
+Proton decay
+Technicolor
+Composite Higgs
+Little Higgs
+Twin Higgs
+Leptoquark
+Magnetic monopole
+Heavy neutrino
+Right-handed neutrino
+Seesaw mechanism
+Majorana mass
+Flavor physics
+Quark mixing
+CKM matrix
+Cabibbo-Kobayashi-Maskawa matrix
+B physics
+Charm physics
+Top quark physics
+Rare decay
+Flavor-changing neutral current
+FCNC
+B meson oscillation
+CP violation in B system
+Unitarity triangle
+Electroweak precision
+Precision test
+Electroweak fit
+W mass
+Z mass
+Top mass
+Higgs physics
+Higgs discovery
+Higgs production
+Gluon fusion
+Vector boson fusion
+VBF
+Associated production
+Higgs decay
+Higgs to diphoton
+Higgs to ZZ
+Higgs to WW
+Higgs to tau tau
+Higgs to bottom
+Higgs coupling
+Yukawa coupling
+Higgs self-coupling
+Trilinear coupling
+Quartic coupling
+Higgs potential
+Vacuum stability
+Metastability
+Quantum chromodynamics
+QCD
+Asymptotic freedom
+Confinement
+Color confinement
+Quark confinement
+Parton
+Parton distribution function
+PDF
+Gluon distribution
+Quark distribution
+Structure function
+Deep inelastic scattering
+Bjorken scaling
+DGLAP equation
+Altarelli-Parisi equation
+Jet
+Jet production
+Jet algorithm
+Anti-kt algorithm
+Hadronization
+Fragmentation
+Parton shower
+Monte Carlo
+Event generator
+PYTHIA
+HERWIG
+SHERPA
+Matrix element
+Leading order
+LO
+Next-to-leading order
+NLO
+Next-to-next-to-leading order
+NNLO
+Perturbative QCD
+Non-perturbative QCD
+Lattice QCD
+Lattice gauge theory
+Quark-gluon plasma
+QGP
+Heavy-ion collision
+Nuclear physics
+Atomic nucleus
+Nucleon
+Nuclear force
+Nuclear structure
+Shell model
+Liquid drop model
+Nuclear reaction
+Nuclear fission
+Nuclear fusion
+Isotope
+Radioactivity
+Alpha particle
+Beta particle
+Gamma ray
+Neutrino physics
+Neutrino beam
+Neutrino interaction
+Charged current
+Neutral current
+Quasi-elastic scattering
+Resonance production
+Deep inelastic scattering
+Coherent scattering
+Neutrino cross section
+Atmospheric neutrino
+Solar neutrino
+Reactor neutrino
+Accelerator neutrino
+Supernova neutrino
+Astrophysical neutrino
+High-energy neutrino
+IceCube
+Neutrino telescope
+Precision measurement
+Anomalous magnetic moment
+g-2
+Muon g-2
+Lamb shift
+Electric dipole moment
+EDM
+Neutron EDM
+Electron EDM
+Muonium
+Positronium
+Rare process
+Muon to electron conversion
+Neutrinoless double beta decay
+Lepton flavor violation
+LFV
+Charged lepton flavor violation
+CLFV
+Statistics
+Statistical analysis
+Significance
+Standard deviation
+Sigma
+5-sigma
+Discovery
+Evidence
+Exclusion
+Limit
+Confidence level
+CL
+Hypothesis test
+Null hypothesis
+P-value
+Likelihood
+Maximum likelihood
+Chi-square
+Fit
+Systematic uncertainty
+Statistical uncertainty
+Background
+Signal
+Signal-to-background
+Blind analysis
+Look-elsewhere effect
+Trial factor
+Publication bias
+

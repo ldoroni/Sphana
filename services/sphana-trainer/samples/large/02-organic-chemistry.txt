@@ -1,0 +1,1023 @@
+Organic chemistry
+Hydrocarbon
+Alkane
+Alkene
+Alkyne
+Aromatic compound
+Benzene
+Toluene
+Xylene
+Naphthalene
+Anthracene
+Phenanthrene
+Pyrene
+Coronene
+Fullerene
+Graphene
+Carbon nanotube
+Buckminsterfullerene
+Functional group
+Hydroxyl
+Carbonyl
+Carboxyl
+Amino group
+Sulfhydryl
+Phosphate group
+Methyl group
+Ethyl group
+Propyl group
+Butyl group
+Phenyl group
+Benzyl group
+Allyl group
+Vinyl group
+Acetyl group
+Formyl group
+Acyl group
+Alkoxy group
+Ester
+Ether
+Aldehyde
+Ketone
+Carboxylic acid
+Amide
+Amine
+Imine
+Nitrile
+Isonitrile
+Nitro compound
+Nitroso compound
+Azide
+Diazo compound
+Alcohol
+Phenol
+Thiol
+Sulfide
+Disulfide
+Sulfoxide
+Sulfone
+Sulfonic acid
+Phosphine
+Phosphate
+Phosphonate
+Silane
+Silanol
+Siloxane
+Silicone
+Organosilicon
+Organometallic chemistry
+Grignard reagent
+Organolithium reagent
+Organocopper
+Organozinc
+Organoboron
+Organoaluminium
+Organomercury
+Organolead
+Organotin
+Fischer carbene
+Schrock carbene
+Ylide
+Phosphonium ylide
+Sulfonium ylide
+Carbene
+Nitrene
+Radical (chemistry)
+Free radical
+Carbocation
+Carbanion
+Zwitterion
+Betaine
+Dipole
+Nucleophile
+Electrophile
+Leaving group
+Stereochemistry
+Chirality (chemistry)
+Enantiomer
+Diastereomer
+Meso compound
+Racemic mixture
+Optical rotation
+Specific rotation
+Enantiomeric excess
+Diastereomeric excess
+Absolute configuration
+R/S system
+E/Z notation
+Cis–trans isomerism
+Conformational isomerism
+Newman projection
+Sawhorse projection
+Fischer projection
+Haworth projection
+Chair conformation
+Boat conformation
+Twist-boat conformation
+Envelope conformation
+Half-chair conformation
+Axial and equatorial
+Ring flip
+Pseudorotation
+Anomeric effect
+Gauche effect
+Allylic strain
+1,3-diaxial interaction
+Steric effects
+Torsional strain
+Angle strain
+Ring strain
+Baeyer strain theory
+Pitzer strain
+Prelog strain
+Organic reaction
+Addition reaction
+Elimination reaction
+Substitution reaction
+Rearrangement reaction
+Pericyclic reaction
+Redox reaction
+Acid–base reaction
+Nucleophilic substitution
+SN1 reaction
+SN2 reaction
+SNi reaction
+SN1CB mechanism
+Nucleophilic aromatic substitution
+Benzyne
+Meisenheimer complex
+Electrophilic substitution
+Electrophilic aromatic substitution
+Friedel–Crafts reaction
+Friedel–Crafts acylation
+Friedel–Crafts alkylation
+Halogenation
+Nitration
+Sulfonation
+Alkylation
+Acylation
+Nucleophilic addition
+Aldol reaction
+Aldol condensation
+Claisen condensation
+Knoevenagel condensation
+Mannich reaction
+Michael addition
+Baylis–Hillman reaction
+Morita–Baylis–Hillman reaction
+Henry reaction
+Nitroaldol reaction
+Reformatsky reaction
+Barbier reaction
+Grignard reaction
+Wittig reaction
+Peterson olefination
+Julia olefination
+Horner–Wadsworth–Emmons reaction
+Tebbe olefination
+Takai olefination
+Lombardo methylenation
+Nysted methylenation
+Simmons–Smith reaction
+Corey–Chaykovsky reaction
+Darzens reaction
+Paterno–Büchi reaction
+Norrish reaction
+Barton reaction
+Hofmann–Löffler reaction
+Elimination reaction
+E1 reaction
+E2 reaction
+E1cB mechanism
+Cope elimination
+Hofmann elimination
+Zaitsev's rule
+Hofmann's rule
+Bredt's rule
+Baldwin's rules
+Saytzeff rule
+Markovnikov's rule
+Anti-Markovnikov addition
+Kharash effect
+Peroxide effect
+Regioselectivity
+Chemoselectivity
+Stereospecificity
+Stereoselective synthesis
+Asymmetric synthesis
+Enantioselective synthesis
+Chiral pool synthesis
+Chiral auxiliary
+Chiral catalyst
+Chiral ligand
+Chiral resolution
+Kinetic resolution
+Dynamic kinetic resolution
+Parallel kinetic resolution
+Enzymatic resolution
+Classical resolution
+Preferential crystallization
+Diastereomeric salt formation
+Chromatographic resolution
+Simulated moving bed
+Diels–Alder reaction
+Inverse electron demand Diels–Alder
+Hetero-Diels–Alder reaction
+Intramolecular Diels–Alder
+Retro-Diels–Alder reaction
+1,3-Dipolar cycloaddition
+Azide-alkyne cycloaddition
+Huisgen cycloaddition
+Click chemistry
+Copper-catalyzed azide-alkyne cycloaddition
+Strain-promoted azide-alkyne cycloaddition
+[2+2] Cycloaddition
+[4+2] Cycloaddition
+Cheletropic reaction
+Sigmatropic rearrangement
+Cope rearrangement
+Claisen rearrangement
+Carroll rearrangement
+Eschenmoser–Claisen rearrangement
+Ireland–Claisen rearrangement
+Johnson–Claisen rearrangement
+Overman rearrangement
+[2,3]-Sigmatropic rearrangement
+[3,3]-Sigmatropic rearrangement
+Mislow–Evans rearrangement
+Sommelet–Hauser rearrangement
+Wittig rearrangement
+Stevens rearrangement
+Aza-Wittig reaction
+Staudinger reaction
+Mitsunobu reaction
+Curtius rearrangement
+Hofmann rearrangement
+Lossen rearrangement
+Schmidt reaction
+Beckmann rearrangement
+Baeyer–Villiger oxidation
+Dakin oxidation
+Favorskii rearrangement
+Benzilic acid rearrangement
+Pinacol rearrangement
+Wagner–Meerwein rearrangement
+Nametkin rearrangement
+Demjanov rearrangement
+Tiffeneau–Demjanov rearrangement
+Semmler–Wolff reaction
+Dienone–phenol rearrangement
+Fries rearrangement
+Photo-Fries rearrangement
+Baker–Venkataraman rearrangement
+Smiles rearrangement
+Truce–Smiles rearrangement
+Ramberg–Bäcklund reaction
+Neber rearrangement
+Wallach rearrangement
+Meisenheimer rearrangement
+Newman–Kwart rearrangement
+Dimroth rearrangement
+Boulton–Katritzky rearrangement
+Oxidation
+Reduction
+Hydrogenation
+Transfer hydrogenation
+Catalytic hydrogenation
+Heterogeneous catalysis
+Homogeneous catalysis
+Lindlar catalyst
+Wilkinson's catalyst
+Crabtree's catalyst
+Noyori asymmetric hydrogenation
+Sharpless epoxidation
+Sharpless asymmetric dihydroxylation
+Sharpless oxyamination
+Jacobsen epoxidation
+Katsuki–Sharpless epoxidation
+Pauson–Khand reaction
+Nicholas reaction
+Sonogashira coupling
+Suzuki coupling
+Stille coupling
+Heck reaction
+Negishi coupling
+Kumada coupling
+Hiyama coupling
+Ullmann reaction
+Goldberg reaction
+Buchwald–Hartwig amination
+Chan–Lam coupling
+Liebeskind–Srogl coupling
+Cadiot–Chodkiewicz coupling
+Glaser coupling
+Eglinton reaction
+Hay coupling
+Castro–Stephens coupling
+Fukuyama coupling
+Cross-coupling reaction
+C–H activation
+C–H functionalization
+Directed C–H activation
+Palladium-catalyzed coupling
+Nickel catalysis
+Copper catalysis
+Iron catalysis
+Cobalt catalysis
+Rhodium catalysis
+Iridium catalysis
+Ruthenium catalysis
+Gold catalysis
+Silver catalysis
+Photoredox catalysis
+Dual catalysis
+Cooperative catalysis
+Relay catalysis
+Synergistic catalysis
+Metal-free catalysis
+Organocatalysis
+Brønsted acid catalysis
+Lewis acid catalysis
+Hydrogen bond catalysis
+Bifunctional catalysis
+Phase-transfer catalysis
+Asymmetric phase-transfer catalysis
+Chiral phase-transfer catalyst
+Cinchona alkaloid
+Proline
+MacMillan catalyst
+Jørgensen–Hayashi catalyst
+List–Houk catalyst
+Maruoka catalyst
+N-Heterocyclic carbene
+NHC catalysis
+Thiazolium salt
+Breslow intermediate
+Umpolung
+Polarity inversion
+Brook rearrangement
+Protecting group
+Protecting group strategy
+Orthogonal protection
+Temporary protection
+Hydroxyl protecting group
+Amino protecting group
+Carboxyl protecting group
+Carbonyl protecting group
+Benzyl ether
+Methoxymethyl ether
+Tetrahydropyranyl ether
+Silyl ether
+t-Butyldimethylsilyl
+Trimethylsilyl
+Triisopropylsilyl
+t-Butyldiphenylsilyl
+Acetate
+Benzoate
+Pivaloate
+Carbobenzoxy
+t-Butyloxycarbonyl
+Fluorenylmethyloxycarbonyl
+Allyloxycarbonyl
+Benzyl carbamate
+Carbamate
+Sulfonamide
+Nosyl
+Tosyl
+Mesyl
+Triflate
+Acetal
+Ketal
+Thioacetal
+Dithiane
+Oxime
+Hydrazone
+Semicarbazone
+Imine
+Enamine
+Name reaction
+Named reactions
+Retrosynthetic analysis
+Disconnection approach
+Synthon
+Synthetic equivalent
+Umpolung reagent
+Corey–House synthesis
+Total synthesis
+Natural product synthesis
+Target-oriented synthesis
+Diversity-oriented synthesis
+Biology-oriented synthesis
+Fragment-based drug discovery
+Structure-activity relationship
+SAR by NMR
+Lead compound
+Hit compound
+Pharmacophore
+Drug design
+Rational drug design
+Computer-aided drug design
+QSAR
+Lipinski's rule of five
+Veber's rules
+Medicinal chemistry
+Drug metabolism
+Pharmacokinetics
+ADME
+Bioavailability
+First-pass metabolism
+Cytochrome P450
+Phase I metabolism
+Phase II metabolism
+Glucuronidation
+Sulfation
+Acetylation
+Methylation
+Glutathione conjugation
+Amino acid conjugation
+Prodrug
+Soft drug
+Bioisostere
+Scaffold hopping
+Ring expansion
+Ring contraction
+Ring opening
+Ring closing
+Ring-closing metathesis
+Cross metathesis
+Enyne metathesis
+Alkene metathesis
+Alkyne metathesis
+Grubbs catalyst
+Schrock catalyst
+Hoveyda–Grubbs catalyst
+Molybdenum catalyst
+Tungsten catalyst
+Olefin metathesis
+Acyclic diene metathesis polymerization
+Ring-opening metathesis polymerization
+Ene reaction
+Carbonyl–ene reaction
+Prins reaction
+Conia-ene reaction
+Alder ene reaction
+Oxidative addition
+Reductive elimination
+Migratory insertion
+β-Hydride elimination
+α-Hydride elimination
+γ-Hydride elimination
+Agostic interaction
+Transmetalation
+σ-Bond metathesis
+Oxidative coupling
+Reductive coupling
+Hydroformylation
+Hydrocarboxylation
+Hydroesterification
+Hydroamination
+Hydroboration
+Hydrophosphination
+Hydrosilylation
+Hydrostannylation
+Hydrozirconation
+Hydroalumination
+Carbometalation
+Difunctionalization
+Aminohydroxylation
+Diamination
+Carboamination
+Halohydroxylation
+Haloamination
+Halolactonization
+Iodolactonization
+Iodoetherification
+Oxymercuration
+Halomercuration
+Solvomercuration
+Demercuration
+Organomercury
+Thallation
+Palladation
+C–H palladation
+Cyclometalation
+Pincer complex
+PCP pincer
+NCN pincer
+PNP pincer
+SCS pincer
+Carbocation rearrangement
+Hydride shift
+Alkyl shift
+Aryl shift
+1,2-Shift
+1,3-Shift
+1,4-Shift
+1,5-Shift
+Suprafacial
+Antarafacial
+Woodward–Hoffmann rules
+Frontier molecular orbital theory
+HOMO
+LUMO
+FMO theory
+Perturbation molecular orbital theory
+PMO theory
+Orbital symmetry
+Pericyclic selection rules
+Allowed reaction
+Forbidden reaction
+Antarafacial
+Suprafacial
+Conrotatory
+Disrotatory
+Hückel topology
+Möbius topology
+Aromatic transition state
+Antiaromatic transition state
+4n+2 rule
+Hückel's rule
+Baird's rule
+Triplet state aromaticity
+Excited state aromaticity
+Photochemistry
+Photophysics
+Photoisomerization
+Photocyclization
+Photoaddition
+Photooxidation
+Photoredox
+Photocatalysis
+Energy transfer
+Electron transfer
+Singlet oxygen
+Triplet oxygen
+Reactive oxygen species
+Superoxide
+Hydroxyl radical
+Peroxyl radical
+Alkoxyl radical
+Peroxide
+Hydroperoxide
+Endoperoxide
+Dioxetane
+Chemiluminescence
+Bioluminescence
+Fluorescence
+Phosphorescence
+Excimer
+Exciplex
+Charge-transfer complex
+Electron donor–acceptor complex
+Molecular orbital
+Bonding orbital
+Antibonding orbital
+Nonbonding orbital
+σ Orbital
+π Orbital
+δ Orbital
+Sigma bond
+Pi bond
+Delta bond
+Conjugation
+Hyperconjugation
+Resonance
+Aromaticity
+Antiaromaticity
+Homoaromaticity
+Spherical aromaticity
+σ-Aromaticity
+Baird aromaticity
+Möbius aromaticity
+Three-dimensional aromaticity
+Metalloaromaticity
+Inorganic benzene
+Wade's rules
+Polyhedral skeletal electron pair theory
+Boranes
+Carboranes
+Metallacarborane
+Sandwich compound
+Metallocene
+Ferrocene
+Ruthenocene
+Osmocene
+Cobaltocene
+Rhodocene
+Nickelocene
+Chromocene
+Manganocene
+Cyclopentadienyl
+Pentamethylcyclopentadienyl
+Indenyl
+Fluorenyl
+Cyclobutadiene
+Cyclohexadienyl
+Cycloheptatrienyl
+Tropylium
+Cyclopropenyl
+Hapticity
+η1-Ligand
+η2-Ligand
+η3-Ligand
+η4-Ligand
+η5-Ligand
+η6-Ligand
+η7-Ligand
+Bridging ligand
+Terminal ligand
+Chelating ligand
+Polydentate ligand
+Bidentate ligand
+Tridentate ligand
+Tetradentate ligand
+Hexadentate ligand
+Ambidentate ligand
+Hemilabile ligand
+Fluxional molecule
+Berry pseudorotation
+Bailar twist
+Ray–Dutt twist
+Jahn–Teller effect
+Cooperative Jahn–Teller effect
+Renner–Teller effect
+Pseudo-Jahn–Teller effect
+Crystal field theory
+Ligand field theory
+Molecular orbital theory
+Angular overlap model
+Tanabe–Sugano diagram
+Orgel diagram
+Racah parameters
+Nephelauxetic effect
+Spectrochemical series
+Irving–Williams series
+Trans effect
+Cis effect
+Chelate effect
+Macrocyclic effect
+Template effect
+Entropy
+Enthalpy
+Gibbs free energy
+Activation energy
+Reaction coordinate
+Transition state
+Hammond postulate
+Curtin–Hammett principle
+Microscopic reversibility
+Thermodynamic control
+Kinetic control
+Kinetic isotope effect
+Primary isotope effect
+Secondary isotope effect
+Deuterium isotope effect
+Tritium isotope effect
+Inverse isotope effect
+Equilibrium isotope effect
+Tunneling
+Quantum tunneling
+Proton tunneling
+Hydrogen tunneling
+Heavy atom tunneling
+Bell–Evans–Polanyi principle
+Marcus theory
+Electron transfer theory
+Inner sphere electron transfer
+Outer sphere electron transfer
+Self-exchange rate
+Cross reaction
+Marcus cross relation
+Marcus inverted region
+Rehm–Weller equation
+Dexter energy transfer
+Förster resonance energy transfer
+FRET
+Kasha's rule
+Jablonski diagram
+Internal conversion
+Intersystem crossing
+Vibronic coupling
+Franck–Condon principle
+Born–Oppenheimer approximation
+Potential energy surface
+Reaction path
+Minimum energy path
+Intrinsic reaction coordinate
+Variational transition state theory
+Transition state theory
+RRKM theory
+Statistical mechanics
+Partition function
+Boltzmann distribution
+Maxwell–Boltzmann distribution
+Arrhenius equation
+Eyring equation
+Leffler–Hammond postulate
+Polanyi rules
+Structure–reactivity relationship
+Linear free energy relationship
+Hammett equation
+Taft equation
+Swain–Lupton equation
+Yukawa–Tsuno equation
+Grunwald–Winstein equation
+Ritchie equation
+Mayr–Patz equation
+Nucleophilicity scale
+Electrophilicity index
+Philicity
+Carbene philicity
+Donor number
+Acceptor number
+Kamlet–Taft parameters
+Solvent polarity
+Solvatochromism
+ET(30) scale
+Z scale
+π* scale
+α parameter
+β parameter
+Reichardt's dye
+Nile red
+Brooker's merocyanine
+Dimroth–Reichardt betaine
+Solvent effect
+Specific solvation
+Preferential solvation
+Cybotactic region
+Solvent cage
+Geminate recombination
+Cage effect
+Frank–Rabinowitch effect
+Solvent reorganization
+Solvation shell
+Primary solvation shell
+Secondary solvation shell
+Bulk solvent
+Protic solvent
+Aprotic solvent
+Polar solvent
+Nonpolar solvent
+Amphiprotic solvent
+Dipolar aprotic solvent
+Ethereal solvent
+Hydroxylic solvent
+Cryogenic solvent
+Supercritical fluid
+Ionic liquid
+Deep eutectic solvent
+Natural deep eutectic solvent
+Green solvent
+Bio-based solvent
+Neoteric solvent
+Designer solvent
+Task-specific ionic liquid
+Switchable solvent
+pH-Responsive solvent
+CO2-Switchable solvent
+Thermoresponsive solvent
+Photoresponsive solvent
+Stimuli-responsive solvent
+Smart solvent
+Solvent-free reaction
+Mechanochemistry
+Ball milling
+Tribochemistry
+Sonochemistry
+Ultrasound chemistry
+Microwave chemistry
+Photochemistry
+Electrochemistry
+Plasma chemistry
+Flow chemistry
+Continuous flow chemistry
+Microreactor
+Microfluidics
+Lab-on-a-chip
+Organ-on-a-chip
+Droplet microfluidics
+Segmented flow
+Plug flow
+Laminar flow
+Reynolds number
+Péclet number
+Dean number
+Capillary number
+Weber number
+Bond number
+Eötvös number
+Morton number
+Stokes number
+Schmidt number
+Sherwood number
+Damköhler number
+Hatta number
+Thiele modulus
+Effectiveness factor
+Mass transfer
+Heat transfer
+Momentum transfer
+Diffusion
+Convection
+Conduction
+Radiation
+Stefan–Boltzmann law
+Planck's law
+Wien's displacement law
+Rayleigh–Jeans law
+Ultraviolet catastrophe
+Black-body radiation
+Kirchhoff's law of thermal radiation
+Lambert's cosine law
+Beer–Lambert law
+Absorption spectroscopy
+Emission spectroscopy
+Infrared spectroscopy
+Raman spectroscopy
+Fluorescence spectroscopy
+Phosphorescence spectroscopy
+UV–vis spectroscopy
+Nuclear magnetic resonance spectroscopy
+NMR spectroscopy
+Carbon-13 NMR
+Proton NMR
+Two-dimensional NMR
+COSY
+NOESY
+TOCSY
+HSQC
+HMQC
+HMBC
+INADEQUATE
+DOSY
+Relaxometry
+T1 relaxation
+T2 relaxation
+Spin–spin relaxation
+Spin–lattice relaxation
+Nuclear Overhauser effect
+NOE
+Rotating-frame Overhauser effect
+ROESY
+Chemical shift
+Coupling constant
+J-coupling
+Scalar coupling
+Dipolar coupling
+Quadrupolar coupling
+Magnetic equivalence
+Chemical equivalence
+Homotopic
+Enantiotopic
+Diastereotopic
+Prochiral
+Prostereogenic
+Pseudochiral
+Meso
+dl-Nomenclature
+Topicity
+Constitutionally heterotopic
+Stereoheterotopic
+Exchange spectroscopy
+Dynamic NMR
+Coalescence temperature
+Line broadening
+Chemical exchange
+Conformational exchange
+Rotational barrier
+Inversion barrier
+Pseudorotation barrier
+Fluxionality
+Berry mechanism
+Turnstile mechanism
+Lever mechanism
+Diamond–square–diamond mechanism
+Bartell mechanism
+BPR mechanism
+Mutual exchange
+Multiple exchange
+Pairwise exchange
+Collective exchange
+Site exchange
+Mass spectrometry
+Gas chromatography–mass spectrometry
+Liquid chromatography–mass spectrometry
+Tandem mass spectrometry
+MS/MS
+MSn
+Ion source
+Electron ionization
+Chemical ionization
+Atmospheric-pressure chemical ionization
+Electrospray ionization
+Matrix-assisted laser desorption/ionization
+MALDI
+Fast atom bombardment
+Field desorption
+Field ionization
+Thermospray
+Particle beam
+Inductively coupled plasma
+Glow discharge
+Secondary ion mass spectrometry
+Accelerator mass spectrometry
+Thermal ionization
+Spark source
+Mass analyzer
+Quadrupole mass analyzer
+Time-of-flight mass spectrometry
+TOF-MS
+Reflectron
+Ion trap
+Quadrupole ion trap
+Linear ion trap
+Penning trap
+Orbitrap
+Fourier transform ion cyclotron resonance
+FT-ICR
+Magnetic sector
+Double-focusing mass spectrometer
+Mattauch–Herzog geometry
+Nier–Johnson geometry
+Ion detector
+Electron multiplier
+Photomultiplier
+Faraday cup
+Daly detector
+Microchannel plate
+Array detector
+Cryodetector
+Selected ion monitoring
+Selected reaction monitoring
+Multiple reaction monitoring
+Precursor ion scan
+Neutral loss scan
+Product ion scan
+Isotope pattern
+Isotope ratio
+Isotope dilution
+Isotope labeling
+Stable isotope labeling
+Radioisotope labeling
+Carbon-14 labeling
+Tritium labeling
+Deuterium labeling
+Oxygen-18 labeling
+Nitrogen-15 labeling
+Sulfur-34 labeling
+Heavy atom labeling
+Site-specific labeling
+Residue-specific labeling
+Uniform labeling
+Fractional labeling
+Scrambling
+Hydrogen–deuterium exchange
+Hydroxyl–deuterium exchange
+Amide exchange
+Peptide mapping
+Proteolysis
+Trypsin digestion
+Pepsin digestion
+Chymotrypsin digestion
+Proteinase K
+Thermolysin
+Subtilisin
+Papain
+Bromelain
+Ficin
+Cathepsin
+Calpain
+Caspase
+Matrix metalloproteinase
+Serine protease
+Cysteine protease
+Aspartic protease
+Threonine protease
+Glutamic protease
+Asparagine peptide lyase
+Metalloprotease
+Aminopeptidase
+Carboxypeptidase
+Dipeptidase
+Dipeptidyl peptidase
+Tripeptidyl peptidase
+Oligopeptidase
+Omega peptidase
+Serine-type carboxypeptidase
+Metallocarboxypeptidase
+Cysteine-type carboxypeptidase
+Exopeptidase
+Endopeptidase
+Signal peptidase
+Leader peptidase
+Proprotein convertase
+Furin
+PCSK9
+Sortase
+Intein
+Protein splicing
+Autocatalytic cleavage
+Self-cleavage
+Trans-splicing
+

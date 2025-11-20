@@ -1,0 +1,971 @@
+Pharmacology
+Drug
+Medication
+Medicine
+Pharmaceutical
+Therapeutic agent
+Active pharmaceutical ingredient
+API
+Excipient
+Formulation
+Drug formulation
+Dosage form
+Solid dosage form
+Liquid dosage form
+Tablet
+Capsule
+Pill
+Lozenge
+Troche
+Powder
+Granule
+Suspension
+Solution
+Syrup
+Elixir
+Tincture
+Emulsion
+Cream
+Ointment
+Gel
+Lotion
+Paste
+Transdermal patch
+Patch
+Injectable
+Injection
+Intravenous
+IV
+Intramuscular
+IM
+Subcutaneous
+SC
+Intradermal
+ID
+Parenteral
+Suppository
+Inhaler
+Metered-dose inhaler
+MDI
+Dry powder inhaler
+DPI
+Nebulizer
+Nasal spray
+Eye drop
+Ear drop
+Pharmacokinetics
+ADME
+Absorption
+Distribution
+Metabolism
+Excretion
+Liberation
+Bioavailability
+Absolute bioavailability
+Relative bioavailability
+First-pass effect
+First-pass metabolism
+Hepatic first-pass
+Enteral administration
+Oral administration
+Sublingual
+Buccal
+Rectal
+Absorption rate
+Absorption constant
+Dissolution
+Solubility
+Lipophilicity
+Partition coefficient
+Gastrointestinal absorption
+GI absorption
+Intestinal absorption
+Permeability
+Membrane permeability
+Volume of distribution
+Vd
+Apparent volume of distribution
+Plasma protein binding
+Albumin binding
+Tissue binding
+Blood-brain barrier
+BBB
+Central nervous system
+CNS
+Cerebrospinal fluid
+CSF
+Placental barrier
+Metabolism
+Drug metabolism
+Biotransformation
+Phase I metabolism
+Phase II metabolism
+Cytochrome P450
+CYP450
+CYP enzyme
+CYP3A4
+CYP2D6
+CYP2C9
+CYP2C19
+CYP1A2
+Oxidation
+Reduction
+Hydrolysis
+Conjugation
+Glucuronidation
+Sulfation
+Acetylation
+Methylation
+Glutathione conjugation
+Prodrug
+Active metabolite
+Inactive metabolite
+Metabolite
+Hepatic metabolism
+Liver metabolism
+Hepatic clearance
+Enzyme induction
+Enzyme inhibition
+Drug interaction
+Metabolic interaction
+Excretion
+Elimination
+Renal excretion
+Kidney excretion
+Glomerular filtration
+Tubular secretion
+Tubular reabsorption
+Renal clearance
+Creatinine clearance
+Biliary excretion
+Fecal excretion
+Pulmonary excretion
+Clearance
+Total clearance
+Systemic clearance
+Half-life
+Elimination half-life
+Terminal half-life
+Biological half-life
+Steady state
+Steady-state concentration
+Time to steady state
+Accumulation
+Drug accumulation
+Loading dose
+Maintenance dose
+Dosing interval
+Dosing regimen
+Dosage regimen
+Therapeutic drug monitoring
+TDM
+Plasma concentration
+Serum concentration
+Blood level
+Peak concentration
+Cmax
+Trough concentration
+Cmin
+Time to peak
+Tmax
+Area under the curve
+AUC
+Concentration-time curve
+Pharmacodynamics
+Drug action
+Mechanism of action
+Molecular target
+Drug target
+Receptor
+Drug receptor
+Receptor theory
+Ligand
+Agonist
+Full agonist
+Partial agonist
+Antagonist
+Competitive antagonist
+Non-competitive antagonist
+Inverse agonist
+Receptor binding
+Binding affinity
+Dissociation constant
+Kd
+Potency
+EC50
+Half maximal effective concentration
+IC50
+Half maximal inhibitory concentration
+Efficacy
+Intrinsic activity
+Maximal effect
+Emax
+Dose-response relationship
+Dose-response curve
+Concentration-response curve
+Graded response
+Quantal response
+Therapeutic index
+TI
+Therapeutic window
+Therapeutic range
+Narrow therapeutic index
+NTI
+Margin of safety
+Selectivity
+Specificity
+Ion channel
+Voltage-gated channel
+Ligand-gated channel
+Sodium channel
+Potassium channel
+Calcium channel
+Chloride channel
+Ion channel blocker
+Channel modulator
+Enzyme
+Enzyme inhibitor
+Reversible inhibitor
+Irreversible inhibitor
+Competitive inhibition
+Non-competitive inhibition
+Uncompetitive inhibition
+Allosteric modulator
+Transporter
+Drug transporter
+Efflux transporter
+Influx transporter
+P-glycoprotein
+P-gp
+ABC transporter
+SLC transporter
+Organic anion transporter
+OAT
+Organic cation transporter
+OCT
+Second messenger
+Signal transduction
+G protein-coupled receptor
+GPCR
+G protein
+cAMP
+Cyclic AMP
+cGMP
+Cyclic GMP
+Phospholipase C
+Protein kinase
+Kinase
+Phosphatase
+Tyrosine kinase
+Serine/threonine kinase
+Receptor tyrosine kinase
+RTK
+Nuclear receptor
+Steroid hormone receptor
+Thyroid hormone receptor
+Gene expression
+Transcription factor
+Pharmacogenetics
+Pharmacogenomics
+Genetic polymorphism
+Gene variant
+Allele
+CYP polymorphism
+Poor metabolizer
+Intermediate metabolizer
+Extensive metabolizer
+Ultra-rapid metabolizer
+Drug response
+Individual variation
+Personalized medicine
+Precision medicine
+Biomarker
+Genetic testing
+Adverse drug reaction
+ADR
+Side effect
+Adverse effect
+Toxicity
+Drug toxicity
+Acute toxicity
+Chronic toxicity
+Idiosyncratic reaction
+Hypersensitivity
+Drug allergy
+Anaphylaxis
+Drug-drug interaction
+DDI
+Pharmacokinetic interaction
+Pharmacodynamic interaction
+Synergism
+Synergy
+Additive effect
+Antagonism
+Drug-food interaction
+Grapefruit juice
+Drug-herb interaction
+Contraindication
+Absolute contraindication
+Relative contraindication
+Precaution
+Warning
+Black box warning
+Pregnancy category
+Pregnancy risk
+Teratogenicity
+Teratogen
+Lactation
+Breastfeeding
+Drug transfer
+Placental transfer
+Overdose
+Drug overdose
+Poisoning
+Intoxication
+Antidote
+Tolerance
+Drug tolerance
+Pharmacodynamic tolerance
+Pharmacokinetic tolerance
+Tachyphylaxis
+Dependence
+Physical dependence
+Psychological dependence
+Addiction
+Substance use disorder
+Withdrawal
+Withdrawal syndrome
+Abuse potential
+Drug abuse
+Drug classes
+Analgesic
+Pain reliever
+Opioid
+Opioid analgesic
+Morphine
+Codeine
+Fentanyl
+Oxycodone
+Hydrocodone
+Tramadol
+Methadone
+Buprenorphine
+Opioid receptor
+Mu receptor
+Kappa receptor
+Delta receptor
+Naloxone
+Naltrexone
+Opioid antagonist
+Non-opioid analgesic
+Nonsteroidal anti-inflammatory drug
+NSAID
+Aspirin
+Ibuprofen
+Naproxen
+Diclofenac
+Celecoxib
+COX inhibitor
+COX-1
+COX-2
+Cyclooxygenase
+Prostaglandin
+Acetaminophen
+Paracetamol
+Anesthetic
+General anesthetic
+Local anesthetic
+Lidocaine
+Bupivacaine
+Propofol
+Sevoflurane
+Isoflurane
+Ketamine
+Sedative
+Hypnotic
+Anxiolytic
+Benzodiazepine
+Diazepam
+Lorazepam
+Alprazolam
+Clonazepam
+Midazolam
+GABA receptor
+GABAA receptor
+Barbiturate
+Phenobarbital
+Z-drug
+Zolpidem
+Zaleplon
+Eszopiclone
+Antidepressant
+Selective serotonin reuptake inhibitor
+SSRI
+Fluoxetine
+Sertraline
+Paroxetine
+Citalopram
+Escitalopram
+Serotonin-norepinephrine reuptake inhibitor
+SNRI
+Venlafaxine
+Duloxetine
+Tricyclic antidepressant
+TCA
+Amitriptyline
+Imipramine
+Monoamine oxidase inhibitor
+MAOI
+Phenelzine
+Tranylcypromine
+Serotonin
+Norepinephrine
+Noradrenaline
+Dopamine
+Monoamine
+Reuptake inhibitor
+Antipsychotic
+Neuroleptic
+Typical antipsychotic
+First-generation antipsychotic
+Haloperidol
+Chlorpromazine
+Atypical antipsychotic
+Second-generation antipsychotic
+Risperidone
+Olanzapine
+Quetiapine
+Aripiprazole
+Clozapine
+Dopamine receptor
+D2 receptor
+Antipsychotic action
+Extrapyramidal symptom
+EPS
+Tardive dyskinesia
+Neuroleptic malignant syndrome
+NMS
+Mood stabilizer
+Lithium
+Valproate
+Valproic acid
+Carbamazepine
+Lamotrigine
+Anticonvulsant
+Antiepileptic drug
+AED
+Phenytoin
+Levetiracetam
+Topiramate
+Gabapentin
+Pregabalin
+Seizure
+Epilepsy
+GABA
+Gamma-aminobutyric acid
+Glutamate
+Stimulant
+CNS stimulant
+Amphetamine
+Methylphenidate
+Modafinil
+Caffeine
+Attention deficit hyperactivity disorder
+ADHD
+Wakefulness
+Alertness
+Antiparkinsonian drug
+Levodopa
+L-DOPA
+Carbidopa
+Dopamine agonist
+Pramipexole
+Ropinirole
+MAO-B inhibitor
+Selegiline
+Rasagiline
+COMT inhibitor
+Entacapone
+Parkinson's disease
+Dementia drug
+Cholinesterase inhibitor
+Donepezil
+Rivastigmine
+Galantamine
+Memantine
+NMDA receptor antagonist
+Alzheimer's disease
+Acetylcholine
+Cholinergic
+Antimigraine drug
+Triptan
+Sumatriptan
+Ergot alkaloid
+Ergotamine
+CGRP antagonist
+Migraine
+Headache
+Cardiovascular drug
+Antihypertensive
+ACE inhibitor
+Angiotensin-converting enzyme inhibitor
+Enalapril
+Lisinopril
+Ramipril
+Angiotensin receptor blocker
+ARB
+Losartan
+Valsartan
+Renin-angiotensin system
+RAS
+Beta blocker
+Beta-adrenergic blocker
+Metoprolol
+Atenolol
+Propranolol
+Calcium channel blocker
+Amlodipine
+Nifedipine
+Diltiazem
+Verapamil
+Diuretic
+Thiazide diuretic
+Hydrochlorothiazide
+Loop diuretic
+Furosemide
+Potassium-sparing diuretic
+Spironolactone
+Vasodilator
+Nitrate
+Nitroglycerin
+Isosorbide
+Hypertension
+High blood pressure
+Heart failure
+Cardiac glycoside
+Digoxin
+Antiarrhythmic
+Antiarrhythmic drug
+Arrhythmia
+Atrial fibrillation
+Amiodarone
+Lidocaine
+Sodium channel blocker
+Potassium channel blocker
+Antianginal
+Angina
+Coronary artery disease
+Anticoagulant
+Blood thinner
+Warfarin
+Heparin
+Low molecular weight heparin
+LMWH
+Enoxaparin
+Direct oral anticoagulant
+DOAC
+Rivaroxaban
+Apixaban
+Dabigatran
+Factor Xa inhibitor
+Thrombin inhibitor
+Antiplatelet
+Antiplatelet drug
+Clopidogrel
+Aspirin
+Ticagrelor
+Platelet aggregation
+Thrombolytic
+Tissue plasminogen activator
+tPA
+Alteplase
+Fibrinolysis
+Antilipidemic
+Lipid-lowering drug
+Statin
+HMG-CoA reductase inhibitor
+Atorvastatin
+Simvastatin
+Rosuvastatin
+Cholesterol
+LDL cholesterol
+HDL cholesterol
+Triglyceride
+Fibrate
+Ezetimibe
+PCSK9 inhibitor
+Respiratory drug
+Bronchodilator
+Beta-2 agonist
+Albuterol
+Salbutamol
+Salmeterol
+Formoterol
+Anticholinergic
+Ipratropium
+Tiotropium
+Methylxanthine
+Theophylline
+Corticosteroid
+Inhaled corticosteroid
+ICS
+Fluticasone
+Budesonide
+Beclomethasone
+Asthma
+Chronic obstructive pulmonary disease
+COPD
+Leukotriene modifier
+Montelukast
+Antihistamine
+H1 antagonist
+Diphenhydramine
+Cetirizine
+Loratadine
+Fexofenadine
+Histamine
+Histamine receptor
+Allergy
+Allergic rhinitis
+Decongestant
+Pseudoephedrine
+Phenylephrine
+Nasal congestion
+Cough suppressant
+Antitussive
+Dextromethorphan
+Codeine
+Expectorant
+Guaifenesin
+Mucolytic
+Acetylcysteine
+Gastrointestinal drug
+Proton pump inhibitor
+PPI
+Omeprazole
+Lansoprazole
+Pantoprazole
+Esomeprazole
+H2 receptor antagonist
+H2 blocker
+Ranitidine
+Famotidine
+Antacid
+Sodium bicarbonate
+Calcium carbonate
+Aluminum hydroxide
+Magnesium hydroxide
+Gastric acid
+Peptic ulcer
+GERD
+Gastroesophageal reflux disease
+Antiemetic
+Ondansetron
+Metoclopramide
+Prochlorperazine
+Promethazine
+Nausea
+Vomiting
+Serotonin receptor
+5-HT3 receptor
+Laxative
+Bulk-forming laxative
+Osmotic laxative
+Stimulant laxative
+Stool softener
+Bisacodyl
+Senna
+Polyethylene glycol
+Lactulose
+Constipation
+Antidiarrheal
+Loperamide
+Diphenoxylate
+Diarrhea
+Inflammatory bowel disease
+IBD
+Aminosalicylate
+Mesalamine
+Sulfasalazine
+Immunosuppressant
+Azathioprine
+Methotrexate
+Cyclosporine
+Tacrolimus
+Biologic
+TNF inhibitor
+Infliximab
+Adalimumab
+Anti-inflammatory
+Corticosteroid
+Systemic corticosteroid
+Prednisone
+Prednisolone
+Methylprednisolone
+Dexamethasone
+Hydrocortisone
+Glucocorticoid
+Mineralocorticoid
+Fludrocortisone
+Hypothalamic-pituitary-adrenal axis
+HPA axis
+Adrenal suppression
+Cushingoid
+Disease-modifying antirheumatic drug
+DMARD
+Methotrexate
+Hydroxychloroquine
+Sulfasalazine
+Leflunomide
+Rheumatoid arthritis
+Endocrine drug
+Insulin
+Rapid-acting insulin
+Short-acting insulin
+Intermediate-acting insulin
+Long-acting insulin
+Basal insulin
+Bolus insulin
+Insulin analog
+Insulin resistance
+Diabetes mellitus
+Type 1 diabetes
+Type 2 diabetes
+Oral hypoglycemic
+Antidiabetic drug
+Metformin
+Biguanide
+Sulfonylurea
+Glyburide
+Glipizide
+Thiazolidinedione
+TZD
+Pioglitazone
+DPP-4 inhibitor
+Sitagliptin
+GLP-1 agonist
+Exenatide
+Liraglutide
+SGLT2 inhibitor
+Empagliflozin
+Canagliflozin
+Blood glucose
+Hypoglycemia
+Hyperglycemia
+Thyroid hormone
+Levothyroxine
+Liothyronine
+T4
+T3
+Hypothyroidism
+Hyperthyroidism
+Antithyroid drug
+Methimazole
+Propylthiouracil
+Estrogen
+Progesterone
+Progestin
+Oral contraceptive
+Birth control pill
+Hormone replacement therapy
+HRT
+Testosterone
+Anabolic steroid
+Selective estrogen receptor modulator
+SERM
+Tamoxifen
+Raloxifene
+Aromatase inhibitor
+Letrozole
+Anastrozole
+Antimicrobial
+Antibiotic
+Antibacterial
+Penicillin
+Amoxicillin
+Ampicillin
+Beta-lactam
+Beta-lactamase
+Cephalosporin
+Ceftriaxone
+Cefazolin
+Macrolide
+Azithromycin
+Erythromycin
+Clarithromycin
+Fluoroquinolone
+Ciprofloxacin
+Levofloxacin
+Tetracycline
+Doxycycline
+Minocycline
+Aminoglycoside
+Gentamicin
+Tobramycin
+Vancomycin
+Glycopeptide
+Linezolid
+Clindamycin
+Metronidazole
+Trimethoprim-sulfamethoxazole
+TMP-SMX
+Bacterial infection
+Bactericidal
+Bacteriostatic
+Minimum inhibitory concentration
+MIC
+Antibiotic resistance
+Antimicrobial resistance
+AMR
+Multidrug resistance
+MRSA
+Methicillin-resistant Staphylococcus aureus
+VRE
+Vancomycin-resistant Enterococcus
+Antiviral
+Acyclovir
+Valacyclovir
+Ganciclovir
+Oseltamivir
+Zanamivir
+Neuraminidase inhibitor
+Antiretroviral
+HIV drug
+Nucleoside reverse transcriptase inhibitor
+NRTI
+Non-nucleoside reverse transcriptase inhibitor
+NNRTI
+Protease inhibitor
+PI
+Integrase inhibitor
+Entry inhibitor
+HAART
+Highly active antiretroviral therapy
+Viral load
+CD4 count
+Antifungal
+Azole
+Fluconazole
+Itraconazole
+Voriconazole
+Polyene
+Amphotericin B
+Nystatin
+Echinocandin
+Caspofungin
+Fungal infection
+Candidiasis
+Aspergillosis
+Antiparasitic
+Antimalarial
+Chloroquine
+Mefloquine
+Artemisinin
+Atovaquone
+Proguanil
+Malaria
+Plasmodium
+Antihelminthic
+Mebendazole
+Albendazole
+Ivermectin
+Praziquantel
+Helminth
+Worm
+Anticancer drug
+Chemotherapy
+Chemotherapeutic agent
+Cytotoxic drug
+Alkylating agent
+Cyclophosphamide
+Antimetabolite
+Methotrexate
+5-fluorouracil
+Cytarabine
+Anthracycline
+Doxorubicin
+Topoisomerase inhibitor
+Etoposide
+Irinotecan
+Platinum compound
+Cisplatin
+Carboplatin
+Vinca alkaloid
+Vincristine
+Vinblastine
+Taxane
+Paclitaxel
+Docetaxel
+Targeted therapy
+Tyrosine kinase inhibitor
+TKI
+Imatinib
+Gefitinib
+Erlotinib
+Monoclonal antibody
+mAb
+Rituximab
+Trastuzumab
+Bevacizumab
+Immune checkpoint inhibitor
+PD-1 inhibitor
+PD-L1 inhibitor
+CTLA-4 inhibitor
+Pembrolizumab
+Nivolumab
+Ipilimumab
+Immunotherapy
+Cancer immunotherapy
+CAR T-cell therapy
+Hormone therapy
+Endocrine therapy
+Cancer
+Neoplasm
+Malignancy
+Tumor
+Drug development
+Drug discovery
+Lead compound
+Hit compound
+High-throughput screening
+HTS
+Structure-activity relationship
+SAR
+Medicinal chemistry
+Rational drug design
+Computer-aided drug design
+CADD
+Molecular docking
+Virtual screening
+Preclinical study
+In vitro
+In vivo
+Animal study
+Toxicology study
+Clinical trial
+Phase I trial
+Phase II trial
+Phase III trial
+Phase IV trial
+Randomized controlled trial
+RCT
+Double-blind
+Placebo
+Placebo-controlled
+Efficacy trial
+Safety trial
+Dose-finding study
+Regulatory approval
+FDA
+Food and Drug Administration
+EMA
+European Medicines Agency
+New drug application
+NDA
+Investigational new drug
+IND
+Good manufacturing practice
+GMP
+Good clinical practice
+GCP
+

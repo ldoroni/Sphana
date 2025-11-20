@@ -1,0 +1,842 @@
+Virology
+Virus
+Viral particle
+Virion
+Infectious particle
+Viral structure
+Viral morphology
+Capsid
+Protein coat
+Capsomer
+Capsid protein
+Genome
+Viral genome
+Nucleic acid
+DNA virus
+dsDNA virus
+Double-stranded DNA virus
+ssDNA virus
+Single-stranded DNA virus
+RNA virus
+dsRNA virus
+Double-stranded RNA virus
+ssRNA virus
+Single-stranded RNA virus
+Positive-sense RNA virus
+Negative-sense RNA virus
+Ambisense RNA virus
+Segmented genome
+Non-segmented genome
+Envelope
+Viral envelope
+Lipid bilayer
+Envelope glycoprotein
+Spike protein
+Surface protein
+Naked virus
+Non-enveloped virus
+Icosahedral symmetry
+Helical symmetry
+Complex symmetry
+Nucleocapsid
+Matrix protein
+Tegument
+Viral attachment
+Receptor binding
+Cell receptor
+Host receptor
+Entry
+Viral entry
+Penetration
+Direct penetration
+Membrane fusion
+Endocytosis
+Receptor-mediated endocytosis
+Clathrin-mediated endocytosis
+Caveolin-mediated endocytosis
+Macropinocytosis
+Uncoating
+Viral replication
+Replication cycle
+Viral life cycle
+Lytic cycle
+Lysogenic cycle
+Latency
+Latent infection
+Productive infection
+Abortive infection
+Persistent infection
+Chronic infection
+Eclipse period
+Burst size
+Replication strategy
+DNA replication
+RNA replication
+RNA-dependent RNA polymerase
+RdRp
+DNA-dependent DNA polymerase
+Reverse transcriptase
+Retrovirus
+Retroviral replication
+Provirus
+Integration
+Viral integration
+Transcription
+Viral transcription
+Early genes
+Late genes
+Immediate early genes
+Translation
+Viral protein synthesis
+Polyprotein
+Proteolytic cleavage
+Protease
+Viral protease
+Assembly
+Viral assembly
+Morphogenesis
+Budding
+Release
+Viral release
+Cell lysis
+Exocytosis
+Maturation
+Viral maturation
+Baltimore classification
+Class I virus
+Class II virus
+Class III virus
+Class IV virus
+Class V virus
+Class VI virus
+Class VII virus
+DNA viruses
+Herpesviridae
+Herpesvirus
+Herpes simplex virus
+HSV
+HSV-1
+HSV-2
+Varicella-zoster virus
+VZV
+Chickenpox
+Shingles
+Epstein-Barr virus
+EBV
+Infectious mononucleosis
+Cytomegalovirus
+CMV
+Human herpesvirus 6
+HHV-6
+Human herpesvirus 7
+HHV-7
+Kaposi's sarcoma-associated herpesvirus
+KSHV
+HHV-8
+Poxviridae
+Poxvirus
+Variola virus
+Smallpox
+Vaccinia virus
+Monkeypox virus
+Cowpox virus
+Parapoxvirus
+Molluscum contagiosum virus
+Adenoviridae
+Adenovirus
+Human adenovirus
+Papillomaviridae
+Papillomavirus
+Human papillomavirus
+HPV
+Genital warts
+Cervical cancer
+Polyomaviridae
+Polyomavirus
+BK virus
+JC virus
+Merkel cell polyomavirus
+Parvoviridae
+Parvovirus
+Parvovirus B19
+Fifth disease
+Erythema infectiosum
+Adeno-associated virus
+AAV
+Gene therapy vector
+Hepadnaviridae
+Hepadnavirus
+Hepatitis B virus
+HBV
+Hepatitis B
+Dane particle
+RNA viruses
+Picornaviridae
+Picornavirus
+Poliovirus
+Polio
+Poliomyelitis
+Rhinovirus
+Common cold
+Coxsackievirus
+Echovirus
+Hepatitis A virus
+HAV
+Hepatitis A
+Enterovirus
+Enterovirus 71
+EV71
+Caliciviridae
+Calicivirus
+Norovirus
+Norwalk virus
+Gastroenteritis
+Sapovirus
+Astroviridae
+Astrovirus
+Togaviridae
+Togavirus
+Alphavirus
+Rubella virus
+Rubella
+German measles
+Chikungunya virus
+Sindbis virus
+Ross River virus
+Venezuelan equine encephalitis virus
+VEE virus
+Flaviviridae
+Flavivirus
+Yellow fever virus
+Yellow fever
+Dengue virus
+Dengue fever
+Dengue hemorrhagic fever
+Zika virus
+Zika
+West Nile virus
+West Nile fever
+Japanese encephalitis virus
+Tick-borne encephalitis virus
+Hepatitis C virus
+HCV
+Hepatitis C
+Chronic hepatitis
+Coronaviridae
+Coronavirus
+Severe acute respiratory syndrome coronavirus
+SARS-CoV
+SARS
+Severe acute respiratory syndrome
+Middle East respiratory syndrome coronavirus
+MERS-CoV
+MERS
+SARS-CoV-2
+COVID-19
+Coronavirus disease 2019
+Human coronavirus OC43
+Human coronavirus 229E
+Human coronavirus NL63
+Human coronavirus HKU1
+Spike glycoprotein
+S protein
+Receptor-binding domain
+RBD
+ACE2
+Angiotensin-converting enzyme 2
+Transmembrane protease serine 2
+TMPRSS2
+Furin cleavage site
+Nucleocapsid protein
+N protein
+Membrane protein
+M protein
+Envelope protein
+E protein
+Orthomyxoviridae
+Orthomyxovirus
+Influenza virus
+Influenza A virus
+Influenza B virus
+Influenza C virus
+Influenza D virus
+Hemagglutinin
+HA
+Neuraminidase
+NA
+Antigenic drift
+Antigenic shift
+Reassortment
+Pandemic influenza
+Avian influenza
+Bird flu
+H5N1
+H7N9
+Swine influenza
+Swine flu
+H1N1
+Spanish flu
+Asian flu
+Hong Kong flu
+Seasonal influenza
+Flu
+Paramyxoviridae
+Paramyxovirus
+Measles virus
+Measles
+Rubeola
+Mumps virus
+Mumps
+Respiratory syncytial virus
+RSV
+Human metapneumovirus
+HMPV
+Parainfluenza virus
+Human parainfluenza virus
+HPIV
+Henipavirus
+Nipah virus
+Hendra virus
+Rhabdoviridae
+Rhabdovirus
+Rabies virus
+Rabies
+Lyssavirus
+Vesicular stomatitis virus
+VSV
+Filoviridae
+Filovirus
+Ebola virus
+Ebola
+Ebola virus disease
+EVD
+Marburg virus
+Marburg virus disease
+MVD
+Hemorrhagic fever
+Viral hemorrhagic fever
+VHF
+Bunyavirales
+Bunyavirus
+Hantavirus
+Hantavirus pulmonary syndrome
+HPS
+Hemorrhagic fever with renal syndrome
+HFRS
+Crimean-Congo hemorrhagic fever virus
+CCHFV
+Rift Valley fever virus
+RVFV
+La Crosse virus
+California encephalitis virus
+Arenaviridae
+Arenavirus
+Lassa virus
+Lassa fever
+Lymphocytic choriomeningitis virus
+LCMV
+Junín virus
+Argentine hemorrhagic fever
+Machupo virus
+Bolivian hemorrhagic fever
+Reoviridae
+Reovirus
+Rotavirus
+Rotavirus gastroenteritis
+Orbivirus
+Bluetongue virus
+Colorado tick fever virus
+Retroviridae
+Retrovirus
+Human immunodeficiency virus
+HIV
+HIV-1
+HIV-2
+AIDS
+Acquired immunodeficiency syndrome
+CD4 T cell
+Helper T cell
+Viral load
+Antiretroviral therapy
+ART
+Highly active antiretroviral therapy
+HAART
+Reverse transcriptase
+Integrase
+Protease
+gp120
+gp41
+p24
+Human T-lymphotropic virus
+HTLV
+HTLV-1
+HTLV-2
+Adult T-cell leukemia/lymphoma
+ATLL
+Tropical spastic paraparesis
+TSP
+Viral transmission
+Transmission route
+Horizontal transmission
+Vertical transmission
+Mother-to-child transmission
+Perinatal transmission
+Transplacental transmission
+Direct contact transmission
+Indirect contact transmission
+Fomite
+Droplet transmission
+Respiratory droplet
+Airborne transmission
+Aerosol
+Aerosol transmission
+Airborne precaution
+Fecal-oral transmission
+Foodborne transmission
+Waterborne transmission
+Bloodborne transmission
+Sexual transmission
+Sexually transmitted infection
+STI
+Vector-borne transmission
+Arthropod vector
+Mosquito-borne
+Tick-borne
+Zoonotic transmission
+Zoonosis
+Animal reservoir
+Natural reservoir
+Intermediate host
+Dead-end host
+Spillover event
+Cross-species transmission
+Emerging virus
+Emerging infectious disease
+Re-emerging virus
+Novel virus
+Pathogenesis
+Viral pathogenesis
+Infection
+Viral infection
+Acute infection
+Chronic infection
+Latent infection
+Persistent infection
+Slow infection
+Inapparent infection
+Subclinical infection
+Asymptomatic infection
+Symptomatic infection
+Clinical manifestation
+Incubation period
+Prodrome
+Prodromal phase
+Viremia
+Viral shedding
+Shedding
+Contagious period
+Infectious period
+Tropism
+Tissue tropism
+Cell tropism
+Host tropism
+Species specificity
+Host range
+Cytopathic effect
+CPE
+Cell damage
+Cell death
+Apoptosis
+Necrosis
+Syncytium
+Multinucleated giant cell
+Inclusion body
+Cytoplasmic inclusion
+Nuclear inclusion
+Negri body
+Cowdry body
+Viral disease
+Infectious disease
+Upper respiratory tract infection
+URTI
+Lower respiratory tract infection
+LRTI
+Pneumonia
+Viral pneumonia
+Bronchiolitis
+Croup
+Pharyngitis
+Laryngitis
+Encephalitis
+Viral encephalitis
+Meningitis
+Viral meningitis
+Aseptic meningitis
+Meningoencephalitis
+Myocarditis
+Viral myocarditis
+Hepatitis
+Viral hepatitis
+Acute hepatitis
+Chronic hepatitis
+Cirrhosis
+Hepatocellular carcinoma
+HCC
+Gastroenteritis
+Viral gastroenteritis
+Diarrhea
+Vomiting
+Hemorrhagic fever
+Rash
+Exanthem
+Maculopapular rash
+Vesicular rash
+Petechiae
+Conjunctivitis
+Keratitis
+Immune response
+Antiviral immunity
+Innate immunity
+Innate immune response
+Pattern recognition receptor
+PRR
+Toll-like receptor
+TLR
+RIG-I-like receptor
+RLR
+Interferon
+Type I interferon
+IFN-alpha
+IFN-beta
+Interferon response
+Antiviral state
+Natural killer cell
+NK cell
+Adaptive immunity
+Adaptive immune response
+Humoral immunity
+Antibody response
+Neutralizing antibody
+Antibody
+Immunoglobulin
+IgM
+IgG
+IgA
+Seroconversion
+Serology
+Serological test
+ELISA
+Enzyme-linked immunosorbent assay
+Western blot
+Neutralization assay
+Cell-mediated immunity
+T cell response
+CD8 T cell
+Cytotoxic T lymphocyte
+CTL
+CD4 T cell
+Helper T cell
+T helper cell
+Memory cell
+Memory T cell
+Memory B cell
+Immune memory
+Immunological memory
+Immune evasion
+Viral immune evasion
+Antigenic variation
+Antigenic drift
+Antigenic shift
+Latency
+Immune suppression
+Immunosuppression
+Interferon antagonism
+MHC downregulation
+Diagnosis
+Viral diagnosis
+Laboratory diagnosis
+Clinical diagnosis
+Specimen
+Clinical specimen
+Sample collection
+Nasopharyngeal swab
+Throat swab
+Blood sample
+Serum
+Plasma
+Cerebrospinal fluid
+CSF
+Stool sample
+Urine sample
+Biopsy
+Viral culture
+Cell culture
+Isolation
+Virus isolation
+Plaque assay
+Cytopathic effect
+CPE
+Hemagglutination
+Hemagglutination assay
+Hemagglutination inhibition
+HAI
+Immunofluorescence
+Direct immunofluorescence
+Indirect immunofluorescence
+Immunohistochemistry
+Antigen detection
+Rapid antigen test
+RAT
+Lateral flow assay
+Molecular diagnosis
+Nucleic acid detection
+Polymerase chain reaction
+PCR
+Reverse transcription PCR
+RT-PCR
+Real-time PCR
+Quantitative PCR
+qPCR
+RT-qPCR
+Ct value
+Cycle threshold
+Viral load
+Quantification
+Genotyping
+Sequencing
+Genome sequencing
+Next-generation sequencing
+NGS
+Whole genome sequencing
+WGS
+Phylogenetics
+Phylogenetic analysis
+Phylogenetic tree
+Vaccine
+Vaccination
+Immunization
+Active immunization
+Passive immunization
+Live attenuated vaccine
+Attenuated virus
+Inactivated vaccine
+Killed vaccine
+Subunit vaccine
+Recombinant vaccine
+Viral vector vaccine
+mRNA vaccine
+DNA vaccine
+Virus-like particle
+VLP
+Adjuvant
+Vaccine efficacy
+Vaccine effectiveness
+Immunogenicity
+Booster dose
+Booster shot
+Herd immunity
+Community immunity
+Vaccine hesitancy
+Antiviral drug
+Antiviral therapy
+Nucleoside analog
+Nucleotide analog
+Acyclovir
+Ganciclovir
+Cidofovir
+Ribavirin
+Remdesivir
+Favipiravir
+Molnupiravir
+Neuraminidase inhibitor
+Oseltamivir
+Tamiflu
+Zanamivir
+Peramivir
+Protease inhibitor
+Reverse transcriptase inhibitor
+Integrase inhibitor
+Entry inhibitor
+Fusion inhibitor
+Immunotherapy
+Monoclonal antibody
+Convalescent plasma
+Interferon therapy
+Antiviral resistance
+Drug resistance
+Resistance mutation
+Mutant
+Viral mutation
+Point mutation
+Deletion
+Insertion
+Recombination
+Reassortment
+Quasispecies
+Viral evolution
+Molecular evolution
+Selection pressure
+Fitness
+Viral fitness
+Variant
+Viral variant
+Strain
+Viral strain
+Lineage
+Clade
+Genotype
+Serotype
+Subtype
+Mutation rate
+Error rate
+Fidelity
+Proofreading
+Exonuclease
+Viral vectors
+Gene therapy
+Gene delivery
+Adenoviral vector
+AAV vector
+Lentiviral vector
+Retroviral vector
+Oncolytic virus
+Virotherapy
+Cancer therapy
+Bacteriophage
+Phage
+Phage therapy
+Lytic phage
+Temperate phage
+Prophage
+Lambda phage
+T4 phage
+M13 phage
+Phage display
+Plant virus
+Tobacco mosaic virus
+TMV
+Cauliflower mosaic virus
+CaMV
+Tomato spotted wilt virus
+TSWV
+Potato virus Y
+PVY
+Cucumber mosaic virus
+CMV
+Viroid
+Satellite virus
+Prion
+Transmissible spongiform encephalopathy
+TSE
+Creutzfeldt-Jakob disease
+CJD
+Bovine spongiform encephalopathy
+BSE
+Mad cow disease
+Scrapie
+Kuru
+Chronic wasting disease
+CWD
+Prion protein
+PrP
+Abnormal prion protein
+PrPSc
+Biosafety
+Biosafety level
+BSL
+BSL-1
+BSL-2
+BSL-3
+BSL-4
+Personal protective equipment
+PPE
+Containment
+Biocontainment
+Decontamination
+Sterilization
+Disinfection
+Disinfectant
+Alcohol
+Ethanol
+Isopropanol
+Bleach
+Sodium hypochlorite
+Quaternary ammonium compound
+Hydrogen peroxide
+Ultraviolet light
+UV irradiation
+Autoclave
+Heat inactivation
+Quarantine
+Isolation
+Contact tracing
+Public health
+Epidemiology
+Outbreak
+Epidemic
+Pandemic
+Endemic
+Incidence
+Prevalence
+Attack rate
+Case fatality rate
+CFR
+Basic reproduction number
+R0
+Effective reproduction number
+Rt
+Doubling time
+Surveillance
+Disease surveillance
+Viral surveillance
+Genomic surveillance
+Sentinel surveillance
+Syndromic surveillance
+Notification
+Notifiable disease
+Reportable disease
+Infection control
+Hand hygiene
+Handwashing
+Respiratory hygiene
+Cough etiquette
+Social distancing
+Physical distancing
+Lockdown
+Travel restriction
+Border control
+Mass gathering
+Superspreading event
+Superspreader
+One Health
+Zoonotic disease
+Wildlife reservoir
+Deforestation
+Climate change
+Global health
+Pandemic preparedness
+Emergency preparedness
+Pandemic response
+Outbreak investigation
+Laboratory capacity
+Diagnostic capacity
+Vaccine development
+Drug development
+Clinical trial
+Therapeutic trial
+Vaccine trial
+Phase 1 trial
+Phase 2 trial
+Phase 3 trial
+Phase 4 trial
+Emergency use authorization
+EUA
+WHO
+World Health Organization
+CDC
+Centers for Disease Control and Prevention
+NIH
+National Institutes of Health
+Public Health Emergency of International Concern
+PHEIC
+

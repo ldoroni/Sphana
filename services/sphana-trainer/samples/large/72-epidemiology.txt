@@ -1,0 +1,680 @@
+Epidemiology
+Disease
+Infectious disease
+Non-communicable disease
+NCD
+Chronic disease
+Acute disease
+Public health
+Population health
+Health
+Disease prevention
+Health promotion
+Incidence
+Incidence rate
+Attack rate
+Prevalence
+Point prevalence
+Period prevalence
+Mortality
+Mortality rate
+Death rate
+Case fatality rate
+CFR
+Morbidity
+Morbidity rate
+Years of life lost
+YLL
+Years lived with disability
+YLD
+Disability-adjusted life year
+DALY
+Quality-adjusted life year
+QALY
+Life expectancy
+Population
+Target population
+Study population
+At-risk population
+Denominator
+Numerator
+Rate
+Proportion
+Ratio
+Risk
+Absolute risk
+Relative risk
+RR
+Risk ratio
+Attributable risk
+AR
+Risk difference
+Population attributable risk
+PAR
+Odds
+Odds ratio
+OR
+Hazard
+Hazard ratio
+HR
+Cohort study
+Prospective cohort
+Retrospective cohort
+Historical cohort
+Cohort
+Exposed group
+Unexposed group
+Comparison group
+Follow-up
+Loss to follow-up
+Person-time
+Person-years
+Case-control study
+Case
+Control
+Matching
+Matched case-control
+Unmatched case-control
+Nested case-control
+Recall bias
+Cross-sectional study
+Prevalence study
+Survey
+Questionnaire
+Interview
+Self-report
+Ecological study
+Aggregate data
+Ecological fallacy
+Randomized controlled trial
+RCT
+Clinical trial
+Intervention
+Treatment
+Control group
+Randomization
+Random allocation
+Blinding
+Single-blind
+Double-blind
+Triple-blind
+Placebo
+Placebo effect
+Intention-to-treat analysis
+ITT
+Per-protocol analysis
+Experimental study
+Observational study
+Descriptive study
+Analytical study
+Longitudinal study
+Prospective study
+Retrospective study
+Natural experiment
+Quasi-experimental study
+Bias
+Selection bias
+Information bias
+Measurement bias
+Observer bias
+Reporting bias
+Publication bias
+Confounding
+Confounder
+Confounding variable
+Confounding factor
+Effect modification
+Interaction
+Stratification
+Standardization
+Age standardization
+Age-adjusted rate
+Direct standardization
+Indirect standardization
+Regression
+Linear regression
+Logistic regression
+Cox regression
+Proportional hazards
+Multivariate analysis
+Multivariable analysis
+Adjustment
+Controlling for confounders
+Statistical significance
+P-value
+Confidence interval
+CI
+95% confidence interval
+Statistical power
+Sample size
+Type I error
+False positive
+Alpha
+Type II error
+False negative
+Beta
+Causality
+Causation
+Causal inference
+Bradford Hill criteria
+Association
+Correlation
+Temporal sequence
+Dose-response relationship
+Biological plausibility
+Coherence
+Specificity
+Consistency
+Strength of association
+Reversibility
+Screening
+Mass screening
+Screening test
+Diagnostic test
+Sensitivity
+True positive rate
+Specificity
+True negative rate
+Positive predictive value
+PPV
+Negative predictive value
+NPV
+ROC curve
+Receiver operating characteristic
+Area under the curve
+AUC
+Cutoff
+Threshold
+False positive rate
+False negative rate
+Lead time
+Lead time bias
+Length time bias
+Overdiagnosis
+Surveillance
+Disease surveillance
+Public health surveillance
+Epidemiological surveillance
+Passive surveillance
+Active surveillance
+Sentinel surveillance
+Syndromic surveillance
+Notifiable disease
+Reportable disease
+Case definition
+Confirmed case
+Probable case
+Suspect case
+Outbreak
+Epidemic
+Pandemic
+Endemic
+Sporadic
+Cluster
+Disease cluster
+Index case
+Primary case
+Secondary case
+Attack rate
+Secondary attack rate
+Reproductive number
+Basic reproductive number
+R0
+R-naught
+Effective reproductive number
+Rt
+Transmission
+Disease transmission
+Person-to-person transmission
+Human-to-human transmission
+Airborne transmission
+Droplet transmission
+Contact transmission
+Direct contact
+Indirect contact
+Fomite
+Vector-borne transmission
+Vector
+Mosquito
+Tick
+Foodborne transmission
+Waterborne transmission
+Vertical transmission
+Mother-to-child transmission
+MTCT
+Horizontal transmission
+Communicable period
+Infectious period
+Incubation period
+Latent period
+Exposure
+Infection
+Colonization
+Carrier
+Asymptomatic carrier
+Symptomatic
+Asymptomatic
+Reservoir
+Animal reservoir
+Zoonosis
+Zoonotic disease
+Herd immunity
+Community immunity
+Population immunity
+Immunity threshold
+Immunization
+Vaccination
+Vaccine
+Vaccine efficacy
+Vaccine effectiveness
+Vaccination coverage
+Immunization program
+Mass vaccination
+Infectious disease
+Communicable disease
+Pathogen
+Bacteria
+Virus
+Fungus
+Parasite
+Protozoa
+Helminth
+Prion
+Contagious
+Infection control
+Hand hygiene
+Personal protective equipment
+PPE
+Isolation
+Quarantine
+Contact tracing
+Social distancing
+Physical distancing
+Lockdown
+Travel restriction
+Border control
+Non-pharmaceutical intervention
+NPI
+Antibiotic
+Antimicrobial
+Antiviral
+Antifungal
+Antiparasitic
+Antimicrobial resistance
+AMR
+Antibiotic resistance
+Multidrug-resistant
+MDR
+Drug-resistant
+Resistance
+Hospital-acquired infection
+HAI
+Nosocomial infection
+Healthcare-associated infection
+Community-acquired infection
+Sepsis
+Septicemia
+Bloodstream infection
+BSI
+Pneumonia
+Meningitis
+Gastroenteritis
+Diarrheal disease
+Respiratory infection
+Upper respiratory infection
+URI
+Lower respiratory infection
+LRI
+Influenza
+Flu
+Seasonal flu
+Pandemic influenza
+Avian influenza
+Bird flu
+Swine flu
+H1N1
+H5N1
+Tuberculosis
+TB
+Multidrug-resistant tuberculosis
+MDR-TB
+Extensively drug-resistant tuberculosis
+XDR-TB
+HIV
+Human immunodeficiency virus
+AIDS
+Acquired immunodeficiency syndrome
+Antiretroviral therapy
+ART
+HIV testing
+HIV prevention
+Malaria
+Plasmodium
+Mosquito control
+Insecticide-treated net
+ITN
+Antimalarial
+Dengue
+Dengue fever
+Dengue hemorrhagic fever
+DHF
+Aedes mosquito
+Zika virus
+Zika
+Microcephaly
+Ebola
+Ebola virus disease
+EVD
+Hemorrhagic fever
+COVID-19
+Coronavirus disease 2019
+SARS-CoV-2
+Severe acute respiratory syndrome
+SARS
+Middle East respiratory syndrome
+MERS
+Measles
+Mumps
+Rubella
+Polio
+Poliomyelitis
+Hepatitis
+Hepatitis A
+Hepatitis B
+Hepatitis C
+Cholera
+Typhoid
+Typhoid fever
+Salmonella
+E. coli
+Escherichia coli
+Norovirus
+Rotavirus
+Sexually transmitted infection
+STI
+Sexually transmitted disease
+STD
+Syphilis
+Gonorrhea
+Chlamydia
+Herpes
+Genital herpes
+HPV
+Human papillomavirus
+Cervical cancer
+Vector control
+Mosquito control
+Insecticide
+Larvicide
+Bed net
+Indoor residual spraying
+IRS
+Environmental management
+Water quality
+Sanitation
+Hygiene
+WASH
+Water, sanitation and hygiene
+Safe water
+Drinking water
+Improved water source
+Improved sanitation
+Open defecation
+Hand washing
+Soap
+Non-communicable disease
+NCD
+Chronic disease
+Cardiovascular disease
+CVD
+Heart disease
+Coronary heart disease
+CHD
+Ischemic heart disease
+IHD
+Myocardial infarction
+MI
+Heart attack
+Stroke
+Cerebrovascular disease
+Hypertension
+High blood pressure
+Atherosclerosis
+Cancer
+Malignancy
+Tumor
+Carcinoma
+Sarcoma
+Leukemia
+Lymphoma
+Breast cancer
+Lung cancer
+Colorectal cancer
+Prostate cancer
+Cervical cancer
+Liver cancer
+Stomach cancer
+Incidence rate
+Mortality rate
+Survival rate
+Five-year survival
+Screening
+Mammography
+Pap smear
+Colonoscopy
+Cancer registry
+Diabetes
+Diabetes mellitus
+Type 1 diabetes
+Type 2 diabetes
+Insulin
+Blood glucose
+Blood sugar
+Glycemic control
+HbA1c
+Diabetic complication
+Obesity
+Overweight
+Body mass index
+BMI
+Waist circumference
+Adiposity
+Chronic respiratory disease
+Chronic obstructive pulmonary disease
+COPD
+Asthma
+Mental health
+Mental disorder
+Depression
+Anxiety
+Schizophrenia
+Bipolar disorder
+Suicide
+Self-harm
+Neurological disorder
+Alzheimer's disease
+Dementia
+Parkinson's disease
+Epilepsy
+Stroke
+Injury
+Unintentional injury
+Intentional injury
+Traffic injury
+Road traffic injury
+Motor vehicle crash
+Accident
+Fall
+Drowning
+Poisoning
+Burn
+Violence
+Interpersonal violence
+Homicide
+Assault
+Child abuse
+Domestic violence
+Intimate partner violence
+Sexual violence
+Suicide
+Self-inflicted injury
+Occupational health
+Occupational disease
+Occupational injury
+Workplace exposure
+Occupational hazard
+Work-related disease
+Pneumoconiosis
+Silicosis
+Asbestosis
+Mesothelioma
+Occupational cancer
+Hearing loss
+Noise-induced hearing loss
+Musculoskeletal disorder
+Back pain
+Repetitive strain injury
+RSI
+Carpal tunnel syndrome
+Environmental health
+Environmental exposure
+Air pollution
+Particulate matter
+PM2.5
+Ozone
+Nitrogen dioxide
+Sulfur dioxide
+Indoor air pollution
+Outdoor air pollution
+Ambient air pollution
+Water pollution
+Heavy metal
+Lead
+Mercury
+Arsenic
+Cadmium
+Pesticide
+Chemical exposure
+Radiation
+Ionizing radiation
+Radon
+Climate change
+Heat wave
+Extreme heat
+Cold exposure
+Nutritional epidemiology
+Nutrition
+Diet
+Dietary intake
+Nutrient
+Macronutrient
+Micronutrient
+Food frequency questionnaire
+FFQ
+Dietary recall
+24-hour dietary recall
+Dietary pattern
+Mediterranean diet
+Western diet
+Undernutrition
+Malnutrition
+Stunting
+Wasting
+Micronutrient deficiency
+Vitamin deficiency
+Iron deficiency
+Anemia
+Iodine deficiency
+Vitamin A deficiency
+Maternal health
+Maternal mortality
+Maternal mortality ratio
+MMR
+Pregnancy
+Antenatal care
+Prenatal care
+Delivery
+Childbirth
+Skilled birth attendant
+Postnatal care
+Postpartum
+Contraception
+Family planning
+Fertility
+Total fertility rate
+TFR
+Birth rate
+Child health
+Child mortality
+Under-five mortality
+U5MR
+Infant mortality
+Infant mortality rate
+IMR
+Neonatal mortality
+Neonatal mortality rate
+NMR
+Stillbirth
+Low birth weight
+LBW
+Preterm birth
+Premature birth
+Child development
+Growth monitoring
+Immunization
+Vaccination schedule
+Diarrhea
+Pneumonia
+Malnutrition
+Aging
+Elderly
+Geriatric
+Age-related disease
+Frailty
+Disability
+Functional limitation
+Activities of daily living
+ADL
+Long-term care
+Social epidemiology
+Social determinants of health
+Socioeconomic status
+SES
+Income
+Education
+Occupation
+Poverty
+Health inequality
+Health disparity
+Health equity
+Access to healthcare
+Healthcare utilization
+Universal health coverage
+UHC
+Health insurance
+Racial disparity
+Ethnic disparity
+Gender disparity
+Rural health
+Urban health
+Geographic variation
+Global health
+International health
+Tropical medicine
+Neglected tropical disease
+NTD
+Developing country
+Low-income country
+Middle-income country
+High-income country
+Health transition
+Epidemiological transition
+Demographic transition
+Disease burden
+Global burden of disease
+GBD
+World Health Organization
+WHO
+Centers for Disease Control and Prevention
+CDC
+

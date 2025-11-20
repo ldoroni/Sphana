@@ -1,0 +1,754 @@
+Music theory
+Music
+Musical sound
+Sound
+Pitch
+Frequency
+Hertz
+Hz
+High pitch
+Low pitch
+Octave
+Timbre
+Tone color
+Loudness
+Amplitude
+Dynamics
+Duration
+Note
+Musical note
+Tone
+Semitone
+Half step
+Whole tone
+Whole step
+Interval
+Musical interval
+Unison
+Second
+Major second
+Minor second
+Third
+Major third
+Minor third
+Fourth
+Perfect fourth
+Augmented fourth
+Tritone
+Fifth
+Perfect fifth
+Diminished fifth
+Augmented fifth
+Sixth
+Major sixth
+Minor sixth
+Seventh
+Major seventh
+Minor seventh
+Diminished seventh
+Octave
+Compound interval
+Ninth
+Tenth
+Eleventh
+Twelfth
+Thirteenth
+Consonance
+Dissonance
+Consonant interval
+Dissonant interval
+Perfect consonance
+Imperfect consonance
+Enharmonic
+Enharmonic equivalent
+Staff
+Musical staff
+Stave
+Line
+Space
+Ledger line
+Clef
+Treble clef
+G clef
+Bass clef
+F clef
+Alto clef
+C clef
+Tenor clef
+Grand staff
+Note value
+Whole note
+Semibreve
+Half note
+Minim
+Quarter note
+Crotchet
+Eighth note
+Quaver
+Sixteenth note
+Semiquaver
+Thirty-second note
+Demisemiquaver
+Sixty-fourth note
+Dotted note
+Double-dotted note
+Rest
+Whole rest
+Half rest
+Quarter rest
+Eighth rest
+Sixteenth rest
+Tie
+Slur
+Legato
+Staccato
+Accent
+Marcato
+Tenuto
+Fermata
+Time signature
+Meter
+Beat
+Strong beat
+Weak beat
+Downbeat
+Upbeat
+Anacrusis
+Bar
+Measure
+Bar line
+Double bar line
+Simple meter
+Compound meter
+Duple meter
+Triple meter
+Quadruple meter
+2/4 time
+3/4 time
+4/4 time
+Common time
+6/8 time
+9/8 time
+12/8 time
+Tempo
+Beats per minute
+BPM
+Largo
+Adagio
+Andante
+Moderato
+Allegro
+Presto
+Ritardando
+Accelerando
+Rubato
+A tempo
+Rhythm
+Rhythmic pattern
+Syncopation
+Polyrhythm
+Cross-rhythm
+Hemiola
+Tuplet
+Triplet
+Duplet
+Quintuplet
+Sextuplet
+Swing
+Groove
+Scale
+Musical scale
+Major scale
+Natural minor scale
+Harmonic minor scale
+Melodic minor scale
+Chromatic scale
+Whole tone scale
+Pentatonic scale
+Major pentatonic
+Minor pentatonic
+Blues scale
+Octatonic scale
+Diminished scale
+Mode
+Church mode
+Ionian
+Dorian
+Phrygian
+Lydian
+Mixolydian
+Aeolian
+Locrian
+Jazz mode
+Dorian mode
+Mixolydian mode
+Lydian mode
+Altered scale
+Diminished scale
+Whole-half
+Half-whole
+Scale degree
+Tonic
+Supertonic
+Mediant
+Subdominant
+Dominant
+Submediant
+Leading tone
+Subtonic
+Solfège
+Do
+Re
+Mi
+Fa
+Sol
+La
+Ti
+Si
+Key
+Key signature
+Sharp
+Flat
+Natural
+Double sharp
+Double flat
+Major key
+Minor key
+Relative major
+Relative minor
+Parallel major
+Parallel minor
+Circle of fifths
+Circle of fourths
+Modulation
+Key change
+Transposition
+Accidental
+Chord
+Triad
+Major triad
+Minor triad
+Augmented triad
+Diminished triad
+Root
+Third
+Fifth
+Seventh chord
+Major seventh chord
+Minor seventh chord
+Dominant seventh chord
+Half-diminished seventh chord
+Diminished seventh chord
+Augmented seventh chord
+Major-minor seventh
+Extended chord
+Ninth chord
+Eleventh chord
+Thirteenth chord
+Add chord
+Sus chord
+Suspended chord
+Sus2
+Sus4
+Slash chord
+Inversion
+Root position
+First inversion
+Second inversion
+Third inversion
+Bass note
+Voicing
+Voice leading
+Contrary motion
+Parallel motion
+Oblique motion
+Similar motion
+Open voicing
+Close voicing
+Drop voicing
+Harmony
+Harmonic progression
+Chord progression
+Tonal harmony
+Functional harmony
+Tonic function
+Dominant function
+Subdominant function
+Pre-dominant
+Cadence
+Authentic cadence
+Perfect authentic cadence
+PAC
+Imperfect authentic cadence
+IAC
+Half cadence
+Plagal cadence
+Deceptive cadence
+Interrupted cadence
+Non-harmonic tone
+Non-chord tone
+Passing tone
+Neighbor tone
+Auxiliary tone
+Suspension
+Retardation
+Appoggiatura
+Escape tone
+Anticipation
+Pedal point
+Pedal tone
+Ostinato
+Figured bass
+Basso continuo
+Roman numeral analysis
+I chord
+ii chord
+iii chord
+IV chord
+V chord
+vi chord
+vii° chord
+Leading-tone chord
+Secondary dominant
+Applied dominant
+V/V
+Secondary leading-tone
+Borrowed chord
+Modal interchange
+Neapolitan chord
+Neapolitan sixth
+Augmented sixth chord
+Italian sixth
+French sixth
+German sixth
+Common-tone diminished seventh
+Tonicization
+Modulation
+Pivot chord
+Common chord modulation
+Direct modulation
+Chromatic modulation
+Enharmonic modulation
+Sequence
+Melodic sequence
+Harmonic sequence
+Counterpoint
+Polyphony
+Species counterpoint
+First species
+Second species
+Third species
+Fourth species
+Fifth species
+Two-part counterpoint
+Three-part counterpoint
+Four-part counterpoint
+Voice
+Soprano
+Alto
+Tenor
+Bass
+SATB
+Cantus firmus
+Imitation
+Canon
+Round
+Fugue
+Subject
+Answer
+Real answer
+Tonal answer
+Countersubject
+Episode
+Stretto
+Augmentation
+Diminution
+Inversion
+Retrograde
+Retrograde inversion
+Invertible counterpoint
+Form
+Musical form
+Binary form
+Ternary form
+ABA form
+Rondo
+Sonata form
+Exposition
+Development
+Recapitulation
+Coda
+Theme and variations
+Variation form
+Strophic form
+Through-composed
+Verse-chorus form
+12-bar blues
+32-bar song form
+AABA form
+Phrase
+Antecedent
+Consequent
+Period
+Motive
+Motif
+Melody
+Melodic line
+Contour
+Melodic contour
+Ascending
+Descending
+Stepwise motion
+Conjunct motion
+Skip
+Leap
+Disjunct motion
+Range
+Tessitura
+Ornamentation
+Ornament
+Trill
+Mordent
+Turn
+Appoggiatura
+Acciaccatura
+Grace note
+Glissando
+Portamento
+Vibrato
+Tremolo
+Articulation
+Dynamics
+Piano
+Forte
+Pianissimo
+Fortissimo
+Mezzo-piano
+Mezzo-forte
+Crescendo
+Decrescendo
+Diminuendo
+Sforzando
+Fortepiano
+Texture
+Monophony
+Monophonic
+Homophony
+Homophonic
+Melody and accompaniment
+Polyphony
+Polyphonic
+Heterophony
+Heterophonic
+Instrumentation
+Orchestration
+Instrument
+String instrument
+Violin
+Viola
+Cello
+Violoncello
+Double bass
+Contrabass
+Harp
+Guitar
+Classical guitar
+Acoustic guitar
+Electric guitar
+Bass guitar
+Woodwind instrument
+Woodwind
+Flute
+Piccolo
+Oboe
+Cor anglais
+English horn
+Clarinet
+Bass clarinet
+Bassoon
+Contrabassoon
+Saxophone
+Alto saxophone
+Tenor saxophone
+Baritone saxophone
+Brass instrument
+Trumpet
+Cornet
+French horn
+Horn
+Trombone
+Tuba
+Percussion instrument
+Timpani
+Kettledrum
+Snare drum
+Bass drum
+Cymbals
+Triangle
+Tambourine
+Xylophone
+Marimba
+Vibraphone
+Glockenspiel
+Chimes
+Tubular bells
+Gong
+Keyboard instrument
+Piano
+Grand piano
+Upright piano
+Harpsichord
+Organ
+Pipe organ
+Electric organ
+Synthesizer
+Voice
+Singing voice
+Soprano
+Mezzo-soprano
+Alto
+Contralto
+Tenor
+Baritone
+Bass
+Vocal range
+Falsetto
+Head voice
+Chest voice
+Register
+Ensemble
+Orchestra
+Symphony orchestra
+Chamber orchestra
+String orchestra
+String quartet
+String quintet
+Piano trio
+Woodwind quintet
+Brass quintet
+Choir
+Chorus
+Mixed choir
+Men's choir
+Women's choir
+Children's choir
+SATB choir
+A cappella
+Band
+Concert band
+Wind ensemble
+Jazz band
+Big band
+Rock band
+Genre
+Classical music
+Baroque music
+Classical period
+Romantic music
+20th-century classical music
+Contemporary classical music
+Medieval music
+Renaissance music
+Opera
+Aria
+Recitative
+Overture
+Libretto
+Symphony
+Concerto
+Sonata
+Chamber music
+Lieder
+Art song
+Mass
+Requiem
+Oratorio
+Cantata
+Motet
+Madrigal
+Jazz
+Swing
+Bebop
+Cool jazz
+Hard bop
+Modal jazz
+Free jazz
+Fusion
+Jazz standard
+Improvisation
+Blues
+Rhythm and blues
+R&B
+Rock
+Rock and roll
+Heavy metal
+Punk rock
+Alternative rock
+Indie rock
+Pop music
+Popular music
+Country music
+Folk music
+World music
+Electronic music
+Techno
+House music
+Trance
+Ambient
+Hip hop
+Rap
+Soul music
+Funk
+Reggae
+Latin music
+Salsa
+Bossa nova
+Music notation
+Score
+Full score
+Vocal score
+Piano score
+Lead sheet
+Tablature
+Tab
+Guitar tab
+Chord chart
+Dynamics marking
+Expression marking
+Tempo marking
+Metronome marking
+Repeat sign
+Da capo
+Dal segno
+Coda sign
+First and second ending
+Volta bracket
+Ottava
+8va
+15ma
+Transposing instrument
+Concert pitch
+Written pitch
+Sounding pitch
+Ear training
+Aural skills
+Sight-reading
+Sight-singing
+Interval recognition
+Chord recognition
+Rhythmic dictation
+Melodic dictation
+Harmonic dictation
+Relative pitch
+Absolute pitch
+Perfect pitch
+Tuning
+Equal temperament
+Just intonation
+Pythagorean tuning
+Meantone temperament
+Well temperament
+A440
+Standard pitch
+Concert pitch
+Acoustics
+Musical acoustics
+Overtone
+Harmonic series
+Fundamental frequency
+Partial
+Harmonic
+Inharmonic
+Resonance
+Sympathetic vibration
+Beat
+Beat frequency
+Combination tone
+Difference tone
+Summation tone
+Psychoacoustics
+Music cognition
+Music perception
+Consonance and dissonance perception
+Pitch perception
+Rhythm perception
+Composition
+Musical composition
+Composer
+Composing
+Compositional technique
+Serialism
+Twelve-tone technique
+Tone row
+Dodecaphony
+Arnold Schoenberg
+Atonality
+Atonal music
+Minimalism
+Minimalist music
+Steve Reich
+Philip Glass
+Aleatoric music
+Chance music
+John Cage
+Prepared piano
+Electroacoustic music
+Electronic music composition
+Computer music
+MIDI
+Musical Instrument Digital Interface
+Sequencer
+DAW
+Digital audio workstation
+Sampling
+Music analysis
+Harmonic analysis
+Formal analysis
+Schenkerian analysis
+Set theory
+Pitch class
+Pitch class set
+Analysis
+Musical analysis
+Music history
+History of Western music
+Medieval period
+Renaissance period
+Baroque period
+Classical period
+Romantic period
+20th century
+21st century
+Composer
+Johann Sebastian Bach
+George Frideric Handel
+Wolfgang Amadeus Mozart
+Ludwig van Beethoven
+Franz Schubert
+Robert Schumann
+Frédéric Chopin
+Franz Liszt
+Richard Wagner
+Johannes Brahms
+Pyotr Ilyich Tchaikovsky
+Gustav Mahler
+Claude Debussy
+Igor Stravinsky
+Arnold Schoenberg
+Béla Bartók
+Dmitri Shostakovich
+Benjamin Britten
+John Cage
+Karlheinz Stockhausen
+Pierre Boulez
+Music education
+Music pedagogy
+Music theory education
+Solfège
+Kodály method
+Orff Schulwerk
+Suzuki method
+Dalcroze Eurhythmics
+Music literacy
+Notation reading
+

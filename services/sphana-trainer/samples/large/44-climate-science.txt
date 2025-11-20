@@ -1,0 +1,650 @@
+Climate science
+Climatology
+Climate
+Weather
+Atmosphere
+Troposphere
+Stratosphere
+Mesosphere
+Thermosphere
+Exosphere
+Atmospheric layer
+Greenhouse effect
+Greenhouse gas
+GHG
+Carbon dioxide
+CO2
+Methane
+CH4
+Nitrous oxide
+N2O
+Water vapor
+Ozone
+O3
+Fluorinated gas
+Hydrofluorocarbon
+HFC
+Perfluorocarbon
+PFC
+Sulfur hexafluoride
+SF6
+Chlorofluorocarbon
+CFC
+Hydrochlorofluorocarbon
+HCFC
+Global warming
+Climate change
+Anthropogenic climate change
+Climate variability
+Climate system
+Earth system
+Atmospheric circulation
+General circulation
+Hadley cell
+Ferrel cell
+Polar cell
+Walker circulation
+Jet stream
+Polar jet stream
+Subtropical jet stream
+Trade winds
+Westerlies
+Polar easterlies
+Monsoon
+El Niño
+La Niña
+El Niño-Southern Oscillation
+ENSO
+Southern Oscillation
+Pacific Decadal Oscillation
+PDO
+North Atlantic Oscillation
+NAO
+Arctic Oscillation
+AO
+Atlantic Multidecadal Oscillation
+AMO
+Indian Ocean Dipole
+IOD
+Madden-Julian Oscillation
+MJO
+Ocean circulation
+Thermohaline circulation
+Meridional overturning circulation
+MOC
+Atlantic Meridional Overturning Circulation
+AMOC
+Gulf Stream
+Kuroshio Current
+Antarctic Circumpolar Current
+ACC
+Upwelling
+Downwelling
+Ocean current
+Surface current
+Deep ocean current
+Ocean conveyor belt
+Great ocean conveyor
+Global conveyor belt
+Cryosphere
+Ice sheet
+Ice cap
+Glacier
+Sea ice
+Permafrost
+Snow cover
+Albedo
+Ice-albedo feedback
+Ice core
+Ice core record
+Paleoclimate
+Proxy data
+Climate proxy
+Tree ring
+Dendrochronology
+Coral
+Coral reef
+Sediment core
+Marine sediment
+Lake sediment
+Pollen
+Speleothem
+Stalagmite
+Stalactite
+Isotope analysis
+Oxygen isotope
+Carbon isotope
+Ice age
+Glacial period
+Interglacial period
+Last Glacial Maximum
+LGM
+Holocene
+Pleistocene
+Milankovitch cycles
+Orbital forcing
+Eccentricity
+Axial tilt
+Obliquity
+Precession
+Solar forcing
+Solar radiation
+Solar constant
+Total solar irradiance
+TSI
+Solar cycle
+Sunspot
+Solar activity
+Volcanic forcing
+Volcanic eruption
+Stratospheric aerosol
+Volcanic aerosol
+Aerosol
+Atmospheric aerosol
+Particulate matter
+Black carbon
+Sulfate aerosol
+Organic aerosol
+Sea salt aerosol
+Dust
+Mineral dust
+Aerosol optical depth
+AOD
+Aerosol forcing
+Direct aerosol effect
+Indirect aerosol effect
+Cloud condensation nuclei
+CCN
+Radiative forcing
+Effective radiative forcing
+ERF
+Climate forcing
+External forcing
+Internal variability
+Climate sensitivity
+Equilibrium climate sensitivity
+ECS
+Transient climate response
+TCR
+Climate feedback
+Positive feedback
+Negative feedback
+Water vapor feedback
+Ice-albedo feedback
+Cloud feedback
+Lapse rate feedback
+Carbon cycle
+Carbon flux
+Carbon source
+Carbon sink
+Carbon reservoir
+Biosphere
+Lithosphere
+Hydrosphere
+Pedosphere
+Terrestrial carbon
+Ocean carbon
+Dissolved inorganic carbon
+DIC
+Dissolved organic carbon
+DOC
+Particulate organic carbon
+POC
+Marine carbon cycle
+Biological pump
+Solubility pump
+Carbonate pump
+Ocean acidification
+pH
+Saturation state
+Aragonite
+Calcite
+Coral bleaching
+Photosynthesis
+Respiration
+Net primary productivity
+NPP
+Gross primary productivity
+GPP
+Ecosystem respiration
+Soil respiration
+Decomposition
+Soil carbon
+Soil organic carbon
+SOC
+Peatland
+Wetland
+Forest
+Deforestation
+Afforestation
+Reforestation
+Land use change
+Land cover change
+LULUCF
+Land use, land-use change and forestry
+Emissions
+Greenhouse gas emissions
+CO2 emissions
+Carbon emissions
+Methane emissions
+Emission inventory
+Emission factor
+Carbon footprint
+Carbon intensity
+Emission reduction
+Mitigation
+Climate mitigation
+Decarbonization
+Net zero
+Carbon neutrality
+Climate neutrality
+Carbon budget
+Remaining carbon budget
+Cumulative emissions
+Concentration
+Atmospheric concentration
+CO2 concentration
+Parts per million
+ppm
+Mauna Loa
+Keeling Curve
+Pre-industrial
+Baseline
+Reference period
+Global temperature
+Global mean temperature
+Global surface temperature
+Global average temperature
+Anomaly
+Temperature anomaly
+Temperature record
+Instrumental record
+Surface temperature record
+Warming
+Global warming
+Surface warming
+Ocean warming
+Tropospheric warming
+Stratospheric cooling
+Temperature trend
+Warming trend
+Rate of warming
+Degree of warming
+1.5 degrees
+2 degrees
+Temperature target
+Paris Agreement
+Temperature goal
+Overshoot
+Tipping point
+Climate tipping point
+Irreversibility
+Abrupt climate change
+Threshold
+Critical threshold
+Runaway warming
+Runaway greenhouse effect
+Sea level
+Sea level rise
+SLR
+Global mean sea level
+GMSL
+Relative sea level
+Thermal expansion
+Steric sea level rise
+Ice mass loss
+Ice sheet contribution
+Glacier contribution
+Greenland ice sheet
+Antarctic ice sheet
+West Antarctic Ice Sheet
+WAIS
+East Antarctic Ice Sheet
+EAIS
+Ice shelf
+Ice shelf collapse
+Calving
+Iceberg
+Marine ice sheet instability
+MISI
+Marine ice cliff instability
+MICI
+Grounding line
+Floating ice
+Land ice
+Coastal flooding
+Storm surge
+King tide
+High tide flooding
+Subsidence
+Land subsidence
+Isostatic adjustment
+Glacial isostatic adjustment
+GIA
+Sea level projection
+Sea level scenario
+Extreme weather
+Extreme event
+Climate extreme
+Heat wave
+Heatwave
+Extreme heat
+Temperature extreme
+Cold wave
+Cold snap
+Drought
+Megadrought
+Precipitation extreme
+Heavy precipitation
+Intense precipitation
+Flooding
+Flash flood
+River flood
+Pluvial flood
+Fluvial flood
+Hurricane
+Tropical cyclone
+Typhoon
+Cyclone
+Storm intensity
+Rapid intensification
+Category 5 hurricane
+Saffir-Simpson scale
+Tornado
+Severe thunderstorm
+Hail
+Lightning
+Wildfire
+Forest fire
+Bushfire
+Fire weather
+Fire season
+Attribution
+Climate attribution
+Event attribution
+Extreme event attribution
+Detection and attribution
+Fingerprint
+Climate model fingerprint
+Impact
+Climate impact
+Climate risk
+Climate vulnerability
+Climate adaptation
+Adaptation
+Adaptive capacity
+Resilience
+Climate resilience
+Exposure
+Sensitivity
+Vulnerability assessment
+Risk assessment
+Climate projection
+Climate scenario
+Emission scenario
+Representative Concentration Pathway
+RCP
+RCP2.6
+RCP4.5
+RCP6.0
+RCP8.5
+Shared Socioeconomic Pathway
+SSP
+SSP1
+SSP2
+SSP3
+SSP4
+SSP5
+Scenario analysis
+Storyline
+Uncertainty
+Model uncertainty
+Scenario uncertainty
+Structural uncertainty
+Parameter uncertainty
+Ensemble
+Model ensemble
+Multi-model ensemble
+Projection
+Future projection
+Long-term projection
+Near-term projection
+Mid-century
+End-of-century
+Climate model
+General circulation model
+GCM
+Global climate model
+Earth system model
+ESM
+Coupled model
+Atmosphere-ocean general circulation model
+AOGCM
+Regional climate model
+RCM
+Downscaling
+Dynamical downscaling
+Statistical downscaling
+Model resolution
+Spatial resolution
+Temporal resolution
+Grid
+Grid cell
+Parameterization
+Subgrid process
+Model physics
+Model component
+Atmosphere component
+Ocean component
+Land surface component
+Sea ice component
+Vegetation model
+Dynamic vegetation
+Carbon cycle model
+Model validation
+Model evaluation
+Model performance
+Model bias
+Hindcast
+Historical simulation
+Control run
+Pre-industrial control
+Transient simulation
+Commitment
+Committed warming
+Zero emissions commitment
+Carbon cycle feedback
+Climate-carbon feedback
+Permafrost carbon feedback
+Permafrost thaw
+Methane release
+Clathrate
+Methane hydrate
+Methane clathrate
+Amazon dieback
+Boreal forest dieback
+Coral reef collapse
+Atlantic Meridional Overturning Circulation collapse
+AMOC collapse
+West Antarctic Ice Sheet collapse
+WAIS collapse
+Greenland ice sheet melting
+Arctic sea ice loss
+Ice-free Arctic
+Blue ocean event
+Polar amplification
+Arctic amplification
+Antarctic amplification
+Regional climate change
+Regional warming
+Temperature change
+Precipitation change
+Rainfall change
+Aridity
+Desertification
+Ecosystem shift
+Biome shift
+Species migration
+Range shift
+Phenology
+Phenological shift
+Growing season
+Frost-free season
+Snowpack
+Snow cover extent
+Glacial retreat
+Glacier mass balance
+Mass balance
+Accumulation
+Ablation
+Equilibrium line altitude
+ELA
+Climate science history
+Svante Arrhenius
+Charles David Keeling
+James Hansen
+Climate research
+Climate observation
+Climate monitoring
+Satellite observation
+Remote sensing
+Earth observation
+Ground-based observation
+Weather station
+Radiosonde
+Buoy
+Ocean buoy
+Argo float
+Climate data
+Temperature data
+Precipitation data
+Reanalysis
+Climate reanalysis
+ERA5
+NCEP reanalysis
+NASA GISS
+NOAA
+National Oceanic and Atmospheric Administration
+WMO
+World Meteorological Organization
+IPCC
+Intergovernmental Panel on Climate Change
+IPCC report
+Assessment report
+AR6
+Sixth Assessment Report
+UNFCCC
+United Nations Framework Convention on Climate Change
+COP
+Conference of the Parties
+Paris Agreement
+Kyoto Protocol
+Nationally Determined Contribution
+NDC
+Climate policy
+Climate action
+Climate governance
+International cooperation
+Climate finance
+Green Climate Fund
+Climate justice
+Climate equity
+Common but differentiated responsibilities
+CBDR
+Loss and damage
+Climate change denial
+Climate skepticism
+Climate science communication
+Public awareness
+Climate education
+Climate activism
+Climate movement
+Greta Thunberg
+Fridays for Future
+School strike
+Climate emergency
+Climate crisis
+Planetary boundaries
+Safe operating space
+Sustainable development
+Sustainability
+Carbon pricing
+Carbon tax
+Cap and trade
+Emission trading
+Carbon market
+Carbon offset
+Carbon credit
+Renewable energy
+Solar power
+Wind power
+Hydropower
+Geothermal energy
+Nuclear energy
+Fossil fuel
+Coal
+Oil
+Natural gas
+Petroleum
+Energy transition
+Clean energy
+Low-carbon economy
+Green economy
+Circular economy
+Energy efficiency
+Conservation
+Resource efficiency
+Electric vehicle
+EV
+Transportation
+Aviation
+Shipping
+Agriculture
+Livestock
+Cattle
+Ruminant
+Enteric fermentation
+Rice cultivation
+Fertilizer
+Nitrogen fertilizer
+Industrial process
+Cement production
+Steel production
+Chemical industry
+Refrigeration
+Air conditioning
+Waste management
+Landfill
+Methane capture
+Biogas
+Bioenergy
+Biofuel
+Biomass
+BECCS
+Bioenergy with carbon capture and storage
+Carbon capture
+Carbon capture and storage
+CCS
+Carbon capture utilization and storage
+CCUS
+Direct air capture
+DAC
+Negative emissions
+Carbon dioxide removal
+CDR
+Afforestation
+Reforestation
+Soil carbon sequestration
+Biochar
+Enhanced weathering
+Ocean fertilization
+Geoengineering
+Climate engineering
+Solar radiation management
+SRM
+Stratospheric aerosol injection
+SAI
+Marine cloud brightening
+Cirrus cloud thinning
+Space-based reflector
+

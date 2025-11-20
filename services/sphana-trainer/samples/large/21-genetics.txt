@@ -1,0 +1,787 @@
+Genetics
+Gene
+Genome
+Chromosome
+DNA
+Deoxyribonucleic acid
+Nucleotide
+Base pair
+Adenine
+Thymine
+Guanine
+Cytosine
+Double helix
+Chromatin
+Histone
+Nucleosome
+Heterochromatin
+Euchromatin
+Telomere
+Centromere
+Kinetochore
+Sister chromatid
+Homologous chromosome
+Autosome
+Sex chromosome
+X chromosome
+Y chromosome
+Karyotype
+Diploid
+Haploid
+Polyploidy
+Aneuploidy
+Euploidy
+Gene locus
+Allele
+Dominant allele
+Recessive allele
+Codominance
+Incomplete dominance
+Multiple alleles
+Wild type
+Mutation
+Mutant
+Genotype
+Phenotype
+Trait
+Character
+Heredity
+Inheritance
+Mendelian inheritance
+Mendel's laws
+Law of segregation
+Law of independent assortment
+Law of dominance
+Monohybrid cross
+Dihybrid cross
+Test cross
+Back cross
+Punnett square
+Probability
+F1 generation
+F2 generation
+P generation
+Parental generation
+Filial generation
+Homozygous
+Heterozygous
+Hemizygous
+Penetrance
+Complete penetrance
+Incomplete penetrance
+Expressivity
+Variable expressivity
+Pleiotropy
+Polygenic inheritance
+Quantitative trait
+Continuous variation
+Discontinuous variation
+Epistasis
+Gene interaction
+Modifier gene
+Suppressor
+Enhancer
+Complementation
+Linkage
+Genetic linkage
+Linked genes
+Independent assortment
+Recombination
+Crossing over
+Chiasma
+Recombination frequency
+Map unit
+Centimorgan
+cM
+Gene mapping
+Genetic map
+Linkage map
+Physical map
+Chromosome map
+Three-point cross
+Genetic distance
+Synteny
+Sex linkage
+X-linked inheritance
+Y-linked inheritance
+Sex-limited trait
+Sex-influenced trait
+Pedigree
+Pedigree analysis
+Family tree
+Proband
+Carrier
+Affected individual
+Consanguinity
+Autosomal dominant
+Autosomal recessive
+X-linked dominant
+X-linked recessive
+Y-linked
+Mitochondrial inheritance
+Maternal inheritance
+Uniparental inheritance
+Genomic imprinting
+Parent-of-origin effect
+Imprinted gene
+Prader-Willi syndrome
+Angelman syndrome
+DNA replication
+Semiconservative replication
+Origin of replication
+Replication fork
+Leading strand
+Lagging strand
+DNA polymerase
+Primase
+Helicase
+Topoisomerase
+Ligase
+Okazaki fragment
+Primer
+Proofreading
+DNA repair
+Mismatch repair
+Base excision repair
+Nucleotide excision repair
+Double-strand break repair
+Homologous recombination
+Non-homologous end joining
+NHEJ
+Transcription
+Gene expression
+RNA polymerase
+Promoter
+TATA box
+Transcription factor
+Enhancer
+Silencer
+Operator
+Repressor
+Activator
+Coding sequence
+Template strand
+Sense strand
+Antisense strand
+Intron
+Exon
+Splicing
+Alternative splicing
+5' cap
+Poly-A tail
+Messenger RNA
+mRNA
+Transfer RNA
+tRNA
+Ribosomal RNA
+rRNA
+Small nuclear RNA
+snRNA
+MicroRNA
+miRNA
+Long non-coding RNA
+lncRNA
+Translation
+Genetic code
+Codon
+Anticodon
+Start codon
+Stop codon
+Reading frame
+Open reading frame
+ORF
+Ribosome
+Amino acid
+Polypeptide
+Protein
+Post-translational modification
+Mutation
+Point mutation
+Substitution
+Transition
+Transversion
+Silent mutation
+Missense mutation
+Nonsense mutation
+Frameshift mutation
+Insertion
+Deletion
+Duplication
+Inversion
+Translocation
+Chromosomal aberration
+Aneuploidy
+Monosomy
+Trisomy
+Polyploidy
+Triploid
+Tetraploid
+Down syndrome
+Trisomy 21
+Edwards syndrome
+Trisomy 18
+Patau syndrome
+Trisomy 13
+Turner syndrome
+Monosomy X
+Klinefelter syndrome
+XXY
+Chromosomal deletion
+Chromosomal duplication
+Chromosomal inversion
+Paracentric inversion
+Pericentric inversion
+Chromosomal translocation
+Robertsonian translocation
+Reciprocal translocation
+Copy number variation
+CNV
+Structural variation
+Single nucleotide polymorphism
+SNP
+Indel
+Insertion-deletion
+Tandem repeat
+Short tandem repeat
+STR
+Microsatellite
+Variable number tandem repeat
+VNTR
+Minisatellite
+Transposable element
+Transposon
+Retrotransposon
+Mobile genetic element
+Jumping gene
+DNA transposon
+LINE
+Long interspersed nuclear element
+SINE
+Short interspersed nuclear element
+Alu element
+Molecular genetics
+Recombinant DNA
+Genetic engineering
+Gene cloning
+Molecular cloning
+Plasmid
+Vector
+Cloning vector
+Expression vector
+Restriction enzyme
+Restriction endonuclease
+Recognition site
+Sticky end
+Blunt end
+DNA ligase
+Transformation
+Transfection
+Electroporation
+Heat shock
+Chemical transformation
+Competent cell
+Selection marker
+Antibiotic resistance
+Blue-white screening
+Reporter gene
+DNA library
+Genomic library
+cDNA library
+Complementary DNA
+Reverse transcription
+Reverse transcriptase
+Polymerase chain reaction
+PCR
+Primer
+Annealing
+Extension
+Denaturation
+Thermal cycler
+Taq polymerase
+Real-time PCR
+qPCR
+RT-PCR
+Reverse transcription PCR
+Gel electrophoresis
+Agarose gel
+Polyacrylamide gel
+PAGE
+Ethidium bromide
+DNA ladder
+Molecular weight marker
+Southern blot
+Northern blot
+Western blot
+Hybridization
+Probe
+DNA sequencing
+Sanger sequencing
+Chain termination
+Dideoxy sequencing
+Next-generation sequencing
+NGS
+Illumina sequencing
+Pyrosequencing
+454 sequencing
+Ion Torrent
+PacBio
+Pacific Biosciences
+Nanopore sequencing
+Oxford Nanopore
+Whole genome sequencing
+WGS
+Whole exome sequencing
+WES
+RNA sequencing
+RNA-seq
+ChIP-seq
+Chromatin immunoprecipitation sequencing
+ATAC-seq
+Hi-C
+Bioinformatics
+Computational biology
+Sequence alignment
+Multiple sequence alignment
+BLAST
+Basic Local Alignment Search Tool
+Sequence similarity
+Sequence identity
+Sequence homology
+Pairwise alignment
+Global alignment
+Local alignment
+Needleman-Wunsch algorithm
+Smith-Waterman algorithm
+FASTA format
+FASTQ format
+GenBank
+EMBL
+DDBJ
+NCBI
+National Center for Biotechnology Information
+Ensembl
+UCSC Genome Browser
+Gene annotation
+Genome annotation
+Gene prediction
+Open reading frame finder
+ORF finder
+Functional annotation
+Gene ontology
+GO
+Pathway analysis
+KEGG
+Kyoto Encyclopedia of Genes and Genomes
+Protein database
+UniProt
+Protein structure database
+PDB
+Protein Data Bank
+Homology modeling
+Comparative modeling
+Phylogenetics
+Phylogenetic tree
+Evolutionary tree
+Cladogram
+Phylogram
+Dendrogram
+Molecular phylogenetics
+Molecular clock
+Maximum parsimony
+Maximum likelihood
+Bayesian inference
+Neighbor-joining
+UPGMA
+Bootstrap
+Clade
+Monophyletic
+Paraphyletic
+Polyphyletic
+Outgroup
+Gene family
+Ortholog
+Paralog
+Homologous gene
+Synteny
+Comparative genomics
+Population genetics
+Gene pool
+Allele frequency
+Genotype frequency
+Hardy-Weinberg equilibrium
+Hardy-Weinberg principle
+Random mating
+Genetic drift
+Gene flow
+Migration
+Natural selection
+Mutation rate
+Fitness
+Selection coefficient
+Directional selection
+Stabilizing selection
+Disruptive selection
+Balancing selection
+Overdominance
+Heterozygote advantage
+Underdominance
+Frequency-dependent selection
+Sexual selection
+Genetic load
+Inbreeding
+Inbreeding coefficient
+Inbreeding depression
+Outbreeding
+Heterosis
+Hybrid vigor
+Effective population size
+Founder effect
+Bottleneck
+Population bottleneck
+Coalescent theory
+Most recent common ancestor
+MRCA
+Linkage disequilibrium
+LD
+Haplotype
+Haplotype block
+Recombination hotspot
+Quantitative genetics
+Quantitative trait locus
+QTL
+QTL mapping
+Heritability
+Narrow-sense heritability
+Broad-sense heritability
+Additive genetic variance
+Dominance variance
+Environmental variance
+Genotype-environment interaction
+G×E interaction
+Norm of reaction
+Phenotypic plasticity
+Twin study
+Adoption study
+Genome-wide association study
+GWAS
+SNP array
+Genotyping
+Genetic architecture
+Missing heritability
+Polygenic score
+Polygenic risk score
+PRS
+Breeding
+Selective breeding
+Artificial selection
+Domestication
+Animal breeding
+Plant breeding
+Crop improvement
+Hybrid
+F1 hybrid
+Crossbreeding
+Inbreeding
+Linebreeding
+Outcrossing
+Backcrossing
+Marker-assisted selection
+MAS
+Genomic selection
+Green Revolution
+Quantitative trait locus
+QTL
+Genetic marker
+Molecular marker
+RFLP
+Restriction fragment length polymorphism
+AFLP
+Amplified fragment length polymorphism
+SSR
+Simple sequence repeat
+SNP
+Single nucleotide polymorphism
+Genetically modified organism
+GMO
+Transgenic organism
+Genetic modification
+Gene transfer
+Horizontal gene transfer
+Vertical gene transfer
+Agrobacterium
+Ti plasmid
+Biolistics
+Gene gun
+Particle bombardment
+Bt crops
+Herbicide resistance
+Golden rice
+Genetic counseling
+Medical genetics
+Clinical genetics
+Inherited disorder
+Genetic disorder
+Monogenic disorder
+Single-gene disorder
+Polygenic disorder
+Multifactorial disorder
+Autosomal dominant disorder
+Autosomal recessive disorder
+X-linked disorder
+Mitochondrial disorder
+Metabolic disorder
+Inborn error of metabolism
+Enzyme deficiency
+Sickle cell disease
+Sickle cell anemia
+Hemoglobin S
+Thalassemia
+Alpha thalassemia
+Beta thalassemia
+Cystic fibrosis
+CFTR
+Cystic fibrosis transmembrane conductance regulator
+Phenylketonuria
+PKU
+Phenylalanine hydroxylase
+Tay-Sachs disease
+Hexosaminidase A
+Huntington's disease
+CAG repeat
+Trinucleotide repeat expansion
+Anticipation
+Duchenne muscular dystrophy
+Dystrophin
+Hemophilia
+Hemophilia A
+Factor VIII
+Hemophilia B
+Factor IX
+Color blindness
+Red-green color blindness
+Achondroplasia
+FGFR3
+Marfan syndrome
+Fibrillin-1
+Neurofibromatosis
+NF1
+NF2
+Familial hypercholesterolemia
+LDL receptor
+Cancer genetics
+Oncogene
+Proto-oncogene
+Tumor suppressor gene
+Two-hit hypothesis
+Knudson hypothesis
+Loss of heterozygosity
+LOH
+Somatic mutation
+Germline mutation
+Hereditary cancer syndrome
+Familial adenomatous polyposis
+FAP
+APC gene
+Hereditary nonpolyposis colorectal cancer
+HNPCC
+Lynch syndrome
+Mismatch repair gene
+MLH1
+MSH2
+MSH6
+PMS2
+Breast cancer
+BRCA1
+BRCA2
+Hereditary breast and ovarian cancer syndrome
+Li-Fraumeni syndrome
+p53
+TP53
+Retinoblastoma
+RB1
+Wilms tumor
+WT1
+Von Hippel-Lindau disease
+VHL
+Multiple endocrine neoplasia
+MEN
+Carcinogenesis
+Multistep carcinogenesis
+Driver mutation
+Passenger mutation
+Clonal evolution
+Metastasis
+Angiogenesis
+Apoptosis
+Cell cycle regulation
+Cyclin
+Cyclin-dependent kinase
+CDK
+Checkpoint
+DNA repair
+Epigenetics
+Epigenetic modification
+Epigenome
+DNA methylation
+CpG island
+Methyltransferase
+Histone modification
+Histone acetylation
+Histone deacetylation
+Histone methylation
+Histone phosphorylation
+Histone acetyltransferase
+HAT
+Histone deacetylase
+HDAC
+Histone methyltransferase
+Chromatin remodeling
+Nucleosome positioning
+X-inactivation
+Lyonization
+Barr body
+Dosage compensation
+Genomic imprinting
+Imprinted gene
+Prader-Willi syndrome
+Angelman syndrome
+Beckwith-Wiedemann syndrome
+Non-coding RNA
+Regulatory RNA
+MicroRNA
+miRNA
+Small interfering RNA
+siRNA
+Long non-coding RNA
+lncRNA
+Xist
+RNA interference
+RNAi
+Gene silencing
+Post-transcriptional gene silencing
+Dicer
+RISC
+RNA-induced silencing complex
+Argonaute
+Personalized medicine
+Precision medicine
+Pharmacogenomics
+Pharmacogenetics
+Drug metabolism
+Cytochrome P450
+CYP450
+Drug response
+Adverse drug reaction
+Warfarin
+Clopidogrel
+Abacavir
+HLA-B*5701
+Companion diagnostic
+Targeted therapy
+EGFR inhibitor
+HER2 inhibitor
+Trastuzumab
+Herceptin
+BRAF inhibitor
+Vemurafenib
+ALK inhibitor
+Crizotinib
+Imatinib
+Gleevec
+BCR-ABL
+Chronic myeloid leukemia
+CML
+Genetic testing
+Diagnostic testing
+Predictive testing
+Carrier testing
+Prenatal testing
+Newborn screening
+Preimplantation genetic diagnosis
+PGD
+Amniocentesis
+Chorionic villus sampling
+CVS
+Non-invasive prenatal testing
+NIPT
+Cell-free DNA
+Karyotyping
+Fluorescence in situ hybridization
+FISH
+Comparative genomic hybridization
+CGH
+Array CGH
+Microarray
+DNA microarray
+Gene expression profiling
+SNP array
+Genotyping array
+Direct-to-consumer genetic testing
+23andMe
+Ancestry testing
+Genealogy
+Genetic privacy
+Genetic discrimination
+GINA
+Genetic Information Nondiscrimination Act
+Informed consent
+Genetic counseling
+Gene therapy
+Somatic gene therapy
+Germline gene therapy
+Gene replacement
+Gene augmentation
+Gene inactivation
+Viral vector
+Adenovirus
+Adeno-associated virus
+AAV
+Retrovirus
+Lentivirus
+Ex vivo gene therapy
+In vivo gene therapy
+CRISPR
+CRISPR-Cas9
+Gene editing
+Genome editing
+Cas9
+Guide RNA
+gRNA
+sgRNA
+Single guide RNA
+Protospacer adjacent motif
+PAM
+Homology-directed repair
+HDR
+Non-homologous end joining
+NHEJ
+Base editing
+Prime editing
+Knockout
+Knockin
+CRISPR library
+CRISPR screen
+Zinc finger nuclease
+ZFN
+TALEN
+Transcription activator-like effector nuclease
+Off-target effect
+Mosaicism
+Germline editing
+Designer baby
+Ethical considerations
+Bioethics
+Gene drive
+Synthetic biology
+Synthetic genome
+Minimal genome
+Artificial chromosome
+Yeast artificial chromosome
+YAC
+Bacterial artificial chromosome
+BAC
+BioBricks
+Genetic circuit
+Metabolic engineering
+Systems biology
+

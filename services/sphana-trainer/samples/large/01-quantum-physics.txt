@@ -1,0 +1,959 @@
+Quantum mechanics
+Quantum field theory
+Quantum entanglement
+Wave–particle duality
+Schrödinger equation
+Heisenberg uncertainty principle
+Quantum superposition
+Quantum tunneling
+Quantum decoherence
+Quantum computing
+Quantum cryptography
+Quantum teleportation
+Quantum electrodynamics
+Quantum chromodynamics
+Bell's theorem
+EPR paradox
+Copenhagen interpretation
+Many-worlds interpretation
+Pilot wave theory
+Quantum Zeno effect
+Quantum harmonic oscillator
+Particle in a box
+Quantum spin
+Pauli exclusion principle
+Fermion
+Boson
+Photon
+Electron
+Quark
+Neutrino
+Higgs boson
+Standard Model
+Quantum state
+Wavefunction
+Observable
+Operator (physics)
+Commutator
+Hamiltonian (quantum mechanics)
+Momentum operator
+Position operator
+Spin (physics)
+Angular momentum
+Orbital angular momentum
+Quantum number
+Principal quantum number
+Azimuthal quantum number
+Magnetic quantum number
+Spin quantum number
+Dirac equation
+Klein–Gordon equation
+Feynman diagram
+Path integral formulation
+Matrix mechanics
+Schrödinger picture
+Heisenberg picture
+Interaction picture
+Quantum statistical mechanics
+Density matrix
+Pure state
+Mixed state
+Quantum measurement
+Measurement problem
+Wavefunction collapse
+Born rule
+Quantum decoherence
+Quantum dissipation
+Quantum thermodynamics
+Quantum information theory
+Qubit
+Quantum gate
+Quantum circuit
+Quantum algorithm
+Shor's algorithm
+Grover's algorithm
+Quantum error correction
+Topological quantum computing
+Adiabatic quantum computation
+Quantum annealing
+Quantum supremacy
+Quantum advantage
+Quantum sensor
+Quantum metrology
+Quantum imaging
+Squeezed coherent state
+Fock state
+Coherent state
+Thermal state
+Cat state
+GHZ state
+W state
+Bell state
+Quantum correlation
+Quantum nonlocality
+CHSH inequality
+Leggett–Garg inequality
+Kochen–Specker theorem
+Hidden variable theory
+Bohmian mechanics
+Stochastic quantum mechanics
+Quantum Bayesianism
+Consistent histories
+Relational quantum mechanics
+Transactional interpretation
+Objective collapse theory
+GRW theory
+Penrose interpretation
+Quantum logic
+Quantum probability
+Quantum stochastic calculus
+Quantum filtering
+Quantum control
+Quantum feedback
+Open quantum system
+Lindblad equation
+Master equation
+Quantum trajectory
+Quantum jump
+Quantum optics
+Cavity quantum electrodynamics
+Quantum dot
+Quantum well
+Quantum wire
+Superconducting quantum computing
+Ion trap quantum computer
+Photonic quantum computer
+Topological qubit
+Majorana fermion
+Anyons
+Fractional quantum Hall effect
+Integer quantum Hall effect
+Quantum Hall effect
+Landau quantization
+Cyclotron resonance
+de Haas–van Alphen effect
+Shubnikov–de Haas effect
+Aharonov–Bohm effect
+Berry phase
+Geometric phase
+Quantum adiabatic theorem
+Landau–Zener formula
+Rabi cycle
+Bloch sphere
+Ramsey interferometry
+Spin echo
+Nuclear magnetic resonance
+Electron paramagnetic resonance
+Mössbauer effect
+Lamb shift
+Casimir effect
+Unruh effect
+Hawking radiation
+Black hole thermodynamics
+Holographic principle
+AdS/CFT correspondence
+Quantum gravity
+Loop quantum gravity
+String theory
+M-theory
+Superstring theory
+Supersymmetry
+Supergravity
+Kaluza–Klein theory
+Extra dimensions
+Brane
+D-brane
+Calabi–Yau manifold
+Moduli space
+Compactification (physics)
+Planck scale
+Planck length
+Planck time
+Planck energy
+Planck mass
+Trans-Planckian problem
+Quantum cosmology
+Wheeler–DeWitt equation
+Hartle–Hawking state
+Tunneling cosmology
+Eternal inflation
+Multiverse
+Anthropic principle
+Fine-tuned universe
+Quantum fluctuation
+Zero-point energy
+Vacuum energy
+Cosmological constant
+Dark energy
+Dark matter
+Weakly interacting massive particles
+Axion
+Sterile neutrino
+Modified Newtonian dynamics
+TeVeS
+Quantum vacuum thruster
+Casimir pressure
+Dynamical Casimir effect
+Schwinger effect
+Hawking–Unruh effect
+Quantum coherence
+Quantum discord
+Quantum steering
+Quantum contextuality
+Quantum nonlocality
+Quantum causality
+Quantum relativistic
+Relativistic quantum mechanics
+Dirac sea
+Antimatter
+Positron
+Antiproton
+Antineutron
+Antihydrogen
+Positronium
+Muonium
+Exotic atom
+Kaonic atom
+Pionic atom
+Rydberg atom
+Rydberg molecule
+Ultracold atom
+Bose–Einstein condensate
+Fermi gas
+Degenerate matter
+Quantum Hall effect
+Fractional statistics
+Quantum spin liquid
+Topological order
+Topological insulator
+Topological superconductor
+Weyl semimetal
+Dirac semimetal
+Graphene
+Quantum dot
+Quantum ring
+Quantum point contact
+Single-electron transistor
+Coulomb blockade
+Kondo effect
+Anderson impurity model
+Hubbard model
+Heisenberg model
+Ising model
+XY model
+Spin glass
+Frustrated magnetism
+Quantum magnetism
+Spin wave
+Magnon
+Polaron
+Exciton
+Plasmon
+Phonon
+Soliton
+Instantons
+Skyrmion
+Vortex
+Flux tube
+Magnetic monopole
+'t Hooft–Polyakov monopole
+Dirac monopole
+Gauge theory
+Yang–Mills theory
+Gauge boson
+Gluon
+W and Z bosons
+Electroweak interaction
+Weak interaction
+Strong interaction
+Color charge
+Quark confinement
+Asymptotic freedom
+Chiral symmetry breaking
+Spontaneous symmetry breaking
+Goldstone boson
+Nambu–Goldstone boson
+Higgs mechanism
+Electroweak symmetry breaking
+Grand unified theory
+Theory of everything
+Supersymmetric quantum mechanics
+Quantum groups
+Yangian
+Hopf algebra
+Knot theory
+Jones polynomial
+Chern–Simons theory
+Topological quantum field theory
+Conformal field theory
+Vertex operator algebra
+Virasoro algebra
+Kac–Moody algebra
+Affine Lie algebra
+Quantum affine algebra
+Quantum universal enveloping algebra
+Drinfeld–Jimbo quantum group
+Canonical quantization
+Geometric quantization
+Deformation quantization
+Moyal product
+Wigner quasiprobability distribution
+Husimi Q representation
+Glauber–Sudarshan P representation
+Phase space formulation
+Weyl quantization
+Coherent state quantization
+Berezin quantization
+Klauder's coherent states
+Bargmann–Fock representation
+Second quantization
+Quantum field
+Field operator
+Creation and annihilation operators
+Fock space
+Occupation number
+Normal order
+Wick's theorem
+Feynman propagator
+Green's function
+Correlation function
+Two-point function
+Four-point function
+Vertex function
+Effective action
+Legendre transformation
+Generating functional
+Partition function
+Path integral
+Euclidean path integral
+Imaginary time
+Wick rotation
+Lattice field theory
+Lattice gauge theory
+Wilson loop
+Polyakov loop
+Confinement
+Deconfinement
+Quark–gluon plasma
+Chiral condensate
+Pion
+Kaon
+Eta meson
+Rho meson
+Omega meson
+Phi meson
+J/psi meson
+Upsilon meson
+B meson
+D meson
+Charmed quark
+Bottom quark
+Top quark
+Strange quark
+Up quark
+Down quark
+Quark flavor
+Flavor physics
+CP violation
+T violation
+CPT theorem
+Parity (physics)
+Time reversal
+Charge conjugation
+Discrete symmetry
+Continuous symmetry
+Noether's theorem
+Conserved quantity
+Conservation of energy
+Conservation of momentum
+Conservation of angular momentum
+Conservation of charge
+Baryon number
+Lepton number
+Isospin
+Weak isospin
+Weak hypercharge
+Strangeness
+Charm (quantum number)
+Bottomness
+Topness
+CKM matrix
+PMNS matrix
+Neutrino oscillation
+Solar neutrino problem
+Atmospheric neutrino anomaly
+Reactor neutrino anomaly
+Neutrino mass
+Majorana fermion
+Dirac fermion
+See-saw mechanism
+Leptogenesis
+Baryogenesis
+Matter creation
+Sakharov conditions
+Electroweak baryogenesis
+GUT baryogenesis
+Affleck–Dine mechanism
+Sphaleron
+Topological defect
+Domain wall
+Cosmic string
+Monopole problem
+Inflation (cosmology)
+Inflaton
+Slow-roll inflation
+Chaotic inflation
+New inflation
+Hybrid inflation
+Warm inflation
+K-inflation
+DBI inflation
+Galileon
+Quintessence
+Phantom energy
+Chaplygin gas
+Holographic dark energy
+Modified gravity
+f(R) gravity
+Scalar–tensor theory
+Brans–Dicke theory
+Horndeski theory
+Gauss–Bonnet gravity
+Lovelock theory
+Massive gravity
+Bigravity
+Unimodular gravity
+Entropic gravity
+Emergent gravity
+Induced gravity
+Sakharov's induced gravity
+Asymptotic safety
+Causal dynamical triangulation
+Causal sets
+Spin foam
+Group field theory
+Noncommutative geometry
+Spectral action
+Connes–Chamseddine model
+Almost-commutative geometry
+Quantum geometry
+Quantum topology
+Spin network
+Loop quantum cosmology
+Quantum bounce
+Big bounce
+Cyclic model
+Ekpyrotic universe
+Pre-big-bang model
+String cosmology
+Brane cosmology
+Randall–Sundrum model
+ADD model
+Universal extra dimensions
+Warped extra dimension
+Horava–Lifshitz gravity
+Causal dynamical triangulation
+Euclidean quantum gravity
+Sum over histories
+Quantum foam
+Spacetime foam
+Planck foam
+Virtual black hole
+Micro black hole
+Primordial black hole
+Black hole information paradox
+Black hole complementarity
+Firewall (physics)
+ER=EPR
+Black hole entropy
+Bekenstein bound
+Holographic bound
+Covariant entropy bound
+Generalized second law
+Black hole membrane paradigm
+Stretched horizon
+Apparent horizon
+Event horizon
+Killing horizon
+Cosmological horizon
+Particle horizon
+Hubble horizon
+Conformal time
+Comoving distance
+Proper distance
+Luminosity distance
+Angular diameter distance
+Cosmic distance ladder
+Redshift
+Cosmological redshift
+Gravitational redshift
+Relativistic Doppler effect
+Hubble's law
+Hubble constant
+Hubble tension
+Cosmic microwave background
+CMB anisotropies
+Sachs–Wolfe effect
+Integrated Sachs–Wolfe effect
+Sunyaev–Zel'dovich effect
+Silk damping
+Baryon acoustic oscillations
+Large-scale structure
+Cosmic web
+Galaxy filament
+Galaxy cluster
+Galaxy supercluster
+Cosmic void
+Great Attractor
+Shapley Supercluster
+Laniakea Supercluster
+Observable universe
+Comoving volume
+Critical density
+Density parameter
+Flatness problem
+Horizon problem
+Cosmological principle
+Perfect cosmological principle
+Copernican principle
+Anthropic bias
+Selection bias
+Observational cosmology
+Physical cosmology
+Theoretical cosmology
+Numerical cosmology
+N-body simulation
+Hydrodynamic simulation
+Particle mesh method
+Adaptive mesh refinement
+Smoothed-particle hydrodynamics
+Moving-mesh
+Tree code
+Fast multipole method
+Barnes–Hut simulation
+Gadget code
+RAMSES code
+Enzo code
+Flash code
+ART code
+Illustris project
+Eagle simulation
+Millennium Run
+Bolshoi simulation
+MultiDark simulation
+Dark Sky Simulations
+HACC code
+Magnetohydrodynamics
+Ideal MHD
+Resistive MHD
+Hall MHD
+Electron MHD
+Extended MHD
+Relativistic MHD
+Force-free electrodynamics
+Magnetohydrodynamic waves
+Alfvén wave
+Magnetosonic wave
+Whistler wave
+Ion cyclotron wave
+Lower hybrid oscillation
+Upper hybrid oscillation
+Plasma oscillation
+Langmuir wave
+Plasma wave
+Plasma instability
+Two-stream instability
+Weibel instability
+Buneman instability
+Kelvin–Helmholtz instability
+Rayleigh–Taylor instability
+Richtmyer–Meshkov instability
+Sausage instability
+Kink instability
+Ballooning instability
+Interchange instability
+Tearing mode
+Magnetic reconnection
+Sweet–Parker reconnection
+Petschek reconnection
+Plasmoid instability
+Turbulent reconnection
+Collisionless reconnection
+Guide field reconnection
+Asymmetric reconnection
+Magnetic diffusivity
+Lundquist number
+Magnetic Reynolds number
+Plasma beta
+Alfvén speed
+Debye length
+Plasma parameter
+Coulomb collision
+Coulomb logarithm
+Spitzer resistivity
+Anomalous resistivity
+Plasma transport
+Neoclassical transport
+Turbulent transport
+Gyrokinetics
+Drift kinetics
+Particle-in-cell
+Vlasov equation
+Boltzmann equation
+Fokker–Planck equation
+Landau damping
+Cyclotron damping
+Transit-time damping
+Collisionless damping
+Wave–particle interaction
+Particle trapping
+Phase mixing
+Nonlinear Landau damping
+Quasi-linear theory
+Weak turbulence
+Strong turbulence
+Wave turbulence
+Plasma turbulence
+Fluid turbulence
+Magnetohydrodynamic turbulence
+Kolmogorov turbulence
+Iroshnikov–Kraichnan turbulence
+Goldreich–Sridhar turbulence
+Critical balance
+Anisotropic turbulence
+Intermittency
+Energy cascade
+Direct cascade
+Inverse cascade
+Dual cascade
+Enstrophy
+Helicity
+Magnetic helicity
+Cross helicity
+Elsasser variables
+Residual energy
+Magnetic energy
+Kinetic energy
+Internal energy
+Thermal energy
+Enthalpy
+Entropy
+Free energy
+Gibbs free energy
+Helmholtz free energy
+Chemical potential
+Grand potential
+Thermodynamic potential
+Legendre transform
+Maxwell relations
+Thermodynamic identity
+First law of thermodynamics
+Second law of thermodynamics
+Third law of thermodynamics
+Zeroth law of thermodynamics
+Thermodynamic equilibrium
+Thermal equilibrium
+Mechanical equilibrium
+Chemical equilibrium
+Phase equilibrium
+Dynamic equilibrium
+Metastable equilibrium
+Unstable equilibrium
+Stable equilibrium
+Local equilibrium
+Global equilibrium
+Gibbs phase rule
+Phase diagram
+Phase transition
+First-order phase transition
+Second-order phase transition
+Continuous phase transition
+Discontinuous phase transition
+Order parameter
+Critical point
+Critical exponent
+Scaling law
+Universality class
+Renormalization group
+Fixed point
+Beta function
+Anomalous dimension
+Critical slowing down
+Coarsening
+Spinodal decomposition
+Nucleation
+Homogeneous nucleation
+Heterogeneous nucleation
+Classical nucleation theory
+Droplet model
+Capillary wave
+Surface tension
+Wetting
+Contact angle
+Young's equation
+Laplace pressure
+Kelvin equation
+Gibbs–Thomson effect
+Ostwald ripening
+Lifshitz–Slyozov–Wagner theory
+Phase field model
+Allen–Cahn equation
+Cahn–Hilliard equation
+Ginzburg–Landau theory
+Landau theory
+Mean field theory
+Molecular field theory
+Weiss mean field theory
+Bragg–Williams approximation
+Bethe–Peierls approximation
+Cluster variation method
+Monte Carlo method
+Markov chain Monte Carlo
+Metropolis algorithm
+Wolff algorithm
+Swendsen–Wang algorithm
+Worm algorithm
+Wang–Landau algorithm
+Parallel tempering
+Simulated annealing
+Replica exchange
+Umbrella sampling
+Transition path sampling
+Forward flux sampling
+Milestoning
+Steered molecular dynamics
+Adaptive biasing force
+Metadynamics
+Blue moon ensemble
+Constrained molecular dynamics
+SHAKE algorithm
+RATTLE algorithm
+LINCS algorithm
+Velocity Verlet
+Leapfrog integration
+Runge–Kutta method
+Predictor–corrector method
+Symplectic integrator
+Multiple time stepping
+Reversible reference system propagator algorithm
+Molecular dynamics
+Ab initio molecular dynamics
+Car–Parrinello molecular dynamics
+Born–Oppenheimer molecular dynamics
+Ehrenfest dynamics
+Surface hopping
+Multiple spawning
+Path integral molecular dynamics
+Ring polymer molecular dynamics
+Centroid molecular dynamics
+Classical nuclei approximation
+Quantum thermal bath
+Nosé–Hoover thermostat
+Andersen thermostat
+Berendsen thermostat
+Langevin dynamics
+Brownian dynamics
+Overdamped Langevin equation
+Stochastic differential equation
+Fokker–Planck equation
+Kramers equation
+Smoluchowski equation
+Master equation
+Pauli master equation
+Quantum master equation
+Redfield equation
+Born–Markov approximation
+Rotating wave approximation
+Secular approximation
+Markov approximation
+Quantum regression theorem
+Quantum Langevin equation
+Quantum Brownian motion
+Caldeira–Leggett model
+Spin-boson model
+Jaynes–Cummings model
+Tavis–Cummings model
+Dicke model
+Rabi model
+Quantum Rabi model
+Ultra-strong coupling
+Deep strong coupling
+Light–matter interaction
+Dipole approximation
+Electric dipole transition
+Magnetic dipole transition
+Electric quadrupole transition
+Selection rule
+Transition dipole moment
+Oscillator strength
+Einstein coefficients
+Spontaneous emission
+Stimulated emission
+Stimulated absorption
+Population inversion
+Laser
+Optical amplifier
+Gain medium
+Laser cavity
+Q-switching
+Mode locking
+Frequency comb
+Optical parametric oscillator
+Nonlinear optics
+Second-harmonic generation
+Third-harmonic generation
+Sum-frequency generation
+Difference-frequency generation
+Optical parametric amplification
+Four-wave mixing
+Self-phase modulation
+Cross-phase modulation
+Raman scattering
+Brillouin scattering
+Rayleigh scattering
+Thomson scattering
+Compton scattering
+Inverse Compton scattering
+Klein–Nishina formula
+Photoelectric effect
+Pair production
+Photodisintegration
+Nuclear photoproduction
+Photonuclear reaction
+Giant dipole resonance
+Pygmy dipole resonance
+Quasi-deuteron
+Exchange current
+Meson exchange current
+Two-body current
+Nuclear current
+Convection current
+Magnetization current
+Polarization current
+Displacement current
+Bound current
+Free current
+Current density
+Charge density
+Continuity equation
+Gauge invariance
+Gauge fixing
+Coulomb gauge
+Lorenz gauge
+Temporal gauge
+Axial gauge
+Light-cone gauge
+Unitary gauge
+'t Hooft gauge
+Rξ gauge
+Background field method
+Faddeev–Popov ghost
+BRST symmetry
+Slavnov–Taylor identity
+Ward–Takahashi identity
+Ward identity
+Schwinger–Dyson equation
+Bethe–Salpeter equation
+Gell-Mann–Low equation
+Callan–Symanzik equation
+Renormalization group equation
+β-function
+Anomalous magnetic moment
+g-factor
+Landé g-factor
+Gyromagnetic ratio
+Magnetic moment
+Electric dipole moment
+Electric dipole moment of the electron
+Neutron electric dipole moment
+Nuclear magnetic moment
+Magnetic dipole
+Magnetic quadrupole
+Electric quadrupole
+Quadrupole moment
+Octupole moment
+Multipole expansion
+Spherical harmonics
+Associated Legendre polynomials
+Legendre polynomials
+Bessel function
+Spherical Bessel function
+Hankel function
+Neumann function
+Modified Bessel function
+Airy function
+Hermite polynomials
+Laguerre polynomials
+Associated Laguerre polynomials
+Chebyshev polynomials
+Gegenbauer polynomials
+Jacobi polynomials
+Zernike polynomials
+Hypergeometric function
+Confluent hypergeometric function
+Whittaker function
+Parabolic cylinder function
+Mathieu function
+Lamé function
+Elliptic integral
+Elliptic function
+Weierstrass elliptic function
+Jacobi elliptic function
+Theta function
+Dedekind eta function
+Modular form
+Eisenstein series
+Cusp form
+Hecke operator
+L-function
+Riemann zeta function
+Dirichlet L-function
+Artin L-function
+Selberg zeta function
+Ruelle zeta function
+Ihara zeta function
+Spectral zeta function
+Heat kernel
+Zeta function regularization
+Analytic continuation
+Riemann hypothesis
+Generalized Riemann hypothesis
+Grand Riemann hypothesis
+Hilbert–Pólya conjecture
+Montgomery's pair correlation conjecture
+Keating–Snaith conjecture
+Sarnak's conjecture
+Elliott–Halberstam conjecture
+Hardy–Littlewood conjecture
+Bateman–Horn conjecture
+Schinzel's hypothesis
+Prime number theorem
+Riemann prime counting function
+Mertens function
+Möbius function
+Liouville function
+Mangoldt function
+Chebyshev function
+Dirichlet's theorem
+Bombieri–Vinogradov theorem
+Siegel–Walfisz theorem
+Brun–Titchmarsh theorem
+Linnik's theorem
+Goldbach's conjecture
+Twin prime conjecture
+Polignac's conjecture
+Cramér's conjecture
+Legendre's conjecture
+Brocard's conjecture
+Oppermann's conjecture
+Andrica's conjecture
+Firoozbakht's conjecture
+Dickson's conjecture
+Hardy–Littlewood k-tuple conjecture
+Bateman–Horn conjecture
+Schinzel's hypothesis H
+Bunyakovsky conjecture
+Bouniakowsky conjecture
+Prime gap
+Bertrand's postulate
+

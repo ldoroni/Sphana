@@ -1,0 +1,640 @@
+Botany
+Plant
+Plant biology
+Plant science
+Phytology
+Flora
+Vegetation
+Plant kingdom
+Plantae
+Kingdom Plantae
+Vascular plant
+Tracheophyte
+Nonvascular plant
+Bryophyte
+Moss
+Liverwort
+Hornwort
+Seedless vascular plant
+Fern
+Pteridophyte
+Lycophyte
+Club moss
+Horsetail
+Equisetum
+Seed plant
+Spermatophyte
+Gymnosperm
+Conifer
+Cycad
+Ginkgo
+Gnetophyte
+Angiosperm
+Flowering plant
+Monocot
+Monocotyledon
+Dicot
+Dicotyledon
+Eudicot
+Magnoliid
+Basal angiosperm
+Plant morphology
+Plant anatomy
+Plant structure
+Root
+Root system
+Taproot
+Fibrous root
+Adventitious root
+Root hair
+Root cap
+Root tip
+Lateral root
+Prop root
+Aerial root
+Pneumatophore
+Rhizome
+Tuber
+Bulb
+Corm
+Stolon
+Runner
+Stem
+Shoot
+Shoot system
+Herbaceous stem
+Woody stem
+Trunk
+Branch
+Twig
+Bud
+Terminal bud
+Axillary bud
+Lateral bud
+Node
+Internode
+Leaf
+Simple leaf
+Compound leaf
+Leaflet
+Petiole
+Leaf stalk
+Blade
+Lamina
+Leaf margin
+Leaf apex
+Leaf base
+Leaf venation
+Parallel venation
+Reticulate venation
+Stipule
+Leaf arrangement
+Phyllotaxis
+Alternate
+Opposite
+Whorled
+Rosette
+Flower
+Floral structure
+Sepal
+Petal
+Stamen
+Filament
+Anther
+Pollen
+Pollen grain
+Carpel
+Pistil
+Ovary
+Style
+Stigma
+Ovule
+Receptacle
+Perianth
+Calyx
+Corolla
+Tepal
+Nectary
+Nectar
+Inflorescence
+Raceme
+Spike
+Panicle
+Corymb
+Umbel
+Cyme
+Head
+Capitulum
+Catkin
+Spadix
+Flower symmetry
+Actinomorphic
+Radial symmetry
+Zygomorphic
+Bilateral symmetry
+Complete flower
+Incomplete flower
+Perfect flower
+Imperfect flower
+Unisexual flower
+Bisexual flower
+Hermaphrodite flower
+Monoecious
+Dioecious
+Dichogamy
+Protandry
+Protogyny
+Self-incompatibility
+Cross-pollination
+Self-pollination
+Pollination
+Pollinator
+Insect pollination
+Entomophily
+Wind pollination
+Anemophily
+Water pollination
+Hydrophily
+Bird pollination
+Ornithophily
+Bat pollination
+Chiropterophily
+Fruit
+Seed
+Seed dispersal
+Dispersal mechanism
+Wind dispersal
+Animal dispersal
+Water dispersal
+Explosive dispersal
+Simple fruit
+Aggregate fruit
+Multiple fruit
+Accessory fruit
+Dry fruit
+Fleshy fruit
+Dehiscent fruit
+Indehiscent fruit
+Berry
+Drupe
+Pome
+Pepo
+Hesperidium
+Legume
+Pod
+Capsule
+Follicle
+Achene
+Nut
+Samara
+Schizocarp
+Seed coat
+Testa
+Embryo
+Cotyledon
+Endosperm
+Germination
+Seed germination
+Seedling
+Plant tissue
+Tissue system
+Dermal tissue
+Ground tissue
+Vascular tissue
+Meristem
+Apical meristem
+Lateral meristem
+Intercalary meristem
+Primary growth
+Secondary growth
+Epidermis
+Cuticle
+Stomata
+Stoma
+Guard cell
+Trichome
+Plant hair
+Cork
+Bark
+Periderm
+Parenchyma
+Collenchyma
+Sclerenchyma
+Fiber
+Sclereid
+Xylem
+Phloem
+Vascular bundle
+Vascular cambium
+Cork cambium
+Wood
+Sapwood
+Heartwood
+Annual ring
+Growth ring
+Tree ring
+Pith
+Cortex
+Endodermis
+Casparian strip
+Pericycle
+Stele
+Plant cell
+Cell wall
+Primary cell wall
+Secondary cell wall
+Middle lamella
+Cellulose
+Lignin
+Pectin
+Hemicellulose
+Plasmodesmata
+Vacuole
+Central vacuole
+Tonoplast
+Chloroplast
+Thylakoid
+Stroma
+Grana
+Chlorophyll
+Carotenoid
+Amyloplast
+Chromoplast
+Leucoplast
+Plastid
+Plant physiology
+Photosynthesis
+Light reaction
+Dark reaction
+Calvin cycle
+C3 photosynthesis
+C4 photosynthesis
+CAM photosynthesis
+Crassulacean acid metabolism
+Carbon fixation
+RuBisCO
+Ribulose bisphosphate carboxylase
+Photorespiration
+Light-harvesting complex
+Photosystem
+Photosystem I
+Photosystem II
+Electron transport chain
+ATP synthesis
+NADPH
+Respiration
+Cellular respiration
+Aerobic respiration
+Anaerobic respiration
+Glycolysis
+Krebs cycle
+Citric acid cycle
+Oxidative phosphorylation
+Fermentation
+Transpiration
+Water loss
+Evapotranspiration
+Stomatal conductance
+Water potential
+Turgor pressure
+Plasmolysis
+Osmosis
+Imbibition
+Water uptake
+Water transport
+Xylem transport
+Cohesion-tension theory
+Root pressure
+Guttation
+Phloem transport
+Translocation
+Source
+Sink
+Pressure flow hypothesis
+Mineral nutrition
+Nutrient uptake
+Macronutrient
+Micronutrient
+Nitrogen
+Phosphorus
+Potassium
+Calcium
+Magnesium
+Sulfur
+Iron
+Manganese
+Zinc
+Copper
+Boron
+Molybdenum
+Chlorine
+Nickel
+Essential element
+Nutrient deficiency
+Nitrogen fixation
+Nitrogenase
+Nodule
+Root nodule
+Rhizobium
+Mycorrhiza
+Arbuscular mycorrhiza
+Ectomycorrhiza
+Symbiosis
+Mutualism
+Plant hormone
+Phytohormone
+Auxin
+Gibberellin
+Cytokinin
+Abscisic acid
+ABA
+Ethylene
+Brassinosteroid
+Jasmonic acid
+Salicylic acid
+Hormone signaling
+Signal transduction
+Tropism
+Phototropism
+Gravitropism
+Geotropism
+Thigmotropism
+Hydrotropism
+Chemotropism
+Nastic movement
+Nyctinasty
+Thigmonasty
+Circadian rhythm
+Photoperiodism
+Short-day plant
+Long-day plant
+Day-neutral plant
+Vernalization
+Dormancy
+Seed dormancy
+Bud dormancy
+Senescence
+Abscission
+Leaf fall
+Plant development
+Embryogenesis
+Vegetative development
+Reproductive development
+Flowering
+Flower induction
+Floral initiation
+Floral development
+Double fertilization
+Pollination
+Fertilization
+Seed development
+Fruit development
+Maturation
+Ripening
+Plant genetics
+Plant genome
+Gene expression
+Transcription
+Translation
+DNA
+RNA
+Chromosome
+Gene
+Allele
+Genotype
+Phenotype
+Mutation
+Genetic variation
+Heredity
+Mendelian genetics
+Inheritance
+Dominant
+Recessive
+Heterozygous
+Homozygous
+Hybrid
+Crossbreeding
+Plant breeding
+Selection
+Artificial selection
+Hybrid vigor
+Heterosis
+Inbreeding
+Outcrossing
+Polyploidy
+Diploid
+Haploid
+Tetraploid
+Genome duplication
+Genetic engineering
+Transgenic plant
+GMO
+Genetically modified organism
+Transformation
+Gene transfer
+Ti plasmid
+Agrobacterium
+Gene gun
+Biolistics
+CRISPR
+Gene editing
+Plant taxonomy
+Plant classification
+Taxonomic hierarchy
+Kingdom
+Division
+Phylum
+Class
+Order
+Family
+Genus
+Species
+Binomial nomenclature
+Scientific name
+Common name
+Botanical name
+Type specimen
+Herbarium
+Herbarium specimen
+Plant identification
+Dichotomous key
+Flora
+Field guide
+Phylogeny
+Phylogenetic tree
+Cladistics
+Molecular phylogenetics
+Plant ecology
+Plant community
+Vegetation type
+Biome
+Forest
+Grassland
+Desert
+Tundra
+Wetland
+Savanna
+Chaparral
+Rainforest
+Tropical rainforest
+Temperate rainforest
+Deciduous forest
+Coniferous forest
+Boreal forest
+Taiga
+Ecological succession
+Primary succession
+Secondary succession
+Pioneer species
+Climax community
+Plant distribution
+Biogeography
+Phytogeography
+Range
+Habitat
+Niche
+Ecological niche
+Competition
+Allelopathy
+Facilitation
+Plant-animal interaction
+Herbivory
+Pollination ecology
+Seed dispersal ecology
+Mycorrhizal association
+Plant-microbe interaction
+Nitrogen-fixing bacteria
+Plant disease
+Plant pathology
+Pathogen
+Fungal pathogen
+Bacterial pathogen
+Viral pathogen
+Oomycete
+Nematode
+Plant parasite
+Parasitic plant
+Infection
+Disease resistance
+Plant immunity
+Hypersensitive response
+Systemic acquired resistance
+Plant stress
+Abiotic stress
+Biotic stress
+Drought stress
+Heat stress
+Cold stress
+Salt stress
+Salinity
+Osmotic stress
+Oxidative stress
+Stress tolerance
+Stress response
+Economic botany
+Crop plant
+Cereal
+Grain
+Wheat
+Rice
+Maize
+Corn
+Barley
+Oat
+Rye
+Millet
+Sorghum
+Legume
+Bean
+Pea
+Lentil
+Chickpea
+Soybean
+Peanut
+Root crop
+Potato
+Sweet potato
+Cassava
+Yam
+Carrot
+Beet
+Turnip
+Fruit crop
+Apple
+Banana
+Orange
+Citrus
+Grape
+Mango
+Pineapple
+Strawberry
+Vegetable
+Tomato
+Cucumber
+Lettuce
+Cabbage
+Broccoli
+Cauliflower
+Spinach
+Onion
+Garlic
+Pepper
+Oilseed
+Rapeseed
+Canola
+Sunflower
+Safflower
+Oil palm
+Coconut
+Sugar crop
+Sugarcane
+Sugar beet
+Fiber crop
+Cotton
+Flax
+Hemp
+Jute
+Sisal
+Beverage crop
+Coffee
+Tea
+Cacao
+Cocoa
+Spice
+Herb
+Medicinal plant
+Herbal medicine
+Phytomedicine
+Secondary metabolite
+Alkaloid
+Terpenoid
+Phenolic compound
+Flavonoid
+Tannin
+Essential oil
+Ornamental plant
+Garden plant
+Houseplant
+Horticulture
+Floriculture
+Landscape plant
+Timber
+Lumber
+Hardwood
+Softwood
+Wood product
+Forestry
+Silviculture
+Tree farming
+Agroforestry
+Paleobotany
+Fossil plant
+Plant fossil
+Plant evolution
+Land plant evolution
+Vascular plant evolution
+Seed plant evolution
+Flowering plant evolution
+Coevolution
+Plant-pollinator coevolution
+

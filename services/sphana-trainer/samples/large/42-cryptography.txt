@@ -1,0 +1,632 @@
+Cryptography
+Cryptology
+Encryption
+Decryption
+Cipher
+Plaintext
+Ciphertext
+Key
+Cryptographic key
+Secret key
+Public key
+Private key
+Symmetric-key cryptography
+Symmetric encryption
+Secret-key cryptography
+Asymmetric cryptography
+Asymmetric encryption
+Public-key cryptography
+Classical cryptography
+Substitution cipher
+Caesar cipher
+Shift cipher
+Affine cipher
+Vigenère cipher
+Polyalphabetic cipher
+Monoalphabetic cipher
+Transposition cipher
+Permutation cipher
+Rail fence cipher
+Columnar transposition
+Route cipher
+One-time pad
+OTP
+Vernam cipher
+Perfect secrecy
+Shannon's theorem
+Unconditional security
+Stream cipher
+RC4
+Rivest Cipher 4
+Salsa20
+ChaCha20
+Block cipher
+Data Encryption Standard
+DES
+Triple DES
+3DES
+Advanced Encryption Standard
+AES
+Rijndael
+Blowfish
+Twofish
+IDEA
+International Data Encryption Algorithm
+Serpent
+Camellia
+Block size
+Key size
+Key length
+Mode of operation
+Electronic Codebook
+ECB
+Cipher Block Chaining
+CBC
+Cipher Feedback
+CFB
+Output Feedback
+OFB
+Counter mode
+CTR
+Galois/Counter Mode
+GCM
+Authenticated encryption
+AEAD
+Authenticated Encryption with Associated Data
+Initialization vector
+IV
+Nonce
+Number used once
+Padding
+PKCS#7 padding
+Zero padding
+Bit padding
+Public-key cryptosystem
+RSA
+Rivest-Shamir-Adleman
+RSA algorithm
+Diffie-Hellman
+Diffie-Hellman key exchange
+DH
+Elliptic Curve Cryptography
+ECC
+Elliptic curve
+Elliptic Curve Diffie-Hellman
+ECDH
+Elliptic Curve Digital Signature Algorithm
+ECDSA
+ElGamal
+ElGamal encryption
+Digital Signature Algorithm
+DSA
+Discrete logarithm problem
+Integer factorization
+Trapdoor function
+One-way function
+Cryptographic hash function
+Hash function
+Hash
+Message digest
+Checksum
+MD5
+Message-Digest Algorithm 5
+SHA-1
+Secure Hash Algorithm 1
+SHA-2
+SHA-256
+SHA-512
+SHA-3
+Keccak
+BLAKE2
+BLAKE3
+RIPEMD-160
+Whirlpool
+Collision resistance
+Preimage resistance
+Second preimage resistance
+Avalanche effect
+Hash collision
+Birthday attack
+Birthday paradox
+Length extension attack
+Message Authentication Code
+MAC
+HMAC
+Hash-based MAC
+CMAC
+Cipher-based MAC
+GMAC
+Galois MAC
+Authenticated encryption
+Authentication tag
+Digital signature
+Signature
+Signature scheme
+Signature algorithm
+Signing key
+Verification key
+RSA signature
+DSA signature
+ECDSA signature
+EdDSA
+Edwards-curve Digital Signature Algorithm
+Ed25519
+Schnorr signature
+Key generation
+Key pair
+Keypair
+Public key
+Private key
+Key exchange
+Key agreement
+Key derivation
+Key derivation function
+KDF
+PBKDF2
+Password-Based Key Derivation Function 2
+bcrypt
+scrypt
+Argon2
+HKDF
+HMAC-based KDF
+Salt
+Iteration count
+Work factor
+Password hashing
+Password storage
+Password-based encryption
+Password-based authentication
+Random number generation
+Randomness
+Entropy
+Pseudorandom number generator
+PRNG
+Cryptographically secure PRNG
+CSPRNG
+True random number generator
+TRNG
+Hardware random number generator
+HRNG
+Random number generator
+RNG
+Seed
+Cryptographic protocol
+Security protocol
+Transport Layer Security
+TLS
+Secure Sockets Layer
+SSL
+HTTPS
+HTTP over TLS
+Handshake
+TLS handshake
+Certificate
+Digital certificate
+X.509
+X.509 certificate
+Public Key Infrastructure
+PKI
+Certificate Authority
+CA
+Root CA
+Intermediate CA
+Certificate chain
+Chain of trust
+Certificate signing request
+CSR
+Certificate revocation
+Certificate Revocation List
+CRL
+Online Certificate Status Protocol
+OCSP
+IPsec
+Internet Protocol Security
+IKE
+Internet Key Exchange
+ESP
+Encapsulating Security Payload
+AH
+Authentication Header
+SSH
+Secure Shell
+OpenSSH
+PGP
+Pretty Good Privacy
+OpenPGP
+GPG
+GNU Privacy Guard
+S/MIME
+Secure/Multipurpose Internet Mail Extensions
+WPA
+Wi-Fi Protected Access
+WPA2
+WPA3
+WEP
+Wired Equivalent Privacy
+RADIUS
+Remote Authentication Dial-In User Service
+Kerberos
+SAML
+Security Assertion Markup Language
+OAuth
+OAuth 2.0
+OpenID Connect
+OIDC
+JWT
+JSON Web Token
+JWE
+JSON Web Encryption
+JWS
+JSON Web Signature
+Zero-knowledge proof
+ZKP
+Zero-knowledge protocol
+Commitment scheme
+Bit commitment
+Oblivious transfer
+OT
+Secure multi-party computation
+MPC
+Secret sharing
+Shamir's Secret Sharing
+Threshold cryptography
+Threshold signature
+Homomorphic encryption
+Fully homomorphic encryption
+FHE
+Lattice-based cryptography
+Lattice
+Learning with errors
+LWE
+Ring-LWE
+Post-quantum cryptography
+PQC
+Quantum-resistant cryptography
+Quantum cryptography
+Quantum key distribution
+QKD
+BB84 protocol
+E91 protocol
+Quantum computing threat
+Shor's algorithm
+Grover's algorithm
+Cryptanalysis
+Cryptanalytic attack
+Brute-force attack
+Exhaustive key search
+Dictionary attack
+Known-plaintext attack
+Chosen-plaintext attack
+Chosen-ciphertext attack
+Adaptive chosen-ciphertext attack
+Man-in-the-middle attack
+MITM
+Replay attack
+Side-channel attack
+Timing attack
+Power analysis attack
+Cache-timing attack
+Fault injection attack
+Differential power analysis
+DPA
+Simple power analysis
+SPA
+Electromagnetic analysis
+Acoustic cryptanalysis
+Cold boot attack
+Padding oracle attack
+Meet-in-the-middle attack
+Linear cryptanalysis
+Differential cryptanalysis
+Algebraic attack
+Related-key attack
+Weak key
+Key recovery attack
+Frequency analysis
+Pattern analysis
+Cryptographic strength
+Security level
+Bit security
+Computational security
+Information-theoretic security
+Provable security
+Semantic security
+IND-CPA
+Indistinguishability under chosen-plaintext attack
+IND-CCA
+Indistinguishability under chosen-ciphertext attack
+Forward secrecy
+Perfect forward secrecy
+PFS
+Ephemeral key
+Session key
+Long-term key
+Key management
+Key storage
+Key distribution
+Key establishment
+Key escrow
+Key backup
+Key recovery
+Key rotation
+Key expiration
+Key lifecycle
+Secure key storage
+Hardware security module
+HSM
+Trusted Platform Module
+TPM
+Secure element
+Smart card
+Cryptographic token
+USB token
+Hardware token
+Software token
+Biometric authentication
+Fingerprint
+Facial recognition
+Iris recognition
+Voice recognition
+Multi-factor authentication
+MFA
+Two-factor authentication
+2FA
+Time-based One-Time Password
+TOTP
+HMAC-based One-Time Password
+HOTP
+One-time password
+OTP
+Security token
+Challenge-response
+Authentication factor
+Something you know
+Something you have
+Something you are
+Single sign-on
+SSO
+Access control
+Authorization
+Authentication
+Identity verification
+Non-repudiation
+Confidentiality
+Integrity
+Availability
+CIA triad
+Authenticity
+Accountability
+Privacy
+Data protection
+Information security
+Cybersecurity
+Computer security
+Network security
+Application security
+Endpoint security
+Cloud security
+Mobile security
+IoT security
+Internet of Things security
+Blockchain
+Distributed ledger
+Cryptocurrency
+Bitcoin
+Ethereum
+Cryptographic protocol
+Consensus algorithm
+Proof of work
+PoW
+Proof of stake
+PoS
+Mining
+Hash rate
+Merkle tree
+Hash tree
+Digital forensics
+Forensic analysis
+Evidence preservation
+Chain of custody
+Steganography
+Information hiding
+Covert channel
+Watermarking
+Digital watermark
+Obfuscation
+Code obfuscation
+Security through obscurity
+Backdoor
+Trap door
+Logic bomb
+Time bomb
+Malware
+Virus
+Worm
+Trojan horse
+Ransomware
+Spyware
+Adware
+Rootkit
+Keylogger
+Botnet
+Phishing
+Spear phishing
+Social engineering
+Exploit
+Zero-day exploit
+Vulnerability
+Security vulnerability
+Software vulnerability
+Buffer overflow
+SQL injection
+Cross-site scripting
+XSS
+Cross-site request forgery
+CSRF
+Remote code execution
+RCE
+Privilege escalation
+Denial of service
+DoS
+Distributed denial of service
+DDoS
+Penetration testing
+Pen test
+Ethical hacking
+White hat
+Black hat
+Grey hat
+Red team
+Blue team
+Security audit
+Security assessment
+Vulnerability assessment
+Risk assessment
+Threat modeling
+Attack surface
+Attack vector
+Threat actor
+Advanced persistent threat
+APT
+Intrusion detection system
+IDS
+Intrusion prevention system
+IPS
+Firewall
+Network firewall
+Application firewall
+Web application firewall
+WAF
+Antivirus
+Anti-malware
+Endpoint protection
+Data loss prevention
+DLP
+Security information and event management
+SIEM
+Security operations center
+SOC
+Incident response
+Security incident
+Data breach
+Information leak
+Secure coding
+Secure development
+Security by design
+Defense in depth
+Principle of least privilege
+Need to know
+Separation of duties
+Fail-safe
+Fail-secure
+Security policy
+Security standard
+Compliance
+Regulation
+GDPR
+General Data Protection Regulation
+HIPAA
+Health Insurance Portability and Accountability Act
+PCI DSS
+Payment Card Industry Data Security Standard
+NIST
+National Institute of Standards and Technology
+FIPS
+Federal Information Processing Standards
+Common Criteria
+ISO 27001
+Information security management
+Security governance
+Security awareness
+Security training
+Security culture
+Security posture
+Risk management
+Risk mitigation
+Risk acceptance
+Risk transfer
+Risk avoidance
+Secure communication
+Secure messaging
+End-to-end encryption
+E2EE
+Signal Protocol
+Double Ratchet Algorithm
+Perfect forward secrecy
+PFS
+Deniability
+Metadata protection
+Anonymous communication
+Anonymity network
+Tor
+The Onion Router
+Onion routing
+Mix network
+Mixnet
+VPN
+Virtual Private Network
+Proxy
+Anonymous proxy
+SOCKS proxy
+Encrypted DNS
+DNS over HTTPS
+DoH
+DNS over TLS
+DoT
+DNSSEC
+Domain Name System Security Extensions
+Privacy-enhancing technology
+PET
+Differential privacy
+K-anonymity
+L-diversity
+T-closeness
+Private information retrieval
+PIR
+Secure enclaves
+Trusted execution environment
+TEE
+Intel SGX
+Software Guard Extensions
+ARM TrustZone
+Secure boot
+Verified boot
+Measured boot
+Code signing
+Application signing
+Driver signing
+Firmware signing
+Attestation
+Remote attestation
+Secure firmware
+UEFI Secure Boot
+Secure element
+Secure storage
+Encrypted storage
+Full disk encryption
+FDE
+File-level encryption
+Database encryption
+Transparent data encryption
+TDE
+Encryption at rest
+Encryption in transit
+Encryption in use
+End-to-end security
+Security architecture
+Security design
+Threat modeling
+STRIDE
+DREAD
+Attack tree
+Misuse case
+Abuse case
+Security requirements
+Security testing
+Fuzzing
+Fuzz testing
+Static analysis
+Dynamic analysis
+Security scanner
+Vulnerability scanner
+

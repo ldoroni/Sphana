@@ -1,0 +1,837 @@
+Statistics
+Descriptive statistics
+Inferential statistics
+Data
+Datum
+Raw data
+Data set
+Data collection
+Observation
+Variable
+Random variable
+Quantitative variable
+Qualitative variable
+Categorical variable
+Nominal variable
+Ordinal variable
+Interval variable
+Ratio variable
+Continuous variable
+Discrete variable
+Dependent variable
+Independent variable
+Explanatory variable
+Response variable
+Predictor
+Outcome
+Covariate
+Confounding variable
+Lurking variable
+Control variable
+Population
+Sample
+Random sample
+Simple random sample
+Systematic sample
+Stratified sample
+Cluster sample
+Convenience sample
+Judgment sample
+Quota sample
+Sample size
+Sampling error
+Sampling bias
+Selection bias
+Nonresponse bias
+Response bias
+Measurement error
+Random error
+Systematic error
+Sampling distribution
+Sample mean
+Sample variance
+Sample standard deviation
+Statistic
+Parameter
+Estimator
+Estimate
+Point estimate
+Interval estimate
+Measures of central tendency
+Mean
+Arithmetic mean
+Weighted mean
+Geometric mean
+Harmonic mean
+Median
+Mode
+Measures of dispersion
+Range
+Interquartile range
+IQR
+Variance
+Standard deviation
+Coefficient of variation
+Mean absolute deviation
+MAD
+Measures of position
+Quartile
+First quartile
+Second quartile
+Third quartile
+Percentile
+Decile
+Quintile
+Z-score
+Standard score
+Measures of shape
+Skewness
+Positive skew
+Right skew
+Negative skew
+Left skew
+Kurtosis
+Leptokurtic
+Platykurtic
+Mesokurtic
+Data visualization
+Chart
+Graph
+Bar chart
+Histogram
+Frequency histogram
+Pie chart
+Line graph
+Scatter plot
+Scatterplot
+Box plot
+Box-and-whisker plot
+Stem-and-leaf plot
+Dot plot
+Violin plot
+Heat map
+Frequency distribution
+Frequency table
+Relative frequency
+Cumulative frequency
+Cumulative relative frequency
+Class
+Class interval
+Class width
+Class boundary
+Class midpoint
+Probability
+Probability distribution
+Discrete probability distribution
+Continuous probability distribution
+Probability mass function
+PMF
+Probability density function
+PDF
+Cumulative distribution function
+CDF
+Survival function
+Hazard function
+Quantile function
+Inverse CDF
+Parameters
+Location parameter
+Scale parameter
+Shape parameter
+Expectation
+Expected value
+Mean
+First moment
+Variance
+Second central moment
+Standard deviation
+Moment
+Raw moment
+Central moment
+Moment-generating function
+MGF
+Characteristic function
+Cumulant
+Skewness
+Third standardized moment
+Kurtosis
+Fourth standardized moment
+Excess kurtosis
+Mode
+Median
+Quantile
+Percentile
+Covariance
+Correlation
+Pearson correlation coefficient
+Correlation coefficient
+Linear correlation
+Rank correlation
+Spearman's rank correlation
+Kendall's tau
+Independence
+Conditional probability
+Conditional distribution
+Conditional expectation
+Bayes' theorem
+Prior probability
+Posterior probability
+Likelihood
+Marginal distribution
+Joint distribution
+Multivariate distribution
+Bernoulli distribution
+Binomial distribution
+Geometric distribution
+Negative binomial distribution
+Hypergeometric distribution
+Poisson distribution
+Discrete uniform distribution
+Continuous uniform distribution
+Normal distribution
+Gaussian distribution
+Standard normal distribution
+Z-distribution
+Lognormal distribution
+Exponential distribution
+Memoryless property
+Gamma distribution
+Beta distribution
+Chi-squared distribution
+Degrees of freedom
+Student's t-distribution
+T-distribution
+F-distribution
+Cauchy distribution
+Weibull distribution
+Pareto distribution
+Laplace distribution
+Logistic distribution
+Multinomial distribution
+Dirichlet distribution
+Multivariate normal distribution
+Bivariate normal distribution
+Correlation matrix
+Covariance matrix
+Central limit theorem
+CLT
+Law of large numbers
+LLN
+Weak law of large numbers
+Strong law of large numbers
+Chebyshev's inequality
+Markov's inequality
+Convergence
+Convergence in distribution
+Convergence in probability
+Convergence almost surely
+Convergence in mean
+Parameter estimation
+Point estimation
+Interval estimation
+Estimator
+Unbiased estimator
+Biased estimator
+Bias
+Consistent estimator
+Efficiency
+Efficient estimator
+Mean squared error
+MSE
+Cramér-Rao bound
+Fisher information
+Sufficient statistic
+Minimal sufficient statistic
+Complete statistic
+Ancillary statistic
+Method of moments
+Maximum likelihood estimation
+MLE
+Likelihood function
+Log-likelihood
+Score function
+Observed information
+Expected information
+Newton-Raphson method
+EM algorithm
+Expectation-maximization
+Bayesian estimation
+Bayesian inference
+Prior distribution
+Posterior distribution
+Conjugate prior
+Noninformative prior
+Jeffreys prior
+Empirical Bayes
+Credible interval
+Highest posterior density
+HPD interval
+Confidence interval
+Confidence level
+Confidence coefficient
+Coverage probability
+Margin of error
+Standard error
+Standard error of the mean
+SEM
+Bootstrap
+Bootstrap sample
+Bootstrap distribution
+Percentile bootstrap
+BCa bootstrap
+Bias-corrected and accelerated
+Jackknife
+Resampling
+Monte Carlo method
+Simulation
+Hypothesis testing
+Statistical hypothesis
+Null hypothesis
+Alternative hypothesis
+One-sided test
+Two-sided test
+One-tailed test
+Two-tailed test
+Test statistic
+Rejection region
+Critical region
+Critical value
+Significance level
+Alpha level
+Type I error
+False positive
+Type II error
+False negative
+Power
+Beta
+Effect size
+P-value
+Statistical significance
+Practical significance
+Multiple testing
+Multiple comparisons
+Family-wise error rate
+FWER
+Bonferroni correction
+Šidák correction
+False discovery rate
+FDR
+Benjamini-Hochberg procedure
+Z-test
+One-sample z-test
+Two-sample z-test
+T-test
+One-sample t-test
+Paired t-test
+Two-sample t-test
+Independent samples t-test
+Welch's t-test
+Equal variance assumption
+Homoscedasticity
+Heteroscedasticity
+Levene's test
+Bartlett's test
+Chi-squared test
+Goodness of fit test
+Test of independence
+Test of homogeneity
+Contingency table
+Pearson's chi-squared test
+Yates's correction
+Fisher's exact test
+McNemar's test
+Cochran's Q test
+F-test
+Test of equality of variances
+Analysis of variance
+ANOVA
+One-way ANOVA
+Two-way ANOVA
+Factorial ANOVA
+Repeated measures ANOVA
+MANOVA
+Multivariate analysis of variance
+Between-group variability
+Within-group variability
+Sum of squares
+Total sum of squares
+SST
+Between-group sum of squares
+SSB
+Within-group sum of squares
+SSW
+Mean square
+F-statistic
+Post hoc test
+Tukey's HSD test
+Scheffé test
+Bonferroni test
+Dunnett's test
+Planned comparison
+Contrast
+Linear combination
+Nonparametric statistics
+Distribution-free method
+Rank-based method
+Sign test
+Wilcoxon signed-rank test
+Mann-Whitney U test
+Wilcoxon rank-sum test
+Kruskal-Wallis test
+Friedman test
+Spearman's rank correlation
+Kendall's tau
+Kolmogorov-Smirnov test
+Goodness-of-fit test
+Anderson-Darling test
+Shapiro-Wilk test
+Normality test
+Runs test
+Permutation test
+Randomization test
+Rank transformation
+Regression analysis
+Regression
+Linear regression
+Simple linear regression
+Multiple linear regression
+Multivariate regression
+Polynomial regression
+Nonlinear regression
+Response variable
+Outcome variable
+Dependent variable
+Predictor variable
+Explanatory variable
+Independent variable
+Regressor
+Covariate
+Regression coefficient
+Intercept
+Slope
+Regression line
+Line of best fit
+Least squares
+Ordinary least squares
+OLS
+Method of least squares
+Residual
+Error term
+Fitted value
+Predicted value
+Sum of squared residuals
+SSR
+Residual sum of squares
+RSS
+Regression sum of squares
+Total sum of squares
+Coefficient of determination
+R-squared
+Adjusted R-squared
+Standard error of the regression
+Standard error of the estimate
+Confidence interval for coefficients
+Prediction interval
+Confidence interval for mean response
+Assumptions
+Linearity
+Independence
+Homoscedasticity
+Constant variance
+Normality
+Residual plot
+Scatter plot of residuals
+Normal probability plot
+Q-Q plot
+Leverage
+Influence
+Cook's distance
+Hat matrix
+Studentized residual
+Outlier
+Multicollinearity
+Variance inflation factor
+VIF
+Tolerance
+Ridge regression
+LASSO
+Elastic net
+Regularization
+Penalty
+Logistic regression
+Binary logistic regression
+Multinomial logistic regression
+Ordinal logistic regression
+Logit
+Log-odds
+Odds ratio
+Maximum likelihood estimation
+Deviance
+Pseudo R-squared
+McFadden's R-squared
+Nagelkerke's R-squared
+Hosmer-Lemeshow test
+Confusion matrix
+Sensitivity
+Specificity
+Positive predictive value
+PPV
+Precision
+Negative predictive value
+NPV
+Accuracy
+False positive rate
+False negative rate
+True positive rate
+True negative rate
+Receiver operating characteristic
+ROC curve
+Area under the curve
+AUC
+Probit regression
+Poisson regression
+Count data
+Overdispersion
+Negative binomial regression
+Survival analysis
+Time-to-event analysis
+Censoring
+Right censoring
+Left censoring
+Interval censoring
+Survival function
+Hazard function
+Cumulative hazard function
+Kaplan-Meier estimator
+Product-limit estimator
+Log-rank test
+Cox proportional hazards model
+Proportional hazards assumption
+Hazard ratio
+Time series analysis
+Time series
+Temporal data
+Trend
+Seasonal component
+Cyclical component
+Irregular component
+Decomposition
+Additive model
+Multiplicative model
+Stationary
+Stationarity
+Non-stationary
+Unit root
+Augmented Dickey-Fuller test
+ADF test
+Autocorrelation
+Serial correlation
+Autocorrelation function
+ACF
+Partial autocorrelation function
+PACF
+Correlogram
+Lag
+White noise
+Random walk
+Moving average
+Simple moving average
+Weighted moving average
+Exponential smoothing
+Simple exponential smoothing
+Holt's method
+Holt-Winters method
+ARIMA
+Autoregressive integrated moving average
+Autoregressive model
+AR model
+Moving average model
+MA model
+ARMA model
+Integration
+Differencing
+First difference
+Seasonal differencing
+Box-Jenkins methodology
+Model identification
+Parameter estimation
+Model validation
+Forecasting
+Forecast
+Prediction
+Point forecast
+Interval forecast
+Forecast error
+Mean absolute error
+MAE
+Mean squared error
+MSE
+Root mean squared error
+RMSE
+Mean absolute percentage error
+MAPE
+Multivariate analysis
+Multivariate statistics
+Multivariate data
+Multivariate normal distribution
+Mahalanobis distance
+Principal component analysis
+PCA
+Principal component
+Eigenvalue
+Eigenvector
+Scree plot
+Factor analysis
+Exploratory factor analysis
+EFA
+Confirmatory factor analysis
+CFA
+Factor loading
+Factor score
+Communality
+Rotation
+Orthogonal rotation
+Varimax rotation
+Oblique rotation
+Cluster analysis
+Clustering
+Unsupervised learning
+Partition
+Hierarchical clustering
+Agglomerative clustering
+Divisive clustering
+Dendrogram
+Linkage
+Single linkage
+Complete linkage
+Average linkage
+Ward's method
+K-means clustering
+Centroid
+Silhouette coefficient
+Elbow method
+Discriminant analysis
+Linear discriminant analysis
+LDA
+Quadratic discriminant analysis
+QDA
+Classification
+Canonical correlation analysis
+Correspondence analysis
+Multidimensional scaling
+MDS
+Structural equation modeling
+SEM
+Path analysis
+Latent variable
+Indicator variable
+Measurement model
+Structural model
+Goodness of fit
+Chi-squared test
+RMSEA
+Root mean square error of approximation
+CFI
+Comparative fit index
+TLI
+Tucker-Lewis index
+Experimental design
+Experiment
+Experimental unit
+Treatment
+Control
+Experimental control
+Control group
+Treatment group
+Random assignment
+Randomization
+Randomized controlled trial
+RCT
+Blinding
+Single-blind
+Double-blind
+Triple-blind
+Placebo
+Placebo effect
+Hawthorne effect
+Factor
+Level
+Factorial design
+2^k factorial design
+Full factorial design
+Fractional factorial design
+Main effect
+Interaction
+Interaction effect
+Two-way interaction
+Three-way interaction
+Block
+Blocking
+Randomized block design
+Latin square
+Graeco-Latin square
+Repeated measures
+Within-subjects design
+Between-subjects design
+Mixed design
+Crossover design
+Carryover effect
+Washout period
+Sample size determination
+Power analysis
+Effect size
+Cohen's d
+Statistical power
+Beta error
+Alpha error
+One-tailed test
+Two-tailed test
+Survey methodology
+Survey
+Questionnaire
+Census
+Sample survey
+Sampling frame
+Coverage error
+Measurement error
+Nonresponse error
+Response rate
+Item nonresponse
+Unit nonresponse
+Weighting
+Post-stratification
+Raking
+Question wording
+Open-ended question
+Closed-ended question
+Likert scale
+Rating scale
+Semantic differential
+Visual analog scale
+Pilot study
+Pretest
+Field test
+Quality control
+Statistical process control
+SPC
+Control chart
+Shewhart chart
+X-bar chart
+R chart
+S chart
+P chart
+NP chart
+C chart
+U chart
+Upper control limit
+UCL
+Lower control limit
+LCL
+Center line
+Out of control
+Special cause variation
+Common cause variation
+Process capability
+Cp
+Cpk
+Six Sigma
+Data mining
+Knowledge discovery
+Machine learning
+Supervised learning
+Unsupervised learning
+Training set
+Test set
+Validation set
+Cross-validation
+K-fold cross-validation
+Leave-one-out cross-validation
+Overfitting
+Underfitting
+Bias-variance tradeoff
+Classification
+Decision tree
+Random forest
+Support vector machine
+SVM
+Neural network
+Deep learning
+K-nearest neighbors
+KNN
+Naive Bayes
+Regression tree
+Ensemble method
+Bagging
+Boosting
+AdaBoost
+Gradient boosting
+XGBoost
+Dimensionality reduction
+Feature selection
+Feature extraction
+Curse of dimensionality
+Association rule learning
+Market basket analysis
+Apriori algorithm
+Support
+Confidence
+Lift
+Bayesian networks
+Graphical model
+Directed acyclic graph
+DAG
+Conditional independence
+Belief propagation
+Markov chain
+Markov process
+Transition matrix
+Stationary distribution
+Ergodicity
+Hidden Markov model
+HMM
+Viterbi algorithm
+Forward-backward algorithm
+Markov chain Monte Carlo
+MCMC
+Gibbs sampling
+Metropolis-Hastings algorithm
+Missing data
+Missing completely at random
+MCAR
+Missing at random
+MAR
+Missing not at random
+MNAR
+Listwise deletion
+Complete case analysis
+Pairwise deletion
+Mean imputation
+Regression imputation
+Multiple imputation
+Maximum likelihood with missing data
+Expectation-maximization algorithm
+Meta-analysis
+Systematic review
+Effect size
+Forest plot
+Fixed-effects model
+Random-effects model
+Heterogeneity
+I-squared
+Publication bias
+Funnel plot
+Trim and fill
+Egger's test
+Spatial statistics
+Spatial data
+Geostatistics
+Point process
+Spatial autocorrelation
+Moran's I
+Geary's C
+Variogram
+Semivariogram
+Kriging
+Spatial interpolation
+Spatial regression
+

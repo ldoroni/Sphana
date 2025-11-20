@@ -1,0 +1,1097 @@
+Computer science
+Algorithm
+Data structure
+Programming language
+Software engineering
+Computer architecture
+Operating system
+Database
+Artificial intelligence
+Machine learning
+Deep learning
+Neural network
+Computer network
+Distributed system
+Cloud computing
+Cybersecurity
+Cryptography
+Compiler
+Interpreter
+Assembly language
+Machine code
+High-level language
+Low-level language
+Object-oriented programming
+Functional programming
+Procedural programming
+Logic programming
+Declarative programming
+Imperative programming
+Dynamic programming
+Greedy algorithm
+Divide and conquer
+Backtracking
+Branch and bound
+Recursion
+Iteration
+Big O notation
+Time complexity
+Space complexity
+Computational complexity
+NP-complete
+NP-hard
+P versus NP
+Turing machine
+Lambda calculus
+Chomsky hierarchy
+Formal language
+Context-free grammar
+Regular expression
+Finite automaton
+Pushdown automaton
+Abstract syntax tree
+Parse tree
+Lexical analysis
+Syntax analysis
+Semantic analysis
+Code generation
+Code optimization
+Linked list
+Array
+Stack
+Queue
+Tree
+Binary tree
+Binary search tree
+AVL tree
+Red-black tree
+B-tree
+B+ tree
+Heap
+Priority queue
+Hash table
+Hash function
+Collision resolution
+Open addressing
+Chaining
+Graph
+Directed graph
+Undirected graph
+Weighted graph
+Adjacency matrix
+Adjacency list
+Depth-first search
+Breadth-first search
+Dijkstra's algorithm
+Bellman-Ford algorithm
+Floyd-Warshall algorithm
+A* search
+Minimum spanning tree
+Kruskal's algorithm
+Prim's algorithm
+Topological sorting
+Strongly connected component
+Union-find
+Disjoint-set
+Trie
+Suffix tree
+Suffix array
+Segment tree
+Fenwick tree
+Binary indexed tree
+Skip list
+Bloom filter
+Consistent hashing
+Load balancing
+Sharding
+Replication
+Master-slave replication
+Multi-master replication
+CAP theorem
+Consistency
+Availability
+Partition tolerance
+ACID
+Atomicity
+Isolation
+Durability
+BASE
+Basically available
+Soft state
+Eventual consistency
+Two-phase commit
+Three-phase commit
+Paxos
+Raft
+Byzantine fault tolerance
+Consensus algorithm
+Leader election
+Distributed lock
+Mutex
+Semaphore
+Monitor
+Deadlock
+Race condition
+Critical section
+Synchronization
+Thread
+Process
+Concurrency
+Parallelism
+Multiprocessing
+Multithreading
+Coroutine
+Green thread
+Fiber
+Actor model
+Message passing
+Shared memory
+Memory model
+Cache coherence
+MESI protocol
+Cache
+CPU cache
+Cache line
+Cache miss
+Cache hit
+Spatial locality
+Temporal locality
+Virtual memory
+Page table
+Translation lookaside buffer
+TLB
+Memory management unit
+Segmentation
+Paging
+Demand paging
+Page replacement
+LRU
+FIFO
+Clock algorithm
+Working set
+Thrashing
+Memory hierarchy
+Register
+SRAM
+DRAM
+ROM
+Flash memory
+SSD
+HDD
+Magnetic disk
+Optical disk
+RAID
+RAID 0
+RAID 1
+RAID 5
+RAID 6
+RAID 10
+Parity
+Striping
+Mirroring
+File system
+FAT
+NTFS
+ext4
+XFS
+ZFS
+Btrfs
+Inode
+Directory
+Path
+Absolute path
+Relative path
+Symbolic link
+Hard link
+File descriptor
+File permission
+Access control list
+Discretionary access control
+Mandatory access control
+Role-based access control
+Authentication
+Authorization
+Encryption
+Decryption
+Symmetric encryption
+Asymmetric encryption
+Public key cryptography
+Private key
+Public key
+RSA
+AES
+DES
+3DES
+Blowfish
+Twofish
+ChaCha20
+Digital signature
+Certificate
+Public key infrastructure
+Certificate authority
+TLS
+SSL
+HTTPS
+SSH
+VPN
+IPsec
+Firewall
+Intrusion detection system
+Intrusion prevention system
+Packet filter
+Stateful firewall
+Application firewall
+Web application firewall
+SQL injection
+Cross-site scripting
+XSS
+CSRF
+Buffer overflow
+Stack overflow
+Heap overflow
+Use after free
+Integer overflow
+Format string attack
+Race condition
+Time-of-check to time-of-use
+TOCTOU
+Privilege escalation
+Code injection
+Command injection
+Directory traversal
+Path traversal
+Remote code execution
+Denial of service
+DDoS
+Man-in-the-middle
+Phishing
+Social engineering
+Malware
+Virus
+Worm
+Trojan horse
+Ransomware
+Spyware
+Adware
+Rootkit
+Backdoor
+Botnet
+Zero-day
+Exploit
+Vulnerability
+CVE
+Penetration testing
+Security audit
+Threat model
+Attack surface
+Defense in depth
+Principle of least privilege
+Sandboxing
+Isolation
+Virtualization
+Hypervisor
+Type 1 hypervisor
+Type 2 hypervisor
+Virtual machine
+Container
+Docker
+Kubernetes
+Microservices
+Service mesh
+API gateway
+Load balancer
+Reverse proxy
+Forward proxy
+CDN
+Edge computing
+Serverless
+Function as a service
+Platform as a service
+Infrastructure as a service
+Software as a service
+Multi-tenancy
+Scalability
+Horizontal scaling
+Vertical scaling
+Elasticity
+Auto-scaling
+High availability
+Fault tolerance
+Redundancy
+Failover
+Disaster recovery
+Backup
+Snapshot
+Incremental backup
+Differential backup
+Full backup
+Data deduplication
+Compression
+Archive
+Object storage
+Block storage
+File storage
+Network attached storage
+Storage area network
+iSCSI
+Fibre Channel
+NFS
+SMB
+CIFS
+FTP
+SFTP
+HTTP
+SMTP
+POP3
+IMAP
+DNS
+DHCP
+ARP
+ICMP
+TCP
+UDP
+IP
+IPv4
+IPv6
+NAT
+Port forwarding
+Subnet
+CIDR
+Routing
+Static routing
+Dynamic routing
+RIP
+OSPF
+BGP
+EIGRP
+Routing table
+Gateway
+Switch
+Router
+Hub
+Bridge
+Modem
+Network topology
+Bus topology
+Star topology
+Ring topology
+Mesh topology
+Tree topology
+OSI model
+TCP/IP model
+Physical layer
+Data link layer
+Network layer
+Transport layer
+Session layer
+Presentation layer
+Application layer
+Ethernet
+Wi-Fi
+Bluetooth
+Zigbee
+LoRa
+5G
+LTE
+WAN
+LAN
+MAN
+PAN
+VoIP
+QoS
+Bandwidth
+Latency
+Throughput
+Jitter
+Packet loss
+Protocol
+Socket
+Port
+Well-known port
+Ephemeral port
+Connection
+Connectionless
+Three-way handshake
+Flow control
+Congestion control
+Sliding window
+Stop-and-wait
+Go-back-N
+Selective repeat
+TCP congestion control
+Slow start
+Congestion avoidance
+Fast retransmit
+Fast recovery
+HTTP/2
+HTTP/3
+QUIC
+WebSocket
+REST
+RESTful API
+SOAP
+GraphQL
+RPC
+gRPC
+JSON
+XML
+YAML
+Protocol buffer
+Thrift
+Avro
+Message queue
+Publish-subscribe
+Producer-consumer
+Apache Kafka
+RabbitMQ
+Redis
+Memcached
+Event-driven architecture
+Event sourcing
+CQRS
+Saga pattern
+Circuit breaker
+Bulkhead
+Retry
+Timeout
+Idempotency
+Stateless
+Stateful
+Session
+Cookie
+Token
+JWT
+OAuth
+OAuth 2.0
+OpenID Connect
+SAML
+Single sign-on
+Multi-factor authentication
+TOTP
+HOTP
+Biometric authentication
+Password hashing
+Salt
+bcrypt
+scrypt
+Argon2
+PBKDF2
+Rainbow table
+Brute force
+Dictionary attack
+Credential stuffing
+Session hijacking
+Session fixation
+Clickjacking
+CORS
+Content Security Policy
+X-Frame-Options
+Same-origin policy
+Cross-origin resource sharing
+Relational database
+SQL
+NoSQL
+NewSQL
+Key-value store
+Document store
+Column store
+Graph database
+Time series database
+In-memory database
+Distributed database
+Sharded database
+Partitioned database
+Federated database
+Data warehouse
+Data lake
+Data mart
+ETL
+ELT
+Data pipeline
+Stream processing
+Batch processing
+MapReduce
+Hadoop
+Spark
+Flink
+Storm
+OLTP
+OLAP
+ACID transaction
+BASE transaction
+Optimistic concurrency control
+Pessimistic concurrency control
+Lock
+Read lock
+Write lock
+Exclusive lock
+Shared lock
+Deadlock detection
+Deadlock prevention
+Wait-for graph
+Two-phase locking
+Multiversion concurrency control
+MVCC
+Snapshot isolation
+Serializable isolation
+Read committed
+Read uncommitted
+Repeatable read
+Dirty read
+Non-repeatable read
+Phantom read
+Index
+Primary key
+Foreign key
+Unique key
+Composite key
+Clustered index
+Non-clustered index
+B-tree index
+Hash index
+Bitmap index
+Full-text index
+Spatial index
+Query optimization
+Query plan
+Cost-based optimization
+Rule-based optimization
+Statistics
+Cardinality
+Selectivity
+Join
+Inner join
+Outer join
+Left join
+Right join
+Full outer join
+Cross join
+Self join
+Nested loop join
+Hash join
+Merge join
+Subquery
+Correlated subquery
+Common table expression
+CTE
+Recursive CTE
+Window function
+Aggregate function
+Group by
+Having
+Order by
+Limit
+Offset
+View
+Materialized view
+Stored procedure
+Function
+Trigger
+Cursor
+Transaction
+Savepoint
+Rollback
+Commit
+Normalization
+First normal form
+Second normal form
+Third normal form
+Boyce-Codd normal form
+Fourth normal form
+Fifth normal form
+Denormalization
+Star schema
+Snowflake schema
+Fact table
+Dimension table
+Slowly changing dimension
+Data modeling
+Entity-relationship model
+ER diagram
+Cardinality
+Multiplicity
+Relationship
+One-to-one
+One-to-many
+Many-to-many
+Weak entity
+Strong entity
+Identifying relationship
+Non-identifying relationship
+Supertype
+Subtype
+Generalization
+Specialization
+Aggregation
+Composition
+Association
+Dependency
+UML
+Use case diagram
+Class diagram
+Sequence diagram
+Activity diagram
+State diagram
+Component diagram
+Deployment diagram
+Package diagram
+Object diagram
+Collaboration diagram
+Design pattern
+Creational pattern
+Structural pattern
+Behavioral pattern
+Singleton
+Factory
+Abstract factory
+Builder
+Prototype
+Adapter
+Bridge
+Composite
+Decorator
+Facade
+Flyweight
+Proxy
+Chain of responsibility
+Command
+Iterator
+Mediator
+Memento
+Observer
+State
+Strategy
+Template method
+Visitor
+Model-view-controller
+MVC
+Model-view-presenter
+MVP
+Model-view-viewmodel
+MVVM
+Dependency injection
+Inversion of control
+Service locator
+Repository pattern
+Unit of work
+Data access object
+Active record
+Domain-driven design
+Bounded context
+Aggregate
+Entity
+Value object
+Domain event
+Anti-pattern
+God object
+Spaghetti code
+Golden hammer
+Cargo cult programming
+Copy and paste programming
+Premature optimization
+Not invented here
+Analysis paralysis
+Code smell
+Long method
+Large class
+Duplicated code
+Dead code
+Speculative generality
+Feature envy
+Inappropriate intimacy
+Message chains
+Middle man
+Divergent change
+Shotgun surgery
+Parallel inheritance hierarchies
+Lazy class
+Data class
+Primitive obsession
+Switch statements
+Temporary field
+Refused bequest
+Alternative classes with different interfaces
+Comments
+Refactoring
+Extract method
+Inline method
+Extract variable
+Inline variable
+Rename
+Move method
+Move field
+Extract class
+Inline class
+Hide delegate
+Remove middle man
+Introduce parameter object
+Preserve whole object
+Replace parameter with method call
+Separate query from modifier
+Parameterize method
+Replace conditional with polymorphism
+Introduce null object
+Introduce assertion
+Pull up method
+Push down method
+Pull up field
+Push down field
+Extract subclass
+Extract superclass
+Extract interface
+Collapse hierarchy
+Form template method
+Replace inheritance with delegation
+Replace delegation with inheritance
+Tease apart inheritance
+Convert procedural design to objects
+Separate domain from presentation
+Extract hierarchy
+Clean code
+SOLID
+Single responsibility principle
+Open-closed principle
+Liskov substitution principle
+Interface segregation principle
+Dependency inversion principle
+DRY
+Don't repeat yourself
+KISS
+Keep it simple
+YAGNI
+You aren't gonna need it
+Composition over inheritance
+Law of Demeter
+Separation of concerns
+Principle of least astonishment
+Convention over configuration
+Worse is better
+Unix philosophy
+Version control
+Git
+Subversion
+Mercurial
+CVS
+Perforce
+Repository
+Commit
+Branch
+Tag
+Merge
+Rebase
+Cherry-pick
+Stash
+Clone
+Fork
+Pull request
+Merge request
+Code review
+Continuous integration
+Continuous delivery
+Continuous deployment
+CI/CD
+Jenkins
+Travis CI
+CircleCI
+GitLab CI
+GitHub Actions
+Build automation
+Maven
+Gradle
+Ant
+Make
+CMake
+npm
+Yarn
+pip
+Composer
+Bundler
+Package manager
+Dependency management
+Semantic versioning
+Major version
+Minor version
+Patch version
+Pre-release version
+Build metadata
+Breaking change
+Backward compatibility
+Forward compatibility
+Deprecation
+Legacy code
+Technical debt
+Software maintenance
+Bug fix
+Feature request
+Issue tracking
+Agile
+Scrum
+Kanban
+Sprint
+User story
+Epic
+Task
+Backlog
+Product backlog
+Sprint backlog
+Daily standup
+Sprint planning
+Sprint review
+Sprint retrospective
+Definition of done
+Velocity
+Burndown chart
+Burnup chart
+Cumulative flow diagram
+Lead time
+Cycle time
+Throughput
+Work in progress
+WIP limit
+Extreme programming
+Pair programming
+Test-driven development
+TDD
+Behavior-driven development
+BDD
+Acceptance test-driven development
+ATDD
+Refactoring
+Continuous refactoring
+Collective code ownership
+Code standards
+Simple design
+Metaphor
+Sustainable pace
+Small releases
+On-site customer
+Planning game
+Unit test
+Integration test
+System test
+Acceptance test
+Regression test
+Smoke test
+Sanity test
+Performance test
+Load test
+Stress test
+Soak test
+Spike test
+Scalability test
+Endurance test
+Volume test
+Security test
+Usability test
+Accessibility test
+Compatibility test
+Localization test
+Internationalization test
+A/B test
+Canary release
+Blue-green deployment
+Rolling deployment
+Feature flag
+Feature toggle
+Dark launch
+Chaos engineering
+Fault injection
+Failure mode
+Resilience
+Observability
+Monitoring
+Logging
+Tracing
+Metrics
+APM
+Application performance monitoring
+Instrumentation
+Profiling
+Debugging
+Breakpoint
+Watchpoint
+Step over
+Step into
+Step out
+Call stack
+Stack trace
+Core dump
+Memory leak
+Memory profiler
+CPU profiler
+Flame graph
+Performance counter
+Benchmark
+Microbenchmark
+Macrobenchmark
+Latency percentile
+P50
+P95
+P99
+P99.9
+Service level objective
+SLO
+Service level indicator
+SLI
+Service level agreement
+SLA
+Error budget
+Incident
+Incident response
+Postmortem
+Root cause analysis
+5 whys
+Fishbone diagram
+Runbook
+Playbook
+On-call
+Pager duty
+Alert
+Alert fatigue
+Signal-to-noise ratio
+Anomaly detection
+Outlier detection
+Threshold
+Baseline
+Trend
+Seasonality
+Mean time between failures
+MTBF
+Mean time to recovery
+MTTR
+Mean time to detect
+MTTD
+Mean time to acknowledge
+MTTA
+Availability
+Uptime
+Downtime
+Service outage
+Planned maintenance
+Unplanned downtime
+Root cause
+Contributing factor
+Degraded service
+Partial outage
+Total outage
+Single point of failure
+Cascading failure
+Blast radius
+Graceful degradation
+Fail-safe
+Fail-secure
+Idempotent operation
+Retry logic
+Exponential backoff
+Jitter
+Rate limiting
+Throttling
+Quota
+Circuit breaker pattern
+Bulkhead pattern
+Timeout
+Deadline
+Context
+Request tracing
+Correlation ID
+Span
+Distributed tracing
+OpenTelemetry
+Jaeger
+Zipkin
+X-Ray
+Prometheus
+Grafana
+InfluxDB
+Elasticsearch
+Kibana
+Logstash
+ELK stack
+Splunk
+Datadog
+New Relic
+AppDynamics
+Dynatrace
+Log aggregation
+Log parsing
+Log analysis
+Structured logging
+Unstructured logging
+Log level
+Debug
+Info
+Warning
+Error
+Fatal
+Trace
+Audit log
+Access log
+Error log
+Application log
+System log
+Syslog
+Event log
+Transaction log
+Binary log
+Redo log
+Undo log
+Write-ahead log
+Commit log
+Log shipping
+Log replay
+Point-in-time recovery
+Backup window
+Recovery point objective
+RPO
+Recovery time objective
+RTO
+Business continuity
+Business continuity planning
+Disaster recovery planning
+Cold site
+Warm site
+Hot site
+Geographic redundancy
+Cross-region replication
+Multi-region deployment
+Active-active
+Active-passive
+Failover cluster
+Quorum
+Split brain
+Network partition
+Partition tolerance
+Data consistency
+Strong consistency
+Weak consistency
+Eventual consistency
+Causal consistency
+Sequential consistency
+Linearizability
+Serializability
+Consensus
+Quorum consensus
+Majority quorum
+Read quorum
+Write quorum
+Sloppy quorum
+Hinted handoff
+Read repair
+Anti-entropy
+Merkle tree
+Vector clock
+Version vector
+Lamport timestamp
+Logical clock
+Physical clock
+Clock skew
+Clock drift
+NTP
+Network time protocol
+Time synchronization
+Distributed snapshot
+Chandy-Lamport algorithm
+Global state
+Local state
+Consistent cut
+

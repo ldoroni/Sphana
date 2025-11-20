@@ -1,0 +1,1178 @@
+Software engineering
+Software development
+Software
+Computer program
+Application
+App
+Software system
+Programming
+Coding
+Computer programming
+Software development life cycle
+SDLC
+Development process
+Software process
+Waterfall model
+Agile methodology
+Agile development
+Scrum
+Sprint
+Product backlog
+Sprint backlog
+Daily stand-up
+Daily scrum
+Sprint planning
+Sprint review
+Sprint retrospective
+Scrum master
+Product owner
+Development team
+User story
+Epic
+Task
+Story point
+Velocity
+Burndown chart
+Kanban
+Kanban board
+Work in progress
+WIP
+WIP limit
+Extreme programming
+XP
+Pair programming
+Test-driven development
+TDD
+Continuous integration
+CI
+Continuous delivery
+CD
+Continuous deployment
+DevOps
+Lean software development
+Iterative development
+Incremental development
+Requirements analysis
+Requirements engineering
+Functional requirement
+Non-functional requirement
+Software requirement
+User requirement
+System requirement
+Requirement specification
+Software requirements specification
+SRS
+Use case
+Use case diagram
+Actor
+System boundary
+Scenario
+Requirements gathering
+Requirements elicitation
+Interview
+Questionnaire
+Workshop
+Brainstorming
+Observation
+Prototyping
+Stakeholder
+User
+End user
+Customer
+Client
+Software design
+Design
+System design
+High-level design
+Low-level design
+Architectural design
+Detailed design
+Software architecture
+Architecture
+Architecture pattern
+Architectural pattern
+Layered architecture
+Multi-tier architecture
+Three-tier architecture
+Client-server architecture
+Microservices architecture
+Microservices
+Service-oriented architecture
+SOA
+Event-driven architecture
+Monolithic architecture
+Design pattern
+Creational pattern
+Structural pattern
+Behavioral pattern
+Singleton pattern
+Factory pattern
+Abstract factory pattern
+Builder pattern
+Prototype pattern
+Adapter pattern
+Bridge pattern
+Composite pattern
+Decorator pattern
+Facade pattern
+Flyweight pattern
+Proxy pattern
+Chain of responsibility pattern
+Command pattern
+Iterator pattern
+Mediator pattern
+Memento pattern
+Observer pattern
+State pattern
+Strategy pattern
+Template method pattern
+Visitor pattern
+Model-view-controller
+MVC
+Model-view-presenter
+MVP
+Model-view-viewmodel
+MVVM
+Modularity
+Module
+Component
+Cohesion
+Coupling
+Loose coupling
+Tight coupling
+Separation of concerns
+Abstraction
+Encapsulation
+Information hiding
+Interface
+API
+Application programming interface
+REST API
+RESTful API
+GraphQL
+SOAP
+Web service
+Microservice
+Service
+Endpoint
+Class diagram
+Object diagram
+Sequence diagram
+Collaboration diagram
+State diagram
+Activity diagram
+Component diagram
+Deployment diagram
+UML
+Unified Modeling Language
+Data flow diagram
+DFD
+Entity-relationship diagram
+ERD
+Entity
+Relationship
+Attribute
+Primary key
+Foreign key
+Normalization
+First normal form
+1NF
+Second normal form
+2NF
+Third normal form
+3NF
+Boyce-Codd normal form
+BCNF
+Denormalization
+Database design
+Schema
+Database schema
+Table
+Column
+Row
+Record
+Index
+Clustered index
+Non-clustered index
+View
+Stored procedure
+Trigger
+Transaction
+ACID
+Atomicity
+Consistency
+Isolation
+Durability
+Relational database
+SQL
+Structured Query Language
+NoSQL
+Document database
+Key-value store
+Column-family store
+Graph database
+MongoDB
+Cassandra
+Redis
+Neo4j
+MySQL
+PostgreSQL
+Oracle Database
+Microsoft SQL Server
+SQLite
+Object-relational mapping
+ORM
+Hibernate
+Entity Framework
+Software implementation
+Implementation
+Coding
+Programming language
+High-level language
+Low-level language
+Assembly language
+Machine code
+Compiled language
+Interpreted language
+Scripting language
+Python
+Java
+JavaScript
+TypeScript
+C
+C++
+C#
+Ruby
+PHP
+Swift
+Kotlin
+Go
+Golang
+Rust
+Scala
+R
+MATLAB
+Perl
+Lua
+Bash
+Shell script
+HTML
+Hypertext Markup Language
+CSS
+Cascading Style Sheets
+XML
+Extensible Markup Language
+JSON
+JavaScript Object Notation
+YAML
+YAML Ain't Markup Language
+Markdown
+Programming paradigm
+Imperative programming
+Procedural programming
+Object-oriented programming
+OOP
+Functional programming
+Declarative programming
+Logic programming
+Event-driven programming
+Concurrent programming
+Parallel programming
+Class
+Object
+Instance
+Inheritance
+Polymorphism
+Abstraction
+Encapsulation
+Constructor
+Destructor
+Method
+Function
+Procedure
+Subroutine
+Parameter
+Argument
+Return value
+Variable
+Constant
+Data type
+Primitive type
+Composite type
+Integer
+Float
+Double
+Boolean
+Character
+String
+Array
+List
+Linked list
+Stack
+Queue
+Tree
+Binary tree
+Binary search tree
+Heap
+Priority queue
+Graph
+Hash table
+Dictionary
+Map
+Set
+Tuple
+Struct
+Structure
+Union
+Enumeration
+Enum
+Pointer
+Reference
+Null
+Null pointer
+Control flow
+Control structure
+Conditional
+If statement
+If-else statement
+Switch statement
+Case statement
+Loop
+For loop
+While loop
+Do-while loop
+Foreach loop
+Iteration
+Recursion
+Recursive function
+Base case
+Recursive case
+Exception
+Exception handling
+Try-catch block
+Try-catch-finally
+Throw
+Raise
+Error handling
+Debugging
+Bug
+Software bug
+Defect
+Fault
+Error
+Syntax error
+Runtime error
+Logic error
+Semantic error
+Breakpoint
+Debugger
+Step through
+Step into
+Step over
+Step out
+Watch
+Inspect
+Stack trace
+Call stack
+Testing
+Software testing
+Test case
+Test suite
+Test plan
+Test scenario
+Test data
+Test coverage
+Code coverage
+Statement coverage
+Branch coverage
+Path coverage
+Unit testing
+Unit test
+Integration testing
+Integration test
+System testing
+Acceptance testing
+User acceptance testing
+UAT
+Black-box testing
+White-box testing
+Grey-box testing
+Functional testing
+Non-functional testing
+Performance testing
+Load testing
+Stress testing
+Endurance testing
+Scalability testing
+Volume testing
+Security testing
+Penetration testing
+Pen test
+Usability testing
+Accessibility testing
+Compatibility testing
+Regression testing
+Smoke testing
+Sanity testing
+Exploratory testing
+Ad hoc testing
+Alpha testing
+Beta testing
+Test automation
+Automated testing
+Test framework
+JUnit
+NUnit
+pytest
+Jest
+Mocha
+Selenium
+Cypress
+Test-driven development
+TDD
+Behavior-driven development
+BDD
+Acceptance test-driven development
+ATDD
+Mock object
+Mocking
+Stub
+Fake
+Dummy
+Spy
+Assertion
+Test double
+Code review
+Peer review
+Pull request
+PR
+Merge request
+MR
+Code inspection
+Walkthrough
+Pair programming
+Version control
+Source control
+Revision control
+Version control system
+VCS
+Git
+GitHub
+GitLab
+Bitbucket
+Subversion
+SVN
+Mercurial
+Repository
+Repo
+Commit
+Push
+Pull
+Clone
+Fork
+Branch
+Master branch
+Main branch
+Feature branch
+Development branch
+Release branch
+Hotfix branch
+Merge
+Merge conflict
+Conflict resolution
+Rebase
+Cherry-pick
+Tag
+Stash
+Diff
+Patch
+Changelog
+Release notes
+Documentation
+Code documentation
+Technical documentation
+User documentation
+API documentation
+Javadoc
+Doxygen
+Sphinx
+README
+Wiki
+Inline comment
+Block comment
+Docstring
+Self-documenting code
+Code smell
+Code refactoring
+Refactoring
+Clean code
+Readable code
+Maintainable code
+Code quality
+Code style
+Coding standard
+Style guide
+Linter
+Linting
+Static analysis
+Static code analysis
+Code analyzer
+Code metrics
+Cyclomatic complexity
+Lines of code
+LOC
+Source lines of code
+SLOC
+Technical debt
+Legacy code
+Dead code
+Duplicate code
+Code duplication
+Don't repeat yourself
+DRY
+Keep it simple, stupid
+KISS
+You aren't gonna need it
+YAGNI
+Single responsibility principle
+SRP
+Open-closed principle
+OCP
+Liskov substitution principle
+LSP
+Interface segregation principle
+ISP
+Dependency inversion principle
+DIP
+SOLID principles
+Build
+Software build
+Build automation
+Build tool
+Make
+Makefile
+Ant
+Maven
+Gradle
+MSBuild
+Compiler
+Compilation
+Compile time
+Linker
+Linking
+Link time
+Interpreter
+Runtime
+Runtime environment
+Virtual machine
+VM
+Java Virtual Machine
+JVM
+Common Language Runtime
+CLR
+.NET Framework
+.NET Core
+Node.js
+Dependency
+Dependency management
+Package
+Library
+Framework
+Software framework
+Third-party library
+Open-source library
+Package manager
+npm
+pip
+NuGet
+Maven Central
+Artifact
+Binary
+Executable
+Deployment
+Software deployment
+Release
+Release management
+Release cycle
+Staging environment
+Production environment
+Blue-green deployment
+Canary deployment
+Rolling deployment
+Containerization
+Container
+Docker
+Docker container
+Docker image
+Dockerfile
+Docker Compose
+Kubernetes
+K8s
+Pod
+Service
+Deployment
+Namespace
+ConfigMap
+Secret
+Orchestration
+Container orchestration
+Virtual machine
+Virtualization
+Hypervisor
+Vagrant
+Cloud computing
+Cloud service
+Infrastructure as a service
+IaaS
+Platform as a service
+PaaS
+Software as a service
+SaaS
+AWS
+Amazon Web Services
+Azure
+Microsoft Azure
+Google Cloud Platform
+GCP
+EC2
+Elastic Compute Cloud
+S3
+Simple Storage Service
+Lambda
+Serverless
+Serverless computing
+Function as a service
+FaaS
+Scalability
+Horizontal scaling
+Scale out
+Vertical scaling
+Scale up
+Load balancing
+Load balancer
+Reverse proxy
+Proxy server
+CDN
+Content delivery network
+Caching
+Cache
+Cache hit
+Cache miss
+Expiration
+TTL
+Time to live
+Performance optimization
+Optimization
+Profiling
+Profiler
+Bottleneck
+Latency
+Throughput
+Response time
+Availability
+Reliability
+Fault tolerance
+Redundancy
+Failover
+High availability
+HA
+Disaster recovery
+DR
+Backup
+Restore
+Replication
+Master-slave replication
+Multi-master replication
+Monitoring
+System monitoring
+Application monitoring
+Log
+Logging
+Log file
+Log aggregation
+Log analysis
+Metrics
+Metric
+Time series
+Dashboard
+Alert
+Alerting
+Prometheus
+Grafana
+ELK stack
+Elasticsearch
+Logstash
+Kibana
+Splunk
+Security
+Software security
+Application security
+AppSec
+Secure coding
+Security by design
+Threat modeling
+Vulnerability
+Security vulnerability
+Common Vulnerabilities and Exposures
+CVE
+OWASP
+Open Web Application Security Project
+OWASP Top 10
+Injection
+SQL injection
+Cross-site scripting
+XSS
+Cross-site request forgery
+CSRF
+Broken authentication
+Sensitive data exposure
+XML external entities
+XXE
+Broken access control
+Security misconfiguration
+Insecure deserialization
+Using components with known vulnerabilities
+Insufficient logging and monitoring
+Authentication
+Authorization
+Access control
+Role-based access control
+RBAC
+Attribute-based access control
+ABAC
+Principle of least privilege
+Defense in depth
+Input validation
+Output encoding
+Parameterized query
+Prepared statement
+Stored procedure
+Encryption
+Hashing
+Salting
+Password hashing
+HTTPS
+SSL/TLS
+Certificate
+Public key
+Private key
+JWT
+JSON Web Token
+OAuth
+OAuth 2.0
+OpenID Connect
+SAML
+Session management
+Session
+Session ID
+Cookie
+Token
+CSRF token
+Captcha
+Rate limiting
+Throttling
+Web application firewall
+WAF
+Penetration testing
+Pen test
+Ethical hacking
+White hat
+Security audit
+Code audit
+Compliance
+GDPR
+PCI DSS
+HIPAA
+SOC 2
+ISO 27001
+Privacy
+Data protection
+Personal data
+Personally identifiable information
+PII
+Data breach
+Incident response
+User experience
+UX
+User interface
+UI
+UI/UX design
+Interaction design
+Visual design
+Wireframe
+Mockup
+Prototype
+Low-fidelity prototype
+High-fidelity prototype
+Usability
+Accessibility
+WCAG
+Web Content Accessibility Guidelines
+ARIA
+Accessible Rich Internet Applications
+Screen reader
+Keyboard navigation
+Responsive design
+Mobile-first design
+Adaptive design
+Frontend
+Frontend development
+Backend
+Backend development
+Full-stack development
+Full-stack developer
+Web development
+Web application
+Web app
+Single-page application
+SPA
+Progressive web app
+PWA
+Server-side rendering
+SSR
+Client-side rendering
+CSR
+Static site generation
+SSG
+JAMstack
+React
+Angular
+Vue.js
+Svelte
+jQuery
+Bootstrap
+Tailwind CSS
+Sass
+SCSS
+Less
+Webpack
+Babel
+Transpiler
+Polyfill
+Module bundler
+Task runner
+npm script
+Gulp
+Grunt
+Backend framework
+Express.js
+Django
+Flask
+Ruby on Rails
+Spring Boot
+ASP.NET
+Laravel
+FastAPI
+API gateway
+Middleware
+ORM
+Object-relational mapping
+Query builder
+Migration
+Seed data
+Mobile development
+Mobile app
+Native app
+iOS development
+Swift
+Objective-C
+Xcode
+Android development
+Kotlin
+Java
+Android Studio
+Cross-platform development
+Hybrid app
+React Native
+Flutter
+Xamarin
+Ionic
+Cordova
+PhoneGap
+Desktop application
+Desktop app
+Electron
+Qt
+WPF
+Windows Presentation Foundation
+WinForms
+JavaFX
+Game development
+Game engine
+Unity
+Unreal Engine
+Godot
+Game loop
+Rendering
+Graphics
+3D graphics
+2D graphics
+Physics engine
+Collision detection
+Artificial intelligence
+AI
+Machine learning
+ML
+Deep learning
+Neural network
+Training
+Model
+Dataset
+Data science
+Data analysis
+Big data
+Data pipeline
+ETL
+Extract, transform, load
+Data warehouse
+Data lake
+Data engineering
+Business intelligence
+BI
+Analytics
+Reporting
+Visualization
+Data visualization
+Chart
+Graph
+Dashboard
+Matplotlib
+D3.js
+Tableau
+Power BI
+SQL query
+Aggregate function
+Join
+Inner join
+Left join
+Right join
+Full outer join
+Subquery
+Common table expression
+CTE
+Window function
+Stored procedure
+View
+Materialized view
+Database optimization
+Query optimization
+Query plan
+Execution plan
+Index optimization
+Database tuning
+Sharding
+Partitioning
+Horizontal partitioning
+Vertical partitioning
+Database migration
+Schema migration
+Blockchain
+Distributed ledger
+Cryptocurrency
+Smart contract
+Ethereum
+Solidity
+Web3
+DApp
+Decentralized application
+IoT
+Internet of Things
+Embedded system
+Firmware
+Microcontroller
+Raspberry Pi
+Arduino
+MQTT
+Edge computing
+Real-time system
+Real-time computing
+Messaging
+Message queue
+Message broker
+RabbitMQ
+Apache Kafka
+Redis
+Pub/sub
+Publisher-subscriber
+Event streaming
+Asynchronous processing
+Background job
+Job queue
+Worker
+Celery
+Sidekiq
+GraphQL
+Query
+Mutation
+Subscription
+Schema
+Resolver
+Type
+Scalar
+Enum
+Interface
+Union
+REST
+RESTful
+HTTP method
+GET
+POST
+PUT
+PATCH
+DELETE
+HTTP status code
+200 OK
+201 Created
+204 No Content
+400 Bad Request
+401 Unauthorized
+403 Forbidden
+404 Not Found
+500 Internal Server Error
+503 Service Unavailable
+Header
+Request header
+Response header
+Content-Type
+Authorization
+Cookie
+CORS
+Cross-origin resource sharing
+JSON
+XML
+Protocol buffer
+gRPC
+WebSocket
+Server-sent events
+SSE
+Webhook
+API versioning
+API documentation
+Swagger
+OpenAPI
+Postman
+Rate limiting
+Pagination
+Filtering
+Sorting
+Search
+Full-text search
+Elasticsearch
+Apache Solr
+Caching strategy
+Cache-aside
+Read-through
+Write-through
+Write-behind
+Write-around
+Cache invalidation
+Session storage
+Local storage
+IndexedDB
+WebAssembly
+WASM
+Progressive enhancement
+Graceful degradation
+SEO
+Search engine optimization
+Meta tag
+Sitemap
+robots.txt
+Canonical URL
+Open Graph
+Schema.org
+Structured data
+Internationalization
+i18n
+Localization
+l10n
+Translation
+Multi-language support
+Timezone
+Date formatting
+Number formatting
+Currency
+Feature flag
+Feature toggle
+A/B testing
+Canary release
+Dark launch
+Metrics
+KPI
+Key performance indicator
+Analytics
+Google Analytics
+Mixpanel
+Amplitude
+Error tracking
+Sentry
+Rollbar
+Bugsnag
+APM
+Application performance monitoring
+New Relic
+Datadog
+Dynatrace
+Uptime monitoring
+Status page
+SLA
+Service level agreement
+SLO
+Service level objective
+SLI
+Service level indicator
+Incident management
+On-call
+Pager
+PagerDuty
+Opsgenie
+Postmortem
+Root cause analysis
+RCA
+Runbook
+Playbook
+Configuration management
+Infrastructure as code
+IaC
+Terraform
+Ansible
+Chef
+Puppet
+CloudFormation
+CI/CD pipeline
+Jenkins
+GitLab CI
+GitHub Actions
+CircleCI
+Travis CI
+Azure DevOps
+Artifact repository
+Artifactory
+Nexus
+Registry
+Docker Registry
+Container registry
+Secrets management
+Vault
+HashiCorp Vault
+AWS Secrets Manager
+Environment variable
+Config file
+Configuration
+Feature flag
+Service mesh
+Istio
+Linkerd
+Envoy
+API gateway
+Kong
+Ambassador
+Observability
+Tracing
+Distributed tracing
+Jaeger
+Zipkin
+OpenTelemetry
+Span
+Trace
+

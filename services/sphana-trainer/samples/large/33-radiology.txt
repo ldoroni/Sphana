@@ -1,0 +1,1402 @@
+Radiology
+Medical imaging
+Diagnostic imaging
+Diagnostic radiology
+Interventional radiology
+Radiologist
+Radiologic technologist
+Rad tech
+Radiographer
+Imaging modality
+X-ray
+Radiography
+Plain radiography
+Plain film
+Conventional radiography
+Roentgen
+Wilhelm Röntgen
+Ionizing radiation
+Electromagnetic radiation
+Photon
+X-ray tube
+X-ray generator
+Cathode
+Anode
+Target
+Tungsten
+Filament
+Kilovolt peak
+kVp
+Milliampere
+mA
+Milliampere-second
+mAs
+Exposure
+Radiation dose
+Absorbed dose
+Gray
+Gy
+Effective dose
+Sievert
+Sv
+Millisievert
+mSv
+ALARA
+As low as reasonably achievable
+Radiation protection
+Radiation safety
+Lead apron
+Lead shield
+Thyroid shield
+Gonadal shield
+Distance
+Time
+Shielding
+Collimation
+Beam restriction
+Field size
+Scatter radiation
+Primary beam
+Remnant radiation
+Exit radiation
+Image quality
+Spatial resolution
+Contrast resolution
+Temporal resolution
+Signal-to-noise ratio
+SNR
+Contrast
+High contrast
+Low contrast
+Density
+Optical density
+Brightness
+Window width
+Window level
+Windowing
+Magnification
+Distortion
+Shape distortion
+Size distortion
+Blur
+Motion blur
+Quantum mottle
+Noise
+Artifact
+Image artifact
+Motion artifact
+Metal artifact
+Beam hardening artifact
+Positioning
+Patient positioning
+Radiographic positioning
+Anteroposterior
+AP
+Posteroanterior
+PA
+Lateral
+Oblique
+Axial
+Decubitus
+Upright
+Supine
+Prone
+Chest X-ray
+CXR
+Chest radiograph
+PA chest
+AP chest
+Lateral chest
+Portable chest X-ray
+Lung fields
+Cardiac silhouette
+Mediastinum
+Hilum
+Hilar
+Costophrenic angle
+Blunting
+Hemidiaphragm
+Pneumothorax
+Pleural effusion
+Infiltrate
+Consolidation
+Atelectasis
+Pulmonary edema
+Cardiomegaly
+Pneumonia
+Lung mass
+Lung nodule
+Solitary pulmonary nodule
+SPN
+Coin lesion
+Pneumoperitoneum
+Free air
+Abdominal X-ray
+Abdominal radiograph
+KUB
+Kidney, ureter, bladder
+Supine abdomen
+Upright abdomen
+Bowel gas pattern
+Air-fluid level
+Dilated loops
+Small bowel
+Large bowel
+Colon
+Bowel obstruction
+Free air
+Pneumoperitoneum
+Calcification
+Renal calculus
+Kidney stone
+Urolithiasis
+Bone X-ray
+Skeletal radiography
+Long bone
+Joint
+Fracture
+Bone fracture
+Comminuted fracture
+Displaced fracture
+Non-displaced fracture
+Greenstick fracture
+Pathologic fracture
+Stress fracture
+Compression fracture
+Transverse fracture
+Oblique fracture
+Spiral fracture
+Segmental fracture
+Avulsion fracture
+Dislocation
+Subluxation
+Arthritis
+Osteoarthritis
+Rheumatoid arthritis
+Joint space narrowing
+Osteophyte
+Bone spur
+Erosion
+Osteopenia
+Osteoporosis
+Bone density
+Lytic lesion
+Sclerotic lesion
+Blastic lesion
+Bone metastasis
+Bone tumor
+Periosteal reaction
+Soft tissue swelling
+Mammography
+Mammogram
+Screening mammography
+Diagnostic mammography
+Digital mammography
+Full-field digital mammography
+FFDM
+Tomosynthesis
+Digital breast tomosynthesis
+DBT
+3D mammography
+Craniocaudal
+CC
+Mediolateral oblique
+MLO
+Compression
+Paddle
+Breast density
+Fatty breast
+Scattered fibroglandular density
+Heterogeneously dense
+Extremely dense
+Mass
+Breast mass
+Calcification
+Microcalcification
+Macrocalcification
+Benign calcification
+Suspicious calcification
+Architectural distortion
+Asymmetry
+Focal asymmetry
+Global asymmetry
+BI-RADS
+Breast Imaging Reporting and Data System
+Category 0
+Incomplete
+Category 1
+Negative
+Category 2
+Benign
+Category 3
+Probably benign
+Category 4
+Suspicious
+Category 5
+Highly suggestive of malignancy
+Category 6
+Known malignancy
+Breast ultrasound
+Breast MRI
+Computed tomography
+CT scan
+CT
+CAT scan
+X-ray computed tomography
+Multidetector CT
+MDCT
+Spiral CT
+Helical CT
+CT scanner
+Gantry
+Detector
+Hounsfield unit
+HU
+Attenuation
+Hypodense
+Isodense
+Hyperdense
+Contrast
+Contrast medium
+Contrast agent
+Iodinated contrast
+IV contrast
+Oral contrast
+Rectal contrast
+Contrast enhancement
+Arterial phase
+Venous phase
+Portal venous phase
+Delayed phase
+Non-contrast
+Without contrast
+Contrast-enhanced
+With contrast
+CT angiography
+CTA
+CT venography
+CTV
+CT perfusion
+CTP
+Head CT
+Brain CT
+Non-contrast head CT
+NCCT head
+Contrast-enhanced brain CT
+CECT brain
+Intracranial hemorrhage
+ICH
+Subarachnoid hemorrhage
+SAH
+Subdural hematoma
+SDH
+Epidural hematoma
+EDH
+Intraparenchymal hemorrhage
+Intraventricular hemorrhage
+IVH
+Cerebral edema
+Mass effect
+Midline shift
+Herniation
+Hydrocephalus
+Ventricular enlargement
+Ischemic stroke
+Hypodensity
+Chest CT
+CT chest
+High-resolution CT
+HRCT
+CT pulmonary angiography
+CTPA
+Pulmonary embolism protocol
+PE protocol
+Pulmonary embolism
+PE
+Ground-glass opacity
+GGO
+Consolidation
+Nodule
+Lung nodule
+Mass
+Lung mass
+Mediastinal mass
+Lymphadenopathy
+Enlarged lymph nodes
+Pleural effusion
+Pneumothorax
+Interstitial lung disease
+ILD
+Emphysema
+Bronchiectasis
+Abdominal CT
+CT abdomen
+CT abdomen and pelvis
+CT AP
+Triple-phase CT
+Pancreatic protocol
+Liver lesion
+Hepatic lesion
+Hemangioma
+Cyst
+Hepatic cyst
+Hypodense lesion
+Hyperdense lesion
+Enhancement pattern
+Washout
+Hepatocellular carcinoma
+HCC
+Metastasis
+Liver metastasis
+Splenic lesion
+Pancreatic mass
+Pancreatic cancer
+Renal mass
+Renal cyst
+Bosniak classification
+Renal cell carcinoma
+RCC
+Adrenal mass
+Adrenal adenoma
+Bowel wall thickening
+Appendicitis
+Diverticulitis
+Abscess
+Free fluid
+Ascites
+Hemoperitoneum
+Pneumoperitoneum
+Free air
+CT urography
+CTU
+Stone protocol
+Renal calculus
+Ureteral calculus
+Hydronephrosis
+Pelvic CT
+CT pelvis
+Bladder mass
+Ovarian cyst
+Ovarian mass
+Uterine fibroid
+Adnexal mass
+Spine CT
+CT spine
+Cervical spine CT
+Thoracic spine CT
+Lumbar spine CT
+Vertebral fracture
+Compression fracture
+Spondylolisthesis
+Spinal stenosis
+Disc herniation
+Herniated disc
+CT myelography
+Musculoskeletal CT
+CT extremity
+Fracture
+Complex fracture
+Calcium score
+Coronary artery calcium score
+CAC score
+Agatston score
+Magnetic resonance imaging
+MRI
+Nuclear magnetic resonance
+NMR
+Magnetic resonance
+MR
+MRI scanner
+Magnet
+Magnetic field
+Tesla
+T
+1.5 Tesla
+3 Tesla
+Radiofrequency
+RF
+RF coil
+Pulse sequence
+Repetition time
+TR
+Echo time
+TE
+T1-weighted
+T1
+T2-weighted
+T2
+Proton density
+PD
+FLAIR
+Fluid-attenuated inversion recovery
+STIR
+Short tau inversion recovery
+Gradient echo
+GRE
+Spin echo
+SE
+Fast spin echo
+FSE
+Turbo spin echo
+TSE
+Echo planar imaging
+EPI
+Diffusion-weighted imaging
+DWI
+Apparent diffusion coefficient
+ADC
+Restricted diffusion
+Susceptibility-weighted imaging
+SWI
+Fat suppression
+Fat saturation
+In-phase
+Out-of-phase
+Opposed-phase
+Gadolinium
+Gadolinium-based contrast agent
+GBCA
+Contrast enhancement
+Pre-contrast
+Post-contrast
+Nephrogenic systemic fibrosis
+NSF
+Hyperintense
+Isointense
+Hypointense
+Signal intensity
+High signal
+Low signal
+Artifact
+Motion artifact
+Susceptibility artifact
+Chemical shift artifact
+Aliasing
+Wraparound
+Brain MRI
+MRI brain
+T1 brain
+T2 brain
+FLAIR brain
+DWI brain
+T1 post-contrast
+T1 post-gadolinium
+White matter
+Gray matter
+Lesion
+Brain lesion
+High signal lesion
+T2 hyperintensity
+Enhancement
+Enhancing lesion
+Ring-enhancing lesion
+Non-enhancing lesion
+Mass effect
+Edema
+Vasogenic edema
+Cytotoxic edema
+Demyelination
+Multiple sclerosis plaque
+MS plaque
+Ischemic stroke
+Acute infarct
+Subacute infarct
+Chronic infarct
+Hemorrhage
+Intracranial hemorrhage
+Susceptibility
+Blooming
+Gradient echo susceptibility
+Tumor
+Brain tumor
+Glioblastoma
+GBM
+Meningioma
+Pituitary adenoma
+Acoustic neuroma
+Vestibular schwannoma
+Metastasis
+Brain metastasis
+Abscess
+Hydrocephalus
+Atrophy
+Brain atrophy
+Hippocampal atrophy
+MRA
+Magnetic resonance angiography
+Time-of-flight
+TOF
+Phase contrast
+PC
+Contrast-enhanced MRA
+CE-MRA
+Intracranial aneurysm
+Aneurysm
+Vascular malformation
+Arteriovenous malformation
+AVM
+Cavernoma
+Cavernous malformation
+Stenosis
+Arterial stenosis
+Occlusion
+MRV
+Magnetic resonance venography
+Venous sinus thrombosis
+Dural sinus thrombosis
+Spine MRI
+MRI spine
+Cervical spine MRI
+Thoracic spine MRI
+Lumbar spine MRI
+Sacral spine
+Coccyx
+Spinal cord
+Conus medullaris
+Cauda equina
+Nerve root
+Disc
+Intervertebral disc
+Disc herniation
+Herniated disc
+Bulging disc
+Disc bulge
+Disc protrusion
+Disc extrusion
+Disc sequestration
+Annular tear
+Degenerative disc disease
+DDD
+Disc desiccation
+Disc height loss
+Spinal canal
+Central canal stenosis
+Foraminal stenosis
+Neural foraminal stenosis
+Spondylosis
+Facet arthropathy
+Ligamentum flavum hypertrophy
+Spondylolisthesis
+Anterolisthesis
+Retrolisthesis
+Compression fracture
+Vertebral body fracture
+Spinal cord compression
+Cord compression
+Myelopathy
+Myelomalacia
+Syrinx
+Syringomyelia
+Epidural mass
+Spinal tumor
+Metastasis
+Spinal metastasis
+Musculoskeletal MRI
+MRI joint
+Shoulder MRI
+Knee MRI
+Hip MRI
+Ankle MRI
+Wrist MRI
+Elbow MRI
+Cartilage
+Articular cartilage
+Meniscus
+Meniscal tear
+Ligament
+Ligament tear
+ACL
+Anterior cruciate ligament
+ACL tear
+PCL
+Posterior cruciate ligament
+MCL
+Medial collateral ligament
+LCL
+Lateral collateral ligament
+Rotator cuff
+Rotator cuff tear
+Tendon
+Tendon tear
+Tendinosis
+Tendinopathy
+Labrum
+Labral tear
+SLAP tear
+Superior labral tear
+Bone marrow edema
+Bone marrow signal
+Bone bruise
+Stress fracture
+Occult fracture
+Avascular necrosis
+AVN
+Osteonecrosis
+Effusion
+Joint effusion
+Synovitis
+Bursa
+Bursitis
+Muscle
+Muscle tear
+Muscle strain
+Abdominal MRI
+MRI abdomen
+Liver MRI
+MRCP
+Magnetic resonance cholangiopancreatography
+Biliary tree
+Bile duct
+Common bile duct
+CBD
+Gallbladder
+Choledocholithiasis
+Cholangiocarcinoma
+Pancreas
+Pancreatic duct
+MRI enterography
+MRE
+Small bowel
+Crohn's disease
+Bowel wall thickening
+Pelvic MRI
+MRI pelvis
+Uterus
+Ovary
+Ovarian cyst
+Ovarian mass
+Prostate MRI
+Prostate
+Peripheral zone
+Transition zone
+Prostate cancer
+PI-RADS
+Prostate Imaging Reporting and Data System
+Cardiac MRI
+MRI heart
+CMR
+Cardiovascular magnetic resonance
+Cine imaging
+Ventricular function
+Ejection fraction
+Wall motion
+Delayed enhancement
+Late gadolinium enhancement
+LGE
+Myocardial scar
+Myocardial infarction
+Viability
+Perfusion
+Stress perfusion
+Adenosine
+Myocardial ischemia
+Cardiomyopathy
+Myocarditis
+Cardiac mass
+Breast MRI
+MRI breast
+Screening breast MRI
+High-risk screening
+Enhancement
+Enhancing mass
+Non-mass enhancement
+NME
+Kinetic curve
+Washout
+Persistent enhancement
+Plateau
+Breast cancer
+Multifocal
+Multicentric
+Ultrasound
+Ultrasonography
+US
+Sonography
+Ultrasound machine
+Transducer
+Probe
+Piezoelectric crystal
+Sound wave
+Ultrasound wave
+Acoustic wave
+Frequency
+Megahertz
+MHz
+Wavelength
+Velocity
+Speed of sound
+Acoustic impedance
+Reflection
+Refraction
+Attenuation
+Scattering
+Absorption
+Real-time imaging
+B-mode
+Brightness mode
+M-mode
+Motion mode
+Doppler
+Doppler ultrasound
+Color Doppler
+Power Doppler
+Spectral Doppler
+Pulsed-wave Doppler
+Continuous-wave Doppler
+Blood flow
+Velocity
+Direction
+Flow
+Arterial flow
+Venous flow
+Resistive index
+RI
+Pulsatility index
+PI
+Echogenicity
+Hyperechoic
+Isoechoic
+Hypoechoic
+Anechoic
+Echolucent
+Shadowing
+Acoustic shadowing
+Posterior acoustic shadowing
+Enhancement
+Posterior acoustic enhancement
+Through transmission
+Mirror artifact
+Reverberation artifact
+Comet tail artifact
+Ring-down artifact
+Gel
+Ultrasound gel
+Coupling gel
+Abdominal ultrasound
+Right upper quadrant ultrasound
+RUQ ultrasound
+Liver
+Hepatomegaly
+Hepatic steatosis
+Fatty liver
+Cirrhosis
+Nodular liver
+Liver lesion
+Cyst
+Hemangioma
+Focal nodular hyperplasia
+FNH
+Hepatic adenoma
+Hepatocellular carcinoma
+HCC
+Metastasis
+Gallbladder
+Cholelithiasis
+Gallstone
+Cholecystitis
+Gallbladder wall thickening
+Pericholecystic fluid
+Sonographic Murphy sign
+Biliary tree
+Bile duct
+Common bile duct
+CBD
+CBD dilation
+Choledocholithiasis
+CBD stone
+Pancreas
+Pancreatic duct dilation
+Pancreatic mass
+Spleen
+Splenomegaly
+Kidney
+Renal ultrasound
+Kidney size
+Renal cortex
+Cortical thickness
+Echogenicity
+Increased echogenicity
+Hydronephrosis
+Renal cyst
+Simple cyst
+Complex cyst
+Bosniak classification
+Renal mass
+Solid mass
+Renal calculus
+Kidney stone
+Nephrolithiasis
+Acoustic shadowing
+Twinkling artifact
+Bladder
+Urinary bladder
+Bladder volume
+Bladder wall thickening
+Bladder mass
+Post-void residual
+PVR
+Pelvic ultrasound
+Transvaginal ultrasound
+TVS
+Transabdominal ultrasound
+Uterus
+Endometrium
+Endometrial thickness
+Endometrial stripe
+Myometrium
+Fibroid
+Uterine fibroid
+Leiomyoma
+Adenomyosis
+Ovary
+Ovarian cyst
+Simple cyst
+Complex cyst
+Corpus luteum cyst
+Follicle
+Follicular cyst
+Dermoid cyst
+Mature cystic teratoma
+Endometrioma
+Chocolate cyst
+Ovarian torsion
+Ovarian mass
+Solid mass
+Adnexal mass
+Free fluid
+Cul-de-sac fluid
+Ectopic pregnancy
+Intrauterine pregnancy
+IUP
+Gestational sac
+Yolk sac
+Fetal pole
+Fetal heart rate
+FHR
+Cardiac activity
+Obstetric ultrasound
+OB ultrasound
+Dating ultrasound
+Viability scan
+Crown-rump length
+CRL
+Gestational age
+First trimester ultrasound
+Second trimester ultrasound
+Anatomy scan
+Anomaly scan
+Third trimester ultrasound
+Growth scan
+Biophysical profile
+BPP
+Fetal biometry
+Biparietal diameter
+BPD
+Head circumference
+HC
+Abdominal circumference
+AC
+Femur length
+FL
+Estimated fetal weight
+EFW
+Amniotic fluid
+Amniotic fluid index
+AFI
+Oligohydramnios
+Polyhydramnios
+Placenta
+Placental location
+Anterior placenta
+Posterior placenta
+Fundal placenta
+Placenta previa
+Low-lying placenta
+Placental abruption
+Retroplacental hematoma
+Fetal anomaly
+Congenital anomaly
+Neural tube defect
+Spina bifida
+Anencephaly
+Hydrocephalus
+Cardiac defect
+Diaphragmatic hernia
+Renal anomaly
+Skeletal dysplasia
+Doppler
+Umbilical artery Doppler
+Middle cerebral artery Doppler
+MCA Doppler
+Ductus venosus Doppler
+Thyroid ultrasound
+Thyroid gland
+Thyroid nodule
+Solid nodule
+Cystic nodule
+Complex nodule
+Spongiform
+Microcalcification
+Irregular margin
+Taller-than-wide
+TI-RADS
+Thyroid Imaging Reporting and Data System
+Breast ultrasound
+Breast mass
+Solid mass
+Cyst
+Simple cyst
+Complex cyst
+Fibroadenoma
+Suspicious mass
+Irregular margin
+Posterior acoustic shadowing
+Biopsy
+Ultrasound-guided biopsy
+Fine needle aspiration
+FNA
+Core needle biopsy
+Vascular ultrasound
+Carotid ultrasound
+Carotid artery
+Internal carotid artery
+ICA
+External carotid artery
+ECA
+Common carotid artery
+CCA
+Stenosis
+Carotid stenosis
+Plaque
+Calcified plaque
+Soft plaque
+Peak systolic velocity
+PSV
+End-diastolic velocity
+EDV
+Venous Doppler
+Deep vein thrombosis
+DVT
+Compressibility
+Non-compressible vein
+Echogenic thrombus
+Arterial Doppler
+Peripheral arterial disease
+PAD
+Ankle-brachial index
+ABI
+Echocardiography
+Echocardiogram
+Echo
+Cardiac ultrasound
+Transthoracic echocardiogram
+TTE
+Transesophageal echocardiogram
+TEE
+M-mode
+Two-dimensional
+2D
+Three-dimensional
+3D
+Doppler echocardiography
+Color Doppler
+Pulsed-wave Doppler
+Continuous-wave Doppler
+Tissue Doppler
+Strain
+Strain rate
+Stress echocardiography
+Dobutamine stress echo
+Left ventricle
+LV
+Right ventricle
+RV
+Left atrium
+LA
+Right atrium
+RA
+Ventricular function
+Systolic function
+Diastolic function
+Ejection fraction
+EF
+Fractional shortening
+FS
+Wall motion
+Hypokinesis
+Akinesis
+Dyskinesis
+Septal wall
+Anterior wall
+Lateral wall
+Inferior wall
+Posterior wall
+Valve
+Mitral valve
+Tricuspid valve
+Aortic valve
+Pulmonic valve
+Valve stenosis
+Valve regurgitation
+Valve insufficiency
+Mitral stenosis
+Mitral regurgitation
+Aortic stenosis
+Aortic regurgitation
+Tricuspid regurgitation
+Gradient
+Pressure gradient
+Mean gradient
+Peak gradient
+Effective orifice area
+EOA
+Valve area
+Vegetation
+Endocarditis
+Pericardial effusion
+Pericardial tamponade
+Cardiac mass
+Atrial mass
+Ventricular mass
+Thrombus
+Left ventricular thrombus
+Left atrial appendage thrombus
+LAA thrombus
+Myxoma
+Atrial myxoma
+Cardiomyopathy
+Dilated cardiomyopathy
+Hypertrophic cardiomyopathy
+Restrictive cardiomyopathy
+Congenital heart disease
+Atrial septal defect
+ASD
+Ventricular septal defect
+VSD
+Patent foramen ovale
+PFO
+Patent ductus arteriosus
+PDA
+Nuclear medicine
+Nuclear imaging
+Scintigraphy
+Radionuclide imaging
+Radiopharmaceutical
+Radiotracer
+Radionuclide
+Radioisotope
+Technetium-99m
+Tc-99m
+Iodine-131
+I-131
+Fluorine-18
+F-18
+Fluorodeoxyglucose
+FDG
+Thallium-201
+Tl-201
+Indium-111
+In-111
+Gallium-67
+Ga-67
+Decay
+Radioactive decay
+Half-life
+Gamma camera
+Scintillation camera
+Gamma ray
+Photon
+Detector
+Crystal
+Photomultiplier tube
+Collimator
+Count
+Activity
+Uptake
+Radiotracer uptake
+Hot spot
+Increased uptake
+Cold spot
+Decreased uptake
+Photopenic
+Bone scan
+Bone scintigraphy
+Three-phase bone scan
+Delayed images
+Whole-body bone scan
+Increased uptake
+Osteoblastic activity
+Bone metastasis
+Fracture
+Stress fracture
+Infection
+Osteomyelitis
+Paget disease
+Superscan
+Myocardial perfusion imaging
+MPI
+SPECT
+Single-photon emission computed tomography
+Stress-rest imaging
+Pharmacologic stress
+Adenosine
+Regadenoson
+Dipyridamole
+Dobutamine
+Exercise stress
+Treadmill
+Perfusion defect
+Reversible defect
+Fixed defect
+Partially reversible defect
+Ischemia
+Infarction
+Scar
+Gated SPECT
+Ejection fraction
+Wall motion
+Thyroid scan
+Thyroid scintigraphy
+Radioactive iodine uptake
+RAIU
+Hot nodule
+Cold nodule
+Hyperfunctioning
+Hypofunctioning
+Graves disease
+Toxic nodule
+Toxic adenoma
+Multinodular goiter
+Renal scan
+Renal scintigraphy
+MAG3 scan
+DTPA scan
+GFR scan
+Glomerular filtration rate
+Split renal function
+Differential function
+Obstruction
+Hydronephrosis
+Renogram
+Time-activity curve
+PET scan
+Positron emission tomography
+PET-CT
+FDG-PET
+Fluorodeoxyglucose PET
+Positron
+Annihilation
+Standard uptake value
+SUV
+SUVmax
+Maximum SUV
+SUVmean
+Mean SUV
+Metabolic activity
+Hypermetabolic
+Hypometabolic
+Photopenic
+Staging
+Restaging
+Response assessment
+Complete metabolic response
+Partial metabolic response
+Stable metabolic disease
+Progressive metabolic disease
+Lung nodule
+Characterization
+Malignant
+Benign
+Tumor
+Primary tumor
+Metastasis
+Lymph node
+Lymphadenopathy
+Bone metastasis
+Brain metastasis
+Liver metastasis
+Interventional radiology
+IR
+Image-guided intervention
+Minimally invasive procedure
+Percutaneous procedure
+Fluoroscopy
+Fluoroscopic guidance
+Real-time imaging
+C-arm
+Image intensifier
+Ultrasound guidance
+CT guidance
+MRI guidance
+Vascular access
+Central venous catheter
+CVC
+Peripherally inserted central catheter
+PICC
+Port
+Port-a-Cath
+Dialysis catheter
+Tunneled catheter
+Hickman catheter
+Broviac catheter
+Angiography
+Arteriography
+Venography
+Contrast injection
+Catheter
+Guidewire
+Sheath
+Introducer sheath
+Seldinger technique
+Puncture
+Arterial puncture
+Venous puncture
+Femoral artery
+Common femoral artery
+CFA
+Radial artery
+Brachial artery
+Internal jugular vein
+Subclavian vein
+Angioplasty
+Balloon angioplasty
+Balloon
+Inflation
+Stent
+Stent placement
+Stenting
+Balloon-expandable stent
+Self-expanding stent
+Drug-eluting stent
+Covered stent
+Stent-graft
+Restenosis
+In-stent restenosis
+Embolization
+Embolotherapy
+Embolic agent
+Coil
+Embolization coil
+Particles
+Gelfoam
+Polyvinyl alcohol
+PVA
+Microspheres
+Glue
+Cyanoacrylate
+Onyx
+Ethylene vinyl alcohol
+Sclerosant
+Alcohol
+Ethanol
+Bleomycin
+Doxycycline
+Chemoembolization
+Transarterial chemoembolization
+TACE
+Drug-eluting beads
+DEB
+Radioembolization
+Transarterial radioembolization
+TARE
+Selective internal radiation therapy
+SIRT
+Yttrium-90
+Y-90
+Microspheres
+Ablation
+Tumor ablation
+Radiofrequency ablation
+RFA
+Microwave ablation
+MWA
+Cryoablation
+Ethanol ablation
+Percutaneous ethanol injection
+PEI
+Biopsy
+Image-guided biopsy
+Percutaneous biopsy
+Core needle biopsy
+Fine needle aspiration
+FNA
+CT-guided biopsy
+Ultrasound-guided biopsy
+Coaxial technique
+Drainage
+Abscess drainage
+Fluid collection
+Percutaneous drainage
+Drain placement
+Pigtail catheter
+Biliary drainage
+Percutaneous transhepatic cholangiography
+PTC
+Biliary obstruction
+Percutaneous cholecystostomy
+Nephrostomy
+Percutaneous nephrostomy
+PCN
+Nephrostomy tube
+Hydronephrosis
+Ureteral obstruction
+Thrombolysis
+Catheter-directed thrombolysis
+CDT
+Tissue plasminogen activator
+tPA
+Alteplase
+Deep vein thrombosis
+DVT
+Pulmonary embolism
+PE
+Thrombectomy
+Mechanical thrombectomy
+AngioJet
+Aspiration thrombectomy
+IVC filter
+Inferior vena cava filter
+Retrievable filter
+Permanent filter
+Venous access
+Port placement
+PICC placement
+Dialysis catheter placement
+Arteriovenous fistulogram
+AVF
+AV fistula
+Venoplasty
+Declotting
+Thrombolysis
+Uterine fibroid embolization
+UFE
+Uterine artery embolization
+UAE
+Fibroid
+Leiomyoma
+Particle embolization
+Prostate artery embolization
+PAE
+Benign prostatic hyperplasia
+BPH
+Varicocele embolization
+Pelvic congestion syndrome
+Gastrostomy tube
+G-tube
+PEG
+Percutaneous endoscopic gastrostomy
+Feeding tube
+Gastrojejunostomy tube
+GJ tube
+Jejunostomy tube
+J-tube
+Tube exchange
+Vertebroplasty
+Kyphoplasty
+Compression fracture
+Vertebral compression fracture
+Bone cement
+Polymethylmethacrylate
+PMMA
+Spinal augmentation
+

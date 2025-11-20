@@ -1,0 +1,524 @@
+Volcanology
+Volcano
+Volcanic activity
+Volcanism
+Active volcano
+Dormant volcano
+Extinct volcano
+Eruption
+Volcanic eruption
+Explosive eruption
+Effusive eruption
+Phreatic eruption
+Phreatomagmatic eruption
+Strombolian eruption
+Vulcanian eruption
+Plinian eruption
+Ultra-Plinian eruption
+Hawaiian eruption
+Surtseyan eruption
+Subglacial eruption
+Submarine eruption
+Fissure eruption
+Eruption column
+Eruption cloud
+Ash cloud
+Volcanic plume
+Eruption style
+Volcanic Explosivity Index
+VEI
+Magnitude
+Intensity
+Eruption duration
+Repose period
+Eruption frequency
+Magma
+Melt
+Silicate melt
+Magma chamber
+Magma reservoir
+Magma body
+Magma storage
+Magma composition
+Magma chemistry
+Mafic magma
+Felsic magma
+Intermediate magma
+Ultramafic magma
+Basaltic magma
+Andesitic magma
+Dacitic magma
+Rhyolitic magma
+Magma viscosity
+Magma temperature
+Magma density
+Magma mixing
+Magma mingling
+Magma contamination
+Crustal contamination
+Fractional crystallization
+Crystal fractionation
+Partial melting
+Mantle melting
+Decompression melting
+Flux melting
+Magma ascent
+Magma rise
+Magma transport
+Dike
+Sill
+Laccolith
+Batholith
+Pluton
+Intrusion
+Magmatic intrusion
+Conduit
+Volcanic conduit
+Vent
+Volcanic vent
+Central vent
+Fissure vent
+Crater
+Summit crater
+Pit crater
+Caldera
+Collapse caldera
+Resurgent caldera
+Nested caldera
+Fumarole
+Solfatara
+Steam vent
+Gas vent
+Hot spring
+Thermal spring
+Geyser
+Mud pot
+Mud volcano
+Lava
+Lava flow
+Lava stream
+Lava lake
+Lava fountain
+Lava dome
+Volcanic dome
+Lava type
+Aa lava
+Pahoehoe lava
+Block lava
+Pillow lava
+Basalt
+Andesite
+Dacite
+Rhyolite
+Obsidian
+Volcanic glass
+Pumice
+Scoria
+Volcanic bomb
+Volcanic block
+Lapilli
+Volcanic ash
+Ash
+Tephra
+Pyroclastic material
+Pyroclast
+Pyroclastic flow
+Pyroclastic density current
+PDC
+Pyroclastic surge
+Nuée ardente
+Block and ash flow
+Pumice flow
+Ignimbrite
+Lahar
+Volcanic mudflow
+Debris flow
+Volcanic avalanche
+Debris avalanche
+Sector collapse
+Volcanic landslide
+Volcanic tsunami
+Volcanic earthquake
+Volcano-tectonic earthquake
+VT earthquake
+Long-period earthquake
+LP earthquake
+Very long-period earthquake
+VLP earthquake
+Volcanic tremor
+Harmonic tremor
+Spasmodic tremor
+Seismic swarm
+Earthquake swarm
+Volcano seismology
+Seismic monitoring
+Seismometer
+Seismic station
+Seismic network
+Ground deformation
+Volcanic deformation
+Inflation
+Deflation
+Tilt
+Tilting
+Uplift
+Subsidence
+Geodetic monitoring
+GPS
+Global Positioning System
+InSAR
+Interferometric synthetic aperture radar
+Tiltmeter
+Strainmeter
+EDM
+Electronic distance measurement
+Leveling
+Volcanic gas
+Volcanic emission
+Gas emission
+Degassing
+Passive degassing
+Active degassing
+Volcanic plume
+Gas plume
+Sulfur dioxide
+SO2
+Carbon dioxide
+CO2
+Water vapor
+H2O
+Hydrogen sulfide
+H2S
+Hydrogen chloride
+HCl
+Hydrogen fluoride
+HF
+Carbon monoxide
+CO
+Gas monitoring
+Gas measurement
+COSPEC
+Correlation spectrometer
+DOAS
+Differential optical absorption spectroscopy
+Fourier transform infrared spectroscopy
+FTIR
+MultiGAS
+Gas ratio
+Gas flux
+SO2 flux
+CO2 flux
+Volcanic hazard
+Volcanic risk
+Lava flow hazard
+Tephra fall hazard
+Ashfall
+Pyroclastic flow hazard
+Lahar hazard
+Volcanic gas hazard
+Volcanic landslide hazard
+Tsunami hazard
+Hazard assessment
+Risk assessment
+Hazard map
+Volcanic alert level
+Alert level
+Aviation color code
+Volcano monitoring
+Volcano observatory
+Volcanic observatory
+Volcano early warning
+Eruption forecast
+Eruption prediction
+Precursory activity
+Unrest
+Volcanic unrest
+Precursor
+Eruption precursor
+Volcano type
+Shield volcano
+Stratovolcano
+Composite volcano
+Cinder cone
+Scoria cone
+Monogenetic volcano
+Polygenetic volcano
+Maar
+Tuff cone
+Tuff ring
+Lava dome
+Somma volcano
+Submarine volcano
+Seamount
+Guyot
+Subglacial volcano
+Supervolcano
+Large igneous province
+LIP
+Flood basalt
+Continental flood basalt
+Oceanic plateau
+Volcanic arc
+Island arc
+Continental arc
+Volcanic chain
+Hotspot
+Mantle plume
+Hotspot track
+Volcanic field
+Volcanic complex
+Volcanic system
+Rift zone
+Spreading center
+Mid-ocean ridge
+Subduction zone
+Convergent boundary
+Divergent boundary
+Plate tectonics
+Plate boundary
+Ring of Fire
+Pacific Ring of Fire
+Volcanic belt
+Volcanic province
+Volcanism type
+Basaltic volcanism
+Andesitic volcanism
+Rhyolitic volcanism
+Bimodal volcanism
+Intraplate volcanism
+Arc volcanism
+Rift volcanism
+Back-arc volcanism
+Volcanic rock
+Igneous rock
+Extrusive rock
+Volcanic
+Volcaniclastic
+Pyroclastic rock
+Tuff
+Welded tuff
+Ash-flow tuff
+Volcanic breccia
+Agglomerate
+Hyaloclastite
+Peperite
+Volcanic edifice
+Volcanic cone
+Volcanic structure
+Flank
+Summit
+Volcanic slope
+Volcanic rift
+Radial dike
+Ring dike
+Cryptodome
+Volcanic plug
+Volcanic neck
+Diatreme
+Volcanic crater lake
+Crater lake
+Phreatic lake
+Acid lake
+Volcanic island
+Oceanic island
+Basaltic island
+Volcanic peninsula
+Volcanic plateau
+Volcanic highland
+Volcanic depression
+Volcanic basin
+Volcanic landscape
+Volcanic terrain
+Volcanic geomorphology
+Erosion
+Volcanic erosion
+Denudation
+Dissection
+Volcanic stratigraphy
+Tephra layer
+Tephra stratigraphy
+Tephrochronology
+Marker horizon
+Dating
+Radiometric dating
+K-Ar dating
+Ar-Ar dating
+Radiocarbon dating
+Paleomagnetism
+Volcanic history
+Eruptive history
+Eruption record
+Quaternary volcanism
+Holocene volcanism
+Recent volcanism
+Ancient volcanism
+Palaeovolcanology
+Volcanic impact
+Environmental impact
+Climate impact
+Volcanic winter
+Stratospheric aerosol
+Sulfate aerosol
+Volcanic forcing
+Climate forcing
+Temperature anomaly
+Atmospheric effect
+Ash dispersal
+Ash cloud
+Ash plume
+Tephra dispersal
+Atmospheric transport
+Volcanic ash advisory
+VAAC
+Volcanic Ash Advisory Center
+Aviation hazard
+Engine damage
+Visibility
+Air quality
+Respiratory hazard
+Volcanic smog
+Vog
+Acid rain
+Volcanic fluorosis
+Crop damage
+Infrastructure damage
+Property damage
+Economic impact
+Social impact
+Evacuation
+Emergency management
+Disaster management
+Volcanic crisis
+Volcanic disaster
+Historic eruption
+Famous volcano
+Mount Vesuvius
+Mount Etna
+Mount St. Helens
+Krakatoa
+Mount Pinatubo
+Mount Fuji
+Kilauea
+Mauna Loa
+Eyjafjallajökull
+Mount Tambora
+Santorini
+Yellowstone
+Toba
+Olympus Mons
+Volcanic landform
+Volcanic feature
+Columnar jointing
+Volcanic cave
+Lava tube
+Lava tunnel
+Volcanic sand
+Black sand
+Volcanic beach
+Volcanic soil
+Andisol
+Volcanic fertility
+Geothermal activity
+Geothermal system
+Hydrothermal system
+Hydrothermal circulation
+Geothermal reservoir
+Geothermal field
+Geothermal energy
+Geothermal power
+Geothermal gradient
+Heat flow
+Ground temperature
+Subsurface temperature
+Hydrothermal alteration
+Alteration
+Hydrothermal mineral
+Sulfur
+Native sulfur
+Sulfur deposit
+Geothermal exploration
+Geothermal drilling
+Geothermal well
+Production well
+Injection well
+Geothermal fluid
+Geothermal steam
+Dry steam
+Wet steam
+Geothermal brine
+Hot water
+Binary cycle
+Flash steam
+Geothermal power plant
+Volcanology research
+Volcano research
+Field work
+Volcano fieldwork
+Sampling
+Rock sampling
+Lava sampling
+Ash sampling
+Gas sampling
+Sample analysis
+Petrography
+Thin section
+Microscopy
+Geochemistry
+Whole-rock geochemistry
+Trace element
+Major element
+Isotope
+Radiogenic isotope
+Stable isotope
+Isotope ratio
+Experimental petrology
+Experimental volcanology
+High-pressure experiment
+High-temperature experiment
+Phase equilibria
+Melting experiment
+Analog modeling
+Physical modeling
+Numerical modeling
+Computational modeling
+Magma dynamics
+Fluid dynamics
+Multiphase flow
+Bubble nucleation
+Bubble growth
+Volatile exsolution
+Degassing
+Gas escape
+Fragmentation
+Magma fragmentation
+Explosive fragmentation
+Conduit flow
+Conduit dynamics
+Eruption dynamics
+Plume dynamics
+Tephra transport
+Ash dispersal model
+Pyroclastic flow dynamics
+Lahar dynamics
+Remote sensing
+Satellite monitoring
+Satellite imagery
+Thermal infrared
+MODIS
+ASTER
+Landsat
+Sentinel
+Radar
+SAR
+Synthetic aperture radar
+LiDAR
+Photogrammetry
+Drone
+UAV
+Unmanned aerial vehicle
+Aerial photography
+Thermal camera
+Infrared camera
+FLIR
+Forward-looking infrared
+

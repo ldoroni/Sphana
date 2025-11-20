@@ -1,0 +1,959 @@
+Astrophysics
+Universe
+Cosmos
+Big Bang
+Big Bang theory
+Big Bang cosmology
+Cosmic inflation
+Inflation
+Inflationary epoch
+Primordial universe
+Early universe
+Cosmic microwave background
+CMB
+CMB radiation
+Cosmic background radiation
+Cosmology
+Physical cosmology
+Observational cosmology
+Hubble's law
+Hubble constant
+H0
+Cosmic expansion
+Expansion of the universe
+Metric expansion
+Redshift
+Cosmological redshift
+Blueshift
+Doppler shift
+Doppler effect
+Recession velocity
+Lookback time
+Light-travel time
+Comoving distance
+Proper distance
+Angular diameter distance
+Luminosity distance
+Scale factor
+Friedmann equations
+Friedmann-Lemaître-Robertson-Walker metric
+FLRW metric
+Spacetime
+Curvature
+Spatial curvature
+Flat universe
+Open universe
+Closed universe
+Critical density
+Density parameter
+Omega
+Matter density
+Radiation density
+Dark energy density
+Cosmological constant
+Lambda
+Lambda-CDM model
+Standard model of cosmology
+Concordance model
+Dark matter
+Cold dark matter
+CDM
+Warm dark matter
+Hot dark matter
+WIMP
+Weakly interacting massive particle
+Axion
+Neutralino
+Dark matter halo
+Galactic halo
+Dark matter detection
+Direct detection
+Indirect detection
+Dark energy
+Vacuum energy
+Quintessence
+Phantom energy
+Accelerating universe
+Cosmic acceleration
+Structure formation
+Large-scale structure
+Cosmic web
+Filament
+Void
+Cosmic void
+Supercluster
+Galaxy cluster
+Cluster of galaxies
+Local Group
+Virgo Supercluster
+Laniakea Supercluster
+Great Attractor
+Bullet Cluster
+Coma Cluster
+Baryon acoustic oscillations
+BAO
+Power spectrum
+Matter power spectrum
+Correlation function
+Galaxy survey
+Redshift survey
+Sloan Digital Sky Survey
+SDSS
+2dF Galaxy Redshift Survey
+Cosmic time
+Age of the universe
+Recombination
+Epoch of recombination
+Surface of last scattering
+Decoupling
+Photon decoupling
+Baryon
+Baryon-photon fluid
+Primordial nucleosynthesis
+Big Bang nucleosynthesis
+BBN
+Abundance
+Primordial abundance
+Helium abundance
+Deuterium abundance
+Lithium problem
+Reionization
+Epoch of reionization
+First light
+First stars
+Population III stars
+Pop III
+First galaxies
+Galaxy formation
+Galaxy evolution
+Galaxy
+Spiral galaxy
+Elliptical galaxy
+Irregular galaxy
+Lenticular galaxy
+Dwarf galaxy
+Giant galaxy
+Active galaxy
+Starburst galaxy
+Interacting galaxy
+Merging galaxy
+Galaxy merger
+Galaxy collision
+Tidal interaction
+Tidal tail
+Tidal stream
+Galactic disk
+Galactic bulge
+Galactic halo
+Stellar halo
+Spiral arm
+Bar
+Galactic bar
+Rotation curve
+Flat rotation curve
+Galactic rotation
+Differential rotation
+Active galactic nucleus
+AGN
+Quasar
+Quasi-stellar object
+QSO
+Blazar
+Seyfert galaxy
+Radio galaxy
+LINER
+Low-ionization nuclear emission-line region
+Accretion disk
+Accretion
+Supermassive black hole
+SMBH
+Black hole
+Stellar-mass black hole
+Intermediate-mass black hole
+IMBH
+Primordial black hole
+Event horizon
+Schwarzschild radius
+Singularity
+Gravitational singularity
+Hawking radiation
+Black hole thermodynamics
+Penrose process
+Ergosphere
+Kerr black hole
+Rotating black hole
+Black hole spin
+Eddington limit
+Eddington luminosity
+Jet
+Relativistic jet
+Synchrotron radiation
+Synchrotron emission
+Radio lobe
+Pulsar
+Neutron star
+Magnetar
+Rotating radio transient
+RRAT
+X-ray pulsar
+Millisecond pulsar
+Pulsar timing
+Pulsar timing array
+Gravitational wave
+GW
+Gravitational radiation
+LIGO
+Laser Interferometer Gravitational-Wave Observatory
+Virgo interferometer
+KAGRA
+eLISA
+Gravitational wave astronomy
+Gravitational wave detector
+Interferometer
+Binary black hole
+Binary neutron star
+Neutron star merger
+Kilonova
+Binary pulsar
+Hulse-Taylor binary
+Orbital decay
+Inspiral
+Ringdown
+Merger
+Coalescence
+Chirp mass
+Gravitational wave strain
+Sensitivity
+Noise
+Seismic noise
+Quantum noise
+Shot noise
+Star
+Stellar structure
+Stellar evolution
+Main sequence
+Main sequence star
+Red giant
+Red giant branch
+RGB
+Asymptotic giant branch
+AGB
+Horizontal branch
+Subgiant
+White dwarf
+Brown dwarf
+Sub-brown dwarf
+Proto-star
+Pre-main-sequence star
+T Tauri star
+Herbig Ae/Be star
+Massive star
+Low-mass star
+Solar-mass star
+Solar analog
+Solar twin
+Metallicity
+Metal-rich
+Metal-poor
+Population I
+Population II
+Hertzsprung-Russell diagram
+HR diagram
+Color-magnitude diagram
+CMD
+Spectral type
+Spectral classification
+OBAFGKM
+O-type star
+B-type star
+A-type star
+F-type star
+G-type star
+K-type star
+M-type star
+Luminosity class
+Supergiant
+Bright giant
+Giant
+Subgiant
+Main sequence
+Subdwarf
+White dwarf
+Magnitude
+Apparent magnitude
+Absolute magnitude
+Bolometric magnitude
+Color index
+B-V color
+U-B color
+Photometry
+Photometric system
+UBV photometry
+Johnson system
+Sloan photometry
+SDSS photometry
+Surface brightness
+Effective temperature
+Teff
+Luminosity
+Stellar luminosity
+Solar luminosity
+Radius
+Stellar radius
+Solar radius
+Mass
+Stellar mass
+Solar mass
+Density
+Surface gravity
+Rotation
+Stellar rotation
+Rotation period
+Magnetic field
+Stellar magnetic field
+Stellar activity
+Starspot
+Flare
+Stellar flare
+Coronal mass ejection
+CME
+Stellar wind
+Solar wind
+Stellar atmosphere
+Photosphere
+Chromosphere
+Corona
+Transition region
+Stellar interior
+Core
+Radiative zone
+Convective zone
+Convection
+Convective envelope
+Nuclear fusion
+Thermonuclear fusion
+Proton-proton chain
+PP chain
+CNO cycle
+Carbon-nitrogen-oxygen cycle
+Triple-alpha process
+Helium burning
+Carbon burning
+Oxygen burning
+Silicon burning
+Nuclear reaction
+Reaction rate
+Energy generation
+Neutrino
+Solar neutrino
+Neutrino oscillation
+Solar neutrino problem
+Helioseismology
+Asteroseismology
+Stellar pulsation
+Pulsating variable
+Cepheid variable
+Classical Cepheid
+Type II Cepheid
+RR Lyrae variable
+Delta Scuti variable
+Mira variable
+Long-period variable
+Semiregular variable
+Period-luminosity relation
+Leavitt law
+Distance ladder
+Cosmic distance ladder
+Standard candle
+Variable star
+Intrinsic variable
+Extrinsic variable
+Eclipsing binary
+Algol
+Beta Lyrae
+W Ursae Majoris
+Cataclysmic variable
+Nova
+Classical nova
+Recurrent nova
+Dwarf nova
+Symbiotic star
+Supernova
+Type Ia supernova
+Type II supernova
+Type Ib supernova
+Type Ic supernova
+Core-collapse supernova
+Supernova remnant
+SNR
+Pulsar wind nebula
+PWN
+Crab Nebula
+Cassiopeia A
+Hypernova
+Superluminous supernova
+SLSN
+Pair-instability supernova
+PISN
+Gamma-ray burst
+GRB
+Long GRB
+Short GRB
+Afterglow
+Kilonova
+Transient
+Astronomical transient
+Time-domain astronomy
+Fast radio burst
+FRB
+Tidal disruption event
+TDE
+Stellar binary
+Binary star
+Binary system
+Close binary
+Detached binary
+Semidetached binary
+Contact binary
+Mass transfer
+Roche lobe
+Roche lobe overflow
+RLOF
+Common envelope
+Accretion
+Planetary system
+Exoplanet
+Extrasolar planet
+Planet
+Terrestrial planet
+Rocky planet
+Gas giant
+Ice giant
+Super-Earth
+Mini-Neptune
+Hot Jupiter
+Warm Jupiter
+Cold Jupiter
+Eccentric planet
+Circumbinary planet
+Free-floating planet
+Rogue planet
+Planetary migration
+Type I migration
+Type II migration
+Orbital resonance
+Mean motion resonance
+Kozai mechanism
+Planetary habitability
+Habitable zone
+Goldilocks zone
+Circumstellar habitable zone
+Biosignature
+Atmospheric biosignature
+Oxygen
+Ozone
+Methane
+Phosphine
+Technosignature
+SETI
+Search for extraterrestrial intelligence
+Drake equation
+Fermi paradox
+Planet detection
+Radial velocity method
+RV method
+Doppler spectroscopy
+Transit method
+Transit photometry
+Transit timing variation
+TTV
+Microlensing
+Gravitational microlensing
+Direct imaging
+Coronagraph
+Starshade
+Astrometry
+Pulsar timing
+Planetary atmosphere
+Exoatmosphere
+Atmospheric escape
+Hydrodynamic escape
+Atmospheric characterization
+Transmission spectroscopy
+Emission spectroscopy
+Reflection spectroscopy
+Phase curve
+Cloud
+Haze
+Aerosol
+Molecular absorption
+Water vapor
+Carbon dioxide
+Carbon monoxide
+Methane
+Ammonia
+Sodium
+Potassium
+Iron
+Temperature-pressure profile
+Thermal structure
+Atmospheric circulation
+Winds
+Day-night temperature contrast
+Heat redistribution
+Stellar system
+Multiple star system
+Triple star
+Quadruple star
+Star cluster
+Open cluster
+Globular cluster
+Stellar association
+OB association
+Embedded cluster
+Young stellar object
+YSO
+Molecular cloud
+Giant molecular cloud
+GMC
+Dark cloud
+Bok globule
+H II region
+Emission nebula
+Orion Nebula
+Lagoon Nebula
+Eagle Nebula
+Pillars of Creation
+Reflection nebula
+Planetary nebula
+Ring Nebula
+Helix Nebula
+Dumbbell Nebula
+Circumstellar disk
+Protoplanetary disk
+Debris disk
+Zodiacal cloud
+Interstellar medium
+ISM
+Interstellar gas
+Interstellar dust
+Dust grain
+Silicate
+Graphite
+Polycyclic aromatic hydrocarbon
+PAH
+Extinction
+Interstellar extinction
+Reddening
+Interstellar absorption
+Diffuse interstellar band
+DIB
+21-cm line
+Hydrogen line
+Neutral hydrogen
+HI region
+Molecular hydrogen
+H2
+Carbon monoxide line
+CO line
+Cosmic ray
+Ultra-high-energy cosmic ray
+UHECR
+Cosmic ray shower
+Air shower
+Extensive air shower
+Pierre Auger Observatory
+Solar System
+Sun
+Solar core
+Solar photosphere
+Solar chromosphere
+Solar corona
+Solar cycle
+Sunspot cycle
+11-year cycle
+Solar maximum
+Solar minimum
+Solar activity
+Sunspot
+Faculae
+Prominence
+Filament
+Coronal hole
+Solar flare
+Coronal mass ejection
+CME
+Space weather
+Geomagnetic storm
+Aurora
+Aurora borealis
+Aurora australis
+Northern lights
+Southern lights
+Solar radiation
+Solar irradiance
+Total solar irradiance
+TSI
+Solar constant
+Planet
+Mercury
+Venus
+Earth
+Mars
+Jupiter
+Saturn
+Uranus
+Neptune
+Dwarf planet
+Pluto
+Ceres
+Eris
+Makemake
+Haumea
+Minor planet
+Asteroid
+Main belt
+Asteroid belt
+Near-Earth asteroid
+NEA
+Potentially hazardous asteroid
+PHA
+Trojan asteroid
+Centaur
+Trans-Neptunian object
+TNO
+Kuiper belt
+Kuiper belt object
+KBO
+Scattered disk
+Oort cloud
+Comet
+Short-period comet
+Long-period comet
+Halley's Comet
+Coma
+Comet tail
+Dust tail
+Ion tail
+Nucleus
+Meteoroid
+Meteor
+Meteorite
+Meteor shower
+Bolide
+Fireball
+Impact crater
+Impact event
+Chicxulub crater
+K-Pg extinction
+Moon
+Natural satellite
+Lunar maria
+Crater
+Regolith
+Tidal locking
+Synchronous rotation
+Libration
+Lunar phase
+New moon
+Full moon
+Crescent
+Gibbous
+Eclipse
+Solar eclipse
+Lunar eclipse
+Total eclipse
+Partial eclipse
+Annular eclipse
+Umbra
+Penumbra
+Occultation
+Transit
+Planetary transit
+Transit of Venus
+Transit of Mercury
+Conjunction
+Opposition
+Quadrature
+Elongation
+Syzygy
+Orbital mechanics
+Orbit
+Elliptical orbit
+Circular orbit
+Parabolic orbit
+Hyperbolic orbit
+Eccentricity
+Semimajor axis
+Semiminor axis
+Perihelion
+Aphelion
+Perigee
+Apogee
+Periapsis
+Apoapsis
+Inclination
+Ascending node
+Descending node
+Argument of periapsis
+Longitude of ascending node
+True anomaly
+Orbital period
+Synodic period
+Sidereal period
+Kepler's laws
+Kepler's first law
+Kepler's second law
+Kepler's third law
+Two-body problem
+Three-body problem
+N-body problem
+Perturbation
+Gravitational perturbation
+Tidal force
+Tidal bulge
+Tidal heating
+Lagrange point
+L1
+L2
+L3
+L4
+L5
+Trojan
+Horseshoe orbit
+Tadpole orbit
+Hill sphere
+Sphere of influence
+Escape velocity
+Delta-v
+Hohmann transfer
+Gravity assist
+Slingshot
+Flyby
+Astrodynamics
+Celestial mechanics
+General relativity
+Special relativity
+Relativity
+Einstein field equations
+Spacetime curvature
+Geodesic
+Precession
+Perihelion precession
+Mercury precession
+Gravitational lensing
+Strong lensing
+Weak lensing
+Microlensing
+Einstein ring
+Gravitational arc
+Time dilation
+Gravitational time dilation
+Gravitational redshift
+Frame dragging
+Lense-Thirring effect
+Equivalence principle
+Cosmological principle
+Copernican principle
+Anthropic principle
+Multiverse
+Parallel universe
+Many-worlds interpretation
+Quantum cosmology
+Quantum gravity
+Loop quantum gravity
+String theory
+M-theory
+Superstring theory
+Extra dimension
+Compactification
+Brane
+D-brane
+Holographic principle
+AdS/CFT correspondence
+Planck scale
+Planck length
+Planck time
+Planck energy
+Quantum fluctuation
+Virtual particle
+Vacuum fluctuation
+Casimir effect
+Zero-point energy
+Telescope
+Optical telescope
+Refracting telescope
+Reflecting telescope
+Newtonian telescope
+Cassegrain telescope
+Schmidt-Cassegrain
+Ritchey-Chrétien
+Primary mirror
+Secondary mirror
+Aperture
+Focal length
+Focal ratio
+F-number
+Resolution
+Angular resolution
+Seeing
+Atmospheric seeing
+Adaptive optics
+AO
+Wavefront sensor
+Deformable mirror
+Space telescope
+Hubble Space Telescope
+HST
+James Webb Space Telescope
+JWST
+Spitzer Space Telescope
+Chandra X-ray Observatory
+XMM-Newton
+Fermi Gamma-ray Space Telescope
+Kepler Space Telescope
+TESS
+Transiting Exoplanet Survey Satellite
+Gaia
+Radio telescope
+Radio astronomy
+Very Large Array
+VLA
+Atacama Large Millimeter Array
+ALMA
+Square Kilometre Array
+SKA
+Arecibo Observatory
+Green Bank Telescope
+GBT
+Parkes Observatory
+Interferometry
+Radio interferometry
+Very Long Baseline Interferometry
+VLBI
+Aperture synthesis
+Baseline
+Fringe
+Correlation
+Observatory
+Astronomical observatory
+Ground-based observatory
+European Southern Observatory
+ESO
+Very Large Telescope
+VLT
+Extremely Large Telescope
+ELT
+Thirty Meter Telescope
+TMT
+Giant Magellan Telescope
+GMT
+Keck Observatory
+Subaru Telescope
+Gemini Observatory
+Magellan Telescopes
+Las Campanas Observatory
+Palomar Observatory
+Mount Wilson Observatory
+Kitt Peak National Observatory
+Cerro Tololo Inter-American Observatory
+CTIO
+Paranal Observatory
+La Silla Observatory
+Mauna Kea Observatories
+Spectroscopy
+Astronomical spectroscopy
+Spectrum
+Electromagnetic spectrum
+Absorption spectrum
+Emission spectrum
+Continuous spectrum
+Spectral line
+Absorption line
+Emission line
+Line profile
+Doppler broadening
+Thermal broadening
+Pressure broadening
+Natural broadening
+Spectral resolution
+Spectrograph
+Echelle spectrograph
+Multi-object spectrograph
+Integral field spectrograph
+IFS
+Slit
+Grating
+Diffraction grating
+Prism
+CCD
+Charge-coupled device
+Detector
+Photographic plate
+Photomultiplier tube
+PMT
+CMOS sensor
+Pixel
+Quantum efficiency
+Dark current
+Read noise
+Wavelength
+Frequency
+Energy
+Photon energy
+Planck's law
+Blackbody
+Blackbody radiation
+Wien's displacement law
+Stefan-Boltzmann law
+Flux
+Spectral flux
+Luminosity
+Brightness
+Surface brightness
+Intensity
+Specific intensity
+Optical depth
+Opacity
+Absorption coefficient
+Emission coefficient
+Radiative transfer
+Scattering
+Rayleigh scattering
+Mie scattering
+Thomson scattering
+Compton scattering
+Inverse Compton scattering
+Bremsstrahlung
+Free-free emission
+Bound-free emission
+Bound-bound emission
+Recombination
+Recombination line
+Balmer series
+Lyman series
+Paschen series
+Brackett series
+Pfund series
+Hydrogen alpha
+H-alpha
+Forbidden line
+Permitted line
+Fine structure
+Hyperfine structure
+Zeeman effect
+Stark effect
+Ionization
+Ionization state
+Neutral
+Singly ionized
+Doubly ionized
+Photoionization
+Collisional ionization
+Recombination
+Electron temperature
+Ionization temperature
+Excitation temperature
+Kinetic temperature
+Color temperature
+

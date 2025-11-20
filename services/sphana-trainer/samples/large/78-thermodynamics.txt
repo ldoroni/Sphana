@@ -1,0 +1,614 @@
+Thermodynamics
+Thermal physics
+Heat
+Temperature
+Energy
+Internal energy
+Thermal energy
+System
+Thermodynamic system
+Closed system
+Open system
+Isolated system
+Surroundings
+Environment
+Boundary
+State
+Thermodynamic state
+Equilibrium
+Thermal equilibrium
+Mechanical equilibrium
+Chemical equilibrium
+Thermodynamic equilibrium
+State variable
+State function
+Path function
+Extensive property
+Intensive property
+Pressure
+Volume
+Specific volume
+Density
+Mass
+Temperature
+Absolute temperature
+Kelvin
+Celsius
+Fahrenheit
+Rankine
+Thermodynamic temperature scale
+Process
+Thermodynamic process
+Reversible process
+Irreversible process
+Quasi-static process
+Quasi-equilibrium process
+Isothermal process
+Isobaric process
+Isochoric process
+Isometric process
+Adiabatic process
+Isentropic process
+Polytropic process
+Cyclic process
+Thermodynamic cycle
+Work
+Mechanical work
+Boundary work
+PdV work
+Shaft work
+Electrical work
+Flow work
+Heat
+Heat transfer
+Heat flow
+Thermal energy transfer
+Sign convention
+First Law of Thermodynamics
+Energy conservation
+Conservation of energy
+Energy balance
+Internal energy change
+Heat input
+Work output
+Second Law of Thermodynamics
+Entropy
+Entropy generation
+Entropy change
+Irreversibility
+Disorder
+Carnot cycle
+Carnot engine
+Carnot efficiency
+Reversible cycle
+Heat engine
+Thermal efficiency
+Efficiency
+Heat input
+Heat output
+Work output
+Refrigerator
+Refrigeration cycle
+Coefficient of performance
+COP
+Heat pump
+Heating COP
+Cooling COP
+Reversible heat engine
+Kelvin-Planck statement
+Clausius statement
+Perpetual motion machine
+Perpetual motion of the second kind
+Third Law of Thermodynamics
+Absolute zero
+Entropy at absolute zero
+Zero point energy
+Zeroth Law of Thermodynamics
+Thermal contact
+Temperature measurement
+Equation of state
+Ideal gas
+Ideal gas law
+Ideal gas equation
+PV=nRT
+Universal gas constant
+R
+Specific gas constant
+Real gas
+Van der Waals equation
+Compressibility factor
+Z factor
+Critical point
+Critical temperature
+Critical pressure
+Critical volume
+Reduced properties
+Corresponding states
+Generalized compressibility chart
+Enthalpy
+H
+Specific enthalpy
+h
+Enthalpy change
+Sensible heat
+Latent heat
+Heat of vaporization
+Heat of fusion
+Heat of sublimation
+Entropy
+S
+Specific entropy
+s
+Entropy production
+Clausius inequality
+TdS equations
+Gibbs free energy
+G
+Helmholtz free energy
+A
+Free energy
+Chemical potential
+Thermodynamic potential
+Maxwell relations
+Thermodynamic properties
+Property relations
+Specific heat
+Heat capacity
+Constant volume specific heat
+Cv
+Constant pressure specific heat
+Cp
+Specific heat ratio
+Heat capacity ratio
+Gamma
+γ
+Isentropic exponent
+Joule-Thomson coefficient
+Compressibility
+Isothermal compressibility
+Adiabatic compressibility
+Bulk modulus
+Thermal expansion
+Coefficient of thermal expansion
+Phase
+Phase change
+Phase transition
+Phase equilibrium
+Phase diagram
+P-T diagram
+P-V diagram
+T-S diagram
+h-s diagram
+Mollier diagram
+Triple point
+Critical point
+Vapor
+Liquid
+Solid
+Plasma
+Sublimation
+Melting
+Fusion
+Freezing
+Solidification
+Vaporization
+Evaporation
+Boiling
+Condensation
+Liquefaction
+Saturation
+Saturated state
+Saturated liquid
+Saturated vapor
+Saturation temperature
+Saturation pressure
+Vapor pressure
+Quality
+Dryness fraction
+Moisture content
+Subcooled liquid
+Compressed liquid
+Superheated vapor
+Two-phase region
+Wet region
+Mixture
+Liquid-vapor mixture
+Steam
+Water vapor
+Dry steam
+Wet steam
+Saturated steam
+Superheated steam
+Rankine cycle
+Steam power plant
+Steam turbine
+Boiler
+Condenser
+Pump
+Feedwater heater
+Regeneration
+Reheat
+Superheat
+Isentropic efficiency
+Turbine efficiency
+Pump efficiency
+Compressor efficiency
+Thermal efficiency
+Heat rate
+Back work ratio
+Otto cycle
+Diesel cycle
+Dual cycle
+Stirling cycle
+Ericsson cycle
+Brayton cycle
+Gas turbine cycle
+Jet engine
+Compressor
+Combustor
+Turbine
+Air-standard cycle
+Cold air-standard assumptions
+Mean effective pressure
+MEP
+Compression ratio
+Pressure ratio
+Cutoff ratio
+Internal combustion engine
+Spark ignition engine
+SI engine
+Compression ignition engine
+CI engine
+Gasoline engine
+Diesel engine
+Four-stroke engine
+Two-stroke engine
+Vapor compression refrigeration
+Refrigerant
+CFC
+HCFC
+HFC
+Ammonia
+CO2
+R-134a
+R-410A
+Compressor
+Condenser
+Expansion valve
+Throttling valve
+Evaporator
+Refrigeration effect
+Compressor work
+Heat rejection
+COP
+Refrigeration COP
+Vapor absorption refrigeration
+Absorption chiller
+Absorption system
+Generator
+Absorber
+Absorbent
+Lithium bromide
+LiBr
+Ammonia-water
+Gas refrigeration cycle
+Reverse Brayton cycle
+Air cycle
+Liquefaction
+Gas liquefaction
+Linde cycle
+Claude cycle
+Cryogenics
+Cryogenic temperature
+Liquid nitrogen
+Liquid helium
+Liquid hydrogen
+LNG
+Liquefied natural gas
+Psychrometrics
+Moist air
+Humid air
+Dry air
+Water vapor
+Humidity
+Absolute humidity
+Relative humidity
+RH
+Humidity ratio
+Specific humidity
+Moisture content
+Dew point
+Dew point temperature
+Wet bulb temperature
+Dry bulb temperature
+Saturation
+Saturation pressure
+Partial pressure
+Psychrometric chart
+Enthalpy of moist air
+Entropy of moist air
+Adiabatic saturation
+Evaporative cooling
+Air conditioning
+HVAC
+Heating, ventilation, and air conditioning
+Cooling load
+Heating load
+Sensible heat
+Latent heat
+Sensible heat ratio
+SHR
+Comfort zone
+Thermal comfort
+Combustion
+Fuel
+Hydrocarbon
+Methane
+Propane
+Butane
+Octane
+Gasoline
+Diesel fuel
+Coal
+Natural gas
+Biomass
+Oxidizer
+Oxygen
+Air
+Theoretical air
+Excess air
+Stoichiometric combustion
+Lean mixture
+Rich mixture
+Air-fuel ratio
+AFR
+Fuel-air ratio
+Equivalence ratio
+Products of combustion
+Flue gas
+Combustion products
+Carbon dioxide
+CO2
+Water vapor
+H2O
+Nitrogen
+N2
+Carbon monoxide
+CO
+Nitrogen oxides
+NOx
+Sulfur dioxide
+SO2
+Particulate matter
+Soot
+Heating value
+Calorific value
+Higher heating value
+HHV
+Gross heating value
+Lower heating value
+LHV
+Net heating value
+Enthalpy of combustion
+Heat of combustion
+Enthalpy of formation
+Heat of formation
+Adiabatic flame temperature
+Stoichiometric flame temperature
+Thermochemistry
+Chemical reaction
+Exothermic reaction
+Endothermic reaction
+Reaction enthalpy
+Heat of reaction
+Hess's law
+Chemical equilibrium
+Equilibrium constant
+Gibbs free energy
+Le Chatelier's principle
+Mixture
+Gas mixture
+Ideal gas mixture
+Dalton's law
+Partial pressure
+Mole fraction
+Mass fraction
+Volume fraction
+Amagat's law
+Partial volume
+Mixture properties
+Apparent molecular weight
+Gas constant of mixture
+Compressible flow
+Gas dynamics
+Mach number
+Sonic velocity
+Speed of sound
+Subsonic flow
+Sonic flow
+Supersonic flow
+Stagnation properties
+Stagnation temperature
+Stagnation pressure
+Total temperature
+Total pressure
+Static properties
+Static temperature
+Static pressure
+Isentropic flow
+Nozzle
+Converging nozzle
+Diverging nozzle
+Converging-diverging nozzle
+De Laval nozzle
+Throat
+Choked flow
+Mass flow rate
+Shock wave
+Normal shock
+Oblique shock
+Expansion wave
+Prandtl-Meyer expansion
+Fanno flow
+Rayleigh flow
+Power cycles
+Heat engine
+Thermal power plant
+Steam power plant
+Gas turbine power plant
+Combined cycle
+Cogeneration
+Combined heat and power
+CHP
+District heating
+Exergy
+Availability
+Available energy
+Second law efficiency
+Exergetic efficiency
+Exergy destruction
+Irreversibility
+Lost work
+Exergy analysis
+Second law analysis
+Dead state
+Reference state
+Environmental state
+Exergy balance
+Exergy transfer
+Flow exergy
+Kinetic exergy
+Potential exergy
+Physical exergy
+Chemical exergy
+Heat exchanger
+Heat transfer equipment
+Counterflow heat exchanger
+Parallel flow heat exchanger
+Crossflow heat exchanger
+Shell and tube heat exchanger
+Plate heat exchanger
+Compact heat exchanger
+Effectiveness
+Heat exchanger effectiveness
+NTU method
+Number of transfer units
+LMTD method
+Log mean temperature difference
+Overall heat transfer coefficient
+Fouling factor
+Turbine
+Steam turbine
+Gas turbine
+Hydraulic turbine
+Wind turbine
+Impulse turbine
+Reaction turbine
+Axial turbine
+Radial turbine
+Multi-stage turbine
+Turbine blade
+Rotor
+Stator
+Nozzle
+Isentropic efficiency
+Stage efficiency
+Overall efficiency
+Compressor
+Centrifugal compressor
+Axial compressor
+Reciprocating compressor
+Rotary compressor
+Screw compressor
+Scroll compressor
+Vane compressor
+Multistage compressor
+Intercooler
+Aftercooler
+Compression work
+Isentropic work
+Actual work
+Compressor efficiency
+Volumetric efficiency
+Pump
+Centrifugal pump
+Positive displacement pump
+Reciprocating pump
+Rotary pump
+Gear pump
+Lobe pump
+Vane pump
+Screw pump
+Peristaltic pump
+Diaphragm pump
+Pump head
+Suction head
+Discharge head
+Total dynamic head
+TDH
+Net positive suction head
+NPSH
+Cavitation
+Pump efficiency
+Pump power
+Hydraulic power
+Brake power
+Fan
+Blower
+Axial fan
+Centrifugal fan
+Radial fan
+Mixed flow fan
+Static pressure
+Dynamic pressure
+Total pressure
+Fan efficiency
+Fan power
+Air flow rate
+Volumetric flow rate
+Mass flow rate
+Duct
+Air duct
+Duct design
+Pressure drop
+Friction loss
+Minor loss
+Bernoulli equation
+Heating
+Space heating
+Water heating
+Process heating
+Furnace
+Boiler
+Heat pump
+Electric heating
+Resistance heating
+Induction heating
+Radiant heating
+Convective heating
+Cooling
+Space cooling
+Refrigeration
+Air conditioning
+Evaporative cooling
+Absorption cooling
+Desiccant cooling
+Thermoelectric cooling
+Peltier effect
+Statistical thermodynamics
+Microstate
+Macrostate
+Ensemble
+Partition function
+Boltzmann distribution
+Fermi-Dirac statistics
+Bose-Einstein statistics
+Maxwell-Boltzmann statistics
+Quantum statistics
+Classical statistics
+Entropy
+Statistical entropy
+Boltzmann entropy formula
+Thermodynamic probability
+Degeneracy
+

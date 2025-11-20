@@ -1,0 +1,1391 @@
+Psychology
+Cognitive psychology
+Behavioral psychology
+Developmental psychology
+Social psychology
+Clinical psychology
+Abnormal psychology
+Personality psychology
+Biological psychology
+Neuropsychology
+Educational psychology
+Industrial-organizational psychology
+Health psychology
+Sports psychology
+Forensic psychology
+Counseling psychology
+Experimental psychology
+Quantitative psychology
+Cognitive science
+Psychophysics
+Sensation
+Perception
+Attention
+Memory
+Learning
+Thinking
+Reasoning
+Problem solving
+Decision making
+Language
+Intelligence
+Consciousness
+Emotion
+Motivation
+Personality
+Psychopathology
+Mental disorder
+Psychotherapy
+Assessment
+Research methods
+Statistics
+Behaviorism
+Classical conditioning
+Operant conditioning
+Reinforcement
+Punishment
+Stimulus
+Response
+Unconditioned stimulus
+Conditioned stimulus
+Unconditioned response
+Conditioned response
+Acquisition
+Extinction
+Spontaneous recovery
+Generalization
+Discrimination
+Shaping
+Chaining
+Token economy
+Behavior modification
+Applied behavior analysis
+Cognitive-behavioral therapy
+CBT
+Exposure therapy
+Systematic desensitization
+Flooding
+Aversion therapy
+Biofeedback
+Neurofeedback
+Observational learning
+Social learning theory
+Modeling
+Vicarious reinforcement
+Self-efficacy
+Reciprocal determinism
+Gestalt psychology
+Figure-ground
+Proximity
+Similarity
+Continuity
+Closure
+Prägnanz
+Common fate
+Connectedness
+Perception
+Visual perception
+Auditory perception
+Tactile perception
+Olfactory perception
+Gustatory perception
+Depth perception
+Motion perception
+Color perception
+Pattern recognition
+Object recognition
+Face recognition
+Perceptual constancy
+Size constancy
+Shape constancy
+Color constancy
+Perceptual illusion
+Attention
+Selective attention
+Divided attention
+Sustained attention
+Attentional control
+Executive attention
+Vigilance
+Cocktail party effect
+Inattentional blindness
+Change blindness
+Attentional blink
+Working memory
+Short-term memory
+Long-term memory
+Sensory memory
+Iconic memory
+Echoic memory
+Episodic memory
+Semantic memory
+Procedural memory
+Implicit memory
+Explicit memory
+Declarative memory
+Nondeclarative memory
+Encoding
+Storage
+Retrieval
+Recall
+Recognition
+Relearning
+Free recall
+Cued recall
+Serial recall
+Forgetting
+Decay theory
+Interference theory
+Proactive interference
+Retroactive interference
+Retrieval failure
+Motivated forgetting
+Repression
+Suppression
+Amnesia
+Anterograde amnesia
+Retrograde amnesia
+Source amnesia
+Childhood amnesia
+Flashbulb memory
+False memory
+Memory distortion
+Misinformation effect
+Suggestibility
+Eyewitness testimony
+Recovered memory
+Memory consolidation
+Reconsolidation
+Sleep and memory
+Spaced repetition
+Mnemonic device
+Method of loci
+Peg system
+Chunking
+Elaborative rehearsal
+Maintenance rehearsal
+Dual coding theory
+Levels of processing
+Semantic network
+Spreading activation
+Priming
+Semantic priming
+Repetition priming
+Perceptual priming
+Conceptual priming
+Associative learning
+Habituation
+Sensitization
+Latent learning
+Insight learning
+Trial and error
+Discovery learning
+Rote learning
+Meaningful learning
+Transfer of learning
+Positive transfer
+Negative transfer
+Cognitive load
+Cognitive load theory
+Working memory capacity
+Problem solving
+Heuristic
+Algorithm
+Means-ends analysis
+Working backward
+Analogy
+Mental set
+Functional fixedness
+Insight
+Aha moment
+Incubation
+Illumination
+Verification
+Divergent thinking
+Convergent thinking
+Creativity
+Brainstorming
+Lateral thinking
+Critical thinking
+Metacognition
+Metacognitive knowledge
+Metacognitive regulation
+Self-regulated learning
+Decision making
+Rational choice theory
+Bounded rationality
+Satisficing
+Expected utility theory
+Prospect theory
+Framing effect
+Anchoring
+Availability heuristic
+Representativeness heuristic
+Confirmation bias
+Hindsight bias
+Overconfidence bias
+Sunk cost fallacy
+Loss aversion
+Status quo bias
+Endowment effect
+Cognitive dissonance
+Choice overload
+Paradox of choice
+Judgment
+Risk assessment
+Probability judgment
+Base rate neglect
+Conjunction fallacy
+Gambler's fallacy
+Hot hand fallacy
+Regression to the mean
+Intelligence
+IQ
+Intelligence quotient
+Intelligence test
+Stanford-Binet test
+Wechsler Adult Intelligence Scale
+WAIS
+Wechsler Intelligence Scale for Children
+WISC
+Raven's Progressive Matrices
+Cognitive ability
+General intelligence
+g factor
+Fluid intelligence
+Crystallized intelligence
+Multiple intelligences
+Emotional intelligence
+EQ
+Social intelligence
+Practical intelligence
+Analytical intelligence
+Creative intelligence
+Triarchic theory of intelligence
+PASS theory
+Cattell-Horn-Carroll theory
+CHC theory
+Mental age
+Chronological age
+Flynn effect
+Nature versus nurture
+Heritability
+Twin studies
+Adoption studies
+Gene-environment interaction
+Gene-environment correlation
+Epigenetics
+Language
+Psycholinguistics
+Language acquisition
+Critical period
+Language development
+Phonology
+Phoneme
+Morphology
+Morpheme
+Syntax
+Grammar
+Semantics
+Pragmatics
+Lexicon
+Vocabulary
+Word recognition
+Speech perception
+Categorical perception
+Phonemic restoration
+McGurk effect
+Reading
+Dyslexia
+Aphasia
+Broca's aphasia
+Wernicke's aphasia
+Language production
+Speech production
+Articulation
+Tip-of-the-tongue phenomenon
+Speech error
+Slip of the tongue
+Spoonerism
+Malapropism
+Bilingualism
+Code-switching
+Language transfer
+Second language acquisition
+Universal grammar
+Poverty of stimulus
+Nativist theory
+Interactionist theory
+Behaviorist theory
+Thought
+Concept
+Categorization
+Prototype
+Exemplar
+Schema
+Script
+Mental model
+Mental imagery
+Spatial reasoning
+Analogical reasoning
+Deductive reasoning
+Inductive reasoning
+Abductive reasoning
+Syllogism
+Logical fallacy
+Reasoning error
+Belief bias
+Motivated reasoning
+Wishful thinking
+Rationalization
+Consciousness
+Awareness
+Self-awareness
+Phenomenal consciousness
+Access consciousness
+Qualia
+Hard problem of consciousness
+Altered state of consciousness
+Sleep
+REM sleep
+Non-REM sleep
+Sleep cycle
+Sleep stage
+Circadian rhythm
+Insomnia
+Sleep apnea
+Narcolepsy
+Sleep paralysis
+Sleepwalking
+Night terror
+Nightmare
+Dream
+Dream interpretation
+Lucid dreaming
+Hypnosis
+Hypnotic susceptibility
+Hypnotic suggestion
+Posthypnotic suggestion
+Meditation
+Mindfulness
+Contemplation
+Flow state
+Peak experience
+Mystical experience
+Near-death experience
+Out-of-body experience
+Hallucination
+Visual hallucination
+Auditory hallucination
+Delusion
+Psychosis
+Dissociation
+Depersonalization
+Derealization
+Dissociative identity disorder
+Multiple personality disorder
+Emotion
+Affect
+Mood
+Feeling
+Basic emotion
+Complex emotion
+Primary emotion
+Secondary emotion
+James-Lange theory
+Cannon-Bard theory
+Two-factor theory
+Schachter-Singer theory
+Cognitive appraisal
+Appraisal theory
+Facial feedback hypothesis
+Facial expression
+Universal emotion
+Emotional expression
+Emotional regulation
+Emotion regulation strategy
+Suppression
+Reappraisal
+Emotional intelligence
+Alexithymia
+Happiness
+Sadness
+Anger
+Fear
+Disgust
+Surprise
+Joy
+Love
+Contempt
+Shame
+Guilt
+Pride
+Embarrassment
+Anxiety
+Depression
+Stress
+Eustress
+Distress
+Stressor
+Fight-or-flight response
+General adaptation syndrome
+Alarm reaction
+Resistance stage
+Exhaustion stage
+Stress management
+Coping
+Problem-focused coping
+Emotion-focused coping
+Avoidance coping
+Social support
+Resilience
+Hardiness
+Post-traumatic growth
+Burnout
+Compassion fatigue
+Motivation
+Drive
+Need
+Want
+Desire
+Goal
+Incentive
+Intrinsic motivation
+Extrinsic motivation
+Achievement motivation
+Need for achievement
+Need for affiliation
+Need for power
+Self-determination theory
+Autonomy
+Competence
+Relatedness
+Maslow's hierarchy of needs
+Physiological needs
+Safety needs
+Love and belonging
+Esteem needs
+Self-actualization
+Peak experience
+Drive theory
+Arousal theory
+Optimal arousal
+Yerkes-Dodson law
+Incentive theory
+Expectancy theory
+Goal-setting theory
+SMART goals
+Implementation intention
+Learned helplessness
+Self-efficacy
+Attribution theory
+Internal attribution
+External attribution
+Stable attribution
+Unstable attribution
+Locus of control
+Internal locus of control
+External locus of control
+Self-concept
+Self-schema
+Self-esteem
+Self-worth
+Self-image
+Ideal self
+Actual self
+Ought self
+Self-discrepancy theory
+Self-perception theory
+Looking-glass self
+Social comparison
+Upward comparison
+Downward comparison
+Self-enhancement
+Self-verification
+Self-consistency
+Identity
+Personal identity
+Social identity
+Gender identity
+Ethnic identity
+Cultural identity
+Identity formation
+Identity crisis
+Identity achievement
+Identity foreclosure
+Identity moratorium
+Identity diffusion
+Role
+Role conflict
+Role strain
+Social role
+Gender role
+Sex role
+Stereotype
+Stereotyping
+Prejudice
+Discrimination
+Racism
+Sexism
+Ageism
+Homophobia
+Xenophobia
+Implicit bias
+Explicit bias
+In-group
+Out-group
+In-group favoritism
+Out-group homogeneity
+Intergroup conflict
+Contact hypothesis
+Jigsaw classroom
+Diversity training
+Attribution
+Fundamental attribution error
+Actor-observer bias
+Self-serving bias
+Just-world hypothesis
+Victim blaming
+Attitude
+Attitude formation
+Attitude change
+Persuasion
+Central route to persuasion
+Peripheral route to persuasion
+Elaboration likelihood model
+Heuristic-systematic model
+Cognitive dissonance
+Effort justification
+Induced compliance
+Post-decision dissonance
+Selective exposure
+Confirmation bias
+Attitude-behavior consistency
+Theory of planned behavior
+Theory of reasoned action
+Social influence
+Conformity
+Compliance
+Obedience
+Asch conformity experiments
+Milgram experiment
+Stanford prison experiment
+Informational social influence
+Normative social influence
+Minority influence
+Majority influence
+Group polarization
+Groupthink
+Risky shift
+Social facilitation
+Social inhibition
+Social loafing
+Free riding
+Deindividuation
+Crowd behavior
+Mob psychology
+Bystander effect
+Diffusion of responsibility
+Pluralistic ignorance
+Social norms
+Descriptive norm
+Injunctive norm
+Norm violation
+Deviance
+Foot-in-the-door technique
+Door-in-the-face technique
+Low-ball technique
+That's-not-all technique
+Authority
+Legitimacy
+Power
+Coercive power
+Reward power
+Legitimate power
+Referent power
+Expert power
+Interpersonal attraction
+Physical attractiveness
+Proximity
+Similarity
+Complementarity
+Reciprocity
+Self-disclosure
+Mere exposure effect
+Matching hypothesis
+Triangular theory of love
+Intimacy
+Passion
+Commitment
+Companionate love
+Passionate love
+Romantic love
+Attachment
+Attachment theory
+Secure attachment
+Insecure attachment
+Anxious attachment
+Avoidant attachment
+Disorganized attachment
+Strange situation
+Internal working model
+Relationship
+Relationship satisfaction
+Relationship quality
+Communication
+Active listening
+Empathy
+Conflict
+Conflict resolution
+Negotiation
+Compromise
+Accommodation
+Aggression
+Hostile aggression
+Instrumental aggression
+Reactive aggression
+Proactive aggression
+Frustration-aggression hypothesis
+Social learning theory
+Media violence
+Violent video games
+Catharsis
+Prosocial behavior
+Altruism
+Helping behavior
+Bystander intervention
+Empathy-altruism hypothesis
+Social exchange theory
+Kin selection
+Reciprocal altruism
+Group selection
+Cooperation
+Trust
+Trustworthiness
+Social capital
+Collective action
+Leadership
+Leadership style
+Autocratic leadership
+Democratic leadership
+Laissez-faire leadership
+Transformational leadership
+Transactional leadership
+Servant leadership
+Charismatic leadership
+Team
+Teamwork
+Team dynamics
+Team cohesion
+Group development
+Forming
+Storming
+Norming
+Performing
+Adjourning
+Organizational behavior
+Organizational culture
+Organizational commitment
+Job satisfaction
+Work motivation
+Employee engagement
+Performance appraisal
+Personnel selection
+Training and development
+Human resources
+Industrial psychology
+Organizational psychology
+Occupational stress
+Work-life balance
+Job burnout
+Workaholism
+Career development
+Vocational interest
+Personality
+Personality trait
+Trait theory
+Type theory
+Psychodynamic theory
+Humanistic theory
+Social-cognitive theory
+Biological theory
+Big Five
+Five-factor model
+Openness
+Conscientiousness
+Extraversion
+Agreeableness
+Neuroticism
+HEXACO model
+Honesty-humility
+Myers-Briggs Type Indicator
+MBTI
+Extraversion-introversion
+Sensing-intuition
+Thinking-feeling
+Judging-perceiving
+Temperament
+Eysenck's theory
+Psychoticism
+Extraversion
+Neuroticism
+Gray's reinforcement sensitivity theory
+Behavioral activation system
+BAS
+Behavioral inhibition system
+BIS
+Cloninger's psychobiological model
+Novelty seeking
+Harm avoidance
+Reward dependence
+Persistence
+Self-directedness
+Cooperativeness
+Self-transcendence
+Cattell's 16 personality factors
+Allport's trait theory
+Cardinal trait
+Central trait
+Secondary trait
+Idiographic approach
+Nomothetic approach
+Person-situation debate
+Interactionism
+Reciprocal determinism
+Psychoanalysis
+Freudian theory
+Unconscious
+Preconscious
+Conscious
+Id
+Ego
+Superego
+Pleasure principle
+Reality principle
+Morality principle
+Defense mechanism
+Repression
+Denial
+Projection
+Displacement
+Sublimation
+Rationalization
+Reaction formation
+Regression
+Identification
+Compensation
+Psychosexual development
+Oral stage
+Anal stage
+Phallic stage
+Latency stage
+Genital stage
+Oedipus complex
+Electra complex
+Fixation
+Dream analysis
+Free association
+Transference
+Countertransference
+Resistance
+Working through
+Neo-Freudian
+Analytical psychology
+Jung
+Collective unconscious
+Archetype
+Anima
+Animus
+Shadow
+Persona
+Self
+Individuation
+Adlerian psychology
+Individual psychology
+Inferiority complex
+Superiority complex
+Birth order
+Social interest
+Humanistic psychology
+Person-centered therapy
+Client-centered therapy
+Rogers
+Unconditional positive regard
+Empathy
+Congruence
+Genuineness
+Self-actualization
+Actualizing tendency
+Fully functioning person
+Maslow
+Peak experience
+Existential psychology
+Existential therapy
+Logotherapy
+Frankl
+Will to meaning
+Gestalt therapy
+Perls
+Here and now
+Awareness
+Contact
+Figure-ground
+Unfinished business
+Developmental psychology
+Child development
+Adolescent development
+Adult development
+Lifespan development
+Prenatal development
+Infancy
+Early childhood
+Middle childhood
+Adolescence
+Early adulthood
+Middle adulthood
+Late adulthood
+Aging
+Gerontology
+Motor development
+Gross motor skill
+Fine motor skill
+Reflexes
+Cognitive development
+Piaget
+Stage theory
+Sensorimotor stage
+Preoperational stage
+Concrete operational stage
+Formal operational stage
+Object permanence
+Conservation
+Egocentrism
+Centration
+Irreversibility
+Animism
+Symbolic thought
+Mental representation
+Schema
+Assimilation
+Accommodation
+Equilibration
+Zone of proximal development
+Vygotsky
+Scaffolding
+Private speech
+Cultural tools
+Social constructivism
+Information processing theory
+Theory of mind
+False belief task
+Metacognition
+Executive function
+Cognitive flexibility
+Inhibitory control
+Working memory
+Moral development
+Kohlberg
+Preconventional morality
+Conventional morality
+Postconventional morality
+Moral reasoning
+Moral judgment
+Gilligan
+Care ethics
+Justice orientation
+Care orientation
+Prosocial development
+Empathy development
+Perspective taking
+Emotional development
+Emotion regulation
+Attachment
+Temperament
+Easy temperament
+Difficult temperament
+Slow-to-warm-up temperament
+Goodness of fit
+Social development
+Peer relations
+Friendship
+Play
+Parallel play
+Cooperative play
+Pretend play
+Sociodramatic play
+Parenting style
+Authoritative parenting
+Authoritarian parenting
+Permissive parenting
+Uninvolved parenting
+Parenting practices
+Discipline
+Punishment
+Time-out
+Positive reinforcement
+Natural consequences
+Logical consequences
+Family
+Family system
+Family dynamics
+Sibling relationship
+Birth order
+Parental divorce
+Single-parent family
+Blended family
+Adoption
+Foster care
+Identity development
+Erikson
+Psychosocial development
+Trust versus mistrust
+Autonomy versus shame
+Initiative versus guilt
+Industry versus inferiority
+Identity versus role confusion
+Intimacy versus isolation
+Generativity versus stagnation
+Ego integrity versus despair
+Puberty
+Adolescence
+Identity crisis
+Identity formation
+Peer pressure
+Risk-taking behavior
+Emerging adulthood
+Young adulthood
+Marriage
+Parenthood
+Midlife crisis
+Empty nest
+Retirement
+Successful aging
+Wisdom
+Life review
+Death and dying
+Bereavement
+Grief
+Mourning
+Kübler-Ross model
+Denial
+Anger
+Bargaining
+Depression
+Acceptance
+Anticipatory grief
+Complicated grief
+Disenfranchised grief
+Clinical psychology
+Psychopathology
+Mental disorder
+Diagnosis
+DSM
+Diagnostic and Statistical Manual
+DSM-5
+ICD
+International Classification of Diseases
+Symptom
+Syndrome
+Comorbidity
+Prevalence
+Incidence
+Etiology
+Pathogenesis
+Prognosis
+Assessment
+Clinical interview
+Mental status examination
+Psychological testing
+Personality assessment
+Intelligence testing
+Neuropsychological assessment
+Behavioral assessment
+Functional analysis
+Self-report measure
+Observer rating
+Structured interview
+Unstructured interview
+Semi-structured interview
+Psychotherapy
+Therapy
+Counseling
+Treatment
+Intervention
+Evidence-based practice
+Therapeutic alliance
+Working alliance
+Rapport
+Empathy
+Therapeutic relationship
+Common factors
+Specific factors
+Placebo effect
+Spontaneous remission
+Treatment outcome
+Efficacy
+Effectiveness
+Psychoanalytic therapy
+Psychodynamic therapy
+Insight-oriented therapy
+Brief dynamic therapy
+Interpersonal therapy
+IPT
+Behavior therapy
+Behavioral activation
+Exposure therapy
+Response prevention
+Systematic desensitization
+Flooding
+Cognitive therapy
+Beck
+Cognitive restructuring
+Cognitive distortion
+Automatic thought
+Core belief
+Intermediate belief
+Dysfunctional assumption
+Socratic questioning
+Thought record
+Behavioral experiment
+Cognitive-behavioral therapy
+CBT
+Third-wave CBT
+Acceptance and commitment therapy
+ACT
+Psychological flexibility
+Cognitive defusion
+Acceptance
+Values
+Committed action
+Dialectical behavior therapy
+DBT
+Mindfulness
+Distress tolerance
+Emotion regulation
+Interpersonal effectiveness
+Mindfulness-based cognitive therapy
+MBCT
+Mindfulness-based stress reduction
+MBSR
+Schema therapy
+Early maladaptive schema
+Schema mode
+Reparenting
+Rational emotive behavior therapy
+REBT
+Ellis
+Irrational belief
+Rational belief
+Disputing
+Humanistic therapy
+Client-centered therapy
+Nondirective therapy
+Gestalt therapy
+Existential therapy
+Logotherapy
+Meaning therapy
+Family therapy
+Systemic therapy
+Structural family therapy
+Strategic family therapy
+Bowenian family therapy
+Narrative therapy
+Solution-focused brief therapy
+SFBT
+Miracle question
+Scaling question
+Exception question
+Couple therapy
+Marriage counseling
+Emotionally focused therapy
+EFT
+Gottman method
+Group therapy
+Psychoeducational group
+Support group
+Process group
+Encounter group
+Psychodrama
+Art therapy
+Music therapy
+Dance therapy
+Play therapy
+Animal-assisted therapy
+Pet therapy
+Eclectic therapy
+Integrative therapy
+Common factors approach
+Technical eclecticism
+Theoretical integration
+Assimilative integration
+Pharmacotherapy
+Psychopharmacology
+Medication
+Prescription
+Drug
+Psychotropic medication
+Antidepressant
+Selective serotonin reuptake inhibitor
+SSRI
+Serotonin-norepinephrine reuptake inhibitor
+SNRI
+Tricyclic antidepressant
+TCA
+Monoamine oxidase inhibitor
+MAOI
+Antipsychotic
+Typical antipsychotic
+Atypical antipsychotic
+Neuroleptic
+Anxiolytic
+Benzodiazepine
+Buspirone
+Mood stabilizer
+Lithium
+Anticonvulsant
+Stimulant
+Methylphenidate
+Amphetamine
+Atomoxetine
+Guanfacine
+Side effect
+Adverse effect
+Drug interaction
+Tolerance
+Dependence
+Withdrawal
+Discontinuation syndrome
+Medication adherence
+Compliance
+Mental disorder
+Psychopathology
+Abnormal psychology
+Neurosis
+Psychosis
+Affective disorder
+Mood disorder
+Major depressive disorder
+MDD
+Depression
+Unipolar depression
+Melancholic depression
+Atypical depression
+Seasonal affective disorder
+SAD
+Postpartum depression
+Persistent depressive disorder
+Dysthymia
+Premenstrual dysphoric disorder
+PMDD
+Bipolar disorder
+Bipolar I disorder
+Bipolar II disorder
+Cyclothymia
+Mania
+Hypomania
+Mixed episode
+Rapid cycling
+Anxiety disorder
+Generalized anxiety disorder
+GAD
+Panic disorder
+Panic attack
+Agoraphobia
+Social anxiety disorder
+Social phobia
+Specific phobia
+Simple phobia
+Separation anxiety disorder
+Selective mutism
+Obsessive-compulsive disorder
+OCD
+Obsession
+Compulsion
+Body dysmorphic disorder
+BDD
+Hoarding disorder
+Trichotillomania
+Hair-pulling disorder
+Excoriation disorder
+Skin-picking disorder
+Trauma and stressor-related disorder
+Post-traumatic stress disorder
+PTSD
+Complex PTSD
+Acute stress disorder
+Adjustment disorder
+Reactive attachment disorder
+RAD
+Disinhibited social engagement disorder
+DSED
+Dissociative disorder
+Dissociative identity disorder
+DID
+Dissociative amnesia
+Depersonalization/derealization disorder
+Somatic symptom disorder
+Illness anxiety disorder
+Hypochondriasis
+Conversion disorder
+Functional neurological symptom disorder
+Factitious disorder
+Munchausen syndrome
+Munchausen by proxy
+Feeding and eating disorder
+Anorexia nervosa
+Bulimia nervosa
+Binge eating disorder
+BED
+Avoidant/restrictive food intake disorder
+ARFID
+Pica
+Rumination disorder
+Sleep-wake disorder
+Insomnia disorder
+Hypersomnolence disorder
+Narcolepsy
+Obstructive sleep apnea
+Central sleep apnea
+Sleep-related hypoventilation
+Circadian rhythm sleep-wake disorder
+Parasomnias
+Non-REM sleep arousal disorder
+Nightmare disorder
+REM sleep behavior disorder
+Restless legs syndrome
+Periodic limb movement disorder
+Sexual dysfunction
+Erectile disorder
+Female sexual interest/arousal disorder
+Genito-pelvic pain/penetration disorder
+Male hypoactive sexual desire disorder
+Delayed ejaculation
+Premature ejaculation
+Female orgasmic disorder
+Gender dysphoria
+Disruptive, impulse-control, and conduct disorder
+Oppositional defiant disorder
+ODD
+Conduct disorder
+CD
+Intermittent explosive disorder
+Pyromania
+Kleptomania
+Substance-related and addictive disorder
+Substance use disorder
+Alcohol use disorder
+Cannabis use disorder
+Stimulant use disorder
+Opioid use disorder
+Sedative use disorder
+Tobacco use disorder
+Gambling disorder
+Intoxication
+Withdrawal
+Addiction
+Dependence
+Tolerance
+Craving
+Relapse
+Recovery
+Neurodevelopmental disorder
+Intellectual disability
+Intellectual developmental disorder
+Global developmental delay
+Communication disorder
+Language disorder
+Speech sound disorder
+Childhood-onset fluency disorder
+Stuttering
+Social communication disorder
+Autism spectrum disorder
+ASD
+Autism
+Asperger syndrome
+Pervasive developmental disorder
+PDD
+Attention-deficit/hyperactivity disorder
+ADHD
+Inattention
+Hyperactivity
+Impulsivity
+Combined presentation
+Predominantly inattentive presentation
+Predominantly hyperactive-impulsive presentation
+Specific learning disorder
+Dyslexia
+Dyscalculia
+Dysgraphia
+Motor disorder
+Developmental coordination disorder
+DCD
+Stereotypic movement disorder
+Tic disorder
+Tourette syndrome
+Persistent motor or vocal tic disorder
+Provisional tic disorder
+Schizophrenia spectrum and other psychotic disorder
+Schizophrenia
+Paranoid schizophrenia
+Disorganized schizophrenia
+Catatonic schizophrenia
+Undifferentiated schizophrenia
+Residual schizophrenia
+Schizoaffective disorder
+Schizophreniform disorder
+Brief psychotic disorder
+Delusional disorder
+Positive symptom
+Negative symptom
+Hallucination
+Delusion
+Disorganized speech
+Disorganized behavior
+Catatonia
+Flat affect
+Alogia
+Avolition
+Anhedonia
+Personality disorder
+Cluster A personality disorder
+Paranoid personality disorder
+Schizoid personality disorder
+Schizotypal personality disorder
+Cluster B personality disorder
+Antisocial personality disorder
+ASPD
+Borderline personality disorder
+BPD
+Histrionic personality disorder
+Narcissistic personality disorder
+NPD
+Cluster C personality disorder
+Avoidant personality disorder
+Dependent personality disorder
+Obsessive-compulsive personality disorder
+OCPD
+Paraphilic disorder
+Pedophilic disorder
+Exhibitionistic disorder
+Voyeuristic disorder
+Sexual masochism disorder
+Sexual sadism disorder
+Fetishistic disorder
+Transvestic disorder
+Frotteuristic disorder
+Neurocognitive disorder
+Delirium
+Major neurocognitive disorder
+Dementia
+Alzheimer's disease
+Vascular dementia
+Frontotemporal dementia
+Lewy body dementia
+Mild neurocognitive disorder
+Cognitive impairment
+Memory impairment
+Executive dysfunction
+Aphasia
+Apraxia
+Agnosia
+

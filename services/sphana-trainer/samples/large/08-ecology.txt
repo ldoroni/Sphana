@@ -1,0 +1,876 @@
+Ecology
+Ecosystem
+Biome
+Habitat
+Niche
+Ecological niche
+Population
+Community
+Biotic factor
+Abiotic factor
+Environment
+Biosphere
+Hydrosphere
+Atmosphere
+Lithosphere
+Terrestrial ecosystem
+Aquatic ecosystem
+Marine ecosystem
+Freshwater ecosystem
+Forest
+Rainforest
+Tropical rainforest
+Temperate rainforest
+Deciduous forest
+Coniferous forest
+Boreal forest
+Taiga
+Tundra
+Arctic tundra
+Alpine tundra
+Grassland
+Prairie
+Savanna
+Steppe
+Pampas
+Desert
+Hot desert
+Cold desert
+Shrubland
+Chaparral
+Wetland
+Marsh
+Swamp
+Bog
+Fen
+Mangrove
+Estuary
+Coral reef
+Ocean
+Deep sea
+Benthic zone
+Pelagic zone
+Photic zone
+Aphotic zone
+Intertidal zone
+Continental shelf
+Abyssal plain
+Hydrothermal vent
+Cold seep
+Lake
+Pond
+River
+Stream
+Creek
+Brook
+Spring
+Vernal pool
+Lentic
+Lotic
+Littoral zone
+Limnetic zone
+Profundal zone
+Thermocline
+Epilimnion
+Hypolimnion
+Eutrophication
+Oligotrophic
+Mesotrophic
+Eutrophic
+Dystrophic
+Algal bloom
+Hypoxia
+Dead zone
+Anoxia
+Biodiversity
+Species diversity
+Genetic diversity
+Ecosystem diversity
+Alpha diversity
+Beta diversity
+Gamma diversity
+Species richness
+Species evenness
+Shannon diversity index
+Simpson diversity index
+Biodiversity hotspot
+Endemic species
+Invasive species
+Exotic species
+Native species
+Introduced species
+Pioneer species
+Keystone species
+Foundation species
+Umbrella species
+Flagship species
+Indicator species
+Threatened species
+Endangered species
+Vulnerable species
+Critically endangered
+Extinct species
+Extinct in the wild
+Conservation status
+IUCN Red List
+Endangered Species Act
+CITES
+Convention on Biological Diversity
+CBD
+Protected area
+National park
+Nature reserve
+Wildlife refuge
+Marine protected area
+MPA
+Biosphere reserve
+World Heritage Site
+Ramsar site
+Conservation biology
+Restoration ecology
+Habitat restoration
+Rewilding
+Reforestation
+Afforestation
+Deforestation
+Habitat loss
+Habitat fragmentation
+Habitat degradation
+Land use change
+Desertification
+Soil erosion
+Soil degradation
+Overgrazing
+Overfishing
+Overhunting
+Overexploitation
+Sustainable harvesting
+Maximum sustainable yield
+Tragedy of the commons
+Carrying capacity
+Limiting factor
+Liebig's law of the minimum
+Law of tolerance
+Optimal range
+Zone of physiological stress
+Zone of intolerance
+Population ecology
+Population size
+Population density
+Population distribution
+Clumped distribution
+Random distribution
+Uniform distribution
+Population growth
+Exponential growth
+Logistic growth
+Intrinsic rate of increase
+Growth rate
+Birth rate
+Death rate
+Immigration
+Emigration
+Natality
+Mortality
+Survivorship curve
+Type I curve
+Type II curve
+Type III curve
+Life table
+Age structure
+Age pyramid
+Cohort
+Generation time
+Reproductive strategy
+r-selection
+K-selection
+Reproductive value
+Fitness
+Natural selection
+Sexual selection
+Artificial selection
+Genetic drift
+Gene flow
+Mutation
+Evolution
+Adaptation
+Phenotypic plasticity
+Acclimatization
+Acclimation
+Behavioral ecology
+Foraging behavior
+Optimal foraging theory
+Predator avoidance
+Anti-predator adaptation
+Camouflage
+Mimicry
+Batesian mimicry
+Müllerian mimicry
+Aposematism
+Warning coloration
+Crypsis
+Countershading
+Disruptive coloration
+Aggressive mimicry
+Mating system
+Monogamy
+Polygamy
+Polygyny
+Polyandry
+Promiscuity
+Sexual dimorphism
+Courtship
+Mate choice
+Mate selection
+Sexual conflict
+Intrasexual selection
+Intersexual selection
+Sperm competition
+Infanticide
+Parental care
+Parental investment
+Altricial
+Precocial
+Territoriality
+Territory
+Home range
+Dominance hierarchy
+Pecking order
+Alpha male
+Alpha female
+Subordinate
+Social behavior
+Sociality
+Eusociality
+Altruism
+Kin selection
+Inclusive fitness
+Hamilton's rule
+Reciprocal altruism
+Group selection
+Multilevel selection
+Cooperation
+Mutualism
+Symbiosis
+Commensalism
+Parasitism
+Amensalism
+Competition
+Interspecific competition
+Intraspecific competition
+Competitive exclusion
+Niche differentiation
+Resource partitioning
+Character displacement
+Coexistence
+Predation
+Predator
+Prey
+Predator-prey interaction
+Lotka-Volterra equation
+Functional response
+Type I functional response
+Type II functional response
+Type III functional response
+Numerical response
+Herbivory
+Carnivory
+Omnivory
+Insectivory
+Piscivory
+Frugivory
+Granivory
+Nectarivory
+Detritivory
+Scavenging
+Filter feeding
+Suspension feeding
+Deposit feeding
+Grazing
+Browsing
+Food chain
+Food web
+Trophic level
+Primary producer
+Primary consumer
+Secondary consumer
+Tertiary consumer
+Apex predator
+Top predator
+Decomposer
+Detritivore
+Saprophyte
+Energy flow
+Energy pyramid
+Biomass
+Biomass pyramid
+Pyramid of numbers
+Ecological efficiency
+Trophic efficiency
+10% rule
+Gross primary productivity
+GPP
+Net primary productivity
+NPP
+Secondary productivity
+Standing crop
+Biogeochemical cycle
+Carbon cycle
+Nitrogen cycle
+Phosphorus cycle
+Water cycle
+Hydrological cycle
+Sulfur cycle
+Oxygen cycle
+Nutrient cycle
+Nitrogen fixation
+Nitrification
+Denitrification
+Ammonification
+Phosphorus cycle
+Weathering
+Erosion
+Sedimentation
+Photosynthesis
+Cellular respiration
+Decomposition
+Mineralization
+Immobilization
+Nutrient limitation
+Nitrogen limitation
+Phosphorus limitation
+Redfield ratio
+C:N:P ratio
+Stoichiometry
+Ecological stoichiometry
+Greenhouse gas
+Carbon dioxide
+Methane
+Nitrous oxide
+Water vapor
+Ozone
+Chlorofluorocarbon
+CFC
+Greenhouse effect
+Global warming
+Climate change
+Climate
+Weather
+Temperature
+Precipitation
+Humidity
+Wind
+Solar radiation
+Albedo
+Evapotranspiration
+Microclimate
+Macroclimate
+Mesoclimate
+Climate zone
+Tropical climate
+Temperate climate
+Polar climate
+Arid climate
+Semi-arid climate
+Mediterranean climate
+Oceanic climate
+Continental climate
+Monsoon
+El Niño
+La Niña
+ENSO
+El Niño Southern Oscillation
+North Atlantic Oscillation
+NAO
+Pacific Decadal Oscillation
+PDO
+Atlantic Multidecadal Oscillation
+AMO
+Climate model
+General circulation model
+GCM
+Regional climate model
+RCM
+Climate projection
+Climate scenario
+Representative concentration pathway
+RCP
+Shared socioeconomic pathway
+SSP
+Carbon budget
+Carbon sequestration
+Carbon sink
+Carbon source
+Net ecosystem exchange
+NEE
+Ocean acidification
+Sea level rise
+Glacial retreat
+Ice sheet
+Ice shelf
+Permafrost
+Thawing permafrost
+Methane release
+Positive feedback
+Negative feedback
+Climate feedback
+Tipping point
+Runaway climate change
+Mitigation
+Adaptation
+Climate resilience
+Renewable energy
+Solar energy
+Wind energy
+Hydroelectric power
+Geothermal energy
+Biomass energy
+Biofuel
+Bioethanol
+Biodiesel
+Nuclear energy
+Fossil fuel
+Coal
+Oil
+Natural gas
+Petroleum
+Energy transition
+Decarbonization
+Carbon capture and storage
+CCS
+Carbon capture utilization and storage
+CCUS
+Direct air capture
+DAC
+Afforestation
+Reforestation
+REDD+
+Reducing emissions from deforestation
+Forest degradation
+Clean Development Mechanism
+CDM
+Emissions trading
+Carbon credit
+Carbon offset
+Carbon tax
+Carbon pricing
+Cap and trade
+Paris Agreement
+Kyoto Protocol
+UNFCCC
+United Nations Framework Convention on Climate Change
+IPCC
+Intergovernmental Panel on Climate Change
+Pollution
+Air pollution
+Water pollution
+Soil pollution
+Noise pollution
+Light pollution
+Thermal pollution
+Plastic pollution
+Microplastic
+Particulate matter
+PM2.5
+PM10
+Smog
+Acid rain
+Ozone depletion
+Montreal Protocol
+Chemical pollution
+Heavy metal
+Mercury
+Lead
+Cadmium
+Arsenic
+Chromium
+Pesticide
+Herbicide
+Insecticide
+Fungicide
+DDT
+Neonicotinoid
+Glyphosate
+Roundup
+Persistent organic pollutant
+POP
+Polychlorinated biphenyl
+PCB
+Dioxin
+Polycyclic aromatic hydrocarbon
+PAH
+Volatile organic compound
+VOC
+Nitrogen oxide
+NOx
+Sulfur dioxide
+SO2
+Carbon monoxide
+Ammonia
+Industrial waste
+Hazardous waste
+Electronic waste
+E-waste
+Nuclear waste
+Radioactive waste
+Landfill
+Incineration
+Waste management
+Recycling
+Composting
+Circular economy
+Zero waste
+Cradle to cradle
+Life cycle assessment
+LCA
+Environmental impact assessment
+EIA
+Strategic environmental assessment
+SEA
+Ecological footprint
+Carbon footprint
+Water footprint
+Sustainability
+Sustainable development
+Sustainable Development Goals
+SDGs
+Triple bottom line
+Environmental justice
+Environmental racism
+Ecotoxicology
+Bioaccumulation
+Biomagnification
+Bioconcentration
+LD50
+Lethal dose
+EC50
+Effective concentration
+NOEC
+No observed effect concentration
+LOEC
+Lowest observed effect concentration
+Toxicity
+Acute toxicity
+Chronic toxicity
+Endocrine disruptor
+Carcinogen
+Mutagen
+Teratogen
+Bioremediation
+Phytoremediation
+Mycoremediation
+Bioaugmentation
+Biostimulation
+Natural attenuation
+Wetland treatment
+Constructed wetland
+Green infrastructure
+Nature-based solution
+Ecosystem service
+Provisioning service
+Regulating service
+Cultural service
+Supporting service
+Natural capital
+Ecosystem valuation
+Payment for ecosystem services
+PES
+Green accounting
+Agroecology
+Sustainable agriculture
+Organic farming
+Permaculture
+Regenerative agriculture
+Agroforestry
+Polyculture
+Monoculture
+Crop rotation
+Cover crop
+No-till farming
+Conservation tillage
+Integrated pest management
+IPM
+Biological control
+Precision agriculture
+Urban ecology
+Urban ecosystem
+Green space
+Urban forest
+Urban park
+Green roof
+Green wall
+Urban heat island
+Biophilic design
+Green building
+LEED
+Sustainable city
+Smart city
+Landscape ecology
+Landscape
+Landscape structure
+Landscape composition
+Landscape configuration
+Patch
+Matrix
+Corridor
+Edge effect
+Ecotone
+Metapopulation
+Source population
+Sink population
+Rescue effect
+Colonization
+Extinction
+Patch dynamics
+Habitat connectivity
+Habitat isolation
+Fragmentation
+Edge species
+Interior species
+Core area
+Buffer zone
+Stepping stone
+Wildlife corridor
+Greenway
+Ecological network
+Movement ecology
+Animal movement
+Migration
+Dispersal
+Natal dispersal
+Breeding dispersal
+Long-distance dispersal
+Rare long-distance dispersal event
+Range expansion
+Range shift
+Range contraction
+Geographic range
+Distribution
+Biogeography
+Island biogeography
+Theory of island biogeography
+Species-area relationship
+Distance effect
+Endemism
+Vicariance
+Dispersal biogeography
+Phylogeography
+Historical biogeography
+Paleobiogeography
+Macroecology
+Rapoport's rule
+Bergmann's rule
+Allen's rule
+Jordan's rule
+Foster's rule
+Island gigantism
+Island dwarfism
+Taxon cycle
+Adaptive radiation
+Convergent evolution
+Parallel evolution
+Divergent evolution
+Coevolution
+Diffuse coevolution
+Specific coevolution
+Red Queen hypothesis
+Mutualistic coevolution
+Antagonistic coevolution
+Plant-pollinator interaction
+Pollination
+Pollinator
+Self-pollination
+Cross-pollination
+Wind pollination
+Anemophily
+Animal pollination
+Zoophily
+Insect pollination
+Entomophily
+Bird pollination
+Ornithophily
+Bat pollination
+Chiropterophily
+Bee pollination
+Melittophily
+Butterfly pollination
+Psychophily
+Moth pollination
+Phalaenophily
+Fly pollination
+Myiophily
+Beetle pollination
+Cantharophily
+Pollination syndrome
+Floral trait
+Nectar
+Pollen
+Flower
+Inflorescence
+Anther
+Stigma
+Ovary
+Fruit
+Seed
+Seed dispersal
+Wind dispersal
+Anemochory
+Water dispersal
+Hydrochory
+Animal dispersal
+Zoochory
+Endozoochory
+Epizoochory
+Myrmecochory
+Ant dispersal
+Mammal dispersal
+Bird dispersal
+Ornithochory
+Ballistic dispersal
+Explosive dehiscence
+Plant-herbivore interaction
+Plant defense
+Constitutive defense
+Induced defense
+Physical defense
+Thorn
+Spine
+Trichome
+Chemical defense
+Secondary metabolite
+Alkaloid
+Terpenoid
+Phenolic compound
+Tannin
+Glycoside
+Cyanogenic glycoside
+Glucosinolate
+Herbivore
+Specialist herbivore
+Generalist herbivore
+Detoxification
+Sequestration
+Plant-pathogen interaction
+Plant pathogen
+Plant disease
+Pathogenicity
+Virulence
+Resistance
+Susceptibility
+Gene-for-gene model
+Effector
+PAMP-triggered immunity
+PTI
+Effector-triggered immunity
+ETI
+Hypersensitive response
+Systemic acquired resistance
+SAR
+Induced systemic resistance
+ISR
+Host-parasite interaction
+Parasite
+Ectoparasite
+Endoparasite
+Obligate parasite
+Facultative parasite
+Micropredator
+Parasitoid
+Brood parasite
+Kleptoparasite
+Social parasite
+Cuckoo
+Virulence
+Transmission
+Horizontal transmission
+Vertical transmission
+Vector
+Disease vector
+Zoonosis
+Emerging infectious disease
+Spillover
+Host specificity
+Host range
+Reservoir host
+Intermediate host
+Definitive host
+Disease ecology
+Epidemiology
+Epizootic
+Enzootic
+Pandemic
+Epidemic
+Endemic
+Prevalence
+Incidence
+R0
+Basic reproduction number
+Herd immunity
+Vector-borne disease
+Malaria
+Dengue
+Yellow fever
+Zika virus
+Chikungunya
+West Nile virus
+Lyme disease
+Plague
+Typhus
+Leishmaniasis
+Trypanosomiasis
+Chagas disease
+African trypanosomiasis
+Sleeping sickness
+River blindness
+Onchocerciasis
+Schistosomiasis
+Disease transmission model
+SIR model
+Susceptible-Infected-Recovered
+SEIR model
+Compartmental model
+Mathematical model
+Theoretical ecology
+Population model
+Metapopulation model
+Community model
+Ecosystem model
+Individual-based model
+Agent-based model
+Cellular automaton
+Spatially explicit model
+Dynamic model
+Equilibrium model
+Nonequilibrium model
+Stochastic model
+Deterministic model
+Stability
+Resilience
+Resistance
+Alternative stable state
+Regime shift
+Critical transition
+Disturbance
+Perturbation
+Pulse disturbance
+Press disturbance
+Succession
+Primary succession
+Secondary succession
+Pioneer stage
+Climax community
+Intermediate disturbance hypothesis
+Chronosequence
+Facilitation
+Inhibition
+Tolerance
+Assembly rules
+Community assembly
+Niche theory
+Neutral theory
+Unified neutral theory of biodiversity
+Dispersal limitation
+Environmental filtering
+Priority effect
+Historical contingency
+

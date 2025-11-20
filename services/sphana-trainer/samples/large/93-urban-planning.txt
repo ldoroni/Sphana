@@ -1,0 +1,611 @@
+Urban planning
+City planning
+Town planning
+Regional planning
+Urban design
+Urban development
+Urbanism
+New Urbanism
+Smart growth
+Sustainable urbanism
+Comprehensive plan
+Master plan
+General plan
+Land use plan
+Zoning
+Zoning ordinance
+Land use zoning
+Residential zoning
+Commercial zoning
+Industrial zoning
+Mixed-use zoning
+Agricultural zoning
+Overlay zoning
+Euclidean zoning
+Form-based code
+Planned unit development
+PUD
+Variance
+Special use permit
+Conditional use
+Rezoning
+Subdivision
+Platting
+Lot
+Parcel
+Density
+Population density
+Housing density
+Floor area ratio
+FAR
+Building height
+Setback
+Front setback
+Side setback
+Rear setback
+Lot coverage
+Open space
+Green space
+Public space
+Urban green space
+Park
+Pocket park
+Neighborhood park
+Community park
+Regional park
+Urban forest
+Street tree
+Plaza
+Square
+Public square
+Town square
+Greenway
+Linear park
+Trail
+Bike path
+Bicycle infrastructure
+Pedestrian infrastructure
+Sidewalk
+Walkability
+Complete streets
+Streets for all
+Multimodal
+Accessibility
+Universal design
+ADA
+Americans with Disabilities Act
+Transportation planning
+Urban transportation
+Transit
+Public transportation
+Public transit
+Mass transit
+Bus
+Bus rapid transit
+BRT
+Light rail
+LRT
+Metro
+Subway
+Commuter rail
+Regional rail
+Streetcar
+Tram
+Ferry
+Park and ride
+Transit-oriented development
+TOD
+Station area planning
+Transit hub
+Intermodal
+Traffic
+Traffic congestion
+Congestion
+Traffic flow
+Level of service
+LOS
+Traffic calming
+Speed hump
+Speed table
+Chicane
+Roundabout
+Traffic circle
+Intersection
+Signalized intersection
+Traffic signal
+Crosswalk
+Pedestrian crossing
+Bicycle lane
+Bike lane
+Protected bike lane
+Cycle track
+Shared lane
+Sharrow
+Greenway
+Mobility
+Active transportation
+Active mobility
+Walking
+Cycling
+Micromobility
+E-scooter
+Bikeshare
+Bike sharing
+Car sharing
+Ride sharing
+Transportation demand management
+TDM
+Parking
+Parking lot
+Parking garage
+Parking structure
+On-street parking
+Off-street parking
+Parking requirement
+Parking minimum
+Parking maximum
+Parking management
+Road network
+Street network
+Grid
+Street grid
+Block
+Superblock
+Cul-de-sac
+Dead-end street
+Arterial
+Collector
+Local street
+Highway
+Freeway
+Expressway
+Boulevard
+Avenue
+Right-of-way
+ROW
+Housing
+Affordable housing
+Social housing
+Public housing
+Housing authority
+Low-income housing
+Workforce housing
+Market-rate housing
+Subsidized housing
+Housing voucher
+Section 8
+Inclusionary zoning
+Housing stock
+Housing unit
+Dwelling unit
+Single-family home
+Detached house
+Townhouse
+Row house
+Duplex
+Triplex
+Multifamily housing
+Apartment
+Condominium
+Condo
+Cooperative
+Co-op
+Mixed-income housing
+Accessory dwelling unit
+ADU
+Granny flat
+In-law unit
+Cottage
+Housing development
+Residential development
+Subdivision
+Planned community
+Gated community
+Cohousing
+Tiny house
+Modular housing
+Prefabricated housing
+Mobile home
+Manufactured housing
+Homeless
+Homelessness
+Homeless shelter
+Transitional housing
+Supportive housing
+Housing First
+Gentrification
+Displacement
+Revitalization
+Redevelopment
+Urban renewal
+Urban regeneration
+Brownfield
+Brownfield redevelopment
+Infill development
+Adaptive reuse
+Historic preservation
+Heritage conservation
+Historic district
+Landmark
+Conservation district
+Mixed-use development
+Mixed-use
+Vertical mixed-use
+Horizontal mixed-use
+Live-work
+Commercial development
+Retail
+Shopping center
+Strip mall
+Big-box store
+Downtown
+Central business district
+CBD
+Main street
+High street
+Urban core
+City center
+Uptown
+Midtown
+Neighborhood
+Quarter
+District
+Ward
+Precinct
+Community
+Residential neighborhood
+Commercial district
+Industrial district
+Waterfront
+Riverfont
+Harborfront
+Edge city
+Suburb
+Suburban
+Suburbanization
+Urban sprawl
+Sprawl
+Exurb
+Bedroom community
+New town
+Satellite city
+Garden city
+Planned city
+New Urbanism
+Traditional Neighborhood Development
+TND
+Walkable community
+15-minute city
+Compact city
+Polycentricity
+Polycentric city
+Smart city
+Intelligent city
+Digital city
+Sensor
+Internet of Things
+IoT
+Big data
+Urban informatics
+Geographic information system
+GIS
+Spatial analysis
+Mapping
+Urban analytics
+Community engagement
+Public participation
+Participatory planning
+Community planning
+Stakeholder
+Public hearing
+Public comment
+Town hall
+Charrette
+Design charrette
+Workshop
+Focus group
+Survey
+Questionnaire
+Visioning
+Place-making
+Tactical urbanism
+Temporary installation
+Pop-up
+Guerrilla urbanism
+DIY urbanism
+Equity
+Social equity
+Environmental justice
+Spatial justice
+Inclusive planning
+Community development
+Economic development
+Local economy
+Small business
+Entrepreneurship
+Innovation district
+Tech hub
+Business improvement district
+BID
+Special assessment district
+Tax increment financing
+TIF
+Enterprise zone
+Opportunity zone
+Resilience
+Urban resilience
+Climate resilience
+Climate adaptation
+Flood resilience
+Disaster resilience
+Disaster preparedness
+Mitigation
+Risk reduction
+Vulnerability
+Urban heat island
+UHI
+Heat island effect
+Green infrastructure
+Blue infrastructure
+Blue-green infrastructure
+Stormwater management
+Low impact development
+LID
+Green roof
+Rain garden
+Bioswale
+Permeable pavement
+Porous pavement
+Infiltration
+Detention pond
+Retention pond
+Sustainable development
+Sustainability
+Triple bottom line
+LEED
+Leadership in Energy and Environmental Design
+Green building
+Energy efficiency
+Renewable energy
+Solar panel
+Wind turbine
+District energy
+Combined heat and power
+CHP
+Cogeneration
+Zero carbon
+Net zero
+Carbon neutral
+Circular economy
+Waste management
+Solid waste
+Recycling
+Composting
+Waste reduction
+Zero waste
+Landfill
+Transfer station
+Materials recovery facility
+MRF
+Water supply
+Water infrastructure
+Water system
+Drinking water
+Potable water
+Water treatment
+Water treatment plant
+Water quality
+Water conservation
+Water efficiency
+Rainwater harvesting
+Greywater
+Wastewater
+Sanitary sewer
+Stormwater sewer
+Combined sewer
+Sewer system
+Wastewater treatment
+Sewage treatment
+Wastewater treatment plant
+WWTP
+Septic system
+Energy infrastructure
+Electric grid
+Power grid
+Electrical infrastructure
+Natural gas
+Gas pipeline
+Telecommunications
+Broadband
+Fiber optic
+Internet access
+Digital divide
+Urban infrastructure
+Infrastructure
+Public infrastructure
+Gray infrastructure
+Infrastructure planning
+Capital improvement program
+CIP
+Asset management
+Maintenance
+Infrastructure investment
+Aging infrastructure
+Infrastructure deficit
+Urban form
+Built environment
+Urban fabric
+Urban morphology
+Urban structure
+Urban density
+Compact development
+High-density
+Low-density
+Building typology
+Architecture
+Architectural style
+Facade
+Streetscape
+Streetwall
+Human scale
+Building materials
+Massing
+Height
+Scale
+Proportion
+Rhythm
+Visual quality
+Aesthetic
+Urban ecology
+Urban ecosystem
+Biodiversity
+Urban wildlife
+Habitat
+Corridor
+Wildlife corridor
+Ecological network
+Green corridor
+Urban agriculture
+Community garden
+Urban farm
+Rooftop garden
+Vertical farm
+Food system
+Local food
+Food desert
+Food security
+Food access
+Public health
+Health
+Healthy community
+Active living
+Physical activity
+Obesity
+Air quality
+Air pollution
+Emissions
+Traffic pollution
+Noise
+Noise pollution
+Light pollution
+Crime prevention
+Safety
+Public safety
+Crime prevention through environmental design
+CPTED
+Eyes on the street
+Surveillance
+Lighting
+Street lighting
+Demographics
+Population
+Population growth
+Population decline
+Shrinking city
+Aging population
+Migration
+Immigration
+Urbanization
+Rural-urban migration
+Megacity
+Metropolitan area
+Metro area
+City region
+Urban agglomeration
+Conurbation
+Metropolitan planning organization
+MPO
+Regional planning commission
+Planning department
+Planning commission
+Zoning board
+Board of zoning appeals
+BZA
+City council
+Mayor
+City manager
+Planner
+Urban planner
+City planner
+Regional planner
+Transportation planner
+Environmental planner
+Land use planner
+Community planner
+Planning consultant
+Developer
+Real estate developer
+Architect
+Landscape architect
+Civil engineer
+Traffic engineer
+Urban designer
+Policy
+Public policy
+Urban policy
+Housing policy
+Transportation policy
+Environmental policy
+Land use policy
+Growth management
+Urban growth boundary
+UGB
+Greenbelt
+Agricultural preservation
+Farmland preservation
+Easement
+Conservation easement
+Transfer of development rights
+TDR
+Smart growth principles
+Location efficiency
+Jobs-housing balance
+Transit access
+Vision
+Strategic plan
+Implementation
+Phasing
+Indicator
+Performance measure
+Benchmark
+Goal
+Objective
+Strategy
+Action item
+Best practice
+Case study
+Precedent
+International planning
+Comparative planning
+European planning
+Asian urbanism
+Latin American cities
+African cities
+Developing world
+Informal settlement
+Slum
+Favela
+Shantytown
+Squatter settlement
+Upgrading
+Sites and services
+Self-help housing
+Right to the city
+Citizen participation
+Advocacy planning
+Equity planning
+Communicative planning
+Collaborative planning
+Planning theory
+Planning history
+Garden city movement
+City Beautiful
+Modernism
+Le Corbusier
+Radiant City
+CIAM
+Jane Jacobs
+Kevin Lynch
+Image of the city
+Imageability
+

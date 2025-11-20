@@ -1,0 +1,667 @@
+Biomedical engineering
+Bioengineering
+Medical engineering
+Biotechnology engineering
+Biomechanics
+Mechanical analysis
+Tissue mechanics
+Biomaterial mechanics
+Bone mechanics
+Soft tissue mechanics
+Cartilage mechanics
+Ligament
+Tendon
+Muscle mechanics
+Cardiovascular mechanics
+Hemodynamics
+Blood flow
+Cardiac mechanics
+Heart mechanics
+Vascular mechanics
+Arterial mechanics
+Rheology
+Blood rheology
+Viscoelasticity
+Elastic modulus
+Young's modulus
+Stress
+Strain
+Stress-strain relationship
+Tensile strength
+Compressive strength
+Shear stress
+Finite element analysis
+FEA
+Computational modeling
+Gait analysis
+Motion analysis
+Kinematics
+Kinetics
+Joint mechanics
+Hip mechanics
+Knee mechanics
+Ankle mechanics
+Shoulder mechanics
+Spine biomechanics
+Orthopaedic biomechanics
+Sports biomechanics
+Injury biomechanics
+Impact biomechanics
+Crash testing
+Bioinstrumentation
+Medical instrumentation
+Biomedical sensor
+Biosensor
+Transducer
+Pressure sensor
+Flow sensor
+Temperature sensor
+Force sensor
+Load cell
+Accelerometer
+Gyroscope
+Electrochemical sensor
+Optical sensor
+Glucose sensor
+pH sensor
+Oxygen sensor
+Carbon dioxide sensor
+Wearable sensor
+Implantable sensor
+Signal processing
+Biomedical signal processing
+Digital signal processing
+DSP
+Filter
+Low-pass filter
+High-pass filter
+Band-pass filter
+Notch filter
+Analog-to-digital conversion
+ADC
+Sampling
+Sampling rate
+Quantization
+Amplifier
+Instrumentation amplifier
+Noise
+Signal-to-noise ratio
+SNR
+Artifact
+Baseline wander
+Medical imaging
+Biomedical imaging
+Diagnostic imaging
+Imaging modality
+X-ray imaging
+Radiography
+Fluoroscopy
+Computed tomography
+CT
+CT scan
+Tomography
+Reconstruction
+Filtered back projection
+Hounsfield unit
+HU
+Contrast agent
+Iodine contrast
+Magnetic resonance imaging
+MRI
+Nuclear magnetic resonance
+NMR
+Radiofrequency pulse
+RF pulse
+Gradient
+Magnetic field gradient
+T1 relaxation
+Longitudinal relaxation
+T2 relaxation
+Transverse relaxation
+Spin echo
+Gradient echo
+Pulse sequence
+Contrast
+T1-weighted
+T2-weighted
+Proton density
+Functional MRI
+fMRI
+BOLD
+Blood oxygen level dependent
+Diffusion MRI
+Diffusion tensor imaging
+DTI
+Magnetic resonance angiography
+MRA
+Magnetic resonance spectroscopy
+MRS
+Ultrasound imaging
+Ultrasonography
+Ultrasound
+Medical ultrasound
+Diagnostic ultrasound
+Transducer
+Piezoelectric
+Acoustic wave
+Sound wave
+Frequency
+MHz
+B-mode
+M-mode
+Doppler ultrasound
+Color Doppler
+Pulsed-wave Doppler
+Continuous-wave Doppler
+Echocardiography
+Cardiac ultrasound
+Nuclear medicine imaging
+Scintigraphy
+Gamma camera
+Single-photon emission computed tomography
+SPECT
+Positron emission tomography
+PET
+PET-CT
+PET-MRI
+Radionuclide
+Radiopharmaceutical
+Tracer
+Fluorodeoxyglucose
+FDG
+Technetium-99m
+Tc-99m
+Optical imaging
+Bioluminescence
+Fluorescence
+Fluorescence microscopy
+Confocal microscopy
+Two-photon microscopy
+Optical coherence tomography
+OCT
+Near-infrared spectroscopy
+NIRS
+Image processing
+Image analysis
+Medical image processing
+Segmentation
+Image segmentation
+Registration
+Image registration
+Enhancement
+Edge detection
+Feature extraction
+Pattern recognition
+Computer vision
+Deep learning
+Convolutional neural network
+CNN
+Artificial intelligence
+AI
+Machine learning
+Image reconstruction
+3D reconstruction
+Volume rendering
+Medical devices
+Medical device
+Implantable device
+Prosthetic device
+Diagnostic device
+Therapeutic device
+Monitoring device
+Surgical device
+Device design
+Device development
+Prototype
+Testing
+Bench testing
+Animal testing
+Preclinical testing
+Clinical trial
+Regulatory approval
+FDA approval
+510(k) clearance
+Premarket approval
+PMA
+CE marking
+Quality system
+ISO 13485
+Good manufacturing practice
+GMP
+Risk management
+ISO 14971
+Biocompatibility
+ISO 10993
+Sterilization
+Cardiovascular devices
+Cardiac device
+Pacemaker
+Cardiac pacemaker
+Implantable cardioverter-defibrillator
+ICD
+Cardiac resynchronization therapy
+CRT
+Heart valve
+Prosthetic heart valve
+Mechanical heart valve
+Bioprosthetic heart valve
+Tissue valve
+Transcatheter aortic valve replacement
+TAVR
+TAVI
+Stent
+Coronary stent
+Drug-eluting stent
+DES
+Bare-metal stent
+BMS
+Angioplasty
+Percutaneous coronary intervention
+PCI
+Balloon catheter
+Catheter
+Vascular access
+Central venous catheter
+Peripherally inserted central catheter
+PICC
+Heart-lung machine
+Cardiopulmonary bypass
+CPB
+Oxygenator
+Ventricular assist device
+VAD
+Left ventricular assist device
+LVAD
+Artificial heart
+Total artificial heart
+TAH
+Orthopedic devices
+Orthopedic implant
+Joint replacement
+Arthroplasty
+Hip replacement
+Total hip arthroplasty
+THA
+Hip prosthesis
+Acetabular cup
+Femoral stem
+Knee replacement
+Total knee arthroplasty
+TKA
+Knee prosthesis
+Tibial component
+Femoral component
+Patellar component
+Shoulder replacement
+Elbow replacement
+Ankle replacement
+Spinal implant
+Spinal fusion
+Pedicle screw
+Spinal rod
+Interbody cage
+Artificial disc
+Disc replacement
+Bone plate
+Bone screw
+Intramedullary nail
+IM nail
+External fixator
+Fracture fixation
+Orthobiologics
+Bone graft
+Bone graft substitute
+Bone cement
+Polymethylmethacrylate
+PMMA
+Neural devices
+Neural engineering
+Neuroengineering
+Brain-computer interface
+BCI
+Brain-machine interface
+BMI
+Neuroprosthetic
+Neuroprosthesis
+Cochlear implant
+Auditory brainstem implant
+ABI
+Retinal implant
+Bionic eye
+Deep brain stimulation
+DBS
+Neurostimulator
+Spinal cord stimulation
+SCS
+Vagus nerve stimulation
+VNS
+Sacral nerve stimulation
+SNS
+Peripheral nerve stimulation
+Transcranial magnetic stimulation
+TMS
+Transcranial direct current stimulation
+tDCS
+Electroencephalography
+EEG
+Electrocorticography
+ECoG
+Microelectrode
+Microelectrode array
+Neural recording
+Neural stimulation
+Optogenetics
+Drug delivery systems
+Drug delivery device
+Controlled release
+Sustained release
+Extended release
+Implantable drug delivery
+Infusion pump
+Insulin pump
+Pain pump
+Intrathecal pump
+Transdermal patch
+Nicotine patch
+Microneedle
+Microneedle patch
+Nanoparticle
+Liposome
+Nanocarrier
+Targeted drug delivery
+Injectable
+Prefilled syringe
+Autoinjector
+Inhaler
+Metered-dose inhaler
+MDI
+Dry powder inhaler
+DPI
+Nebulizer
+Dialysis
+Hemodialysis
+Peritoneal dialysis
+Dialysis machine
+Dialyzer
+Artificial kidney
+Blood purification
+Hemofiltration
+Hemodiafiltration
+Biomaterials
+Biomaterial
+Biomedical material
+Implant material
+Metal
+Titanium
+Titanium alloy
+Stainless steel
+Cobalt-chromium alloy
+CoCr
+Nitinol
+Shape memory alloy
+Ceramic
+Alumina
+Aluminum oxide
+Zirconia
+Zirconium oxide
+Hydroxyapatite
+Calcium phosphate
+Bioactive glass
+Polymer
+Biomedical polymer
+Polyethylene
+Ultra-high molecular weight polyethylene
+UHMWPE
+Polyether ether ketone
+PEEK
+Polytetrafluoroethylene
+PTFE
+Teflon
+Silicone
+Polyurethane
+Polylactic acid
+PLA
+Polyglycolic acid
+PGA
+Poly(lactic-co-glycolic acid)
+PLGA
+Hydrogel
+Collagen
+Gelatin
+Chitosan
+Alginate
+Natural polymer
+Synthetic polymer
+Composite material
+Fiber-reinforced composite
+Carbon fiber
+Surface modification
+Surface treatment
+Coating
+Bioactive coating
+Antibacterial coating
+Drug-eluting coating
+Plasma treatment
+Corrosion
+Corrosion resistance
+Wear
+Wear resistance
+Tribology
+Friction
+Lubrication
+Biocompatibility
+Biocompatible material
+Cytotoxicity
+Hemocompatibility
+Blood compatibility
+Thrombogenicity
+Thrombosis
+Anticoagulant
+Heparin
+Biodegradable
+Biodegradation
+Bioresorbable
+Tissue engineering
+Regenerative medicine
+Scaffold
+Tissue scaffold
+Porous scaffold
+3D scaffold
+Porosity
+Pore size
+Cell seeding
+Cell culture
+3D cell culture
+Bioreactor
+Perfusion bioreactor
+Mechanical stimulation
+Biochemical stimulation
+Growth factor
+Extracellular matrix
+ECM
+Decellularization
+Recellularization
+Stem cell
+Embryonic stem cell
+Induced pluripotent stem cell
+iPSC
+Mesenchymal stem cell
+MSC
+Differentiation
+Cell differentiation
+Tissue regeneration
+Bone tissue engineering
+Cartilage tissue engineering
+Skin tissue engineering
+Vascular tissue engineering
+Blood vessel
+Cardiac tissue engineering
+Heart tissue
+Neural tissue engineering
+Nerve regeneration
+Organoid
+Organ-on-a-chip
+Microfluidics
+Lab-on-a-chip
+3D printing
+Bioprinting
+3D bioprinting
+Additive manufacturing
+Computer-aided design
+CAD
+Stereolithography
+SLA
+Fused deposition modeling
+FDM
+Selective laser sintering
+SLS
+Electron beam melting
+EBM
+Patient-specific implant
+Anatomical model
+Surgical planning
+Rehabilitation engineering
+Assistive technology
+Assistive device
+Mobility aid
+Wheelchair
+Manual wheelchair
+Power wheelchair
+Electric wheelchair
+Walker
+Cane
+Crutch
+Prosthesis
+Prosthetic limb
+Upper limb prosthesis
+Lower limb prosthesis
+Transtibial prosthesis
+Transfemoral prosthesis
+Transradial prosthesis
+Transhumeral prosthesis
+Socket
+Liner
+Suspension
+Myoelectric prosthesis
+Electromyography
+EMG
+Body-powered prosthesis
+Passive prosthesis
+Cosmetic prosthesis
+Microprocessor knee
+C-Leg
+Bionic limb
+Orthosis
+Orthotic device
+Brace
+Ankle-foot orthosis
+AFO
+Knee-ankle-foot orthosis
+KAFO
+Spinal orthosis
+Scoliosis brace
+Cervical collar
+Hearing aid
+Behind-the-ear hearing aid
+BTE
+In-the-ear hearing aid
+ITE
+Completely-in-canal hearing aid
+CIC
+Bone-anchored hearing aid
+BAHA
+Vision aid
+Eyeglasses
+Contact lens
+Augmentative and alternative communication
+AAC
+Speech-generating device
+Eye-gaze system
+Communication board
+Environmental control unit
+ECU
+Smart home technology
+Home automation
+Clinical engineering
+Medical equipment management
+Equipment maintenance
+Preventive maintenance
+Calibration
+Safety testing
+Electrical safety
+Performance testing
+Equipment inventory
+Asset management
+Technology assessment
+Health technology assessment
+HTA
+Medical device evaluation
+Purchasing
+Lifecycle management
+Hospital engineering
+Healthcare technology management
+HTM
+Systems physiology
+Physiological modeling
+Physiological system
+Cardiovascular system
+Respiratory system
+Nervous system
+Musculoskeletal system
+Endocrine system
+Immune system
+Renal system
+Digestive system
+Mathematical model
+Computational model
+Lumped parameter model
+Distributed parameter model
+Pharmacokinetics
+Pharmacodynamics
+Compartmental model
+Drug concentration
+Drug metabolism
+Clearance
+Volume of distribution
+Half-life
+Absorption
+Distribution
+Metabolism
+Excretion
+ADME
+Physiologically based pharmacokinetic model
+PBPK
+Telemedicine
+Telehealth
+Remote monitoring
+Remote patient monitoring
+RPM
+Wireless sensor
+Internet of Things
+IoT
+Mobile health
+mHealth
+Health app
+Smartphone app
+Wearable device
+Fitness tracker
+Activity monitor
+Smartwatch
+Connected device
+Cloud computing
+Data transmission
+Data security
+HIPAA
+Health Insurance Portability and Accountability Act
+Privacy
+Encryption
+Electronic health record
+EHR
+Health information technology
+HIT
+Interoperability
+Standards
+HL7
+DICOM
+Digital Imaging and Communications in Medicine
+

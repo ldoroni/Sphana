@@ -1,0 +1,834 @@
+Epidemiology
+Disease
+Infectious disease
+Non-communicable disease
+Chronic disease
+Acute disease
+Population health
+Public health
+Disease surveillance
+Epidemiologic surveillance
+Disease monitoring
+Health monitoring
+Disease frequency
+Morbidity
+Mortality
+Case fatality rate
+CFR
+Prevalence
+Point prevalence
+Period prevalence
+Incidence
+Incidence rate
+Cumulative incidence
+Attack rate
+Secondary attack rate
+Incidence proportion
+Disease burden
+Burden of disease
+Disability-adjusted life years
+DALY
+Years of life lost
+YLL
+Years lived with disability
+YLD
+Quality-adjusted life years
+QALY
+Health-adjusted life expectancy
+HALE
+Population at risk
+Denominator
+Numerator
+Person-time
+Person-years
+Rate
+Proportion
+Ratio
+Risk
+Absolute risk
+Relative risk
+RR
+Risk ratio
+Odds
+Odds ratio
+OR
+Hazard
+Hazard ratio
+HR
+Attributable risk
+AR
+Attributable risk percent
+Population attributable risk
+PAR
+Population attributable fraction
+PAF
+Etiologic fraction
+Number needed to treat
+NNT
+Number needed to harm
+NNH
+Standardization
+Age-standardized rate
+Direct standardization
+Indirect standardization
+Standardized mortality ratio
+SMR
+Standardized incidence ratio
+SIR
+Crude rate
+Age-specific rate
+Sex-specific rate
+Demographic factors
+Age
+Sex
+Gender
+Race
+Ethnicity
+Socioeconomic status
+SES
+Education
+Income
+Occupation
+Geographic location
+Urban
+Rural
+Risk factor
+Protective factor
+Exposure
+Agent
+Host
+Environment
+Epidemiologic triad
+Natural history of disease
+Disease progression
+Disease spectrum
+Subclinical disease
+Clinical disease
+Asymptomatic infection
+Carrier
+Carrier state
+Chronic carrier
+Convalescent carrier
+Incubation period
+Latent period
+Communicable period
+Period of communicability
+Infectious period
+Generation time
+Serial interval
+Basic reproduction number
+R0
+Effective reproduction number
+Rt
+Reproductive number
+Herd immunity
+Community immunity
+Critical immunization threshold
+Herd immunity threshold
+Epidemic
+Outbreak
+Endemic
+Pandemic
+Epidemic curve
+Epi curve
+Temporal distribution
+Spatial distribution
+Geographic distribution
+Person
+Place
+Time
+Epidemic pattern
+Common source outbreak
+Point source outbreak
+Continuous source outbreak
+Intermittent source outbreak
+Propagated outbreak
+Person-to-person transmission
+Mixed outbreak
+Attack rate
+Primary case
+Index case
+Secondary case
+Tertiary case
+Case definition
+Suspected case
+Probable case
+Confirmed case
+Case finding
+Active case finding
+Passive case finding
+Contact tracing
+Quarantine
+Isolation
+Social distancing
+Physical distancing
+Disease transmission
+Mode of transmission
+Direct transmission
+Indirect transmission
+Airborne transmission
+Droplet transmission
+Fecal-oral transmission
+Fomite transmission
+Vector-borne transmission
+Vertical transmission
+Horizontal transmission
+Sexual transmission
+Blood-borne transmission
+Parenteral transmission
+Zoonosis
+Zoonotic disease
+Animal reservoir
+Vector
+Arthropod vector
+Mosquito
+Tick
+Flea
+Louse
+Fly
+Biological vector
+Mechanical vector
+Reservoir
+Human reservoir
+Animal reservoir
+Environmental reservoir
+Vehicle
+Food-borne transmission
+Water-borne transmission
+Study design
+Observational study
+Experimental study
+Descriptive study
+Analytical study
+Case report
+Case series
+Cross-sectional study
+Prevalence study
+Survey
+Cohort study
+Prospective cohort
+Retrospective cohort
+Longitudinal study
+Exposed group
+Unexposed group
+Follow-up
+Loss to follow-up
+Censoring
+Case-control study
+Case-control
+Retrospective study
+Cases
+Controls
+Matching
+Matched case-control
+Frequency matching
+Individual matching
+Exposure assessment
+Recall bias
+Selection bias
+Nested case-control study
+Case-cohort study
+Randomized controlled trial
+RCT
+Clinical trial
+Intervention study
+Experimental study
+Randomization
+Random allocation
+Control group
+Treatment group
+Intervention group
+Experimental group
+Placebo
+Placebo control
+Active control
+Blinding
+Masking
+Single-blind
+Double-blind
+Triple-blind
+Unblinded
+Open-label
+Allocation concealment
+Intention-to-treat analysis
+ITT
+Per-protocol analysis
+PP
+As-treated analysis
+Crossover trial
+Factorial design
+Cluster randomized trial
+Community trial
+Field trial
+Vaccine trial
+Phase I trial
+Phase II trial
+Phase III trial
+Phase IV trial
+Bias
+Selection bias
+Information bias
+Measurement bias
+Recall bias
+Interviewer bias
+Observer bias
+Reporting bias
+Publication bias
+Lead time bias
+Length time bias
+Berkson bias
+Healthy worker effect
+Confounding
+Confounder
+Confounding variable
+Effect modification
+Interaction
+Synergism
+Antagonism
+Effect modifier
+Stratification
+Matching
+Randomization
+Restriction
+Statistical adjustment
+Multivariable analysis
+Regression analysis
+Multiple regression
+Logistic regression
+Cox proportional hazards
+Propensity score
+Propensity score matching
+Inverse probability weighting
+Validity
+Internal validity
+External validity
+Generalizability
+Reliability
+Reproducibility
+Sensitivity
+Specificity
+Positive predictive value
+PPV
+Negative predictive value
+NPV
+Accuracy
+Precision
+Likelihood ratio
+Positive likelihood ratio
+Negative likelihood ratio
+Receiver operating characteristic
+ROC curve
+Area under the curve
+AUC
+Screening
+Screening test
+Diagnostic test
+Screening program
+Mass screening
+Selective screening
+Case finding
+Secondary prevention
+Early detection
+Asymptomatic disease
+Lead time
+Length time
+Overdiagnosis
+False positive
+False negative
+True positive
+True negative
+Predictive value
+Prevalence-dependent
+Pre-test probability
+Post-test probability
+Bayes' theorem
+Gold standard
+Reference standard
+Confirmation bias
+Verification bias
+Spectrum bias
+Disease prevention
+Prevention
+Primary prevention
+Secondary prevention
+Tertiary prevention
+Health promotion
+Risk reduction
+Risk avoidance
+Immunization
+Vaccination
+Vaccine
+Vaccine efficacy
+Vaccine effectiveness
+Vaccine coverage
+Immunization schedule
+Herd immunity
+Vaccine hesitancy
+Anti-vaccination
+Chemoprophylaxis
+Pre-exposure prophylaxis
+PrEP
+Post-exposure prophylaxis
+PEP
+Environmental modification
+Behavioral modification
+Lifestyle modification
+Risk factor modification
+Screening
+Early detection
+Early treatment
+Disease management
+Complication prevention
+Disability prevention
+Rehabilitation
+Quality of life
+Communicable disease epidemiology
+Infectious disease epidemiology
+Transmission dynamics
+Epidemic modeling
+Mathematical model
+SIR model
+SEIR model
+Susceptible
+Exposed
+Infectious
+Recovered
+Contact rate
+Mixing pattern
+Force of infection
+Serial interval
+Generation time
+Doubling time
+Epidemic growth rate
+Epidemic peak
+Flattening the curve
+Non-pharmaceutical interventions
+NPI
+Pharmaceutical interventions
+Antimicrobial resistance
+AMR
+Antibiotic resistance
+Drug resistance
+Multidrug resistance
+MDR
+Extensively drug-resistant
+XDR
+Pandrug-resistant
+PDR
+Nosocomial infection
+Hospital-acquired infection
+HAI
+Healthcare-associated infection
+Surgical site infection
+SSI
+Catheter-associated urinary tract infection
+CAUTI
+Central line-associated bloodstream infection
+CLABSI
+Ventilator-associated pneumonia
+VAP
+Clostridium difficile infection
+C. diff
+Infection control
+Hand hygiene
+Isolation precautions
+Standard precautions
+Contact precautions
+Droplet precautions
+Airborne precautions
+Personal protective equipment
+PPE
+Disinfection
+Sterilization
+Environmental hygiene
+Outbreak investigation
+Case investigation
+Descriptive epidemiology
+Hypothesis generation
+Hypothesis testing
+Analytical epidemiology
+Control measures
+Source identification
+Foodborne outbreak
+Waterborne outbreak
+Emerging infectious disease
+Re-emerging infectious disease
+Pandemic preparedness
+Pandemic response
+Contact tracing
+Case isolation
+Quarantine
+Travel restrictions
+Border control
+Chronic disease epidemiology
+Non-communicable disease epidemiology
+NCD epidemiology
+Cardiovascular disease epidemiology
+Cancer epidemiology
+Diabetes epidemiology
+Respiratory disease epidemiology
+Chronic disease risk factors
+Modifiable risk factors
+Non-modifiable risk factors
+Behavioral risk factors
+Tobacco use
+Smoking
+Physical inactivity
+Sedentary lifestyle
+Unhealthy diet
+Excessive alcohol consumption
+Obesity
+Overweight
+Hypertension
+High blood pressure
+Hyperlipidemia
+High cholesterol
+Hyperglycemia
+Metabolic syndrome
+Cardiovascular risk
+Framingham Risk Score
+ASCVD Risk Calculator
+Cancer screening
+Mammography
+Colonoscopy
+Pap smear
+PSA
+Prostate-specific antigen
+Low-dose CT
+Lung cancer screening
+Disease registry
+Cancer registry
+Vital statistics
+Birth registry
+Death registry
+Disease reporting
+Notifiable disease
+Reportable disease
+Mandatory reporting
+Surveillance system
+Passive surveillance
+Active surveillance
+Sentinel surveillance
+Syndromic surveillance
+Laboratory-based surveillance
+Indicator-based surveillance
+Event-based surveillance
+Real-time surveillance
+Disease cluster
+Spatial cluster
+Temporal cluster
+Spatiotemporal cluster
+Cluster investigation
+Statistical methods
+Descriptive statistics
+Inferential statistics
+Hypothesis testing
+Null hypothesis
+Alternative hypothesis
+P-value
+Statistical significance
+Confidence interval
+CI
+Point estimate
+Standard error
+SE
+Type I error
+False positive
+Alpha
+Type II error
+False negative
+Beta
+Statistical power
+Sample size
+Sample size calculation
+Sampling
+Random sampling
+Stratified sampling
+Cluster sampling
+Systematic sampling
+Convenience sampling
+Sampling error
+Sampling bias
+Non-response bias
+Response rate
+Study population
+Source population
+Target population
+Comparison group
+Descriptive measures
+Mean
+Median
+Mode
+Standard deviation
+Variance
+Range
+Interquartile range
+IQR
+Frequency distribution
+Proportion
+Percentage
+Rate
+Incidence density
+Mortality rate
+Crude mortality rate
+Age-specific mortality rate
+Infant mortality rate
+Maternal mortality rate
+Cause-specific mortality rate
+Proportionate mortality
+Life expectancy
+Survival analysis
+Survival curve
+Kaplan-Meier curve
+Log-rank test
+Hazard function
+Cumulative hazard
+Cox regression
+Proportional hazards
+Time-to-event analysis
+Censored observation
+Right censoring
+Left censoring
+Interval censoring
+Multivariate analysis
+Multiple logistic regression
+Multiple linear regression
+Analysis of variance
+ANOVA
+Chi-square test
+Fisher's exact test
+T-test
+Wilcoxon rank-sum test
+Mann-Whitney U test
+Kruskal-Wallis test
+Correlation
+Pearson correlation
+Spearman correlation
+Regression
+Linear regression
+Logistic regression
+Poisson regression
+Negative binomial regression
+Odds ratio
+Risk ratio
+Rate ratio
+Incidence rate ratio
+Hazard ratio
+Adjusted odds ratio
+Adjusted risk ratio
+Crude odds ratio
+Crude risk ratio
+Confounding adjustment
+Stratified analysis
+Mantel-Haenszel method
+Model fitting
+Goodness of fit
+Likelihood ratio test
+Wald test
+Deviance
+AIC
+Akaike information criterion
+BIC
+Bayesian information criterion
+Missing data
+Complete case analysis
+Imputation
+Multiple imputation
+Meta-analysis
+Systematic review
+Forest plot
+Fixed-effects model
+Random-effects model
+Heterogeneity
+I-squared
+Publication bias
+Funnel plot
+Environmental epidemiology
+Environmental health
+Environmental exposure
+Air pollution
+Particulate matter
+PM2.5
+PM10
+Ozone
+Nitrogen dioxide
+Sulfur dioxide
+Carbon monoxide
+Air quality index
+AQI
+Water pollution
+Drinking water
+Water quality
+Contamination
+Heavy metals
+Lead
+Mercury
+Arsenic
+Pesticides
+Herbicides
+Insecticides
+Organic pollutants
+Persistent organic pollutants
+POPs
+Endocrine disruptors
+Occupational epidemiology
+Occupational health
+Occupational exposure
+Workplace exposure
+Occupational hazard
+Occupational disease
+Work-related disease
+Occupational cancer
+Pneumoconiosis
+Asbestosis
+Silicosis
+Mesothelioma
+Repetitive strain injury
+Carpal tunnel syndrome
+Occupational asthma
+Hearing loss
+Noise-induced hearing loss
+Vibration
+Hand-arm vibration syndrome
+Shift work
+Night shift
+Circadian disruption
+Healthy worker effect
+Social epidemiology
+Social determinants of health
+Health inequality
+Health inequity
+Health disparity
+Socioeconomic gradient
+Income inequality
+Educational attainment
+Employment status
+Unemployment
+Housing
+Neighborhood
+Built environment
+Food security
+Food desert
+Social capital
+Social cohesion
+Social support
+Social network
+Discrimination
+Racism
+Structural racism
+Stress
+Chronic stress
+Adverse childhood experiences
+ACE
+Life course epidemiology
+Early life exposure
+Developmental origins
+Fetal programming
+Lifecourse approach
+Nutritional epidemiology
+Diet
+Dietary intake
+Dietary pattern
+Nutritional status
+Malnutrition
+Undernutrition
+Overnutrition
+Obesity
+Body mass index
+BMI
+Macronutrients
+Micronutrients
+Vitamins
+Minerals
+Dietary assessment
+Food frequency questionnaire
+FFQ
+24-hour dietary recall
+Food diary
+Biomarkers
+Nutritional biomarkers
+Food composition
+Dietary guidelines
+Mediterranean diet
+DASH diet
+Western diet
+Plant-based diet
+Genetic epidemiology
+Genome-wide association study
+GWAS
+Single nucleotide polymorphism
+SNP
+Genetic variant
+Heritability
+Twin study
+Family study
+Linkage analysis
+Association study
+Candidate gene
+Gene-environment interaction
+Mendelian randomization
+Polygenic risk score
+PRS
+Pharmacogenetics
+Pharmacogenomics
+Pharmacoepidemiology
+Drug safety
+Adverse drug reaction
+ADR
+Drug-drug interaction
+Post-marketing surveillance
+Pharmacovigilance
+Drug utilization
+Prescription drug use
+Polypharmacy
+Medication adherence
+Comparative effectiveness
+Drug effectiveness
+Real-world evidence
+Perinatal epidemiology
+Maternal health
+Prenatal care
+Antenatal care
+Birth outcomes
+Birth weight
+Low birth weight
+Very low birth weight
+Preterm birth
+Premature birth
+Small for gestational age
+SGA
+Large for gestational age
+LGA
+Intrauterine growth restriction
+IUGR
+Stillbirth
+Neonatal mortality
+Infant mortality
+Maternal mortality
+Congenital anomaly
+Birth defect
+Teratogen
+Folic acid
+Neural tube defect
+Spina bifida
+Anencephaly
+Aging epidemiology
+Gerontology
+Life expectancy
+Healthy life expectancy
+Compression of morbidity
+Age-related disease
+Frailty
+Cognitive decline
+Dementia
+Alzheimer's disease
+Functional status
+Activities of daily living
+ADL
+Instrumental activities of daily living
+IADL
+Disability
+Falls
+Hip fracture
+Polypharmacy
+

@@ -1,0 +1,542 @@
+Agricultural science
+Agronomy
+Agriculture
+Farming
+Crop science
+Crop production
+Plant science
+Soil science
+Soil
+Soil chemistry
+Soil physics
+Soil biology
+Soil fertility
+Soil health
+Soil organic matter
+Humus
+Soil structure
+Soil texture
+Clay
+Silt
+Sand
+Loam
+Soil pH
+Soil acidity
+Soil alkalinity
+Soil moisture
+Water holding capacity
+Field capacity
+Wilting point
+Soil drainage
+Soil erosion
+Erosion control
+Soil conservation
+Tillage
+Plowing
+No-till farming
+Conservation tillage
+Minimum tillage
+Crop rotation
+Monoculture
+Polyculture
+Intercropping
+Cover crop
+Green manure
+Fallow
+Crop yield
+Yield
+Productivity
+Harvest
+Harvest index
+Plant nutrition
+Nutrient
+Macronutrient
+Micronutrient
+Nitrogen
+Phosphorus
+Potassium
+Calcium
+Magnesium
+Sulfur
+Iron
+Manganese
+Zinc
+Copper
+Boron
+Molybdenum
+Fertilizer
+Organic fertilizer
+Inorganic fertilizer
+Synthetic fertilizer
+Compost
+Manure
+Animal manure
+Green manure
+Nitrogen fixation
+Biological nitrogen fixation
+Rhizobium
+Legume
+Nodule
+Root nodule
+Nitrification
+Denitrification
+Nitrogen cycle
+Phosphorus cycle
+Nutrient cycling
+Nutrient management
+Fertilizer application
+Broadcasting
+Side-dressing
+Foliar application
+Fertigation
+Irrigation
+Irrigation system
+Drip irrigation
+Sprinkler irrigation
+Flood irrigation
+Furrow irrigation
+Center pivot irrigation
+Water management
+Water use efficiency
+Irrigation scheduling
+Evapotranspiration
+Water stress
+Drought
+Drought tolerance
+Drought resistance
+Plant breeding
+Breeding
+Selective breeding
+Hybridization
+Hybrid
+F1 hybrid
+Inbreeding
+Outbreeding
+Crossbreeding
+Backcrossing
+Pedigree breeding
+Line breeding
+Pure line
+Cultivar
+Variety
+Germplasm
+Gene bank
+Seed bank
+Plant genetics
+Quantitative genetics
+Quantitative trait
+Quantitative trait locus
+QTL
+Marker-assisted selection
+MAS
+Genetic marker
+Molecular marker
+DNA marker
+SNP
+Single nucleotide polymorphism
+Genomic selection
+Genetic engineering
+Transgenic plant
+Genetically modified organism
+GMO
+Gene transfer
+Transformation
+Agrobacterium
+Gene gun
+Biolistics
+CRISPR
+Gene editing
+Genome editing
+Bt crop
+Herbicide tolerance
+Herbicide resistance
+Glyphosate resistance
+Pest management
+Integrated pest management
+IPM
+Pest
+Insect pest
+Plant disease
+Plant pathology
+Phytopathology
+Pathogen
+Fungal disease
+Bacterial disease
+Viral disease
+Nematode
+Plant-parasitic nematode
+Weed
+Weed control
+Weed management
+Herbicide
+Insecticide
+Fungicide
+Pesticide
+Pesticide application
+Pesticide resistance
+Biological control
+Biocontrol
+Natural enemy
+Predator
+Parasitoid
+Pathogen
+Microbial pesticide
+Biopesticide
+Pheromone
+Trap crop
+Push-pull strategy
+Crop
+Cereal
+Grain
+Wheat
+Rice
+Maize
+Corn
+Barley
+Oats
+Rye
+Sorghum
+Millet
+Legume
+Soybean
+Peanut
+Bean
+Common bean
+Lima bean
+Pea
+Chickpea
+Lentil
+Cowpea
+Pigeon pea
+Root crop
+Tuber
+Potato
+Sweet potato
+Cassava
+Yam
+Taro
+Carrot
+Beet
+Sugar beet
+Turnip
+Radish
+Oilseed
+Oil crop
+Sunflower
+Rapeseed
+Canola
+Safflower
+Sesame
+Cotton
+Fiber crop
+Flax
+Hemp
+Jute
+Sisal
+Vegetable
+Tomato
+Pepper
+Cucumber
+Squash
+Pumpkin
+Zucchini
+Eggplant
+Cabbage
+Lettuce
+Spinach
+Broccoli
+Cauliflower
+Onion
+Garlic
+Fruit
+Fruit crop
+Tree fruit
+Apple
+Pear
+Peach
+Plum
+Cherry
+Apricot
+Citrus
+Orange
+Lemon
+Lime
+Grapefruit
+Tangerine
+Banana
+Grape
+Berry
+Strawberry
+Raspberry
+Blueberry
+Blackberry
+Mango
+Papaya
+Pineapple
+Avocado
+Fig
+Date
+Olive
+Nut
+Tree nut
+Almond
+Walnut
+Pecan
+Cashew
+Pistachio
+Hazelnut
+Macadamia
+Sugar crop
+Sugarcane
+Sugar beet
+Beverage crop
+Coffee
+Tea
+Cocoa
+Cacao
+Spice
+Herb
+Forage crop
+Pasture
+Grazing
+Hay
+Silage
+Alfalfa
+Clover
+Grass
+Perennial grass
+Annual grass
+Grassland
+Rangeland
+Livestock integration
+Agroforestry
+Silvopasture
+Alley cropping
+Forest farming
+Windbreak
+Shelterbelt
+Crop physiology
+Plant physiology
+Photosynthesis
+Respiration
+Transpiration
+Stomata
+Carbon fixation
+C3 plant
+C4 plant
+CAM plant
+Water use efficiency
+Light interception
+Canopy
+Leaf area index
+LAI
+Growth
+Plant growth
+Vegetative growth
+Reproductive growth
+Flowering
+Pollination
+Self-pollination
+Cross-pollination
+Fertilization
+Seed development
+Seed
+Seed germination
+Germination
+Dormancy
+Seed dormancy
+Vernalization
+Photoperiod
+Photoperiodism
+Short-day plant
+Long-day plant
+Day-neutral plant
+Growth stage
+Seedling
+Tillering
+Heading
+Anthesis
+Grain filling
+Maturity
+Senescence
+Plant hormone
+Phytohormone
+Auxin
+Gibberellin
+Cytokinin
+Ethylene
+Abscisic acid
+ABA
+Brassinosteroid
+Jasmonic acid
+Salicylic acid
+Hormone signaling
+Growth regulator
+Plant growth regulator
+PGR
+Climate
+Weather
+Temperature
+Heat stress
+Cold stress
+Frost
+Freeze damage
+Chilling injury
+Growing season
+Growing degree day
+GDD
+Accumulated heat unit
+Precipitation
+Rainfall
+Rainfall distribution
+Humidity
+Solar radiation
+Wind
+Climate change
+Global warming
+Carbon dioxide
+CO2 fertilization
+Heat wave
+Extreme weather
+Agricultural meteorology
+Agrometeorology
+Precision agriculture
+Precision farming
+Variable rate application
+VRA
+Site-specific management
+GPS
+Global positioning system
+GIS
+Geographic information system
+Remote sensing
+Satellite imagery
+NDVI
+Normalized difference vegetation index
+Yield mapping
+Yield monitor
+Soil mapping
+Soil sampling
+Grid sampling
+Zone sampling
+Sensor
+Soil sensor
+Crop sensor
+Drone
+UAV
+Unmanned aerial vehicle
+Decision support system
+Agricultural economics
+Farm management
+Farm economics
+Production economics
+Cost of production
+Input cost
+Revenue
+Profit
+Net income
+Return on investment
+ROI
+Break-even analysis
+Risk management
+Crop insurance
+Price
+Market
+Commodity market
+Futures market
+Supply
+Demand
+Agricultural policy
+Subsidy
+Farm subsidy
+Trade
+International trade
+Export
+Import
+Tariff
+Trade agreement
+Food security
+Food system
+Food production
+Sustainable agriculture
+Sustainability
+Agroecology
+Organic agriculture
+Organic farming
+Organic certification
+Conventional agriculture
+Industrial agriculture
+Intensive agriculture
+Extensive agriculture
+Smallholder farming
+Subsistence farming
+Commercial farming
+Mechanization
+Farm machinery
+Tractor
+Plow
+Harrow
+Cultivator
+Planter
+Seeder
+Drill
+Transplanter
+Sprayer
+Combine harvester
+Harvester
+Thresher
+Grain dryer
+Post-harvest
+Post-harvest handling
+Storage
+Grain storage
+Silo
+Warehouse
+Drying
+Cleaning
+Grading
+Packaging
+Transportation
+Supply chain
+Value chain
+Processing
+Food processing
+Milling
+Flour
+Oil extraction
+Quality
+Grain quality
+Seed quality
+Nutritional quality
+Protein content
+Oil content
+Starch
+Fiber
+Moisture content
+Mycotoxin
+Aflatoxin
+Extension
+Agricultural extension
+Extension service
+Technology transfer
+Farmer training
+Demonstration plot
+Field day
+Advisory service
+Research
+Agricultural research
+Field trial
+Field experiment
+Randomized complete block design
+RCBD
+Split-plot design
+Factorial experiment
+Treatment
+Control
+Replication
+Statistical analysis
+Analysis of variance
+ANOVA
+Regression
+Correlation
+

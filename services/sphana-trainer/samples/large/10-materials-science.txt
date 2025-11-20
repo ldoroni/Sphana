@@ -1,0 +1,1216 @@
+Materials science
+Materials engineering
+Material
+Solid
+Crystalline solid
+Amorphous solid
+Crystal structure
+Crystal lattice
+Unit cell
+Lattice parameter
+Crystal system
+Cubic
+Hexagonal
+Tetragonal
+Orthorhombic
+Monoclinic
+Triclinic
+Space group
+Point group
+Bravais lattice
+Miller index
+Crystallographic plane
+Crystallographic direction
+Zone axis
+Symmetry
+Translation symmetry
+Rotational symmetry
+Mirror symmetry
+Inversion symmetry
+Glide plane
+Screw axis
+X-ray diffraction
+XRD
+X-ray crystallography
+Powder diffraction
+Single crystal diffraction
+Bragg's law
+Diffraction pattern
+Reciprocal lattice
+Reciprocal space
+Structure factor
+Atomic scattering factor
+Electron diffraction
+Neutron diffraction
+Small-angle scattering
+SAXS
+SANS
+Electron microscopy
+Transmission electron microscopy
+TEM
+Scanning electron microscopy
+SEM
+Scanning transmission electron microscopy
+STEM
+High-resolution TEM
+HRTEM
+Electron energy loss spectroscopy
+EELS
+Energy-dispersive X-ray spectroscopy
+EDS
+EDX
+Wavelength-dispersive spectroscopy
+WDS
+Scanning probe microscopy
+SPM
+Atomic force microscopy
+AFM
+Scanning tunneling microscopy
+STM
+Near-field scanning optical microscopy
+NSOM
+Magnetic force microscopy
+MFM
+Kelvin probe force microscopy
+KPFM
+Spectroscopy
+UV-vis spectroscopy
+Infrared spectroscopy
+IR spectroscopy
+Raman spectroscopy
+Nuclear magnetic resonance
+NMR
+Electron paramagnetic resonance
+EPR
+X-ray photoelectron spectroscopy
+XPS
+Auger electron spectroscopy
+AES
+Secondary ion mass spectrometry
+SIMS
+Rutherford backscattering spectrometry
+RBS
+Thermal analysis
+Differential scanning calorimetry
+DSC
+Thermogravimetric analysis
+TGA
+Differential thermal analysis
+DTA
+Dynamic mechanical analysis
+DMA
+Thermomechanical analysis
+TMA
+Dielectric thermal analysis
+DETA
+Mechanical testing
+Tensile test
+Tensile strength
+Ultimate tensile strength
+UTS
+Yield strength
+Elastic modulus
+Young's modulus
+Stress-strain curve
+Elastic deformation
+Plastic deformation
+Necking
+Fracture
+Ductility
+Brittleness
+Toughness
+Hardness
+Vickers hardness
+Brinell hardness
+Rockwell hardness
+Knoop hardness
+Shore hardness
+Indentation hardness
+Microhardness
+Nanoindentation
+Compression test
+Compressive strength
+Flexural test
+Bending test
+Three-point bending
+Four-point bending
+Shear test
+Shear strength
+Shear modulus
+Torsion test
+Impact test
+Charpy impact test
+Izod impact test
+Fracture toughness
+Stress intensity factor
+Fatigue
+Fatigue testing
+S-N curve
+Wöhler curve
+Fatigue limit
+Endurance limit
+Fatigue strength
+Low-cycle fatigue
+High-cycle fatigue
+Creep
+Creep test
+Creep rate
+Creep rupture
+Stress relaxation
+Viscoelasticity
+Viscoplasticity
+Anelasticity
+Damping
+Internal friction
+Loss modulus
+Storage modulus
+Loss tangent
+Poisson's ratio
+Bulk modulus
+Shear modulus
+Elastic constant
+Compliance
+Stiffness
+Strength
+Toughness
+Resilience
+Strain
+Stress
+Normal stress
+Shear stress
+Principal stress
+von Mises stress
+Maximum shear stress
+Strain energy
+Hooke's law
+Linear elasticity
+Nonlinear elasticity
+Hyperelasticity
+Rubber elasticity
+Metal
+Metallic bonding
+Metallic crystal
+Close-packed structure
+Face-centered cubic
+FCC
+Body-centered cubic
+BCC
+Hexagonal close-packed
+HCP
+Atomic packing factor
+Coordination number
+Interstitial site
+Octahedral site
+Tetrahedral site
+Substitutional solid solution
+Interstitial solid solution
+Alloy
+Binary alloy
+Ternary alloy
+Phase
+Phase diagram
+Phase transformation
+Solidification
+Melting
+Liquidus
+Solidus
+Eutectic
+Eutectoid
+Peritectic
+Peritectoid
+Monotectic
+Spinodal
+Spinodal decomposition
+Nucleation
+Homogeneous nucleation
+Heterogeneous nucleation
+Growth
+Grain
+Grain boundary
+Grain size
+Grain growth
+Recrystallization
+Recovery
+Annealing
+Solid solution strengthening
+Grain boundary strengthening
+Hall-Petch relationship
+Precipitation hardening
+Age hardening
+Dispersion strengthening
+Work hardening
+Strain hardening
+Dislocation
+Edge dislocation
+Screw dislocation
+Mixed dislocation
+Dislocation line
+Burgers vector
+Slip system
+Slip plane
+Slip direction
+Critical resolved shear stress
+Schmid factor
+Cross slip
+Climb
+Dislocation multiplication
+Frank-Read source
+Dislocation density
+Dislocation forest
+Dislocation cell
+Subgrain
+Dislocation pile-up
+Grain boundary sliding
+Diffusion creep
+Coble creep
+Nabarro-Herring creep
+Power-law creep
+Dislocation creep
+Harper-Dorn creep
+Deformation mechanism map
+Twinning
+Mechanical twin
+Deformation twin
+Annealing twin
+Twin boundary
+Stacking fault
+Intrinsic stacking fault
+Extrinsic stacking fault
+Stacking fault energy
+Partial dislocation
+Shockley partial
+Frank partial
+Lomer-Cottrell lock
+Point defect
+Vacancy
+Self-interstitial
+Substitutional impurity
+Interstitial impurity
+Frenkel defect
+Schottky defect
+Color center
+F-center
+Line defect
+Planar defect
+Grain boundary
+Low-angle grain boundary
+High-angle grain boundary
+Tilt boundary
+Twist boundary
+Special grain boundary
+Coincidence site lattice
+CSL
+Sigma value
+Phase boundary
+Interphase boundary
+Twin boundary
+Antiphase boundary
+Domain boundary
+Surface
+Interface
+Heterophase interface
+Coherent interface
+Semicoherent interface
+Incoherent interface
+Surface energy
+Interface energy
+Grain boundary energy
+Wetting
+Contact angle
+Adhesion
+Cohesion
+Ferrous metal
+Iron
+Steel
+Carbon steel
+Low-carbon steel
+Mild steel
+Medium-carbon steel
+High-carbon steel
+Stainless steel
+Austenitic stainless steel
+Ferritic stainless steel
+Martensitic stainless steel
+Duplex stainless steel
+Precipitation-hardening stainless steel
+Tool steel
+High-speed steel
+Cast iron
+Gray cast iron
+White cast iron
+Ductile iron
+Nodular cast iron
+Malleable iron
+Compacted graphite iron
+Iron-carbon phase diagram
+Ferrite
+Alpha iron
+Austenite
+Gamma iron
+Cementite
+Iron carbide
+Pearlite
+Bainite
+Upper bainite
+Lower bainite
+Martensite
+Retained austenite
+Delta ferrite
+Ledeburite
+Spheroidite
+Heat treatment
+Annealing
+Full annealing
+Stress relief annealing
+Normalizing
+Quenching
+Hardening
+Tempering
+Austempering
+Martempering
+Marquenching
+Case hardening
+Carburizing
+Nitriding
+Carbonitriding
+Cyaniding
+Flame hardening
+Induction hardening
+Surface hardening
+Non-ferrous metal
+Aluminum
+Aluminum alloy
+Wrought aluminum alloy
+Cast aluminum alloy
+2xxx series
+3xxx series
+5xxx series
+6xxx series
+7xxx series
+Duralumin
+Copper
+Brass
+Bronze
+Copper-nickel
+Nickel silver
+Beryllium copper
+Phosphor bronze
+Silicon bronze
+Aluminum bronze
+Gunmetal
+Bell metal
+Titanium
+Titanium alloy
+Alpha titanium alloy
+Beta titanium alloy
+Alpha-beta titanium alloy
+Ti-6Al-4V
+Nickel
+Nickel alloy
+Nickel superalloy
+Inconel
+Hastelloy
+Monel
+Nimonic
+Zinc
+Zinc alloy
+Zamak
+Magnesium
+Magnesium alloy
+Lead
+Lead alloy
+Tin
+Tin alloy
+Pewter
+Solder
+Lead-tin solder
+Lead-free solder
+Precious metal
+Gold
+Gold alloy
+White gold
+Rose gold
+Green gold
+Silver
+Sterling silver
+Platinum
+Palladium
+Rhodium
+Iridium
+Osmium
+Ruthenium
+Refractory metal
+Tungsten
+Molybdenum
+Niobium
+Tantalum
+Rhenium
+Chromium
+Vanadium
+Rare earth element
+Lanthanide
+Actinide
+Cerium
+Lanthanum
+Neodymium
+Praseodymium
+Samarium
+Europium
+Gadolinium
+Terbium
+Dysprosium
+Holmium
+Erbium
+Thulium
+Ytterbium
+Lutetium
+Scandium
+Yttrium
+Alkali metal
+Lithium
+Sodium
+Potassium
+Alkaline earth metal
+Beryllium
+Magnesium
+Calcium
+Strontium
+Barium
+Metallurgy
+Extractive metallurgy
+Pyrometallurgy
+Hydrometallurgy
+Electrometallurgy
+Smelting
+Roasting
+Calcination
+Reduction
+Refining
+Electrolytic refining
+Casting
+Sand casting
+Die casting
+Investment casting
+Lost-wax casting
+Permanent mold casting
+Centrifugal casting
+Continuous casting
+Ingot
+Billet
+Bloom
+Slab
+Forging
+Hot forging
+Cold forging
+Open-die forging
+Closed-die forging
+Impression-die forging
+Drop forging
+Press forging
+Upset forging
+Roll forging
+Swaging
+Rolling
+Hot rolling
+Cold rolling
+Flat rolling
+Shape rolling
+Ring rolling
+Thread rolling
+Extrusion
+Hot extrusion
+Cold extrusion
+Direct extrusion
+Indirect extrusion
+Impact extrusion
+Hydrostatic extrusion
+Drawing
+Wire drawing
+Tube drawing
+Deep drawing
+Sheet metal forming
+Stamping
+Blanking
+Punching
+Piercing
+Bending
+Coining
+Embossing
+Flanging
+Hemming
+Hydroforming
+Spinning
+Powder metallurgy
+Powder production
+Powder compaction
+Sintering
+Hot isostatic pressing
+HIP
+Spark plasma sintering
+SPS
+Metal injection molding
+MIM
+Additive manufacturing
+3D printing
+Selective laser melting
+SLM
+Selective laser sintering
+SLS
+Electron beam melting
+EBM
+Direct metal laser sintering
+DMLS
+Binder jetting
+Directed energy deposition
+DED
+Laser metal deposition
+Welding
+Arc welding
+Gas metal arc welding
+GMAW
+MIG welding
+Gas tungsten arc welding
+GTAW
+TIG welding
+Shielded metal arc welding
+SMAW
+Stick welding
+Flux-cored arc welding
+FCAW
+Submerged arc welding
+SAW
+Resistance welding
+Spot welding
+Seam welding
+Projection welding
+Flash welding
+Friction welding
+Friction stir welding
+FSW
+Laser beam welding
+Electron beam welding
+Oxy-fuel welding
+Brazing
+Soldering
+Ceramic
+Ceramic material
+Oxide ceramic
+Alumina
+Aluminum oxide
+Zirconia
+Zirconium dioxide
+Yttria-stabilized zirconia
+YSZ
+Magnesia
+Magnesium oxide
+Titania
+Titanium dioxide
+Silica
+Silicon dioxide
+Fused silica
+Quartz glass
+Mullite
+Spinel
+Corundum
+Sapphire
+Ruby
+Non-oxide ceramic
+Silicon carbide
+SiC
+Silicon nitride
+Si3N4
+Boron carbide
+B4C
+Boron nitride
+BN
+Cubic boron nitride
+cBN
+Hexagonal boron nitride
+hBN
+Aluminum nitride
+AlN
+Titanium carbide
+TiC
+Titanium nitride
+TiN
+Tungsten carbide
+WC
+Cermet
+Traditional ceramic
+Clay
+Pottery
+Earthenware
+Stoneware
+Porcelain
+China
+Bone china
+Technical ceramic
+Advanced ceramic
+Engineering ceramic
+Structural ceramic
+Functional ceramic
+Bioceramics
+Hydroxyapatite
+Bioglass
+Refractory
+Firebrick
+Abrasive
+Grinding wheel
+Sandpaper
+Polishing compound
+Cutting tool
+Ceramic coating
+Thermal barrier coating
+TBC
+Wear-resistant coating
+Glass
+Glass transition
+Glass transition temperature
+Soda-lime glass
+Borosilicate glass
+Lead glass
+Crystal glass
+Aluminosilicate glass
+Glass-ceramic
+Tempered glass
+Toughened glass
+Laminated glass
+Safety glass
+Float glass
+Crown glass
+Flint glass
+Optical glass
+Fiber optics
+Optical fiber
+Glass fiber
+Fiberglass
+Glass wool
+E-glass
+S-glass
+Glass melting
+Glass forming
+Glassblowing
+Glass casting
+Float process
+Annealing
+Glass cutting
+Glass grinding
+Glass polishing
+Polymer
+Macromolecule
+Monomer
+Polymer chain
+Polymerization
+Addition polymerization
+Condensation polymerization
+Chain-growth polymerization
+Step-growth polymerization
+Free radical polymerization
+Anionic polymerization
+Cationic polymerization
+Coordination polymerization
+Ring-opening polymerization
+Living polymerization
+Degree of polymerization
+Molecular weight
+Number average molecular weight
+Weight average molecular weight
+Polydispersity index
+PDI
+Molecular weight distribution
+End group
+Chain end
+Polymer architecture
+Linear polymer
+Branched polymer
+Cross-linked polymer
+Network polymer
+Copolymer
+Random copolymer
+Alternating copolymer
+Block copolymer
+Graft copolymer
+Homopolymer
+Terpolymer
+Thermoplastic
+Thermosetting plastic
+Thermoset
+Elastomer
+Rubber
+Natural rubber
+Synthetic rubber
+Vulcanization
+Crosslinking
+Plastic
+Commodity plastic
+Engineering plastic
+High-performance plastic
+Polyethylene
+PE
+High-density polyethylene
+HDPE
+Low-density polyethylene
+LDPE
+Linear low-density polyethylene
+LLDPE
+Ultra-high-molecular-weight polyethylene
+UHMWPE
+Polypropylene
+PP
+Polystyrene
+PS
+High impact polystyrene
+HIPS
+Polyvinyl chloride
+PVC
+Polytetrafluoroethylene
+PTFE
+Teflon
+Polymethyl methacrylate
+PMMA
+Acrylic
+Plexiglas
+Polyethylene terephthalate
+PET
+Polyester
+Nylon
+Polyamide
+PA
+Nylon 6
+Nylon 66
+Polycarbonate
+PC
+Polyoxymethylene
+POM
+Acetal
+Delrin
+Polyetheretherketone
+PEEK
+Polyimide
+PI
+Polyphenylene sulfide
+PPS
+Polyurethane
+PU
+Epoxy
+Epoxy resin
+Phenolic resin
+Bakelite
+Urea-formaldehyde
+Melamine
+Polyester resin
+Vinyl ester
+Silicone
+Polydimethylsiloxane
+PDMS
+Styrene-butadiene rubber
+SBR
+Polybutadiene
+BR
+Polyisoprene
+IR
+Neoprene
+Polychloroprene
+CR
+Nitrile rubber
+NBR
+Ethylene propylene diene monomer
+EPDM
+Butyl rubber
+IIR
+Silicone rubber
+Fluoroelastomer
+Viton
+Plastic processing
+Injection molding
+Extrusion
+Blow molding
+Rotational molding
+Compression molding
+Transfer molding
+Thermoforming
+Vacuum forming
+Calendering
+Fiber spinning
+Melt spinning
+Wet spinning
+Dry spinning
+Gel spinning
+Electrospinning
+Composite material
+Matrix
+Reinforcement
+Fiber
+Particle
+Laminate
+Fiber-reinforced polymer
+FRP
+Carbon fiber reinforced polymer
+CFRP
+Glass fiber reinforced polymer
+GFRP
+Aramid fiber reinforced polymer
+AFRP
+Kevlar
+Carbon fiber
+Carbon nanotube
+CNT
+Graphene
+Graphene oxide
+Reduced graphene oxide
+Glass fiber
+Basalt fiber
+Boron fiber
+Silicon carbide fiber
+Alumina fiber
+Natural fiber
+Plant fiber
+Wood fiber
+Cellulose
+Lignocellulose
+Bast fiber
+Flax
+Hemp
+Jute
+Ramie
+Kenaf
+Leaf fiber
+Sisal
+Abaca
+Pineapple fiber
+Seed fiber
+Cotton
+Kapok
+Coir
+Coconut fiber
+Animal fiber
+Wool
+Silk
+Chitosan
+Metal matrix composite
+MMC
+Ceramic matrix composite
+CMC
+Concrete
+Reinforced concrete
+Prestressed concrete
+Fiber-reinforced concrete
+Cement
+Portland cement
+Fly ash
+Blast furnace slag
+Aggregate
+Coarse aggregate
+Fine aggregate
+Admixture
+Superplasticizer
+Air-entraining agent
+Retarder
+Accelerator
+Water-cement ratio
+Slump
+Workability
+Curing
+Hydration
+Pozzolanic reaction
+Wood
+Lumber
+Timber
+Hardwood
+Softwood
+Sapwood
+Heartwood
+Growth ring
+Annual ring
+Earlywood
+Latewood
+Grain
+Wood grain
+Tangential section
+Radial section
+Cross section
+End grain
+Quarter sawn
+Rift sawn
+Plain sawn
+Knot
+Resin canal
+Ray
+Medullary ray
+Moisture content
+Equilibrium moisture content
+Fiber saturation point
+Shrinkage
+Swelling
+Seasoning
+Kiln drying
+Air drying
+Engineered wood
+Plywood
+Oriented strand board
+OSB
+Particleboard
+Chipboard
+Fiberboard
+Medium-density fiberboard
+MDF
+Hardboard
+Laminated veneer lumber
+LVL
+Glued laminated timber
+Glulam
+Cross-laminated timber
+CLT
+Wood-plastic composite
+WPC
+Nanomaterial
+Nanoparticle
+Nanocrystal
+Quantum dot
+Nanowire
+Nanotube
+Nanofiber
+Nanosheet
+Graphene
+Fullerene
+Buckminsterfullerene
+C60
+Carbon nanotube
+Single-walled carbon nanotube
+SWCNT
+Multi-walled carbon nanotube
+MWCNT
+Nanocomposite
+Metal nanoparticle
+Gold nanoparticle
+Silver nanoparticle
+Copper nanoparticle
+Platinum nanoparticle
+Magnetic nanoparticle
+Iron oxide nanoparticle
+Magnetite nanoparticle
+Quantum dot
+Cadmium selenide
+CdSe
+Zinc sulfide
+ZnS
+Perovskite nanocrystal
+Metal-organic framework
+MOF
+Zeolite
+Mesoporous silica
+Nanoporous material
+Aerogel
+Silica aerogel
+Nanotechnology
+Top-down fabrication
+Bottom-up fabrication
+Self-assembly
+Molecular self-assembly
+Supramolecular chemistry
+Chemical vapor deposition
+CVD
+Physical vapor deposition
+PVD
+Atomic layer deposition
+ALD
+Molecular beam epitaxy
+MBE
+Sol-gel process
+Hydrothermal synthesis
+Solvothermal synthesis
+Electrodeposition
+Electroplating
+Electroless plating
+Lithography
+Photolithography
+Electron beam lithography
+Nanoimprint lithography
+Soft lithography
+Etching
+Wet etching
+Dry etching
+Plasma etching
+Reactive ion etching
+RIE
+Deep reactive ion etching
+DRIE
+Surface modification
+Surface treatment
+Plasma treatment
+Corona treatment
+Flame treatment
+Coating
+Thin film
+Thick film
+Chemical functionalization
+Biomaterial
+Biocompatibility
+Biodegradability
+Tissue engineering
+Scaffold
+Extracellular matrix
+ECM
+Hydrogel
+Drug delivery
+Nanocarrier
+Liposome
+Micelle
+Dendrimer
+Implant
+Prosthesis
+Artificial organ
+Sensor
+Biosensor
+Chemical sensor
+Gas sensor
+Temperature sensor
+Pressure sensor
+Strain sensor
+Piezoelectric sensor
+Piezoresistive sensor
+Capacitive sensor
+Optical sensor
+Magnetic sensor
+Smart material
+Shape memory alloy
+SMA
+Nitinol
+Shape memory polymer
+SMP
+Piezoelectric material
+Piezoceramics
+Lead zirconate titanate
+PZT
+Quartz
+Magnetostrictive material
+Terfenol-D
+Electrochromic material
+Photochromic material
+Thermochromic material
+Liquid crystal
+Nematic liquid crystal
+Smectic liquid crystal
+Cholesteric liquid crystal
+Ferroelectric
+Ferroelectric material
+Barium titanate
+BaTiO3
+Superconductor
+High-temperature superconductor
+HTS
+YBCO
+Yttrium barium copper oxide
+Cuprate superconductor
+Type I superconductor
+Type II superconductor
+Meissner effect
+Critical temperature
+Critical field
+Critical current density
+Semiconductor
+Intrinsic semiconductor
+Extrinsic semiconductor
+n-type semiconductor
+p-type semiconductor
+Doping
+Donor
+Acceptor
+Silicon
+Germanium
+Gallium arsenide
+GaAs
+Gallium nitride
+GaN
+Silicon carbide
+SiC
+Indium phosphide
+InP
+Cadmium telluride
+CdTe
+Mercury cadmium telluride
+HgCdTe
+Zinc oxide
+ZnO
+Band gap
+Direct band gap
+Indirect band gap
+Wide band gap
+Narrow band gap
+Valence band
+Conduction band
+Fermi level
+Energy band
+Band structure
+Density of states
+Carrier
+Electron
+Hole
+Carrier concentration
+Carrier mobility
+Drift
+Diffusion
+Recombination
+Generation
+p-n junction
+Diode
+Rectifier
+Zener diode
+LED
+Light-emitting diode
+Laser diode
+Photodiode
+Solar cell
+Photovoltaic cell
+Transistor
+Bipolar junction transistor
+BJT
+Field-effect transistor
+FET
+MOSFET
+Metal-oxide-semiconductor FET
+JFET
+Junction FET
+Integrated circuit
+IC
+Microchip
+Wafer
+Silicon wafer
+Epitaxy
+Epitaxial growth
+Oxidation
+Diffusion
+Ion implantation
+Metallization
+Passivation
+Corrosion
+Oxidation
+Rust
+Galvanic corrosion
+Pitting corrosion
+Crevice corrosion
+Stress corrosion cracking
+SCC
+Intergranular corrosion
+Exfoliation corrosion
+Uniform corrosion
+Localized corrosion
+Erosion corrosion
+Fretting corrosion
+Microbial corrosion
+Corrosion protection
+Corrosion inhibitor
+Cathodic protection
+Sacrificial anode
+Impressed current
+Protective coating
+Paint
+Powder coating
+Galvanization
+Hot-dip galvanizing
+Electroplating
+Anodizing
+Passivation
+Phosphating
+Chromating
+

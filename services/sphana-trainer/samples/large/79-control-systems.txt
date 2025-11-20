@@ -1,0 +1,697 @@
+Control systems
+Control theory
+Control engineering
+Automatic control
+Control
+Feedback control
+Feedforward control
+System
+Dynamic system
+Linear system
+Nonlinear system
+Time-invariant system
+Time-varying system
+Continuous-time system
+Discrete-time system
+Single-input single-output
+SISO
+Multi-input multi-output
+MIMO
+Input
+Output
+Disturbance
+Noise
+Setpoint
+Reference
+Reference input
+Desired output
+Error
+Tracking error
+Steady-state error
+Transient response
+Steady-state response
+Performance
+Stability
+Controllability
+Observability
+Robustness
+Feedback
+Negative feedback
+Positive feedback
+Closed-loop
+Open-loop
+Controller
+Actuator
+Sensor
+Plant
+Process
+Mathematical model
+Transfer function
+State-space representation
+State variable
+State vector
+State equation
+Output equation
+System matrix
+Input matrix
+Output matrix
+Feedthrough matrix
+A matrix
+B matrix
+C matrix
+D matrix
+Laplace transform
+S-domain
+Frequency domain
+Time domain
+Pole
+Zero
+Pole-zero map
+Characteristic equation
+Characteristic polynomial
+Eigenvalue
+Eigenvector
+Stability
+BIBO stability
+Bounded-input bounded-output
+Asymptotic stability
+Marginal stability
+Instability
+Routh-Hurwitz criterion
+Nyquist criterion
+Bode plot
+Bode diagram
+Magnitude plot
+Phase plot
+Gain margin
+Phase margin
+Stability margin
+Nyquist plot
+Nyquist diagram
+Root locus
+Root locus plot
+Root locus method
+Breakaway point
+Break-in point
+Asymptote
+Departure angle
+Arrival angle
+First-order system
+Time constant
+Exponential response
+Settling time
+Second-order system
+Natural frequency
+Damping ratio
+Damping factor
+Underdamped
+Critically damped
+Overdamped
+Oscillation
+Overshoot
+Peak overshoot
+Maximum overshoot
+Rise time
+Peak time
+Settling time
+Higher-order system
+Dominant pole
+Dominant pole approximation
+PID controller
+Proportional-integral-derivative controller
+Proportional control
+Integral control
+Derivative control
+P controller
+PI controller
+PD controller
+PID controller
+Proportional gain
+Kp
+Integral gain
+Ki
+Derivative gain
+Kd
+Integral time
+Derivative time
+Tuning
+Controller tuning
+Ziegler-Nichols method
+Cohen-Coon method
+Trial and error
+Auto-tuning
+Integral windup
+Anti-windup
+Windup prevention
+Lead compensator
+Lag compensator
+Lead-lag compensator
+Phase lead
+Phase lag
+Compensation
+Compensator design
+Frequency response
+Magnitude
+Phase
+Frequency
+Angular frequency
+Bandwidth
+Resonant frequency
+Resonant peak
+Cutoff frequency
+Low-pass filter
+High-pass filter
+Band-pass filter
+Band-stop filter
+State feedback
+State feedback control
+Full state feedback
+Pole placement
+Desired pole location
+Ackermann's formula
+Controllability
+Controllability matrix
+Controllable canonical form
+Observability
+Observability matrix
+Observable canonical form
+Kalman decomposition
+State observer
+Observer
+Luenberger observer
+Full-order observer
+Reduced-order observer
+Observer gain
+State estimator
+State estimation
+Separation principle
+Observer-based control
+Optimal control
+Optimization
+Cost function
+Objective function
+Performance index
+Quadratic cost
+Linear quadratic regulator
+LQR
+Algebraic Riccati equation
+ARE
+Weighting matrix
+Q matrix
+R matrix
+State weighting
+Control weighting
+Optimal feedback gain
+Linear quadratic Gaussian
+LQG
+Kalman filter
+Kalman-Bucy filter
+Measurement noise
+Process noise
+Covariance
+State covariance
+Measurement covariance
+Kalman gain
+Prediction
+Correction
+Update
+Filtering
+Estimation
+Adaptive control
+Model reference adaptive control
+MRAC
+Reference model
+Adaptation law
+Adaptive law
+Adaptation gain
+Self-tuning regulator
+STR
+Parameter estimation
+Recursive least squares
+RLS
+Robust control
+Uncertainty
+Parametric uncertainty
+Unstructured uncertainty
+Model uncertainty
+H-infinity control
+H∞ control
+Performance specification
+Robustness specification
+Small gain theorem
+mu-synthesis
+μ-synthesis
+Structured singular value
+Nonlinear control
+Nonlinear system
+Linearization
+Operating point
+Equilibrium point
+Jacobian matrix
+Feedback linearization
+Input-output linearization
+State transformation
+Diffeomorphism
+Lie derivative
+Relative degree
+Zero dynamics
+Sliding mode control
+Variable structure control
+Sliding surface
+Switching function
+Reaching phase
+Sliding phase
+Chattering
+Lyapunov stability
+Lyapunov function
+Lyapunov's direct method
+Lyapunov equation
+Stability analysis
+Asymptotic stability
+Exponential stability
+Uniform stability
+Region of attraction
+Basin of attraction
+Digital control
+Discrete-time control
+Sampled-data system
+Sampling
+Sample time
+Sampling period
+Sampling frequency
+Nyquist frequency
+Shannon sampling theorem
+Zero-order hold
+ZOH
+First-order hold
+Analog-to-digital converter
+ADC
+Digital-to-analog converter
+DAC
+Quantization
+Quantization error
+Z-transform
+Z-domain
+Difference equation
+Discrete transfer function
+Pulse transfer function
+Discretization
+Forward Euler
+Backward Euler
+Tustin method
+Bilinear transformation
+Pole mapping
+Zero mapping
+Digital PID
+Discrete PID
+Incremental PID
+Velocity PID
+Position PID
+Digital implementation
+Microcontroller
+Digital signal processor
+DSP
+FPGA
+Field-programmable gate array
+PLC
+Programmable logic controller
+Real-time control
+Real-time system
+Hard real-time
+Soft real-time
+Multivariable control
+MIMO control
+Decoupling
+Interaction
+Relative gain array
+RGA
+Pairing
+Loop interaction
+Decoupler
+Decoupling matrix
+Diagonal dominance
+Internal model control
+IMC
+Model-based control
+Predictive control
+Model predictive control
+MPC
+Receding horizon
+Prediction horizon
+Control horizon
+Constraint
+Input constraint
+Output constraint
+State constraint
+Constrained optimization
+Quadratic programming
+QP
+Online optimization
+Moving horizon
+Cascade control
+Primary controller
+Secondary controller
+Inner loop
+Outer loop
+Master controller
+Slave controller
+Feedforward control
+Disturbance rejection
+Load disturbance
+Feedforward gain
+Feedforward compensator
+Ratio control
+Ratio
+Master stream
+Slave stream
+Ratio station
+Selective control
+Override control
+Split-range control
+Gain scheduling
+Scheduling variable
+Operating region
+Local model
+Local controller
+Interpolation
+Fuzzy logic control
+Fuzzy control
+Fuzzy set
+Membership function
+Fuzzy rule
+Fuzzy inference
+Fuzzification
+Defuzzification
+Linguistic variable
+Linguistic term
+Mamdani fuzzy system
+Takagi-Sugeno fuzzy system
+Neural network control
+Neural control
+Artificial neural network
+ANN
+Feedforward neural network
+Recurrent neural network
+RNN
+Training
+Supervised learning
+Reinforcement learning
+Backpropagation
+Neurocontroller
+Neural network identifier
+Process control
+Industrial control
+Continuous process
+Batch process
+Regulatory control
+Advanced process control
+APC
+Distributed control system
+DCS
+Control room
+Operator interface
+Human-machine interface
+HMI
+SCADA
+Supervisory control and data acquisition
+Instrumentation
+Sensor
+Transmitter
+Final control element
+Control valve
+Actuator
+Positioner
+I/P converter
+Current-to-pressure
+Pneumatic actuator
+Electric actuator
+Hydraulic actuator
+Temperature control
+Pressure control
+Level control
+Flow control
+Composition control
+pH control
+Temperature sensor
+Thermocouple
+RTD
+Resistance temperature detector
+Thermistor
+Pyrometer
+Pressure sensor
+Pressure transmitter
+Pressure transducer
+Strain gauge
+Bourdon tube
+Diaphragm
+Capacitive sensor
+Piezoresistive sensor
+Level sensor
+Level transmitter
+Float
+Displacer
+Ultrasonic level sensor
+Radar level sensor
+Capacitance level sensor
+Differential pressure
+DP level measurement
+Flow sensor
+Flowmeter
+Differential pressure flowmeter
+Orifice plate
+Venturi meter
+Pitot tube
+Turbine flowmeter
+Positive displacement flowmeter
+Magnetic flowmeter
+Ultrasonic flowmeter
+Coriolis flowmeter
+Vortex flowmeter
+Composition analyzer
+pH meter
+Conductivity meter
+Gas analyzer
+Gas chromatograph
+Mass spectrometer
+Spectrophotometer
+Control valve
+Globe valve
+Ball valve
+Butterfly valve
+Plug valve
+Diaphragm valve
+Valve characteristic
+Linear characteristic
+Equal percentage
+Quick opening
+Valve sizing
+Flow coefficient
+Cv
+Kv
+Valve authority
+Installed characteristic
+Inherent characteristic
+Valve positioner
+Smart positioner
+Digital positioner
+Fieldbus
+Communication protocol
+4-20 mA
+HART
+Highway Addressable Remote Transducer
+Foundation Fieldbus
+Profibus
+Modbus
+Ethernet/IP
+OPC
+OLE for Process Control
+Tuning
+Loop tuning
+Performance monitoring
+Performance assessment
+Control performance monitoring
+CPM
+Key performance indicator
+KPI
+Integral absolute error
+IAE
+Integral squared error
+ISE
+Integral time absolute error
+ITAE
+Servo control
+Regulatory control
+Disturbance rejection
+Setpoint tracking
+Load change
+Setpoint change
+Step response
+Ramp response
+Impulse response
+Frequency response test
+Relay feedback test
+Bump test
+Process identification
+System identification
+Parameter estimation
+Model fitting
+First-order plus dead time
+FOPDT
+Second-order plus dead time
+SOPDT
+Dead time
+Time delay
+Transport delay
+Approximation
+Padé approximation
+Interacting system
+Non-interacting system
+Self-regulating process
+Integrating process
+Runaway process
+Inverse response
+Right-half plane zero
+RHP zero
+Motor control
+DC motor
+Armature control
+Field control
+AC motor
+Induction motor
+Synchronous motor
+Servo motor
+Stepper motor
+Brushless DC motor
+BLDC
+Variable frequency drive
+VFD
+Variable speed drive
+VSD
+Inverter
+Speed control
+Torque control
+Position control
+Motion control
+Trajectory
+Trajectory planning
+Path planning
+Point-to-point motion
+Coordinated motion
+Robot control
+Robotics
+Manipulator
+End effector
+Joint space
+Cartesian space
+Task space
+Forward kinematics
+Inverse kinematics
+Jacobian
+Singularity
+Workspace
+Joint control
+Computed torque control
+Resolved motion rate control
+Impedance control
+Force control
+Hybrid position/force control
+Vehicle control
+Autonomous vehicle
+Self-driving car
+Cruise control
+Adaptive cruise control
+ACC
+Lane keeping
+Lateral control
+Longitudinal control
+Steering control
+Throttle control
+Brake control
+Path following
+Trajectory tracking
+Powertrain control
+Engine control
+Transmission control
+Suspension control
+Active suspension
+Semi-active suspension
+Stability control
+Electronic stability control
+ESC
+Anti-lock braking system
+ABS
+Traction control
+Aircraft control
+Flight control
+Autopilot
+Fly-by-wire
+Flight control system
+FCS
+Longitudinal control
+Lateral-directional control
+Pitch control
+Roll control
+Yaw control
+Altitude control
+Heading control
+Speed control
+Guidance
+Navigation
+Inertial navigation
+GPS
+Kalman filter
+Satellite control
+Attitude control
+Attitude determination and control system
+ADCS
+Reaction wheel
+Control moment gyroscope
+CMG
+Thruster
+Momentum wheel
+Magnetic torquer
+Power system control
+Grid
+Electric grid
+Power grid
+Frequency control
+Voltage control
+Load frequency control
+Automatic generation control
+AGC
+Governor
+Excitation system
+Automatic voltage regulator
+AVR
+Power system stabilizer
+PSS
+FACTS
+Flexible AC transmission system
+HVDC
+High-voltage direct current
+Renewable energy integration
+Wind turbine control
+Solar inverter control
+Battery management system
+BMS
+Energy storage control
+Process industries
+Chemical process
+Petroleum refining
+Petrochemical
+Power plant
+Water treatment
+Wastewater treatment
+Pulp and paper
+Food processing
+Pharmaceutical
+Semiconductor manufacturing
+Steel production
+Cement production
+Automotive manufacturing
+Quality control
+Statistical process control
+SPC
+Six Sigma
+Lean manufacturing
+

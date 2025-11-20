@@ -1,0 +1,861 @@
+Economics
+Microeconomics
+Macroeconomics
+Econometrics
+Behavioral economics
+Development economics
+International economics
+Public economics
+Labor economics
+Health economics
+Environmental economics
+Agricultural economics
+Industrial organization
+Game theory
+Supply and demand
+Market
+Perfect competition
+Monopoly
+Oligopoly
+Monopolistic competition
+Market structure
+Market equilibrium
+Price mechanism
+Price elasticity of demand
+Price elasticity of supply
+Income elasticity of demand
+Cross elasticity of demand
+Consumer behavior
+Utility
+Marginal utility
+Total utility
+Law of diminishing marginal utility
+Cardinal utility
+Ordinal utility
+Indifference curve
+Budget constraint
+Consumer choice
+Substitution effect
+Income effect
+Giffen good
+Veblen good
+Inferior good
+Normal good
+Luxury good
+Necessity
+Producer behavior
+Production function
+Marginal product
+Average product
+Total product
+Diminishing returns
+Law of diminishing returns
+Returns to scale
+Increasing returns to scale
+Decreasing returns to scale
+Constant returns to scale
+Economies of scale
+Diseconomies of scale
+External economies of scale
+Internal economies of scale
+Isoquant
+Isocost line
+Cost
+Fixed cost
+Variable cost
+Total cost
+Average cost
+Marginal cost
+Sunk cost
+Opportunity cost
+Economic cost
+Accounting cost
+Explicit cost
+Implicit cost
+Short run
+Long run
+Production possibility frontier
+PPF
+Production possibility curve
+Comparative advantage
+Absolute advantage
+Specialization
+Division of labor
+Profit
+Economic profit
+Accounting profit
+Normal profit
+Supernormal profit
+Revenue
+Total revenue
+Average revenue
+Marginal revenue
+Break-even point
+Shutdown point
+Market failure
+Externality
+Positive externality
+Negative externality
+Public good
+Private good
+Common good
+Club good
+Non-excludability
+Non-rivalry
+Free rider problem
+Tragedy of the commons
+Asymmetric information
+Adverse selection
+Moral hazard
+Principal-agent problem
+Information asymmetry
+Signaling
+Screening
+Market power
+Price discrimination
+First-degree price discrimination
+Second-degree price discrimination
+Third-degree price discrimination
+Two-part tariff
+Bundling
+Tying
+Predatory pricing
+Limit pricing
+Entry barrier
+Natural monopoly
+Regulation
+Antitrust
+Competition policy
+Cartel
+Collusion
+Nash equilibrium
+Prisoner's dilemma
+Game tree
+Strategic form game
+Extensive form game
+Dominant strategy
+Mixed strategy
+Pure strategy
+Zero-sum game
+Cooperative game
+Non-cooperative game
+Repeated game
+Sequential game
+Simultaneous game
+Perfect information
+Imperfect information
+Complete information
+Incomplete information
+Bayesian game
+Subgame perfect equilibrium
+Backward induction
+Forward induction
+Trembling hand perfect equilibrium
+Correlated equilibrium
+Evolutionary game theory
+Evolutionarily stable strategy
+ESS
+Replicator dynamics
+Auction
+English auction
+Dutch auction
+Sealed-bid auction
+Vickrey auction
+First-price sealed-bid auction
+Second-price sealed-bid auction
+Revenue equivalence theorem
+Winner's curse
+Common value auction
+Private value auction
+Mechanism design
+Incentive compatibility
+Individual rationality
+Vickrey-Clarke-Groves mechanism
+VCG mechanism
+Revelation principle
+Labor market
+Labor supply
+Labor demand
+Wage
+Wage rate
+Minimum wage
+Living wage
+Reservation wage
+Efficiency wage
+Compensating differential
+Human capital
+Education
+Training
+Experience
+Skill
+Labor force
+Employment
+Unemployment
+Frictional unemployment
+Structural unemployment
+Cyclical unemployment
+Seasonal unemployment
+Hidden unemployment
+Underemployment
+Full employment
+Natural rate of unemployment
+NAIRU
+Non-accelerating inflation rate of unemployment
+Phillips curve
+Okun's law
+Labor force participation rate
+Employment rate
+Unemployment rate
+Job search
+Matching
+Job vacancy
+Hiring
+Firing
+Layoff
+Union
+Collective bargaining
+Strike
+Monopsony
+Bilateral monopoly
+Capital
+Physical capital
+Financial capital
+Capital goods
+Investment
+Fixed investment
+Inventory investment
+Gross investment
+Net investment
+Depreciation
+Capital accumulation
+Capital deepening
+Capital widening
+Interest rate
+Nominal interest rate
+Real interest rate
+Risk-free rate
+Risk premium
+Term premium
+Liquidity premium
+Time value of money
+Present value
+Future value
+Discounting
+Compounding
+Net present value
+NPV
+Internal rate of return
+IRR
+Return on investment
+ROI
+Asset
+Financial asset
+Real asset
+Tangible asset
+Intangible asset
+Stock
+Share
+Equity
+Common stock
+Preferred stock
+Dividend
+Capital gain
+Bond
+Treasury bond
+Corporate bond
+Municipal bond
+Coupon
+Maturity
+Yield
+Yield to maturity
+Current yield
+Bond rating
+Credit rating
+Default
+Default risk
+Credit risk
+Market risk
+Systematic risk
+Unsystematic risk
+Diversification
+Portfolio
+Portfolio theory
+Modern portfolio theory
+MPT
+Capital asset pricing model
+CAPM
+Beta
+Alpha
+Expected return
+Required return
+Risk-adjusted return
+Sharpe ratio
+Efficient frontier
+Risk aversion
+Risk neutral
+Risk seeking
+Arbitrage
+Arbitrage pricing theory
+APT
+Derivatives
+Option
+Call option
+Put option
+Strike price
+Exercise price
+Expiration date
+American option
+European option
+Asian option
+Exotic option
+Option pricing
+Black-Scholes model
+Binomial model
+Put-call parity
+Intrinsic value
+Time value
+Volatility
+Implied volatility
+Historical volatility
+Delta
+Gamma
+Theta
+Vega
+Rho
+Greeks
+Futures contract
+Forward contract
+Swap
+Interest rate swap
+Currency swap
+Commodity swap
+Credit default swap
+CDS
+Hedge
+Hedging
+Speculation
+Leverage
+Margin
+Margin call
+Short selling
+Long position
+Short position
+Gross domestic product
+GDP
+Nominal GDP
+Real GDP
+GDP deflator
+GDP per capita
+Gross national product
+GNP
+Net domestic product
+NDP
+Net national product
+NNP
+National income
+Personal income
+Disposable income
+Saving
+Savings rate
+Consumption
+Consumer spending
+Consumption function
+Marginal propensity to consume
+MPC
+Marginal propensity to save
+MPS
+Average propensity to consume
+APC
+Average propensity to save
+APS
+Permanent income hypothesis
+Life cycle hypothesis
+Investment
+Business investment
+Residential investment
+Government spending
+Government purchases
+Transfer payment
+Net exports
+Export
+Import
+Trade balance
+Trade surplus
+Trade deficit
+Current account
+Capital account
+Financial account
+Balance of payments
+Aggregate demand
+AD
+Aggregate supply
+AS
+Short-run aggregate supply
+SRAS
+Long-run aggregate supply
+LRAS
+AD-AS model
+IS-LM model
+IS curve
+LM curve
+Money market
+Goods market
+Equilibrium output
+Potential output
+Output gap
+Recessionary gap
+Inflationary gap
+Economic growth
+Growth rate
+Productivity
+Labor productivity
+Total factor productivity
+TFP
+Technological progress
+Innovation
+Research and development
+R&D
+Endogenous growth
+Exogenous growth
+Solow growth model
+Neoclassical growth model
+Steady state
+Golden rule
+Convergence
+Conditional convergence
+Absolute convergence
+Business cycle
+Expansion
+Recession
+Depression
+Recovery
+Peak
+Trough
+Boom
+Bust
+Leading indicator
+Lagging indicator
+Coincident indicator
+Inflation
+Deflation
+Disinflation
+Stagflation
+Hyperinflation
+Consumer price index
+CPI
+Producer price index
+PPI
+GDP deflator
+Core inflation
+Headline inflation
+Inflation rate
+Inflation expectation
+Adaptive expectations
+Rational expectations
+Quantity theory of money
+Equation of exchange
+Velocity of money
+Money supply
+M0
+M1
+M2
+M3
+Monetary base
+Money multiplier
+Fractional reserve banking
+Reserve ratio
+Required reserves
+Excess reserves
+Central bank
+Federal Reserve
+Fed
+European Central Bank
+ECB
+Bank of England
+Bank of Japan
+Monetary policy
+Expansionary monetary policy
+Contractionary monetary policy
+Open market operation
+Discount rate
+Federal funds rate
+Target rate
+Policy rate
+Interest rate targeting
+Inflation targeting
+Taylor rule
+Forward guidance
+Quantitative easing
+QE
+Credit easing
+Operation Twist
+Unconventional monetary policy
+Zero lower bound
+Liquidity trap
+Money neutrality
+Long run neutrality
+Short run non-neutrality
+Transmission mechanism
+Interest rate channel
+Credit channel
+Exchange rate channel
+Asset price channel
+Expectations channel
+Banking system
+Commercial bank
+Investment bank
+Universal bank
+Savings bank
+Credit union
+Bank run
+Banking panic
+Financial crisis
+Systemic risk
+Too big to fail
+TBTF
+Bank regulation
+Capital requirement
+Basel Accord
+Basel I
+Basel II
+Basel III
+Deposit insurance
+FDIC
+Lender of last resort
+Financial intermediation
+Maturity transformation
+Risk transformation
+Liquidity provision
+Payment system
+Fiscal policy
+Expansionary fiscal policy
+Contractionary fiscal policy
+Government budget
+Budget deficit
+Budget surplus
+Balanced budget
+National debt
+Public debt
+Government debt
+Debt-to-GDP ratio
+Deficit spending
+Crowding out
+Crowding in
+Ricardian equivalence
+Tax
+Direct tax
+Indirect tax
+Progressive tax
+Regressive tax
+Proportional tax
+Income tax
+Corporate tax
+Sales tax
+Value-added tax
+VAT
+Excise tax
+Property tax
+Wealth tax
+Estate tax
+Gift tax
+Capital gains tax
+Payroll tax
+Tax incidence
+Tax burden
+Deadweight loss
+Tax efficiency
+Laffer curve
+Tax evasion
+Tax avoidance
+Tax haven
+Tax base
+Tax rate
+Marginal tax rate
+Average tax rate
+Effective tax rate
+Tax bracket
+Tax credit
+Tax deduction
+Tax expenditure
+Automatic stabilizer
+Discretionary fiscal policy
+Supply-side economics
+Demand-side economics
+Keynesian economics
+Monetarism
+Classical economics
+Neoclassical economics
+Austrian economics
+Institutional economics
+Marxian economics
+Post-Keynesian economics
+New Keynesian economics
+New classical economics
+Real business cycle theory
+Dynamic stochastic general equilibrium
+DSGE model
+Microfoundations
+Representative agent
+Heterogeneous agents
+Rational expectations revolution
+Lucas critique
+Time inconsistency
+Credibility
+Commitment
+Rules versus discretion
+Policy ineffectiveness proposition
+Neutrality of money
+Real wage rigidity
+Nominal wage rigidity
+Menu cost
+Price stickiness
+Wage stickiness
+Coordination failure
+Multiple equilibria
+Sunspot equilibrium
+Animal spirits
+Keynesian beauty contest
+Herding
+Speculative bubble
+Asset bubble
+Housing bubble
+Dot-com bubble
+Tulip mania
+Financial contagion
+Systemic crisis
+Credit crunch
+Liquidity crisis
+Solvency crisis
+Sovereign debt crisis
+Currency crisis
+Balance of payments crisis
+Twin crises
+Banking crisis
+Recession
+Great Recession
+Great Depression
+Lost Decade
+Jobless recovery
+V-shaped recovery
+U-shaped recovery
+L-shaped recovery
+W-shaped recovery
+Double-dip recession
+Economic indicator
+GDP growth rate
+Inflation rate
+Unemployment rate
+Consumer confidence
+Business confidence
+Manufacturing index
+PMI
+Purchasing managers index
+Capacity utilization
+Housing starts
+Retail sales
+Industrial production
+Trade deficit
+Budget deficit
+Exchange rate
+Fixed exchange rate
+Floating exchange rate
+Managed float
+Currency peg
+Crawling peg
+Currency board
+Dollarization
+Devaluation
+Revaluation
+Appreciation
+Depreciation
+Nominal exchange rate
+Real exchange rate
+Effective exchange rate
+Purchasing power parity
+PPP
+Law of one price
+Interest rate parity
+Covered interest parity
+Uncovered interest parity
+Forward premium
+Currency risk
+Exchange rate risk
+Hedging
+Currency hedge
+International trade
+Free trade
+Protectionism
+Trade barrier
+Tariff
+Import tariff
+Export tariff
+Quota
+Import quota
+Export quota
+Voluntary export restraint
+VER
+Subsidy
+Export subsidy
+Dumping
+Anti-dumping duty
+Countervailing duty
+Trade agreement
+Free trade agreement
+FTA
+Customs union
+Common market
+Economic union
+Preferential trade agreement
+Most favored nation
+MFN
+National treatment
+Rules of origin
+Trade creation
+Trade diversion
+Terms of trade
+Comparative advantage
+Heckscher-Ohlin model
+Factor endowment
+Factor price equalization
+Stolper-Samuelson theorem
+Rybczynski theorem
+Specific factors model
+Gravity model
+New trade theory
+Strategic trade policy
+Economic integration
+Globalization
+Offshoring
+Outsourcing
+Foreign direct investment
+FDI
+Multinational corporation
+MNC
+Transnational corporation
+TNC
+Portfolio investment
+Remittance
+Aid
+Foreign aid
+Development aid
+Official development assistance
+ODA
+Humanitarian aid
+Economic development
+Developing country
+Developed country
+Least developed country
+LDC
+Emerging market
+Newly industrialized country
+NIC
+Poverty
+Absolute poverty
+Relative poverty
+Poverty line
+Poverty threshold
+Extreme poverty
+Income inequality
+Wealth inequality
+Gini coefficient
+Lorenz curve
+Income distribution
+Wealth distribution
+Progressive redistribution
+Social welfare
+Welfare economics
+Pareto efficiency
+Pareto improvement
+Kaldor-Hicks efficiency
+Social welfare function
+Utilitarian
+Rawlsian
+Egalitarian
+Libertarian
+Public choice theory
+Rent seeking
+Regulatory capture
+Government failure
+Public goods provision
+Common pool resource
+Externality internalization
+Pigouvian tax
+Coase theorem
+Property rights
+Tragedy of the commons
+Sustainable development
+Environmental economics
+Externality
+Pollution
+Carbon tax
+Cap and trade
+Emissions trading
+Carbon offset
+Green economy
+Circular economy
+Natural capital
+Ecosystem services
+Cost-benefit analysis
+Social cost
+Private cost
+Discount rate
+Social discount rate
+Intergenerational equity
+Climate change economics
+Carbon pricing
+Renewable energy
+Energy transition
+Resource economics
+Non-renewable resource
+Renewable resource
+Resource depletion
+Peak oil
+Energy security
+Hotelling rule
+Health economics
+Healthcare
+Health insurance
+Adverse selection
+Moral hazard
+Single-payer
+Universal healthcare
+Medicare
+Medicaid
+Private insurance
+Public insurance
+Health savings account
+HSA
+Co-payment
+Deductible
+Premium
+Out-of-pocket cost
+Pharmaceutical economics
+Drug pricing
+Generic drug
+Patent
+Innovation
+R&D
+Clinical trial
+FDA approval
+Cost-effectiveness analysis
+Quality-adjusted life year
+QALY
+Disability-adjusted life year
+DALY
+Urban economics
+Agglomeration
+Urbanization
+City
+Metropolitan area
+Urban sprawl
+Gentrification
+Housing market
+Real estate
+Property market
+Housing affordability
+Zoning
+Land use
+Transportation
+Public transportation
+Infrastructure
+

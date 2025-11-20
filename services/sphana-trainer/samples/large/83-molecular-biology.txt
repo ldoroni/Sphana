@@ -1,0 +1,692 @@
+Molecular biology
+DNA
+Deoxyribonucleic acid
+Double helix
+Nucleotide
+Base
+Nitrogenous base
+Purine
+Pyrimidine
+Adenine
+A
+Guanine
+G
+Cytosine
+C
+Thymine
+T
+Base pair
+AT base pair
+GC base pair
+Watson-Crick base pairing
+Complementary base pairing
+Hydrogen bond
+Sugar
+Deoxyribose
+Phosphate
+Phosphate group
+Backbone
+Sugar-phosphate backbone
+Strand
+Antiparallel
+5' end
+3' end
+Directionality
+Major groove
+Minor groove
+B-form DNA
+A-form DNA
+Z-form DNA
+Chromosome
+Chromatin
+Nucleosome
+Histone
+Histone octamer
+DNA packaging
+Supercoiling
+Topoisomerase
+DNA gyrase
+Euchromatin
+Heterochromatin
+Centromere
+Telomere
+Telomerase
+Replication
+DNA replication
+Semiconservative replication
+Origin of replication
+Replication fork
+Leading strand
+Lagging strand
+DNA polymerase
+Primase
+Helicase
+Single-strand binding protein
+SSB
+Ligase
+DNA ligase
+Okazaki fragment
+Primer
+RNA primer
+Proofreading
+Exonuclease activity
+Mismatch repair
+Base excision repair
+BER
+Nucleotide excision repair
+NER
+DNA repair
+Mutation
+Point mutation
+Substitution
+Transition
+Transversion
+Insertion
+Deletion
+Frameshift mutation
+Silent mutation
+Synonymous mutation
+Missense mutation
+Nonsynonymous mutation
+Nonsense mutation
+Stop codon mutation
+Spontaneous mutation
+Induced mutation
+Mutagen
+Mutagenesis
+Gene
+Genetic code
+Codon
+Start codon
+ATG
+Stop codon
+UAA
+UAG
+UGA
+Triplet code
+Degeneracy
+Wobble base pairing
+Open reading frame
+ORF
+Promoter
+Enhancer
+Silencer
+Operator
+Regulatory sequence
+Transcription factor
+TATA box
+CAAT box
+GC box
+Intron
+Exon
+Splicing
+Alternative splicing
+Splice site
+Spliceosome
+snRNA
+Small nuclear RNA
+Polyadenylation
+Poly-A tail
+5' cap
+Transcription
+RNA polymerase
+RNA pol I
+RNA pol II
+RNA pol III
+Elongation
+Termination
+RNA
+Ribonucleic acid
+Messenger RNA
+mRNA
+Transfer RNA
+tRNA
+Ribosomal RNA
+rRNA
+Small nuclear RNA
+snRNA
+Small nucleolar RNA
+snoRNA
+MicroRNA
+miRNA
+Small interfering RNA
+siRNA
+Long noncoding RNA
+lncRNA
+Ribozyme
+Catalytic RNA
+Uracil
+U
+Ribose
+Translation
+Protein synthesis
+Ribosome
+Small subunit
+Large subunit
+A site
+P site
+E site
+Aminoacyl site
+Peptidyl site
+Exit site
+Initiation
+Initiation codon
+Shine-Dalgarno sequence
+Kozak sequence
+Elongation factor
+Termination factor
+Release factor
+Aminoacyl-tRNA synthetase
+Anticodon
+Codon-anticodon interaction
+Peptide bond
+Peptidyl transferase
+Polyribosome
+Polysome
+Post-translational modification
+PTM
+Phosphorylation
+Acetylation
+Methylation
+Ubiquitination
+Glycosylation
+Lipidation
+Proteolytic cleavage
+Protein folding
+Chaperone
+Heat shock protein
+HSP
+GroEL
+GroES
+Protein misfolding
+Aggregation
+Amyloid
+Prion
+Central dogma
+DNA to RNA to protein
+Reverse transcription
+Retrovirus
+Reverse transcriptase
+RT
+Gene expression
+Gene regulation
+Transcriptional regulation
+Translational regulation
+Post-transcriptional regulation
+Operon
+Lac operon
+Trp operon
+Repressor
+Activator
+Inducer
+Corepressor
+Catabolite repression
+cAMP
+CAP
+Catabolite activator protein
+Attenuation
+Riboswitc
+h
+RNA interference
+RNAi
+Gene silencing
+miRNA
+siRNA
+Dicer
+RISC
+RNA-induced silencing complex
+Argonaute
+Epigenetics
+Epigenetic modification
+DNA methylation
+Histone modification
+Histone acetylation
+Histone methylation
+Chromatin remodeling
+X-inactivation
+Imprinting
+Genomic imprinting
+Recombinant DNA
+Genetic engineering
+Molecular cloning
+Cloning
+Vector
+Plasmid
+Phage
+Bacteriophage
+Lambda phage
+Cosmid
+BAC
+Bacterial artificial chromosome
+YAC
+Yeast artificial chromosome
+Restriction enzyme
+Restriction endonuclease
+Recognition site
+Sticky end
+Blunt end
+Ligation
+DNA ligase
+Insert
+Multiple cloning site
+MCS
+Polylinker
+Selectable marker
+Antibiotic resistance
+Blue-white screening
+Transformation
+Competent cell
+Electroporation
+Heat shock
+Chemical transformation
+Selection
+Screening
+Colony PCR
+PCR
+Polymerase chain reaction
+Amplification
+Primer
+Forward primer
+Reverse primer
+DNA polymerase
+Taq polymerase
+dNTP
+Denaturation
+Annealing
+Extension
+Cycle
+Thermal cycler
+Amplicon
+Primer design
+Melting temperature
+Tm
+GC content
+Primer dimer
+Non-specific amplification
+Hot start PCR
+Touchdown PCR
+Real-time PCR
+qPCR
+Quantitative PCR
+RT-PCR
+Reverse transcription PCR
+Nested PCR
+Multiplex PCR
+Gel electrophoresis
+Agarose gel
+Polyacrylamide gel
+PAGE
+DNA ladder
+Molecular weight marker
+Ethidium bromide
+SYBR Green
+DNA staining
+UV transilluminator
+Band
+Fragment
+Migration
+Molecular weight
+Southern blot
+Northern blot
+Western blot
+Blotting
+Transfer
+Membrane
+Nitrocellulose
+PVDF
+Hybridization
+Probe
+Labeled probe
+Radioactive probe
+Fluorescent probe
+Digoxigenin
+DIG
+DNA sequencing
+Sequencing
+Sanger sequencing
+Chain termination method
+Dideoxynucleotide
+ddNTP
+Capillary electrophoresis
+Sequencing chromatogram
+Next-generation sequencing
+NGS
+High-throughput sequencing
+Illumina sequencing
+Sequencing by synthesis
+Pyrosequencing
+Ion torrent
+Oxford Nanopore
+Pacific Biosciences
+PacBio
+SMRT sequencing
+Library preparation
+Adapter
+Index
+Barcode
+Multiplexing
+Read
+Paired-end sequencing
+Single-end sequencing
+Read length
+Coverage
+Depth of coverage
+Assembly
+De novo assembly
+Reference assembly
+Contig
+Scaffold
+Genome
+Genomics
+Whole genome sequencing
+WGS
+Exome sequencing
+Targeted sequencing
+RNA sequencing
+RNA-seq
+Transcriptome
+Transcriptomics
+ChIP-seq
+Chromatin immunoprecipitation sequencing
+ATAC-seq
+Bisulfite sequencing
+Methylome
+Metagenomics
+Microbiome
+Gene prediction
+Gene annotation
+Genome browser
+Bioinformatics
+Sequence alignment
+Pairwise alignment
+Multiple sequence alignment
+BLAST
+Basic Local Alignment Search Tool
+Homology
+Similarity
+Identity
+E-value
+Phylogenetics
+Phylogenetic tree
+Evolutionary tree
+Molecular evolution
+DNA library
+cDNA library
+Genomic library
+Expression library
+Screening
+Immunoscreening
+Nucleic acid hybridization
+Gene knockout
+Gene knockdown
+CRISPR
+CRISPR-Cas9
+Clustered regularly interspaced short palindromic repeats
+Cas9
+Guide RNA
+gRNA
+sgRNA
+PAM sequence
+Double-strand break
+DSB
+Non-homologous end joining
+NHEJ
+Homology-directed repair
+HDR
+Genome editing
+Gene editing
+Targeted mutagenesis
+Site-directed mutagenesis
+Plasmid construction
+Gibson assembly
+Golden Gate assembly
+Gateway cloning
+TOPO cloning
+TA cloning
+Restriction cloning
+Homologous recombination
+Reporter gene
+GFP
+Green fluorescent protein
+RFP
+Red fluorescent protein
+YFP
+Yellow fluorescent protein
+Luciferase
+Beta-galactosidase
+LacZ
+Protein expression
+Expression vector
+Expression system
+Prokaryotic expression
+E. coli expression
+Eukaryotic expression
+Yeast expression
+Insect cell expression
+Baculovirus
+Mammalian cell expression
+Cell-free expression
+In vitro translation
+Inducible promoter
+IPTG
+Arabinose
+Tetracycline
+Doxycycline
+Constitutive promoter
+Fusion protein
+Affinity tag
+His tag
+Hexahistidine tag
+GST tag
+Glutathione S-transferase
+FLAG tag
+HA tag
+Myc tag
+Strep tag
+Protein purification
+Affinity chromatography
+Ion exchange chromatography
+Size exclusion chromatography
+Gel filtration
+FPLC
+HPLC
+Ni-NTA
+Glutathione agarose
+Column chromatography
+Elution
+Imidazole
+Dialysis
+Concentration
+Ultrafiltration
+SDS-PAGE
+Sodium dodecyl sulfate polyacrylamide gel electrophoresis
+Coomassie staining
+Silver staining
+Western blotting
+Immunoblotting
+Primary antibody
+Secondary antibody
+HRP
+Horseradish peroxidase
+Chemiluminescence
+ECL
+Enhanced chemiluminescence
+Immunoprecipitation
+IP
+Co-immunoprecipitation
+Co-IP
+Protein-protein interaction
+Pull-down assay
+Yeast two-hybrid
+Y2H
+Mass spectrometry
+MS
+MALDI-TOF
+ESI-MS
+LC-MS
+Tandem mass spectrometry
+MS/MS
+Peptide mass fingerprinting
+Proteomics
+Protein identification
+Protein quantification
+Spectrophotometry
+UV absorbance
+A280
+Bradford assay
+BCA assay
+Lowry assay
+Enzyme
+Enzyme kinetics
+Michaelis-Menten kinetics
+Km
+Michaelis constant
+Vmax
+Maximum velocity
+kcat
+Turnover number
+Catalytic efficiency
+Lineweaver-Burk plot
+Enzyme inhibition
+Competitive inhibition
+Non-competitive inhibition
+Uncompetitive inhibition
+Mixed inhibition
+Irreversible inhibition
+Enzyme assay
+Activity assay
+Substrate
+Product
+Cofactor
+Coenzyme
+Allosteric regulation
+Cooperativity
+Positive cooperativity
+Negative cooperativity
+Hill coefficient
+Cell culture
+Tissue culture
+Primary cell
+Cell line
+Immortalized cell line
+HeLa
+CHO
+Chinese hamster ovary
+HEK293
+Human embryonic kidney
+Adherent cell
+Suspension cell
+Culture medium
+Serum
+Fetal bovine serum
+FBS
+Serum-free medium
+Antibiotic
+Penicillin
+Streptomycin
+Growth factor
+Cell passage
+Subculture
+Trypsinization
+Cell counting
+Hemocytometer
+Trypan blue
+Viability
+Cell viability
+Cryopreservation
+Freezing medium
+DMSO
+Dimethyl sulfoxide
+Liquid nitrogen
+Transfection
+Transient transfection
+Stable transfection
+Lipofection
+Electroporation
+Calcium phosphate
+Viral transduction
+Lentivirus
+Adenovirus
+AAV
+Adeno-associated virus
+Retrovirus
+Selection
+Antibiotic selection
+Fluorescence-activated cell sorting
+FACS
+Flow cytometry
+Microscopy
+Light microscopy
+Fluorescence microscopy
+Confocal microscopy
+Immunofluorescence
+Immunohistochemistry
+IHC
+Antibody
+Polyclonal antibody
+Monoclonal antibody
+Epitope
+Antigen
+ELISA
+Enzyme-linked immunosorbent assay
+Sandwich ELISA
+Indirect ELISA
+Competitive ELISA
+Antibody titer
+Sensitivity
+Specificity
+Apoptosis
+Programmed cell death
+Caspase
+Annexin V
+TUNEL assay
+DNA fragmentation
+Cell proliferation
+Cell cycle
+G1 phase
+S phase
+G2 phase
+M phase
+Mitosis
+Checkpoint
+Cyclin
+Cyclin-dependent kinase
+CDK
+BrdU
+Bromodeoxyuridine
+MTT assay
+WST assay
+Signal transduction
+Signaling pathway
+Receptor
+Ligand
+Kinase
+Phosphatase
+Second messenger
+cAMP
+Cyclic AMP
+cGMP
+IP3
+DAG
+Calcium
+G protein
+GPCR
+G protein-coupled receptor
+Tyrosine kinase
+Receptor tyrosine kinase
+RTK
+MAPK
+Mitogen-activated protein kinase
+ERK
+JNK
+PI3K
+Akt
+mTOR
+JAK-STAT
+Wnt signaling
+Notch signaling
+Hedgehog signaling
+TGF-beta signaling
+NF-kappa B
+Transcription factor
+

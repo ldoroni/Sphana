@@ -1,0 +1,704 @@
+Nuclear engineering
+Nuclear technology
+Nuclear science
+Nuclear physics application
+Atomic nucleus
+Nucleus
+Nucleon
+Proton
+Neutron
+Nuclear force
+Strong nuclear force
+Binding energy
+Nuclear binding energy
+Mass defect
+Mass-energy equivalence
+E=mc²
+Atomic mass unit
+amu
+Nuclear stability
+Stable nucleus
+Unstable nucleus
+Chart of nuclides
+Valley of stability
+Isotope
+Nuclide
+Radioisotope
+Radionuclide
+Radioactive isotope
+Radioactivity
+Radioactive decay
+Alpha decay
+Alpha particle
+Alpha radiation
+Beta decay
+Beta particle
+Beta minus decay
+Beta plus decay
+Positron emission
+Electron capture
+Gamma decay
+Gamma ray
+Gamma radiation
+Decay chain
+Decay series
+Radioactive series
+Parent nuclide
+Daughter nuclide
+Half-life
+Radioactive half-life
+Decay constant
+Activity
+Radioactivity
+Becquerel
+Bq
+Curie
+Ci
+Specific activity
+Radiation
+Ionizing radiation
+Non-ionizing radiation
+Electromagnetic radiation
+Particle radiation
+X-ray
+Neutron radiation
+Proton radiation
+Heavy ion
+Cosmic ray
+Radiation dose
+Absorbed dose
+Gray
+Gy
+Rad
+Equivalent dose
+Sievert
+Sv
+Rem
+Effective dose
+Dose equivalent
+Quality factor
+Radiation weighting factor
+Tissue weighting factor
+Linear energy transfer
+LET
+Relative biological effectiveness
+RBE
+Radiation exposure
+External exposure
+Internal exposure
+Contamination
+Radioactive contamination
+Surface contamination
+Airborne contamination
+Ingestion
+Inhalation
+Dose rate
+Acute exposure
+Chronic exposure
+Radiation protection
+Radiological protection
+Radiation safety
+ALARA
+As low as reasonably achievable
+Time
+Distance
+Shielding
+Radiation shielding
+Shield
+Lead shielding
+Concrete shielding
+Water shielding
+Attenuation
+Mass attenuation coefficient
+Half-value layer
+HVL
+Tenth-value layer
+TVL
+Dosimetry
+Radiation dosimetry
+Dosimeter
+Personal dosimeter
+Film badge
+Thermoluminescent dosimeter
+TLD
+Optically stimulated luminescence
+OSL
+Electronic personal dosimeter
+EPD
+Pocket dosimeter
+Ionization chamber
+Geiger counter
+Geiger-Müller counter
+GM counter
+Scintillation detector
+Scintillator
+Sodium iodide detector
+NaI detector
+Survey meter
+Contamination monitor
+Portal monitor
+Nuclear fission
+Fission
+Fissile material
+Fissionable material
+Fission reaction
+Chain reaction
+Critical mass
+Criticality
+Supercritical
+Subcritical
+Neutron multiplication
+Multiplication factor
+k-effective
+Keff
+Fission product
+Fission fragment
+Prompt neutron
+Delayed neutron
+Fission energy
+Energy release
+Uranium
+Uranium-235
+U-235
+Uranium-238
+U-238
+Depleted uranium
+Enriched uranium
+Low-enriched uranium
+LEU
+Highly enriched uranium
+HEU
+Uranium enrichment
+Enrichment
+Gaseous diffusion
+Gas centrifuge
+Centrifuge
+Isotope separation
+Plutonium
+Plutonium-239
+Pu-239
+Plutonium-240
+Pu-240
+Plutonium-241
+Weapons-grade plutonium
+Reactor-grade plutonium
+Thorium
+Thorium-232
+Th-232
+Thorium fuel cycle
+Nuclear fuel
+Fuel
+Fresh fuel
+Spent fuel
+Spent nuclear fuel
+Used nuclear fuel
+Nuclear fuel cycle
+Fuel cycle
+Front end
+Fuel fabrication
+Uranium dioxide
+UO2
+Mixed oxide fuel
+MOX fuel
+TRISO fuel
+Fuel pellet
+Fuel rod
+Fuel pin
+Fuel assembly
+Fuel element
+Cladding
+Zircaloy
+Fuel burnup
+Burnup
+Nuclear reactor
+Reactor
+Nuclear power plant
+Power plant
+Nuclear power
+Reactor core
+Core
+Reactor vessel
+Pressure vessel
+Reactor pressure vessel
+RPV
+Moderator
+Neutron moderator
+Light water
+Heavy water
+Deuterium oxide
+Graphite
+Coolant
+Reactor coolant
+Primary coolant
+Secondary coolant
+Water
+Pressurized water
+Boiling water
+Sodium
+Liquid sodium
+Liquid metal
+Helium
+Gas
+Coolant loop
+Primary loop
+Secondary loop
+Control rod
+Control
+Reactivity control
+Reactivity
+Positive reactivity
+Negative reactivity
+Neutron poison
+Burnable poison
+Boron
+Cadmium
+Hafnium
+Xenon
+Xenon-135
+Samarium
+Reflector
+Neutron reflector
+Beryllium
+Reactor types
+Pressurized water reactor
+PWR
+Boiling water reactor
+BWR
+Light water reactor
+LWR
+Heavy water reactor
+HWR
+CANDU
+Canada Deuterium Uranium
+Pressurized heavy water reactor
+PHWR
+Gas-cooled reactor
+Advanced gas-cooled reactor
+AGR
+Magnox reactor
+High-temperature gas-cooled reactor
+HTGR
+Liquid metal fast breeder reactor
+LMFBR
+Fast breeder reactor
+FBR
+Sodium-cooled fast reactor
+SFR
+Lead-cooled fast reactor
+LFR
+Fast neutron reactor
+Thermal reactor
+Research reactor
+Test reactor
+Production reactor
+Power reactor
+Generation II reactor
+Generation III reactor
+Generation III+ reactor
+Generation IV reactor
+Advanced reactor
+Small modular reactor
+SMR
+Microreactor
+Molten salt reactor
+MSR
+Integral pressurized water reactor
+iPWR
+Pebble bed reactor
+Nuclear marine propulsion
+Naval reactor
+Reactor operation
+Startup
+Power operation
+Full power
+Shutdown
+Cold shutdown
+Hot shutdown
+Refueling
+Refueling outage
+Capacity factor
+Load factor
+Availability factor
+Thermal efficiency
+Power output
+Electrical power
+Thermal power
+Megawatt
+MW
+Megawatt electric
+MWe
+Megawatt thermal
+MWth
+Gigawatt
+GW
+Steam generator
+Heat exchanger
+Turbine
+Steam turbine
+Generator
+Electric generator
+Condenser
+Cooling tower
+Cooling water
+Makeup water
+Reactor safety
+Nuclear safety
+Safety system
+Engineered safety feature
+ESF
+Emergency core cooling system
+ECCS
+Safety injection
+Containment
+Containment building
+Containment structure
+Reactor building
+Primary containment
+Secondary containment
+Reactor scram
+Scram
+Emergency shutdown
+Defense in depth
+Redundancy
+Diversity
+Safety culture
+Accident
+Reactor accident
+Loss of coolant accident
+LOCA
+Large-break LOCA
+Small-break LOCA
+Loss of coolant
+Core damage
+Fuel damage
+Core melt
+Meltdown
+Severe accident
+Beyond design basis accident
+Three Mile Island
+TMI
+Chernobyl
+Fukushima
+Fukushima Daiichi
+Station blackout
+SBO
+Loss of power
+Emergency power
+Diesel generator
+Emergency diesel generator
+EDG
+Battery
+Uninterruptible power supply
+UPS
+Passive safety
+Active safety
+Passive cooling
+Natural circulation
+Gravity-driven system
+Hydrogen generation
+Hydrogen explosion
+Hydrogen recombiner
+Filtered containment venting
+Probabilistic risk assessment
+PRA
+Safety analysis
+Deterministic safety analysis
+Risk
+Core damage frequency
+CDF
+Large early release frequency
+LERF
+Spent fuel management
+Spent fuel pool
+Fuel pool
+Wet storage
+Dry storage
+Dry cask storage
+Storage cask
+Spent fuel cask
+Interim storage
+Radioactive waste
+Nuclear waste
+Waste management
+Waste classification
+High-level waste
+HLW
+Intermediate-level waste
+ILW
+Low-level waste
+LLW
+Very low-level waste
+VLLW
+Transuranic waste
+TRU waste
+Waste form
+Vitrification
+Glass
+Borosilicate glass
+Synroc
+Waste immobilization
+Waste package
+Canister
+Waste repository
+Geological repository
+Deep geological repository
+Underground repository
+Yucca Mountain
+WIPP
+Waste Isolation Pilot Plant
+Final disposal
+Permanent disposal
+Nuclear reprocessing
+Reprocessing
+Spent fuel reprocessing
+PUREX
+Plutonium uranium redox extraction
+Solvent extraction
+Separation
+Partitioning
+Actinide
+Minor actinide
+Transmutation
+Accelerator-driven system
+ADS
+Nuclear decommissioning
+Decommissioning
+Plant decommissioning
+Reactor decommissioning
+Immediate dismantling
+Deferred dismantling
+Entombment
+Decontamination
+D&D
+Decontamination and decommissioning
+Dismantling
+Demolition
+Site remediation
+Radiation effects
+Biological effects
+Deterministic effect
+Stochastic effect
+Acute radiation syndrome
+ARS
+Radiation sickness
+Radiation burn
+Erythema
+Radiation dermatitis
+Cataracts
+Hematopoietic syndrome
+Bone marrow syndrome
+Gastrointestinal syndrome
+Cerebrovascular syndrome
+Latent period
+Cancer
+Radiation-induced cancer
+Leukemia
+Solid tumor
+Genetic effects
+Hereditary effects
+Teratogenic effects
+Radiation therapy
+Radiotherapy
+External beam radiotherapy
+Brachytherapy
+Radiosurgery
+Gamma knife
+Linear accelerator
+LINAC
+Medical physics
+Radiation oncology
+Nuclear medicine
+Diagnostic imaging
+Radionuclide imaging
+Scintigraphy
+Gamma camera
+SPECT
+Single-photon emission computed tomography
+PET
+Positron emission tomography
+PET-CT
+Radiopharmaceutical
+Tracer
+Technetium-99m
+Tc-99m
+Fluorine-18
+F-18
+FDG
+Fluorodeoxyglucose
+Iodine-131
+I-131
+Therapeutic radionuclide
+Targeted radionuclide therapy
+Industrial applications
+Industrial radiography
+Gamma radiography
+Radiographic testing
+Non-destructive testing
+NDT
+Level gauge
+Density gauge
+Thickness gauge
+Moisture gauge
+Well logging
+Tracer study
+Irradiation facility
+Gamma irradiator
+Cobalt-60
+Co-60
+Cesium-137
+Cs-137
+Food irradiation
+Sterilization
+Medical device sterilization
+Insect sterilization
+Sterile insect technique
+SIT
+Nuclear fusion
+Fusion
+Fusion reaction
+Thermonuclear fusion
+Deuterium
+Tritium
+Deuterium-tritium fusion
+D-T fusion
+Helium-3
+Fusion energy
+Fusion power
+Plasma
+Plasma physics
+Magnetic confinement
+Tokamak
+Stellarator
+Magnetic field
+Toroidal field
+Poroidal field
+Plasma current
+Inertial confinement fusion
+ICF
+Laser fusion
+National Ignition Facility
+NIF
+Target
+Hohlraum
+Ignition
+Fusion ignition
+Lawson criterion
+Triple product
+Plasma temperature
+Fusion cross section
+ITER
+International Thermonuclear Experimental Reactor
+Breeding blanket
+Tritium breeding
+Lithium
+First wall
+Divertor
+Nuclear materials
+Nuclear material
+Special nuclear material
+SNM
+Source material
+Fissile
+Fertile material
+Uranium ore
+Yellowcake
+Conversion
+Uranium hexafluoride
+UF6
+Nuclear fuel fabrication
+Nuclear safeguards
+Safeguards
+Nonproliferation
+Nuclear proliferation
+IAEA
+International Atomic Energy Agency
+Inspection
+Safeguards agreement
+Comprehensive Safeguards Agreement
+Additional Protocol
+Nuclear security
+Physical protection
+Material accountancy
+Material control
+Containment and surveillance
+Nuclear weapons
+Atomic bomb
+Hydrogen bomb
+Thermonuclear weapon
+Fission bomb
+Fusion bomb
+Nuclear explosion
+Nuclear test
+Nuclear testing
+Nuclear stockpile
+Nuclear disarmament
+Arms control
+Treaty on the Non-Proliferation of Nuclear Weapons
+NPT
+Comprehensive Nuclear-Test-Ban Treaty
+CTBT
+Nuclear forensics
+Radiation detection
+Radiation monitoring
+Environmental monitoring
+Radioactive release
+Effluent
+Gaseous effluent
+Liquid effluent
+Discharge
+Stack
+Regulatory
+Nuclear regulation
+Regulatory agency
+Nuclear Regulatory Commission
+NRC
+Licensing
+Operating license
+Construction permit
+License renewal
+Technical specifications
+Tech specs
+Limiting conditions for operation
+LCO
+Surveillance requirement
+Inspection
+Enforcement
+Violation
+Fine
+Public health
+Environmental impact
+Environmental protection
+Occupational exposure
+Worker dose
+Annual limit on intake
+ALI
+Derived air concentration
+DAC
+Committed effective dose
+Nuclear education
+Nuclear engineering program
+Nuclear operator
+Licensed operator
+Senior reactor operator
+SRO
+Training
+Simulator
+Nuclear industry
+Nuclear sector
+Vendor
+Reactor vendor
+Fuel vendor
+Service provider
+Utility
+Electric utility
+Nuclear utility
+Fleet
+Nuclear economics
+Cost of electricity
+Levelized cost
+LCOE
+Capital cost
+Operating cost
+Fuel cost
+Decommissioning cost
+
