@@ -320,7 +320,7 @@ pip install -r requirements.txt</code></pre>
                     </div>
                     <pre><code id="download-wiki-dir">python -m sphana_trainer.cli dataset-download-wiki `
     --output target\data\multi-domain-docs.jsonl `
-    --titles-dir samples\large `
+    --titles-dir samples\wiki-titles\medium `
     --full-content `
     --limit 50000</code></pre>
                 </div>
@@ -338,7 +338,7 @@ pip install -r requirements.txt</code></pre>
                     <ul>
                         <li><strong><code>--title</code>:</strong> Specify individual titles inline (can be repeated multiple times)</li>
                         <li><strong><code>--titles-file</code>:</strong> Provide a single file with titles (one per line)</li>
-                        <li><strong><code>--titles-dir</code>:</strong> Provide a directory containing multiple <code>.txt</code> files — all files will be read and combined automatically. Perfect for multi-domain training with the 100 domain files in <code>samples\large\</code>!</li>
+                        <li><strong><code>--titles-dir</code>:</strong> Provide a directory containing multiple <code>.txt</code> files — all files will be read and combined automatically. Perfect for multi-domain training with the 100 domain files in <code>samples\wiki-titles\medium\</code>!</li>
                     </ul>
                 </div>
 
@@ -1178,16 +1178,16 @@ Total: 90,000 docs across 8 major domains (each domain has subtopic diversity)</
                     <div class="code-header">
                         <span class="code-label">Download broad multi-domain Wikipedia corpus (using directory)</span>
                     </div>
-                    <pre><code># Use the 100 domain files in samples\large\ directory:
+                    <pre><code># Use the 100 domain files in samples\wiki-titles\medium\ directory:
 python -m sphana_trainer.cli dataset-download-wiki `
-    --titles-dir samples\large `
+    --titles-dir samples\wiki-titles\medium `
     --full-content `
     --output target\data\multi-domain-docs.jsonl `
     --limit 100000</code></pre>
                 </div>
 
                 <div class="info-box">
-                    <strong>💡 Tip:</strong> The <code>samples\large\</code> directory contains 100 domain-specific title files covering diverse fields (science, medicine, history, arts, business, law, etc.). Using <code>--titles-dir</code> automatically reads all <code>.txt</code> files and combines them — perfect for multi-domain training!
+                    <strong>💡 Tip:</strong> The <code>samples\wiki-titles\medium\</code> directory contains 100 domain-specific title files covering diverse fields (science, medicine, history, arts, business, law, etc.). Using <code>--titles-dir</code> automatically reads all <code>.txt</code> files and combines them — perfect for multi-domain training!
                 </div>
 
                 <h5>Which Strategy Should You Use?</h5>
@@ -1612,8 +1612,8 @@ python -m sphana_trainer.cli dataset-validate target/datasets/my-corpus/gnn/trai
                         <span class="code-label">Multi-domain from directory</span>
                     </div>
                     <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
-    --output target\data\multi-domain-docs.jsonl `
-    --titles-dir samples\large `
+    --output target\data\docs.jsonl `
+    --titles-dir samples\wiki-titles\medium `
     --full-content `
     --limit 50000</code></pre>
                 </div>
@@ -2018,7 +2018,7 @@ python -m sphana_trainer.cli dataset-download-wiki `
 
 # Multi-domain from directory (100 domain files)
 python -m sphana_trainer.cli dataset-download-wiki `
-    --titles-dir samples\large `
+    --titles-dir samples\wiki-titles\medium `
     --full-content `
     --limit 50000 `
     --output multi-domain.jsonl</code></pre>
