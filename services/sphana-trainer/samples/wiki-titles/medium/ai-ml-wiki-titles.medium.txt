@@ -1,6 +1,6 @@
 # AI/ML/Neural Networks Wikipedia Titles
 # This file contains 1000+ Wikipedia article titles for AI, Machine Learning, Deep Learning, and related topics
-# Usage: python -m sphana_trainer.cli dataset-download-wiki --titles-file samples/ai-ml-wiki-titles-medium.txt
+# Usage: python -m sphana_trainer.cli dataset-download-wiki --titles-file samples\wiki-titles\medium\ai-ml-wiki-titles-medium.txt
 
 # === Core AI/ML Concepts ===
 Artificial intelligence

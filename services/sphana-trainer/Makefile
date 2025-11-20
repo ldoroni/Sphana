@@ -46,7 +46,7 @@ dataset-from-ingest:
 	sphana-trainer dataset-build-from-ingest target/wiki/ingest --output-dir target/datasets/wiki
 
 dataset-download-wiki:
-	sphana-trainer dataset-download-wiki --titles-file samples/ai-ml-wiki-titles.small.txt --output target/data/wiki/docs.jsonl
+	sphana-trainer dataset-download-wiki --titles-file samples/wiki-titles/small/ai-ml-wiki-titles.small.txt --output target/data/wiki/docs.jsonl
 
 wiki-ingest:
 	sphana-trainer ingest --config configs/ingest/wiki.yaml --force
