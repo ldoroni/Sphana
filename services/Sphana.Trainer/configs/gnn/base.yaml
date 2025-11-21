@@ -132,7 +132,7 @@ gnn:
   # mlflow_tracking_uri: null  # Optional MLflow tracking URI override (default: null)
   
   # MLflow experiment name for organizing runs
-  # mlflow_experiment: sphana-trainer  # MLflow experiment name (default: sphana-trainer)
+  # mlflow_experiment: sphana_trainer  # MLflow experiment name (default: sphana_trainer)
   
   # Custom name for this MLflow run
   # mlflow_run_name: null  # Optional MLflow run name override (default: null)

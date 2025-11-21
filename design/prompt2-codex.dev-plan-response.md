@@ -57,7 +57,7 @@
 - Contract tests ensuring manifest schema matches what the .NET service expects.
 
 ### 3.7 Deliverables
-- Source tree under `services/sphana-trainer/`.
+- Source tree under `services/Sphana.Trainer/`.
 - Versioned ONNX artifacts + manifests.
 - Comprehensive README with setup, hardware requirements, and troubleshooting (CUDA/ORT matrix).
 - CI workflow (`github/workflows/train.yml`) running lint, unit tests, and dry-run exports on CPU.
@@ -127,7 +127,7 @@
 ## 5. Development Workflow, Repo Layout, and Tooling
 - **Monorepo structure:**
   - `design/` (existing docs)
-  - `services/sphana-trainer/` (CLI)
+  - `services/Sphana.Trainer/` (CLI)
   - `services/dotnet-grpc/` (gRPC backend)
   - `protos/` (shared .proto + generated stubs)
   - `manifests/` (model + deployment configs)

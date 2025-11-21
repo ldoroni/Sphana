@@ -66,7 +66,7 @@ The 4 failed tests are **expected failures** because they test ONNX model initia
 - `GnnRankerModelTests.Constructor_Should_Initialize_With_Valid_Parameters`
 - `RelationExtractionModelTests.Constructor_Should_Initialize_With_Valid_Parameters`
 
-These will pass once the Python `sphana-trainer` exports the ONNX models to `models/` directory.
+These will pass once the Python `sphana_trainer` exports the ONNX models to `models/` directory.
 
 ---
 
@@ -114,7 +114,7 @@ var encoded = _tokenizer.Encode(tokens.Count() + 2, text); // +2 for [CLS] and [
 ### To Make the Service Operational:
 
 #### 1. **Train and Export ONNX Models** (Required)
-Use the Python `sphana-trainer` service to create:
+Use the Python `sphana_trainer` service to create:
 ```bash
 models/
 ├── embedding.onnx                 # Fine-tuned all-MiniLM-L6-v2
@@ -261,7 +261,7 @@ services/Sphana.Database/
 - [x] E2E tests
 - [x] Docker support
 - [x] Documentation
-- [ ] Train ONNX models (Python sphana-trainer)
+- [ ] Train ONNX models (Python sphana_trainer)
 - [ ] Production NER integration (optional enhancement)
 - [ ] BFS graph reordering (optional optimization)
 

@@ -4,29 +4,29 @@ workspace_dir: target/workspace
 # Root directory for storing trained model artifacts
 artifact_root: target/artifacts
 
-embedding:
+relation:
   ##########################
   # Required Configuration #
   ##########################
   
   # Hugging Face model identifier or path to base model
-  model_name: sentence-transformers/all-MiniLM-L6-v2
+  model_name: hf-internal-testing/tiny-random-bert
   
   # Directory where checkpoints and artifacts will be saved
-  output_dir: target/artifacts/embedding
+  output_dir: target/artifacts/relation
   
   # Path to dataset directory or file
-  dataset_path: src/tests/data/embedding
+  dataset_path: src/tests/data/relation
   
   #################
   # Dataset Files #
   #################
   
   # Path to training data JSONL file
-  train_file: src/tests/data/embedding/train.jsonl
+  train_file: src/tests/data/relation/train.jsonl
   
   # Path to validation data JSONL file
-  validation_file: src/tests/data/embedding/validation.jsonl
+  validation_file: src/tests/data/relation/validation.jsonl
   
   # Alternative validation dataset path (overrides dataset_path for validation)
   # validation_path: null  # Optional explicit validation dataset path (default: null)
@@ -60,38 +60,44 @@ embedding:
   # Number of steps to accumulate gradients before updating weights
   # gradient_accumulation: 1  # Gradient accumulation steps (default: 1)
   
+  # L2 regularization penalty on model weights
+  # weight_decay: 0.01  # Weight decay for regularization (default: 0.01)
+  
   ###########################
   # Model-Specific Settings #
   ###########################
   
+  # Directory for caching dependency parse results
+  dependency_cache: target/cache/dep
+  
+  # Ratio of negative samples to positive samples in training
+  negative_sampling_ratio: 0.5
+  
   # Maximum sequence length for tokenization
-  max_seq_length: 512
-  
-  # Pooling strategy for sentence embeddings: mean, max, cls
-  pooling_strategy: mean
-  
-  # Temperature parameter for contrastive loss
-  # temperature: 0.05  # Temperature parameter for contrastive loss (default: 0.05)
+  max_seq_length: 256
   
   ###################
   # Export Settings #
   ###################
   
   # ONNX opset version for model export
-  # export_opset: 17 # ONNX opset version for model export (default: 17)
+  # export_opset: 17  # ONNX opset version for model export (default: 17)
   
   # Enable 8-bit quantization for exported ONNX model
   # quantize: true  # Enable 8-bit quantization for exported ONNX model (default: true)
-
+  
   #######################
   # Validation Settings #
   #######################
   
-  # Maximum number of validation samples to evaluate (for speed)
-  eval_subset_size: 16
+  # Batch size for validation evaluation
+  eval_batch_size: 2
   
-  # Minimum cosine similarity required to pass validation
-  # metric_threshold: null  # Minimum acceptable validation cosine similarity (default: null)
+  # Number of epochs without improvement before stopping training
+  early_stopping_patience: 2
+  
+  # Minimum macro F1 score required to pass validation
+  # metric_threshold: null  # Minimum acceptable macro F1 on validation set (default: null)
   
   #############################
   # Advanced Training Options #
@@ -123,7 +129,7 @@ embedding:
   # mlflow_tracking_uri: null  # Optional MLflow tracking URI override (default: null)
   
   # MLflow experiment name for organizing runs
-  # mlflow_experiment: sphana-trainer  # MLflow experiment name (default: sphana-trainer)
+  # mlflow_experiment: sphana_trainer  # MLflow experiment name (default: sphana_trainer)
   
   # Custom name for this MLflow run
   # mlflow_run_name: null  # Optional MLflow run name override (default: null)

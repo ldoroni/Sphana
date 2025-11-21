@@ -103,7 +103,7 @@ models/
 └── llm_generator.onnx (optional)
 ```
 
-> **Note:** ONNX models are NOT included in this repository. They must be trained separately using the Python training pipeline in `services/sphana-trainer/`.
+> **Note:** ONNX models are NOT included in this repository. They must be trained separately using the Python training pipeline in `services/Sphana.Trainer/`.
 
 ### 3. Build and Run
 

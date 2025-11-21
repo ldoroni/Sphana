@@ -3,7 +3,7 @@
 The Sphana Trainer is a Python 3.11 CLI that produces every neural artifact required by the Sphana NRDB: dense embedding encoders, entity-centric relation extractors, the GGNN reasoner, and the manifest/package consumed by the .NET gRPC runtime. Each command performs full PyTorch training (with Transformers + custom GNN), exports ONNX graphs, applies int8 quantization, and publishes metadata so downstream services can hot-load the latest versions.
 
 ## Highlights
-- Typer-based CLI (`sphana-trainer`) with subcommands for `train embedding|relation|gnn`, `export`, `package`, and ingestion helpers.
+- Typer-based CLI (`sphana_trainer`) with subcommands for `train embedding|relation|gnn`, `export`, `package`, and ingestion helpers.
 - Ingestion orchestration via `ingest` plus `ingest-validate` to guarantee dataset quality before training, now with parser backends (`simple`, `spacy`, `stanza`) for relation extraction.
 - spaCy/Stanza parsers and the optional Hugging Face relation classifier integrate with ingestion, and their parsed sentences are cached under each ingest cache for reproducible dataset builds.
 - Trainer runtime supports mixed precision, checkpoint resume, and distributed data parallel (DDP) via `torchrun` (automatic device/scaler handling per component).
@@ -11,20 +11,20 @@ The Sphana Trainer is a Python 3.11 CLI that produces every neural artifact requ
 - Structured metrics logging + dataset fingerprinting for every run, plus automatic pruning of old checkpoints.
 - MLflow logging + the `train sweep` helper bring hyper-parameter searches under version control, while ONNX parity checks guarantee <1% drift relative to PyTorch outputs.
 - Toggle `log_to_mlflow` in any training config (with optional `mlflow_tracking_uri`, `mlflow_experiment`, `mlflow_run_name`) to stream parameters/metrics to MLflow alongside on-disk logs.
-- Artifact promotion CLI (`sphana-trainer artifacts ...`) to list, diff, and promote trained versions into manifests for the .NET runtime.
+- Artifact promotion CLI (`sphana_trainer artifacts ...`) to list, diff, and promote trained versions into manifests for the .NET runtime.
 - YAML + Pydantic configuration (see `configs/`) with versioning, dataset overrides, and warmup/quantization knobs aligned with the design doc.
 - Real training loops:
   - **Embedding:** contrastive SimCSE-style finetuning over JSONL query/context pairs, cosine evaluation, ONNX export + dynamic quantization.
   - **Relation Extraction:** entity-marked sequence classification with Hugging Face Transformers, macro-F1 early stopping, ONNX export.
   - **GNN Ranker:** listwise ListNet optimization over per-query candidate subgraphs, dynamic-axes ONNX export for the GGNN reasoner.
 - Artifact registry: each run writes structured metadata + manifests under `target/artifacts/`, enabling the `.NET` service (and the `export`/`package` commands) to discover the correct ONNX payloads by version.
-- Release pipeline: `sphana-trainer export` validates that all requested components are trained, composes the manifest defined in `src/sphana_trainer/schemas/manifests/model-manifest.schema.json`, and `sphana-trainer package` bundles the manifest plus ONNX binaries into a tarball ready for publication.
+- Release pipeline: `sphana_trainer export` validates that all requested components are trained, composes the manifest defined in `src/sphana_trainer/schemas/manifests/model-manifest.schema.json`, and `sphana_trainer package` bundles the manifest plus ONNX binaries into a tarball ready for publication.
 
 ## Quick Start
 
 ### 1. Preconditions (run once per session)
 ```powershell
-cd services/sphana-trainer
+cd services/Sphana.Trainer
 $env:PYTHONPATH="src"     # (PowerShell) ensures `python -m sphana_trainer.cli` can be imported
 
 # Install dependencies
@@ -107,7 +107,7 @@ python -m sphana_trainer.cli workflow status --artifact-root target/artifacts
 ### Dataset Expectations
 - **Ingestion (`ingest` command):** point `input_dir` at a directory of `.txt/.md/.json` files. The pipeline emits `chunks.jsonl` and `relations.jsonl` plus cached chunks under `artifact_root/cache`, and (for spaCy/Stanza) stores dependency parses under `cache/parses` for later inspection.
 - Use `dataset-download-wiki` to download Wikipedia articles using titles from `samples/wiki-titles/*/ai-ml-wiki-titles.*.txt` (single file via `--titles-file`) or from a directory containing multiple title files (via `--titles-dir samples/large`). The CLI downloads content into `target/data/wiki/docs.jsonl`, which is what `configs/ingest/wiki.yaml` consumes.
-- Use `sphana-trainer dataset-build-from-ingest <ingest_dir>` to convert `chunks.jsonl`/`relations.jsonl` into training-ready splits for embedding, relation, and GNN models (outputs under `target/datasets` by default). Add curated corpora via `--extra-embedding`, `--extra-relation`, and `--extra-gnn` by providing paths to your sample JSONL files. Cached parse files are consumed automatically (override via `--parses-dir`).
+- Use `sphana_trainer dataset-build-from-ingest <ingest_dir>` to convert `chunks.jsonl`/`relations.jsonl` into training-ready splits for embedding, relation, and GNN models (outputs under `target/datasets` by default). Add curated corpora via `--extra-embedding`, `--extra-relation`, and `--extra-gnn` by providing paths to your sample JSONL files. Cached parse files are consumed automatically (override via `--parses-dir`).
 - **Embedding (`train_file`, `validation_file`):** JSONL where each line contains `{"query": "...", "positive": "..."}` (additional keys like `anchor`/`context` are accepted). Validation is optional but recommended to monitor cosine similarity.
 - **Relation (`train/validation`):** JSONL with `text`, `entity1`, `entity2`, and `label`. Each entity can specify `{"text": "...", "start": int, "end": int}`; spans are wrapped with `[E1]...[/E1]` and `[E2]...[/E2]` before tokenization.
 - **GNN (`train/validation`):** JSONL where each record represents a query and contains `{"query_id": "...", "candidates": [{"node_features": [[...]], "edge_index": [[src, dst], ...], "edge_directions": [0/1], "label": float}, ...]}`. All candidates for a query are trained jointly via listwise loss.
@@ -122,7 +122,7 @@ Place datasets anywhere and override the paths via `dataset_path`, `train_file`,
 
 ## Repository Layout
 ```
-services/sphana-trainer
+services/Sphana.Trainer
 ├── configs/                 # YAML configs (embedding/relation/gnn/export)
 ├── data/                    # Seed/public corpora checked into the repo
 ├── src/
@@ -152,7 +152,7 @@ services/sphana-trainer
   - Expects CUDA 12.8 if you want to validate GPU execution, but also runs on CPU (slower).
 - Run the whole suite (unit + e2e):
 ```bash
-cd services/sphana-trainer
+cd services/Sphana.Trainer
 pytest  # or pytest -m "not slow" if you add markers later
 ```
 
@@ -171,11 +171,11 @@ pytest -m ingestion  # focuses on ingestion + validation logic
 - Distributed runs: launch with `torchrun --nproc_per_node=<gpus>` and set `ddp: true` plus `precision: fp16/bf16` in the component config to enable synchronized training. Non-primary ranks automatically skip artifact export and metadata writes.
 - Quality gates: set `metric_threshold` within a component config to enforce minimum validation cosine/F1 or maximum GNN validation loss; runs without a validation split will raise if a threshold is requested.
 - Use `src/sphana_trainer/schemas/ingestion/*.schema.json` with `ingest-validate --chunks-schema ... --relations-schema ...` to enforce data contracts on generated JSONL files.
-- Dataset contracts are also available for training splits (`src/sphana_trainer/schemas/datasets/*.schema.json`); run `sphana-trainer dataset-validate` before training to catch malformed inputs.
+- Dataset contracts are also available for training splits (`src/sphana_trainer/schemas/datasets/*.schema.json`); run `sphana_trainer dataset-validate` before training to catch malformed inputs.
 - Structured metrics (`metrics.jsonl`) capture epoch timing, throughput, and device stats per run; dataset fingerprints and workflow state are stored under each artifact root so `workflow run` can resume or skip stages intelligently.
 - For centralized experiment tracking, set `log_to_mlflow: true` (plus optional `mlflow_tracking_uri`, `mlflow_experiment`, `mlflow_run_name`) in any component config; the CLI handles initializing MLflow runs and logging hyperparameters/metrics from the primary rank. Use `train sweep` to iterate through small parameter grids without scripting.
 - Enable profiling per component via `profile_steps: <N>` to capture PyTorch profiler traces stored alongside each run.
 - After every `workflow run`, review `target/artifacts/workflow-report.json` for a consolidated summary (stage outputs, metrics, manifest) that can be attached to notebook runs or deployment PRs.
-- `sphana-trainer workflow status` summarizes the latest successful stage per workspace, and `artifacts bundle` copies ONNX + metadata into a portable directory for manual delivery to the .NET team.
+- `sphana_trainer workflow status` summarizes the latest successful stage per workspace, and `artifacts bundle` copies ONNX + metadata into a portable directory for manual delivery to the .NET team.
 - Makefile shortcuts (`make unit`, `make integration`, `make wiki-train`, `make sweep-embedding`) simplify local workflows.
 - Full offline documentation (HTML/CSS/JS) lives under [`docs/`](docs/index.html) for easy browsing in a browser.

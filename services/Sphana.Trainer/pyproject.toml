@@ -3,7 +3,7 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "sphana-trainer"
+name = "sphana_trainer"
 version = "0.1.0"
 description = "Training, evaluation, and ONNX export CLI for the Sphana NRDB."
 readme = "README.md"
@@ -45,7 +45,7 @@ dev = [
 ]
 
 [project.scripts]
-sphana-trainer = "sphana_trainer.cli:app"
+sphana_trainer = "sphana_trainer.cli:app"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sphana_trainer"]

@@ -41,7 +41,7 @@ class BaseComponentConfig(BaseModel):
     mlflow_tracking_uri: Optional[str] = Field(
         default=None, description="Optional MLflow tracking URI override."
     )
-    mlflow_experiment: str = Field(default="sphana-trainer", description="MLflow experiment name.")
+    mlflow_experiment: str = Field(default="sphana_trainer", description="MLflow experiment name.")
     mlflow_run_name: Optional[str] = Field(default=None, description="Optional MLflow run name override.")
     @field_validator(
         "output_dir",

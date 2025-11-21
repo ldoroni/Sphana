@@ -25,7 +25,7 @@ The fastest way to get started is using Docker Compose:
 You need to train and export models using the Python training CLI:
 
 ```bash
-cd ../sphana-trainer
+cd ../Sphana.Trainer
 python -m sphana_train export onnx --component embedding --output ../Sphana.Database/models/
 python -m sphana_train export onnx --component re-model --output ../Sphana.Database/models/
 python -m sphana_train export onnx --component gnn --output ../Sphana.Database/models/
@@ -292,7 +292,7 @@ docker-compose logs sphana-database | grep "ERROR"
 - [README.md](README.md) - Full documentation
 - [IMPLEMENTATION.md](IMPLEMENTATION.md) - Implementation details
 - Design documents in `design/` directory
-- Python training CLI docs at `../sphana-trainer/docs/index.html`
+- Python training CLI docs at `../Sphana.Trainer/docs/index.html`
 
 ## Support
 

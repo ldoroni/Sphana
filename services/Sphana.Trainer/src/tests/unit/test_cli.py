@@ -49,7 +49,7 @@ def test_help_command():
 def test_version_command():
     result = runner.invoke(app, ["version"])
     assert result.exit_code == 0
-    assert "sphana-trainer" in result.stdout.lower()
+    assert "sphana_trainer" in result.stdout.lower()
 
 
 def test_cli_without_subcommand_prints_help():

@@ -111,7 +111,7 @@ def main(
 def version() -> None:
     """Print the CLI version."""
 
-    console.print(f"sphana-trainer {__version__}")
+    console.print(f"sphana_trainer {__version__}")
 
 
 @app.command("dataset-validate")
@@ -374,7 +374,7 @@ def dataset_download_wiki(
         titles = titles[:limit]
     session = requests.Session()
     if hasattr(session, "headers"):
-        session.headers.update({"User-Agent": "sphana-trainer/0.1 (+https://github.com/)"})
+        session.headers.update({"User-Agent": "Sphana.Trainer/0.1 (+https://github.com/)"})
     output = output.expanduser().resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     fetched = 0

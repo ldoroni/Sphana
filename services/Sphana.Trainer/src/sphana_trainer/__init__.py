@@ -3,7 +3,7 @@
 from importlib.metadata import version, PackageNotFoundError
 
 try:
-    __version__ = version("sphana-trainer")
+    __version__ = version("sphana_trainer")
 except PackageNotFoundError:  # pragma: no cover - during editable installs
     __version__ = "0.0.0"
 

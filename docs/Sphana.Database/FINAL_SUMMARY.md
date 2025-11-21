@@ -133,7 +133,7 @@ Follow the resolution steps above to clean and rebuild.
 
 ### 2. Train and Export ONNX Models (REQUIRED)
 ```bash
-cd ../sphana-trainer
+cd ../Sphana.Trainer
 
 # Train embedding model
 python -m sphana_train train embedding --config configs/embedding/base.yaml
