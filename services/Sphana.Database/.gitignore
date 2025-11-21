@@ -1,0 +1,43 @@
+# Build results
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+
+# NuGet
+packages/
+*.nupkg
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+
+# User-specific
+appsettings.Development.json
+appsettings.Local.json
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+
+# Models
+*.onnx
+models/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
