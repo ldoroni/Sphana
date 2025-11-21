@@ -32,6 +32,6 @@ message Index {
 
 message Document {
   string title = 1;
-  string document = 2;
+  string document = 2; // todo: change to "content"
   map<string, string> metadata = 3;
 }

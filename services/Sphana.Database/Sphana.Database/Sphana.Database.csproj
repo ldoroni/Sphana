@@ -8,10 +8,31 @@
     <PublishAot>true</PublishAot>
     <UserSecretsId>e7ee0965-399b-4a04-a48f-91b99a3da0a0</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.64.0" />
+    <!-- gRPC for service communication -->
+    <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
+    
+    <!-- ONNX Runtime for model inference -->
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.23.2" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu" Version="1.23.2" />
+    
+    <!-- BERTTokenizers for text processing -->
+    <PackageReference Include="BERTTokenizers" Version="1.2.0" />
+    
+    <!-- System.Numerics.Tensors for tensor operations -->
+    <PackageReference Include="System.Numerics.Tensors" Version="10.0.0" />
+    
+    <!-- OpenTelemetry for observability -->
+    <PackageReference Include="OpenTelemetry" Version="1.14.0" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.14.0" />
+    <PackageReference Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" Version="1.10.0-beta.1" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.14.0" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.14.0" />
+    
+    <!-- Visual Studio Docker Tools -->
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
   </ItemGroup>
 

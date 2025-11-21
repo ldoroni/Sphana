@@ -32,7 +32,6 @@ appsettings.Local.json
 
 # Models
 *.onnx
-models/
 
 # Logs
 logs/

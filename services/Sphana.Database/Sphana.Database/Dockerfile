@@ -47,4 +47,71 @@ WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 COPY --from=publish /app/publish .
+COPY models ./models
 ENTRYPOINT ["./Sphana.Database"]
+
+
+
+
+# # Sphana Database - Neural RAG Database System
+# # Multi-stage Dockerfile with GPU support
+
+# # Stage 1: Build stage
+# FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+# WORKDIR /src
+
+# # Copy project files
+# COPY ["Sphana.Database.Protos/Sphana.Database.Protos.csproj", "Sphana.Database.Protos/"]
+# COPY ["Sphana.Database/Sphana.Database.csproj", "Sphana.Database/"]
+
+# # Restore dependencies
+# RUN dotnet restore "Sphana.Database/Sphana.Database.csproj"
+
+# # Copy source code
+# COPY . .
+
+# # Build the application
+# WORKDIR "/src/Sphana.Database"
+# RUN dotnet build "Sphana.Database.csproj" -c Release -o /app/build
+
+# # Stage 2: Publish stage
+# FROM build AS publish
+# RUN dotnet publish "Sphana.Database.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# # Stage 3: Runtime stage with CUDA support
+# FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+
+# # Install CUDA dependencies (for GPU support)
+# # Note: For production, use nvidia/cuda base image or install CUDA runtime
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     wget \
+#     ca-certificates \
+#     && rm -rf /var/lib/apt/lists/*
+
+# WORKDIR /app
+
+# # Copy published application
+# COPY --from=publish /app/publish .
+
+# # Create directories for data persistence
+# RUN mkdir -p /app/data/vector_index \
+#     && mkdir -p /app/data/knowledge_graph \
+#     && mkdir -p /app/data/properties \
+#     && mkdir -p /app/models
+
+# # Expose ports
+# EXPOSE 5001
+# EXPOSE 5000
+
+# # Health check
+# HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+#     CMD wget --no-verbose --tries=1 --spider http://localhost:5000/health || exit 1
+
+# # Set environment variables
+# ENV ASPNETCORE_URLS=http://+:5000;https://+:5001
+# ENV ASPNETCORE_ENVIRONMENT=Production
+
+# # Run as non-root user
+# USER $APP_UID
+
+# ENTRYPOINT ["dotnet", "Sphana.Database.dll"]
