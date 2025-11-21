@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package sphana.common.v1;
+
+option csharp_namespace = "Sphana.Common.RPC.V1";
+
+message Status {
+  bool succeed = 1;
+  string status_code = 2;
+  string message = 3;
+}
