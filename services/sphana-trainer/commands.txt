@@ -1,0 +1,39 @@
+# Navigate to project directory
+cd services/sphana-trainer
+$env:PYTHONPATH="src"
+
+# Create VENV and install dependencies (output .venv/)
+python -m venv .venv
+.\.venv\Scripts\activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+
+# Download training data from wiki (output samples/wiki-docs/large/docs.jsonl)
+python -m sphana_trainer.cli dataset-download-wiki `
+    --titles-dir samples\wiki-titles\large\ `
+    --full-content `
+    --output samples\wiki-docs\large\docs.jsonl `
+    --limit 500000
+
+# Prepare training data for the train (output target/ingest/)
+python -m sphana_trainer.cli ingest `
+    --config configs\ingest\wiki.yaml
+
+# Build dataset from ingest (output target/datasets/)
+python -m sphana_trainer.cli dataset-build-from-ingest target/ingest/ `      
+    --output-dir target/datasets/ `
+    --min-confidence 0.3 `
+    --val-ratio 0.2 `     
+    --seed 42 
+
+# Train models (output target/artifacts/)
+python -m sphana_trainer.cli train embedding --config configs/embedding/wiki.yaml
+python -m sphana_trainer.cli train relation --config configs/relation/wiki.yaml
+python -m sphana_trainer.cli train gnn --config configs/gnn/wiki.yaml
+
+# Export models as ONNX (output target/manifests/latest.json)
+python -m sphana_trainer.cli export --config configs/export/wiki.yaml
+
+# Package ONNX models (output target/manifests/latest.tar.gz)
+python -m sphana_trainer.cli package --config configs/export/wiki.yaml
