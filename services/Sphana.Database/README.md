@@ -93,7 +93,7 @@ Copy and customize the configuration in `appsettings.json`:
 
 ### 2. Model Preparation
 
-ONNX models must be trained and exported using the Python training CLI (`sphana-trainer`). Place the exported models in the `models/` directory:
+ONNX models must be trained and exported using the Python training CLI (`sphana_trainer`). Place the exported models in the `models/` directory:
 
 ```
 models/

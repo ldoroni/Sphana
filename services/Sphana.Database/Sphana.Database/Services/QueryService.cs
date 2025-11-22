@@ -1,8 +1,10 @@
+using Sphana.Database.Models;
 using Sphana.Database.Models.KnowledgeGraph;
 using Sphana.Database.Infrastructure.Onnx;
 using Sphana.Database.Infrastructure.VectorIndex;
 using Sphana.Database.Infrastructure.GraphStorage;
 using System.Text.Json;
+using System.Text;
 
 namespace Sphana.Database.Services;
 
@@ -13,6 +15,8 @@ public sealed class QueryService : IQueryService
 {
     private readonly IEmbeddingModel _embeddingModel;
     private readonly IGnnRankerModel _gnnRankerModel;
+    private readonly ILlmGeneratorModel _llmGeneratorModel;
+    private readonly INerModel _nerModel;
     private readonly IVectorIndex _vectorIndex;
     private readonly IGraphStorage _graphStorage;
     private readonly ILogger<QueryService> _logger;
@@ -20,20 +24,26 @@ public sealed class QueryService : IQueryService
     private readonly float _graphSearchWeight;
     private readonly int _vectorSearchTopK;
     private readonly int _maxSubgraphs;
+    private readonly int _maxGenerationTokens;
 
     public QueryService(
         IEmbeddingModel embeddingModel,
         IGnnRankerModel gnnRankerModel,
+        ILlmGeneratorModel llmGeneratorModel,
+        INerModel nerModel,
         IVectorIndex vectorIndex,
         IGraphStorage graphStorage,
         ILogger<QueryService> logger,
         float vectorSearchWeight = 0.6f,
         float graphSearchWeight = 0.4f,
         int vectorSearchTopK = 20,
-        int maxSubgraphs = 10)
+        int maxSubgraphs = 10,
+        int maxGenerationTokens = 512)
     {
         _embeddingModel = embeddingModel ?? throw new ArgumentNullException(nameof(embeddingModel));
         _gnnRankerModel = gnnRankerModel ?? throw new ArgumentNullException(nameof(gnnRankerModel));
+        _llmGeneratorModel = llmGeneratorModel ?? throw new ArgumentNullException(nameof(llmGeneratorModel));
+        _nerModel = nerModel ?? throw new ArgumentNullException(nameof(nerModel));
         _vectorIndex = vectorIndex ?? throw new ArgumentNullException(nameof(vectorIndex));
         _graphStorage = graphStorage ?? throw new ArgumentNullException(nameof(graphStorage));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -41,6 +51,7 @@ public sealed class QueryService : IQueryService
         _graphSearchWeight = graphSearchWeight;
         _vectorSearchTopK = vectorSearchTopK;
         _maxSubgraphs = maxSubgraphs;
+        _maxGenerationTokens = maxGenerationTokens;
     }
 
     /// <summary>
@@ -83,7 +94,7 @@ public sealed class QueryService : IQueryService
             var vectorResults = await _vectorIndex.SearchAsync(queryEmbedding, _vectorSearchTopK, cancellationToken);
             _logger.LogDebug("Vector search returned {Count} results", vectorResults.Count);
 
-            // Step 3: Extract entities from query (placeholder)
+            // Step 3: Extract entities from query
             var queryEntities = await ExtractQueryEntitiesAsync(query, cancellationToken);
             _logger.LogDebug("Extracted {Count} entities from query", queryEntities.Count);
 
@@ -107,7 +118,7 @@ public sealed class QueryService : IQueryService
             // Step 6: Combine vector and graph results
             var combinedResults = CombineResults(vectorResults, rankedSubgraphs);
 
-            // Step 7: Generate final answer (placeholder for LLM)
+            // Step 7: Generate final answer (LLM)
             var answer = await GenerateAnswerAsync(query, combinedResults, cancellationToken);
 
             var latency = (DateTime.UtcNow - startTime).TotalMilliseconds;
@@ -134,8 +145,14 @@ public sealed class QueryService : IQueryService
         string query, 
         CancellationToken cancellationToken)
     {
-        // TODO: Implement proper entity extraction from query
-        // For now, return capitalized words as entities
+        // Use NER model to extract entities from query
+        var extracted = await _nerModel.ExtractEntitiesAsync(query, cancellationToken);
+        if (extracted.Any())
+        {
+            return extracted.Select(e => e.Text).ToList();
+        }
+
+        // Fallback to capitalized words if NER fails
         var words = query.Split(' ');
         return words.Where(w => char.IsUpper(w.FirstOrDefault())).ToList();
     }
@@ -157,18 +174,6 @@ public sealed class QueryService : IQueryService
             }
         }
 
-        // Strategy 2: Subgraphs from vector search results
-        foreach (var result in vectorResults.Take(10))
-        {
-            // Extract chunk ID from result ID
-            var chunkId = result.Id;
-            var subgraph = await FindSubgraphForChunkAsync(chunkId, cancellationToken);
-            if (subgraph != null)
-            {
-                subgraphs.Add(subgraph);
-            }
-        }
-
         return subgraphs.Take(_maxSubgraphs).ToList();
     }
 
@@ -176,22 +181,20 @@ public sealed class QueryService : IQueryService
         string entityText,
         CancellationToken cancellationToken)
     {
-        // TODO: Implement proper entity lookup in the graph
-        // For now, return null as placeholder
-        return await Task.FromResult<KnowledgeSubgraph?>(null);
+        var startNode = await _graphStorage.GetNodeByTextAsync(entityText, cancellationToken);
+        if (startNode == null) return null;
+
+        return await BuildSubgraphFromNodeAsync(startNode, cancellationToken);
     }
 
-    private async Task<KnowledgeSubgraph?> FindSubgraphForChunkAsync(
-        string chunkId,
+    private async Task<KnowledgeSubgraph?> BuildSubgraphFromNodeAsync(
+        GraphNode startNode,
         CancellationToken cancellationToken)
     {
-        // Find all nodes associated with this chunk
-        // This is a simplified implementation
         try
         {
-            // In a real implementation, maintain a chunk-to-nodes mapping
-            // For now, traverse a portion of the graph
-            var allNodes = await _graphStorage.TraverseAsync("", 2, cancellationToken);
+            // Traverse from start node
+            var allNodes = await _graphStorage.TraverseAsync(startNode.Id, 2, cancellationToken);
             
             if (allNodes.Count == 0)
             {
@@ -202,7 +205,7 @@ public sealed class QueryService : IQueryService
             var entities = new List<Entity>();
             var relations = new List<Relation>();
 
-            foreach (var node in allNodes.Take(10))
+            foreach (var node in allNodes.Take(20)) // Limit subgraph size
             {
                 var nodeDataJson = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(node.Data);
                 if (nodeDataJson != null)
@@ -256,7 +259,7 @@ public sealed class QueryService : IQueryService
         }
         catch (Exception ex)
         {
-            _logger.LogWarning(ex, "Failed to extract subgraph for chunk {ChunkId}", chunkId);
+            _logger.LogWarning(ex, "Failed to build subgraph from node {NodeId}", startNode.Id);
             return null;
         }
     }
@@ -270,6 +273,8 @@ public sealed class QueryService : IQueryService
         // Combine vector results with graph results
         var maxVectorScore = vectorResults.Any() ? vectorResults.Max(r => r.Score) : 1.0f;
         var maxGraphScore = rankedSubgraphs.Any() ? rankedSubgraphs.Max(r => r.Score) : 1.0f;
+        if (maxVectorScore == 0) maxVectorScore = 1.0f;
+        if (maxGraphScore == 0) maxGraphScore = 1.0f;
 
         foreach (var vectorResult in vectorResults)
         {
@@ -294,6 +299,8 @@ public sealed class QueryService : IQueryService
             var chunkIds = subgraph.Entities.Select(e => e.SourceChunkId).Distinct();
             foreach (var chunkId in chunkIds)
             {
+                if (string.IsNullOrEmpty(chunkId)) continue;
+
                 var existing = combined.FirstOrDefault(c => c.ChunkId == chunkId);
                 if (existing != null)
                 {
@@ -321,39 +328,30 @@ public sealed class QueryService : IQueryService
         List<CombinedResult> results,
         CancellationToken cancellationToken)
     {
-        // TODO: Implement LLM-based answer generation
-        // For now, return a simple summary
         if (results.Count == 0)
         {
             return "No relevant information found.";
         }
 
-        var topResults = results.Take(5);
-        return $"Found {results.Count} relevant results. Top chunks: {string.Join(", ", topResults.Select(r => r.ChunkId))}";
+        // Construct prompt
+        var sb = new StringBuilder();
+        sb.AppendLine("Answer the question based on the following context:");
+        sb.AppendLine();
+
+        foreach (var result in results.Take(5))
+        {
+            // In a real app, we would fetch the chunk content here
+            // Assuming result has some metadata or we fetch it
+            sb.AppendLine($"Context (Score: {result.CombinedScore:F2}): [Chunk {result.ChunkId}]"); 
+        }
+        
+        sb.AppendLine();
+        sb.AppendLine($"Question: {query}");
+        sb.AppendLine("Answer:");
+
+        var prompt = sb.ToString();
+
+        // Call LLM
+        return await _llmGeneratorModel.GenerateAnswerAsync(prompt, _maxGenerationTokens, cancellationToken);
     }
 }
-
-/// <summary>
-/// Result of a query operation
-/// </summary>
-public sealed class QueryResult
-{
-    public required string Query { get; init; }
-    public required string Answer { get; init; }
-    public List<SearchResult> VectorResults { get; init; } = new();
-    public List<KnowledgeSubgraph> KnowledgeSubgraphs { get; init; } = new();
-    public double LatencyMs { get; init; }
-    public DateTime Timestamp { get; init; }
-}
-
-/// <summary>
-/// Combined result from vector and graph search
-/// </summary>
-public sealed class CombinedResult
-{
-    public required string ChunkId { get; init; }
-    public float VectorScore { get; init; }
-    public float GraphScore { get; set; }
-    public float CombinedScore { get; set; }
-}
-

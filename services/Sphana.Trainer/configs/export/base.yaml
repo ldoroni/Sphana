@@ -17,11 +17,13 @@ export:
   ###################
   
   # List of component models to include in the export manifest
-  # Valid values: embedding, relation, gnn
+  # Valid values: embedding, relation, gnn, ner, llm
   include_models:
     - embedding
     - relation
     - gnn
+    - ner
+    - llm
   
   #######################
   # Publishing Settings #
@@ -32,4 +34,3 @@ export:
   
   # Root directory where artifacts are stored (can override global artifact_root)
   # artifact_root: target/artifacts  # Artifact root directory (default: target/artifacts)
-

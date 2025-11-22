@@ -1,6 +1,7 @@
 using System.Buffers;
 using System.Collections.Concurrent;
 using System.IO.MemoryMappedFiles;
+using System.Text.Json;
 
 namespace Sphana.Database.Infrastructure.GraphStorage;
 
@@ -18,6 +19,8 @@ public sealed class PcsrGraphStorage : IGraphStorage, IDisposable
     // In-memory metadata
     private readonly ConcurrentDictionary<string, NodeMetadata> _nodeMetadata;
     private readonly ConcurrentDictionary<string, List<EdgeData>> _edges;
+    // Index for fast lookup by text (Entity Text -> NodeId)
+    private readonly ConcurrentDictionary<string, string> _textToNodeId;
     private readonly SemaphoreSlim _storageLock;
 
     // Statistics
@@ -40,6 +43,7 @@ public sealed class PcsrGraphStorage : IGraphStorage, IDisposable
 
         _nodeMetadata = new ConcurrentDictionary<string, NodeMetadata>();
         _edges = new ConcurrentDictionary<string, List<EdgeData>>();
+        _textToNodeId = new ConcurrentDictionary<string, string>();
         _storageLock = new SemaphoreSlim(1, 1);
 
         EnsureStorageDirectory();
@@ -77,6 +81,10 @@ public sealed class PcsrGraphStorage : IGraphStorage, IDisposable
         {
             _edges[nodeId] = new List<EdgeData>();
             Interlocked.Increment(ref _nodeCount);
+            
+            // Index text if present
+            TryIndexNodeText(nodeId, nodeData);
+
             _logger?.LogDebug("Added node {NodeId} to graph", nodeId);
         }
 
@@ -101,12 +109,42 @@ public sealed class PcsrGraphStorage : IGraphStorage, IDisposable
         return Task.FromResult<GraphNode?>(null);
     }
 
+    public Task<GraphNode?> GetNodeByTextAsync(string text, CancellationToken cancellationToken = default)
+    {
+        if (_textToNodeId.TryGetValue(text, out var nodeId))
+        {
+            return GetNodeAsync(nodeId, cancellationToken);
+        }
+        return Task.FromResult<GraphNode?>(null);
+    }
+
     public Task<bool> RemoveNodeAsync(string nodeId, CancellationToken cancellationToken = default)
     {
-        if (_nodeMetadata.TryRemove(nodeId, out _))
+        if (_nodeMetadata.TryRemove(nodeId, out var metadata))
         {
             _edges.TryRemove(nodeId, out _);
             
+            // Remove from text index
+            // We need to parse data to find the text key, or iterate.
+            // Since we don't store the text->nodeId mapping in metadata, 
+            // and parsing is cheap relative to I/O...
+            // Alternatively, we can just check _textToNodeId values, but that's slow.
+            // Let's try to extract text from metadata.Data
+            if (!string.IsNullOrEmpty(metadata.Data))
+            {
+                try {
+                    using var doc = JsonDocument.Parse(metadata.Data);
+                    if (doc.RootElement.TryGetProperty("Text", out var textProp))
+                    {
+                        var text = textProp.GetString();
+                        if (!string.IsNullOrEmpty(text))
+                        {
+                            _textToNodeId.TryRemove(text, out _);
+                        }
+                    }
+                } catch { /* ignore parsing errors */ }
+            }
+
             // Remove all edges pointing to this node
             foreach (var edges in _edges.Values)
             {
@@ -228,6 +266,11 @@ public sealed class PcsrGraphStorage : IGraphStorage, IDisposable
         int maxDepth, 
         CancellationToken cancellationToken = default)
     {
+        if (string.IsNullOrEmpty(startNodeId))
+        {
+            return new List<GraphNode>();
+        }
+
         var visited = new HashSet<string>();
         var result = new List<GraphNode>();
         var queue = new Queue<(string NodeId, int Depth)>();
@@ -387,6 +430,7 @@ public sealed class PcsrGraphStorage : IGraphStorage, IDisposable
         {
             _nodeMetadata.Clear();
             _edges.Clear();
+            _textToNodeId.Clear();
 
             await using var stream = File.OpenRead(fullPath);
             using var reader = new BinaryReader(stream);
@@ -410,6 +454,9 @@ public sealed class PcsrGraphStorage : IGraphStorage, IDisposable
 
                 _nodeMetadata[metadata.Id] = metadata;
                 _edges[metadata.Id] = new List<EdgeData>();
+                
+                // Index text
+                TryIndexNodeText(metadata.Id, metadata.Data);
             }
 
             // Read edges
@@ -437,6 +484,27 @@ public sealed class PcsrGraphStorage : IGraphStorage, IDisposable
         finally
         {
             _storageLock.Release();
+        }
+    }
+
+    private void TryIndexNodeText(string nodeId, string nodeData)
+    {
+        if (string.IsNullOrEmpty(nodeData)) return;
+        try
+        {
+            using var doc = JsonDocument.Parse(nodeData);
+            if (doc.RootElement.TryGetProperty("Text", out var textProp))
+            {
+                var text = textProp.GetString();
+                if (!string.IsNullOrEmpty(text))
+                {
+                    _textToNodeId[text] = nodeId;
+                }
+            }
+        }
+        catch
+        {
+            // Ignore parsing errors
         }
     }
 
@@ -487,4 +555,3 @@ public sealed class PcsrGraphStorage : IGraphStorage, IDisposable
         public required string Data { get; init; }
     }
 }
-

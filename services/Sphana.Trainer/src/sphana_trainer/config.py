@@ -15,7 +15,7 @@ class BaseComponentConfig(BaseModel):
 
     model_name: str = Field(..., description="Identifier of the base model to finetune.")
     output_dir: Path = Field(default=Path("target/artifacts"), description="Where to store checkpoints.")
-    dataset_path: Path = Field(..., description="Path to the prepared dataset (file or directory).")
+    dataset_path: Path = Field(default=Path("target/datasets"), description="Path to the prepared dataset (file or directory).")
     validation_path: Optional[Path] = Field(
         default=None, description="Optional explicit validation dataset path."
     )
@@ -23,7 +23,7 @@ class BaseComponentConfig(BaseModel):
     validation_file: Optional[Path] = Field(default=None, description="Override for validation split file.")
     batch_size: int = Field(default=32, ge=1)
     learning_rate: float = Field(default=5e-5, gt=0)
-    epochs: int = Field(default=3, ge=1)
+    epochs: int = Field(default=3, ge=0) # Updated ge=0 to allow export-only (0 epochs)
     seed: int = Field(default=42, ge=0)
     warmup_ratio: float = Field(default=0.1, ge=0.0, le=1.0)
     gradient_accumulation: int = Field(default=1, ge=1)
@@ -43,6 +43,12 @@ class BaseComponentConfig(BaseModel):
     )
     mlflow_experiment: str = Field(default="sphana_trainer", description="MLflow experiment name.")
     mlflow_run_name: Optional[str] = Field(default=None, description="Optional MLflow run name override.")
+    quantization_mismatch_threshold: float = Field(
+        default=0.0,
+        ge=0.0,
+        le=1.0,
+        description="Allowed fraction of mismatched elements during quantization validation (e.g. 0.05 for 5%)."
+    )
     @field_validator(
         "output_dir",
         "dataset_path",
@@ -119,11 +125,27 @@ class GNNConfig(BaseComponentConfig):
     )
 
 
+class NerConfig(BaseComponentConfig):
+    """Configuration for the NER model."""
+    
+    export_opset: int = Field(default=17, ge=13, le=19)
+    quantize: bool = Field(default=True)
+    max_seq_length: int = Field(default=512, ge=32)
+
+
+class LlmConfig(BaseComponentConfig):
+    """Configuration for the LLM generator."""
+    
+    export_opset: int = Field(default=17, ge=13, le=19)
+    quantize: bool = Field(default=True)
+    max_seq_length: int = Field(default=512, ge=32)
+
+
 class ExportConfig(BaseModel):
     """Configuration for packaging/exporting ONNX artifacts."""
 
     manifest_path: Path = Field(default=Path("target/manifests/latest.json"))
-    include_models: list[str] = Field(default_factory=lambda: ["embedding", "relation", "gnn"])
+    include_models: list[str] = Field(default_factory=lambda: ["embedding", "relation", "gnn", "ner", "llm"])
     publish_uri: Optional[str] = Field(default=None, description="Optional remote artifact store URI.")
     artifact_root: Path = Field(default=Path("target/artifacts"))
 
@@ -144,6 +166,8 @@ class TrainerConfig(BaseModel):
     embedding: Optional[EmbeddingConfig] = None
     relation: Optional[RelationExtractionConfig] = None
     gnn: Optional[GNNConfig] = None
+    ner: Optional[NerConfig] = None
+    llm: Optional[LlmConfig] = None
     export: Optional[ExportConfig] = None
 
     @field_validator("workspace_dir", mode="before")
@@ -219,5 +243,3 @@ def load_ingest_config(path: Path) -> IngestionConfig:
     if "ingest" in data:
         return IngestionConfig.model_validate(data["ingest"])
     return IngestionConfig.model_validate(data)
-
-

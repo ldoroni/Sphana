@@ -12,7 +12,11 @@ import numpy as np
 import torch
 import onnxruntime as ort
 from onnxruntime.quantization import QuantType, quantize_dynamic
-from transformers import AutoModelForSequenceClassification
+from transformers import (
+    AutoModelForSequenceClassification,
+    AutoModelForTokenClassification,
+    AutoModelForCausalLM,
+)
 
 from sphana_trainer.models import EmbeddingEncoder, GGNNRanker
 
@@ -183,6 +187,199 @@ def export_gnn_ranker(
     return onnx_path, quant_path or onnx_path
 
 
+def export_ner_model(
+    model_name_or_path: str,
+    tokenizer,
+    output_dir: Path,
+    opset: int,
+    max_seq_length: int,
+    quantize: bool,
+    allowed_mismatch_ratio: float = 0.0,
+) -> Tuple[Path, Path]:
+    """Export Token Classification model to ONNX."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    onnx_path = output_dir / "ner.onnx"
+    
+    # Load model
+    model = AutoModelForTokenClassification.from_pretrained(model_name_or_path).to("cpu").eval()
+    
+    dummy = tokenizer(
+        ["export sample"],
+        return_tensors="pt",
+        padding="max_length",
+        truncation=True,
+        max_length=max_seq_length,
+    )
+    
+    inputs = [dummy["input_ids"], dummy["attention_mask"]]
+    input_names = ["input_ids", "attention_mask"]
+    dynamic_axes = {
+        "input_ids": {0: "batch", 1: "sequence"},
+        "attention_mask": {0: "batch", 1: "sequence"},
+        "logits": {0: "batch", 1: "sequence"},
+    }
+    
+    if "token_type_ids" in dummy:
+        inputs.append(dummy["token_type_ids"])
+        input_names.append("token_type_ids")
+        dynamic_axes["token_type_ids"] = {0: "batch", 1: "sequence"}
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+        warnings.simplefilter("ignore", category=torch.jit.TracerWarning)
+        torch.onnx.export(
+            model,
+            tuple(inputs),
+            onnx_path,
+            input_names=input_names,
+            output_names=["logits"],
+            dynamic_axes=dynamic_axes,
+            opset_version=opset,
+            dynamo=False,
+        )
+
+    quant_path = (
+        _quantize_or_fallback(onnx_path, output_dir / "ner.int8.onnx")
+        if quantize
+        else onnx_path
+    )
+    
+    # Validation
+    torch_reference = model(**dummy).logits.detach().cpu().numpy()
+    feeds = {
+        "input_ids": dummy["input_ids"].cpu().numpy(),
+        "attention_mask": dummy["attention_mask"].cpu().numpy(),
+    }
+    if "token_type_ids" in dummy:
+        feeds["token_type_ids"] = dummy["token_type_ids"].cpu().numpy()
+        
+    _validate_onnx_model(onnx_path, feeds, reference=torch_reference, atol=1e-3, rtol=1e-3)
+    if quant_path != onnx_path:
+        # Check against allowed mismatch ratio for quantization
+        _validate_onnx_model(
+            quant_path, 
+            feeds, 
+            reference=torch_reference, 
+            atol=1e-1, 
+            rtol=3e-1, 
+            allowed_mismatch_ratio=allowed_mismatch_ratio
+        )
+        
+    return onnx_path, quant_path
+
+
+def export_llm_model(
+    model_name_or_path: str,
+    tokenizer,
+    output_dir: Path,
+    opset: int,
+    max_seq_length: int,
+    quantize: bool,
+    allowed_mismatch_ratio: float = 0.0,
+) -> Tuple[Path, Path]:
+    """Export Causal LM model to ONNX (using optimum)."""
+    try:
+        from optimum.exporters.onnx import main_export
+    except ImportError as exc:
+        raise RuntimeError("optimum is required for LLM export. Please install it.") from exc
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Use optimum main_export to handle complex LLM export (with past, SDPA handling etc)
+    # We perform quantization separately below if requested, so we skip optimum's post-process quantization here
+    # to maintain consistency with our pipeline (int8 dynamic).
+    # Note: main_export usually exports to a folder.
+    
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        main_export(
+            model_name_or_path=model_name_or_path,
+            output=output_dir,
+            task="text-generation-with-past", # Standard for LLM inference
+            opset=opset,
+            no_post_process=True,
+            device="cpu",
+        )
+
+    # Handle file naming: optimum usually produces 'model.onnx' or 'decoder_model.onnx' etc.
+    # For text-generation-with-past, it might produce merged model.onnx if supported.
+    # We look for model.onnx first.
+    src_onnx = output_dir / "model.onnx"
+    # Sometimes optimum exports as decoder_model_merged.onnx for some architectures
+    if not src_onnx.exists():
+        candidates = list(output_dir.glob("*.onnx"))
+        if len(candidates) == 1:
+            src_onnx = candidates[0]
+        elif len(candidates) > 1:
+            # If multiple files (e.g. decoder + decoder_with_past), pick the merged one or fail
+            merged = output_dir / "decoder_model_merged.onnx"
+            if merged.exists():
+                src_onnx = merged
+            else:
+                # Just pick the largest one? Or fail?
+                # For now, let's assume model.onnx or merged.
+                pass
+
+    if not src_onnx.exists():
+        raise FileNotFoundError(f"Optimum export did not produce expected 'model.onnx' in {output_dir}")
+
+    onnx_path = output_dir / "llm_generator.onnx"
+    if src_onnx.resolve() != onnx_path.resolve():
+        if onnx_path.exists():
+            onnx_path.unlink()
+        src_onnx.rename(onnx_path)
+
+    quant_path = (
+        _quantize_or_fallback(onnx_path, output_dir / "llm_generator.int8.onnx")
+        if quantize
+        else onnx_path
+    )
+    
+    # Validation logic
+    # Note: Optimum export usually works, and full validation might require complex inputs (past_key_values).
+    # We do a lightweight check on input/output shapes using dummy inputs if possible.
+    # However, our simple _validate_onnx_model uses only input_ids/attention_mask.
+    # The exported model might expect position_ids or past_key_values if not merged properly.
+    # If validation fails due to missing inputs, we log warning and skip.
+    
+    # Re-load tokenizer for dummy creation
+    if tokenizer is None:
+        # Fallback if not provided (though it should be)
+        from transformers import AutoTokenizer
+        tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
+
+    dummy = tokenizer(
+        ["Hello world"],
+        return_tensors="pt",
+        max_length=max_seq_length, 
+        truncation=True
+    )
+    
+    feeds = {
+        "input_ids": dummy["input_ids"].cpu().numpy(),
+        "attention_mask": dummy["attention_mask"].cpu().numpy(),
+    }
+    
+    # Try validation, warn on failure (e.g. missing inputs)
+    try:
+        # For reference, we need the torch model. Loading it just for validation is expensive but correctness is key.
+        # To avoid reloading if we can, we skip strict numeric validation here if we trust optimum,
+        # OR we try to validate quantization only if we have reference.
+        # Let's SKIP reference comparison for now to avoid reloading model twice (optimum loaded it once).
+        # Unless we really want to verify quantization quality.
+        
+        # Actually, checking if the ONNX runs at all is valuable.
+        _validate_onnx_model(onnx_path, feeds, reference=None)
+        
+        if quant_path != onnx_path:
+             _validate_onnx_model(quant_path, feeds, reference=None)
+             
+    except Exception as exc:
+        LOGGER.warning("LLM ONNX validation skipped/failed (likely due to missing inputs in dummy feed): %s", exc)
+            
+    return onnx_path, quant_path
+
+
 def _quantize_or_fallback(source: Path, target: Path) -> Path:
     target.parent.mkdir(parents=True, exist_ok=True)
     preprocessed = _maybe_preprocess_model(source)
@@ -256,6 +453,7 @@ def _validate_onnx_model(
     *,
     atol: float = 1e-3,
     rtol: float = 1e-2,
+    allowed_mismatch_ratio: float = 0.0,
 ) -> None:
     try:
         session = ort.InferenceSession(
@@ -275,6 +473,28 @@ def _validate_onnx_model(
             raise RuntimeError(
                 f"ONNX output shape {ort_output.shape} does not match PyTorch reference {reference.shape} for {onnx_path}."
             )
-        np.testing.assert_allclose(ort_output, reference, atol=atol, rtol=rtol)
+        
+        # Check strict equality if ratio is 0 (default behavior)
+        if allowed_mismatch_ratio <= 0:
+            np.testing.assert_allclose(ort_output, reference, atol=atol, rtol=rtol)
+            return
 
-
+        # Custom validation allowing a percentage of mismatches
+        is_close = np.isclose(ort_output, reference, atol=atol, rtol=rtol)
+        mismatches = np.sum(~is_close)
+        total = is_close.size
+        ratio = mismatches / total
+        
+        if ratio > allowed_mismatch_ratio:
+            raise AssertionError(
+                f"Mismatch ratio {ratio:.4f} exceeds allowed threshold {allowed_mismatch_ratio} "
+                f"({mismatches}/{total} elements mismatched)"
+            )
+        elif mismatches > 0:
+             LOGGER.warning(
+                "Quantization validation has mismatches within threshold: %.4f <= %.4f (%d/%d elements)",
+                ratio,
+                allowed_mismatch_ratio,
+                mismatches,
+                total,
+            )

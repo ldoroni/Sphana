@@ -33,6 +33,8 @@ from sphana_trainer.tasks import (
     EmbeddingTask,
     ExportTask,
     GNNTask,
+    NerTask,
+    LlmTask,
     IngestionTask,
     PackageTask,
     RelationExtractionTask,
@@ -74,6 +76,8 @@ PARITY_SAMPLE_FILES: Dict[str, Optional[Path]] = {
     "embedding": None,
     "relation": None,
     "gnn": None,
+    "ner": None,
+    "llm": None,
 }
 app.add_typer(train_app, name="train")
 app.add_typer(artifacts_app, name="artifacts")
@@ -498,6 +502,42 @@ def train_gnn(
     GNNTask(gnn_cfg, artifact_root).run()
 
 
+@train_app.command("ner")
+def train_ner(
+    config: Path = typer.Option(
+        Path("configs/ner/base.yaml"),
+        "--config",
+        "-c",
+        exists=True,
+        file_okay=True,
+        readable=True,
+        help="Path to the NER YAML config.",
+    ),
+) -> None:
+    """Export the NER model (training not yet implemented)."""
+
+    ner_cfg, artifact_root = _resolve_component_config(config, "ner")
+    NerTask(ner_cfg, artifact_root).run()
+
+
+@train_app.command("llm")
+def train_llm(
+    config: Path = typer.Option(
+        Path("configs/llm/base.yaml"),
+        "--config",
+        "-c",
+        exists=True,
+        file_okay=True,
+        readable=True,
+        help="Path to the LLM YAML config.",
+    ),
+) -> None:
+    """Export the LLM model (training not yet implemented)."""
+
+    llm_cfg, artifact_root = _resolve_component_config(config, "llm")
+    LlmTask(llm_cfg, artifact_root).run()
+
+
 @train_app.command("sweep")
 def train_sweep(
     component: str = typer.Argument(..., help="Component to sweep (embedding|relation|gnn)"),
@@ -887,7 +927,7 @@ def workflow_wiki(
         dataset_seed=42,
         embedding_config=embedding_cfg,
         relation_config=relation_cfg,
-        gnn_config=gnn_cfg,
+        gnn_config=gnn_config,
         export_config=None,
         package_config=None,
         promote_component=None,
@@ -1318,5 +1358,3 @@ def _download_stanza(lang: str) -> None:
 
 if __name__ == "__main__":  # pragma: no cover
     app()
-
-

@@ -15,6 +15,7 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
 {
     private readonly IEmbeddingModel _embeddingModel;
     private readonly IRelationExtractionModel _relationExtractionModel;
+    private readonly INerModel _nerModel;
     private readonly IVectorIndex _vectorIndex;
     private readonly IGraphStorage _graphStorage;
     private readonly ILogger<DocumentIngestionService> _logger;
@@ -25,6 +26,7 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
     public DocumentIngestionService(
         IEmbeddingModel embeddingModel,
         IRelationExtractionModel relationExtractionModel,
+        INerModel nerModel,
         IVectorIndex vectorIndex,
         IGraphStorage graphStorage,
         ILogger<DocumentIngestionService> logger,
@@ -34,6 +36,7 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
     {
         _embeddingModel = embeddingModel ?? throw new ArgumentNullException(nameof(embeddingModel));
         _relationExtractionModel = relationExtractionModel ?? throw new ArgumentNullException(nameof(relationExtractionModel));
+        _nerModel = nerModel ?? throw new ArgumentNullException(nameof(nerModel));
         _vectorIndex = vectorIndex ?? throw new ArgumentNullException(nameof(vectorIndex));
         _graphStorage = graphStorage ?? throw new ArgumentNullException(nameof(graphStorage));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -182,9 +185,8 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
         DocumentChunk chunk,
         CancellationToken cancellationToken)
     {
-        // TODO: Implement proper Named Entity Recognition (NER)
-        // For now, use a placeholder implementation
-        var extractedEntities = await ExtractEntitiesPlaceholderAsync(chunk.Content);
+        // Use NER model to extract entities
+        var extractedEntities = await _nerModel.ExtractEntitiesAsync(chunk.Content, cancellationToken);
 
         if (extractedEntities.Count < 2)
         {
@@ -204,69 +206,56 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
 
         // Convert to domain models
         var entities = new List<Entity>();
-        var entityEmbeddings = await _embeddingModel.GenerateEmbeddingsAsync(
-            extractedEntities.Select(e => e.Text).ToArray(), 
-            cancellationToken);
-
-        for (int i = 0; i < extractedEntities.Count; i++)
+        
+        // Deduplicate entities by text for embedding generation to save compute
+        var uniqueTexts = extractedEntities.Select(e => e.Text).Distinct().ToArray();
+        var textEmbeddings = new Dictionary<string, float[]>();
+        
+        if (uniqueTexts.Length > 0)
         {
-            var entity = new Entity
+            var embeddings = await _embeddingModel.GenerateEmbeddingsAsync(uniqueTexts, cancellationToken);
+            for (int i = 0; i < uniqueTexts.Length; i++)
             {
-                Id = Guid.NewGuid().ToString(),
-                TenantId = chunk.TenantId,
-                IndexName = chunk.IndexName,
-                Text = extractedEntities[i].Text,
-                Type = extractedEntities[i].Type,
-                SourceChunkId = chunk.Id,
-                Embedding = entityEmbeddings[i],
-                QuantizedEmbedding = EmbeddingModel.Quantize(entityEmbeddings[i])
-            };
-            entities.Add(entity);
+                textEmbeddings[uniqueTexts[i]] = embeddings[i];
+            }
         }
 
-        // Create entity ID mapping
-        var entityMap = extractedEntities
-            .Select((e, idx) => (e, entities[idx].Id))
-            .ToDictionary(x => x.e.Text, x => x.Id);
+        var entityMap = new Dictionary<string, Entity>(); // Text -> Entity
+
+        foreach (var text in uniqueTexts)
+        {
+            // Find first type for this text
+            var type = extractedEntities.FirstOrDefault(e => e.Text == text)?.Type ?? "ENTITY";
+            
+            var entity = new Entity
+            {
+                Id = Guid.NewGuid().ToString(), // Ideally hash the text/type
+                TenantId = chunk.TenantId,
+                IndexName = chunk.IndexName,
+                Text = text,
+                Type = type, // Assigned in initializer
+                SourceChunkId = chunk.Id,
+                Embedding = textEmbeddings[text],
+                QuantizedEmbedding = EmbeddingModel.Quantize(textEmbeddings[text])
+            };
+
+            entities.Add(entity);
+            entityMap[text] = entity;
+        }
 
         var relations = extractedRelations.Select(r => new Relation
         {
             Id = Guid.NewGuid().ToString(),
             TenantId = chunk.TenantId,
             IndexName = chunk.IndexName,
-            SourceEntityId = entityMap[r.SourceEntity.Text],
-            TargetEntityId = entityMap[r.TargetEntity.Text],
+            SourceEntityId = entityMap[r.SourceEntity.Text].Id,
+            TargetEntityId = entityMap[r.TargetEntity.Text].Id,
             RelationType = r.RelationType,
             Confidence = r.Confidence,
             SourceChunkId = chunk.Id
         }).ToList();
 
         return (entities, relations);
-    }
-
-    private Task<List<ExtractedEntity>> ExtractEntitiesPlaceholderAsync(string text)
-    {
-        // TODO: Implement proper NER using a library like Stanford NER or a BERT-based NER model
-        // This is a placeholder that simulates entity extraction
-        var entities = new List<ExtractedEntity>();
-
-        // Simple heuristic: capitalize words might be entities
-        var words = text.Split(' ');
-        for (int i = 0; i < words.Length; i++)
-        {
-            if (char.IsUpper(words[i].FirstOrDefault()) && words[i].Length > 1)
-            {
-                entities.Add(new ExtractedEntity
-                {
-                    Text = words[i],
-                    Type = "ENTITY",
-                    StartPosition = i,
-                    EndPosition = i + 1
-                });
-            }
-        }
-
-        return Task.FromResult(entities);
     }
 
     private async Task BuildKnowledgeGraphAsync(
@@ -278,6 +267,9 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
         var nodeIdMap = new Dictionary<string, string>();
         foreach (var entity in entities)
         {
+            // Check if we already added this entity in this batch
+            if (nodeIdMap.ContainsKey(entity.Id)) continue;
+
             var nodeData = JsonSerializer.Serialize(new
             {
                 entity.Text,
@@ -313,4 +305,3 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
         }
     }
 }
-

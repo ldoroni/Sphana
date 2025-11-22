@@ -12,6 +12,7 @@ public class DocumentIngestionServiceEdgeCasesTests
 {
     private readonly Mock<IEmbeddingModel> _mockEmbeddingModel;
     private readonly Mock<IRelationExtractionModel> _mockRelationExtractionModel;
+    private readonly Mock<INerModel> _mockNerModel;
     private readonly Mock<IVectorIndex> _mockVectorIndex;
     private readonly Mock<IGraphStorage> _mockGraphStorage;
     private readonly Mock<ILogger<DocumentIngestionService>> _mockLogger;
@@ -21,13 +22,19 @@ public class DocumentIngestionServiceEdgeCasesTests
     {
         _mockEmbeddingModel = new Mock<IEmbeddingModel>();
         _mockRelationExtractionModel = new Mock<IRelationExtractionModel>();
+        _mockNerModel = new Mock<INerModel>();
         _mockVectorIndex = new Mock<IVectorIndex>();
         _mockGraphStorage = new Mock<IGraphStorage>();
         _mockLogger = new Mock<ILogger<DocumentIngestionService>>();
 
+        // Setup default mock behavior
+        _mockNerModel.Setup(x => x.ExtractEntitiesAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new List<ExtractedEntity>());
+
         _service = new DocumentIngestionService(
             _mockEmbeddingModel.Object,
             _mockRelationExtractionModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
             _mockLogger.Object,
@@ -180,6 +187,7 @@ public class DocumentIngestionServiceEdgeCasesTests
         Assert.Throws<ArgumentNullException>(() => new DocumentIngestionService(
             null!,
             _mockRelationExtractionModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
             _mockLogger.Object,
@@ -194,6 +202,23 @@ public class DocumentIngestionServiceEdgeCasesTests
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() => new DocumentIngestionService(
             _mockEmbeddingModel.Object,
+            null!,
+            _mockNerModel.Object,
+            _mockVectorIndex.Object,
+            _mockGraphStorage.Object,
+            _mockLogger.Object,
+            512,
+            50,
+            0.5f));
+    }
+
+    [Fact]
+    public void Constructor_WithNullNerModel_ShouldThrowArgumentNullException()
+    {
+        // Act & Assert
+        Assert.Throws<ArgumentNullException>(() => new DocumentIngestionService(
+            _mockEmbeddingModel.Object,
+            _mockRelationExtractionModel.Object,
             null!,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
@@ -210,6 +235,7 @@ public class DocumentIngestionServiceEdgeCasesTests
         Assert.Throws<ArgumentNullException>(() => new DocumentIngestionService(
             _mockEmbeddingModel.Object,
             _mockRelationExtractionModel.Object,
+            _mockNerModel.Object,
             null!,
             _mockGraphStorage.Object,
             _mockLogger.Object,
@@ -225,6 +251,7 @@ public class DocumentIngestionServiceEdgeCasesTests
         Assert.Throws<ArgumentNullException>(() => new DocumentIngestionService(
             _mockEmbeddingModel.Object,
             _mockRelationExtractionModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             null!,
             _mockLogger.Object,
@@ -240,6 +267,7 @@ public class DocumentIngestionServiceEdgeCasesTests
         Assert.Throws<ArgumentNullException>(() => new DocumentIngestionService(
             _mockEmbeddingModel.Object,
             _mockRelationExtractionModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
             null!,

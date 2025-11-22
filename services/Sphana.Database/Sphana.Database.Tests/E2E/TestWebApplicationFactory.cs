@@ -33,6 +33,16 @@ public class TestWebApplicationFactory : WebApplicationFactory<Program>
             services.RemoveAll<IQueryService>();
 
             // Register mocked ONNX models for testing (no real ONNX files needed)
+            var nerModelMock = new Mock<INerModel>();
+            nerModelMock.Setup(x => x.ExtractEntitiesAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new List<ExtractedEntity>());
+            services.AddSingleton(nerModelMock.Object);
+
+            var llmModelMock = new Mock<ILlmGeneratorModel>();
+            llmModelMock.Setup(x => x.GenerateAnswerAsync(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync("Generated E2E Answer");
+            services.AddSingleton(llmModelMock.Object);
+
             services.AddSingleton<IEmbeddingModel>(sp =>
             {
                 var mock = new Mock<IEmbeddingModel>();
@@ -120,6 +130,7 @@ public class TestWebApplicationFactory : WebApplicationFactory<Program>
             {
                 var embeddingModel = sp.GetRequiredService<IEmbeddingModel>();
                 var reModel = sp.GetRequiredService<IRelationExtractionModel>();
+                var nerModel = sp.GetRequiredService<INerModel>();
                 var vectorIndex = sp.GetRequiredService<IVectorIndex>();
                 var graphStorage = sp.GetRequiredService<IGraphStorage>();
                 var logger = sp.GetRequiredService<ILogger<DocumentIngestionService>>();
@@ -127,6 +138,7 @@ public class TestWebApplicationFactory : WebApplicationFactory<Program>
                 return new DocumentIngestionService(
                     embeddingModel,
                     reModel,
+                    nerModel,
                     vectorIndex,
                     graphStorage,
                     logger,
@@ -139,6 +151,8 @@ public class TestWebApplicationFactory : WebApplicationFactory<Program>
             {
                 var embeddingModel = sp.GetRequiredService<IEmbeddingModel>();
                 var gnnModel = sp.GetRequiredService<IGnnRankerModel>();
+                var llmModel = sp.GetRequiredService<ILlmGeneratorModel>();
+                var nerModel = sp.GetRequiredService<INerModel>();
                 var vectorIndex = sp.GetRequiredService<IVectorIndex>();
                 var graphStorage = sp.GetRequiredService<IGraphStorage>();
                 var logger = sp.GetRequiredService<ILogger<QueryService>>();
@@ -146,13 +160,16 @@ public class TestWebApplicationFactory : WebApplicationFactory<Program>
                 return new QueryService(
                     embeddingModel,
                     gnnModel,
+                    llmModel,
+                    nerModel,
                     vectorIndex,
                     graphStorage,
                     logger,
                     vectorSearchWeight: 0.6f,
                     graphSearchWeight: 0.4f,
                     vectorSearchTopK: 20,
-                    maxSubgraphs: 10);
+                    maxSubgraphs: 10,
+                    maxGenerationTokens: 512);
             });
         });
 

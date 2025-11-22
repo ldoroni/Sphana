@@ -45,32 +45,40 @@ public class DocumentIngestionServiceIntegrationTests : IAsyncLifetime
 
         try
         {
-            // Initialize ONNX models
-            var embeddingLogger = new Mock<ILogger<EmbeddingModel>>();
-            var relationLogger = new Mock<ILogger<RelationExtractionModel>>();
+            // Initialize mocks for ONNX models
             var serviceLogger = new Mock<ILogger<DocumentIngestionService>>();
+            
+            // Mock Embedding Model
+            var embeddingModel = new Mock<IEmbeddingModel>();
+            embeddingModel.Setup(x => x.GenerateEmbeddingsAsync(
+                    It.IsAny<string[]>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync((string[] texts, CancellationToken ct) =>
+                {
+                    // Return random embeddings for each text
+                    return texts.Select(_ => new float[128]).ToArray();
+                });
 
-            var embeddingModel = new EmbeddingModel(
-                modelPath: "../../../../models/embedding.onnx",
-                embeddingDimension: 128,
-                useGpu: false,
-                gpuDeviceId: 0,
-                maxPoolSize: 1,
-                maxBatchSize: 8,
-                maxBatchWaitMs: 5,
-                logger: embeddingLogger.Object);
+            // Mock Relation Extraction Model
+            var relationModel = new Mock<IRelationExtractionModel>();
+            relationModel.Setup(x => x.ExtractRelationsAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<List<ExtractedEntity>>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new List<ExtractedRelation>());
 
-            var relationModel = new RelationExtractionModel(
-                modelPath: "../../../../models/relation_extraction.onnx",
-                useGpu: false,
-                gpuDeviceId: 0,
-                maxPoolSize: 1,
-                logger: relationLogger.Object);
+            // Mock NER Model
+            var nerModel = new Mock<INerModel>();
+            nerModel.Setup(x => x.ExtractEntitiesAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new List<ExtractedEntity>());
 
             // Create the service
             _service = new DocumentIngestionService(
-                embeddingModel,
-                relationModel,
+                embeddingModel.Object,
+                relationModel.Object,
+                nerModel.Object,
                 _vectorIndex,
                 _graphStorage,
                 logger: serviceLogger.Object,

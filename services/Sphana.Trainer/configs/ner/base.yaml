@@ -1,0 +1,10 @@
+ner:
+  model_name: dslim/bert-base-NER
+  output_dir: target/artifacts/ner
+  version: "0.1.0"
+  quantize: true
+  export_opset: 17
+  max_seq_length: 512
+  quantization_mismatch_threshold: 0.05
+
+

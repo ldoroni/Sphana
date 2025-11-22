@@ -203,9 +203,6 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
         var session = await AcquireSessionAsync(cancellationToken);
         try
         {
-            // For simplicity, assume the model takes tokenized input
-            // In a real implementation, you'd use a tokenizer here
-            // This is a placeholder that will need to be implemented based on the actual model
             var inputTensors = PrepareInputTensors(texts);
 
             var inputs = new List<NamedOnnxValue>
@@ -214,8 +211,16 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
                 NamedOnnxValue.CreateFromTensor("attention_mask", inputTensors.AttentionMask)
             };
 
+            if (session.InputMetadata.ContainsKey("token_type_ids"))
+            {
+                inputs.Add(NamedOnnxValue.CreateFromTensor("token_type_ids", inputTensors.TokenTypeIds));
+            }
+
             using var results = session.Run(inputs);
-            var output = results.First().AsEnumerable<float>().ToArray();
+            
+            // Prefer fetching by name if possible, otherwise take first
+            var outputTensor = results.FirstOrDefault(r => r.Name == "embeddings") ?? results.First();
+            var output = outputTensor.AsEnumerable<float>().ToArray();
 
             // Reshape output to [batch_size, embedding_dim]
             var embeddings = new float[texts.Length][];
@@ -224,7 +229,7 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
                 embeddings[i] = new float[_embeddingDimension];
                 Array.Copy(output, i * _embeddingDimension, embeddings[i], 0, _embeddingDimension);
                 
-                // Normalize embedding
+                // Normalize embedding (even if model does it, safe to do again)
                 embeddings[i] = Normalize(embeddings[i]);
             }
 
@@ -236,12 +241,13 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
         }
     }
 
-    private (Tensor<long> InputIds, Tensor<long> AttentionMask) PrepareInputTensors(string[] texts)
+    private (Tensor<long> InputIds, Tensor<long> AttentionMask, Tensor<long> TokenTypeIds) PrepareInputTensors(string[] texts)
     {
         const int maxLength = 512;
         
         var inputIds = new long[texts.Length][];
         var attentionMask = new long[texts.Length][];
+        var tokenTypeIds = new long[texts.Length][];
 
         for (int i = 0; i < texts.Length; i++)
         {
@@ -252,6 +258,7 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
             // Encode returns List<(long InputIds, long TokenTypeIds, long AttentionMask)>
             inputIds[i] = new long[maxLength];
             attentionMask[i] = new long[maxLength];
+            tokenTypeIds[i] = new long[maxLength];
             
             // Copy the encoded tokens (truncate if necessary)
             var lengthToCopy = Math.Min(encoded.Count, maxLength);
@@ -259,6 +266,7 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
             {
                 inputIds[i][j] = encoded[j].InputIds;
                 attentionMask[i][j] = encoded[j].AttentionMask;
+                tokenTypeIds[i][j] = encoded[j].TokenTypeIds;
             }
             
             // Padding is already 0 from initialization
@@ -266,8 +274,9 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
 
         var inputIdsTensor = CreateTensor(inputIds, new[] { texts.Length, maxLength });
         var attentionMaskTensor = CreateTensor(attentionMask, new[] { texts.Length, maxLength });
+        var tokenTypeIdsTensor = CreateTensor(tokenTypeIds, new[] { texts.Length, maxLength });
 
-        return (inputIdsTensor, attentionMaskTensor);
+        return (inputIdsTensor, attentionMaskTensor, tokenTypeIdsTensor);
     }
 
     public override void Dispose()
@@ -283,4 +292,3 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
         string[] Texts, 
         TaskCompletionSource<float[][]> CompletionSource);
 }
-

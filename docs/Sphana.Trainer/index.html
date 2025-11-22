@@ -130,7 +130,7 @@
                             </svg>
                         </div>
                         <h4>Model Training</h4>
-                        <p>Train embedding, relation extraction, and GNN ranking models</p>
+                        <p>Train embedding, relation, GNN models; export NER and LLM</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
@@ -154,7 +154,7 @@
 
                 <h3>Key Capabilities</h3>
                 <ul class="features-list">
-                    <li><strong>Three Specialized Neural Components:</strong> Embedding encoder for semantic search, relation extraction classifier for knowledge graph construction, and GNN reasoner for multi-hop reasoning</li>
+                    <li><strong>Five Specialized Neural Components:</strong> Embedding encoder, relation extraction classifier, GNN reasoner, NER for entity identification, and LLM for answer generation</li>
                     <li><strong>Production-Optimized Export:</strong> ONNX format with INT8 quantization achieving 4x inference speedup and minimal accuracy loss</li>
                     <li><strong>Flexible NLP Pipeline:</strong> Integrated support for spaCy, Stanza, and lightweight parsers with automatic fallback</li>
                     <li><strong>Scalable Distributed Training:</strong> Multi-GPU training with automatic mixed precision and device orchestration</li>
@@ -319,7 +319,7 @@ pip install -r requirements.txt</code></pre>
                         <button class="copy-btn" data-target="download-wiki-dir">Copy</button>
                     </div>
                     <pre><code id="download-wiki-dir">python -m sphana_trainer.cli dataset-download-wiki `
-    --output target\data\multi-domain-docs.jsonl `
+    --output target\data\docs.jsonl `
     --titles-dir samples\wiki-titles\medium `
     --full-content `
     --limit 50000</code></pre>
@@ -390,10 +390,10 @@ python -m sphana_trainer.cli dataset-build-from-ingest `
                     <pre><code>version: "0.1.0"
 model_name: "sentence-transformers/all-MiniLM-L6-v2"  # Change model if needed
 batch_size: 32              # Reduce if GPU memory is limited (e.g., 8 or 16)
-learning_rate: 2e-5         # Adjust for your dataset size
+learning_rate: 5e-5         # Adjust for your dataset size
 epochs: 3                   # Increase for better convergence (5-10 for production)
 precision: "fp16"           # Use "fp32" on CPU, "bf16" on modern GPUs
-max_length: 128             # Token limit per input
+max_seq_length: 128         # Token limit per input
 
 # Dataset paths (update if using custom data)
 train_file: "src/tests/data/embedding/train.jsonl"      # Change to custom path
@@ -419,11 +419,11 @@ mlflow_experiment: "embedding-training"</code></pre>
                 </div>
 
                 <h3>Step 3: Train Neural Components</h3>
-                <p>Execute training for all three specialized neural components required by the NRDB architecture:</p>
+                <p>Execute training and export for all five specialized neural components required by the NRDB architecture. Note that NER and LLM models are currently pre-trained and exported directly.</p>
 
                 <div class="code-block">
                     <div class="code-header">
-                        <span class="code-label">Train all components sequentially</span>
+                        <span class="code-label">Train/Export all components sequentially</span>
                         <button class="copy-btn" data-target="train-all">Copy</button>
         </div>
                     <pre><code id="train-all"># 1. Embedding encoder (dense semantic vectors)
@@ -433,18 +433,23 @@ python -m sphana_trainer.cli train embedding --config configs\embedding\base.yam
 python -m sphana_trainer.cli train relation --config configs\relation\base.yaml
 
 # 3. GNN ranker (graph neural network for re-ranking)
-python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pre>
+python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml
+
+# 4. NER model (entity identification - export only)
+python -m sphana_trainer.cli train ner --config configs\ner\base.yaml
+
+# 5. LLM generator (answer synthesis - export only)
+python -m sphana_trainer.cli train llm --config configs\llm\base.yaml</code></pre>
                 </div>
 
                 <div class="info-box">
-                    <strong>Training Artifacts Generated:</strong> Each training command produces:
+                    <strong>Training Artifacts Generated:</strong> Each command produces:
                     <ul>
-                        <li><code>target/artifacts/&lt;component&gt;/&lt;version&gt;/</code> - PyTorch checkpoint, ONNX export (if applicable), and model metadata JSON</li>
+                        <li><code>target/artifacts/&lt;component&gt;/&lt;version&gt;/</code> - PyTorch checkpoint, ONNX export, and model metadata JSON</li>
                         <li><code>target/artifacts/&lt;component&gt;/latest.json</code> - Symlink reference to the most recently trained version</li>
-                        <li><code>target/logs/trainer.log</code> - Comprehensive training logs with loss curves, metrics, and hyperparameters</li>
-                        <li><code>target/mlruns/</code> - MLflow experiment tracking data including parameters, metrics, and artifacts (if MLflow is enabled)</li>
+                        <li><code>target/logs/trainer.log</code> - Comprehensive training logs</li>
         </ul>
-                    <strong>Expected Duration:</strong> Sample datasets complete in ~2-5 minutes per model (GPU), 10-30 minutes (CPU). Production datasets may require 30 minutes to several hours depending on scale.
+                    <strong>Expected Duration:</strong> Sample datasets complete in ~2-5 minutes per model. NER/LLM export is generally fast (depending on download speed).
                 </div>
 
                 <h3>Step 4: Export to Optimized ONNX Format</h3>
@@ -461,8 +466,8 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                 <div class="info-box">
                     <strong>Export Pipeline Stages:</strong>
                     <ol>
-                        <li><strong>Dependency Validation:</strong> Verifies all required neural components (embedding, relation, GNN) have completed training successfully</li>
-                        <li><strong>ONNX Conversion:</strong> Transforms PyTorch models to ONNX format with dynamic batch axes and opset optimization</li>
+                        <li><strong>Dependency Validation:</strong> Verifies all required neural components (embedding, relation, GNN, NER, LLM) have completed training/export successfully</li>
+                        <li><strong>ONNX Conversion:</strong> Transforms PyTorch models to ONNX format with dynamic batch axes and opset optimization (if not already exported)</li>
                         <li><strong>INT8 Quantization:</strong> Applies post-training quantization achieving 4x inference speedup with &lt;1% accuracy degradation</li>
                         <li><strong>Numerical Parity Verification:</strong> Validates ONNX Runtime outputs match PyTorch within 1% relative error tolerance</li>
                         <li><strong>Manifest Generation:</strong> Creates deployment manifest at <code>target/manifests/latest.json</code> with model metadata, checksums, and version tracking</li>
@@ -473,7 +478,7 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                 <div class="warning-box">
                     <strong>Common Export Issues:</strong>
                     <ul>
-                        <li><strong>"Model not found" error:</strong> Verify all three components completed training without errors. Check <code>target/artifacts/&lt;component&gt;/latest.json</code> exists</li>
+                        <li><strong>"Model not found" error:</strong> Verify all five components completed training without errors. Check <code>target/artifacts/&lt;component&gt;/latest.json</code> exists</li>
                         <li><strong>Parity check failures:</strong> Indicates non-deterministic operations (e.g., dropout during inference). Ensure models are in evaluation mode and review training configuration</li>
                         <li><strong>Version conflicts:</strong> Explicitly specify component versions in <code>configs/export/base.yaml</code> if automatic detection fails</li>
         </ul>
@@ -566,7 +571,7 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                         <div class="pipeline-step">
                             <div class="step-number">2</div>
                             <h4>Model Training</h4>
-                            <p>Embedding<br>Relation<br>GNN</p>
+                            <p>Embedding<br>Relation<br>GNN<br>NER/LLM (Export)</p>
                         </div>
                         <div class="pipeline-arrow">→</div>
                         <div class="pipeline-step">
@@ -597,7 +602,7 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                 <h2>Neural Model Components</h2>
 
                 <div class="intro-box">
-                    <p class="lead">Sphana Trainer generates three specialized, production-optimized neural models that collectively power the <strong>Neural RAG Database (NRDB)</strong> — an advanced hybrid architecture transcending traditional vector-only retrieval by explicitly modeling and reasoning over structured entity relationships within a dynamic Knowledge Graph (KG).</p>
+                    <p class="lead">Sphana Trainer generates five specialized, production-optimized neural models that collectively power the <strong>Neural RAG Database (NRDB)</strong> — an advanced hybrid architecture transcending traditional vector-only retrieval by explicitly modeling and reasoning over structured entity relationships within a dynamic Knowledge Graph (KG).</p>
                 </div>
 
                 <h3>Neural RAG Database: Architecture Overview</h3>
@@ -617,6 +622,7 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                 <p><strong>Document Ingestion Phase</strong> (executed in production .NET service):</p>
                 <ol>
                     <li><strong>Embedding Encoder:</strong> Transforms text chunks into dense 384/512-dimensional L2-normalized vectors optimized for cosine similarity</li>
+                    <li><strong>NER Model:</strong> Identifies and classifies entities in the text to anchor the knowledge graph.</li>
                     <li><strong>Relation Extraction Model:</strong> Analyzes syntactic dependency trees to extract typed KG triples <code>(subject, predicate, object)</code> with calibrated confidence scores</li>
                     <li><strong>Index Construction:</strong> Vectors are inserted into HNSW/IVF approximate nearest neighbor index; KG triples populate disk-resident PCSR graph with Parquet-backed property columns</li>
                 </ol>
@@ -873,10 +879,65 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                     </ul>
                 </div>
 
+                <!-- NER MODEL -->
+                <div class="component-card">
+                    <div class="component-header">
+                        <h3>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 0.5rem;">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h3"/><path d="M7 12h8"/><path d="M7 17h3"/>
+                            </svg>
+                            Named Entity Recognition (NER)
+                        </h3>
+                        <span class="component-badge">Token Classification</span>
+                    </div>
+                    
+                    <h4>Purpose and Functionality</h4>
+                    <p>The Named Entity Recognition (NER) model identifies and categorizes key entities within text (e.g., Persons, Organizations, Locations). It is crucial for anchoring the knowledge graph construction process and enabling entity-centric retrieval strategies.</p>
+
+                    <h4>Production Deployment</h4>
+                    <ul>
+                        <li><strong>Ingestion Phase:</strong> Scans documents to identify entities that become nodes in the knowledge graph.</li>
+                        <li><strong>Query Phase:</strong> Extracts entities from user queries to identify entry points in the graph for hybrid retrieval.</li>
+                        <li><strong>Inference Latency:</strong> ~5-10ms per sentence (GPU INT8).</li>
+                    </ul>
+
+                    <div class="component-details">
+                        <div class="detail-item"><strong>Base Model:</strong> BERT-base/large or similar</div>
+                        <div class="detail-item"><strong>Output:</strong> Entity spans and types (PER, ORG, LOC, etc.)</div>
+                    </div>
+                </div>
+
+                <!-- LLM GENERATOR -->
+                <div class="component-card">
+                    <div class="component-header">
+                        <h3>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 0.5rem;">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                            </svg>
+                            LLM Generator
+                        </h3>
+                        <span class="component-badge">Causal Language Modeling</span>
+                    </div>
+                    
+                    <h4>Purpose and Functionality</h4>
+                    <p>The LLM Generator is the final stage of the RAG pipeline. It synthesizes the retrieved context (from vector search and knowledge graph traversals) into a coherent, natural language answer for the user.</p>
+
+                    <h4>Production Deployment</h4>
+                    <ul>
+                        <li><strong>Generation Phase:</strong> Receives the user query and the top-ranked context to generate the final response.</li>
+                        <li><strong>Optimization:</strong> Exported to ONNX and quantized (INT8) for efficient execution within the .NET service.</li>
+                    </ul>
+
+                     <div class="component-details">
+                        <div class="detail-item"><strong>Base Model:</strong> Gemma-2b, Llama-3-8b, or similar small LLMs</div>
+                        <div class="detail-item"><strong>Output:</strong> Natural language answer</div>
+                    </div>
+                </div>
+
                 <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
 
                 <h3>Production Optimization Strategy</h3>
-                <p>All three neural components undergo comprehensive optimization for production-scale deployment with stringent latency and throughput requirements:</p>
+                <p>All five neural components undergo comprehensive optimization for production-scale deployment with stringent latency and throughput requirements:</p>
                 <ul>
                     <li><strong>ONNX Export:</strong> PyTorch models are converted to ONNX (Open Neural Network Exchange) format, providing platform-agnostic deployment, graph-level optimization (operator fusion, constant folding), and hardware-specific kernel selection</li>
                     <li><strong>INT8 Post-Training Quantization:</strong> Model weights and activation tensors are quantized from 32-bit floating point to 8-bit integers using calibration datasets, achieving ~4x model size reduction and 2-4x inference speedup with <1% accuracy degradation</li>
@@ -945,7 +1006,8 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                         <h3>Stage 3: Neural Model Training</h3>
                         <p>Execute supervised fine-tuning for each specialized neural component:</p>
                         <ul>
-                            <li>Domain-adaptive fine-tuning on task-specific datasets with gradient-based optimization</li>
+                            <li>Domain-adaptive fine-tuning on task-specific datasets with gradient-based optimization (Embedding, Relation, GNN)</li>
+                            <li>Pre-trained model export and optimization (NER, LLM)</li>
                             <li>Automatic mixed precision (AMP) training with fp16/bf16 for 2-3x speedup</li>
                             <li>Validation-based early stopping with patience thresholds to prevent overfitting</li>
                             <li>Automated checkpointing with best-model retention and artifact versioning</li>
@@ -987,7 +1049,7 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
                 <h2>Data Preparation Guidelines</h2>
 
                 <div class="intro-box">
-                    <p class="lead">Training data quality directly determines model performance and generalization capability. This section provides comprehensive guidance on data requirements, quality criteria, and preparation best practices for all three neural components.</p>
+                    <p class="lead">Training data quality directly determines model performance and generalization capability. This section provides comprehensive guidance on data requirements, quality criteria, and preparation best practices for the trainable neural components (Embedding, Relation, GNN).</p>
                 </div>
 
                 <h3>What Training Data is Required?</h3>
@@ -1006,7 +1068,7 @@ python -m sphana_trainer.cli train gnn --config configs\gnn\base.yaml</code></pr
 
                 <p><strong>Automated Pipeline Transformations:</strong></p>
                 <ol>
-                    <li><strong>Chunk Segmentation:</strong> Documents undergo sliding-window chunking with configurable overlap (default: 128-512 tokens, 50-token stride) to create embedding training pairs</li>
+                    <li><strong>Chunk Segmentation:</strong> Documents undergo sliding-window chunking with configurable overlap (default: 120 tokens, 20-token stride) to create embedding training pairs</li>
                     <li><strong>Named Entity Recognition:</strong> Automatic identification and classification of entities (PERSON, ORG, GPE, PRODUCT, etc.) using rule-based or statistical NER models</li>
                     <li><strong>Relation Discovery:</strong> Dependency-parse-based extraction of semantic relationships between entity pairs (e.g., "founded_by", "located_in", "invented") with confidence scoring</li>
                     <li><strong>Knowledge Graph Construction:</strong> Extracted entity-relation-entity triples are assembled into typed, directed graph structures for GNN training</li>
@@ -1109,7 +1171,7 @@ Total: 900 docs, all within ML/AI domain, covering 20+ subtopics</code></pre>
                     <pre><code>python -m sphana_trainer.cli dataset-download-wiki `
     --titles-file samples\wiki-titles\medium\ai-ml-wiki-titles.medium.txt `
     --full-content `
-    --output target\data\ml-docs.jsonl `
+    --output target\data\docs.jsonl `
     --limit 5000</code></pre>
                 </div>
                 <p>This downloads 1,470 ML/AI Wikipedia articles — all within the ML domain but covering diverse subtopics (neural networks, deep learning, NLP, computer vision, optimization, etc.).</p>
@@ -1182,7 +1244,7 @@ Total: 90,000 docs across 8 major domains (each domain has subtopic diversity)</
 python -m sphana_trainer.cli dataset-download-wiki `
     --titles-dir samples\wiki-titles\large `
     --full-content `
-    --output target\data\multi-domain-docs.jsonl `
+    --output target\data\docs.jsonl `
     --limit 500000</code></pre>
                 </div>
 
@@ -1541,8 +1603,8 @@ python -m sphana_trainer.cli dataset-validate target/datasets/my-corpus/gnn/trai
                     <pre><code>ingest:
   input_dir: data/my-documents
   output_dir: target/ingest/my-corpus
-  chunk_size: 120
-  chunk_overlap: 20
+  chunk_size: 120            # Default: 120
+  chunk_overlap: 20          # Default: 20
   parser: spacy              # simple, spacy, or stanza
   parser_model: en_core_web_sm
   relation_threshold: 0.5</code></pre>
@@ -1826,7 +1888,8 @@ python -m sphana_trainer.cli dataset-validate target/datasets/my-corpus/gnn/trai
                     <li>Downloads Wikipedia articles</li>
                     <li>Runs ingestion with spaCy/Stanza parsers</li>
                     <li>Builds training datasets</li>
-                    <li>Trains all three models</li>
+                    <li>Trains embedding, relation, and GNN models</li>
+                    <li>Exports NER and LLM models</li>
                     <li>Exports to ONNX with quantization</li>
                     <li>Packages for deployment</li>
                     <li>Generates parity test fixtures</li>
@@ -1919,6 +1982,34 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                     </div>
 
                     <div class="command-ref">
+                        <h4><code>train ner</code></h4>
+                        <p>Export the NER model to ONNX (training not yet implemented).</p>
+                        <div class="command-syntax">
+                            <strong>Syntax:</strong> <code>train ner --config &lt;path&gt;</code>
+                        </div>
+                        <div class="command-options">
+                            <strong>Options:</strong>
+                            <ul>
+                                <li><code>--config PATH</code> - Configuration file (required)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="command-ref">
+                        <h4><code>train llm</code></h4>
+                        <p>Export the LLM generator model to ONNX (training not yet implemented).</p>
+                        <div class="command-syntax">
+                            <strong>Syntax:</strong> <code>train llm --config &lt;path&gt;</code>
+                        </div>
+                        <div class="command-options">
+                            <strong>Options:</strong>
+                            <ul>
+                                <li><code>--config PATH</code> - Configuration file (required)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="command-ref">
                         <h4><code>train sweep &lt;component&gt;</code></h4>
                         <p>Run a small hyperparameter sweep for a component. Results are automatically logged to MLflow.</p>
                         <div class="command-syntax">
@@ -1938,7 +2029,10 @@ python -m sphana_trainer.cli workflow run --force-stage training ...</code></pre
                         </div>
                         <div class="command-example">
                             <strong>Example:</strong>
-                            <pre><code>train sweep embedding --config base.yaml --lr 1e-5 --lr 5e-5 --batch-size 16 --batch-size 32</code></pre>
+                            <pre><code>python -m sphana_trainer.cli train sweep embedding \
+    --config configs/embedding/base.yaml \
+    --lr 2e-5 --lr 5e-5 \
+    --batch-size 16 --batch-size 32</code></pre>
                         </div>
                     </div>
                 </div>
@@ -2443,6 +2537,70 @@ export:
           </tbody>
         </table>
 
+                <h3>NER Configuration</h3>
+                <table class="config-table">
+          <thead>
+            <tr>
+                            <th>Parameter</th>
+              <th>Type</th>
+              <th>Default</th>
+                            <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                            <td><code>model_name</code></td>
+                            <td>string</td>
+                            <td>(required)</td>
+                            <td>BERT-based token classification model</td>
+            </tr>
+            <tr>
+              <td><code>max_seq_length</code></td>
+              <td>int</td>
+              <td>512</td>
+                            <td>Maximum sequence length</td>
+            </tr>
+            <tr>
+                            <td><code>quantize</code></td>
+                            <td>bool</td>
+                            <td>true</td>
+                            <td>Enable INT8 quantization</td>
+            </tr>
+          </tbody>
+        </table>
+
+                <h3>LLM Configuration</h3>
+                <table class="config-table">
+          <thead>
+            <tr>
+                            <th>Parameter</th>
+              <th>Type</th>
+              <th>Default</th>
+                            <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                            <td><code>model_name</code></td>
+                            <td>string</td>
+                            <td>(required)</td>
+                            <td>Causal LM model (e.g., Gemma-2b)</td>
+            </tr>
+            <tr>
+              <td><code>max_seq_length</code></td>
+              <td>int</td>
+              <td>512</td>
+                            <td>Maximum generation length context</td>
+            </tr>
+            <tr>
+                            <td><code>quantize</code></td>
+                            <td>bool</td>
+                            <td>true</td>
+                            <td>Enable INT8 quantization</td>
+            </tr>
+          </tbody>
+        </table>
+
                 <h3>Common Parameters</h3>
                 <table class="config-table">
           <thead>
@@ -2503,7 +2661,7 @@ config = load_config("configs/embedding/base.yaml")
 
 # Create and run task
 task = EmbeddingTask(config.embedding)
-task.execute()</code></pre>
+task.run()</code></pre>
                 </div>
 
                 <h3>Data Pipeline</h3>
@@ -2531,7 +2689,7 @@ from sphana_trainer.config import load_config
 
 config = load_config("configs/export/base.yaml")
 task = ExportTask(config.export)
-task.execute()</code></pre>
+task.run()</code></pre>
                 </div>
             </section>
 

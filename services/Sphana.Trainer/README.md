@@ -1,9 +1,9 @@
 # Sphana Trainer Service
 
-The Sphana Trainer is a Python 3.11 CLI that produces every neural artifact required by the Sphana NRDB: dense embedding encoders, entity-centric relation extractors, the GGNN reasoner, and the manifest/package consumed by the .NET gRPC runtime. Each command performs full PyTorch training (with Transformers + custom GNN), exports ONNX graphs, applies int8 quantization, and publishes metadata so downstream services can hot-load the latest versions.
+The Sphana Trainer is a Python 3.11 CLI that produces every neural artifact required by the Sphana NRDB: dense embedding encoders, entity-centric relation extractors, the GGNN reasoner, Named Entity Recognition (NER) models, LLM generators, and the manifest/package consumed by the .NET gRPC runtime. Each command performs full PyTorch training (with Transformers + custom GNN), exports ONNX graphs, applies int8 quantization, and publishes metadata so downstream services can hot-load the latest versions.
 
 ## Highlights
-- Typer-based CLI (`sphana_trainer`) with subcommands for `train embedding|relation|gnn`, `export`, `package`, and ingestion helpers.
+- Typer-based CLI (`sphana_trainer`) with subcommands for `train embedding|relation|gnn|ner|llm`, `export`, `package`, and ingestion helpers.
 - Ingestion orchestration via `ingest` plus `ingest-validate` to guarantee dataset quality before training, now with parser backends (`simple`, `spacy`, `stanza`) for relation extraction.
 - spaCy/Stanza parsers and the optional Hugging Face relation classifier integrate with ingestion, and their parsed sentences are cached under each ingest cache for reproducible dataset builds.
 - Trainer runtime supports mixed precision, checkpoint resume, and distributed data parallel (DDP) via `torchrun` (automatic device/scaler handling per component).
@@ -42,6 +42,8 @@ pip3 install -r .\requirements.txt
 python -m sphana_trainer.cli train embedding --config configs/embedding/base.yaml
 python -m sphana_trainer.cli train relation  --config configs/relation/base.yaml  # Auto-generates calibration.json
 python -m sphana_trainer.cli train gnn       --config configs/gnn/base.yaml
+python -m sphana_trainer.cli train ner       --config configs/ner/base.yaml
+python -m sphana_trainer.cli train llm       --config configs/llm/base.yaml
 
 # Produce manifest + tarball once training finishes
 python -m sphana_trainer.cli export  --config configs/export/base.yaml

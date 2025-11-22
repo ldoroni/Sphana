@@ -8,6 +8,7 @@ public interface IGraphStorage : IDisposable
     // Node operations
     Task<string> AddNodeAsync(string tenantId, string indexName, string nodeData, CancellationToken cancellationToken = default);
     Task<GraphNode?> GetNodeAsync(string nodeId, CancellationToken cancellationToken = default);
+    Task<GraphNode?> GetNodeByTextAsync(string text, CancellationToken cancellationToken = default);
     Task<bool> RemoveNodeAsync(string nodeId, CancellationToken cancellationToken = default);
 
     // Edge operations

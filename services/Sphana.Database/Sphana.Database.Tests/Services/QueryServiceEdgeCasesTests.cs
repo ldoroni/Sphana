@@ -12,6 +12,8 @@ public class QueryServiceEdgeCasesTests
 {
     private readonly Mock<IEmbeddingModel> _mockEmbeddingModel;
     private readonly Mock<IGnnRankerModel> _mockGnnRankerModel;
+    private readonly Mock<ILlmGeneratorModel> _mockLlmGeneratorModel;
+    private readonly Mock<INerModel> _mockNerModel;
     private readonly Mock<IVectorIndex> _mockVectorIndex;
     private readonly Mock<IGraphStorage> _mockGraphStorage;
     private readonly Mock<ILogger<QueryService>> _mockLogger;
@@ -21,20 +23,31 @@ public class QueryServiceEdgeCasesTests
     {
         _mockEmbeddingModel = new Mock<IEmbeddingModel>();
         _mockGnnRankerModel = new Mock<IGnnRankerModel>();
+        _mockLlmGeneratorModel = new Mock<ILlmGeneratorModel>();
+        _mockNerModel = new Mock<INerModel>();
         _mockVectorIndex = new Mock<IVectorIndex>();
         _mockGraphStorage = new Mock<IGraphStorage>();
         _mockLogger = new Mock<ILogger<QueryService>>();
 
+        // Setup defaults
+        _mockNerModel.Setup(x => x.ExtractEntitiesAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new List<ExtractedEntity>());
+        _mockLlmGeneratorModel.Setup(x => x.GenerateAnswerAsync(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync("Generated Answer");
+
         _service = new QueryService(
             _mockEmbeddingModel.Object,
             _mockGnnRankerModel.Object,
+            _mockLlmGeneratorModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
             _mockLogger.Object,
             vectorSearchWeight: 0.6f,
             graphSearchWeight: 0.4f,
             vectorSearchTopK: 20,
-            maxSubgraphs: 10);
+            maxSubgraphs: 10,
+            maxGenerationTokens: 512);
     }
 
     [Fact]
@@ -179,13 +192,16 @@ public class QueryServiceEdgeCasesTests
         Assert.Throws<ArgumentNullException>(() => new QueryService(
             null!,
             _mockGnnRankerModel.Object,
+            _mockLlmGeneratorModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
             _mockLogger.Object,
             0.6f,
             0.4f,
             20,
-            10));
+            10,
+            512));
     }
 
     [Fact]
@@ -195,13 +211,54 @@ public class QueryServiceEdgeCasesTests
         Assert.Throws<ArgumentNullException>(() => new QueryService(
             _mockEmbeddingModel.Object,
             null!,
+            _mockLlmGeneratorModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
             _mockLogger.Object,
             0.6f,
             0.4f,
             20,
-            10));
+            10,
+            512));
+    }
+
+    [Fact]
+    public void Constructor_WithNullLlmGeneratorModel_ShouldThrowArgumentNullException()
+    {
+        // Act & Assert
+        Assert.Throws<ArgumentNullException>(() => new QueryService(
+            _mockEmbeddingModel.Object,
+            _mockGnnRankerModel.Object,
+            null!,
+            _mockNerModel.Object,
+            _mockVectorIndex.Object,
+            _mockGraphStorage.Object,
+            _mockLogger.Object,
+            0.6f,
+            0.4f,
+            20,
+            10,
+            512));
+    }
+
+    [Fact]
+    public void Constructor_WithNullNerModel_ShouldThrowArgumentNullException()
+    {
+        // Act & Assert
+        Assert.Throws<ArgumentNullException>(() => new QueryService(
+            _mockEmbeddingModel.Object,
+            _mockGnnRankerModel.Object,
+            _mockLlmGeneratorModel.Object,
+            null!,
+            _mockVectorIndex.Object,
+            _mockGraphStorage.Object,
+            _mockLogger.Object,
+            0.6f,
+            0.4f,
+            20,
+            10,
+            512));
     }
 
     [Fact]
@@ -211,13 +268,16 @@ public class QueryServiceEdgeCasesTests
         Assert.Throws<ArgumentNullException>(() => new QueryService(
             _mockEmbeddingModel.Object,
             _mockGnnRankerModel.Object,
+            _mockLlmGeneratorModel.Object,
+            _mockNerModel.Object,
             null!,
             _mockGraphStorage.Object,
             _mockLogger.Object,
             0.6f,
             0.4f,
             20,
-            10));
+            10,
+            512));
     }
 
     [Fact]
@@ -227,13 +287,16 @@ public class QueryServiceEdgeCasesTests
         Assert.Throws<ArgumentNullException>(() => new QueryService(
             _mockEmbeddingModel.Object,
             _mockGnnRankerModel.Object,
+            _mockLlmGeneratorModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             null!,
             _mockLogger.Object,
             0.6f,
             0.4f,
             20,
-            10));
+            10,
+            512));
     }
 
     [Fact]
@@ -243,13 +306,16 @@ public class QueryServiceEdgeCasesTests
         Assert.Throws<ArgumentNullException>(() => new QueryService(
             _mockEmbeddingModel.Object,
             _mockGnnRankerModel.Object,
+            _mockLlmGeneratorModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
             null!,
             0.6f,
             0.4f,
             20,
-            10));
+            10,
+            512));
     }
 
     [Fact]

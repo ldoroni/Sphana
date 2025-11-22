@@ -6,7 +6,6 @@ __pycache__/
 
 # Local output directories
 target/
-mlruns/
 
 # IDE/editor files
 .idea/

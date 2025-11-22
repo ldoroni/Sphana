@@ -16,6 +16,11 @@ public sealed class OnnxModelConfiguration
     public string RelationExtractionModelPath { get; set; } = "models/relation_extraction.onnx";
 
     /// <summary>
+    /// Path to the NER model ONNX file
+    /// </summary>
+    public string NerModelPath { get; set; } = "models/ner.onnx";
+
+    /// <summary>
     /// Path to the GNN ranker model ONNX file
     /// </summary>
     public string GnnRankerModelPath { get; set; } = "models/gnn_ranker.onnx";

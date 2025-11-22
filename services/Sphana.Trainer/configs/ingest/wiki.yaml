@@ -5,7 +5,7 @@ ingest:
   
   # Path to JSONL file where each line is a document with 'text' field
   # source: target/data/docs.jsonl
-  source: "samples/wiki-docs/large/docs.jsonl"
+  source: "samples/wiki-docs/medium/docs.jsonl"
   
   # Directory containing .txt, .md, or .json files to process
   # input_dir: "samples/wiki-docs/medium"  # Directory containing text/markdown files (default: null)

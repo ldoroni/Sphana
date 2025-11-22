@@ -15,6 +15,8 @@ public class QueryServiceAdditionalTests
 {
     private readonly Mock<IEmbeddingModel> _mockEmbeddingModel;
     private readonly Mock<IGnnRankerModel> _mockGnnRankerModel;
+    private readonly Mock<ILlmGeneratorModel> _mockLlmGeneratorModel;
+    private readonly Mock<INerModel> _mockNerModel;
     private readonly Mock<IVectorIndex> _mockVectorIndex;
     private readonly Mock<IGraphStorage> _mockGraphStorage;
     private readonly Mock<ILogger<QueryService>> _mockLogger;
@@ -23,9 +25,17 @@ public class QueryServiceAdditionalTests
     {
         _mockEmbeddingModel = new Mock<IEmbeddingModel>();
         _mockGnnRankerModel = new Mock<IGnnRankerModel>();
+        _mockLlmGeneratorModel = new Mock<ILlmGeneratorModel>();
+        _mockNerModel = new Mock<INerModel>();
         _mockVectorIndex = new Mock<IVectorIndex>();
         _mockGraphStorage = new Mock<IGraphStorage>();
         _mockLogger = new Mock<ILogger<QueryService>>();
+
+        // Setup defaults
+        _mockNerModel.Setup(x => x.ExtractEntitiesAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new List<ExtractedEntity>());
+        _mockLlmGeneratorModel.Setup(x => x.GenerateAnswerAsync(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync("Generated Answer");
     }
 
     [Fact]
@@ -264,13 +274,16 @@ public class QueryServiceAdditionalTests
         var service = new QueryService(
             _mockEmbeddingModel.Object,
             _mockGnnRankerModel.Object,
+            _mockLlmGeneratorModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
             _mockLogger.Object,
             vectorWeight,
             graphWeight,
             vectorSearchTopK: 20,
-            maxSubgraphs: 10);
+            maxSubgraphs: 10,
+            maxGenerationTokens: 512);
 
         var query = "Test query";
 
@@ -325,13 +338,16 @@ public class QueryServiceAdditionalTests
         return new QueryService(
             _mockEmbeddingModel.Object,
             _mockGnnRankerModel.Object,
+            _mockLlmGeneratorModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
             _mockLogger.Object,
             vectorSearchWeight: 0.6f,
             graphSearchWeight: 0.4f,
             vectorSearchTopK: 20,
-            maxSubgraphs: 10);
+            maxSubgraphs: 10,
+            maxGenerationTokens: 512);
     }
 
     private void SetupMocks()

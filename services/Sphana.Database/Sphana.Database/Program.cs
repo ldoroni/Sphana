@@ -73,6 +73,17 @@ builder.Services.AddSingleton<IRelationExtractionModel>(sp =>
         logger);
 });
 
+builder.Services.AddSingleton<INerModel>(sp =>
+{
+    var logger = sp.GetRequiredService<ILogger<NerModel>>();
+    return new NerModel(
+        sphanaConfig.Models.NerModelPath,
+        sphanaConfig.Models.UseGpu,
+        sphanaConfig.Models.GpuDeviceId,
+        maxPoolSize: 2,
+        logger);
+});
+
 builder.Services.AddSingleton<IGnnRankerModel>(sp =>
 {
     var logger = sp.GetRequiredService<ILogger<GnnRankerModel>>();
@@ -81,6 +92,17 @@ builder.Services.AddSingleton<IGnnRankerModel>(sp =>
         sphanaConfig.Models.UseGpu,
         sphanaConfig.Models.GpuDeviceId,
         maxPoolSize: 2,
+        logger);
+});
+
+builder.Services.AddSingleton<ILlmGeneratorModel>(sp =>
+{
+    var logger = sp.GetRequiredService<ILogger<LlmGeneratorModel>>();
+    return new LlmGeneratorModel(
+        sphanaConfig.Models.LlmGeneratorModelPath,
+        sphanaConfig.Models.UseGpu,
+        sphanaConfig.Models.GpuDeviceId,
+        maxPoolSize: 1, // LLMs use a lot of VRAM
         logger);
 });
 
@@ -148,6 +170,7 @@ builder.Services.AddSingleton<IDocumentIngestionService>(sp =>
 {
     var embeddingModel = sp.GetRequiredService<IEmbeddingModel>();
     var reModel = sp.GetRequiredService<IRelationExtractionModel>();
+    var nerModel = sp.GetRequiredService<INerModel>();
     var vectorIndex = sp.GetRequiredService<IVectorIndex>();
     var graphStorage = sp.GetRequiredService<IGraphStorage>();
     var logger = sp.GetRequiredService<ILogger<DocumentIngestionService>>();
@@ -155,6 +178,7 @@ builder.Services.AddSingleton<IDocumentIngestionService>(sp =>
     return new DocumentIngestionService(
         embeddingModel,
         reModel,
+        nerModel,
         vectorIndex,
         graphStorage,
         logger,
@@ -167,6 +191,8 @@ builder.Services.AddSingleton<IQueryService>(sp =>
 {
     var embeddingModel = sp.GetRequiredService<IEmbeddingModel>();
     var gnnModel = sp.GetRequiredService<IGnnRankerModel>();
+    var llmModel = sp.GetRequiredService<ILlmGeneratorModel>();
+    var nerModel = sp.GetRequiredService<INerModel>();
     var vectorIndex = sp.GetRequiredService<IVectorIndex>();
     var graphStorage = sp.GetRequiredService<IGraphStorage>();
     var logger = sp.GetRequiredService<ILogger<QueryService>>();
@@ -174,13 +200,16 @@ builder.Services.AddSingleton<IQueryService>(sp =>
     return new QueryService(
         embeddingModel,
         gnnModel,
+        llmModel,
+        nerModel,
         vectorIndex,
         graphStorage,
         logger,
         sphanaConfig.Query.VectorSearchWeight,
         sphanaConfig.Query.GraphSearchWeight,
         sphanaConfig.Query.VectorSearchTopK,
-        sphanaConfig.Query.MaxSubgraphs);
+        sphanaConfig.Query.MaxSubgraphs,
+        sphanaConfig.Query.MaxGenerationTokens);
 });
 
 // Add health checks

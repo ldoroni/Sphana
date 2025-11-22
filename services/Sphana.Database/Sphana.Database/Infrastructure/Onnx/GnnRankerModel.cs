@@ -90,13 +90,13 @@ public sealed class GnnRankerModel : OnnxModelBase, IGnnRankerModel
         CancellationToken cancellationToken)
     {
         // Prepare graph tensors
-        var (nodeFeatures, adjacencyMatrix, edgeFeatures) = PrepareGraphTensors(subgraph);
+        var (nodeFeatures, edgeIndex, edgeDirections) = PrepareGraphTensors(subgraph);
 
         var inputs = new List<NamedOnnxValue>
         {
             NamedOnnxValue.CreateFromTensor("node_features", nodeFeatures),
-            NamedOnnxValue.CreateFromTensor("adjacency_matrix", adjacencyMatrix),
-            NamedOnnxValue.CreateFromTensor("edge_features", edgeFeatures)
+            NamedOnnxValue.CreateFromTensor("edge_index", edgeIndex),
+            NamedOnnxValue.CreateFromTensor("edge_directions", edgeDirections)
         };
 
         using var results = session.Run(inputs);
@@ -106,11 +106,10 @@ public sealed class GnnRankerModel : OnnxModelBase, IGnnRankerModel
         return output[0];
     }
 
-    private (Tensor<float> NodeFeatures, Tensor<float> AdjacencyMatrix, Tensor<float> EdgeFeatures) 
+    private (Tensor<float> NodeFeatures, Tensor<long> EdgeIndex, Tensor<long> EdgeDirections) 
         PrepareGraphTensors(KnowledgeSubgraph subgraph)
     {
         int numNodes = subgraph.Entities.Count;
-        int numEdges = subgraph.Relations.Count;
         int featureDim = 384; // Embedding dimension
 
         // Node features: [num_nodes, feature_dim]
@@ -122,45 +121,74 @@ public sealed class GnnRankerModel : OnnxModelBase, IGnnRankerModel
         }
         var nodeFeatures = CreateTensor(nodeFeatureData, new[] { numNodes, featureDim });
 
-        // Adjacency matrix: [num_nodes, num_nodes]
-        // For simplicity, create a dense matrix (in practice, use sparse representation)
-        var adjData = new float[numNodes][];
-        for (int i = 0; i < numNodes; i++)
-        {
-            adjData[i] = new float[numNodes];
-        }
-
         // Build entity ID to index map
         var entityIdToIndex = subgraph.Entities
             .Select((e, idx) => (e.Id, idx))
             .ToDictionary(x => x.Id, x => x.idx);
 
-        // Fill adjacency matrix
+        // Build edges
+        // For bidirectional GNN, we add forward (0) and backward (1) edges
+        var edgesList = new List<(int Src, int Dst, long Dir)>();
+        
         foreach (var relation in subgraph.Relations)
         {
             if (entityIdToIndex.TryGetValue(relation.SourceEntityId, out int sourceIdx) &&
                 entityIdToIndex.TryGetValue(relation.TargetEntityId, out int targetIdx))
             {
-                adjData[sourceIdx][targetIdx] = 1.0f;
-                adjData[targetIdx][sourceIdx] = 1.0f; // Undirected graph
+                // Forward edge: u -> v, dir 0
+                edgesList.Add((sourceIdx, targetIdx, 0));
+                // Backward edge: v -> u, dir 1
+                edgesList.Add((targetIdx, sourceIdx, 1));
             }
         }
-        var adjacencyMatrix = CreateTensor(adjData, new[] { numNodes, numNodes });
 
-        // Edge features: [num_edges, feature_dim]
-        // Use relation type embeddings (simplified)
-        var edgeFeatureData = new float[Math.Max(numEdges, 1)][];
-        for (int i = 0; i < numEdges; i++)
-        {
-            edgeFeatureData[i] = new float[featureDim]; // Placeholder
-        }
+        int numEdges = edgesList.Count;
+        
+        // Create tensors
+        // edge_index: [num_edges, 2]
+        var edgeIndexData = new long[Math.Max(numEdges, 1)][]; 
+        var edgeDirsData = new long[Math.Max(numEdges, 1)][];
+
         if (numEdges == 0)
         {
-            edgeFeatureData[0] = new float[featureDim];
+            // Dummy empty edge to satisfy shape requirements if needed, 
+            // but num_edges=0 might be handled by ONNX Runtime if dynamic axes allow it.
+            // If dynamic axes {edges} allows 0, we can pass empty tensor.
+            // However, exporter sets dynamic axes.
+            // Let's try passing empty tensors if supported, or dummy if not.
+            // For safety with potentially fixed or strictly typed inputs, we'll use 0-length if possible.
+            // But CreateTensor helper takes arrays. 
+            // Let's use empty array if numEdges is 0.
+            edgeIndexData = Array.Empty<long[]>();
+            edgeDirsData = Array.Empty<long[]>();
+            
+            // Actually, let's verify ONNX Runtime behavior. If dimension is 0, it should be fine.
+            // But our CreateTensor helper creates DenseTensor.
+            if (numEdges == 0)
+            {
+                return (
+                    nodeFeatures, 
+                    new DenseTensor<long>(new[] { 0, 2 }), 
+                    new DenseTensor<long>(new[] { 0 })
+                );
+            }
         }
-        var edgeFeatures = CreateTensor(edgeFeatureData, new[] { Math.Max(numEdges, 1), featureDim });
+        else
+        {
+            for (int i = 0; i < numEdges; i++)
+            {
+                edgeIndexData[i] = new long[] { edgesList[i].Src, edgesList[i].Dst };
+                edgeDirsData[i] = new long[] { edgesList[i].Dir };
+            }
+        }
 
-        return (nodeFeatures, adjacencyMatrix, edgeFeatures);
+        var edgeIndex = CreateTensor(edgeIndexData, new[] { numEdges, 2 });
+        // edge_directions: [num_edges] (1D tensor)
+        // Our CreateTensor Helper for long[][] creates a flattened tensor from 2D array.
+        // We want [num_edges].
+        // We can reuse CreateTensor but need to pass [num_edges] as dimension.
+        var edgeDirections = CreateTensor(edgeDirsData, new[] { numEdges });
+
+        return (nodeFeatures, edgeIndex, edgeDirections);
     }
 }
-

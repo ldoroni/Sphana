@@ -21,16 +21,18 @@ python -m sphana_trainer.cli ingest `
     --config configs\ingest\wiki.yaml
 
 # Build dataset from ingest (output target/datasets/)
-python -m sphana_trainer.cli dataset-build-from-ingest target/ingest/ `      
+python -m sphana_trainer.cli dataset-build-from-ingest target/ingest/ `
     --output-dir target/datasets/ `
     --min-confidence 0.3 `
-    --val-ratio 0.2 `     
+    --val-ratio 0.2 `
     --seed 42 
 
 # Train models (output target/artifacts/)
 python -m sphana_trainer.cli train embedding --config configs/embedding/wiki.yaml
 python -m sphana_trainer.cli train relation --config configs/relation/wiki.yaml
 python -m sphana_trainer.cli train gnn --config configs/gnn/wiki.yaml
+python -m sphana_trainer.cli train ner --config configs/ner/base.yaml
+python -m sphana_trainer.cli train llm --config configs/llm/base.yaml
 
 # Export models as ONNX (output target/manifests/latest.json)
 python -m sphana_trainer.cli export --config configs/export/wiki.yaml

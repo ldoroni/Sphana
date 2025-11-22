@@ -14,6 +14,7 @@ public class DocumentIngestionServiceBatchTests
 {
     private readonly Mock<IEmbeddingModel> _mockEmbeddingModel;
     private readonly Mock<IRelationExtractionModel> _mockRelationExtractionModel;
+    private readonly Mock<INerModel> _mockNerModel;
     private readonly Mock<IVectorIndex> _mockVectorIndex;
     private readonly Mock<IGraphStorage> _mockGraphStorage;
     private readonly Mock<ILogger<DocumentIngestionService>> _mockLogger;
@@ -22,9 +23,13 @@ public class DocumentIngestionServiceBatchTests
     {
         _mockEmbeddingModel = new Mock<IEmbeddingModel>();
         _mockRelationExtractionModel = new Mock<IRelationExtractionModel>();
+        _mockNerModel = new Mock<INerModel>();
         _mockVectorIndex = new Mock<IVectorIndex>();
         _mockGraphStorage = new Mock<IGraphStorage>();
         _mockLogger = new Mock<ILogger<DocumentIngestionService>>();
+        
+        _mockNerModel.Setup(x => x.ExtractEntitiesAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new List<ExtractedEntity>());
     }
 
     [Fact]
@@ -160,6 +165,7 @@ public class DocumentIngestionServiceBatchTests
         return new DocumentIngestionService(
             _mockEmbeddingModel.Object,
             _mockRelationExtractionModel.Object,
+            _mockNerModel.Object,
             _mockVectorIndex.Object,
             _mockGraphStorage.Object,
             _mockLogger.Object,

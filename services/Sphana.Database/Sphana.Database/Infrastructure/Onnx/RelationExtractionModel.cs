@@ -2,6 +2,7 @@ using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 using BERTTokenizers;
 using Sphana.Database.Models.KnowledgeGraph;
+using System.Text;
 
 namespace Sphana.Database.Infrastructure.Onnx;
 
@@ -46,8 +47,10 @@ public sealed class RelationExtractionModel : OnnxModelBase, IRelationExtraction
             // Consider all entity pairs
             for (int i = 0; i < entities.Count; i++)
             {
-                for (int j = i + 1; j < entities.Count; j++)
+                for (int j = 0; j < entities.Count; j++)
                 {
+                    if (i == j) continue; // Skip self-relations
+
                     var relation = await ExtractRelationForPairAsync(
                         session, 
                         text, 
@@ -77,27 +80,38 @@ public sealed class RelationExtractionModel : OnnxModelBase, IRelationExtraction
         ExtractedEntity entity2,
         CancellationToken cancellationToken)
     {
-        // Prepare input tensors
-        var (inputIds, attentionMask, entityPositions) = PrepareInputTensors(text, entity1, entity2);
+        // 1. Insert entity markers
+        string markedText = InsertEntityMarkers(text, entity1, entity2);
+
+        // 2. Prepare input tensors
+        var (inputIds, attentionMask, tokenTypeIds) = PrepareInputTensors(markedText);
 
         var inputs = new List<NamedOnnxValue>
         {
             NamedOnnxValue.CreateFromTensor("input_ids", inputIds),
-            NamedOnnxValue.CreateFromTensor("attention_mask", attentionMask),
-            NamedOnnxValue.CreateFromTensor("entity_positions", entityPositions)
+            NamedOnnxValue.CreateFromTensor("attention_mask", attentionMask)
         };
+
+        if (session.InputMetadata.ContainsKey("token_type_ids"))
+        {
+            inputs.Add(NamedOnnxValue.CreateFromTensor("token_type_ids", tokenTypeIds));
+        }
 
         using var results = session.Run(inputs);
         
-        // Extract outputs: relation_type_logits [num_relation_types], confidence [1]
-        var relationTypeLogits = results.First(r => r.Name == "relation_type_logits")
-            .AsEnumerable<float>().ToArray();
-        var confidence = results.First(r => r.Name == "confidence")
-            .AsEnumerable<float>().First();
-
-        // Get the predicted relation type (index with max logit)
-        int predictedTypeIdx = Array.IndexOf(relationTypeLogits, relationTypeLogits.Max());
+        // 3. Process outputs
+        // The model outputs "logits" (batch_size, num_labels)
+        // Prefer fetching by name if possible, otherwise take first
+        var logitsTensor = results.FirstOrDefault(r => r.Name == "logits") ?? results.First();
+        var logits = logitsTensor.AsEnumerable<float>().ToArray();
+        
+        // Calculate softmax to get probabilities
+        var probabilities = Softmax(logits);
+        
+        // Get the predicted relation type (index with max probability)
+        int predictedTypeIdx = Array.IndexOf(probabilities, probabilities.Max());
         string relationType = GetRelationTypeName(predictedTypeIdx);
+        float confidence = probabilities[predictedTypeIdx];
 
         if (confidence < 0.5f || relationType == "NO_RELATION")
         {
@@ -113,8 +127,59 @@ public sealed class RelationExtractionModel : OnnxModelBase, IRelationExtraction
         };
     }
 
-    private (Tensor<long> InputIds, Tensor<long> AttentionMask, Tensor<long> EntityPositions) 
-        PrepareInputTensors(string text, ExtractedEntity entity1, ExtractedEntity entity2)
+    private string InsertEntityMarkers(string text, ExtractedEntity ent1, ExtractedEntity ent2)
+    {
+        var markers = new List<(int Index, string Marker, bool IsStart, int EntityStart, int EntityEnd)>();
+        
+        markers.Add((ent1.StartPosition, "[E1]", true, ent1.StartPosition, ent1.EndPosition));
+        markers.Add((ent1.EndPosition, "[/E1]", false, ent1.StartPosition, ent1.EndPosition));
+        
+        markers.Add((ent2.StartPosition, "[E2]", true, ent2.StartPosition, ent2.EndPosition));
+        markers.Add((ent2.EndPosition, "[/E2]", false, ent2.StartPosition, ent2.EndPosition));
+
+        markers.Sort((a, b) => 
+        {
+            // 1. Index Descending
+            int cmp = b.Index.CompareTo(a.Index);
+            if (cmp != 0) return cmp;
+
+            // 2. Tie-breaking at same index
+            if (a.IsStart != b.IsStart)
+            {
+                // Process Start before End to get [End][Start] sequence
+                return b.IsStart.CompareTo(a.IsStart); 
+            }
+
+            if (a.IsStart) // Both are Start
+            {
+                // Start match: We want [Outer][Inner].
+                // Insert [Inner] then [Outer].
+                // Inner has Smaller End (if Starts match).
+                // So process Inner (Smaller End) first.
+                return a.EntityEnd.CompareTo(b.EntityEnd);
+            }
+            else // Both are End
+            {
+                // End match: We want [/Inner][/Outer].
+                // Insert [/Outer] then [/Inner].
+                // Outer has Smaller Start (if Ends match).
+                // So process Outer (Smaller Start) first.
+                return a.EntityStart.CompareTo(b.EntityStart);
+            }
+        });
+
+        var sb = new StringBuilder(text);
+        foreach (var item in markers)
+        {
+            int safeIndex = Math.Clamp(item.Index, 0, sb.Length);
+            sb.Insert(safeIndex, $" {item.Marker} ");
+        }
+
+        return sb.ToString();
+    }
+
+    private (Tensor<long> InputIds, Tensor<long> AttentionMask, Tensor<long> TokenTypeIds) 
+        PrepareInputTensors(string text)
     {
         const int maxLength = 512;
 
@@ -124,10 +189,11 @@ public sealed class RelationExtractionModel : OnnxModelBase, IRelationExtraction
         
         var inputIds = new long[1][];
         var attentionMask = new long[1][];
-        var entityPositions = new long[1][];
+        var tokenTypeIds = new long[1][];
 
         inputIds[0] = new long[maxLength];
         attentionMask[0] = new long[maxLength];
+        tokenTypeIds[0] = new long[maxLength];
         
         // Copy encoded tokens
         var lengthToCopy = Math.Min(encoded.Count, maxLength);
@@ -135,30 +201,29 @@ public sealed class RelationExtractionModel : OnnxModelBase, IRelationExtraction
         {
             inputIds[0][j] = encoded[j].InputIds;
             attentionMask[0][j] = encoded[j].AttentionMask;
+            tokenTypeIds[0][j] = encoded[j].TokenTypeIds;
         }
-
-        // Entity positions: [start1, end1, start2, end2]
-        // Note: These positions need to be adjusted for tokenization
-        // For simplicity, we're using character positions; in production, map to token positions
-        entityPositions[0] = new long[4]
-        {
-            Math.Min(entity1.StartPosition, maxLength - 1),
-            Math.Min(entity1.EndPosition, maxLength - 1),
-            Math.Min(entity2.StartPosition, maxLength - 1),
-            Math.Min(entity2.EndPosition, maxLength - 1)
-        };
 
         return (
             CreateTensor(inputIds, new[] { 1, maxLength }),
             CreateTensor(attentionMask, new[] { 1, maxLength }),
-            CreateTensor(entityPositions, new[] { 1, 4 })
+            CreateTensor(tokenTypeIds, new[] { 1, maxLength })
         );
+    }
+
+    private float[] Softmax(float[] logits)
+    {
+        if (logits.Length == 0) return Array.Empty<float>();
+        var maxLogit = logits.Max();
+        var exp = logits.Select(x => (float)Math.Exp(x - maxLogit)).ToArray();
+        var sumExp = exp.Sum();
+        return exp.Select(x => x / sumExp).ToArray();
     }
 
     private string GetRelationTypeName(int index)
     {
         // Common relation types from TACRED dataset
-        // This should be loaded from the model metadata
+        // This should match the training labels.json
         var relationTypes = new[]
         {
             "NO_RELATION",

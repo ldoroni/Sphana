@@ -1,4 +1,6 @@
 using Sphana.Database.Services;
+using Sphana.Database.Models;
+using Sphana.Database.Models.KnowledgeGraph;
 using Sphana.Database.Infrastructure.Onnx;
 using Sphana.Database.Infrastructure.VectorIndex;
 using Sphana.Database.Infrastructure.GraphStorage;
@@ -44,41 +46,64 @@ public class QueryServiceIntegrationTests : IAsyncLifetime
 
         try
         {
-            // Initialize ONNX models
-            var embeddingLogger = new Mock<ILogger<EmbeddingModel>>();
-            var gnnLogger = new Mock<ILogger<GnnRankerModel>>();
+            // Initialize mocks for ONNX models
             var serviceLogger = new Mock<ILogger<QueryService>>();
+            
+            // Mock Embedding Model
+            var embeddingModel = new Mock<IEmbeddingModel>();
+            embeddingModel.Setup(x => x.GenerateEmbeddingAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new float[128]);
 
-            var embeddingModel = new EmbeddingModel(
-                modelPath: "../../../../models/embedding.onnx",
-                embeddingDimension: 128,
-                useGpu: false,
-                gpuDeviceId: 0,
-                maxPoolSize: 1,
-                maxBatchSize: 8,
-                maxBatchWaitMs: 5,
-                logger: embeddingLogger.Object);
+            // Mock GNN Model
+            var gnnModel = new Mock<IGnnRankerModel>();
+            gnnModel.Setup(x => x.RankSubgraphsAsync(
+                    It.IsAny<List<KnowledgeSubgraph>>(),
+                    It.IsAny<float[]>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync((List<KnowledgeSubgraph> subgraphs, float[] queryEmbedding, CancellationToken ct) =>
+                {
+                    // Return same subgraphs with random scores
+                    var random = new Random();
+                    foreach (var sg in subgraphs)
+                    {
+                        sg.RelevanceScore = (float)random.NextDouble();
+                    }
+                    return subgraphs;
+                });
 
-            var gnnModel = new GnnRankerModel(
-                modelPath: "../../../../models/gnn_ranker.onnx",
-                useGpu: false,
-                gpuDeviceId: 0,
-                maxPoolSize: 1,
-                logger: gnnLogger.Object);
+            // Mock LLM Model
+            var llmModel = new Mock<ILlmGeneratorModel>();
+            llmModel.Setup(x => x.GenerateAnswerAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<int>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync("Mocked LLM Answer");
+
+            // Mock NER Model
+            var nerModel = new Mock<INerModel>();
+            nerModel.Setup(x => x.ExtractEntitiesAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new List<ExtractedEntity>());
 
             // Create the service
             _service = new QueryService(
-                embeddingModel,
-                gnnModel,
+                embeddingModel.Object,
+                gnnModel.Object,
+                llmModel.Object,
+                nerModel.Object,
                 _vectorIndex,
                 _graphStorage,
                 logger: serviceLogger.Object,
                 vectorSearchWeight: 0.6f,
                 graphSearchWeight: 0.4f,
                 vectorSearchTopK: 10,
-                maxSubgraphs: 5);
+                maxSubgraphs: 5,
+                maxGenerationTokens: 512);
 
-            _output.WriteLine("Service initialized successfully with ONNX models");
+            _output.WriteLine("Service initialized successfully with mocked ONNX models");
         }
         catch (Exception ex)
         {
