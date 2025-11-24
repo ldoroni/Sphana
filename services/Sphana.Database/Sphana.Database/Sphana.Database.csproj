@@ -14,15 +14,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_cased.txt" />
-    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_cased_german.txt" />
-    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_cased_large.txt" />
-    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_cased_multilingual.txt" />
-    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_uncased.txt" />
-    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_uncased_large.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
     <!-- gRPC for service communication -->
     <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
     
@@ -31,6 +22,9 @@
     
     <!-- BERTTokenizers for text processing -->
     <PackageReference Include="BERTTokenizers" Version="1.2.0" />
+    
+    <!-- Microsoft.ML.Tokenizers for LLM tokenization -->
+    <PackageReference Include="Microsoft.ML.Tokenizers" Version="2.0.0" />
     
     <!-- System.Numerics.Tensors for tensor operations -->
     <PackageReference Include="System.Numerics.Tensors" Version="10.0.0" />

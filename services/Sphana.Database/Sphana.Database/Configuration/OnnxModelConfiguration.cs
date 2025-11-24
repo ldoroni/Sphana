@@ -31,6 +31,11 @@ public sealed class OnnxModelConfiguration
     public string LlmGeneratorModelPath { get; set; } = "models/llm_generator.onnx";
 
     /// <summary>
+    /// Path to the LLM tokenizer file (tokenizer.json)
+    /// </summary>
+    public string LlmTokenizerPath { get; set; } = "models/tokenizer.json";
+
+    /// <summary>
     /// Path to the tokenizer vocabularies file
     /// </summary>
     public string VocabulariesPath { get; set; } = "Vocabularies/base_uncased.txt";

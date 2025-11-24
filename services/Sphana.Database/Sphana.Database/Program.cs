@@ -113,13 +113,12 @@ builder.Services.AddSingleton<IGnnRankerModel>(sp =>
 builder.Services.AddSingleton<ILlmGeneratorModel>(sp =>
 {
     var logger = sp.GetRequiredService<ILogger<LlmGeneratorModel>>();
-    var tokenizer = sp.GetRequiredService<UncasedTokenizer>();
     return new LlmGeneratorModel(
         sphanaConfig.Models.LlmGeneratorModelPath,
+        sphanaConfig.Models.LlmTokenizerPath,
         sphanaConfig.Models.UseGpu,
         sphanaConfig.Models.GpuDeviceId,
         maxPoolSize: 1, // LLMs use a lot of VRAM
-        tokenizer,
         logger);
 });
 

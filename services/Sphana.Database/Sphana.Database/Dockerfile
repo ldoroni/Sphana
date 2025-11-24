@@ -81,5 +81,5 @@ WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 COPY --from=publish /app/publish .
-COPY models ./models
+# COPY Sphana.Database/Resources /app/Resources
 ENTRYPOINT ["dotnet", "Sphana.Database.dll"]
