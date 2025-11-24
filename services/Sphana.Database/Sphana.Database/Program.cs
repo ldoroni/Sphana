@@ -1,9 +1,9 @@
 using Sphana.Database.Configuration;
+using Sphana.Database.Controllers.Grpc;
 using Sphana.Database.Infrastructure.Onnx;
 using Sphana.Database.Infrastructure.VectorIndex;
 using Sphana.Database.Infrastructure.GraphStorage;
 using Sphana.Database.Services;
-using Sphana.Database.Services.Grpc;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;

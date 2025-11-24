@@ -1,26 +1,26 @@
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using Moq;
+using Sphana.Database.Controllers;
 using Sphana.Database.RPC.V1;
 using Sphana.Database.Services;
-using Sphana.Database.Services.Grpc;
 
-namespace Sphana.Database.Tests.Services.Grpc;
+namespace Sphana.Database.Tests.UnitTests.Controllers;
 
-public class SphanaDatabaseServiceErrorTests
+public class SphanaDatabaseGrpcControllerErrorTests
 {
     private readonly Mock<IDocumentIngestionService> _mockIngestionService;
     private readonly Mock<IQueryService> _mockQueryService;
-    private readonly Mock<ILogger<SphanaDatabaseService>> _mockLogger;
-    private readonly SphanaDatabaseService _service;
+    private readonly Mock<ILogger<SphanaDatabaseGrpcController>> _mockLogger;
+    private readonly SphanaDatabaseGrpcController _service;
 
-    public SphanaDatabaseServiceErrorTests()
+    public SphanaDatabaseGrpcControllerErrorTests()
     {
         _mockIngestionService = new Mock<IDocumentIngestionService>();
         _mockQueryService = new Mock<IQueryService>();
-        _mockLogger = new Mock<ILogger<SphanaDatabaseService>>();
+        _mockLogger = new Mock<ILogger<SphanaDatabaseGrpcController>>();
 
-        _service = new SphanaDatabaseService(
+        _service = new SphanaDatabaseGrpcController(
             _mockIngestionService.Object,
             _mockQueryService.Object,
             _mockLogger.Object);
@@ -30,7 +30,7 @@ public class SphanaDatabaseServiceErrorTests
     public void Constructor_WithNullIngestionService_ShouldThrowArgumentNullException()
     {
         // Act & Assert
-        Assert.Throws<ArgumentNullException>(() => new SphanaDatabaseService(
+        Assert.Throws<ArgumentNullException>(() => new SphanaDatabaseGrpcController(
             null!,
             _mockQueryService.Object,
             _mockLogger.Object));
@@ -40,7 +40,7 @@ public class SphanaDatabaseServiceErrorTests
     public void Constructor_WithNullQueryService_ShouldThrowArgumentNullException()
     {
         // Act & Assert
-        Assert.Throws<ArgumentNullException>(() => new SphanaDatabaseService(
+        Assert.Throws<ArgumentNullException>(() => new SphanaDatabaseGrpcController(
             _mockIngestionService.Object,
             null!,
             _mockLogger.Object));
@@ -50,7 +50,7 @@ public class SphanaDatabaseServiceErrorTests
     public void Constructor_WithNullLogger_ShouldThrowArgumentNullException()
     {
         // Act & Assert
-        Assert.Throws<ArgumentNullException>(() => new SphanaDatabaseService(
+        Assert.Throws<ArgumentNullException>(() => new SphanaDatabaseGrpcController(
             _mockIngestionService.Object,
             _mockQueryService.Object,
             null!));

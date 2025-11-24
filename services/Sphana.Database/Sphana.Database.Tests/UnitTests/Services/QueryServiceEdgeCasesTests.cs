@@ -6,7 +6,7 @@ using Sphana.Database.Infrastructure.VectorIndex;
 using Sphana.Database.Models.KnowledgeGraph;
 using Sphana.Database.Services;
 
-namespace Sphana.Database.Tests.Services;
+namespace Sphana.Database.Tests.UnitTests.Services;
 
 public class QueryServiceEdgeCasesTests
 {

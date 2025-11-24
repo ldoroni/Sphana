@@ -1,6 +1,6 @@
 using Sphana.Database.Configuration;
 
-namespace Sphana.Database.Tests.Configuration;
+namespace Sphana.Database.Tests.UnitTests.Configuration;
 
 public class ConfigurationTests
 {

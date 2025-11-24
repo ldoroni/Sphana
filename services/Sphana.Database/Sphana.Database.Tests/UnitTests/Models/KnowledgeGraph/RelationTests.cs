@@ -1,6 +1,6 @@
 using Sphana.Database.Models.KnowledgeGraph;
 
-namespace Sphana.Database.Tests.Models.KnowledgeGraph;
+namespace Sphana.Database.Tests.UnitTests.Models.KnowledgeGraph;
 
 /// <summary>
 /// Tests for Relation model

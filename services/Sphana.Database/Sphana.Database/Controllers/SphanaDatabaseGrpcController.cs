@@ -4,21 +4,21 @@ using Sphana.Database.Services;
 using Sphana.Database.Models;
 using Sphana.Common.RPC.V1;
 
-namespace Sphana.Database.Services.Grpc;
+namespace Sphana.Database.Controllers;
 
 /// <summary>
 /// gRPC service implementation for Sphana Database
 /// </summary>
-public sealed class SphanaDatabaseService : SphanaDatabase.SphanaDatabaseBase
+public sealed class SphanaDatabaseGrpcController : SphanaDatabase.SphanaDatabaseBase
 {
     private readonly IDocumentIngestionService _ingestionService;
     private readonly IQueryService _queryService;
-    private readonly ILogger<SphanaDatabaseService> _logger;
+    private readonly ILogger<SphanaDatabaseGrpcController> _logger;
 
-    public SphanaDatabaseService(
+    public SphanaDatabaseGrpcController(
         IDocumentIngestionService ingestionService,
         IQueryService queryService,
-        ILogger<SphanaDatabaseService> logger)
+        ILogger<SphanaDatabaseGrpcController> logger)
     {
         _ingestionService = ingestionService ?? throw new ArgumentNullException(nameof(ingestionService));
         _queryService = queryService ?? throw new ArgumentNullException(nameof(queryService));
@@ -36,7 +36,7 @@ public sealed class SphanaDatabaseService : SphanaDatabase.SphanaDatabaseBase
             {
                 return new IngestResponse
                 {
-                    Status = new Sphana.Common.RPC.V1.Status
+                    Status = new Common.RPC.V1.Status
                     {
                         Succeed = false,
                         StatusCode = "INVALID_REQUEST",
@@ -52,7 +52,7 @@ public sealed class SphanaDatabaseService : SphanaDatabase.SphanaDatabaseBase
             {
                 return new IngestResponse
                 {
-                    Status = new Sphana.Common.RPC.V1.Status
+                    Status = new Common.RPC.V1.Status
                     {
                         Succeed = false,
                         StatusCode = "INVALID_REQUEST",
@@ -62,7 +62,7 @@ public sealed class SphanaDatabaseService : SphanaDatabase.SphanaDatabaseBase
             }
 
             // Convert protobuf document to domain model
-            var document = new Sphana.Database.Models.Document {
+            var document = new Models.Document {
                 Id = Guid.NewGuid().ToString(),
                 TenantId = request.Index.TenantId,
                 IndexName = request.Index.IndexName,
@@ -79,7 +79,7 @@ public sealed class SphanaDatabaseService : SphanaDatabase.SphanaDatabaseBase
 
             return new IngestResponse
             {
-                Status = new Sphana.Common.RPC.V1.Status
+                Status = new Common.RPC.V1.Status
                 {
                     Succeed = true,
                     StatusCode = "OK",
@@ -93,7 +93,7 @@ public sealed class SphanaDatabaseService : SphanaDatabase.SphanaDatabaseBase
 
             return new IngestResponse
             {
-                Status = new Sphana.Common.RPC.V1.Status
+                Status = new Common.RPC.V1.Status
                 {
                     Succeed = false,
                     StatusCode = "INTERNAL_ERROR",
@@ -114,7 +114,7 @@ public sealed class SphanaDatabaseService : SphanaDatabase.SphanaDatabaseBase
             {
                 return new QueryResponse
                 {
-                    Status = new Sphana.Common.RPC.V1.Status
+                    Status = new Common.RPC.V1.Status
                     {
                         Succeed = false,
                         StatusCode = "INVALID_REQUEST",
@@ -128,7 +128,7 @@ public sealed class SphanaDatabaseService : SphanaDatabase.SphanaDatabaseBase
             {
                 return new QueryResponse
                 {
-                    Status = new Sphana.Common.RPC.V1.Status
+                    Status = new Common.RPC.V1.Status
                     {
                         Succeed = false,
                         StatusCode = "INVALID_REQUEST",
@@ -153,7 +153,7 @@ public sealed class SphanaDatabaseService : SphanaDatabase.SphanaDatabaseBase
 
             return new QueryResponse
             {
-                Status = new Sphana.Common.RPC.V1.Status
+                Status = new Common.RPC.V1.Status
                 {
                     Succeed = true,
                     StatusCode = "OK",
@@ -168,7 +168,7 @@ public sealed class SphanaDatabaseService : SphanaDatabase.SphanaDatabaseBase
 
             return new QueryResponse
             {
-                Status = new Sphana.Common.RPC.V1.Status
+                Status = new Common.RPC.V1.Status
                 {
                     Succeed = false,
                     StatusCode = "INTERNAL_ERROR",

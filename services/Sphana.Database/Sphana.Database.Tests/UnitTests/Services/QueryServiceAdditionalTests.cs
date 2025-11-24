@@ -6,7 +6,7 @@ using Sphana.Database.Models;
 using Sphana.Database.Models.KnowledgeGraph;
 using Sphana.Database.Services;
 
-namespace Sphana.Database.Tests.Services;
+namespace Sphana.Database.Tests.UnitTests.Services;
 
 /// <summary>
 /// Additional comprehensive tests for QueryService covering more scenarios

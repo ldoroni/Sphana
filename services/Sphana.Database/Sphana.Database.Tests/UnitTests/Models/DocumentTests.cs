@@ -1,6 +1,6 @@
 using Sphana.Database.Models;
 
-namespace Sphana.Database.Tests.Models;
+namespace Sphana.Database.Tests.UnitTests.Models;
 
 /// <summary>
 /// Tests for Document model

@@ -12,6 +12,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_cased.txt" />
+    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_cased_german.txt" />
+    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_cased_large.txt" />
+    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_cased_multilingual.txt" />
+    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_uncased.txt" />
+    <Content Remove="C:\Users\ldoro\.nuget\packages\berttokenizers\1.2.0\contentFiles\any\net6.0\Vocabularies\base_uncased_large.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <!-- gRPC for service communication -->
     <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
     
@@ -38,6 +47,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sphana.Database.Protos\Sphana.Database.Protos.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Vocabularies\" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@ using Sphana.Database.Infrastructure.VectorIndex;
 using Sphana.Database.Models;
 using Sphana.Database.Services;
 
-namespace Sphana.Database.Tests.Services;
+namespace Sphana.Database.Tests.UnitTests.Services;
 
 /// <summary>
 /// Tests for batch ingestion scenarios in DocumentIngestionService

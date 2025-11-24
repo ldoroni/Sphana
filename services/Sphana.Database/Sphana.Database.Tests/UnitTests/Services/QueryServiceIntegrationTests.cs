@@ -7,7 +7,7 @@ using Sphana.Database.Infrastructure.GraphStorage;
 using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 
-namespace Sphana.Database.Tests.Services;
+namespace Sphana.Database.Tests.UnitTests.Services;
 
 public class QueryServiceIntegrationTests : IAsyncLifetime
 {

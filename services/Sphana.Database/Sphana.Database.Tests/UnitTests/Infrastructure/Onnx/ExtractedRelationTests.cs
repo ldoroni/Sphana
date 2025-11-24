@@ -1,6 +1,6 @@
 using Sphana.Database.Infrastructure.Onnx;
 
-namespace Sphana.Database.Tests.Infrastructure.Onnx;
+namespace Sphana.Database.Tests.UnitTests.Infrastructure.Onnx;
 
 public class ExtractedRelationTests
 {

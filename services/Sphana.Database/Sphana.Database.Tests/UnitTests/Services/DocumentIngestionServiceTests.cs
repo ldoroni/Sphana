@@ -4,7 +4,7 @@ using Sphana.Database.Infrastructure.GraphStorage;
 using Microsoft.Extensions.Logging;
 using Moq;
 
-namespace Sphana.Database.Tests.Services;
+namespace Sphana.Database.Tests.UnitTests.Services;
 
 /// <summary>
 /// Unit tests for DocumentIngestionService using mocks
