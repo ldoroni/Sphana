@@ -1,7 +1,6 @@
+using BERTTokenizers.Base;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
-using BERTTokenizers;
-using System.Text;
 
 namespace Sphana.Database.Infrastructure.Onnx;
 
@@ -10,17 +9,18 @@ namespace Sphana.Database.Infrastructure.Onnx;
 /// </summary>
 public sealed class LlmGeneratorModel : OnnxModelBase, ILlmGeneratorModel
 {
-    private readonly BertUncasedBaseTokenizer _tokenizer;
+    private readonly UncasedTokenizer _tokenizer;
 
     public LlmGeneratorModel(
         string modelPath,
         bool useGpu,
         int gpuDeviceId,
         int maxPoolSize,
+        UncasedTokenizer tokenizer,
         ILogger<LlmGeneratorModel> logger)
         : base(modelPath, useGpu, gpuDeviceId, maxPoolSize, logger)
     {
-        _tokenizer = new BertUncasedBaseTokenizer();
+        _tokenizer = tokenizer;
     }
 
     public async Task<string> GenerateAnswerAsync(

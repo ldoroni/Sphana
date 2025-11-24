@@ -1,12 +1,14 @@
-using Sphana.Database.Configuration;
-using Sphana.Database.Controllers;
-using Sphana.Database.Infrastructure.Onnx;
-using Sphana.Database.Infrastructure.VectorIndex;
-using Sphana.Database.Infrastructure.GraphStorage;
-using Sphana.Database.Services;
+using BERTTokenizers.Base;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using Sphana.Database.Configuration;
+using Sphana.Database.Controllers;
+using Sphana.Database.Infrastructure.GraphStorage;
+using Sphana.Database.Infrastructure.Onnx;
+using Sphana.Database.Infrastructure.Tokenizers;
+using Sphana.Database.Infrastructure.VectorIndex;
+using Sphana.Database.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,9 +50,17 @@ builder.Services.AddHealthChecks()
     .AddCheck<SphanaDatabaseHealthCheck>("sphana_database");
 
 // Register ONNX models as singletons
+builder.Services.AddSingleton<UncasedTokenizer>(sp =>
+{
+    return new CustomBertUncasedBaseTokenizer(
+        sphanaConfig.Models.VocabulariesPath
+    );
+});
+
 builder.Services.AddSingleton<IEmbeddingModel>(sp =>
 {
     var logger = sp.GetRequiredService<ILogger<EmbeddingModel>>();
+    var tokenizer = sp.GetRequiredService<UncasedTokenizer>();
     return new EmbeddingModel(
         sphanaConfig.Models.EmbeddingModelPath,
         sphanaConfig.Models.EmbeddingDimension,
@@ -59,28 +69,33 @@ builder.Services.AddSingleton<IEmbeddingModel>(sp =>
         maxPoolSize: 4,
         sphanaConfig.Models.BatchSize,
         sphanaConfig.Models.MaxBatchWaitMs,
+        tokenizer,
         logger);
 });
 
 builder.Services.AddSingleton<IRelationExtractionModel>(sp =>
 {
     var logger = sp.GetRequiredService<ILogger<RelationExtractionModel>>();
+    var tokenizer = sp.GetRequiredService<UncasedTokenizer>();
     return new RelationExtractionModel(
         sphanaConfig.Models.RelationExtractionModelPath,
         sphanaConfig.Models.UseGpu,
         sphanaConfig.Models.GpuDeviceId,
         maxPoolSize: 2,
+        tokenizer,
         logger);
 });
 
 builder.Services.AddSingleton<INerModel>(sp =>
 {
     var logger = sp.GetRequiredService<ILogger<NerModel>>();
+    var tokenizer = sp.GetRequiredService<UncasedTokenizer>();
     return new NerModel(
         sphanaConfig.Models.NerModelPath,
         sphanaConfig.Models.UseGpu,
         sphanaConfig.Models.GpuDeviceId,
         maxPoolSize: 2,
+        tokenizer,
         logger);
 });
 
@@ -98,11 +113,13 @@ builder.Services.AddSingleton<IGnnRankerModel>(sp =>
 builder.Services.AddSingleton<ILlmGeneratorModel>(sp =>
 {
     var logger = sp.GetRequiredService<ILogger<LlmGeneratorModel>>();
+    var tokenizer = sp.GetRequiredService<UncasedTokenizer>();
     return new LlmGeneratorModel(
         sphanaConfig.Models.LlmGeneratorModelPath,
         sphanaConfig.Models.UseGpu,
         sphanaConfig.Models.GpuDeviceId,
         maxPoolSize: 1, // LLMs use a lot of VRAM
+        tokenizer,
         logger);
 });
 

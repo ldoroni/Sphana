@@ -1,7 +1,6 @@
+using BERTTokenizers.Base;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
-using BERTTokenizers;
-using Sphana.Database.Models.KnowledgeGraph;
 using System.Text;
 
 namespace Sphana.Database.Infrastructure.Onnx;
@@ -12,18 +11,19 @@ namespace Sphana.Database.Infrastructure.Onnx;
 /// </summary>
 public sealed class RelationExtractionModel : OnnxModelBase, IRelationExtractionModel
 {
-    private readonly BertUncasedBaseTokenizer _tokenizer;
+    private readonly UncasedTokenizer _tokenizer;
     
     public RelationExtractionModel(
         string modelPath,
         bool useGpu,
         int gpuDeviceId,
         int maxPoolSize,
+        UncasedTokenizer tokenizer,
         ILogger<RelationExtractionModel> logger)
         : base(modelPath, useGpu, gpuDeviceId, maxPoolSize, logger)
     {
         // Initialize BERT tokenizer
-        _tokenizer = new BertUncasedBaseTokenizer();
+        _tokenizer = tokenizer;
     }
 
     /// <summary>

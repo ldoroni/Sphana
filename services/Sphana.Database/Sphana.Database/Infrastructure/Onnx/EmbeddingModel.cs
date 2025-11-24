@@ -1,8 +1,7 @@
+using BERTTokenizers.Base;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
-using System.Collections.Concurrent;
 using System.Threading.Channels;
-using BERTTokenizers;
 
 namespace Sphana.Database.Infrastructure.Onnx;
 
@@ -17,7 +16,7 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
     private readonly int _maxBatchWaitMs;
     private readonly Task _batchProcessingTask;
     private readonly CancellationTokenSource _cancellationTokenSource;
-    private readonly BertUncasedBaseTokenizer _tokenizer;
+    private readonly UncasedTokenizer _tokenizer;
 
     public EmbeddingModel(
         string modelPath,
@@ -27,9 +26,11 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
         int maxPoolSize,
         int maxBatchSize,
         int maxBatchWaitMs,
+        UncasedTokenizer tokenizer,
         ILogger<EmbeddingModel> logger)
         : base(modelPath, useGpu, gpuDeviceId, maxPoolSize, logger)
     {
+        _tokenizer = tokenizer;
         _embeddingDimension = embeddingDimension;
         _maxBatchSize = maxBatchSize;
         _maxBatchWaitMs = maxBatchWaitMs;
@@ -37,9 +38,6 @@ public sealed class EmbeddingModel : OnnxModelBase, IEmbeddingModel
         _batchChannel = Channel.CreateUnbounded<EmbeddingRequest>();
         _cancellationTokenSource = new CancellationTokenSource();
         _batchProcessingTask = Task.Run(() => ProcessBatchesAsync(_cancellationTokenSource.Token));
-        
-        // Initialize BERT tokenizer with base uncased vocabulary
-        _tokenizer = new BertUncasedBaseTokenizer();
     }
 
     /// <summary>

@@ -1,7 +1,6 @@
+using BERTTokenizers.Base;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
-using BERTTokenizers;
-using System.Text;
 
 namespace Sphana.Database.Infrastructure.Onnx;
 
@@ -11,7 +10,7 @@ namespace Sphana.Database.Infrastructure.Onnx;
 /// </summary>
 public sealed class NerModel : OnnxModelBase, INerModel
 {
-    private readonly BertUncasedBaseTokenizer _tokenizer;
+    private readonly UncasedTokenizer _tokenizer;
     private readonly string[] _labels;
 
     public NerModel(
@@ -19,10 +18,11 @@ public sealed class NerModel : OnnxModelBase, INerModel
         bool useGpu,
         int gpuDeviceId,
         int maxPoolSize,
+        UncasedTokenizer tokenizer,
         ILogger<NerModel> logger)
         : base(modelPath, useGpu, gpuDeviceId, maxPoolSize, logger)
     {
-        _tokenizer = new BertUncasedBaseTokenizer();
+        _tokenizer = tokenizer;
         // Standard CoNLL-2003 labels
         _labels = new[] { "O", "B-MISC", "I-MISC", "B-PER", "I-PER", "B-ORG", "I-ORG", "B-LOC", "I-LOC" };
     }
