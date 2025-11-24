@@ -1,5 +1,5 @@
 using Sphana.Database.Configuration;
-using Sphana.Database.Controllers.Grpc;
+using Sphana.Database.Controllers;
 using Sphana.Database.Infrastructure.Onnx;
 using Sphana.Database.Infrastructure.VectorIndex;
 using Sphana.Database.Infrastructure.GraphStorage;
@@ -218,7 +218,7 @@ builder.Services.AddHealthChecks();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
-app.MapGrpcService<SphanaDatabaseService>();
+app.MapGrpcService<SphanaDatabaseGrpcController>();
 app.MapHealthChecks("/health");
 app.MapPrometheusScrapingEndpoint();
 
