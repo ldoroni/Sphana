@@ -1,14 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <PublishAot>true</PublishAot>
+    <PublishAot>false</PublishAot>
     <UserSecretsId>e7ee0965-399b-4a04-a48f-91b99a3da0a0</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..</DockerfileContext>
+    <!-- Ensure GPU libraries are included -->
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,8 +26,7 @@
     <!-- gRPC for service communication -->
     <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
     
-    <!-- ONNX Runtime for model inference -->
-    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.23.2" />
+    <!-- ONNX Runtime GPU for model inference (includes CPU fallback) -->
     <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu" Version="1.23.2" />
     
     <!-- BERTTokenizers for text processing -->

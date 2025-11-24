@@ -20,6 +20,11 @@ from transformers import (
 
 from sphana_trainer.models import EmbeddingEncoder, GGNNRanker
 
+try:
+    import onnx
+    ONNX_AVAILABLE = True
+except ImportError:
+    ONNX_AVAILABLE = False
 
 LOGGER = logging.getLogger(__name__)
 
@@ -382,6 +387,15 @@ def export_llm_model(
 
 def _quantize_or_fallback(source: Path, target: Path) -> Path:
     target.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Check if model has external data
+    external_data_file = source.parent / "model.onnx_data"
+    
+    if external_data_file.exists():
+        # For models with external data, we need special handling
+        return _quantize_with_external_data(source, target, external_data_file)
+    
+    # Original logic for models without external data
     preprocessed = _maybe_preprocess_model(source)
     quant_input = preprocessed if preprocessed.exists() else source
     try:
@@ -403,6 +417,68 @@ def _quantize_or_fallback(source: Path, target: Path) -> Path:
         if preprocessed != source:
             with suppress(FileNotFoundError):
                 preprocessed.unlink()
+
+
+def _quantize_with_external_data(source: Path, target: Path, external_data: Path) -> Path:
+    """Quantize models that have external data files."""
+    if not ONNX_AVAILABLE:
+        LOGGER.warning("onnx package required for external data handling. Using original.")
+        return source
+    
+    try:
+        # Load model with external data
+        model = onnx.load(str(source), load_external_data=True)
+        
+        # Create a temporary embedded version
+        embedded_path = source.with_suffix(".embedded.onnx")
+        onnx.save(model, str(embedded_path))
+        
+        # Quantize the embedded model
+        quantized_embedded = target.with_suffix(".embedded.int8.onnx")
+        preprocessed = _maybe_preprocess_model(embedded_path)
+        quant_input = preprocessed if preprocessed.exists() else embedded_path
+        
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", category=UserWarning)
+            with _suppress_quant_warning():
+                quantize_dynamic(
+                    model_input=str(quant_input),
+                    model_output=str(quantized_embedded),
+                    weight_type=QuantType.QInt8,
+                )
+        
+        # Load the quantized model and convert back to external data format
+        quantized_model = onnx.load(str(quantized_embedded))
+        
+        # Save with external data (threshold 1MB to keep most weights external)
+        onnx.save(
+            quantized_model,
+            str(target),
+            save_as_external_data=True,
+            all_tensors_to_one_file=True,
+            location="model.onnx_data",
+            size_threshold=1024,
+        )
+        
+        # Cleanup temporary files
+        embedded_path.unlink(missing_ok=True)
+        quantized_embedded.unlink(missing_ok=True)
+        if preprocessed != embedded_path and preprocessed.exists():
+            preprocessed.unlink(missing_ok=True)
+        
+        LOGGER.info("Successfully quantized model with external data: %s", target)
+        return target
+        
+    except Exception as exc:
+        LOGGER.warning("Quantization with external data failed for %s: %s. Using original.", source, exc)
+        # Cleanup
+        for temp_file in [
+            source.with_suffix(".embedded.onnx"),
+            target.with_suffix(".embedded.int8.onnx"),
+        ]:
+            with suppress(FileNotFoundError):
+                temp_file.unlink()
+        return source
 
 
 def _maybe_preprocess_model(source: Path) -> Path:
