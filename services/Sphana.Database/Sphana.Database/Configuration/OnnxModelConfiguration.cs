@@ -41,6 +41,16 @@ public sealed class OnnxModelConfiguration
     public string VocabulariesPath { get; set; } = "Vocabularies/base_uncased.txt";
 
     /// <summary>
+    /// Pre-load all models on startup to avoid first-request latency
+    /// </summary>
+    public bool PreloadModelsOnStartup { get; set; } = false;
+
+    /// <summary>
+    /// Load models in parallel when preloading (requires sufficient VRAM)
+    /// </summary>
+    public bool PreloadModelsInParallel { get; set; } = false;
+
+    /// <summary>
     /// Embedding dimension
     /// </summary>
     public int EmbeddingDimension { get; set; } = 384;

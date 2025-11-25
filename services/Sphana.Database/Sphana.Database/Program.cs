@@ -247,6 +247,73 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
+// Pre-load models if configured
+if (sphanaConfig.Models.PreloadModelsOnStartup)
+{
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation("Pre-loading ONNX models (Parallel: {Parallel})...", 
+        sphanaConfig.Models.PreloadModelsInParallel);
+    
+    var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+    
+    using (var scope = app.Services.CreateScope())
+    {
+        if (sphanaConfig.Models.PreloadModelsInParallel)
+        {
+            // Load models in parallel
+            await Task.WhenAll(
+                Task.Run(() =>
+                {
+                    var model = scope.ServiceProvider.GetRequiredService<IEmbeddingModel>();
+                    logger.LogInformation("Loaded EmbeddingModel");
+                }),
+                Task.Run(() =>
+                {
+                    var model = scope.ServiceProvider.GetRequiredService<IRelationExtractionModel>();
+                    logger.LogInformation("Loaded RelationExtractionModel");
+                }),
+                Task.Run(() =>
+                {
+                    var model = scope.ServiceProvider.GetRequiredService<INerModel>();
+                    logger.LogInformation("Loaded NerModel");
+                }),
+                Task.Run(() =>
+                {
+                    var model = scope.ServiceProvider.GetRequiredService<IGnnRankerModel>();
+                    logger.LogInformation("Loaded GnnRankerModel");
+                }),
+                Task.Run(() =>
+                {
+                    var model = scope.ServiceProvider.GetRequiredService<ILlmGeneratorModel>();
+                    logger.LogInformation("Loaded LlmGeneratorModel");
+                })
+            );
+        }
+        else
+        {
+            // Load models sequentially
+            _ = scope.ServiceProvider.GetRequiredService<IEmbeddingModel>();
+            logger.LogInformation("Loaded EmbeddingModel");
+            
+            _ = scope.ServiceProvider.GetRequiredService<IRelationExtractionModel>();
+            logger.LogInformation("Loaded RelationExtractionModel");
+            
+            _ = scope.ServiceProvider.GetRequiredService<INerModel>();
+            logger.LogInformation("Loaded NerModel");
+            
+            _ = scope.ServiceProvider.GetRequiredService<IGnnRankerModel>();
+            logger.LogInformation("Loaded GnnRankerModel");
+            
+            _ = scope.ServiceProvider.GetRequiredService<ILlmGeneratorModel>();
+            logger.LogInformation("Loaded LlmGeneratorModel");
+        }
+    }
+    
+    stopwatch.Stop();
+    logger.LogInformation("All models pre-loaded in {ElapsedSeconds:F2}s", 
+        stopwatch.Elapsed.TotalSeconds);
+}
+
 // Configure the HTTP request pipeline
 app.MapGrpcService<SphanaDatabaseGrpcController>();
 app.MapHealthChecks("/health");
