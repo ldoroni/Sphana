@@ -6,6 +6,11 @@ namespace Sphana.Database.Configuration;
 public sealed class SphanaConfiguration
 {
     /// <summary>
+    /// Debug logging configuration
+    /// </summary>
+    public DebugConfiguration Debug { get; set; } = new();
+
+    /// <summary>
     /// ONNX model configuration
     /// </summary>
     public OnnxModelConfiguration Models { get; set; } = new();

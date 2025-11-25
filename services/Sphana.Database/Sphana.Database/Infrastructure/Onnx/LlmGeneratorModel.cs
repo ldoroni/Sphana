@@ -14,6 +14,7 @@ public sealed class LlmGeneratorModel : OnnxModelBase, ILlmGeneratorModel
     private readonly Microsoft.ML.Tokenizers.Tokenizer _tokenizer;
     private readonly int _bosTokenId;
     private readonly int _eosTokenId;
+    private readonly bool _logTokenizedText;
 
     public LlmGeneratorModel(
         string modelPath,
@@ -21,9 +22,12 @@ public sealed class LlmGeneratorModel : OnnxModelBase, ILlmGeneratorModel
         bool useGpu,
         int gpuDeviceId,
         int maxPoolSize,
+        bool logTokenizedText,
         ILogger<LlmGeneratorModel> logger)
         : base(modelPath, useGpu, gpuDeviceId, maxPoolSize, logger)
     {
+        _logTokenizedText = logTokenizedText;
+        
         // Load tokenizer using Microsoft.ML.Tokenizers
         // For Gemma, use tokenizer.model (SentencePiece format)
         var tokenizerModelPath = Path.Combine(Path.GetDirectoryName(tokenizerPath) ?? "", "tokenizer.model");
@@ -84,6 +88,13 @@ public sealed class LlmGeneratorModel : OnnxModelBase, ILlmGeneratorModel
             
             _logger.LogInformation("Tokenized prompt into {TokenCount} tokens: [{Tokens}]", 
                 currentInputIds.Count, string.Join(", ", currentInputIds));
+
+            // Debug logging: show decoded text
+            if (_logTokenizedText)
+            {
+                var decodedText = DecodeTokens(currentInputIds.Select(id => (int)id).ToList());
+                _logger.LogInformation("Decoded tokenized text: {DecodedText}", decodedText);
+            }
 
             // Initialize KV cache for first pass
             Dictionary<string, Tensor<float>> pastKVCache = null;

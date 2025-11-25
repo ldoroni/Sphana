@@ -22,6 +22,7 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
     private readonly int _chunkSize;
     private readonly int _chunkOverlap;
     private readonly float _minRelationConfidence;
+    private readonly bool _logIngestionData;
 
     public DocumentIngestionService(
         IEmbeddingModel embeddingModel,
@@ -32,7 +33,8 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
         ILogger<DocumentIngestionService> logger,
         int chunkSize = 512,
         int chunkOverlap = 50,
-        float minRelationConfidence = 0.5f)
+        float minRelationConfidence = 0.5f,
+        bool logIngestionData = false)
     {
         _embeddingModel = embeddingModel ?? throw new ArgumentNullException(nameof(embeddingModel));
         _relationExtractionModel = relationExtractionModel ?? throw new ArgumentNullException(nameof(relationExtractionModel));
@@ -43,6 +45,7 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
         _chunkSize = chunkSize;
         _chunkOverlap = chunkOverlap;
         _minRelationConfidence = minRelationConfidence;
+        _logIngestionData = logIngestionData;
     }
 
     /// <summary>
@@ -68,6 +71,18 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
             _logger.LogDebug("Created {ChunkCount} chunks from document {DocumentId}", 
                 chunks.Count, document.Id);
 
+            // Debug logging: show chunk details
+            if (_logIngestionData)
+            {
+                foreach (var chunk in chunks)
+                {
+                    _logger.LogInformation(
+                        "Chunk {ChunkId}: Position {StartPos}-{EndPos}, Length: {Length} chars\nContent: {Content}",
+                        chunk.Id, chunk.StartPosition, chunk.EndPosition, chunk.Content.Length, 
+                        chunk.Content.Length > 200 ? chunk.Content.Substring(0, 200) + "..." : chunk.Content);
+                }
+            }
+
             // Step 2: Generate embeddings for all chunks
             var chunkTexts = chunks.Select(c => c.Content).ToArray();
             var embeddings = await _embeddingModel.GenerateEmbeddingsAsync(chunkTexts, cancellationToken);
@@ -79,6 +94,18 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
             }
 
             _logger.LogDebug("Generated embeddings for {ChunkCount} chunks", chunks.Count);
+
+            // Debug logging: show embedding details
+            if (_logIngestionData)
+            {
+                for (int i = 0; i < chunks.Count; i++)
+                {
+                    var embeddingPreview = string.Join(", ", chunks[i].Embedding!.Take(10).Select(v => v.ToString("F4")));
+                    _logger.LogInformation(
+                        "Embedding for chunk {ChunkId}: Dimension {Dim}, First 10 values: [{Values}]...",
+                        chunks[i].Id, chunks[i].Embedding!.Length, embeddingPreview);
+                }
+            }
 
             // Step 3: Add chunks to vector index
             var vectorTasks = chunks.Select(chunk => 
@@ -100,6 +127,29 @@ public sealed class DocumentIngestionService : IDocumentIngestionService
 
             _logger.LogDebug("Extracted {EntityCount} entities and {RelationCount} relations",
                 allEntities.Count, allRelations.Count);
+
+            // Debug logging: show extracted entities and relations
+            if (_logIngestionData)
+            {
+                _logger.LogInformation("Extracted Entities:");
+                foreach (var entity in allEntities)
+                {
+                    var embPreview = string.Join(", ", entity.Embedding!.Take(5).Select(v => v.ToString("F4")));
+                    _logger.LogInformation(
+                        "  Entity: Text='{Text}', Type={Type}, Embedding=[{EmbPreview}]...",
+                        entity.Text, entity.Type, embPreview);
+                }
+
+                _logger.LogInformation("Extracted Relations:");
+                foreach (var relation in allRelations)
+                {
+                    var sourceEntity = allEntities.First(e => e.Id == relation.SourceEntityId);
+                    var targetEntity = allEntities.First(e => e.Id == relation.TargetEntityId);
+                    _logger.LogInformation(
+                        "  Relation: '{Source}' --[{Type}]--> '{Target}' (Confidence: {Confidence:F3})",
+                        sourceEntity.Text, relation.RelationType, targetEntity.Text, relation.Confidence);
+                }
+            }
 
             // Step 5: Add entities and relations to knowledge graph
             await BuildKnowledgeGraphAsync(allEntities, allRelations, cancellationToken);

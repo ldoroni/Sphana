@@ -113,12 +113,14 @@ builder.Services.AddSingleton<IGnnRankerModel>(sp =>
 builder.Services.AddSingleton<ILlmGeneratorModel>(sp =>
 {
     var logger = sp.GetRequiredService<ILogger<LlmGeneratorModel>>();
+    var debugEnabled = sphanaConfig.Debug.EnableVerboseLogging && sphanaConfig.Debug.LogTokenizedText;
     return new LlmGeneratorModel(
         sphanaConfig.Models.LlmGeneratorModelPath,
         sphanaConfig.Models.LlmTokenizerPath,
         sphanaConfig.Models.UseGpu,
         sphanaConfig.Models.GpuDeviceId,
         maxPoolSize: 1, // LLMs use a lot of VRAM
+        debugEnabled,
         logger);
 });
 
@@ -191,6 +193,8 @@ builder.Services.AddSingleton<IDocumentIngestionService>(sp =>
     var graphStorage = sp.GetRequiredService<IGraphStorage>();
     var logger = sp.GetRequiredService<ILogger<DocumentIngestionService>>();
 
+    var debugEnabled = sphanaConfig.Debug.EnableVerboseLogging && sphanaConfig.Debug.LogIngestionData;
+
     return new DocumentIngestionService(
         embeddingModel,
         reModel,
@@ -200,7 +204,8 @@ builder.Services.AddSingleton<IDocumentIngestionService>(sp =>
         logger,
         sphanaConfig.Ingestion.ChunkSize,
         sphanaConfig.Ingestion.ChunkOverlap,
-        sphanaConfig.Ingestion.MinRelationConfidence);
+        sphanaConfig.Ingestion.MinRelationConfidence,
+        debugEnabled);
 });
 
 builder.Services.AddSingleton<IQueryService>(sp =>
