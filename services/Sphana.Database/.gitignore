@@ -31,7 +31,7 @@ appsettings.Local.json
 *.sqlite
 
 # Models
-*.onnx
+*/Resources/Models/*
 
 # Logs
 logs/
