@@ -5,12 +5,21 @@ using OpenTelemetry.Trace;
 using Sphana.Database.Configuration;
 using Sphana.Database.Controllers;
 using Sphana.Database.Infrastructure.GraphStorage;
+using Sphana.Database.Infrastructure.Logging;
 using Sphana.Database.Infrastructure.Onnx;
 using Sphana.Database.Infrastructure.Tokenizers;
 using Sphana.Database.Infrastructure.VectorIndex;
 using Sphana.Database.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure custom logging format
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole(options =>
+{
+    options.FormatterName = "sphana";
+});
+builder.Logging.AddConsoleFormatter<SphanaConsoleFormatter, Microsoft.Extensions.Logging.Console.ConsoleFormatterOptions>();
 
 // Add configuration
 var sphanaConfig = builder.Configuration.GetSection("Sphana").Get<SphanaConfiguration>() 
