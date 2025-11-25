@@ -27,7 +27,7 @@ public sealed class SphanaConsoleFormatter : ConsoleFormatter
         var message = logEntry.Formatter(logEntry.State, logEntry.Exception);
 
         // Format: timestamp {threadname} LOGLEVEL: [class] logmessage
-        var logLine = $"{timestamp} {{{threadName}}} {logLevel}: [{category}] {message}";
+        var logLine = $"{timestamp} {{thread={threadName}}} {logLevel}: [{category}] {message}";
         textWriter.WriteLine(logLine);
 
         // Write exception if present
