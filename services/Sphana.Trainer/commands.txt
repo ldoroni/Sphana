@@ -8,7 +8,6 @@ python -m venv .venv
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 
-
 # Download training data from wiki (output samples/wiki-docs/large/docs.jsonl)
 python -m sphana_trainer.cli dataset-download-wiki `
     --titles-dir samples\wiki-titles\large\ `
