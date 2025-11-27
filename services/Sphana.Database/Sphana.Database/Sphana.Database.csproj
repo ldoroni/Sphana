@@ -26,6 +26,9 @@
     <!-- Microsoft.ML.Tokenizers for LLM tokenization -->
     <PackageReference Include="Microsoft.ML.Tokenizers" Version="2.0.0" />
     
+    <!-- Tiktoken data package for Llama 3.2 tokenization -->
+    <PackageReference Include="Microsoft.ML.Tokenizers.Data.Cl100kBase" Version="2.0.0" />
+    
     <!-- System.Numerics.Tensors for tensor operations -->
     <PackageReference Include="System.Numerics.Tensors" Version="10.0.0" />
     

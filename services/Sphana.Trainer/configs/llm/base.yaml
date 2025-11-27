@@ -1,10 +1,10 @@
 llm:
-  model_name: google/gemma-2b-it
+  model_name: google/gemma-2b-it #meta-llama/Llama-3.2-1B #Qwen/Qwen3-0.6B #Qwen/Qwen2-0.5B-Instruct #google/gemma-2b-it
   output_dir: target/artifacts/llm
   version: "0.1.0"
   quantize: true
-  export_opset: 17
-  max_seq_length: 512
+  export_opset: 18
+  max_seq_length: 2048
   quantization_mismatch_threshold: 0.05
 
 

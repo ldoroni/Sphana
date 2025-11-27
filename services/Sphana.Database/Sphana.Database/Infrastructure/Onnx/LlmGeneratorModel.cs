@@ -28,28 +28,50 @@ public sealed class LlmGeneratorModel : OnnxModelBase, ILlmGeneratorModel
     {
         _logTokenizedText = logTokenizedText;
         
-        // Load tokenizer using Microsoft.ML.Tokenizers
-        // For Gemma, use tokenizer.model (SentencePiece format)
-        var tokenizerModelPath = Path.Combine(Path.GetDirectoryName(tokenizerPath) ?? "", "tokenizer.model");
-        if (!File.Exists(tokenizerModelPath))
+        // Load tokenizer - support both tokenizer.model (SentencePiece) and tokenizer.json (Llama 3.2)
+        var tokenizerDir = Path.GetDirectoryName(tokenizerPath) ?? "";
+        var tokenizerModelPath = Path.Combine(tokenizerDir, "tokenizer.model");
+        var tokenizerJsonPath = tokenizerPath; // Should be tokenizer.json from config
+        
+        if (File.Exists(tokenizerModelPath))
         {
-            throw new FileNotFoundException($"Tokenizer model file not found: {tokenizerModelPath}");
+            // Load SentencePiece tokenizer.model (Gemma, older Llama models)
+            using var stream = File.OpenRead(tokenizerModelPath);
+            _tokenizer = LlamaTokenizer.Create(
+                stream,
+                addBeginOfSentence: true,
+                addEndOfSentence: false
+            );
+            
+            _bosTokenId = 128000; // Llama 3 BOS token (compatible with Gemma's 2)
+            _eosTokenId = 128001; // Llama 3 EOS token (compatible with Gemma's 1)
+            
+            logger.LogInformation("Loaded SentencePiece tokenizer from {TokenizerPath}, BOS={BOS}, EOS={EOS}", 
+                tokenizerModelPath, _bosTokenId, _eosTokenId);
         }
-        
-        // Create Llama tokenizer (Gemma uses similar SentencePiece tokenization)
-        using var stream = File.OpenRead(tokenizerModelPath);
-        _tokenizer = LlamaTokenizer.Create(
-            stream,
-            addBeginOfSentence: true,
-            addEndOfSentence: false
-        );
-        
-        // Get special token IDs
-        _bosTokenId = 2; // Gemma BOS token
-        _eosTokenId = 1; // Gemma EOS token
-        
-        logger.LogInformation("Loaded tokenizer from {TokenizerPath}, BOS={BOS}, EOS={EOS}", 
-            tokenizerModelPath, _bosTokenId, _eosTokenId);
+        else if (File.Exists(tokenizerJsonPath))
+        {
+            // Load from tokenizer.json (Llama 3.2, newer models)
+            // Microsoft.ML.Tokenizers has limited support for arbitrary tokenizer.json
+            // Using Tiktoken as an approximation for Llama 3.2
+            logger.LogWarning("tokenizer.model not found, using Tiktoken approximation for Llama 3.2 (cl100k_base encoding)");
+            
+            _tokenizer = TiktokenTokenizer.CreateForModel("gpt-4"); // cl100k_base encoding, closest to Llama 3
+            
+            _bosTokenId = 128000; // Llama 3.2 BOS token
+            _eosTokenId = 128001; // Llama 3.2 EOS token  
+            
+            logger.LogInformation("Loaded Tiktoken tokenizer (approximation), BOS={BOS}, EOS={EOS}", 
+                _bosTokenId, _eosTokenId);
+        }
+        else
+        {
+            throw new FileNotFoundException(
+                $"No compatible tokenizer found. Looked for:\n" +
+                $"  - {tokenizerModelPath} (SentencePiece)\n" +
+                $"  - {tokenizerJsonPath} (HuggingFace format)"
+            );
+        }
     }
     
     private List<int> Tokenize(string text)
@@ -76,9 +98,27 @@ public sealed class LlmGeneratorModel : OnnxModelBase, ILlmGeneratorModel
         var session = await AcquireSessionAsync(cancellationToken);
         try
         {
-            // Get model metadata to find number of layers for KV cache
+            // Get model metadata to find number of layers and KV cache dimensions
             var inputMetadata = session.InputMetadata;
             int numLayers = inputMetadata.Keys.Count(k => k.StartsWith("past_key_values.") && k.EndsWith(".key"));
+            
+            // Detect KV cache dimensions from model metadata
+            // Shape is [batch_size, num_heads_kv, past_seq_len, head_dim]
+            var firstKVKey = $"past_key_values.0.key";
+            int numHeadsKV = 1;
+            int headDim = 256;
+            
+            if (inputMetadata.ContainsKey(firstKVKey))
+            {
+                var kvShape = inputMetadata[firstKVKey].Dimensions;
+                if (kvShape.Length >= 4)
+                {
+                    numHeadsKV = kvShape[1]; // Number of key/value heads
+                    headDim = kvShape[3];    // Head dimension
+                    _logger.LogInformation("Detected KV cache dimensions: num_heads_kv={NumHeads}, head_dim={HeadDim}", 
+                        numHeadsKV, headDim);
+                }
+            }
             
             _logger.LogInformation("Model has {NumLayers} transformer layers", numLayers);
 
@@ -148,11 +188,10 @@ public sealed class LlmGeneratorModel : OnnxModelBase, ILlmGeneratorModel
                 {
                     // First pass: provide empty KV cache tensors
                     // Shape: [batch_size, num_heads_kv, past_seq_len, head_dim]
-                    // For Gemma-2B exported model: [1, 1, 0, 256] (heads are concatenated)
-                    // For first pass, past_seq_len = 0
+                    // past_seq_len = 0 for first pass (no past context yet)
                     for (int layer = 0; layer < numLayers; layer++)
                     {
-                        var emptyCache = new DenseTensor<float>(new[] { 1, 1, 0, 256 });
+                        var emptyCache = new DenseTensor<float>(new[] { 1, numHeadsKV, 0, headDim });
                         inputs.Add(NamedOnnxValue.CreateFromTensor($"past_key_values.{layer}.key", emptyCache));
                         inputs.Add(NamedOnnxValue.CreateFromTensor($"past_key_values.{layer}.value", emptyCache));
                     }

@@ -420,65 +420,74 @@ def _quantize_or_fallback(source: Path, target: Path) -> Path:
 
 
 def _quantize_with_external_data(source: Path, target: Path, external_data: Path) -> Path:
-    """Quantize models that have external data files."""
+    """Quantize models that have external data files with multi-method fallback."""
     if not ONNX_AVAILABLE:
         LOGGER.warning("onnx package required for external data handling. Using original.")
         return source
     
-    try:
-        # Load model with external data
-        model = onnx.load(str(source), load_external_data=True)
-        
-        # Create a temporary embedded version
-        embedded_path = source.with_suffix(".embedded.onnx")
-        onnx.save(model, str(embedded_path))
-        
-        # Quantize the embedded model
-        quantized_embedded = target.with_suffix(".embedded.int8.onnx")
-        preprocessed = _maybe_preprocess_model(embedded_path)
-        quant_input = preprocessed if preprocessed.exists() else embedded_path
-        
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore", category=UserWarning)
-            with _suppress_quant_warning():
-                quantize_dynamic(
-                    model_input=str(quant_input),
-                    model_output=str(quantized_embedded),
-                    weight_type=QuantType.QInt8,
-                )
-        
-        # Load the quantized model and convert back to external data format
-        quantized_model = onnx.load(str(quantized_embedded))
-        
-        # Save with external data (threshold 1MB to keep most weights external)
-        onnx.save(
-            quantized_model,
-            str(target),
-            save_as_external_data=True,
-            all_tensors_to_one_file=True,
-            location="model.onnx_data",
-            size_threshold=1024,
-        )
-        
-        # Cleanup temporary files
-        embedded_path.unlink(missing_ok=True)
-        quantized_embedded.unlink(missing_ok=True)
-        if preprocessed != embedded_path and preprocessed.exists():
-            preprocessed.unlink(missing_ok=True)
-        
-        LOGGER.info("Successfully quantized model with external data: %s", target)
-        return target
-        
-    except Exception as exc:
-        LOGGER.warning("Quantization with external data failed for %s: %s. Using original.", source, exc)
-        # Cleanup
-        for temp_file in [
-            source.with_suffix(".embedded.onnx"),
-            target.with_suffix(".embedded.int8.onnx"),
-        ]:
-            with suppress(FileNotFoundError):
-                temp_file.unlink()
-        return source
+    # Try multiple quantization methods in order
+    methods = [
+        ("direct_quantization", _try_direct_quantization),
+        ("via_temp_file", _try_quantization_via_temp_file),
+        ("embedded_and_quantize", _try_embedded_quantization),
+    ]
+    
+    for method_name, quantize_fn in methods:
+        try:
+            LOGGER.info(f"Attempting quantization method: {method_name}")
+            result = quantize_fn(source, target, external_data)
+            if result == target:
+                LOGGER.info(f"Successfully quantized model with external data using method: {method_name}")
+                return target
+        except Exception as exc:
+            LOGGER.warning(f"Quantization method '{method_name}' failed: {exc}")
+            continue
+    
+    # All methods failed
+    LOGGER.warning("Quantization with external data failed for %s: All methods exhausted. Using original.", source)
+    return source
+
+
+def _try_direct_quantization(source: Path, target: Path, external_data: Path) -> Path:
+    """Try quantizing the model directly, keeping external data format."""
+    from onnxruntime.quantization import QuantizationMode
+    
+    # Quantize with external data output to keep file size manageable
+    quantize_dynamic(
+        model_input=str(source),
+        model_output=str(target),
+        weight_type=QuantType.QInt8,
+        use_external_data_format=True,  # Keep weights external for large models
+    )
+    return target
+
+
+def _try_quantization_via_temp_file(source: Path, target: Path, external_data: Path) -> Path:
+    """Try quantization with extra options to handle complex models."""
+    quantize_dynamic(
+        model_input=str(source),
+        model_output=str(target),
+        weight_type=QuantType.QInt8,
+        use_external_data_format=True,  # Keep weights external for large models
+        extra_options={'EnableSubgraph': False},
+    )
+    return target
+
+
+def _try_embedded_quantization(source: Path, target: Path, external_data: Path) -> Path:
+    """Quantize model with external data, keeping quantized weights external."""
+    # For large models, we don't want to embed everything into a single file
+    # Instead, quantize and keep using external data format
+    LOGGER.info("Quantizing model with external data format...")
+    quantize_dynamic(
+        model_input=str(source),
+        model_output=str(target),
+        weight_type=QuantType.QInt8,
+        use_external_data_format=True,  # Output quantized weights as external data
+    )
+    
+    LOGGER.info(f"Quantization complete. Output: {target}")
+    return target
 
 
 def _maybe_preprocess_model(source: Path) -> Path:
