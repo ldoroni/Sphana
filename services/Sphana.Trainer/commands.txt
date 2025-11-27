@@ -33,8 +33,8 @@ python -m sphana_trainer.cli train gnn --config configs/gnn/wiki.yaml
 python -m sphana_trainer.cli train ner --config configs/ner/base.yaml
 python -m sphana_trainer.cli train llm --config configs/llm/base.yaml
 
-# Export models as ONNX (output target/manifests/latest.json)
+# [OPTIONAL] Export models as ONNX (output target/manifests/latest.json)
 python -m sphana_trainer.cli export --config configs/export/wiki.yaml
 
-# Package ONNX models (output target/manifests/latest.tar.gz)
+# [OPTIONAL] Package ONNX models (output target/manifests/latest.tar.gz)
 python -m sphana_trainer.cli package --config configs/export/wiki.yaml
