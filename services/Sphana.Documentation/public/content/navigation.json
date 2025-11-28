@@ -19,6 +19,15 @@
       "description": "Installation and quick start guide"
     },
     {
+      "id": "trainer-data",
+      "title": "Training Data Guide",
+      "route": "/trainer-data",
+      "file": "03a-trainer-data.md",
+      "icon": "📊",
+      "category": "Sphana Trainer",
+      "description": "Preparing and formatting training data"
+    },
+    {
       "id": "trainer-cli",
       "title": "CLI Reference",
       "route": "/trainer-cli",
