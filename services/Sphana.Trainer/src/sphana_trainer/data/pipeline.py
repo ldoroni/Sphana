@@ -35,14 +35,28 @@ def _load_jsonl(path: Path) -> List[dict]:
 
 
 def _iter_jsonl(path: Path) -> Iterable[dict]:
+    import gzip
+    
     if not path.exists():
         return []
-    with path.open("r", encoding="utf-8") as handle:
-        for line in handle:
-            line = line.strip()
-            if not line:
-                continue
-            yield json.loads(line)
+    
+    # Check if file is gzip compressed
+    is_gzipped = path.suffix.lower() == '.gz' or path.name.endswith('.jsonl.gz')
+    
+    if is_gzipped:
+        with gzip.open(path, "rt", encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                yield json.loads(line)
+    else:
+        with path.open("r", encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                yield json.loads(line)
 
 
 def _normalize_text(text: str) -> str:
@@ -372,12 +386,8 @@ class IngestionPipeline:
                     output_dir=self.output_dir,
                 )
 
-        if self.config.source:
-            docs = _load_jsonl(self.config.source)
-        elif self.config.input_dir:
-            docs = [{"id": doc_id, "text": text} for doc_id, text in _scan_documents(self.config.input_dir)]
-        else:
-            raise ValueError("IngestionConfig.source or input_dir must be provided.")
+        # Load documents from source (supports glob patterns)
+        docs = [{"id": doc_id, "text": text} for doc_id, text in _load_documents_from_source(self.config.source)]
         
         # Initialize progress tracking
         logger.info("Starting ingestion pipeline: {} documents to process", len(docs))
@@ -472,8 +482,7 @@ CHUNK_ID_TEMPLATE = "{doc_id}-chunk-{idx}"
 
 
 def run_ingestion(cfg: IngestionConfig, force: bool = False) -> IngestionResult:
-    if not cfg.input_dir and not cfg.source:
-        raise ValueError("Either input_dir or source must be provided for ingestion.")
+    # Load documents from source (supports glob patterns)
     output_dir = cfg.output_dir
     cache_dir = (cfg.cache_dir or output_dir / "cache").expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -495,12 +504,9 @@ def run_ingestion(cfg: IngestionConfig, force: bool = False) -> IngestionResult:
         if cfg.relation_model
         else None
     )
-    if cfg.source:
-        documents = list(_load_source_documents(cfg.source))
-    else:
-        if not cfg.input_dir:  # pragma: no cover - guarded by earlier validation
-            raise ValueError("input_dir is required when source is not provided.")
-        documents = list(_scan_documents(cfg.input_dir))
+    
+    # Load documents using the new glob-aware function
+    documents = list(_load_documents_from_source(cfg.source))
     
     # Initialize progress tracking
     logger.info("Starting legacy ingestion pipeline: {} documents to process", len(documents))
@@ -657,11 +663,113 @@ def _scan_documents(input_dir: Path) -> Iterable[tuple[str, str]]:
         yield path.stem, text
 
 
+def _resolve_source_files(source_pattern: str) -> List[Path]:
+    """
+    Resolve a source pattern to a list of file paths.
+    Supports:
+    - Single file: 'path/to/file.jsonl' or 'path/to/file.jsonl.gz'
+    - Glob patterns: 'path/*.jsonl.gz', 'path/**/*.txt'
+    """
+    from glob import glob
+    from pathlib import Path
+    
+    # Convert to Path for normalization
+    source_path = Path(source_pattern).expanduser()
+    
+    # Check if it's a literal file (no glob characters)
+    if not any(char in str(source_path) for char in ['*', '?', '[', ']']):
+        if source_path.exists() and source_path.is_file():
+            return [source_path]
+        else:
+            raise ValueError(f"Source file not found: {source_pattern}")
+    
+    # It's a glob pattern - resolve it
+    resolved_paths = [Path(p) for p in glob(str(source_path), recursive=True)]
+    resolved_files = [p for p in resolved_paths if p.is_file()]
+    
+    if not resolved_files:
+        raise ValueError(f"No files matched pattern: {source_pattern}")
+    
+    return sorted(resolved_files)
+
+
+def _load_documents_from_source(source_pattern: str) -> List[tuple[str, str]]:
+    """
+    Load documents from source pattern (file or glob).
+    Returns list of (doc_id, text) tuples.
+    """
+    import gzip
+    
+    files = _resolve_source_files(source_pattern)
+    documents: List[tuple[str, str]] = []
+    
+    for file_path in files:
+        # Handle different file types
+        suffix = file_path.suffix.lower()
+        name_lower = file_path.name.lower()
+        
+        # JSONL files (compressed or not)
+        if suffix == ".jsonl" or name_lower.endswith('.jsonl.gz'):
+            records = list(_iter_jsonl(file_path))
+            for idx, item in enumerate(records):
+                if isinstance(item, dict):
+                    text = item.get("text") or item.get("content") or item.get("body") or ""
+                    if not text:
+                        continue
+                    doc_identifier = item.get("id") or item.get("title") or f"{file_path.stem}-{idx}"
+                else:
+                    text = str(item)
+                    doc_identifier = f"{file_path.stem}-{idx}"
+                slug = _slugify(str(doc_identifier))
+                documents.append((slug or f"{file_path.stem}-{idx}", _normalize_text(text)))
+        
+        # Plain text files
+        elif suffix in {".txt", ".md"}:
+            text = file_path.read_text(encoding="utf-8").strip()
+            if text:
+                documents.append((file_path.stem, _normalize_text(text)))
+        
+        # JSON files (single document or array)
+        elif suffix == ".json":
+            payload = json.loads(file_path.read_text(encoding="utf-8"))
+            if isinstance(payload, dict):
+                candidate = payload.get("documents") or payload.get("data")
+                if candidate is not None:
+                    payload = candidate
+                else:
+                    payload = [payload]
+            if not isinstance(payload, list):
+                payload = [payload]
+            
+            for idx, item in enumerate(payload):
+                if isinstance(item, dict):
+                    text = item.get("text") or item.get("content") or item.get("body") or ""
+                    if not text:
+                        continue
+                    doc_identifier = item.get("id") or item.get("title") or f"{file_path.stem}-{idx}"
+                else:
+                    text = str(item)
+                    doc_identifier = f"{file_path.stem}-{idx}"
+                slug = _slugify(str(doc_identifier))
+                documents.append((slug or f"{file_path.stem}-{idx}", _normalize_text(text)))
+    
+    if not documents:
+        raise ValueError(f"No documents found in source: {source_pattern}")
+    
+    return documents
+
+
 def _load_source_documents(source: Path) -> List[tuple[str, str]]:
+    import gzip
+    
     records: List[Any]
-    if source.suffix.lower() == ".jsonl":
+    # Check if file is JSONL (compressed or not)
+    is_jsonl = source.suffix.lower() == ".jsonl" or source.name.endswith('.jsonl.gz')
+    
+    if is_jsonl:
         records = list(_iter_jsonl(source))
     else:
+        # Handle regular JSON files (not compressed)
         payload = json.loads(source.read_text(encoding="utf-8"))
         if isinstance(payload, dict):
             candidate = payload.get("documents") or payload.get("data")

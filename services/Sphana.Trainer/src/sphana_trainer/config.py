@@ -223,8 +223,10 @@ def dump_config(config: TrainerConfig, path: Path) -> None:
 
 
 class IngestionConfig(BaseModel):
-    source: Optional[Path] = Field(default=None, description="Optional JSONL file containing documents.")
-    input_dir: Optional[Path] = Field(default=None, description="Directory containing text/markdown files.")
+    source: str = Field(
+        description="Path or glob pattern to input files. "
+        "Examples: 'file.jsonl', 'file.jsonl.gz', 'dir/*.jsonl.gz', 'dir/**/*.txt'"
+    )
     output_dir: Path = Field(default=Path("target/ingest"))
     cache_dir: Optional[Path] = Field(default=None)
     cache_enabled: bool = Field(default=True)
@@ -251,7 +253,7 @@ class IngestionConfig(BaseModel):
         description="Percentage interval for progress logging (1-100). Lower = more frequent logs."
     )
 
-    @field_validator("source", "input_dir", "output_dir", "cache_dir", mode="before")
+    @field_validator("output_dir", "cache_dir", mode="before")
     @classmethod
     def _expand_ingest_paths(cls, value: Any) -> Optional[Path]:
         if value is None:

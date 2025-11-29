@@ -13,3 +13,4 @@ target/
 
 # Too long files (there is a limit of 100MiB per file in git)
 /samples/wiki-docs
+/samples/wiki-docs-jsonl

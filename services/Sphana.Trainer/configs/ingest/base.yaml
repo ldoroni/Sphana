@@ -1,13 +1,20 @@
 ingest:
   ######################################################
-  # Input Source (one of source or input_dir required) #
+  # Input Source (required)                            #
   ######################################################
   
-  # Path to JSONL file where each line is a document with 'text' field
-  # source: null  # Optional JSONL file containing documents (default: null)
-  
-  # Directory containing .txt, .md, or .json files to process
-  input_dir: src/tests/data/ingest_sample
+  # Path or glob pattern to input files
+  # Supports:
+  #   - Single file:    "samples/wiki-docs/small/docs.jsonl"
+  #   - Compressed:     "samples/wiki-docs/small/docs.jsonl.gz"
+  #   - Glob pattern:   "samples/wiki-docs/small/*.jsonl.gz"
+  #   - Recursive glob: "samples/wiki-docs/**/*.txt"
+  # 
+  # Examples:
+  #   source: ./samples/wiki-docs/small/ai-ml-wiki-titles.small.jsonl.gz
+  #   source: ./samples/wiki-docs/small/*.txt
+  #   source: ./samples/wiki-docs/**/*.jsonl.gz
+  source: ./samples/wiki-docs/small/*.txt
   
   ########################
   # Output Configuration #

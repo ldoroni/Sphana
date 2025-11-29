@@ -314,6 +314,168 @@ def _fetch_wiki_full_content(session: requests.Session, title: str, *, attempts:
     return None
 
 
+def _make_safe_filename(title: str, max_length: int = 200) -> str:
+    """Convert a title to a safe filename."""
+    import re
+    # Remove or replace invalid filename characters
+    safe = re.sub(r'[<>:"/\\|?*]', '_', title)
+    # Replace multiple spaces/underscores with single underscore
+    safe = re.sub(r'[\s_]+', '_', safe)
+    # Remove leading/trailing underscores and periods
+    safe = safe.strip('_.')
+    # Truncate to max length
+    if len(safe) > max_length:
+        safe = safe[:max_length].rstrip('_.')
+    return safe or "untitled"
+
+
+def _fetch_wiki_article(
+    session: requests.Session,
+    title: str,
+    domain: str,
+    full_content: bool
+) -> Optional[dict]:
+    """Fetch a Wikipedia article and return record with domain metadata."""
+    try:
+        if full_content:
+            record = _fetch_wiki_full_content(session, title)
+        else:
+            record = _fetch_wiki_summary(session, title)
+    except requests.RequestException as exc:
+        console.print(f"[yellow]Skipping {title}: {exc}[/yellow]")
+        return None
+    
+    if not record:
+        console.print(f"[yellow]Skipping {title}: no content available[/yellow]")
+        return None
+    
+    # Add domain metadata
+    record["domain"] = domain
+    return record
+
+
+def _write_single_jsonl(
+    session: requests.Session,
+    titles_with_domain: List[tuple[str, str]],
+    output: Path,
+    full_content: bool,
+    compress: bool = False
+) -> int:
+    """Write all documents to a single JSONL file."""
+    import gzip
+    
+    # Ensure output has appropriate extension
+    if compress:
+        if not output.name.endswith('.jsonl.gz'):
+            if output.name.endswith('.jsonl'):
+                output = output.with_suffix('.jsonl.gz')
+            else:
+                output = output.with_name(output.name + '.jsonl.gz')
+    else:
+        if not output.name.endswith('.jsonl'):
+            output = output.with_suffix('.jsonl')
+    
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fetched = 0
+    
+    open_fn = gzip.open if compress else open
+    mode = "wt" if compress else "w"
+    
+    with open_fn(output, mode, encoding="utf-8") as handle:
+        for i, (title, domain) in enumerate(titles_with_domain, 1):
+            record = _fetch_wiki_article(session, title, domain, full_content)
+            if record:
+                handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+                fetched += 1
+            if i % 10 == 0:
+                console.print(f"[cyan]Progress: {fetched}/{i} successful ({len(titles_with_domain) - i} remaining)[/cyan]")
+    
+    return fetched
+
+
+def _write_jsonl_per_domain(
+    session: requests.Session,
+    titles_with_domain: List[tuple[str, str]],
+    output: Path,
+    full_content: bool,
+    compress: bool = False
+) -> int:
+    """Write documents to separate JSONL files, one per domain."""
+    import gzip
+    
+    output.mkdir(parents=True, exist_ok=True)
+    fetched = 0
+    
+    # Group titles by domain
+    from collections import defaultdict
+    domain_titles = defaultdict(list)
+    for title, domain in titles_with_domain:
+        domain_titles[domain].append(title)
+    
+    console.print(f"[cyan]Found {len(domain_titles)} domains[/cyan]")
+    
+    # Process each domain
+    for domain, titles in domain_titles.items():
+        extension = ".jsonl.gz" if compress else ".jsonl"
+        domain_file = output / f"{domain}{extension}"
+        console.print(f"[cyan]Processing domain '{domain}' ({len(titles)} titles) -> {domain_file.name}[/cyan]")
+        
+        open_fn = gzip.open if compress else open
+        mode = "wt" if compress else "w"
+        
+        with open_fn(domain_file, mode, encoding="utf-8") as handle:
+            for i, title in enumerate(titles, 1):
+                record = _fetch_wiki_article(session, title, domain, full_content)
+                if record:
+                    handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+                    fetched += 1
+                if i % 10 == 0:
+                    console.print(f"[dim]  {domain}: {i}/{len(titles)} fetched[/dim]")
+    
+    return fetched
+
+
+def _write_txt_per_doc(
+    session: requests.Session,
+    titles_with_domain: List[tuple[str, str]],
+    output: Path,
+    full_content: bool
+) -> int:
+    """Write each document as a separate text file, organized by domain directories."""
+    output.mkdir(parents=True, exist_ok=True)
+    fetched = 0
+    
+    # Group titles by domain
+    from collections import defaultdict
+    domain_titles = defaultdict(list)
+    for title, domain in titles_with_domain:
+        domain_titles[domain].append(title)
+    
+    console.print(f"[cyan]Found {len(domain_titles)} domains[/cyan]")
+    
+    # Process each domain
+    for domain, titles in domain_titles.items():
+        domain_dir = output / domain
+        domain_dir.mkdir(parents=True, exist_ok=True)
+        console.print(f"[cyan]Processing domain '{domain}' ({len(titles)} titles) -> {domain_dir.name}/[/cyan]")
+        
+        for i, title in enumerate(titles, 1):
+            record = _fetch_wiki_article(session, title, domain, full_content)
+            if record:
+                # Create safe filename from title
+                safe_filename = _make_safe_filename(record['title']) + ".txt"
+                doc_file = domain_dir / safe_filename
+                
+                # Write text content only
+                doc_file.write_text(record['text'], encoding='utf-8')
+                fetched += 1
+            
+            if i % 10 == 0:
+                console.print(f"[dim]  {domain}: {i}/{len(titles)} fetched[/dim]")
+    
+    return fetched
+
+
 @app.command("ingest-cache-models")
 def ingest_cache_models(
     relation_model: Optional[str] = typer.Option(None, "--relation-model", help="Hugging Face relation model to cache."),
@@ -335,7 +497,7 @@ def ingest_cache_models(
 
 @app.command("dataset-download-wiki")
 def dataset_download_wiki(
-    output: Path = typer.Option(DEFAULT_DATA_ROOT / "wiki" / "docs.jsonl", "--output", help="Destination JSONL file."),
+    output: Path = typer.Option(DEFAULT_DATA_ROOT / "wiki", "--output", help="Destination path (directory or file depending on mode)."),
     title: List[str] = typer.Option([], "--title", help="Specific Wikipedia titles to download."),
     limit: Optional[int] = typer.Option(None, "--limit", min=1, help="Maximum number of pages to fetch."),
     titles_file: Optional[Path] = typer.Option(
@@ -346,13 +508,26 @@ def dataset_download_wiki(
     ),
     shuffle: bool = typer.Option(True, "--shuffle/--no-shuffle", help="Shuffle the title list before downloading."),
     full_content: bool = typer.Option(False, "--full-content", help="Download full article content instead of summaries."),
+    output_mode: str = typer.Option(
+        "jsonl-per-domain",
+        "--output-mode",
+        help="Output format: 'single-jsonl' (all docs in one file), 'jsonl-per-domain' (one JSONL per domain), 'txt-per-doc' (text files in domain dirs)."
+    ),
+    compress: bool = typer.Option(False, "--compress", help="Compress JSONL files with gzip (applies to single-jsonl and jsonl-per-domain modes)."),
 ) -> None:
     """Download Wikipedia articles into JSONL format. Requires --title, --titles-file, or --titles-dir."""
 
-    titles = list(title)
+    # Track titles with their domain
+    titles_with_domain: List[tuple[str, str]] = []  # [(title, domain), ...]
+
+    # For individual --title arguments, domain is "default"
+    for t in title:
+        titles_with_domain.append((t, "default"))
+
     if titles_file:
         extra_titles = [line.strip() for line in titles_file.read_text(encoding="utf-8").splitlines() if line.strip()]
-        titles.extend(extra_titles)
+        domain = titles_file.stem  # Use filename without extension as domain
+        titles_with_domain.extend((t, domain) for t in extra_titles)
     
     if titles_dir:
         title_files = sorted(titles_dir.glob("*.txt"))
@@ -361,52 +536,51 @@ def dataset_download_wiki(
         for tf in title_files:
             console.print(f"[dim]Reading titles from {tf.name}...[/dim]")
             extra_titles = [line.strip() for line in tf.read_text(encoding="utf-8").splitlines() if line.strip()]
-            titles.extend(extra_titles)
+            domain = tf.stem  # Use filename without extension as domain
+            titles_with_domain.extend((t, domain) for t in extra_titles)
     
-    if not titles:
+    if not titles_with_domain:
         raise typer.BadParameter(
             "No Wikipedia titles provided. Use --title to specify individual articles, "
             "--titles-file to provide a file with titles (one per line), "
             "or --titles-dir to provide a directory containing .txt files with titles."
         )
     
+    # Validate output_mode
+    valid_modes = ["single-jsonl", "jsonl-per-domain", "txt-per-doc"]
+    if output_mode not in valid_modes:
+        raise typer.BadParameter(f"Invalid output mode '{output_mode}'. Choose from: {', '.join(valid_modes)}")
+
     if shuffle:
         import random
+        random.shuffle(titles_with_domain)
 
-        random.shuffle(titles)
     if limit is not None:
-        titles = titles[:limit]
+        titles_with_domain = titles_with_domain[:limit]
+
     session = requests.Session()
     if hasattr(session, "headers"):
         session.headers.update({"User-Agent": "Sphana.Trainer/0.1 (+https://github.com/)"})
+
     output = output.expanduser().resolve()
-    output.parent.mkdir(parents=True, exist_ok=True)
-    fetched = 0
-    
     mode = "full content" if full_content else "summaries"
-    console.print(f"[cyan]Downloading {mode} for {len(titles)} titles...[/cyan]")
-    
-    with output.open("w", encoding="utf-8") as handle:
-        for i, t in enumerate(titles, 1):
-            try:
-                if full_content:
-                    record = _fetch_wiki_full_content(session, t)
-                else:
-                    record = _fetch_wiki_summary(session, t)
-            except requests.RequestException as exc:
-                console.print(f"[yellow]Skipping {t}: {exc}[/yellow]")
-                continue
-            if not record:
-                console.print(f"[yellow]Skipping {t}: no content available[/yellow]")
-                continue
-            handle.write(json.dumps(record, ensure_ascii=False) + "\n")
-            fetched += 1
-            if i % 10 == 0:
-                console.print(f"[cyan]Progress: {fetched}/{i} successful ({len(titles) - i} remaining)[/cyan]")
+    compress_msg = " (compressed)" if compress else ""
+    console.print(f"[cyan]Downloading {mode} for {len(titles_with_domain)} titles in '{output_mode}' mode{compress_msg}...[/cyan]")
+
+    # Delegate to mode-specific handler
+    if output_mode == "single-jsonl":
+        fetched = _write_single_jsonl(session, titles_with_domain, output, full_content, compress)
+    elif output_mode == "jsonl-per-domain":
+        fetched = _write_jsonl_per_domain(session, titles_with_domain, output, full_content, compress)
+    else:  # txt-per-doc
+        if compress:
+            console.print("[yellow]Warning: --compress is ignored for txt-per-doc mode[/yellow]")
+        fetched = _write_txt_per_doc(session, titles_with_domain, output, full_content)
 
     if fetched == 0:
         raise typer.BadParameter("No Wikipedia pages were downloaded.")
-    console.print(f"[green]Saved {fetched} Wikipedia pages to {output}[/green]")
+    
+    console.print(f"[green]Successfully downloaded {fetched} Wikipedia pages to {output}[/green]")
 
 
 @train_app.command("embedding")

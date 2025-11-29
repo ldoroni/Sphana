@@ -28,24 +28,125 @@ The fastest way to get high-quality training data is to download Wikipedia artic
 python -m sphana_trainer.cli dataset-download-wiki \
     --titles-dir samples/wiki-titles/large/ \
     --full-content \
-    --output samples/wiki-docs/large/docs.jsonl \
+    --output samples/wiki-docs/large/ \
+    --compress \
     --limit 500000
 ```
 
-**Parameters:**
+**Key Parameters:**
 - `--titles-dir`: Directory with `.txt` files containing Wikipedia titles (one per line)
 - `--full-content`: Download complete articles (recommended for accuracy)
-- `--output`: Output JSONL file path
+- `--output`: Output path (file or directory depending on mode)
+- `--output-mode`: Format - `single-jsonl`, `jsonl-per-domain` (default), or `txt-per-doc`
+- `--compress`: Compress JSONL files with gzip (saves 70-90% disk space)
 - `--limit`: Maximum articles to download
 
-**Example title file** (`samples/wiki-titles/large/artificial_intelligence.txt`):
+**Example title file** (`samples/wiki-titles/large/01-quantum-physics.txt`):
 ```
-Artificial intelligence
-Machine learning
-Deep learning
-Neural network
-Natural language processing
+Quantum mechanics
+String theory
+Particle physics
+Wave-particle duality
+Quantum entanglement
 ```
+
+### Output Modes
+
+The download command supports three output modes to organize your data:
+
+#### Mode 1: JSONL per Domain (Default)
+
+**Best for**: Domain-specific training, parallel processing, modular datasets
+
+```bash
+python -m sphana_trainer.cli dataset-download-wiki \
+    --titles-dir samples/wiki-titles/large/ \
+    --output samples/wiki-docs/large/ \
+    --compress \
+    --full-content
+```
+
+**Output structure:**
+```
+samples/wiki-docs/large/
+├── 01-quantum-physics.jsonl.gz
+├── 02-organic-chemistry.jsonl.gz
+├── 03-molecular-biology.jsonl.gz
+└── ...
+```
+
+**Advantages:**
+- ✅ Organized by domain (from title file names)
+- ✅ Easy to train on specific domains
+- ✅ Parallel ingestion possible
+- ✅ Each file independently compressed
+
+#### Mode 2: Single JSONL
+
+**Best for**: Simple workflows, single-domain datasets, backwards compatibility
+
+```bash
+python -m sphana_trainer.cli dataset-download-wiki \
+    --titles-dir samples/wiki-titles/large/ \
+    --output samples/wiki-docs/large/all-docs.jsonl \
+    --output-mode single-jsonl \
+    --compress \
+    --full-content
+```
+
+**Output**: Single file `all-docs.jsonl.gz` with all documents
+
+**Advantages:**
+- ✅ Simple single-file output
+- ✅ Easy to copy/move
+- ✅ Works with existing pipelines
+
+#### Mode 3: Text Files per Document
+
+**Best for**: Human review, git-friendly storage, individual document editing
+
+```bash
+python -m sphana_trainer.cli dataset-download-wiki \
+    --titles-dir samples/wiki-titles/large/ \
+    --output samples/wiki-docs/large/ \
+    --output-mode txt-per-doc \
+    --full-content
+```
+
+**Output structure:**
+```
+samples/wiki-docs/large/
+├── 01-quantum-physics/
+│   ├── Quantum_mechanics.txt
+│   ├── String_theory.txt
+│   └── ...
+├── 02-organic-chemistry/
+│   ├── Alkane.txt
+│   ├── Benzene.txt
+│   └── ...
+└── ...
+```
+
+**Advantages:**
+- ✅ Human-readable directory structure
+- ✅ Easy to review individual documents
+- ✅ Git-friendly (can track changes per file)
+
+### Compression Support
+
+Enable `--compress` to save disk space:
+
+```bash
+--compress  # Adds gzip compression to JSONL files
+```
+
+**Compression benefits:**
+- 💾 **70-90% smaller files** (64K docs: ~5GB → ~500MB)
+- 🚀 **Faster network transfer** when copying files
+- ✅ **Transparent to ingest** - automatically decompressed
+- 🔄 **Per-domain compression** - Each domain file compressed separately
+
+**Note**: Compression only applies to `single-jsonl` and `jsonl-per-domain` modes. Text files (`txt-per-doc`) are not compressed.
 
 ### Recommended Dataset Sizes
 
@@ -60,16 +161,36 @@ Natural language processing
 
 ## Input Data Format
 
-The `ingest` command accepts two input formats:
+The `ingest` command accepts flexible input via the `source` parameter, which supports:
+- Single files (`.jsonl`, `.jsonl.gz`, `.txt`, `.md`, `.json`)
+- **Glob patterns** for processing multiple files: `*.jsonl.gz`, `**/*.txt`
+
+### Glob Pattern Support
+
+**Examples:**
+```yaml
+ingest:
+  # Single file
+  source: "samples/wiki-docs/file.jsonl.gz"
+  
+  # All compressed JSONL in directory
+  source: "samples/wiki-docs/*.jsonl.gz"
+  
+  # All text files recursively
+  source: "samples/wiki-docs/**/*.txt"
+  
+  # Process per-domain files from dataset-download-wiki
+  source: "samples/wiki-docs/large/*.jsonl.gz"
+```
 
 ### Format 1: JSONL File (Recommended for Large Datasets)
 
-**File**: One document per line in JSON format
+**File**: One document per line in JSON format (optionally compressed)
 
 ```jsonl
-{"id": "doc1", "text": "Machine learning is a subset of artificial intelligence..."}
-{"id": "doc2", "text": "Neural networks are computational models inspired by biological neurons..."}
-{"id": "doc3", "text": "Deep learning uses multiple layers to progressively extract features..."}
+{"id": "doc1", "text": "Machine learning is a subset of artificial intelligence...", "domain": "ai"}
+{"id": "doc2", "text": "Neural networks are computational models inspired by biological neurons...", "domain": "ai"}
+{"id": "doc3", "text": "Deep learning uses multiple layers to progressively extract features...", "domain": "deep-learning"}
 ```
 
 **Required fields:**
@@ -79,44 +200,59 @@ The `ingest` command accepts two input formats:
 - `id`: Unique document identifier (auto-generated if missing)
 - `title`: Document title
 - `source`: Source metadata (e.g., "wikipedia", "internal")
+- `domain`: Domain/category (automatically added by `dataset-download-wiki`)
 
 **Configuration:**
 ```yaml
 ingest:
+  # Single file
   source: "samples/wiki-docs/large/docs.jsonl"
+  
+  # Compressed file
+  source: "samples/wiki-docs/large/docs.jsonl.gz"
+  
+  # Glob pattern - all .jsonl.gz in directory
+  source: "samples/wiki-docs/large/*.jsonl.gz"
+  
+  # Recursive - all .jsonl.gz files
+  source: "samples/wiki-docs/**/*.jsonl.gz"
 ```
 
 **Advantages:**
 - ✅ Efficient for large datasets (streaming)
-- ✅ Supports metadata
+- ✅ Supports metadata (including domain information)
 - ✅ Easy to append new documents
 - ✅ Progress tracking works correctly
+- ✅ **Supports gzip compression** (`.jsonl.gz` files automatically detected)
+- ✅ **Glob patterns** for processing multiple files at once
 
-### Format 2: Directory of Text Files
+**Compressed JSONL:**
+- Files ending in `.jsonl.gz` are automatically decompressed during ingestion
+- No configuration changes needed - works transparently
+- Significantly reduces storage requirements (70-90% smaller)
 
-**Structure**: One document per `.txt` or `.md` file
+### Format 2: Text Files
 
-```
-samples/my-docs/
-├── document001.txt
-├── document002.txt
-└── document003.md
-```
+**Structure**: Individual `.txt` or `.md` files, selected via glob patterns
 
 **Configuration:**
 ```yaml
 ingest:
-  input_dir: "samples/my-docs"
+  # All text files in a directory
+  source: "samples/my-docs/*.txt"
+  
+  # All markdown files recursively
+  source: "samples/my-docs/**/*.md"
+  
+  # All txt/md files in domain directory
+  source: "samples/wiki-docs/quantum-physics/*.txt"
 ```
 
 **Advantages:**
-- ✅ Simple to create manually
-- ✅ Human-readable
-- ✅ Easy to edit individual documents
-
-**Disadvantages:**
-- ❌ No metadata support
-- ❌ Slower for very large datasets
+- ✅ Human-readable directory structure
+- ✅ Easy to review individual documents
+- ✅ Git-friendly (can track changes per file)
+- ✅ **Glob patterns** for flexible file selection
 
 ## Building a High-Quality Dataset
 

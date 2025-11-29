@@ -57,26 +57,30 @@ flowchart TD
 
 **What it does:**
 - Fetches articles from Wikipedia API based on title lists
-- Downloads full content or intro paragraphs only
-- Saves to JSONL format for ingestion
-- Handles rate limiting and retries automatically
+- Downloads full content or intro paragraphs
+- Organizes output by domain (from title file names)
+- Saves to JSONL format (optionally compressed) or individual text files
+- Handles rate limiting and retries
 
 **Input:**
 - Title files (`.txt`) with one Wikipedia title per line
 - OR single title file with all titles
+- Domain determined by title filename (e.g., `ai.txt` → domain "ai")
 
 **Output:**
-- `docs.jsonl`: JSONL file with `id`, `title`, `text` fields
-- Example: 100,000 articles ≈ 2-5 GB
+- **JSONL per domain** (default): One `.jsonl` (or `.jsonl.gz`) file per domain
+- **Single JSONL**: All documents in one file
+- **Text per document**: Individual `.txt` files in domain directories
 
-**Why needed**: Provides diverse, high-quality, factual content for training. Wikipedia's encyclopedic style and rich entity relationships make it ideal for knowledge graph systems.
+**Why needed**: Provides diverse, high-quality, factual content for training. Wikipedia's encyclopedic style and rich entity relationships make it ideal for knowledge graph systems. Domain organization enables targeted training.
 
 **Command:**
 ```bash
 python -m sphana_trainer.cli dataset-download-wiki \
     --titles-dir samples/wiki-titles/large/ \
     --full-content \
-    --output samples/wiki-docs/large/docs.jsonl \
+    --output samples/wiki-docs/large/ \
+    --compress \
     --limit 500000
 ```
 
@@ -84,13 +88,57 @@ python -m sphana_trainer.cli dataset-download-wiki \
 
 | Parameter | Required | Description | Recommended Value |
 |-----------|----------|-------------|-------------------|
-| `--titles-dir` | One of titles-dir/titles-file | Directory with `.txt` title files | `samples/wiki-titles/large/` |
-| `--titles-file` | One of titles-dir/titles-file | Single file with all titles | - |
+| `--titles-dir` | One of titles-dir/titles-file/title | Directory with `.txt` title files | `samples/wiki-titles/large/` |
+| `--titles-file` | One of titles-dir/titles-file/title | Single file with all titles | - |
+| `--title` | One of titles-dir/titles-file/title | Individual titles (repeatable) | - |
 | `--full-content` | No | Download complete articles vs intro only | ✅ Use for accuracy |
-| `--output` | Yes | Output JSONL file path | `samples/wiki-docs/large/docs.jsonl` |
+| `--output` | Yes | Output path (file or directory) | `samples/wiki-docs/large/` |
+| `--output-mode` | No | Output format (see below) | `jsonl-per-domain` (default) |
+| `--compress` | No | Compress JSONL files with gzip | ✅ Recommended for large datasets |
 | `--limit` | No | Max articles to download | `500000` for large dataset |
+| `--shuffle` | No | Shuffle titles before downloading | `true` (default) |
+
+**Output Modes:**
+
+| Mode | Description | Use Case | Output Example |
+|------|-------------|----------|----------------|
+| `jsonl-per-domain` (default) | One JSONL per domain | Domain-specific training, parallel processing | `ai.jsonl.gz`, `physics.jsonl.gz` |
+| `single-jsonl` | All docs in one file | Simple workflows, single-domain | `all-docs.jsonl.gz` |
+| `txt-per-doc` | Individual text files | Human review, git-friendly | `ai/Machine_Learning.txt` |
 
 **Typical duration**: 10-30 minutes for 10K articles, 2-6 hours for 100K articles (depends on network speed)
+
+**Examples:**
+
+```bash
+# Download with compression per domain (recommended)
+python -m sphana_trainer.cli dataset-download-wiki \
+    --titles-dir samples/wiki-titles/large/ \
+    --full-content \
+    --output samples/wiki-docs/large/ \
+    --compress
+
+# Output: 01-quantum-physics.jsonl.gz, 02-organic-chemistry.jsonl.gz, etc.
+
+# Download to single compressed file
+python -m sphana_trainer.cli dataset-download-wiki \
+    --titles-dir samples/wiki-titles/large/ \
+    --output samples/wiki-docs/all-docs.jsonl \
+    --output-mode single-jsonl \
+    --compress \
+    --full-content
+
+# Output: all-docs.jsonl.gz
+
+# Download as text files (no compression)
+python -m sphana_trainer.cli dataset-download-wiki \
+    --titles-dir samples/wiki-titles/large/ \
+    --output samples/wiki-docs/large/ \
+    --output-mode txt-per-doc \
+    --full-content
+
+# Output: domain-name/Article_Title.txt for each article
+```
 
 ---
 
@@ -135,7 +183,7 @@ python -m sphana_trainer.cli ingest-cache-models --spacy-model en_core_web_trf
 **Purpose**: Transform raw documents into structured training data (chunks + relations).
 
 **What it does:**
-1. Loads documents from JSONL file or directory
+1. Loads documents from source (file, glob pattern, or directory)
 2. Normalizes text (removes extra whitespace, fixes encoding)
 3. Splits documents into fixed-size chunks with overlap
 4. Extracts entity-relation triples using NLP parser
@@ -144,7 +192,10 @@ python -m sphana_trainer.cli ingest-cache-models --spacy-model en_core_web_trf
 7. Outputs `chunks.jsonl` and `relations.jsonl`
 
 **Input:**
-- Raw documents (JSONL file or text directory)
+- **Source parameter** supports:
+  - Single file: `file.jsonl` or `file.jsonl.gz`
+  - Glob pattern: `*.jsonl.gz` or `**/*.txt`
+  - All file types: `.jsonl`, `.jsonl.gz`, `.txt`, `.md`, `.json`
 - Configuration file specifying chunking and parsing settings
 
 **Output:**
@@ -159,10 +210,21 @@ python -m sphana_trainer.cli ingest-cache-models --spacy-model en_core_web_trf
 python -m sphana_trainer.cli ingest --config configs/ingest/wiki.yaml
 ```
 
+**Supported Source Patterns:**
+
+| Pattern | Example | Description |
+|---------|---------|-------------|
+| Single file | `docs.jsonl` | One specific file |
+| Compressed | `docs.jsonl.gz` | Gzip-compressed JSONL |
+| Glob wildcard | `*.jsonl.gz` | All .jsonl.gz in directory |
+| Recursive glob | `**/*.txt` | All .txt files recursively |
+| Per-domain | `domain-*.jsonl.gz` | Files matching pattern |
+
 **Key Configuration Parameters:**
 
 | Parameter | Recommended | Range | Why It Matters |
 |-----------|-------------|-------|----------------|
+| `source` | **Pattern or file path** | Any valid path/glob | Flexible input selection |
 | `chunk_size` | **384** | 128-512 | Larger = better context, but slower training |
 | `chunk_overlap` | **48** (12-15% of chunk_size) | 16-64 | Preserves relations at boundaries |
 | `parser` | **stanza** | simple/spacy/stanza | Stanza = 95-97% accuracy, best for production |
@@ -171,12 +233,46 @@ python -m sphana_trainer.cli ingest --config configs/ingest/wiki.yaml
 | `relation_max_length` | **512** | 256-1024 | Matches BART's optimal sequence length |
 | `progress_log_interval` | **1** | 1-25 | 1% = detailed progress for large datasets |
 
+**Configuration Examples:**
+
+```yaml
+# Single compressed file
+ingest:
+  source: "samples/wiki-docs/large/01-quantum-physics.jsonl.gz"
+  output_dir: target/ingest
+  chunk_size: 384
+  parser: stanza
+
+# All per-domain files from dataset-download-wiki
+ingest:
+  source: "samples/wiki-docs/large/*.jsonl.gz"
+  output_dir: target/ingest
+  chunk_size: 384
+  parser: stanza
+
+# All text files in a domain directory
+ingest:
+  source: "samples/wiki-docs/quantum-physics/*.txt"
+  output_dir: target/ingest
+  chunk_size: 384
+  parser: stanza
+
+# Recursively process all JSONL files
+ingest:
+  source: "samples/wiki-docs/**/*.jsonl.gz"
+  output_dir: target/ingest
+  chunk_size: 384
+  parser: stanza
+```
+
 **Typical duration:**
 - 10K docs: 30-60 minutes (with GPU)
 - 64K docs: 3-5 hours (with GPU)
 - 100K docs: 5-8 hours (with GPU)
 
 **GPU Acceleration**: Automatically uses GPU if available via `torch.cuda.is_available()`. Stanza and BART models run 5-8x faster on GPU.
+
+**Glob Pattern Support**: Use wildcards (`*`) for files in a directory, or recursive patterns (`**/*`) to search subdirectories. All matching files are processed in sorted order.
 
 ---
 
