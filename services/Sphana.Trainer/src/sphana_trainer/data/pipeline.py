@@ -18,6 +18,7 @@ from loguru import logger
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 from sphana_trainer.config import IngestionConfig
+from sphana_trainer.utils.progress import ProgressTracker, _format_duration
 
 
 def _load_jsonl(path: Path) -> List[dict]:
@@ -377,6 +378,16 @@ class IngestionPipeline:
             docs = [{"id": doc_id, "text": text} for doc_id, text in _scan_documents(self.config.input_dir)]
         else:
             raise ValueError("IngestionConfig.source or input_dir must be provided.")
+        
+        # Initialize progress tracking
+        logger.info("Starting ingestion pipeline: {} documents to process", len(docs))
+        progress = ProgressTracker(
+            total=len(docs),
+            stage_name="Processing documents",
+            total_stages=1,
+            current_stage=1,
+        )
+        
         chunks_records: List[dict] = []
         relations_records: List[dict] = []
         for doc in docs:
@@ -405,6 +416,9 @@ class IngestionPipeline:
                     doc_relations.extend(chunk_cached)
             if cached_relations is None and self.config.cache_enabled:
                 _store_cached_relations(self.cache_dir, relation_cache_key, doc_relations)
+            
+            # Update progress after each document
+            progress.update()
 
         if not chunks_records:
             raise ValueError("Ingestion pipeline produced zero chunks.")
@@ -417,11 +431,11 @@ class IngestionPipeline:
         duration = max(perf_counter() - start, 1e-9)
         docs_per_sec = len(docs) / duration if docs else 0.0
         logger.info(
-            "Ingestion processed %s docs (%s chunks, %s relations) in %.2fs (%.2f docs/s)",
+            "Ingestion complete: {} docs ({} chunks, {} relations) in {} ({:.2f} docs/sec)",
             len(docs),
             len(chunks_records),
             len(relations_records),
-            duration,
+            _format_duration(duration),
             docs_per_sec,
         )
         return IngestionResult(
@@ -486,6 +500,16 @@ def run_ingestion(cfg: IngestionConfig, force: bool = False) -> IngestionResult:
         if not cfg.input_dir:  # pragma: no cover - guarded by earlier validation
             raise ValueError("input_dir is required when source is not provided.")
         documents = list(_scan_documents(cfg.input_dir))
+    
+    # Initialize progress tracking
+    logger.info("Starting legacy ingestion pipeline: {} documents to process", len(documents))
+    progress = ProgressTracker(
+        total=len(documents),
+        stage_name="Processing documents",
+        total_stages=1,
+        current_stage=1,
+    )
+    
     for doc_id, text in documents:
         cache_key = _chunk_cache_key(doc_id, text, cfg)
         cached_chunks = None if force else _load_cached_chunks(cache_dir, cache_key)
@@ -519,16 +543,19 @@ def run_ingestion(cfg: IngestionConfig, force: bool = False) -> IngestionResult:
                     _store_cached_parse(parse_cache_dir, chunk["chunk_id"], parse_payload)
             relation_records.extend(doc_relations)
             _store_cached_relations(cache_dir, relation_cache_key, doc_relations)
+        
+        # Update progress after each document
+        progress.update()
 
     _write_jsonl(chunks_path, chunk_records)
     _write_jsonl(relations_path, relation_records)
     duration = max(perf_counter() - start, 1e-9)
     logger.info(
-        "Legacy ingestion processed %s docs (%s chunks, %s relations) in %.2fs (%.2f docs/s)",
+        "Legacy ingestion complete: {} docs ({} chunks, {} relations) in {} ({:.2f} docs/sec)",
         len(documents),
         len(chunk_records),
         len(relation_records),
-        duration,
+        _format_duration(duration),
         (len(documents) / duration) if documents else 0.0,
     )
 

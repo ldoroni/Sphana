@@ -14,13 +14,23 @@ class IngestionTask(BaseTask):
         self.force = force
 
     def run(self) -> None:
-        logger.info("Starting ingestion pipeline")
+        logger.info("=" * 80)
+        logger.info("STARTING: Ingestion task")
+        logger.info("Config: parser={}, chunk_size={}, relation_model={}", 
+                    self.config.parser, 
+                    self.config.chunk_size,
+                    self.config.relation_model or "none")
+        logger.info("=" * 80)
+        
         result = run_ingestion(self.config, force=self.force)
-        logger.success(
-            "Ingestion complete: docs={}, chunks={}, relations={}, output={}",
+        
+        logger.success("=" * 80)
+        logger.success("COMPLETED: Ingestion task")
+        logger.success("Results: docs={}, chunks={}, relations={}, output={}",
             result.document_count,
             result.chunk_count,
             result.relation_count,
-            result.output_dir,
-        )
+            result.output_dir)
+        logger.success("=" * 80)
+
 

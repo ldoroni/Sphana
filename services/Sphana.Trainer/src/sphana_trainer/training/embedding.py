@@ -35,6 +35,7 @@ from sphana_trainer.utils.metrics import MetricsLogger
 from sphana_trainer.utils.mlflow import MlflowLogger
 from sphana_trainer.utils.telemetry import TelemetryMonitor
 from sphana_trainer.training.profiling import ProfilerManager
+from sphana_trainer.utils.progress import ProgressTracker, _format_duration
 
 
 @dataclass
@@ -159,12 +160,24 @@ class EmbeddingTrainer:
                     }
                 )
 
+            logger.info("Starting training: {} epochs, {} batches per epoch", self.config.epochs, len(train_loader))
+            
             for epoch in range(self.config.epochs):
                 epoch_start = perf_counter()
+                logger.info("Epoch {}/{} | Starting training phase", epoch + 1, self.config.epochs)
                 self.model.train()
                 if train_sampler:  # pragma: no cover - requires distributed sampler
                     train_sampler.set_epoch(epoch)
                 running_loss = 0.0
+                
+                # Add batch progress tracker
+                batch_progress = ProgressTracker(
+                    total=len(train_loader),
+                    stage_name=f"Training epoch {epoch+1}",
+                    total_stages=self.config.epochs,
+                    current_stage=epoch+1,
+                )
+                
                 for batch in train_loader:
                     optimizer.zero_grad()
                     with self.ctx.autocast():
@@ -179,21 +192,37 @@ class EmbeddingTrainer:
                         optimizer.step()
                     scheduler.step()
                     running_loss += loss.item()
+                    batch_progress.update()
+                    
                 avg_loss = running_loss / max(1, len(train_loader))
                 if val_loader:
                     val_metric = self._evaluate(val_loader)
                     best_val = max(best_val, val_metric)
                 else:
                     val_metric = 0.0
+                
+                # Enhanced epoch complete logging
+                duration = max(perf_counter() - epoch_start, 1e-9)
+                examples_per_sec = (total_examples / duration) if total_examples else 0.0
+                logger.info(
+                    "Epoch {}/{} complete | Train loss: {:.4f} | Val metric: {:.4f} | "
+                    "Epoch time: {} | Throughput: {:.2f} examples/sec",
+                    epoch + 1,
+                    self.config.epochs,
+                    avg_loss,
+                    val_metric,
+                    _format_duration(duration),
+                    examples_per_sec
+                )
+                
                 if metrics_logger:
-                    duration = max(perf_counter() - epoch_start, 1e-9)
                     metadata = {"stage": "train", **self._system_metadata()}
                     metrics_logger.log(
                         epoch,
                         {
                             "train_loss": float(avg_loss),
                             "epoch_duration": duration,
-                            "examples_per_sec": (total_examples / duration) if total_examples else 0.0,
+                            "examples_per_sec": examples_per_sec,
                         },
                         metadata,
                     )
@@ -288,8 +317,17 @@ class EmbeddingTrainer:
         return multiple_negatives_loss(anchor_emb, positive_emb, self.config.temperature)
 
     def _evaluate(self, loader: DataLoader) -> float:
+        logger.info("Running validation on {} batches", len(loader))
         self.model.eval()
         sims = []
+        
+        val_progress = ProgressTracker(
+            total=len(loader),
+            stage_name="Validation",
+            total_stages=1,
+            current_stage=1,
+        )
+        
         with torch.no_grad():
             for batch in loader:
                 anchor = {k: v.to(self.ctx.device) for k, v in batch["anchor"].items()}
@@ -298,7 +336,11 @@ class EmbeddingTrainer:
                 positive_emb = self.model(**positive)
                 sim = F.cosine_similarity(anchor_emb, positive_emb).mean().item()
                 sims.append(sim)
-        return sum(sims) / max(1, len(sims))
+                val_progress.update()
+        
+        avg_sim = sum(sims) / max(1, len(sims))
+        logger.info("Validation complete | Cosine similarity: {:.4f}", avg_sim)
+        return avg_sim
 
     def _maybe_resume(self, optimizer, scheduler) -> None:
         if not self.config.resume_from:

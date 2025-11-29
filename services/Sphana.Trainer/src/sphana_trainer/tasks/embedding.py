@@ -18,11 +18,26 @@ class EmbeddingTask(BaseTask):
         self.artifact_root = Path(artifact_root)
 
     def run(self):
-        logger.info("Starting embedding training with model {}", self.config.model_name)
+        logger.info("=" * 80)
+        logger.info("STARTING: Embedding training task")
+        logger.info("Config: model={}, dataset={}, epochs={}, batch_size={}", 
+                    self.config.model_name, 
+                    self.config.dataset_path,
+                    self.config.epochs,
+                    self.config.batch_size)
+        logger.info("=" * 80)
+        
         trainer = EmbeddingTrainer(self.config, self.artifact_root)
         result = trainer.train()
-        logger.success("Embedding artifacts saved to {}", result.checkpoint_dir)
+        
+        logger.success("=" * 80)
+        logger.success("COMPLETED: Embedding training task")
+        logger.success("Results: checkpoint={}, metrics={}", 
+                      result.checkpoint_dir, 
+                      result.metrics)
+        logger.success("=" * 80)
         return result
+
 
 
 

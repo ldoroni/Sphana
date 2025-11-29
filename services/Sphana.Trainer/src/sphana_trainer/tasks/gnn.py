@@ -18,15 +18,26 @@ class GNNTask(BaseTask):
         self.artifact_root = Path(artifact_root)
 
     def run(self):
-        logger.info(
-            "Training GNN ranker with hidden_dim={} and layers={}",
-            self.config.hidden_dim,
-            self.config.num_layers,
-        )
+        logger.info("=" * 80)
+        logger.info("STARTING: GNN ranking training task")
+        logger.info("Config: hidden_dim={}, layers={}, dataset={}, epochs={}", 
+                    self.config.hidden_dim,
+                    self.config.num_layers,
+                    self.config.dataset_path,
+                    self.config.epochs)
+        logger.info("=" * 80)
+        
         trainer = GNNTrainer(self.config, self.artifact_root)
         result = trainer.train()
-        logger.success("GNN artifacts saved to {}", result.checkpoint_dir)
+        
+        logger.success("=" * 80)
+        logger.success("COMPLETED: GNN ranking training task")
+        logger.success("Results: checkpoint={}, metrics={}", 
+                      result.checkpoint_dir, 
+                      result.metrics)
+        logger.success("=" * 80)
         return result
+
 
 
 

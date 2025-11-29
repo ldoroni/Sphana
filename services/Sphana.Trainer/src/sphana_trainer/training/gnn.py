@@ -35,6 +35,7 @@ from sphana_trainer.utils.metrics import MetricsLogger
 from sphana_trainer.utils.mlflow import MlflowLogger
 from sphana_trainer.utils.telemetry import TelemetryMonitor
 from sphana_trainer.utils.telemetry import TelemetryMonitor
+from sphana_trainer.utils.progress import ProgressTracker, _format_duration
 
 
 @dataclass
@@ -152,12 +153,24 @@ class GNNTrainer:
                     }
                 )
 
+            logger.info("Starting training: {} epochs, {} queries per epoch", self.config.epochs, len(train_loader))
+            
             for epoch in range(self.config.epochs):
                 epoch_start = perf_counter()
+                logger.info("Epoch {}/{} | Starting training phase", epoch + 1, self.config.epochs)
                 self.model.train()
                 if train_sampler:  # pragma: no cover - requires distributed sampler
                     train_sampler.set_epoch(epoch)
                 running_loss = 0.0
+                
+                # Add batch progress tracker
+                batch_progress = ProgressTracker(
+                    total=len(train_loader),
+                    stage_name=f"Training epoch {epoch+1}",
+                    total_stages=self.config.epochs,
+                    current_stage=epoch+1,
+                )
+                
                 for query in train_loader:
                     optimizer.zero_grad()
                     scores, labels = self._forward_candidates(self.model, query["candidates"])
@@ -172,6 +185,8 @@ class GNNTrainer:
                         torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
                         optimizer.step()
                     running_loss += loss.item()
+                    batch_progress.update()
+                    
                 avg_loss = running_loss / max(1, len(train_loader))
 
                 val_loss = None
@@ -179,14 +194,28 @@ class GNNTrainer:
                     val_loss = self._evaluate(self.model, val_loader)
                     if val_loss < best_val:
                         best_val = val_loss
+                
+                # Enhanced epoch complete logging
+                duration = max(perf_counter() - epoch_start, 1e-9)
+                examples_per_sec = (total_examples / duration) if total_examples else 0.0
+                logger.info(
+                    "Epoch {}/{} complete | Train loss: {:.4f} | Val loss: {:.4f} | "
+                    "Epoch time: {} | Throughput: {:.2f} examples/sec",
+                    epoch + 1,
+                    self.config.epochs,
+                    avg_loss,
+                    val_loss if val_loss is not None else 0.0,
+                    _format_duration(duration),
+                    examples_per_sec
+                )
+                
                 if metrics_logger:
-                    duration = max(perf_counter() - epoch_start, 1e-9)
                     metrics_logger.log(
                         epoch,
                         {
                             "train_loss": float(avg_loss),
                             "epoch_duration": duration,
-                            "examples_per_sec": (total_examples / duration) if total_examples else 0.0,
+                            "examples_per_sec": examples_per_sec,
                         },
                         {"stage": "train", **self._system_metadata()},
                     )
@@ -290,13 +319,26 @@ class GNNTrainer:
         return torch.stack(scores), torch.tensor(labels, dtype=torch.float32, device=self.ctx.device)
 
     def _evaluate(self, model: GGNNRanker, loader: DataLoader) -> float:
+        logger.info("Running validation on {} batches", len(loader))
         model.eval()
         losses = []
+        
+        val_progress = ProgressTracker(
+            total=len(loader),
+            stage_name="Validation",
+            total_stages=1,
+            current_stage=1,
+        )
+        
         with torch.no_grad():
             for query in loader:
                 scores, labels = self._forward_candidates(model, query["candidates"])
                 losses.append(listnet_loss(scores, labels, self.config.temperature).item())
-        return sum(losses) / max(1, len(losses))
+                val_progress.update()
+        
+        avg_loss = sum(losses) / max(1, len(losses))
+        logger.info("Validation complete | Loss: {:.4f}", avg_loss)
+        return avg_loss
 
     def _maybe_resume(self, model, optimizer) -> None:
         state_path = None

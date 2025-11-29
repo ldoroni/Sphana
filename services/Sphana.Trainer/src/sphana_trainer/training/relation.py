@@ -37,6 +37,7 @@ from sphana_trainer.utils.metrics import MetricsLogger
 from sphana_trainer.utils.mlflow import MlflowLogger
 from sphana_trainer.utils.telemetry import TelemetryMonitor
 from sphana_trainer.utils.telemetry import TelemetryMonitor
+from sphana_trainer.utils.progress import ProgressTracker, _format_duration
 
 
 @dataclass
@@ -187,13 +188,25 @@ class RelationExtractionTrainer:
                     }
                 )
 
+            logger.info("Starting training: {} epochs, {} batches per epoch", self.config.epochs, len(train_loader))
+            
             for epoch in range(self.config.epochs):
                 epoch_start = perf_counter()
+                logger.info("Epoch {}/{} | Starting training phase", epoch + 1, self.config.epochs)
                 model.train()
                 if train_sampler:  # pragma: no cover - requires distributed sampler
                     train_sampler.set_epoch(epoch)
                 running_loss = 0.0
                 optimizer.zero_grad()
+                
+                # Add batch progress tracker
+                batch_progress = ProgressTracker(
+                    total=len(train_loader),
+                    stage_name=f"Training epoch {epoch+1}",
+                    total_stages=self.config.epochs,
+                    current_stage=epoch+1,
+                )
+                
                 for step, batch in enumerate(train_loader, start=1):
                     batch = {k: v.to(self.ctx.device) for k, v in batch.items()}
                     with self.ctx.autocast():
@@ -213,6 +226,8 @@ class RelationExtractionTrainer:
                         scheduler.step()
                         optimizer.zero_grad()
                     running_loss += loss.item()
+                    batch_progress.update()
+                    
                 metrics = {"train_loss": running_loss / max(1, len(train_loader))}
                 if val_loader:
                     eval_metrics = self._evaluate(model, val_loader)
@@ -222,14 +237,28 @@ class RelationExtractionTrainer:
                         epochs_without_improve = 0
                     else:
                         epochs_without_improve += 1
+                
+                # Enhanced epoch complete logging
+                duration = max(perf_counter() - epoch_start, 1e-9)
+                examples_per_sec = (total_examples / duration) if total_examples else 0.0
+                logger.info(
+                    "Epoch {}/{} complete | Train loss: {:.4f} | F1: {:.4f} | "
+                    "Epoch time: {} | Throughput: {:.2f} examples/sec",
+                    epoch + 1,
+                    self.config.epochs,
+                    metrics["train_loss"],
+                    metrics.get("macro_f1", 0.0),
+                    _format_duration(duration),
+                    examples_per_sec
+                )
+                
                 if metrics_logger:
-                    duration = max(perf_counter() - epoch_start, 1e-9)
                     metrics_logger.log(
                         epoch,
                         {
                             "train_loss": metrics["train_loss"],
                             "epoch_duration": duration,
-                            "examples_per_sec": (total_examples / duration) if total_examples else 0.0,
+                            "examples_per_sec": examples_per_sec,
                         },
                         {"stage": "train", **self._system_metadata()},
                     )
@@ -321,9 +350,18 @@ class RelationExtractionTrainer:
         )
 
     def _evaluate(self, model, loader: DataLoader) -> Dict[str, float]:
+        logger.info("Running validation on {} batches", len(loader))
         model.eval()
         preds = []
         labels = []
+        
+        val_progress = ProgressTracker(
+            total=len(loader),
+            stage_name="Validation",
+            total_stages=1,
+            current_stage=1,
+        )
+        
         with torch.no_grad():
             for batch in loader:
                 labels.extend(batch["labels"].tolist())
@@ -331,10 +369,14 @@ class RelationExtractionTrainer:
                 outputs = model(**batch)
                 logits = outputs.logits.detach().cpu()
                 preds.extend(torch.argmax(logits, dim=-1).tolist())
-        return {
+                val_progress.update()
+        
+        metrics = {
             "accuracy": float(accuracy_score(labels, preds)),
             "macro_f1": float(f1_score(labels, preds, average="macro")),
         }
+        logger.info("Validation complete | Accuracy: {:.4f} | F1: {:.4f}", metrics["accuracy"], metrics["macro_f1"])
+        return metrics
 
     def _compute_calibration(self, model, loader: DataLoader, id2label: Dict[int, str]) -> Dict[str, Dict[str, float]]:
         """
