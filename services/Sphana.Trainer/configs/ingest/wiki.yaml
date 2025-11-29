@@ -8,13 +8,13 @@ ingest:
   #   - Single file:    "samples/wiki-docs/large/docs.jsonl"
   #   - Compressed:     "samples/wiki-docs/large/docs.jsonl.gz"
   #   - Glob pattern:   "samples/wiki-docs/large/*.jsonl.gz"
-  #   - Recursive glob: "samples/wiki-docs/**/*.txt"
+  #   - Recursive glob: "samples/wiki-docs/**/*.txt"6
   # 
   # Examples:
   #   source: ./samples/wiki-docs/medium/ai-ml-wiki-titles.medium.jsonl.gz
   #   source: ./samples/wiki-docs/medium/*.jsonl.gz
   #   source: ./samples/wiki-docs/**/*.txt
-  source: ./samples/wiki-docs/**/*
+  source: ./samples/wiki-docs/large/*
   
   ########################
   # Output Configuration #
