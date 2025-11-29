@@ -29,5 +29,7 @@ pytest-cov>=5.0
 ruff>=0.6
 mypy>=1.10
 
-# To download models from Hugging Face
+# To download models
 huggingface_hub
+hf_xet
+stanza

@@ -201,7 +201,16 @@ class RelationClassifier:  # pragma: no cover - requires heavyweight HF models
 
     def __init__(self, model_name: str, max_length: int, calibration: Optional[dict] = None) -> None:
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
-        self.model = AutoModelForSequenceClassification.from_pretrained(model_name).to("cpu").eval()
+        
+        # Automatic device detection (same as training commands)
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
+        if self.device.type == "cuda":
+            logger.info(f"RelationClassifier using GPU: {self.device}")
+        else:
+            logger.info("RelationClassifier using CPU")
+        
+        self.model = AutoModelForSequenceClassification.from_pretrained(model_name).to(self.device).eval()
         self.id2label = self.model.config.id2label or {}
         self.max_length = max_length
         self.calibration = calibration or {}
@@ -214,6 +223,9 @@ class RelationClassifier:  # pragma: no cover - requires heavyweight HF models
             padding="max_length",
             max_length=self.max_length,
         )
+        # Move inputs to the same device as model
+        inputs = {k: v.to(self.device) for k, v in inputs.items()}
+        
         with torch.no_grad():
             logits = self.model(**inputs).logits
             probs = torch.softmax(logits, dim=-1)
@@ -254,16 +266,26 @@ def _load_spacy_model(model_name: str):  # pragma: no cover - optional dependenc
 
 
 def _build_stanza_pipeline(language: str):  # pragma: no cover - optional dependency
+    """Build Stanza pipeline with automatic GPU detection."""
     try:
         import stanza  # type: ignore
     except ImportError as exc:
         raise RuntimeError("Stanza is required for parser='stanza'. Install it via `pip install stanza`.") from exc
+    
+    # Automatic device detection (same as training commands)
+    use_gpu = torch.cuda.is_available()
+    
+    if use_gpu:
+        logger.info("Stanza parser using GPU")
+    else:
+        logger.info("Stanza parser using CPU")
+    
     try:
         return stanza.Pipeline(
             lang=language,
             processors="tokenize,pos,lemma,depparse",
             tokenize_no_ssplit=False,
-            use_gpu=False,
+            use_gpu=use_gpu,
             verbose=False,
         )
     except stanza.resources.common.ResourceNotFoundError as exc:  # type: ignore[attr-defined]
@@ -327,7 +349,11 @@ class IngestionPipeline:
             calibration_path = config.relation_calibration
             calibration = json.loads(Path(calibration_path).read_text(encoding="utf-8"))
         self.classifier = (
-            RelationClassifier(config.relation_model, config.relation_max_length, calibration=calibration)
+            RelationClassifier(
+                config.relation_model,
+                config.relation_max_length,
+                calibration=calibration
+            )
             if config.relation_model
             else None
         )
@@ -446,7 +472,14 @@ def run_ingestion(cfg: IngestionConfig, force: bool = False) -> IngestionResult:
     start = perf_counter()
     parse_cache_dir = cache_dir / "parses" if cfg.parser != "simple" else None
     extractor = _create_relation_extractor(cfg)
-    classifier = RelationClassifier(cfg.relation_model, cfg.relation_max_length) if cfg.relation_model else None
+    classifier = (
+        RelationClassifier(
+            cfg.relation_model,
+            cfg.relation_max_length
+        )
+        if cfg.relation_model
+        else None
+    )
     if cfg.source:
         documents = list(_load_source_documents(cfg.source))
     else:

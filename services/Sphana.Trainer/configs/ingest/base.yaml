@@ -27,9 +27,22 @@ ingest:
   #####################
   
   # Target size in tokens for each text chunk
+  #
+  # Recommended Value: 
+  #   384 tokens
+  # Recommendation Reason: 
+  #   Wikipedia articles are information-dense. 
+  #   Larger chunks (256 tokens) provide better context for embeddings and relations. 
+  #   Still well under the 512 max.
   chunk_size: 64
   
   # Number of overlapping tokens between consecutive chunks
+  # 
+  # Recommended Value: 
+  #   32 tokens
+  # Recommendation Reason: 
+  #   Should be ~12-15% of chunk_size. 
+  #   Ensures relations spanning chunk boundaries aren't lost.
   chunk_overlap: 16
   
   ########################
@@ -37,9 +50,31 @@ ingest:
   ########################
   
   # Relation extraction backend: simple (regex), spacy, or stanza
+  # 
+  # |--------|-------------------|-------------------|--------------|
+  # | Parser | Time for 64K docs | Relations Quality | Memory Usage |
+  # |--------|-------------------|-------------------|--------------|
+  # | simple | 30-60 minutes     | Poor              | Low          |
+  # | spacy  | 2-4 hours         | Good              | Medium       |
+  # | stanza | 6-10 hours        | Best              | High         |
+  # |--------|-------------------|-------------------|--------------|
+  #
+  # Recommended Value: 
+  #   stanza
+  # Recommendation Reason: 
+  #   State-of-the-art neural parser, 95-97% accuracy.
   parser: simple
   
   # spaCy model name (used when parser=spacy)
+  # 
+  # |-----------------|------|-----------|-----------|
+  # | Model           | Size | Accuracy  | Speed     |
+  # |-----------------|------|-----------|-----------|
+  # | en_core_web_sm  | 13   | Poor      | Fast      |
+  # | en_core_web_md  | 43   | Moderate  | Medium    |
+  # | en_core_web_lg  |	587  | Good      | Slow      |
+  # | en_core_web_trf |	438  | Best      | Very slow |
+  # |-----------------|------|-----------|-----------|
   parser_model: en_core_web_sm
   
   # Language code for Stanza parser (used when parser=stanza)
@@ -50,16 +85,43 @@ ingest:
   ################################
   
   # Minimum confidence score to keep extracted relations (0.0 to 1.0)
+  #
+  # Recommended Value: 
+  #   0.20
+  # Recommendation Reason: 
+  #   Lower threshold captures more relations, but also more noise.
+  #   Higher threshold filters out more noise, but also more valid relations.
+  #   This is a trade-off between precision and recall.
   relation_threshold: 0.6
   
-  # Optional Hugging Face model for classifying and scoring relations
+  # The relation_model is an optional second-stage classifier that:
+  # - Takes relations extracted by the parser (Stanza/spaCy)
+  # - Classifies them into specific relation types
+  # - Assigns confidence scores
+  # - Filters low-confidence relations
+  #
+  # |-------------------------------------------------|--------|----------|----------|------------------------|
+  # | Model                                           | Size   | Accuracy | Speed    | Best For               |
+  # |-------------------------------------------------|--------|----------|----------|------------------------|
+  # | sentence-transformers/nli-distilroberta-base-v2 | 250 MB | Good     | Moderate | Balanced (recommended) |
+  # | facebook/bart-large-mnli                        | 1.5 GB | Best     | Slow     | Best quality           |
+  # | roberta-large-mnli                              | 1.4 GB | Best     | Slow     | Alternative to BART    |
+  # | microsoft/deberta-v3-base                       | 400 MB | Good     | Moderate | Good balance           |
+  # |-------------------------------------------------|--------|----------|----------|------------------------|
   # relation_model: null  # Optional Hugging Face model for scoring relations (default: null)
   
   # Maximum sequence length for relation classification model
+  #
+  # |-------|--------------|
+  # | Value | Memory Usage |
+  # |-------|--------------|
+  # | 256   | ~6 GB        |
+  # | 512   | ~8 GB        |
+  # | 1024  | ~10 GB       |
+  # |-------|--------------|
   # relation_max_length: 256  # Max sequence length for relation model (default: 256)
   
   # Path to JSON file with per-label calibration coefficients (scale and bias)
-  # Auto-generated during 'train relation' and saved to checkpoint/calibration.json
   # Calibration adjusts model confidence scores to match empirical accuracy per relation type
+  # Auto-generated during 'train relation' and saved to checkpoint/calibration.json
   # relation_calibration: null  # Optional JSON file with label calibration coefficients (default: null)
-
