@@ -126,3 +126,15 @@ ingest:
   # Calibration adjusts model confidence scores to match empirical accuracy per relation type
   # Auto-generated during 'train relation' and saved to checkpoint/calibration.json
   # relation_calibration: null #target/artifacts/relation/latest/checkpoint/calibration.json
+
+  ################################
+  # Progress Logging             #
+  ################################
+  
+  # Percentage interval for progress logging (1-100)
+  # - 1 = log every 1% (100 logs total, very detailed)
+  # - 5 = log every 5% (20 logs total, detailed)
+  # - 10 = log every 10% (10 logs total, moderate)
+  # - 25 = log every 25% (4 logs total, sparse)
+  # Recommended: 1 for large datasets, 5 for small datasets
+  progress_log_interval: 1

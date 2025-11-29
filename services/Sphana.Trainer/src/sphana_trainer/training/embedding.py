@@ -176,6 +176,7 @@ class EmbeddingTrainer:
                     stage_name=f"Training epoch {epoch+1}",
                     total_stages=self.config.epochs,
                     current_stage=epoch+1,
+                    log_interval=self.config.progress_log_interval,
                 )
                 
                 for batch in train_loader:
@@ -326,6 +327,7 @@ class EmbeddingTrainer:
             stage_name="Validation",
             total_stages=1,
             current_stage=1,
+            log_interval=self.config.progress_log_interval,
         )
         
         with torch.no_grad():

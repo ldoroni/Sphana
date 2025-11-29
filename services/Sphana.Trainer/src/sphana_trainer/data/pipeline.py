@@ -386,6 +386,7 @@ class IngestionPipeline:
             stage_name="Processing documents",
             total_stages=1,
             current_stage=1,
+            log_interval=self.config.progress_log_interval,
         )
         
         chunks_records: List[dict] = []
@@ -508,6 +509,7 @@ def run_ingestion(cfg: IngestionConfig, force: bool = False) -> IngestionResult:
         stage_name="Processing documents",
         total_stages=1,
         current_stage=1,
+        log_interval=cfg.progress_log_interval,
     )
     
     for doc_id, text in documents:

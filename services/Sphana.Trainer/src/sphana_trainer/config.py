@@ -81,6 +81,12 @@ class EmbeddingConfig(BaseComponentConfig):
     metric_threshold: Optional[float] = Field(
         default=None, description="Minimum acceptable validation cosine similarity."
     )
+    progress_log_interval: int = Field(
+        default=10,
+        ge=1,
+        le=100,
+        description="Percentage interval for progress logging (1-100). Lower = more frequent logs."
+    )
 
 
 class RelationExtractionConfig(BaseComponentConfig):
@@ -98,6 +104,12 @@ class RelationExtractionConfig(BaseComponentConfig):
     early_stopping_patience: int = Field(default=2, ge=1)
     metric_threshold: Optional[float] = Field(
         default=None, description="Minimum acceptable macro F1 on the validation set."
+    )
+    progress_log_interval: int = Field(
+        default=10,
+        ge=1,
+        le=100,
+        description="Percentage interval for progress logging (1-100). Lower = more frequent logs."
     )
 
     @field_validator("dependency_cache", mode="before")
@@ -122,6 +134,12 @@ class GNNConfig(BaseComponentConfig):
     temperature: float = Field(default=1.0, gt=0)
     metric_threshold: Optional[float] = Field(
         default=None, description="Maximum acceptable validation loss (lower is better)."
+    )
+    progress_log_interval: int = Field(
+        default=10,
+        ge=1,
+        le=100,
+        description="Percentage interval for progress logging (1-100). Lower = more frequent logs."
     )
 
 
@@ -225,6 +243,12 @@ class IngestionConfig(BaseModel):
     relation_max_length: int = Field(default=256, ge=32)
     relation_calibration: Optional[Path] = Field(
         default=None, description="Optional JSON file with label calibration coefficients."
+    )
+    progress_log_interval: int = Field(
+        default=10,
+        ge=1,
+        le=100,
+        description="Percentage interval for progress logging (1-100). Lower = more frequent logs."
     )
 
     @field_validator("source", "input_dir", "output_dir", "cache_dir", mode="before")

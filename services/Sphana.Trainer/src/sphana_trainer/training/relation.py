@@ -205,6 +205,7 @@ class RelationExtractionTrainer:
                     stage_name=f"Training epoch {epoch+1}",
                     total_stages=self.config.epochs,
                     current_stage=epoch+1,
+                    log_interval=self.config.progress_log_interval,
                 )
                 
                 for step, batch in enumerate(train_loader, start=1):
@@ -360,6 +361,7 @@ class RelationExtractionTrainer:
             stage_name="Validation",
             total_stages=1,
             current_stage=1,
+            log_interval=self.config.progress_log_interval,
         )
         
         with torch.no_grad():

@@ -128,3 +128,15 @@ embedding:
   # Custom name for this MLflow run
   # mlflow_run_name: null  # Optional MLflow run name override (default: null)
 
+  ################################
+  # Progress Logging             #
+  ################################
+  
+  # Percentage interval for progress logging during training (1-100)
+  # - 1 = log every 1% (100 logs total, very detailed)
+  # - 5 = log every 5% (20 logs total, detailed)
+  # - 10 = log every 10% (10 logs total, moderate)
+  # - 25 = log every 25% (4 logs total, sparse)
+  # Recommended: 5 for training visibility
+  progress_log_interval: 5
+
