@@ -14,7 +14,7 @@ ingest:
   #   source: ./samples/wiki-docs/medium/ai-ml-wiki-titles.medium.jsonl.gz
   #   source: ./samples/wiki-docs/medium/*.jsonl.gz
   #   source: ./samples/wiki-docs/**/*.txt
-  source: ./samples/wiki-docs/large/*
+  source: ./samples/wiki-docs/large-part/*
   
   ########################
   # Output Configuration #
@@ -53,11 +53,11 @@ ingest:
   # Number of overlapping tokens between consecutive chunks
   # 
   # Recommended Value: 
-  #   32 tokens
+  #   48 tokens
   # Recommendation Reason: 
-  #   Should be ~12-15% of chunk_size. 
+  #   Should be ~12-17% of chunk_size. 
   #   Ensures relations spanning chunk boundaries aren't lost.
-  chunk_overlap: 48
+  chunk_overlap: 64
   
   ########################
   # Parser Configuration #
