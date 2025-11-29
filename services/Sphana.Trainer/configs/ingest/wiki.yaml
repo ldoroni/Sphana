@@ -8,7 +8,7 @@ ingest:
   #   - Single file:    "samples/wiki-docs/large/docs.jsonl"
   #   - Compressed:     "samples/wiki-docs/large/docs.jsonl.gz"
   #   - Glob pattern:   "samples/wiki-docs/large/*.jsonl.gz"
-  #   - Recursive glob: "samples/wiki-docs/**/*.txt"6
+  #   - Recursive glob: "samples/wiki-docs/**/*.txt"
   # 
   # Examples:
   #   source: ./samples/wiki-docs/medium/ai-ml-wiki-titles.medium.jsonl.gz
@@ -20,8 +20,15 @@ ingest:
   # Output Configuration #
   ########################
   
-  # Directory where ingestion outputs (chunks.jsonl, relations.jsonl) will be saved
-  output_dir: target/ingest
+  # Directory for chunks output files
+  chunks_output_dir: target/ingest/chunks
+  
+  # Directory for relations output files
+  relations_output_dir: target/ingest/relations
+  
+  # Compress output files with gzip (saves disk space for large datasets)
+  # Output files will have .gz extension: domain1.jsonl.gz, domain2.jsonl.gz
+  output_compressed: true
   
   # Directory for caching parsed documents and intermediate results
   cache_dir: target/cache

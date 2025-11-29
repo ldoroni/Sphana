@@ -23,10 +23,10 @@ gnn:
   #################
   
   # Path to training data JSONL file
-  train_file: src/tests/data/graphs/train.jsonl
+  train_file: src/tests/data/graphs/train.jsonl.gz
   
   # Path to validation data JSONL file
-  validation_file: src/tests/data/graphs/validation.jsonl
+  validation_file: src/tests/data/graphs/validation.jsonl.gz
   
   # Alternative validation dataset path (overrides dataset_path for validation)
   # validation_path: null  # Optional explicit validation dataset path (default: null)

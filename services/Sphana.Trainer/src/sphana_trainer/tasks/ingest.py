@@ -26,11 +26,12 @@ class IngestionTask(BaseTask):
         
         logger.success("=" * 80)
         logger.success("COMPLETED: Ingestion task")
-        logger.success("Results: docs={}, chunks={}, relations={}, output={}",
+        logger.success("Results: docs={}, chunks={}, relations={}",
             result.document_count,
             result.chunk_count,
-            result.relation_count,
-            result.output_dir)
+            result.relation_count)
+        logger.success("Chunks output: {}", result.chunks_output_dir)
+        logger.success("Relations output: {}", result.relations_output_dir)
         logger.success("=" * 80)
 
 

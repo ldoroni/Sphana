@@ -23,10 +23,10 @@ embedding:
   #################
   
   # Path to training data JSONL file
-  train_file: target/datasets/embedding/train.jsonl
+  train_file: target/datasets/embedding/train.jsonl.gz
   
   # Path to validation data JSONL file
-  validation_file: target/datasets/embedding/validation.jsonl
+  validation_file: target/datasets/embedding/validation.jsonl.gz
   
   # Alternative validation dataset path (overrides dataset_path for validation)
   # validation_path: null  # Optional explicit validation dataset path (default: null)

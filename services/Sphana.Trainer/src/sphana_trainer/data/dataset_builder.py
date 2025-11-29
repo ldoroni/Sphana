@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 import random
 import re
 from dataclasses import dataclass
+from glob import glob as glob_files
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Sequence, Tuple, Optional
+from typing import Any, Dict, Iterable, List, Sequence, Tuple, Optional, Union
+from loguru import logger
 
 
 @dataclass
@@ -26,8 +29,8 @@ SentenceSplitter = re.compile(r"(?<=[.!?])\s+")
 
 
 def build_datasets_from_ingestion(
-    chunks_path: Path,
-    relations_path: Path,
+    chunks_pattern: Union[str, Path],
+    relations_pattern: Union[str, Path],
     output_dir: Path,
     *,
     val_ratio: float = 0.2,
@@ -37,15 +40,21 @@ def build_datasets_from_ingestion(
     extra_relation: Sequence[Path] = (),
     extra_gnn: Sequence[Path] = (),
     parses_dir: Optional[Path] = None,
+    output_compressed: bool = False,
 ) -> DatasetBuildResult:
-    """Create embedding/relation/GNN datasets from ingestion JSONL files."""
+    """
+    Create embedding/relation/GNN datasets from ingestion JSONL files.
+    Supports glob patterns for chunks and relations (e.g., 'chunks-*.jsonl').
+    """
 
-    chunks = _load_jsonl(chunks_path)
-    relations = _load_jsonl(relations_path)
+    # Load all chunks and relations (supports glob patterns and .gz files)
+    chunks = _load_jsonl_files(chunks_pattern)
+    relations = _load_jsonl_files(relations_pattern)
+    
     if not chunks:
-        raise ValueError(f"No chunk records found at {chunks_path}")
+        raise ValueError(f"No chunk records found matching: {chunks_pattern}")
     if not relations:
-        raise ValueError(f"No relation records found at {relations_path}")
+        raise ValueError(f"No relation records found matching: {relations_pattern}")
 
     chunk_by_id = {record["id"]: record for record in chunks if record.get("id")}
     parses = _load_parses(parses_dir) if parses_dir else {}
@@ -71,12 +80,12 @@ def build_datasets_from_ingestion(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     embedding_train, embedding_val = _write_split(
-        embedding_records, output_dir / "embedding", val_ratio, seed
+        embedding_records, output_dir / "embedding", val_ratio, seed, output_compressed
     )
     relation_train, relation_val = _write_split(
-        relation_records, output_dir / "relation", val_ratio, seed
+        relation_records, output_dir / "relation", val_ratio, seed, output_compressed
     )
-    gnn_train, gnn_val = _write_split(gnn_records, output_dir / "gnn", val_ratio, seed)
+    gnn_train, gnn_val = _write_split(gnn_records, output_dir / "gnn", val_ratio, seed, output_compressed)
 
     return DatasetBuildResult(
         embedding_train=embedding_train,
@@ -87,6 +96,50 @@ def build_datasets_from_ingestion(
         gnn_val=gnn_val,
         output_dir=output_dir,
     )
+
+
+def _load_jsonl_files(pattern: Union[str, Path]) -> List[Dict]:
+    """
+    Load JSONL records from file(s) matching a glob pattern.
+    Supports both .jsonl and .jsonl.gz files.
+    """
+    pattern_str = str(pattern)
+    
+    # Resolve files (support glob patterns)
+    if any(char in pattern_str for char in ['*', '?', '[', ']']):
+        matched_files = sorted(glob_files(pattern_str))
+        if not matched_files:
+            logger.warning(f"No files matched pattern: {pattern_str}")
+            return []
+    else:
+        matched_files = [pattern_str]
+    
+    all_records: List[Dict] = []
+    for file_path_str in matched_files:
+        file_path = Path(file_path_str)
+        if not file_path.exists():
+            logger.warning(f"File not found: {file_path_str}")
+            continue
+        
+        # Check if file is compressed
+        if file_path_str.endswith('.gz'):
+            handle = gzip.open(file_path, 'rt', encoding='utf-8')
+        else:
+            handle = file_path.open('r', encoding='utf-8')
+        
+        records: List[Dict] = []
+        with handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                records.append(json.loads(line))
+        
+        all_records.extend(records)
+        logger.info(f"Loaded {len(records)} records from {file_path_str}")
+    
+    logger.info(f"Total records loaded: {len(all_records)} from {len(matched_files)} file(s)")
+    return all_records
 
 
 def _load_jsonl(path: Path) -> List[Dict]:
@@ -256,6 +309,7 @@ def _write_split(
     target_dir: Path,
     val_ratio: float,
     seed: int,
+    compress: bool = False,
 ) -> Tuple[int, int]:
     if not records:
         raise ValueError("Cannot write split for empty dataset.")
@@ -271,18 +325,27 @@ def _write_split(
         val = shuffled[:val_size]
         train = shuffled[val_size:]
     target_dir.mkdir(parents=True, exist_ok=True)
-    _write_jsonl(target_dir / "train.jsonl", train)
+    
+    train_filename = "train.jsonl.gz" if compress else "train.jsonl"
+    val_filename = "validation.jsonl.gz" if compress else "validation.jsonl"
+    
+    _write_jsonl(target_dir / train_filename, train, compress)
     if val:
-        _write_jsonl(target_dir / "validation.jsonl", val)
+        _write_jsonl(target_dir / val_filename, val, compress)
     else:
-        (target_dir / "validation.jsonl").write_text("", encoding="utf-8")
+        (target_dir / val_filename).write_text("", encoding="utf-8")
     return len(train), len(val)
 
 
-def _write_jsonl(path: Path, records: Iterable[Dict]) -> None:
-    with path.open("w", encoding="utf-8") as handle:
-        for record in records:
-            handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+def _write_jsonl(path: Path, records: Iterable[Dict], compress: bool = False) -> None:
+    if compress:
+        with gzip.open(path, 'wt', encoding='utf-8') as handle:
+            for record in records:
+                handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+    else:
+        with path.open("w", encoding="utf-8") as handle:
+            for record in records:
+                handle.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
 def _load_parses(parses_dir: Optional[Path]) -> Dict[str, dict]:

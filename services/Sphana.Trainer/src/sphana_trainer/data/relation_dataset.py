@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+import gzip
 import json
+from glob import glob
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Union
 
 import torch
 from torch.utils.data import Dataset
+from loguru import logger
 
 
 class RelationDataset(Dataset):
@@ -15,7 +18,7 @@ class RelationDataset(Dataset):
 
     def __init__(
         self,
-        file_path: Path,
+        file_pattern: Union[str, Path],
         tokenizer,
         label2id: Dict[str, int],
         max_length: int,
@@ -26,41 +29,64 @@ class RelationDataset(Dataset):
         self.tokenizer = tokenizer
         self.max_length = max_length
         self.allow_new_labels = allow_new_labels
-        self._load(file_path)
+        self.file_pattern = str(file_pattern)
+        self._load()
 
-    def _load(self, file_path: Path) -> None:
-        with file_path.open("r", encoding="utf-8") as handle:
-            for line in handle:
-                if not line.strip():
-                    continue
-                record = json.loads(line)
-                text = record.get("text") or record.get("sentence")
-                if not text:
-                    continue
-                ent1 = _entity_from_record(record, "entity1")
-                ent2 = _entity_from_record(record, "entity2")
-                label_name = record.get("label")
-                if not ent1 or not ent2 or not label_name:
-                    continue
-                if label_name not in self.label2id:
-                    if not self.allow_new_labels:
-                        raise ValueError(f"Unknown label '{label_name}' encountered in validation set")
-                    self.label2id[label_name] = len(self.label2id)
-                label_id = self.label2id[label_name]
-                marked = _insert_entity_markers(text, ent1, ent2)
-                tokenized = self.tokenizer(
-                    marked,
-                    max_length=self.max_length,
-                    truncation=True,
-                    padding="max_length",
-                    return_tensors="pt",
-                )
-                sample = {k: v.squeeze(0) for k, v in tokenized.items()}
-                sample["labels"] = torch.tensor(label_id, dtype=torch.long)
-                self.samples.append(sample)
+    def _load(self) -> None:
+        # Resolve files (support glob patterns)
+        if any(char in self.file_pattern for char in ['*', '?', '[', ']']):
+            matched_files = sorted(glob(self.file_pattern))
+            if not matched_files:
+                raise FileNotFoundError(f"No files matched pattern: {self.file_pattern}")
+        else:
+            matched_files = [self.file_pattern]
+        
+        # Load from all matched files
+        for file_path_str in matched_files:
+            file_path = Path(file_path_str)
+            
+            # Check if file is compressed
+            if file_path_str.endswith('.gz'):
+                handle = gzip.open(file_path, 'rt', encoding='utf-8')
+            else:
+                handle = file_path.open('r', encoding='utf-8')
+            
+            with handle:
+                for line in handle:
+                    if not line.strip():
+                        continue
+                    record = json.loads(line)
+                    text = record.get("text") or record.get("sentence")
+                    if not text:
+                        continue
+                    ent1 = _entity_from_record(record, "entity1")
+                    ent2 = _entity_from_record(record, "entity2")
+                    label_name = record.get("label")
+                    if not ent1 or not ent2 or not label_name:
+                        continue
+                    if label_name not in self.label2id:
+                        if not self.allow_new_labels:
+                            raise ValueError(f"Unknown label '{label_name}' encountered in validation set")
+                        self.label2id[label_name] = len(self.label2id)
+                    label_id = self.label2id[label_name]
+                    marked = _insert_entity_markers(text, ent1, ent2)
+                    tokenized = self.tokenizer(
+                        marked,
+                        max_length=self.max_length,
+                        truncation=True,
+                        padding="max_length",
+                        return_tensors="pt",
+                    )
+                    sample = {k: v.squeeze(0) for k, v in tokenized.items()}
+                    sample["labels"] = torch.tensor(label_id, dtype=torch.long)
+                    self.samples.append(sample)
+            
+            logger.debug(f"Loaded samples from {file_path_str}, total: {len(self.samples)}")
 
         if not self.samples:
-            raise ValueError(f"No valid relation samples found in {file_path}")
+            raise ValueError(f"No valid relation samples found in {self.file_pattern}")
+        
+        logger.info(f"Total relation samples loaded: {len(self.samples)} from {len(matched_files)} file(s)")
 
     def __len__(self) -> int:
         return len(self.samples)

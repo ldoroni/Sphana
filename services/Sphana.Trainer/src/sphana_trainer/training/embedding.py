@@ -38,6 +38,51 @@ from sphana_trainer.training.profiling import ProfilerManager
 from sphana_trainer.utils.progress import ProgressTracker, _format_duration
 
 
+def _load_dataset_files(file_pattern: str) -> list[dict]:
+    """
+    Load dataset from file or glob pattern.
+    Automatically merges multiple files if pattern matches multiple files.
+    Supports both plain .jsonl and .jsonl.gz compressed files.
+    """
+    import gzip
+    from glob import glob
+    
+    # Check if it's a glob pattern
+    if any(char in file_pattern for char in ['*', '?', '[', ']']):
+        matched_files = sorted(glob(file_pattern))
+        if not matched_files:
+            raise FileNotFoundError(f"No files matched pattern: {file_pattern}")
+    else:
+        # Single file
+        matched_files = [file_pattern]
+    
+    # Load and merge all files
+    all_records = []
+    for file_path in matched_files:
+        path = Path(file_path)
+        records = []
+        
+        # Check if file is compressed
+        if file_path.endswith('.gz'):
+            with gzip.open(path, 'rt', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        records.append(json.loads(line))
+        else:
+            with path.open('r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        records.append(json.loads(line))
+        
+        all_records.extend(records)
+        logger.info(f"Loaded {len(records)} records from {file_path}")
+    
+    logger.info(f"Total records loaded: {len(all_records)} from {len(matched_files)} file(s)")
+    return all_records
+
+
 @dataclass
 class EmbeddingTrainingResult:
     checkpoint_dir: Path

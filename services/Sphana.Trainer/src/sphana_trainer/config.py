@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
-from typing import Any, Dict, Optional, Literal
+from typing import Any, Dict, Optional, Literal, List
 
 import yaml
 from pydantic import BaseModel, Field, field_validator
@@ -227,7 +227,16 @@ class IngestionConfig(BaseModel):
         description="Path or glob pattern to input files. "
         "Examples: 'file.jsonl', 'file.jsonl.gz', 'dir/*.jsonl.gz', 'dir/**/*.txt'"
     )
-    output_dir: Path = Field(default=Path("target/ingest"))
+    chunks_output_dir: Path = Field(
+        description="Directory for chunks output files"
+    )
+    relations_output_dir: Path = Field(
+        description="Directory for relations output files"
+    )
+    output_compressed: bool = Field(
+        default=False,
+        description="Compress output files (chunks.jsonl.gz, relations.jsonl.gz) with gzip"
+    )
     cache_dir: Optional[Path] = Field(default=None)
     cache_enabled: bool = Field(default=True)
     chunk_size: int = Field(default=120, ge=10)
@@ -253,9 +262,69 @@ class IngestionConfig(BaseModel):
         description="Percentage interval for progress logging (1-100). Lower = more frequent logs."
     )
 
-    @field_validator("output_dir", "cache_dir", mode="before")
+    @field_validator("chunks_output_dir", "relations_output_dir", "cache_dir", mode="before")
     @classmethod
     def _expand_ingest_paths(cls, value: Any) -> Optional[Path]:
+        if value is None:
+            return None
+        if isinstance(value, Path):
+            return value
+        return Path(str(value)).expanduser().resolve()
+
+
+class DatasetBuildConfig(BaseModel):
+    """Configuration for dataset building from ingestion outputs."""
+    
+    chunks_pattern: str = Field(
+        description="Glob pattern for chunks files (e.g., 'target/ingest/chunks/*.jsonl')"
+    )
+    relations_pattern: str = Field(
+        description="Glob pattern for relations files (e.g., 'target/ingest/relations/*.jsonl')"
+    )
+    output_dir: Path = Field(
+        default=Path("target/datasets"),
+        description="Directory to write derived datasets"
+    )
+    min_confidence: float = Field(
+        default=0.2,
+        ge=0.0,
+        le=1.0,
+        description="Minimum relation confidence to keep"
+    )
+    val_ratio: float = Field(
+        default=0.2,
+        ge=0.05,
+        le=0.5,
+        description="Validation split ratio"
+    )
+    seed: int = Field(
+        default=42,
+        description="Random seed for deterministic shuffling"
+    )
+    extra_embedding: List[Path] = Field(
+        default_factory=list,
+        description="Additional embedding JSONL files"
+    )
+    extra_relation: List[Path] = Field(
+        default_factory=list,
+        description="Additional relation JSONL files"
+    )
+    extra_gnn: List[Path] = Field(
+        default_factory=list,
+        description="Additional GNN JSONL files"
+    )
+    parses_dir: Optional[Path] = Field(
+        default=None,
+        description="Optional directory containing cached parse JSON files"
+    )
+    output_compressed: bool = Field(
+        default=False,
+        description="Compress output datasets with gzip (.jsonl.gz)"
+    )
+    
+    @field_validator("output_dir", "parses_dir", mode="before")
+    @classmethod
+    def _expand_paths(cls, value: Any) -> Optional[Path]:
         if value is None:
             return None
         if isinstance(value, Path):
@@ -269,3 +338,11 @@ def load_ingest_config(path: Path) -> IngestionConfig:
     if "ingest" in data:
         return IngestionConfig.model_validate(data["ingest"])
     return IngestionConfig.model_validate(data)
+
+
+def load_dataset_build_config(path: Path) -> DatasetBuildConfig:
+    resolved = path.expanduser().resolve()
+    data = _read_yaml(resolved)
+    if "dataset_build" in data:
+        return DatasetBuildConfig.model_validate(data["dataset_build"])
+    return DatasetBuildConfig.model_validate(data)

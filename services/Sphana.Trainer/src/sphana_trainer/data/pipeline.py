@@ -63,6 +63,25 @@ def _normalize_text(text: str) -> str:
     return " ".join(text.split())
 
 
+def _write_jsonl(records: List[dict], output_path: Path, compress: bool = False) -> None:
+    """Write records to JSONL file, optionally compressed."""
+    import gzip
+    
+    if compress and not str(output_path).endswith('.gz'):
+        output_path = Path(str(output_path) + '.gz')
+    
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    if compress:
+        with gzip.open(output_path, 'wt', encoding='utf-8') as f:
+            for record in records:
+                f.write(json.dumps(record, ensure_ascii=False) + '\n')
+    else:
+        with output_path.open('w', encoding='utf-8') as f:
+            for record in records:
+                f.write(json.dumps(record, ensure_ascii=False) + '\n')
+
+
 def _chunk_text(text: str, chunk_size: int, overlap: int) -> List[str]:
     words = text.split()
     if not words:
@@ -337,7 +356,8 @@ class IngestionResult:
     chunks_path: Path
     relations_path: Path
     cache_dir: Path
-    output_dir: Path
+    chunks_output_dir: Path
+    relations_output_dir: Path
     document_count: int = 0
     chunk_count: int = 0
     relation_count: int = 0
@@ -355,9 +375,11 @@ def _cache_key(config: IngestionConfig) -> str:
 class IngestionPipeline:
     def __init__(self, config: IngestionConfig) -> None:
         self.config = config
-        self.output_dir = config.output_dir.expanduser().resolve()
-        self.cache_dir = self.output_dir / "cache" / _cache_key(config)
-        self.output_dir.mkdir(parents=True, exist_ok=True)
+        self.chunks_output_dir = config.chunks_output_dir.expanduser().resolve()
+        self.relations_output_dir = config.relations_output_dir.expanduser().resolve()
+        self.cache_dir = (config.cache_dir or self.chunks_output_dir.parent / "cache").expanduser().resolve()
+        self.chunks_output_dir.mkdir(parents=True, exist_ok=True)
+        self.relations_output_dir.mkdir(parents=True, exist_ok=True)
         self.extractor = _create_relation_extractor(config)
         calibration = None
         if config.relation_calibration:
@@ -383,88 +405,132 @@ class IngestionPipeline:
                     chunks_path=chunks_path,
                     relations_path=relations_path,
                     cache_dir=self.cache_dir,
-                    output_dir=self.output_dir,
+                    chunks_output_dir=self.chunks_output_dir,
+                    relations_output_dir=self.relations_output_dir,
                 )
 
-        # Load documents from source (supports glob patterns)
-        docs = [{"id": doc_id, "text": text} for doc_id, text in _load_documents_from_source(self.config.source)]
+        # Load documents from source (supports glob patterns, returns domain info)
+        docs_with_domain = [
+            {"id": doc_id, "text": text, "domain": domain} 
+            for doc_id, text, domain in _load_documents_from_source(self.config.source)
+        ]
+        
+        # Group documents by domain
+        from collections import defaultdict
+        domain_docs = defaultdict(list)
+        for doc in docs_with_domain:
+            domain_docs[doc['domain']].append(doc)
+        
+        # Determine if we need per-domain outputs (multiple domains found)
+        use_domain_suffix = len(domain_docs) > 1
         
         # Initialize progress tracking
-        logger.info("Starting ingestion pipeline: {} documents to process", len(docs))
+        total_docs = len(docs_with_domain)
+        logger.info("Starting ingestion pipeline: {} documents to process across {} domain(s)", 
+                   total_docs, len(domain_docs))
         progress = ProgressTracker(
-            total=len(docs),
+            total=total_docs,
             stage_name="Processing documents",
             total_stages=1,
             current_stage=1,
             log_interval=self.config.progress_log_interval,
         )
         
-        chunks_records: List[dict] = []
-        relations_records: List[dict] = []
-        for doc in docs:
-            doc_id = doc.get("id") or doc.get("document_id") or f"doc-{len(chunks_records)}"
-            text = _normalize_text(doc.get("text", ""))
-            relation_cache_key = _relation_cache_key(doc_id, text, self.config)
-            cached_relations = None
-            if self.config.cache_enabled and not force:
-                cached_relations = _load_cached_relations(self.cache_dir, relation_cache_key)
-            doc_relations: List[dict] = []
-            for idx, chunk in enumerate(_chunk_text(text, self.config.chunk_size, self.config.chunk_overlap)):
-                chunk_id = f"{doc_id}::chunk-{idx}"
-                chunks_records.append({"id": chunk_id, "document_id": doc_id, "text": chunk})
-                if cached_relations is None:
-                    chunk_relations, parse_payload = self.extractor.extract(doc_id, chunk_id, chunk)
-                    chunk_relations = _apply_relation_classifier(
-                        chunk_relations, self.classifier, self.config.relation_threshold
-                    )
-                    relations_records.extend(chunk_relations)
-                    doc_relations.extend(chunk_relations)
-                    if parse_payload:
-                        _store_cached_parse(self.cache_dir / "parses", chunk_id, parse_payload)
-                else:
-                    chunk_cached = [rel for rel in cached_relations if rel.get("chunk_id") == chunk_id]
-                    relations_records.extend(chunk_cached)
-                    doc_relations.extend(chunk_cached)
-            if cached_relations is None and self.config.cache_enabled:
-                _store_cached_relations(self.cache_dir, relation_cache_key, doc_relations)
+        all_chunks_records: List[dict] = []
+        all_relations_records: List[dict] = []
+        
+        # Process each domain
+        for domain, docs in domain_docs.items():
+            chunks_records: List[dict] = []
+            relations_records: List[dict] = []
             
-            # Update progress after each document
-            progress.update()
+            for doc in docs:
+                doc_id = doc.get("id") or doc.get("document_id") or f"doc-{len(chunks_records)}"
+                text = _normalize_text(doc.get("text", ""))
+                relation_cache_key = _relation_cache_key(doc_id, text, self.config)
+                cached_relations = None
+                if self.config.cache_enabled and not force:
+                    cached_relations = _load_cached_relations(self.cache_dir, relation_cache_key)
+                doc_relations: List[dict] = []
+                for idx, chunk in enumerate(_chunk_text(text, self.config.chunk_size, self.config.chunk_overlap)):
+                    chunk_id = f"{doc_id}::chunk-{idx}"
+                    chunks_records.append({"id": chunk_id, "document_id": doc_id, "text": chunk})
+                    if cached_relations is None:
+                        chunk_relations, parse_payload = self.extractor.extract(doc_id, chunk_id, chunk)
+                        chunk_relations = _apply_relation_classifier(
+                            chunk_relations, self.classifier, self.config.relation_threshold
+                        )
+                        relations_records.extend(chunk_relations)
+                        doc_relations.extend(chunk_relations)
+                        if parse_payload:
+                            _store_cached_parse(self.cache_dir / "parses", chunk_id, parse_payload)
+                    else:
+                        chunk_cached = [rel for rel in cached_relations if rel.get("chunk_id") == chunk_id]
+                        relations_records.extend(chunk_cached)
+                        doc_relations.extend(chunk_cached)
+                if cached_relations is None and self.config.cache_enabled:
+                    _store_cached_relations(self.cache_dir, relation_cache_key, doc_relations)
+                
+                # Update progress after each document
+                progress.update()
+            
+            # Write domain-specific files
+            if use_domain_suffix:
+                # Multi-domain: use subdirectories within output dirs
+                self.chunks_output_dir.mkdir(parents=True, exist_ok=True)
+                self.relations_output_dir.mkdir(parents=True, exist_ok=True)
+                
+                chunks_filename = f"{domain}.jsonl"
+                relations_filename = f"{domain}.jsonl"
+                chunks_path = self.chunks_output_dir / chunks_filename
+                relations_path = self.relations_output_dir / relations_filename
+            else:
+                # Single domain - use traditional filenames
+                self.chunks_output_dir.mkdir(parents=True, exist_ok=True)
+                self.relations_output_dir.mkdir(parents=True, exist_ok=True)
+                
+                chunks_filename = "chunks.jsonl"
+                relations_filename = "relations.jsonl"
+                chunks_path = self.chunks_output_dir / chunks_filename
+                relations_path = self.relations_output_dir / relations_filename
+            
+            _write_jsonl(chunks_records, chunks_path, self.config.output_compressed)
+            _write_jsonl(relations_records, relations_path, self.config.output_compressed)
+            
+            all_chunks_records.extend(chunks_records)
+            all_relations_records.extend(relations_records)
+            
+            logger.info(f"Domain '{domain}': {len(docs)} docs, {len(chunks_records)} chunks, {len(relations_records)} relations")
 
-        if not chunks_records:
+        if not all_chunks_records:
             raise ValueError("Ingestion pipeline produced zero chunks.")
 
         self.cache_dir.mkdir(parents=True, exist_ok=True)
-        chunks_path = self.cache_dir / "chunks.jsonl"
-        relations_path = self.cache_dir / "relations.jsonl"
-        _write_jsonl(chunks_path, chunks_records)
-        _write_jsonl(relations_path, relations_records)
+        cache_chunks_path = self.cache_dir / "chunks.jsonl"
+        cache_relations_path = self.cache_dir / "relations.jsonl"
+        _write_jsonl(all_chunks_records, cache_chunks_path, False)
+        _write_jsonl(all_relations_records, cache_relations_path, False)
+        
         duration = max(perf_counter() - start, 1e-9)
-        docs_per_sec = len(docs) / duration if docs else 0.0
+        docs_per_sec = total_docs / duration if total_docs else 0.0
         logger.info(
             "Ingestion complete: {} docs ({} chunks, {} relations) in {} ({:.2f} docs/sec)",
-            len(docs),
-            len(chunks_records),
-            len(relations_records),
+            total_docs,
+            len(all_chunks_records),
+            len(all_relations_records),
             _format_duration(duration),
             docs_per_sec,
         )
         return IngestionResult(
-            chunks_path=chunks_path,
-            relations_path=relations_path,
+            chunks_path=cache_chunks_path,
+            relations_path=cache_relations_path,
             cache_dir=self.cache_dir,
-            output_dir=self.output_dir,
-            document_count=len(docs),
-            chunk_count=len(chunks_records),
-            relation_count=len(relations_records),
+            chunks_output_dir=self.chunks_output_dir,
+            relations_output_dir=self.relations_output_dir,
+            document_count=total_docs,
+            chunk_count=len(all_chunks_records),
+            relation_count=len(all_relations_records),
         )
-
-
-def _write_jsonl(path: Path, records: Iterable[dict]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as handle:
-        for record in records:
-            handle.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
 def load_ingest_config(path: Path) -> IngestionConfig:
@@ -483,13 +549,12 @@ CHUNK_ID_TEMPLATE = "{doc_id}-chunk-{idx}"
 
 def run_ingestion(cfg: IngestionConfig, force: bool = False) -> IngestionResult:
     # Load documents from source (supports glob patterns)
-    output_dir = cfg.output_dir
-    cache_dir = (cfg.cache_dir or output_dir / "cache").expanduser().resolve()
-    output_dir.mkdir(parents=True, exist_ok=True)
+    chunks_output_dir = cfg.chunks_output_dir.expanduser().resolve()
+    relations_output_dir = cfg.relations_output_dir.expanduser().resolve()
+    cache_dir = (cfg.cache_dir or chunks_output_dir.parent / "cache").expanduser().resolve()
+    chunks_output_dir.mkdir(parents=True, exist_ok=True)
+    relations_output_dir.mkdir(parents=True, exist_ok=True)
     cache_dir.mkdir(parents=True, exist_ok=True)
-
-    chunks_path = output_dir / "chunks.jsonl"
-    relations_path = output_dir / "relations.jsonl"
 
     chunk_records: List[dict] = []
     relation_records: List[dict] = []
@@ -505,74 +570,118 @@ def run_ingestion(cfg: IngestionConfig, force: bool = False) -> IngestionResult:
         else None
     )
     
-    # Load documents using the new glob-aware function
-    documents = list(_load_documents_from_source(cfg.source))
+    # Load documents using the new glob-aware function (with domain info)
+    docs_with_domain = list(_load_documents_from_source(cfg.source))
+    
+    # Group documents by domain
+    from collections import defaultdict
+    domain_docs = defaultdict(list)
+    for doc_id, text, domain in docs_with_domain:
+        domain_docs[domain].append((doc_id, text))
+    
+    # Determine if we need per-domain outputs (multiple domains found)
+    use_domain_suffix = len(domain_docs) > 1
     
     # Initialize progress tracking
-    logger.info("Starting legacy ingestion pipeline: {} documents to process", len(documents))
+    total_docs = len(docs_with_domain)
+    logger.info("Starting legacy ingestion pipeline: {} documents to process across {} domain(s)", 
+               total_docs, len(domain_docs))
     progress = ProgressTracker(
-        total=len(documents),
+        total=total_docs,
         stage_name="Processing documents",
         total_stages=1,
         current_stage=1,
         log_interval=cfg.progress_log_interval,
     )
     
-    for doc_id, text in documents:
-        cache_key = _chunk_cache_key(doc_id, text, cfg)
-        cached_chunks = None if force else _load_cached_chunks(cache_dir, cache_key)
-        if cached_chunks is None:
-            chunk_texts = _chunk_text(text, cfg.chunk_size, cfg.chunk_overlap)
-            cached_chunks = [
-                {
-                    "doc_id": doc_id,
-                    "chunk_id": CHUNK_ID_TEMPLATE.replace("{doc_id}", doc_id).replace("{idx}", str(idx)),
-                    "text": chunk_text,
-                    "token_count": len(chunk_text.split()),
-                }
-                for idx, chunk_text in enumerate(chunk_texts)
-            ]
-            _store_cached_chunks(cache_dir, cache_key, cached_chunks)
-
-        chunk_records.extend(cached_chunks)
-        relation_cache_key = _relation_cache_key(doc_id, text, cfg)
-        cached_relations = None if force else _load_cached_relations(cache_dir, relation_cache_key)
-        if cached_relations is not None:
-            relation_records.extend(cached_relations)
-        else:
-            doc_relations: List[dict] = []
-            for chunk in cached_chunks:
-                chunk_relations, parse_payload = extractor.extract(
-                    doc_id=doc_id, chunk_id=chunk["chunk_id"], text=chunk["text"]
-                )
-                chunk_relations = _apply_relation_classifier(chunk_relations, classifier, cfg.relation_threshold)
-                doc_relations.extend(chunk_relations)
-                if parse_cache_dir and parse_payload:
-                    _store_cached_parse(parse_cache_dir, chunk["chunk_id"], parse_payload)
-            relation_records.extend(doc_relations)
-            _store_cached_relations(cache_dir, relation_cache_key, doc_relations)
+    # Process each domain
+    for domain, documents in domain_docs.items():
+        domain_chunks: List[dict] = []
+        domain_relations: List[dict] = []
         
-        # Update progress after each document
-        progress.update()
+        for doc_id, text in documents:
+            cache_key = _chunk_cache_key(doc_id, text, cfg)
+            cached_chunks = None if force else _load_cached_chunks(cache_dir, cache_key)
+            if cached_chunks is None:
+                chunk_texts = _chunk_text(text, cfg.chunk_size, cfg.chunk_overlap)
+                cached_chunks = [
+                    {
+                        "doc_id": doc_id,
+                        "chunk_id": CHUNK_ID_TEMPLATE.replace("{doc_id}", doc_id).replace("{idx}", str(idx)),
+                        "text": chunk_text,
+                        "token_count": len(chunk_text.split()),
+                    }
+                    for idx, chunk_text in enumerate(chunk_texts)
+                ]
+                _store_cached_chunks(cache_dir, cache_key, cached_chunks)
 
-    _write_jsonl(chunks_path, chunk_records)
-    _write_jsonl(relations_path, relation_records)
+            domain_chunks.extend(cached_chunks)
+            relation_cache_key = _relation_cache_key(doc_id, text, cfg)
+            cached_relations = None if force else _load_cached_relations(cache_dir, relation_cache_key)
+            if cached_relations is not None:
+                domain_relations.extend(cached_relations)
+            else:
+                doc_relations: List[dict] = []
+                for chunk in cached_chunks:
+                    chunk_relations, parse_payload = extractor.extract(
+                        doc_id=doc_id, chunk_id=chunk["chunk_id"], text=chunk["text"]
+                    )
+                    chunk_relations = _apply_relation_classifier(chunk_relations, classifier, cfg.relation_threshold)
+                    doc_relations.extend(chunk_relations)
+                    if parse_cache_dir and parse_payload:
+                        _store_cached_parse(parse_cache_dir, chunk["chunk_id"], parse_payload)
+                domain_relations.extend(doc_relations)
+                _store_cached_relations(cache_dir, relation_cache_key, doc_relations)
+            
+            # Update progress after each document
+            progress.update()
+        
+        # Write domain-specific files
+        if use_domain_suffix:
+            # Multi-domain: files in output dirs
+            chunks_output_dir.mkdir(parents=True, exist_ok=True)
+            relations_output_dir.mkdir(parents=True, exist_ok=True)
+            
+            chunks_filename = f"{domain}.jsonl"
+            relations_filename = f"{domain}.jsonl"
+            chunks_path = chunks_output_dir / chunks_filename
+            relations_path = relations_output_dir / relations_filename
+        else:
+            # Single domain - use traditional filenames
+            chunks_output_dir.mkdir(parents=True, exist_ok=True)
+            relations_output_dir.mkdir(parents=True, exist_ok=True)
+            
+            chunks_filename = "chunks.jsonl"
+            relations_filename = "relations.jsonl"
+            chunks_path = chunks_output_dir / chunks_filename
+            relations_path = relations_output_dir / relations_filename
+        
+        _write_jsonl(domain_chunks, chunks_path, cfg.output_compressed)
+        _write_jsonl(domain_relations, relations_path, cfg.output_compressed)
+        
+        chunk_records.extend(domain_chunks)
+        relation_records.extend(domain_relations)
+        
+        logger.info(f"Domain '{domain}': {len(documents)} docs, {len(domain_chunks)} chunks, {len(domain_relations)} relations")
+
     duration = max(perf_counter() - start, 1e-9)
     logger.info(
         "Legacy ingestion complete: {} docs ({} chunks, {} relations) in {} ({:.2f} docs/sec)",
-        len(documents),
+        total_docs,
         len(chunk_records),
         len(relation_records),
         _format_duration(duration),
-        (len(documents) / duration) if documents else 0.0,
+        (total_docs / duration) if total_docs else 0.0,
     )
 
+    # Return paths to cache (for backwards compatibility)
     return IngestionResult(
-        chunks_path=chunks_path,
-        relations_path=relations_path,
+        chunks_path=chunks_output_dir / ("chunks.jsonl" if not use_domain_suffix else f"{list(domain_docs.keys())[0]}.jsonl"),
+        relations_path=relations_output_dir / ("relations.jsonl" if not use_domain_suffix else f"{list(domain_docs.keys())[0]}.jsonl"),
         cache_dir=cache_dir,
-        output_dir=output_dir,
-        document_count=len(documents),
+        chunks_output_dir=chunks_output_dir,
+        relations_output_dir=relations_output_dir,
+        document_count=total_docs,
         chunk_count=len(chunk_records),
         relation_count=len(relation_records),
     )
@@ -693,17 +802,24 @@ def _resolve_source_files(source_pattern: str) -> List[Path]:
     return sorted(resolved_files)
 
 
-def _load_documents_from_source(source_pattern: str) -> List[tuple[str, str]]:
+def _load_documents_from_source(source_pattern: str) -> List[tuple[str, str, str]]:
     """
     Load documents from source pattern (file or glob).
-    Returns list of (doc_id, text) tuples.
+    Returns list of (doc_id, text, domain) tuples.
+    Domain is derived from the source filename.
     """
     import gzip
     
     files = _resolve_source_files(source_pattern)
-    documents: List[tuple[str, str]] = []
+    documents: List[tuple[str, str, str]] = []
     
     for file_path in files:
+        # Extract domain from filename
+        domain = file_path.stem
+        # For .jsonl.gz, remove the .jsonl part too
+        if domain.endswith('.jsonl'):
+            domain = domain[:-6]
+        
         # Handle different file types
         suffix = file_path.suffix.lower()
         name_lower = file_path.name.lower()
@@ -721,13 +837,13 @@ def _load_documents_from_source(source_pattern: str) -> List[tuple[str, str]]:
                     text = str(item)
                     doc_identifier = f"{file_path.stem}-{idx}"
                 slug = _slugify(str(doc_identifier))
-                documents.append((slug or f"{file_path.stem}-{idx}", _normalize_text(text)))
+                documents.append((slug or f"{file_path.stem}-{idx}", _normalize_text(text), domain))
         
         # Plain text files
         elif suffix in {".txt", ".md"}:
             text = file_path.read_text(encoding="utf-8").strip()
             if text:
-                documents.append((file_path.stem, _normalize_text(text)))
+                documents.append((file_path.stem, _normalize_text(text), domain))
         
         # JSON files (single document or array)
         elif suffix == ".json":
@@ -751,7 +867,7 @@ def _load_documents_from_source(source_pattern: str) -> List[tuple[str, str]]:
                     text = str(item)
                     doc_identifier = f"{file_path.stem}-{idx}"
                 slug = _slugify(str(doc_identifier))
-                documents.append((slug or f"{file_path.stem}-{idx}", _normalize_text(text)))
+                documents.append((slug or f"{file_path.stem}-{idx}", _normalize_text(text), domain))
     
     if not documents:
         raise ValueError(f"No documents found in source: {source_pattern}")

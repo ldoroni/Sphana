@@ -22,15 +22,10 @@ python -m sphana_trainer.cli ingest-cache-models `
     --stanza-lang en
 
 # Prepare training data for the train (output target/ingest/)
-python -m sphana_trainer.cli ingest `
-    --config configs\ingest\wiki.yaml
+python -m sphana_trainer.cli ingest --config configs/ingest/wiki.yaml
 
 # Build dataset from ingest (output target/datasets/)
-python -m sphana_trainer.cli dataset-build-from-ingest target/ingest/ `
-    --output-dir target/datasets/ `
-    --min-confidence 0.35 `
-    --val-ratio 0.15 `
-    --seed 42
+python -m sphana_trainer.cli dataset-build-from-ingest --config configs/dataset-build/wiki.yaml
 
 # Train models (output target/artifacts/)
 python -m sphana_trainer.cli train embedding --config configs/embedding/wiki.yaml

@@ -18,7 +18,7 @@ from rich.console import Console
 from sphana_trainer import __version__
 from sphana_trainer.artifacts import diff_artifacts, list_artifacts, promote_artifact, show_artifact
 from sphana_trainer.artifacts.publisher import publish_manifest
-from sphana_trainer.config import TrainerConfig, load_config
+from sphana_trainer.config import TrainerConfig, load_config, load_dataset_build_config
 from sphana_trainer.data.dataset_builder import build_datasets_from_ingestion
 from sphana_trainer.data.pipeline import (
     IngestionPipeline,
@@ -171,49 +171,31 @@ def dataset_stats_command(
 
 @app.command("dataset-build-from-ingest")
 def dataset_build_from_ingest(
-    ingestion_dir: Path = typer.Argument(..., exists=True, file_okay=False, dir_okay=True),
-    output_dir: Path = typer.Option(
-        DEFAULT_DATASETS_ROOT, "--output-dir", help="Directory to write derived datasets."
-    ),
-    min_confidence: float = typer.Option(
-        0.2, "--min-confidence", min=0.0, max=1.0, help="Minimum relation confidence to keep."
-    ),
-    val_ratio: float = typer.Option(0.2, "--val-ratio", min=0.05, max=0.5, help="Validation split ratio."),
-    seed: int = typer.Option(42, "--seed", help="Random seed for deterministic shuffling."),
-    extra_embedding: List[Path] = typer.Option(
-        [], "--extra-embedding", exists=True, file_okay=True, dir_okay=False, help="Additional embedding JSONL files."
-    ),
-    extra_relation: List[Path] = typer.Option(
-        [], "--extra-relation", exists=True, file_okay=True, dir_okay=False, help="Additional relation JSONL files."
-    ),
-    extra_gnn: List[Path] = typer.Option(
-        [], "--extra-gnn", exists=True, file_okay=True, dir_okay=False, help="Additional GNN JSONL files."
-    ),
-    parses_dir: Optional[Path] = typer.Option(
-        None, "--parses-dir", exists=False, help="Optional directory containing cached parse JSON files."
+    config_path: Path = typer.Option(
+        ..., "--config", "-c", exists=True, help="Path to dataset build configuration file"
     ),
 ) -> None:
-    """Convert ingestion outputs (chunks/relations) into training datasets."""
-
-    chunks_path = ingestion_dir / "chunks.jsonl"
-    relations_path = ingestion_dir / "relations.jsonl"
-    if not chunks_path.exists() or not relations_path.exists():
-        raise typer.BadParameter("Expected chunks.jsonl and relations.jsonl in the ingestion directory.")
-    if parses_dir is None:
-        candidate = ingestion_dir / "cache" / "parses"
-        if candidate.exists():
-            parses_dir = candidate
+    """
+    Convert ingestion outputs (chunks/relations) into training datasets.
+    
+    Example:
+        dataset-build-from-ingest --config configs/dataset-build/wiki.yaml
+    """
+    
+    config = load_dataset_build_config(config_path)
+    
     result = build_datasets_from_ingestion(
-        chunks_path,
-        relations_path,
-        output_dir,
-        val_ratio=val_ratio,
-        min_confidence=min_confidence,
-        seed=seed,
-        extra_embedding=extra_embedding,
-        extra_relation=extra_relation,
-        extra_gnn=extra_gnn,
-        parses_dir=parses_dir,
+        config.chunks_pattern,
+        config.relations_pattern,
+        config.output_dir,
+        val_ratio=config.val_ratio,
+        min_confidence=config.min_confidence,
+        seed=config.seed,
+        extra_embedding=config.extra_embedding,
+        extra_relation=config.extra_relation,
+        extra_gnn=config.extra_gnn,
+        parses_dir=config.parses_dir,
+        output_compressed=config.output_compressed,
     )
     console.print(
         "[green]Derived datasets written to {dir}[/green]\n"
@@ -1307,14 +1289,25 @@ def _workflow_impl(
         dataset_output = (dataset_output_dir or Path(ingest_cfg.output_dir) / "datasets").expanduser().resolve()
 
         def _build_datasets():
+            # Use config values to build patterns
+            chunks_dir = Path(ingest_cfg.chunks_output_dir)
+            relations_dir = Path(ingest_cfg.relations_output_dir)
+            
+            chunks_pattern = str(chunks_dir / "*.jsonl*")
+            relations_pattern = str(relations_dir / "*.jsonl*")
+            
+            # Determine parses directory
+            parses_dir = chunks_dir.parent / "cache" / "parses"
+            
             result = build_datasets_from_ingestion(
-                Path(ingest_cfg.output_dir) / "chunks.jsonl",
-                Path(ingest_cfg.output_dir) / "relations.jsonl",
+                chunks_pattern,
+                relations_pattern,
                 dataset_output,
                 val_ratio=dataset_val_ratio,
                 min_confidence=dataset_min_confidence,
                 seed=dataset_seed,
-                parses_dir=Path(ingest_cfg.output_dir) / "cache" / "parses",
+                parses_dir=parses_dir if parses_dir.exists() else None,
+                output_compressed=ingest_cfg.output_compressed,
             )
             console.print(
                 "[green]Datasets built at {dir}[/green] (embedding train={et}, val={ev}; "
