@@ -253,6 +253,9 @@ ingest:
   
   # Parallel processing
   max_workers: 4
+  
+  # Progress logging
+  progress_log_interval: 10  # Log every 10%
 ```
 
 **Parser Options**:
@@ -292,6 +295,73 @@ export:
     relation: null
     gnn: null
 ```
+
+## Progress Logging Configuration
+
+### progress_log_interval
+
+**Type**: Integer (1-100)  
+**Default**: 10  
+**Available in**: All configs (ingest, embedding, relation, gnn, ner, llm)
+
+Controls how frequently progress updates are logged during long-running operations.
+
+**Value meanings:**
+- `1`: Log every 1% (100 total logs) - Very detailed
+- `5`: Log every 5% (20 total logs) - Detailed
+- `10`: Log every 10% (10 total logs) - Moderate (default)
+- `25`: Log every 25% (4 total logs) - Sparse
+
+**Configuration:**
+```yaml
+ingest:
+  progress_log_interval: 1  # For large datasets
+  
+embedding:
+  progress_log_interval: 5  # For training visibility
+```
+
+**When to use each value:**
+
+| Dataset Size | Operation Time | Recommended Interval | Rationale |
+|--------------|----------------|----------------------|-----------|
+| Small (<1K items) | < 10 minutes | 10-25 | Avoid log spam |
+| Medium (1K-10K) | 10-60 minutes | 5-10 | Balanced visibility |
+| Large (10K-100K) | 1-10 hours | 1-5 | Frequent reassurance |
+| Very Large (100K+) | 10+ hours | 1 | Critical progress tracking |
+
+**Example output with `progress_log_interval: 1`:**
+```
+Stage 1/1: Processing documents | 1% complete | 640/64000 items | Elapsed: 2m 10s | ETA: 3h 28m | Speed: 4.9 items/sec
+Stage 1/1: Processing documents | 2% complete | 1280/64000 items | Elapsed: 4m 22s | ETA: 3h 30m | Speed: 4.9 items/sec
+Stage 1/1: Processing documents | 3% complete | 1920/64000 items | Elapsed: 6m 35s | ETA: 3h 32m | Speed: 4.9 items/sec
+```
+
+**Progress log details:**
+- **Stage**: Current processing stage (e.g., "Processing documents", "Training epoch 2")
+- **% complete**: Percentage of current stage completed
+- **Items**: Processed/Total items (docs, batches, etc.)
+- **Elapsed**: Time since stage started
+- **ETA**: Estimated time to completion based on current speed
+- **Speed**: Processing throughput (items per second)
+
+**Benefits:**
+- Real-time progress feedback
+- Accurate ETA calculations
+- Performance monitoring (items/sec)
+- Early problem detection (if speed drops significantly)
+
+**Recommended values by command:**
+
+| Command | Recommended | Why |
+|---------|-------------|-----|
+| `ingest` (large dataset) | 1 | Long operation (3-10 hours), need frequent updates |
+| `train embedding` | 5 | Moderate epochs (20-40 min each), balanced visibility |
+| `train relation` | 5 | Similar to embedding |
+| `train gnn` | 5 | Quick convergence, moderate logging |
+| `dataset-build-from-ingest` | 10 | Fast operation (5-15 min), default is fine |
+
+---
 
 ## Common Training Options
 
