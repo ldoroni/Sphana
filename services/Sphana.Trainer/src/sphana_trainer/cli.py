@@ -463,11 +463,12 @@ def ingest_cache_models(
     relation_model: Optional[str] = typer.Option(None, "--relation-model", help="Hugging Face relation model to cache."),
     spacy_model: Optional[str] = typer.Option(None, "--spacy-model", help="spaCy pipeline to download (e.g., en_core_web_sm)."),
     stanza_lang: Optional[str] = typer.Option(None, "--stanza-lang", help="Stanza language to download (e.g., en)."),
+    rebel_model: Optional[str] = typer.Option(None, "--rebel-model", help="REBEL model to cache (e.g., Babelscape/rebel-large)."),
 ) -> None:
     """Download/cache models used by the ingestion pipeline."""
 
-    if not any([relation_model, spacy_model, stanza_lang]):
-        raise typer.BadParameter("Specify at least one of --relation-model, --spacy-model, or --stanza-lang.")
+    if not any([relation_model, spacy_model, stanza_lang, rebel_model]):
+        raise typer.BadParameter("Specify at least one of --relation-model, --spacy-model, --stanza-lang, or --rebel-model.")
 
     if relation_model:
         _cache_relation_model(relation_model)
@@ -475,6 +476,8 @@ def ingest_cache_models(
         _download_spacy_model(spacy_model)
     if stanza_lang:
         _download_stanza(stanza_lang)
+    if rebel_model:
+        _cache_rebel_model(rebel_model)
 
 
 @app.command("dataset-download-wiki")
@@ -1501,6 +1504,19 @@ def _cache_relation_model(model_name: str) -> None:
     AutoTokenizer.from_pretrained(model_name)
     AutoModelForSequenceClassification.from_pretrained(model_name)
     console.print(f"[green]Cached relation model {model_name}[/green]")
+
+
+def _cache_rebel_model(model_name: str) -> None:
+    try:
+        from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+    except ImportError as exc:
+        raise typer.BadParameter("transformers is required to cache REBEL models.") from exc
+
+    console.print(f"[cyan]Downloading REBEL model {model_name}...[/cyan]")
+    AutoTokenizer.from_pretrained(model_name)
+    AutoModelForSeq2SeqLM.from_pretrained(model_name)
+    console.print(f"[green]Cached REBEL model {model_name}[/green]")
+
 
 
 def _download_spacy_model(model_name: str) -> None:

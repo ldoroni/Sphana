@@ -22,6 +22,10 @@ python -m sphana_trainer.cli ingest-cache-models `
     --stanza-lang en
 
 # Prepare training data for the train (output target/ingest/)
+# In the relations output, "predicate" can have 3 values:
+# - "entailment": The relation is a strong positive connection.
+# - "contradiction": The entities are in opposition.
+# - "neutral": The relationship is weak, unclear, or simply co-occurrence.
 python -m sphana_trainer.cli ingest --config configs/ingest/wiki.yaml
 
 # Build dataset from ingest (output target/datasets/)

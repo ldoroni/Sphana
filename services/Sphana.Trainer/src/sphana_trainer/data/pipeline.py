@@ -230,6 +230,203 @@ class _StanzaRelationExtractor:
         return records, self.last_parse
 
 
+class _RebelRelationExtractor:
+    """End-to-end relation extractor powered by REBEL (Babelscape/rebel-large)."""
+
+    def __init__(
+        self, 
+        model_name: str, 
+        threshold: float,
+        classifier: Optional["RelationClassifier"] = None
+    ) -> None:
+        try:
+            from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+        except ImportError as exc:
+            raise RuntimeError("Transformers is required for parser='rebel'.") from exc
+        
+        self.model_name = model_name
+        self.threshold = float(threshold)
+        self.classifier = classifier  # Optional BART-MNLI scorer
+        self.last_parse: Optional[dict] = None
+        
+        # Automatic device detection
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
+        logger.info(f"Loading REBEL model: {model_name}")
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModelForSeq2SeqLM.from_pretrained(model_name).to(self.device).eval()
+        
+        if self.device.type == "cuda":
+            logger.info(f"REBEL using GPU: {self.device}")
+        else:
+            logger.info("REBEL using CPU")
+
+    def extract(self, doc_id: str, chunk_id: str, text: str) -> Tuple[List[dict], Optional[dict]]:
+        """Extract relations using REBEL's generative approach."""
+        # Tokenize input
+        inputs = self.tokenizer(
+            text,
+            return_tensors="pt",
+            max_length=512,
+            truncation=True,
+            padding=True
+        )
+        inputs = {k: v.to(self.device) for k, v in inputs.items()}
+        
+        # Generate triplets
+        with torch.no_grad():
+            outputs = self.model.generate(
+                **inputs,
+                max_length=256,
+                num_beams=3,
+                num_return_sequences=1,
+                early_stopping=True
+            )
+        
+        # Decode output
+        decoded = self.tokenizer.decode(outputs[0], skip_special_tokens=False)
+        
+        # Parse REBEL output format into triplets
+        triplets = self._parse_rebel_output(decoded)
+        
+        # Score relations with BART-MNLI if classifier is available
+        if self.classifier and triplets:
+            scored_triplets = self._score_triplets(triplets, text)
+        else:
+            # No scoring: use confidence=1.0 for all REBEL-extracted relations
+            scored_triplets = [(subj, pred, obj, 1.0) for subj, pred, obj in triplets]
+        
+        # Convert to our relation format, filtering by threshold
+        records = []
+        for subj, pred, obj, confidence in scored_triplets:
+            if confidence >= self.threshold:
+                records.append({
+                    "doc_id": doc_id,
+                    "chunk_id": chunk_id,
+                    "subject": subj,
+                    "predicate": pred,
+                    "object": obj,
+                    "confidence": confidence,
+                    "sentence": text[:200],  # Store excerpt
+                })
+        
+        self.last_parse = {"triplets": triplets, "raw_output": decoded}
+        return records, self.last_parse
+    
+    def _score_triplets(
+        self, 
+        triplets: List[Tuple[str, str, str]], 
+        context: str
+    ) -> List[Tuple[str, str, str, float]]:
+        """
+        Score REBEL-extracted triplets using BART-MNLI.
+        
+        Converts each triplet to a natural language hypothesis and scores
+        whether the context entails it.
+        """
+        scored = []
+        
+        for subj, pred, obj in triplets:
+            # Convert triplet to natural language hypothesis
+            # Format: "The {subject} {predicate} {object}."
+            hypothesis = self._triplet_to_hypothesis(subj, pred, obj)
+            
+            # Score using BART-MNLI
+            label, score = self.classifier.classify(f"{context} [SEP] {hypothesis}")
+            
+            # Use entailment probability as confidence
+            # BART-MNLI returns ("ENTAILMENT", score) or ("NEUTRAL"/"CONTRADICTION", score)
+            if label.upper() == "ENTAILMENT":
+                confidence = score
+            elif label.upper() == "NEUTRAL":
+                confidence = score * 0.5  # Moderate confidence for neutral
+            else:  # CONTRADICTION
+                confidence = 0.1  # Low confidence for contradictions
+            
+            scored.append((subj, pred, obj, confidence))
+        
+        return scored
+    
+    def _triplet_to_hypothesis(self, subj: str, pred: str, obj: str) -> str:
+        """
+        Convert a triplet to a natural language hypothesis for NLI scoring.
+        
+        Examples:
+        - (Einstein, discovered, relativity) -> "Einstein discovered relativity"
+        - (water, instance of, chemical compound) -> "Water is an instance of chemical compound"
+        """
+        # Normalize predicate for better grammar
+        pred_lower = pred.lower().strip()
+        
+        # Handle common relation types with appropriate phrasing
+        if pred_lower in {"instance of", "subclass of", "type of"}:
+            return f"{subj} is {pred_lower} {obj}"
+        elif pred_lower in {"part of", "located in", "member of"}:
+            return f"{subj} is {pred_lower} {obj}"
+        elif pred_lower in {"has part", "contains", "includes"}:
+            return f"{subj} {pred} {obj}"
+        else:
+            # Default: direct concatenation
+            return f"{subj} {pred} {obj}"
+    
+    def _parse_rebel_output(self, decoded: str) -> List[Tuple[str, str, str]]:
+        """
+        Parse REBEL's generated output into triplets.
+        
+        REBEL's actual format is:
+        <triplet> SUBJECT <subj> OBJECT <obj> RELATION <subj> SUBJECT2 <obj> RELATION2 ...
+        
+        Example:
+        <triplet> Schrödinger equation <subj> partial differential equation <obj> instance of <subj> Erwin Schrödinger <obj> named after
+        
+        This produces two triplets:
+        1. (Schrödinger equation, instance of, partial differential equation)
+        2. (Schrödinger equation, named after, Erwin Schrödinger)
+        """
+        triplets = []
+        
+        # Remove start/end tokens
+        decoded = decoded.replace('<s>', '').replace('</s>', '').strip()
+        
+        # Split by <triplet> markers
+        parts = decoded.split('<triplet>')
+        
+        for part in parts:
+            part = part.strip()
+            if not part:
+                continue
+            
+            # REBEL format: SUBJ <subj> OBJ1 <obj> REL1 <subj> OBJ2 <obj> REL2 ...
+            # Split into segments by <subj> and <obj> markers
+            import re
+            
+            # Find the subject (text before first <subj>)
+            first_subj_pos = part.find('<subj>')
+            if first_subj_pos == -1:
+                continue
+            
+            subject = part[:first_subj_pos].strip()
+            if not subject:
+                continue
+            
+            # Now parse the alternating <subj> object <obj> relation pattern
+            # Pattern: <subj> OBJECT <obj> RELATION <subj> OBJECT2 <obj> RELATION2 ...
+            remaining = part[first_subj_pos:]
+            
+            # Find all <subj>...<obj> pairs
+            subj_obj_pattern = r'<subj>(.*?)<obj>(.*?)(?=<subj>|$)'
+            matches = re.findall(subj_obj_pattern, remaining)
+            
+            for obj_text, rel_text in matches:
+                obj_text = obj_text.strip()
+                rel_text = rel_text.strip()
+                
+                if subject and obj_text and rel_text:
+                    triplets.append((subject, rel_text, obj_text))
+        
+        return triplets
+
+
 class RelationClassifier:  # pragma: no cover - requires heavyweight HF models
     """Optional Hugging Face classifier applied to extracted relations."""
 
@@ -282,6 +479,21 @@ def _create_relation_extractor(config: IngestionConfig):
         return _SpacyRelationExtractor(config.parser_model, config.relation_threshold)
     if config.parser == "stanza":
         return _StanzaRelationExtractor(config.language, config.relation_threshold)
+    if config.parser == "rebel":
+        # Use REBEL model - defaults to babelscape/rebel-large if not specified
+        model_name = config.parser_model if config.parser_model != "en_core_web_sm" else "Babelscape/rebel-large"
+        
+        # Optional: Add BART-MNLI classifier for scoring REBEL relations
+        classifier = None
+        if config.relation_model:
+            logger.info(f"Loading relation classifier for scoring: {config.relation_model}")
+            classifier = RelationClassifier(
+                model_name=config.relation_model,
+                max_length=config.relation_max_length,
+                calibration=config.relation_calibration
+            )
+        
+        return _RebelRelationExtractor(model_name, config.relation_threshold, classifier)
     raise ValueError(f"Unsupported parser backend '{config.parser}'")  # pragma: no cover - parser choices validated
 
 
@@ -457,9 +669,11 @@ class IngestionPipeline:
                     chunks_records.append({"id": chunk_id, "document_id": doc_id, "text": chunk})
                     if cached_relations is None:
                         chunk_relations, parse_payload = self.extractor.extract(doc_id, chunk_id, chunk)
-                        chunk_relations = _apply_relation_classifier(
-                            chunk_relations, self.classifier, self.config.relation_threshold
-                        )
+                        # REBEL extractor handles scoring internally, skip _apply_relation_classifier
+                        if not isinstance(self.extractor, _RebelRelationExtractor):
+                            chunk_relations = _apply_relation_classifier(
+                                chunk_relations, self.classifier, self.config.relation_threshold
+                            )
                         relations_records.extend(chunk_relations)
                         doc_relations.extend(chunk_relations)
                         if parse_payload:
@@ -626,7 +840,9 @@ def run_ingestion(cfg: IngestionConfig, force: bool = False) -> IngestionResult:
                     chunk_relations, parse_payload = extractor.extract(
                         doc_id=doc_id, chunk_id=chunk["chunk_id"], text=chunk["text"]
                     )
-                    chunk_relations = _apply_relation_classifier(chunk_relations, classifier, cfg.relation_threshold)
+                    # REBEL extractor handles scoring internally, skip _apply_relation_classifier
+                    if not isinstance(extractor, _RebelRelationExtractor):
+                        chunk_relations = _apply_relation_classifier(chunk_relations, classifier, cfg.relation_threshold)
                     doc_relations.extend(chunk_relations)
                     if parse_cache_dir and parse_payload:
                         _store_cached_parse(parse_cache_dir, chunk["chunk_id"], parse_payload)

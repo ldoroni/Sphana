@@ -65,24 +65,35 @@ ingest:
   
   # Relation extraction backend: simple (regex), spacy, or stanza
   # 
-  # |--------|-------------------|-------------------|--------------|
-  # | Parser | Time for 64K docs | Relations Quality | Memory Usage |
-  # |--------|-------------------|-------------------|--------------|
-  # | simple | 30-60 minutes     | Poor              | Low          |
-  # | spacy  | 2-4 hours         | Good              | Medium       |
-  # | stanza | 6-10 hours        | Best              | High         |
-  # |--------|-------------------|-------------------|--------------|
+  # |---------|--------------------|-------------------|--------------|----------------------------------------|
+  # | Parser  | Time for 64K docs  | Relations Quality | Memory Usage | Description                            |
+  # |---------|--------------------|-------------------|--------------|----------------------------------------|
+  # | simple  | 30-60 minutes      | Poor              | Low          | Regex-based, fast but inaccurate       |
+  # | spacy   | 2-4 hours          | Good              | Medium       | Dependency parsing, balanced           |
+  # | stanza  | 6-10 hours         | Best (parsing)    | High         | State-of-art neural parser             |
+  # | rebel   | 8-12 hours         | Best (relations)  | Very High    | End-to-end generative, 220+ relations  |
+  # |---------|--------------------|-------------------|--------------|----------------------------------------|
   #
   # Recommended Value: 
-  #   stanza
+  #   rebel (for best relation quality on Wikipedia data)
   # Recommendation Reason: 
-  #   State-of-the-art neural parser, 95-97% accuracy.
+  #   REBEL is pre-trained on Wikidata relations and generates high-quality semantic triplets.
+  #   Perfect for encyclopedic content. Use this for training data generation.
   parser: simple
   
-  # spaCy model name (used when parser=spacy)
+  # Parser model name
+  # - For parser=spacy: spaCy model name (e.g., en_core_web_sm, en_core_web_trf)
+  # - For parser=stanza: Not used (uses language parameter instead)
+  # - For parser=rebel: REBEL model name
   # 
+  # |------------------------|--------|----------|-----------|--------------------------------|
+  # | Model (rebel)          | Size   | Accuracy | Speed     | Description                    |
+  # |------------------------|--------|----------|-----------|--------------------------------|
+  # | Babelscape/rebel-large | 1.6 GB | Best     | Very slow | 220+ Wikidata relations        |
+  # |------------------------|--------|----------|-----------|--------------------------------|
+  #
   # |-----------------|------|-----------|-----------|
-  # | Model           | Size | Accuracy  | Speed     |
+  # | Model (spacy)   | Size | Accuracy  | Speed     |
   # |-----------------|------|-----------|-----------|
   # | en_core_web_sm  | 13   | Poor      | Fast      |
   # | en_core_web_md  | 43   | Moderate  | Medium    |
@@ -100,6 +111,17 @@ ingest:
   
   # Minimum confidence score to keep extracted relations (0.0 to 1.0)
   #
+  # For parser=rebel with relation_model (BART-MNLI scoring):
+  #   This threshold filters relations after BART-MNLI scores them.
+  #   Recommended: 0.35 (keeps high-confidence entailments)
+  #
+  # For parser=rebel without relation_model:
+  #   All REBEL relations get confidence=1.0, so threshold has no effect.
+  #
+  # For parser=spacy/stanza:
+  #   Filters parser-based relations by dependency score.
+  #   Recommended: 0.20
+  #
   # Recommended Value: 
   #   0.20
   # Recommendation Reason: 
@@ -108,6 +130,12 @@ ingest:
   #   This is a trade-off between precision and recall.
   relation_threshold: 0.6
   
+  # Optional relation classifier for scoring extracted relations
+  #
+  # USAGE WITH REBEL (parser=rebel):
+  # - When set: REBEL extracts → BART-MNLI scores → Filter by threshold
+  # - When null: REBEL extracts → All get confidence=1.0
+  #
   # The relation_model is an optional second-stage classifier that:
   # - Takes relations extracted by the parser (Stanza/spaCy)
   # - Classifies them into specific relation types
@@ -117,8 +145,8 @@ ingest:
   # |-------------------------------------------------|--------|----------|----------|------------------------|
   # | Model                                           | Size   | Accuracy | Speed    | Best For               |
   # |-------------------------------------------------|--------|----------|----------|------------------------|
+  # | facebook/bart-large-mnli                        | 1.6 GB | Best     | Moderate | REBEL scoring          |
   # | sentence-transformers/nli-distilroberta-base-v2 | 250 MB | Good     | Moderate | Balanced (recommended) |
-  # | facebook/bart-large-mnli                        | 1.5 GB | Best     | Slow     | Best quality           |
   # | roberta-large-mnli                              | 1.4 GB | Best     | Slow     | Alternative to BART    |
   # | microsoft/deberta-v3-base                       | 400 MB | Good     | Moderate | Good balance           |
   # |-------------------------------------------------|--------|----------|----------|------------------------|

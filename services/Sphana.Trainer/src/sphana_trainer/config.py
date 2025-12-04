@@ -241,7 +241,7 @@ class IngestionConfig(BaseModel):
     cache_enabled: bool = Field(default=True)
     chunk_size: int = Field(default=120, ge=10)
     chunk_overlap: int = Field(default=20, ge=0)
-    parser: Literal["simple", "spacy", "stanza"] = Field(
+    parser: Literal["simple", "spacy", "stanza", "rebel"] = Field(
         default="simple", description="Relation extraction backend to use."
     )
     parser_model: str = Field(
