@@ -42,9 +42,9 @@ Run the following command:
 python -m nuitka `
     --mingw64 `
     --standalone `
-    --include-data-dir=.\python\resources=resources `
-    --output-dir=.\target `
-    .\src\python\main.py
+    --include-data-dir=.\services\sphana-rag-service\src\resources=resources `
+    --output-dir=.\services\sphana-rag-service\target `
+    .\services\sphana-rag-service\src\python\sphana_rag
 ```
 
 # Notes
