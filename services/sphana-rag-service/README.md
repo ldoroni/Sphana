@@ -28,15 +28,13 @@ Run the following commands:
    `uv sync --project .\services\sphana-rag-service`
 2. Activate the Virtual Environment:<br>
    `.\services\sphana-rag-service\.venv\Scripts\activate`
-<!-- 1. Open Project Dirictory:<br>
-   `cd .\services\sphana-rag-service`
-2. Install Python Dependencies:<br>
-   `uv sync`
-3. Activate the Virtual Environment:<br>
-   `.\.venv\Scripts\activate` -->
 
-# Refresh Dependencies:
+### Flow to update library:
+`uv build --project .\libraries\managed-exceptions-lib`
+`uv publish --publish-url http://localhost:61000/ .\libraries\managed-exceptions-lib\dist\*`
 `uv pip install -e .\services\sphana-rag-service\ --refresh --reinstall`
+`uv sync --project .\services\sphana-rag-service`
+`python .\services\sphana-rag-service\src\python\`
 
 ### Build as Binary (in C lang)
 Run the following command:
@@ -69,10 +67,3 @@ Run the following command:
 docker build --no-cache -t sphana.rag:1.0.0 -f .\src\docker\DockerFile .
 ```
 
-
-### Flow to update library:
-`uv build --project .\libraries\managed-exceptions-lib`
-`uv publish --publish-url http://localhost:61000/ .\libraries\managed-exceptions-lib\dist\*`
-`uv pip install -e .\services\sphana-rag-service\ --refresh --reinstall`
-`uv sync --project .\services\sphana-rag-service`
-`python .\services\sphana-rag-service\src\python\`
