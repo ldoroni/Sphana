@@ -1,5 +1,0 @@
-<Solution>
-  <Project Path="Sphana.Database.Protos/Sphana.Database.Protos.csproj" />
-  <Project Path="Sphana.Database.Tests/Sphana.Database.Tests.csproj" />
-  <Project Path="Sphana.Database/Sphana.Database.csproj" />
-</Solution>

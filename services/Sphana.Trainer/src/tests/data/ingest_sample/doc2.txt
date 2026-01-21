@@ -1,2 +1,0 @@
-Bob founded GraphCo and GraphCo built Atlas. Atlas is the knowledge layer.
-

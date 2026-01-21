@@ -1,4 +1,0 @@
-{"text": "Alice founded NRDB in 2024.", "entity1": {"text": "Alice", "start": 0, "end": 5}, "entity2": {"text": "NRDB", "start": 14, "end": 18}, "label": "founder_of"}
-{"text": "The NRDB project relies on ONNX Runtime.", "entity1": {"text": "NRDB", "start": 4, "end": 8}, "entity2": {"text": "ONNX Runtime", "start": 29, "end": 41}, "label": "uses"}
-{"text": "Graph edges are stored using PCSR format.", "entity1": {"text": "Graph edges", "start": 0, "end": 11}, "entity2": {"text": "PCSR format", "start": 29, "end": 40}, "label": "stored_in"}
-

@@ -1,3 +1,0 @@
-{"doc_id": "doc1", "chunk_id": "doc1-chunk-0", "subject": "AI", "predicate": "accelerates", "object": "innovation", "confidence": 0.95, "sentence": "AI accelerates innovation worldwide."}
-{"doc_id": "doc2", "chunk_id": "doc2-chunk-0", "subject": "GNNs", "predicate": "rank", "object": "answers", "confidence": 0.82, "sentence": "GNNs rank candidate answers."}
-
