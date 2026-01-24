@@ -30,3 +30,9 @@ Run the following commands:
 3. `uv pip install -e .\services\sphana-rag-service\ --refresh --reinstall`
 4. `uv sync --project .\services\sphana-rag-service`
 5. `python .\services\sphana-rag-service\src\python\`
+
+
+# Notes
+- We are using 'nuitka' to compile the python application as C.
+  The 'nuitka' library currently requires Python v12 only!
+  It cannot work with newer versions.
