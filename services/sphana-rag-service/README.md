@@ -27,8 +27,6 @@ python -m nuitka `
     --remove-output `
     --prefer-source-code `
     --lto=yes `
-    --plugin-enable=torch `
-    --plugin-enable=numpy `
     --include-data-dir=.\services\sphana-rag-service\src\resources=resources `
     --output-dir=.\services\sphana-rag-service\target `
     .\services\sphana-rag-service\src\python\sphana_rag
@@ -49,11 +47,11 @@ python -m nuitka `
   This option makes the .exe binary smaller and faster, but it has 0 impact on the logs.
 - "--prefer-source-code" makes Nuitka to prefer original source code over .pyc files.
 - "--unstripped" ensure to NOT use it!
-- "--plugin-enabled=torch" & "--plugin-enabled=numpy" adds better support with Torch to Nuitka
 
 ### Docker Build
 Run the following command:
-```
-docker build --no-cache -t sphana.rag:1.0.0 -f .\src\docker\DockerFile .
-```
+1. No CUDA:
+   `docker build --no-cache -t sphana.rag:1.0.0 -f .\services\sphana-rag-service\src\docker\DockerFile .`
+2. CUDA 12.8 Support:
+   `docker build --no-cache -t sphana.rag:1.0.0-cuda12.8 -f .\services\sphana-rag-service\src\docker\DockerFile-CUDA12.8 .`
 
