@@ -11,17 +11,17 @@ Run the following commands:
    `uv tool install pypiserver`
 2. Create the local repository dir:
    `mkdir C:\Users\ldoro\.pyrepo`
-3. Start the local repository:
-   `pypi-server run -a . -P . -p 61000 --overwrite C:\Users\ldoro\.pyrepo`
-4. Update or create the uv.toml file:
+3. Update or create the uv.toml file:
    `C:\Users\ldoro\AppData\Roaming\uv\uv.toml`
-5. Write the following with in uv.toml file:
+4. Write the following with in uv.toml file:
    ```
    [[index]]
    name = "local-repo"
    url = "http://localhost:61000"
    allow-insecure-host = ["0.0.0.0"]
    ```
+5. Start the local repository:
+   `pypi-server run -a . -P . -p 61000 --overwrite C:\Users\ldoro\.pyrepo`
 
 ## Example for Update Library Flow:
 1. Build Library:

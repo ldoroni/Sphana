@@ -12,4 +12,4 @@ Run the following command:
 1. Build library:<br>
    `uv build --project .\libraries\request-handler-lib`
 2. Publish to repository:<br>
-   `uv publish --publish-url http://localhost:61000/  .\libraries\request-handler-lib\dist\*`
+   `uv publish --publish-url http://localhost:61000/ .\libraries\request-handler-lib\dist\*`

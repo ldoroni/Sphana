@@ -12,6 +12,11 @@ descriptions = "Sphana RAG Service"
 requires-python = "==3.12.*"
 dependencies = [
     "nuitka",
+    "fastapi",
+    "fastapi-utils",
+    "typing-inspect",
+    "pydantic",
+    "uvicorn[standard]",
     "managed_exceptions",
     "request_handler"
 ]
