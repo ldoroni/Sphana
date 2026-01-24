@@ -1,8 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sphana_rag.controllers.indices.v1.index_management_controller import router as index_management_controller_router
-# from sphana_rag.controllers.indices.v1.handlers import CreateIndexHandler
-# from sphana_rag.services.indices import CreateIndexService
 import uvicorn
 
 class Application:
@@ -22,12 +20,6 @@ class Application:
             allow_methods=["*"],
             allow_headers=["*"],
         )
-
-        # create_index_service: CreateIndexService = CreateIndexService()
-        # create_index_handler: CreateIndexHandler = CreateIndexHandler(create_index_service)
-        # index_management_controller: IndexManagementController = IndexManagementController(
-        #     create_index_handler=create_index_handler
-        # )
 
         self.app.include_router(index_management_controller_router)
 
