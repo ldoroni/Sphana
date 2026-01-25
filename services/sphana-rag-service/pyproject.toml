@@ -13,7 +13,6 @@ requires-python = "==3.12.*"
 dependencies = [
     "nuitka",
     "fastapi",
-    "typing-inspect",
     "pydantic",
     "uvicorn[standard]",
     "managed_exceptions",
