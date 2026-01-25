@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sphana_rag.controllers.indices.v1 import index_management_controller_router
+from sphana_rag.controllers.indices.v1 import router as index_management_controller_router
 import uvicorn
 
 class Application:

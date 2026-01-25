@@ -1,5 +1,5 @@
-from .index_management_controller import router as index_management_controller_router
+from .index_management_controller import router
 
 __all__ = [
-    "index_management_controller_router"
+    "router"
 ]
