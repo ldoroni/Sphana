@@ -11,10 +11,16 @@ version = "1.0.0"
 descriptions = "Sphana RAG Service"
 requires-python = "==3.12.*"
 dependencies = [
+    # Compile to C
     "nuitka",
+    # APIs
     "fastapi",
     "pydantic",
     "uvicorn[standard]",
+    # Embedded Databases
+    "rocksdict",
+    "faiss-cpu",
+    # Others
     "managed_exceptions",
     "request_handler"
 ]
