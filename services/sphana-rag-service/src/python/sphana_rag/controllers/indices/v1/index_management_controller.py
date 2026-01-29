@@ -5,7 +5,7 @@ from sphana_rag.controllers.indices.v1.handlers import CreateIndexHandler
 router = APIRouter(prefix="/v1/indices")
 
 @router.post(":create")
-async def create_index(request: Request, create_index_handler = Depends(CreateIndexHandler)) -> Response:
+async def create_index(request: Request, create_index_handler: CreateIndexHandler = Depends(CreateIndexHandler)) -> Response:
     return await create_index_handler.invoke(request)
 
 @router.post(":update")

@@ -5,6 +5,7 @@ from sphana_rag.models import IndexDetails
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChunkDetailsRepository
 
 class CreateIndexService:
+    
     def __init__(self, 
                  index_details_repository: IndexDetailsRepository = Depends(IndexDetailsRepository),
                  index_vectors_repository: IndexVectorsRepository = Depends(IndexVectorsRepository),

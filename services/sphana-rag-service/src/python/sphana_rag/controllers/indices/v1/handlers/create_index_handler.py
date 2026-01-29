@@ -8,7 +8,7 @@ class CreateIndexHandler(RequestHandler[CreateIndexRequest, CreateIndexResponse]
     def __init__(self, 
                  create_index_service: CreateIndexService = Depends(CreateIndexService)):
         super().__init__()
-        self._create_index_service = create_index_service
+        self.__create_index_service = create_index_service
 
     async def _on_validate(self, request: CreateIndexRequest):
         # Validate request
@@ -16,11 +16,11 @@ class CreateIndexHandler(RequestHandler[CreateIndexRequest, CreateIndexResponse]
 
     async def _on_invoke(self, request: CreateIndexRequest) -> CreateIndexResponse:
         # Create index
-        self._create_index_service.create_index(
-            request.index_name or "",
-            request.description or "",
-            request.max_chunk_size or 0,
-            request.max_chunk_overlap_size or 0
+        self.__create_index_service.create_index(
+            index_name=request.index_name or "",
+            description=request.description or "",
+            max_chunk_size=request.max_chunk_size or 0,
+            max_chunk_overlap_size=request.max_chunk_overlap_size or 0
         )
 
         # Return response
