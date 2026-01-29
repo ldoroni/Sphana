@@ -26,8 +26,9 @@ class IndexVectorsRepository:
     def ingest(self, index_name: str, chunk_id: str, chunk_vector: list[float]):
         index: IndexIDMap2 = self.__get_index(index_name)
         x = numpy.array([chunk_vector]).astype(numpy.float32)
-        xids = numpy.array([chunk_id]).astype(numpy.int64)
+        xids = numpy.array([int(chunk_id)]).astype(numpy.int64)
         index.add_with_ids(x, xids) # type: ignore
+        self.__save_index(index_name, index)
 
     def search(self, index_name: str, query_vector: list[float], max_results: int) -> list[TextChunkResult]:
         index: IndexIDMap2 = self.__get_index(index_name)

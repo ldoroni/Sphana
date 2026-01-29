@@ -30,24 +30,25 @@ class TextTokenizer:
 
     def tokenize_text(self, text: str) -> list[float]:
         """
-        Tokenize the input text and return a list of token IDs.
+        Generate embedding for a text.
         
         Args:
-            text: The input text to be tokenized
+            text: The input text
+            
         Returns:
-            List of token IDs
+            List of floats representing the text embedding vector
         """
-
         if not text or not text.strip():
             return []
-
-        encoding = self._tokenizer(
+        
+        embedding = self._model.encode(
             text,
-            add_special_tokens=False,
-            truncation=False
+            convert_to_tensor=False,
+            show_progress_bar=False,
+            normalize_embeddings=True
         )
-
-        return encoding['input_ids']
+        
+        return embedding.tolist()
     
     def chunk_text(
         self, 
@@ -64,7 +65,7 @@ class TextTokenizer:
             chunk_overlap_size: Number of tokens to overlap between consecutive chunks
             
         Returns:
-            List of TextChunk objects, each containing:
+            List of TextChunkDetails objects, each containing:
                 - text: The chunk text
                 - token_count: Number of tokens in the chunk
                 - start_char: Starting character position in original text
@@ -188,15 +189,15 @@ class TextTokenizer:
         
         return len(encoding['input_ids'])
 
-@lru_cache()
-def get_text_tokenizer() -> TextTokenizer:
-    """
-    Factory function that returns a cached TextTokenizer instance.
-    This ensures the model is loaded only once and reused across all requests.
-    Use this with FastAPI's Depends() for dependency injection.
+# @lru_cache()
+# def get_text_tokenizer() -> TextTokenizer:
+#     """
+#     Factory function that returns a cached TextTokenizer instance.
+#     This ensures the model is loaded only once and reused across all requests.
+#     Use this with FastAPI's Depends() for dependency injection.
     
-    Example:
-        def my_service(tokenizer: TextTokenizer = Depends(get_text_tokenizer)):
-            chunks = tokenizer.chunk_text(text, 512, 50)
-    """
-    return TextTokenizer()
+#     Example:
+#         def my_service(tokenizer: TextTokenizer = Depends(get_text_tokenizer)):
+#             chunks = tokenizer.chunk_text(text, 512, 50)
+#     """
+#     return TextTokenizer()

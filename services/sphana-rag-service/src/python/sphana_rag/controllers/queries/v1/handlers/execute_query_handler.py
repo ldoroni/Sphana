@@ -26,8 +26,8 @@ class ExecuteQueryHandler(RequestHandler[ExecuteQueryRequest, ExecuteQueryRespon
         return ExecuteQueryResponse(
             results=[
                 ExecuteQueryResult(
-                    chunk_id=result.chunk_id,
                     document_id=result.document_id,
+                    chunk_index=result.chunk_index,
                     content=result.content,
                     score=result.score
                 )

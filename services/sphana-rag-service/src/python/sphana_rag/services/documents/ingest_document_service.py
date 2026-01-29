@@ -6,6 +6,8 @@ from sphana_rag.models import IndexDetails, DocumentDetails, ChunkDetails, TextC
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChunkDetailsRepository
 from sphana_rag.services.tokenizer import TextTokenizer
 
+ID: int = 0
+
 class IngestDocumentService:
     
     def __init__(self,
@@ -19,9 +21,10 @@ class IngestDocumentService:
         self.__document_details_repository = document_details_repository
         self.__chunk_details_repository = chunk_details_repository
         self.__text_tokenizer = text_tokenizer
-        self.__id = 0
 
     def ingest_document(self, index_name: str, document_id: str, title: str, content: str, metadata: dict[str, str]):
+        global ID  # TODO: Remove when proper unique ID generation is implemented
+        
         # Get index details
         index_details: Optional[IndexDetails] = self.__index_details_repository.read(index_name)
         if index_details == None:
@@ -42,8 +45,8 @@ class IngestDocumentService:
         chunk_ids: list[str] = []
         for chunk_index in range(len(chunks)):
             chunk: TextChunkDetails = chunks[chunk_index]
-            chunk_id: str = str(self.__id) # TODO: Generate unique chunk ID
-            self.__id+=1 # TODO: remove
+            chunk_id: str = str(ID) # TODO: Generate unique chunk ID
+            ID += 1 # TODO: remove
             chunk_details: ChunkDetails = ChunkDetails(
                 chunk_id=chunk_id,
                 document_id=document_id,

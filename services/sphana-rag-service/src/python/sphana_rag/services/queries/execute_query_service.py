@@ -24,7 +24,9 @@ class ExecuteQueryService:
             raise ItemNotFoundException(f"Index {index_name} does not exist")
         
         # Generate embedding for the query
-        query_embedding: list[float] = self.__text_tokenizer.tokenize_text(query)
+        # Using "search_query" prefix for query embeddings as per nomic best practices
+        prefixed_query = f"search_query: {query}"
+        query_embedding: list[float] = self.__text_tokenizer.tokenize_text(prefixed_query)
 
         # Search for similar chunks
         search_results: list[TextChunkResult] = self.__index_vectors_repository.search(index_name, query_embedding, max_results)
@@ -37,8 +39,8 @@ class ExecuteQueryService:
                 # TODO: This should not happen, log warning
                 continue
             actual_result: ExecuteQueryResult = ExecuteQueryResult(
-                chunk_id=chunk_details.chunk_id,
                 document_id=chunk_details.document_id,
+                chunk_index=chunk_details.chunk_index,
                 content=chunk_details.content,
                 score=search_result.score
             )
