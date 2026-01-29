@@ -1,7 +1,7 @@
 from typing import Optional
 from fastapi import Depends
 from managed_exceptions import ItemNotFoundException
-from sphana_rag.models import IndexDetails, ChunkDetails, TextChunkDetails, TextChunkResult, ExecuteQueryResult
+from sphana_rag.models import IndexDetails, ChunkDetails, TextChunkResult, ExecuteQueryResult
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, ChunkDetailsRepository
 from sphana_rag.services.tokenizer import TextTokenizer
 
