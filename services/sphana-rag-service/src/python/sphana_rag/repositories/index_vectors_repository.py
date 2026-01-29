@@ -4,13 +4,13 @@ from faiss import IndexFlatL2, IndexIDMap2, write_index, read_index
 
 class IndexVectorsRepository:
     def __init__(self):
-        self.__db_location: str = "./.database/index_vectors_db"
+        self.__db_location: str = "./.database/index_vectors_db" # TODO: take from env variables
         self.__indices_map: dict[str, IndexIDMap2] = {}
+        self.__dimension = 1024 # TODO: take from env variables
 
     def init(self, index_name: str) -> None:
         if not(index_name in self.__indices_map):
-            dimension = 1024 # TODO: take from env variables
-            quantizer = IndexFlatL2(dimension)
+            quantizer = IndexFlatL2(self.__dimension)
             index = IndexIDMap2(quantizer)
             self.__indices_map[index_name] = index
             self.__save_index(index_name, index)
