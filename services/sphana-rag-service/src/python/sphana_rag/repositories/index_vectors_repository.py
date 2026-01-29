@@ -1,3 +1,4 @@
+import numpy
 import shutil
 from pathlib import Path
 from typing import Optional
@@ -7,7 +8,7 @@ class IndexVectorsRepository:
     def __init__(self):
         self.__db_location: str = "./.database/index_vectors_db" # TODO: take from env variables
         self.__db_map: dict[str, IndexIDMap2] = {}
-        self.__dimension = 1024 # TODO: take from env variables
+        self.__dimension = 768 # TODO: take from env variables
         self.__secondary: bool = False # TODO: take from env variables
 
     def init_index(self, index_name: str) -> None:
@@ -21,7 +22,13 @@ class IndexVectorsRepository:
     def drop_index(self, index_name: str) -> None:
         self.__drop_index(index_name)
 
-    def __get_or_load_index(self, index_name: str) -> IndexIDMap2:
+    def ingest(self, index_name: str, chunk_id: str, vector: list[float]):
+        index: IndexIDMap2 = self.__get_index(index_name)
+        x = numpy.array([vector]).astype(numpy.float32)
+        xids = numpy.array([chunk_id]).astype(numpy.int64)
+        index.add_with_ids(x, xids) # type: ignore
+
+    def __get_index(self, index_name: str) -> IndexIDMap2:
         index: Optional[IndexIDMap2] = self.__db_map.get(index_name)
         if index == None:
             index = self.__load_index(index_name)

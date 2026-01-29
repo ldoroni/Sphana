@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sphana_rag.controllers.documents.v1 import router as document_management_controller_router
 from sphana_rag.controllers.indices.v1 import router as index_management_controller_router
 import uvicorn
 
@@ -21,6 +22,8 @@ class Application:
             allow_headers=["*"],
         )
 
+        # Include routers
+        self.app.include_router(document_management_controller_router)
         self.app.include_router(index_management_controller_router)
 
     def run(self, host='0.0.0.0', port=5001, debug=False):

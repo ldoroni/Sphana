@@ -8,7 +8,7 @@ packages = ["src/python/sphana_rag"]
 [project]
 name = "sphana_rag"
 version = "1.0.0"
-descriptions = "Sphana RAG Service"
+description = "Sphana RAG Service"
 requires-python = "==3.12.*"
 dependencies = [
     # Compile to C
@@ -20,6 +20,12 @@ dependencies = [
     # Embedded Databases
     "rocksdict",
     "faiss-cpu",
+    # ML/AI
+    "torch",
+    "sentence-transformers",
+    "transformers",
+    "einops",
+    "numpy",
     # Others
     "managed_exceptions",
     "request_handler"
