@@ -46,8 +46,7 @@ class IngestDocumentService:
                 chunk_id=chunk_id,
                 document_id=document_id,
                 chunk_index=chunk_index,
-                content=chunk.text,
-                creation_timestamp=datetime.now(timezone.utc)
+                content=chunk.text
             )
             self.__chunk_details_repository.upsert(index_name, chunk_details)
             self.__index_vectors_repository.ingest(index_name, chunk_id, chunk.embedding)

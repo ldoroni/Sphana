@@ -1,4 +1,3 @@
-from datetime import datetime
 from pydantic import BaseModel
 
 class ChunkDetails(BaseModel):
@@ -6,4 +5,3 @@ class ChunkDetails(BaseModel):
     document_id: str
     chunk_index: int
     content: str
-    creation_timestamp: datetime
