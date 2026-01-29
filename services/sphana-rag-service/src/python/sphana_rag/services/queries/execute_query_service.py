@@ -24,8 +24,7 @@ class ExecuteQueryService:
             raise ItemNotFoundException(f"Index {index_name} does not exist")
         
         # Generate embedding for the query
-        query_embedding_details: list[TextChunkDetails] = self.__text_tokenizer.chunk_text(query, 99999999, 0)
-        query_embedding: list[float] = query_embedding_details[0].embedding
+        query_embedding: list[float] = self.__text_tokenizer.tokenize_text(query)
 
         # Search for similar chunks
         search_results: list[TextChunkResult] = self.__index_vectors_repository.search(index_name, query_embedding, max_results)

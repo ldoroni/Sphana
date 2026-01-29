@@ -27,6 +27,27 @@ class TextTokenizer:
         )
         
         print(f"TextTokenizer initialized with device: {self._device}")
+
+    def tokenize_text(self, text: str) -> list[float]:
+        """
+        Tokenize the input text and return a list of token IDs.
+        
+        Args:
+            text: The input text to be tokenized
+        Returns:
+            List of token IDs
+        """
+
+        if not text or not text.strip():
+            return []
+
+        encoding = self._tokenizer(
+            text,
+            add_special_tokens=False,
+            truncation=False
+        )
+
+        return encoding['input_ids']
     
     def chunk_text(
         self, 
@@ -50,6 +71,7 @@ class TextTokenizer:
                 - end_char: Ending character position in original text
                 - embedding: The embedding vector for this chunk
         """
+
         if not text or not text.strip():
             return []
         
