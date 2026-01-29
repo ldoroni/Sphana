@@ -1,30 +1,31 @@
 from typing import Optional
-from rocksdict import Rdict
 from sphana_rag.models import IndexDetails
+from .base_db_repository import BaseDbRepository
 
-class IndexDetailsRepository:
+TABLE_NAME: str = "global"
+
+class IndexDetailsRepository(BaseDbRepository[IndexDetails]):
     def __init__(self):
-        self.__db_location: str = "./.database/index_details_db" # TODO: take from env variables
-        self.__db: Rdict = Rdict(self.__db_location)
-        self.__secondary: bool = False # TODO: take from env variables
+        db_location: str = "./.database/index_details_db" # TODO: take from env variables
+        secondary: bool = False # TODO: take from env variables
+        super().__init__(db_location, secondary)
+        self.init_table()
+        
+    def init_table(self) -> None:
+        self._init_table(TABLE_NAME)
+
+    def drop_table(self) -> None:
+        self._drop_table(TABLE_NAME)
 
     def upsert(self, index_details: IndexDetails) -> None:
-        if self.__secondary:
-            self.__db.try_catch_up_with_primary()
-        self.__db.put(index_details.index_name, index_details)
+        self._upsert_document(TABLE_NAME, index_details.index_name, index_details)
 
     def delete(self, index_name: str) -> None:
-        if self.__secondary:
-            self.__db.try_catch_up_with_primary()
-        self.__db.delete(index_name)
+        self._delete_document(TABLE_NAME, index_name)
 
     def read(self, index_name: str) -> Optional[IndexDetails]:
-        if self.__secondary:
-            self.__db.try_catch_up_with_primary()
-        return self.__db.get(index_name)
+        return self._read_document(TABLE_NAME, index_name)
     
     def exists(self, index_name: str) -> bool:
-        if self.__secondary:
-            self.__db.try_catch_up_with_primary()
-        return index_name in self.__db
-
+        return self._document_exists(TABLE_NAME, index_name)
+    
