@@ -3,6 +3,7 @@ import shutil
 from pathlib import Path
 from typing import Optional
 from faiss import IndexFlatL2, IndexIDMap2, write_index, read_index
+from sphana_rag.models import TextChunkResult
 
 class IndexVectorsRepository:
     def __init__(self):
@@ -22,11 +23,28 @@ class IndexVectorsRepository:
     def drop_index(self, index_name: str) -> None:
         self.__drop_index(index_name)
 
-    def ingest(self, index_name: str, chunk_id: str, vector: list[float]):
+    def ingest(self, index_name: str, chunk_id: str, chunk_vector: list[float]):
         index: IndexIDMap2 = self.__get_index(index_name)
-        x = numpy.array([vector]).astype(numpy.float32)
+        x = numpy.array([chunk_vector]).astype(numpy.float32)
         xids = numpy.array([chunk_id]).astype(numpy.int64)
         index.add_with_ids(x, xids) # type: ignore
+
+    def search(self, index_name: str, query_vector: list[float], max_results: int) -> list[TextChunkResult]:
+        index: IndexIDMap2 = self.__get_index(index_name)
+        if index.ntotal == 0:
+            return []
+        xq = numpy.array([query_vector]).astype(numpy.float32)
+        D, I = index.search(xq, max_results)  # type: ignore
+        results: list[TextChunkResult] = []
+        for distance, idx in zip(D[0], I[0]):
+            if idx == -1:
+                continue
+            result: TextChunkResult = TextChunkResult(
+                chunk_id=str(idx), 
+                score=float(distance)
+            )
+            results.append(result)
+        return results
 
     def __get_index(self, index_name: str) -> IndexIDMap2:
         index: Optional[IndexIDMap2] = self.__db_map.get(index_name)

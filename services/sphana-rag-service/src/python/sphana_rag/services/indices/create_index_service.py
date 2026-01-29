@@ -17,6 +17,7 @@ class CreateIndexService:
         self.__chunk_details_repository = chunk_details_repository
 
     def create_index(self, index_name: str, description: str, max_chunk_size: int, max_chunk_overlap_size: int) -> None:
+        # Assert index name
         if self.__index_details_repository.exists(index_name):
             raise ItemAlreadyExistsException(f"Index {index_name} already exists")
 

@@ -2,7 +2,7 @@ import torch
 from functools import lru_cache
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer
-from sphana_rag.models import TextChunk
+from sphana_rag.models import TextChunkDetails
 
 class TextTokenizer:
     """
@@ -33,7 +33,7 @@ class TextTokenizer:
         text: str, 
         max_chunk_size: int, 
         max_chunk_overlap_size: int
-    ) -> list[TextChunk]:
+    ) -> list[TextChunkDetails]:
         """
         Tokenize and chunk text based on token limits with overlap, generating embeddings for each chunk.
         
@@ -123,10 +123,10 @@ class TextTokenizer:
             normalize_embeddings=True
         )
         
-        # Third pass: create TextChunk objects with embeddings
+        # Third pass: create TextChunkDetails objects with embeddings
         text_chunks = []
         for i, chunk_data in enumerate(chunks):
-            text_chunk = TextChunk(
+            text_chunk = TextChunkDetails(
                 text=chunk_data['text'],
                 token_count=chunk_data['token_count'],
                 start_char=chunk_data['start_char'],

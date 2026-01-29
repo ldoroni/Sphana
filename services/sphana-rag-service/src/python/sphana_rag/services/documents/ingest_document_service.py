@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from typing import Optional
 from fastapi import Depends
 from managed_exceptions import ItemNotFoundException, ItemAlreadyExistsException
-from sphana_rag.models import IndexDetails, DocumentDetails, ChunkDetails, TextChunk
+from sphana_rag.models import IndexDetails, DocumentDetails, ChunkDetails, TextChunkDetails
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChunkDetailsRepository
 from sphana_rag.services.tokenizer import TextTokenizer
 
@@ -22,15 +22,17 @@ class IngestDocumentService:
         self.__id = 0
 
     def ingest_document(self, index_name: str, document_id: str, title: str, content: str, metadata: dict[str, str]):
+        # Get index details
         index_details: Optional[IndexDetails] = self.__index_details_repository.read(index_name)
         if index_details == None:
             raise ItemNotFoundException(f"Index {index_name} does not exist")
         
+        # Assert document id
         if self.__document_details_repository.exists(index_name, document_id):
             raise ItemAlreadyExistsException(f"Document {document_id} already exists in index {index_name}")
         
         # Chunk document content
-        chunks: list[TextChunk] = self.__text_tokenizer.chunk_text(
+        chunks: list[TextChunkDetails] = self.__text_tokenizer.chunk_text(
             content, 
             max_chunk_size=index_details.max_chunk_size, 
             max_chunk_overlap_size=index_details.max_chunk_overlap_size
@@ -39,7 +41,7 @@ class IngestDocumentService:
         # Save chunks details
         chunk_ids: list[str] = []
         for chunk_index in range(len(chunks)):
-            chunk: TextChunk = chunks[chunk_index]
+            chunk: TextChunkDetails = chunks[chunk_index]
             chunk_id: str = str(self.__id) # TODO: Generate unique chunk ID
             self.__id+=1 # TODO: remove
             chunk_details: ChunkDetails = ChunkDetails(

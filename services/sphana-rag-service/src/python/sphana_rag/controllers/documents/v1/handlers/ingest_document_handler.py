@@ -6,17 +6,17 @@ from request_handler import RequestHandler
 class IngestDocumentHandler(RequestHandler[IngestDocumentRequest, IngestDocumentResponse]):
 
     def __init__(self, 
-                 create_index_service: IngestDocumentService = Depends(IngestDocumentService)):
+                 ingest_document_service: IngestDocumentService = Depends(IngestDocumentService)):
         super().__init__()
-        self._create_index_service = create_index_service
+        self.__ingest_document_service = ingest_document_service
 
     async def _on_validate(self, request: IngestDocumentRequest):
         # Validate request
         pass
 
     async def _on_invoke(self, request: IngestDocumentRequest) -> IngestDocumentResponse:
-        # Create index
-        self._create_index_service.ingest_document(
+        # Ingest document
+        self.__ingest_document_service.ingest_document(
             index_name=request.index_name or "",
             document_id=request.document_id or "",
             title=request.title or "",
