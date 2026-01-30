@@ -13,8 +13,8 @@ class TextTokenizer:
     
     def __init__(self):
         """Initialize the tokenizer and model. Loads model eagerly at startup."""
-        self._model_name = "nomic-ai/nomic-embed-text-v1.5"
-        self._device = "cuda" if torch.cuda.is_available() else "cpu"
+        self._model_name = "nomic-ai/nomic-embed-text-v1.5" # TODO: make configurable
+        self._device = "cuda" if torch.cuda.is_available() else "cpu" #TODO: make configurable?
         
         # Load the tokenizer
         self._tokenizer = AutoTokenizer.from_pretrained(self._model_name)
