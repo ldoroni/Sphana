@@ -12,7 +12,7 @@ def main(host='0.0.0.0', port=5001, debug=False):
     # Initialize FastAPI #
     ######################
 
-    # Create FastAPI
+    # Initialize FastAPI
     fast_api: FastAPI = FastAPI(
         title="Sphana RAG API",
         description="API for Sphana RAG",
