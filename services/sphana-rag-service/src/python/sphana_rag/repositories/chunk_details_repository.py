@@ -1,9 +1,13 @@
+import threading
 from typing import Optional
+from rocksdict import Rdict
 from sphana_rag.models import ChunkDetails
 from .base_db_repository import BaseDbRepository
 
 class ChunkDetailsRepository(BaseDbRepository[ChunkDetails]):
     def __init__(self):
+        self.__last_unique_id_map: dict[str, int] = {}
+        self.__last_unique_id_lock = threading.Lock()
         db_location: str = "./.database/chunk_details_db" # TODO: take from env variables
         secondary: bool = False # TODO: take from env variables
         super().__init__(db_location, secondary)
@@ -26,3 +30,26 @@ class ChunkDetailsRepository(BaseDbRepository[ChunkDetails]):
     def exists(self, index_name: str, chunk_id: str) -> bool:
         return self._document_exists(index_name, chunk_id)
     
+    def next_unique_id(self, index_name: str) -> str:
+        with self.__last_unique_id_lock:
+            # Read last unique ID from cache
+            cached_latest_id: Optional[int] = self.__last_unique_id_map.get(index_name)
+            if cached_latest_id != None:
+                next_id = cached_latest_id + 1
+                self.__last_unique_id_map[index_name] = next_id
+                return str(next_id)
+            
+            try:
+                # Read last unique ID from DB
+                # items(backwards=True) starts at the highest key
+                # We wrap it in next() to get just the first (highest) element
+                table: Rdict = super()._get_table(index_name)
+                latest_id = next(table.keys(backwards=True))
+                next_id = int(latest_id) + 1
+                self.__last_unique_id_map[index_name] = next_id
+                return str(next_id)
+            except StopIteration:
+                next_id = 0
+                self.__last_unique_id_map[index_name] = next_id
+                return str(next_id)
+        
