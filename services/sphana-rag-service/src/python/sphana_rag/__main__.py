@@ -8,19 +8,19 @@ from sphana_rag.controllers.indices.v1 import router as index_management_control
 from sphana_rag.controllers.queries.v1 import router as query_executor_controller_router
 
 def main(host='0.0.0.0', port=5001, debug=False):
-    ##########################
-    # Initialize FastAPI app #
-    ##########################
+    ######################
+    # Initialize FastAPI #
+    ######################
 
-    # Create FastAPI app
-    app: FastAPI = FastAPI(
+    # Create FastAPI
+    fast_api: FastAPI = FastAPI(
         title="Sphana RAG API",
         description="API for Sphana RAG",
         version="1.0.0"
     )
     
     # Add CORS middleware
-    app.add_middleware(
+    fast_api.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
         allow_credentials=True,
@@ -29,9 +29,9 @@ def main(host='0.0.0.0', port=5001, debug=False):
     )
 
     # Include routers
-    app.include_router(document_management_controller_router)
-    app.include_router(index_management_controller_router)
-    app.include_router(query_executor_controller_router)
+    fast_api.include_router(document_management_controller_router)
+    fast_api.include_router(index_management_controller_router)
+    fast_api.include_router(query_executor_controller_router)
 
     ##################################
     # Initialize Dependency Injector #
@@ -39,14 +39,14 @@ def main(host='0.0.0.0', port=5001, debug=False):
 
     # Initialize the dependency injector
     injector: Injector = Injector()
-    attach_injector(app, injector)
+    attach_injector(fast_api, injector)
 
     ################
     # Start Server #
     ################
     
     # Start the server
-    uvicorn.run(app, host=host, port=port, reload=debug)
+    uvicorn.run(fast_api, host=host, port=port, reload=debug)
 
 if __name__ == "__main__":
     main()
