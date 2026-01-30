@@ -49,6 +49,8 @@ class ChunkDetailsRepository(BaseDbRepository[ChunkDetails]):
                 self.__last_unique_id_map[index_name] = next_id
                 return str(next_id)
             except StopIteration:
+                # The database is empty
+                # Initialize the unique ID counter 
                 next_id = 0
                 self.__last_unique_id_map[index_name] = next_id
                 return str(next_id)
