@@ -27,7 +27,7 @@ https://visualstudio.microsoft.com/visual-cpp-build-tools/
    https://docs.nvidia.com/deeplearning/cudnn/backend/v9.8.0/reference/support-matrix.html
    https://developer.nvidia.com/cudnn-9-8-0-download-archive
 
-## Create Local Repository
+## Create Local PyPi Repository
 Run the following commands:
 1. Install the server tool:
    `uv tool install pypiserver`
