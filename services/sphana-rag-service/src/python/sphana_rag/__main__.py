@@ -8,6 +8,10 @@ from sphana_rag.controllers.indices.v1 import router as index_management_control
 from sphana_rag.controllers.queries.v1 import router as query_executor_controller_router
 
 def main(host='0.0.0.0', port=5001, debug=False):
+    ##########################
+    # Initialize FastAPI app #
+    ##########################
+
     # Create FastAPI app
     app: FastAPI = FastAPI(
         title="Sphana RAG API",
@@ -29,9 +33,17 @@ def main(host='0.0.0.0', port=5001, debug=False):
     app.include_router(index_management_controller_router)
     app.include_router(query_executor_controller_router)
 
+    ##################################
+    # Initialize Dependency Injector #
+    ##################################
+
     # Initialize the dependency injector
     injector: Injector = Injector()
     attach_injector(app, injector)
+
+    ################
+    # Start Server #
+    ################
     
     # Start the server
     uvicorn.run(app, host=host, port=port, reload=debug)
