@@ -1,12 +1,14 @@
-from fastapi import Depends
+from injector import inject, singleton
 from sphana_rag.controllers.documents.v1.schemas import IngestDocumentRequest, IngestDocumentResponse
 from sphana_rag.services.documents import IngestDocumentService
 from request_handler import RequestHandler
 
+@singleton
 class IngestDocumentHandler(RequestHandler[IngestDocumentRequest, IngestDocumentResponse]):
 
+    @inject
     def __init__(self, 
-                 ingest_document_service: IngestDocumentService = Depends(IngestDocumentService)):
+                 ingest_document_service: IngestDocumentService):
         super().__init__()
         self.__ingest_document_service = ingest_document_service
 

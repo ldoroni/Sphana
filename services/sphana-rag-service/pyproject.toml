@@ -13,6 +13,9 @@ requires-python = "==3.12.*"
 dependencies = [
     # Compile to C
     "nuitka",
+    # Dependency Injection
+    "injector",
+    "fastapi-injector",
     # APIs
     "fastapi",
     "pydantic",

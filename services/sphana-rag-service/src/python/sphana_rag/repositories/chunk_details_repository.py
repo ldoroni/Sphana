@@ -1,10 +1,13 @@
 import threading
 from typing import Optional
+from injector import singleton
 from rocksdict import Rdict
 from sphana_rag.models import ChunkDetails
 from .base_db_repository import BaseDbRepository
 
+@singleton
 class ChunkDetailsRepository(BaseDbRepository[ChunkDetails]):
+    
     def __init__(self):
         self.__last_unique_id_map: dict[str, int] = {}
         self.__last_unique_id_lock = threading.Lock()

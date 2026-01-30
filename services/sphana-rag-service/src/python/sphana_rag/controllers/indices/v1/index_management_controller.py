@@ -1,11 +1,12 @@
-from fastapi import APIRouter, Depends, Request, Response
+from fastapi import APIRouter, Request, Response
+from fastapi_injector import Injected
 from managed_exceptions import UnimplementedException
 from sphana_rag.controllers.indices.v1.handlers import CreateIndexHandler
 
 router = APIRouter(prefix="/v1/indices")
 
 @router.post(":create")
-async def create_index(request: Request, create_index_handler: CreateIndexHandler = Depends(CreateIndexHandler)) -> Response:
+async def create_index(request: Request, create_index_handler: CreateIndexHandler = Injected(CreateIndexHandler)) -> Response:
     return await create_index_handler.invoke(request)
 
 @router.post(":update")

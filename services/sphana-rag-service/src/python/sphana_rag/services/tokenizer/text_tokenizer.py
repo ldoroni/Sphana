@@ -1,9 +1,11 @@
 import torch
+from injector import singleton
 from functools import lru_cache
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer
 from sphana_rag.models import TextChunkDetails
 
+@singleton
 class TextTokenizer:
     """
     Tokenizer class for tokenizing text using the nomic-ai/nomic-embed-text-v1.5 model.
@@ -188,16 +190,3 @@ class TextTokenizer:
         )
         
         return len(encoding['input_ids'])
-
-# @lru_cache()
-# def get_text_tokenizer() -> TextTokenizer:
-#     """
-#     Factory function that returns a cached TextTokenizer instance.
-#     This ensures the model is loaded only once and reused across all requests.
-#     Use this with FastAPI's Depends() for dependency injection.
-    
-#     Example:
-#         def my_service(tokenizer: TextTokenizer = Depends(get_text_tokenizer)):
-#             chunks = tokenizer.chunk_text(text, 512, 50)
-#     """
-#     return TextTokenizer()

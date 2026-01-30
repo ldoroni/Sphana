@@ -1,12 +1,14 @@
-from fastapi import Depends
+from injector import inject, singleton
 from sphana_rag.controllers.queries.v1.schemas import ExecuteQueryRequest, ExecuteQueryResponse, ExecuteQueryResult
 from sphana_rag.services.queries import ExecuteQueryService
 from request_handler import RequestHandler
 
+@singleton
 class ExecuteQueryHandler(RequestHandler[ExecuteQueryRequest, ExecuteQueryResponse]):
 
+    @inject
     def __init__(self, 
-                 execute_query_service: ExecuteQueryService = Depends(ExecuteQueryService)):
+                 execute_query_service: ExecuteQueryService):
         super().__init__()
         self.__execute_query_service = execute_query_service
 

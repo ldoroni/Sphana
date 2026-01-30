@@ -1,17 +1,19 @@
 from typing import Optional
-from fastapi import Depends
+from injector import inject, singleton
 from managed_exceptions import ItemNotFoundException
 from sphana_rag.models import IndexDetails, ChunkDetails, TextChunkResult, ExecuteQueryResult
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, ChunkDetailsRepository
 from sphana_rag.services.tokenizer import TextTokenizer
 
+@singleton
 class ExecuteQueryService:
 
+    @inject
     def __init__(self,
-                 index_details_repository: IndexDetailsRepository = Depends(IndexDetailsRepository),
-                 index_vectors_repository: IndexVectorsRepository = Depends(IndexVectorsRepository),
-                 chunk_details_repository: ChunkDetailsRepository = Depends(ChunkDetailsRepository),
-                 text_tokenizer: TextTokenizer = Depends(TextTokenizer)):
+                 index_details_repository: IndexDetailsRepository,
+                 index_vectors_repository: IndexVectorsRepository,
+                 chunk_details_repository: ChunkDetailsRepository,
+                 text_tokenizer: TextTokenizer):
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__chunk_details_repository = chunk_details_repository

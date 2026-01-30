@@ -1,8 +1,11 @@
 from typing import Optional
+from injector import singleton
 from sphana_rag.models import DocumentDetails
 from .base_db_repository import BaseDbRepository
 
+@singleton
 class DocumentDetailsRepository(BaseDbRepository[DocumentDetails]):
+    
     def __init__(self):
         db_location: str = "./.database/document_details_db" # TODO: take from env variables
         secondary: bool = False # TODO: take from env variables

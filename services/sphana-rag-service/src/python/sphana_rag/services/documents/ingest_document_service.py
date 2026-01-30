@@ -1,19 +1,21 @@
 from datetime import datetime, timezone
 from typing import Optional
-from fastapi import Depends
+from injector import inject, singleton
 from managed_exceptions import ItemNotFoundException, ItemAlreadyExistsException
 from sphana_rag.models import IndexDetails, DocumentDetails, ChunkDetails, TextChunkDetails
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChunkDetailsRepository
 from sphana_rag.services.tokenizer import TextTokenizer
 
+@singleton
 class IngestDocumentService:
     
+    @inject
     def __init__(self,
-                 index_details_repository: IndexDetailsRepository = Depends(IndexDetailsRepository),
-                 index_vectors_repository: IndexVectorsRepository = Depends(IndexVectorsRepository),
-                 document_details_repository: DocumentDetailsRepository = Depends(DocumentDetailsRepository),
-                 chunk_details_repository: ChunkDetailsRepository = Depends(ChunkDetailsRepository),
-                 text_tokenizer: TextTokenizer = Depends(TextTokenizer)):
+                 index_details_repository: IndexDetailsRepository,
+                 index_vectors_repository: IndexVectorsRepository,
+                 document_details_repository: DocumentDetailsRepository,
+                 chunk_details_repository: ChunkDetailsRepository,
+                 text_tokenizer: TextTokenizer):
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__document_details_repository = document_details_repository

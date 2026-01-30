@@ -1,9 +1,11 @@
+from injector import Injector
+import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi_injector import Injected, attach_injector
 from sphana_rag.controllers.documents.v1 import router as document_management_controller_router
 from sphana_rag.controllers.indices.v1 import router as index_management_controller_router
 from sphana_rag.controllers.queries.v1 import router as query_executor_controller_router
-import uvicorn
 
 class Application:
     def __init__(self):
@@ -27,6 +29,10 @@ class Application:
         self.app.include_router(document_management_controller_router)
         self.app.include_router(index_management_controller_router)
         self.app.include_router(query_executor_controller_router)
+
+        # Initialize the dependency injector
+        injector = Injector()
+        attach_injector(self.app, injector)
     
     def run(self, host='0.0.0.0', port=5001, debug=False):
         # logger.info(f"Starting FastAPI server on {host}:{port}")

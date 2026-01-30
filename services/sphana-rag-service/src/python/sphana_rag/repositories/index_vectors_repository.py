@@ -1,3 +1,4 @@
+from injector import singleton
 import numpy
 import shutil
 from pathlib import Path
@@ -5,7 +6,9 @@ from typing import Optional
 from faiss import IndexFlatL2, IndexIDMap2, write_index, read_index
 from sphana_rag.models import TextChunkResult
 
+@singleton
 class IndexVectorsRepository:
+    
     def __init__(self):
         self.__db_location: str = "./.database/index_vectors_db" # TODO: take from env variables
         self.__db_map: dict[str, IndexIDMap2] = {}

@@ -1,10 +1,13 @@
 from typing import Optional
+from injector import singleton
 from sphana_rag.models import IndexDetails
 from .base_db_repository import BaseDbRepository
 
 TABLE_NAME: str = "global"
 
+@singleton
 class IndexDetailsRepository(BaseDbRepository[IndexDetails]):
+    
     def __init__(self):
         db_location: str = "./.database/index_details_db" # TODO: take from env variables
         secondary: bool = False # TODO: take from env variables

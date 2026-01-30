@@ -1,12 +1,14 @@
-from fastapi import Depends
+from injector import inject, singleton
 from sphana_rag.controllers.indices.v1.schemas import CreateIndexRequest, CreateIndexResponse
 from sphana_rag.services.indices import CreateIndexService
 from request_handler import RequestHandler
 
+@singleton
 class CreateIndexHandler(RequestHandler[CreateIndexRequest, CreateIndexResponse]):
 
+    @inject
     def __init__(self, 
-                 create_index_service: CreateIndexService = Depends(CreateIndexService)):
+                 create_index_service: CreateIndexService):
         super().__init__()
         self.__create_index_service = create_index_service
 

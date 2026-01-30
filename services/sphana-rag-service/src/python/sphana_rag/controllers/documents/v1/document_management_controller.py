@@ -1,11 +1,12 @@
-from fastapi import APIRouter, Depends, Request, Response
+from fastapi import APIRouter, Request, Response
+from fastapi_injector import Injected
 from managed_exceptions import UnimplementedException
 from sphana_rag.controllers.documents.v1.handlers import IngestDocumentHandler
 
 router = APIRouter(prefix="/v1/documents")
 
 @router.post(":ingest")
-async def ingest_index(request: Request, ingest_document_handler: IngestDocumentHandler = Depends(IngestDocumentHandler)) -> Response:
+async def ingest_index(request: Request, ingest_document_handler: IngestDocumentHandler = Injected(IngestDocumentHandler)) -> Response:
     return await ingest_document_handler.invoke(request)
 
 @router.post(":update")
