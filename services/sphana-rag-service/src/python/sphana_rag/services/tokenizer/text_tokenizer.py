@@ -1,6 +1,5 @@
 import torch
 from injector import singleton
-from functools import lru_cache
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer
 from sphana_rag.models import TextChunkDetails
