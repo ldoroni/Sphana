@@ -10,6 +10,7 @@ https://visualstudio.microsoft.com/visual-cpp-build-tools/
 2.2. If working with legacy code, you can also select older SDKs (e.g., Windows 8.1 SDK), but this is rarely needed. -->
 
 1. Install Python 12:
+   We must use Python 12 cause we use 'nuitka' to compile the service as .exe
    As PyTorch requires Python v3.9.x-3.12.x (https://pytorch.org/get-started/locally/)
    https://www.python.org/downloads/release/python-31210/
 
