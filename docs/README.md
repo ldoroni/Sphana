@@ -1,9 +1,31 @@
 # Get Started
 
 ## Pre-Requisite
-1. Install Python 3.12
-2. Install UV (for pyproject.toml installations)
-   `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
+
+<!-- Install c++:
+https://visualstudio.microsoft.com/visual-cpp-build-tools/
+1. Select Desktop development with C++.
+2. Under Optional Components, check:
+2.1. Windows 10/11 SDK (or the latest version listed).
+2.2. If working with legacy code, you can also select older SDKs (e.g., Windows 8.1 SDK), but this is rarely needed. -->
+
+1. Install Python 12:
+   As PyTorch requires Python v3.9.x-3.12.x (https://pytorch.org/get-started/locally/)
+   https://www.python.org/downloads/release/python-31210/
+
+2. Install UV (for pyproject.toml installations):
+   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+3. Install CUDA 12.8:
+   https://docs.nvidia.com/cuda/archive/12.8.0/cuda-toolkit-release-notes/index.html#id6
+   https://developer.nvidia.com/cuda-12-8-0-download-archive?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local
+
+4. Install NVidia Studio Driver 572.83:
+   https://www.nvidia.com/en-us/drivers/details/242208/
+
+5. Install cuDNN 9.8.0
+   https://docs.nvidia.com/deeplearning/cudnn/backend/v9.8.0/reference/support-matrix.html
+   https://developer.nvidia.com/cudnn-9-8-0-download-archive
 
 ## Create Local Repository
 Run the following commands:
