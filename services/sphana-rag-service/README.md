@@ -21,17 +21,17 @@ uv run python .\services\sphana-rag-service\src\python\sphana_rag\
 Run the following command:
 ```
 python -m nuitka `
-      --mingw64 `
-      --standalone `
-      --plugin-enable=torch `
-      --plugin-enable=numpy `
-      --noinclude-pytest-mode=nofollow `
-      --remove-output `
-      --prefer-source-code `
-      --lto=no `
-      --output-dir=.\services\sphana-rag-service\target `
-      --include-data-dir=.\services\sphana-rag-service\src\resources=resources `
-      .\services\sphana-rag-service\src\python\sphana_rag
+   --mingw64 `
+   --standalone `
+   --remove-output `
+   --prefer-source-code `
+   --lto=no `
+   --module-parameter=torch-disable-jit=yes `
+   --python-flag=no_docstrings `
+   --noinclude-pytest-mode=nofollow `
+   --output-dir=.\services\sphana-rag-service\target `
+   --include-data-dir=.\services\sphana-rag-service\src\resources=resources `
+   .\services\sphana-rag-service\src\python\sphana_rag
 ```
 
 ### Notes
@@ -59,5 +59,5 @@ Run the following command:
 1. No CUDA:
    `docker build --no-cache -t sphana.rag:1.0.0 -f .\services\sphana-rag-service\src\docker\DockerFile .`
 2. CUDA 12.8 Support:
-   `docker build --no-cache -t sphana.rag:1.0.0-cuda12.8 -f .\services\sphana-rag-service\src\docker\DockerFile-CUDA12.8 .`
+   `docker build --no-cache -t sphana.rag:1.0.0-cuda12.8 -f .\services\sphana-rag-service\src\docker\Dockerfile-CUDA12.8 .`
 

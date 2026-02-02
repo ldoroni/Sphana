@@ -26,17 +26,17 @@ RUN pip install --no-cache-dir . \
 
 # Compile to standalone
 RUN python -m nuitka \
-    #   --mingw64 \
-      --standalone \
-      --plugin-enable=torch \
-      --plugin-enable=numpy \
-      --noinclude-pytest-mode=nofollow \
-      --remove-output \
-      --prefer-source-code \
-      --lto=no \
-      --output-dir=/target \
-      --include-data-dir=./resources=resources \
-      ./python/sphana_rag
+    # --mingw64 \
+    --standalone \
+    --remove-output \
+    --prefer-source-code \
+    --lto=no \
+    --module-parameter=torch-disable-jit=yes \
+    --python-flag=no_docstrings \
+    --noinclude-pytest-mode=nofollow \
+    --output-dir=/target \
+    --include-data-dir=./resources=resources \
+    ./python/sphana_rag
 
 # STAGE 2: The Final CUDA Image (The "Light" part)
 FROM nvidia/cuda:12.8.0-runtime-ubuntu24.04
