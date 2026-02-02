@@ -1,3 +1,4 @@
+import logging
 import torch
 from injector import singleton
 from sentence_transformers import SentenceTransformer
@@ -14,6 +15,8 @@ class TextTokenizer:
     
     def __init__(self):
         """Initialize the tokenizer and model. Loads model eagerly at startup."""
+        self.__logger = logging.getLogger(self.__class__.__name__)
+
         self._model_name = "nomic-ai/nomic-embed-text-v1.5" # TODO: make configurable
         self._device = "cuda" if torch.cuda.is_available() else "cpu" #TODO: make configurable?
         
@@ -27,7 +30,7 @@ class TextTokenizer:
             trust_remote_code=True
         )
         
-        print(f"TextTokenizer initialized with device: {self._device}")
+        self.__logger.info(f"TextTokenizer initialized with device: {self._device}")
 
     def tokenize_text(self, text: str) -> list[float]:
         """

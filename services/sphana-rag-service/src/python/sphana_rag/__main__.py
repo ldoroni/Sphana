@@ -1,3 +1,4 @@
+import logging
 import uvicorn
 from injector import Injector
 from fastapi import FastAPI
@@ -8,6 +9,18 @@ from sphana_rag.controllers.indices.v1 import router as index_management_control
 from sphana_rag.controllers.queries.v1 import router as query_executor_controller_router
 
 def main(host='0.0.0.0', port=5001, debug=False):
+    #####################
+    # Configure Logging #
+    #####################
+
+    # Configure logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s %(levelname)s: [%(name)s] %(message)s',
+        datefmt='%Y-%m-%dT%H:%M:%SZ',
+        handlers=[logging.StreamHandler()]
+    )
+
     ######################
     # Initialize FastAPI #
     ######################
@@ -46,7 +59,7 @@ def main(host='0.0.0.0', port=5001, debug=False):
     ################
     
     # Start the server
-    uvicorn.run(fast_api, host=host, port=port, reload=debug)
+    uvicorn.run(fast_api, host=host, port=port, reload=debug, access_log=debug)
 
 if __name__ == "__main__":
     main()
