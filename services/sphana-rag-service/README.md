@@ -21,15 +21,17 @@ uv run python .\services\sphana-rag-service\src\python\sphana_rag\
 Run the following command:
 ```
 python -m nuitka `
-    --mingw64 `
-    --standalone `
-    --onefile `
-    --remove-output `
-    --prefer-source-code `
-    --lto=yes `
-    --include-data-dir=.\services\sphana-rag-service\src\resources=resources `
-    --output-dir=.\services\sphana-rag-service\target `
-    .\services\sphana-rag-service\src\python\sphana_rag
+      --mingw64 `
+      --standalone `
+      --plugin-enable=torch `
+      --plugin-enable=numpy `
+      --noinclude-pytest-mode=nofollow `
+      --remove-output `
+      --prefer-source-code `
+      --lto=no `
+      --output-dir=.\services\sphana-rag-service\target `
+      --include-data-dir=.\services\sphana-rag-service\src\resources=resources `
+      .\services\sphana-rag-service\src\python\sphana_rag
 ```
 
 ### Notes
@@ -47,6 +49,10 @@ python -m nuitka `
   This option makes the .exe binary smaller and faster, but it has 0 impact on the logs.
 - "--prefer-source-code" makes Nuitka to prefer original source code over .pyc files.
 - "--unstripped" ensure to NOT use it!
+<!-- - "--nofollow-import-to" makes nuitka to stop crashing inside the torch library.
+   You should tell it not to compile the heavy ML libraries into the binary. 
+   These libraries are already highly optimized shared objects (.so files).
+   However, the disadvantage of this solution is that it will force installing python in the OS! -->
 
 ### Docker Build
 Run the following command:

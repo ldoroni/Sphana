@@ -24,7 +24,7 @@ dependencies = [
     "rocksdict",
     "faiss-cpu",
     # ML/AI
-    "torch",
+    "torch>=2.7.0,<2.8.0",
     "sentence-transformers",
     "transformers",
     "einops",

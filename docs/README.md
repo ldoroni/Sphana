@@ -57,5 +57,7 @@ Run the following commands:
 
 # Notes
 - We are using 'nuitka' to compile the python application as C.
-  The 'nuitka' library currently requires Python v12 only!
+  The 'nuitka' library (v2.x) currently requires Python v12 only!
   It cannot work with newer versions.
+- 'nuitka' working well with Torch v2.6.x and v2.7.x.
+  Running 'nuitka' compile command with newer versions, fails. 
