@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Request, Response
 from fastapi_injector import Injected
-from managed_exceptions import UnimplementedException
 from sphana_rag.controllers.indices.v1.handlers import CreateIndexHandler, DeleteIndexHandler, GetIndexHandler, IndexExistsHandler, ListIndicesHandler, UpdateIndexHandler
 
 router = APIRouter(prefix="/v1/indices")
