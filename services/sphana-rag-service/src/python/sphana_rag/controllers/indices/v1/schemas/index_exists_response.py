@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class IndexExistsResponse(BaseModel):
-    pass
+    exists: Optional[bool] = None

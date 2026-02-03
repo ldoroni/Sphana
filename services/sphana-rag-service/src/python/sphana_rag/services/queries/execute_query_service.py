@@ -22,7 +22,7 @@ class ExecuteQueryService:
     def execute_query(self, index_name: str, query: str, max_results: int) -> list[ExecuteQueryResult]:
         # Get index details
         index_details: Optional[IndexDetails] = self.__index_details_repository.read(index_name)
-        if index_details == None:
+        if index_details is None:
             raise ItemNotFoundException(f"Index {index_name} does not exist")
         
         # Generate embedding for the query
@@ -37,7 +37,7 @@ class ExecuteQueryService:
         results: list[ExecuteQueryResult] = []
         for search_result in search_results:
             chunk_details: Optional[ChunkDetails] = self.__chunk_details_repository.read(index_name, search_result.chunk_id)
-            if chunk_details == None:
+            if chunk_details is None:
                 # TODO: This should not happen, log warning
                 continue
             actual_result: ExecuteQueryResult = ExecuteQueryResult(

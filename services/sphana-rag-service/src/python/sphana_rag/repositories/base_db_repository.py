@@ -2,6 +2,8 @@ from abc import ABC
 import shutil
 from typing import Optional
 from rocksdict import Rdict
+from sphana_rag.models import ListResults
+from sympy import limit
 
 class BaseDbRepository[TDocument](ABC):
     def __init__(self, db_location: str, secondary: bool):
@@ -26,6 +28,26 @@ class BaseDbRepository[TDocument](ABC):
     def _read_document(self, table_name: str, document_id: str) -> Optional[TDocument]:
         table: Rdict = self._get_table(table_name)
         return table.get(document_id)
+
+    def _list_documents(self, table_name: str, offset: Optional[str], limit: int) -> ListResults[TDocument]:
+        table: Rdict = self._get_table(table_name)
+        offset_int: int = int(offset) if offset is not None else 0
+        items = table.items(from_key=offset)
+        completed: bool = True
+        next_offset: Optional[str] = None
+        documents: list[TDocument] = []
+        for key, value in items:
+            if len(documents) < limit:
+                documents.append(value)
+            else:
+                next_offset = str(key)
+                completed = False
+                break
+        return ListResults[TDocument](
+            documents=documents, 
+            next_offset=next_offset, 
+            completed=completed
+        )
     
     def _document_exists(self, table_name: str, document_id: str) -> bool:
         table: Rdict = self._get_table(table_name)

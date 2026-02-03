@@ -1,6 +1,7 @@
 from typing import Optional
 from injector import singleton
 from sphana_rag.models import IndexDetails
+from sphana_rag.models import ListResults
 from .base_db_repository import BaseDbRepository
 
 TABLE_NAME: str = "global"
@@ -28,6 +29,9 @@ class IndexDetailsRepository(BaseDbRepository[IndexDetails]):
 
     def read(self, index_name: str) -> Optional[IndexDetails]:
         return self._read_document(TABLE_NAME, index_name)
+    
+    def list(self, offset: Optional[str], limit: int) -> ListResults[IndexDetails]:
+        return self._list_documents(TABLE_NAME, offset, limit)
     
     def exists(self, index_name: str) -> bool:
         return self._document_exists(TABLE_NAME, index_name)

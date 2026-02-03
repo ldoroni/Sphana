@@ -52,7 +52,7 @@ class IndexVectorsRepository:
 
     def __get_index(self, index_name: str) -> IndexIDMap2:
         index: Optional[IndexIDMap2] = self.__db_map.get(index_name)
-        if index == None:
+        if index is None:
             index = self.__load_index(index_name)
         return index
     

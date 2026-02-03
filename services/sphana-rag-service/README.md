@@ -60,4 +60,3 @@ Run the following command:
    `docker build --no-cache -t sphana.rag:1.0.0 -f .\services\sphana-rag-service\src\docker\DockerFile .`
 2. CUDA 12.8 Support:
    `docker build --no-cache -t sphana.rag:1.0.0-cuda12.8 -f .\services\sphana-rag-service\src\docker\Dockerfile-CUDA12.8 .`
-

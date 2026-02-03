@@ -34,6 +34,9 @@ RUN python -m nuitka \
     --module-parameter=torch-disable-jit=yes \
     --python-flag=no_docstrings \
     --noinclude-pytest-mode=nofollow \
+    --nofollow-import-to=numpy.testing \
+    --nofollow-import-to=numpy.distutils \
+    --assume-yes-for-downloads \
     --output-dir=/target \
     --include-data-dir=./resources=resources \
     ./python/sphana_rag

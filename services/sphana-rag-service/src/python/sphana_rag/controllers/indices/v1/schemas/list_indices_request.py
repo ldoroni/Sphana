@@ -3,4 +3,4 @@ from pydantic import BaseModel
 
 class ListIndicesRequest(BaseModel):
     offset: Optional[str] = None
-    size: Optional[int] = None
+    limit: Optional[int] = None

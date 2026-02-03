@@ -5,6 +5,8 @@ from .delete_index_response import DeleteIndexResponse
 from .get_index_request import GetIndexRequest
 from .get_index_response import GetIndexResponse
 from .index_details import IndexDetails
+from .index_exists_request import IndexExistsRequest
+from .index_exists_response import IndexExistsResponse
 from .list_indices_request import ListIndicesRequest
 from .list_indices_response import ListIndicesResponse
 from .update_index_request import UpdateIndexRequest
@@ -18,6 +20,8 @@ __all__ = [
     "GetIndexRequest",
     "GetIndexResponse",
     "IndexDetails",
+    "IndexExistsRequest",
+    "IndexExistsResponse",
     "ListIndicesRequest",
     "ListIndicesResponse",
     "UpdateIndexRequest",

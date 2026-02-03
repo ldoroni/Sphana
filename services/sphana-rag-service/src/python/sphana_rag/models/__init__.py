@@ -2,6 +2,7 @@ from .chunk_details import ChunkDetails
 from .document_details import DocumentDetails
 from .execute_query_result import ExecuteQueryResult
 from .index_details import IndexDetails
+from .list_results import ListResults
 from .text_chunk_details import TextChunkDetails
 from .text_chunk_result import TextChunkResult
 
@@ -10,6 +11,7 @@ __all__ = [
     "DocumentDetails",
     "ExecuteQueryResult",
     "IndexDetails",
+    "ListResults",
     "TextChunkDetails",
     "TextChunkResult"
 ]

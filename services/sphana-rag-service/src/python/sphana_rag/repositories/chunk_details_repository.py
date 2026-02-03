@@ -3,6 +3,7 @@ from typing import Optional
 from injector import singleton
 from rocksdict import Rdict
 from sphana_rag.models import ChunkDetails
+from sphana_rag.models import ListResults
 from .base_db_repository import BaseDbRepository
 
 @singleton
@@ -30,6 +31,9 @@ class ChunkDetailsRepository(BaseDbRepository[ChunkDetails]):
     def read(self, index_name: str, chunk_id: str) -> Optional[ChunkDetails]:
         return self._read_document(index_name, chunk_id)
     
+    def list(self, index_name: str, offset: Optional[str], limit: int) -> ListResults[ChunkDetails]:
+        return self._list_documents(index_name, offset, limit)
+    
     def exists(self, index_name: str, chunk_id: str) -> bool:
         return self._document_exists(index_name, chunk_id)
     
@@ -37,7 +41,7 @@ class ChunkDetailsRepository(BaseDbRepository[ChunkDetails]):
         with self.__last_unique_id_lock:
             # Read last unique ID from cache
             cached_latest_id: Optional[int] = self.__last_unique_id_map.get(index_name)
-            if cached_latest_id != None:
+            if cached_latest_id is not None:
                 next_id = cached_latest_id + 1
                 self.__last_unique_id_map[index_name] = next_id
                 return str(next_id)

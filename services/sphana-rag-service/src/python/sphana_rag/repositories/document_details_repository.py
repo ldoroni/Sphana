@@ -1,6 +1,7 @@
 from typing import Optional
 from injector import singleton
 from sphana_rag.models import DocumentDetails
+from sphana_rag.models import ListResults
 from .base_db_repository import BaseDbRepository
 
 @singleton
@@ -25,6 +26,9 @@ class DocumentDetailsRepository(BaseDbRepository[DocumentDetails]):
 
     def read(self, index_name: str, document_id: str) -> Optional[DocumentDetails]:
         return self._read_document(index_name, document_id)
+    
+    def list(self, index_name: str, offset: Optional[str], limit: int) -> ListResults[DocumentDetails]:
+        return self._list_documents(index_name, offset, limit)
     
     def exists(self, index_name: str, document_id: str) -> bool:
         return self._document_exists(index_name, document_id)

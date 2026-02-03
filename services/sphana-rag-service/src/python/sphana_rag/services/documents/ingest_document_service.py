@@ -25,7 +25,7 @@ class IngestDocumentService:
     def ingest_document(self, index_name: str, document_id: str, title: str, content: str, metadata: dict[str, str]):
         # Get index details
         index_details: Optional[IndexDetails] = self.__index_details_repository.read(index_name)
-        if index_details == None:
+        if index_details is None:
             raise ItemNotFoundException(f"Index {index_name} does not exist")
         
         # Assert document id
