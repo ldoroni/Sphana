@@ -50,13 +50,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # 2. Use the absolute path from the builder stage
 # 3. Copy the specific file created by Nuitka
 # On Linux, Nuitka creates <name>.bin for onefile mode
-COPY --from=builder /target/sphana_rag.dist /app/sphana_rag
+COPY --from=builder /target/sphana_rag.dist /app/
 
 # 4. Ensure the binary is executable
-RUN chmod +x /app/sphana_rag
+RUN chmod +x /app/
 
 # 5. Expose application's port
 EXPOSE 5001
 
 # 6. Run the application
-CMD ["./sphana_rag"]
+CMD ["./sphana_rag.bin"]
