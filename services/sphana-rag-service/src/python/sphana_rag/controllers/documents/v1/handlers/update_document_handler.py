@@ -8,9 +8,9 @@ class UpdateDocumentHandler(RequestHandler[UpdateDocumentRequest, UpdateDocument
 
     @inject
     def __init__(self, 
-                 ingest_document_service: UpdateDocumentService):
+                 update_document_service: UpdateDocumentService):
         super().__init__()
-        self.__ingest_document_service = ingest_document_service
+        self.__update_document_service = update_document_service
 
     async def _on_validate(self, request: UpdateDocumentRequest):
         # Validate request
@@ -18,7 +18,7 @@ class UpdateDocumentHandler(RequestHandler[UpdateDocumentRequest, UpdateDocument
 
     async def _on_invoke(self, request: UpdateDocumentRequest) -> UpdateDocumentResponse:
         # Ingest document
-        self.__ingest_document_service.update_document(
+        self.__update_document_service.update_document(
             index_name=request.index_name or "",
             document_id=request.document_id or "",
             title=request.title,
