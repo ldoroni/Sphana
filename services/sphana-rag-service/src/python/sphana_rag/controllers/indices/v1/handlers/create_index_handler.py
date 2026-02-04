@@ -22,7 +22,7 @@ class CreateIndexHandler(RequestHandler[CreateIndexRequest, CreateIndexResponse]
             index_name=request.index_name or "",
             description=request.description or "",
             max_chunk_size=request.max_chunk_size or 0,
-            max_chunk_overlap_size=request.max_chunk_overlap_size or 0
+            chunk_overlap_size=request.chunk_overlap_size or 0
         )
 
         # Return response

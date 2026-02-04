@@ -10,17 +10,9 @@ from sphana_rag.models import TextChunkDetails
 
 @singleton
 class TextTokenizer:
-    """
-    Tokenizer class for tokenizing text using the nomic-ai/nomic-embed-text-v1.5 model.
-    Supports CUDA acceleration and provides text chunking functionality with token-based overlap.
-    Designed to work with FastAPI's dependency injection system.
-    """
     
     def __init__(self):
-        """Initialize the tokenizer and model. Loads model eagerly at startup."""
         self.__logger = logging.getLogger(self.__class__.__name__)
-
-        self.__device = "cuda" if torch.cuda.is_available() else "cpu"
         
         # Calculate absolute path to local model
         # From: services/sphana-rag-service/src/python/sphana_rag/__main__.py
@@ -37,17 +29,11 @@ class TextTokenizer:
         model_path = Path(local_model_path)
         required_files = ['config.json']
         missing_files = [f for f in required_files if not (model_path / f).exists()]
-        
         if missing_files:
-            error_msg = (
-                f"Local model directory exists but is incomplete. Missing files: {missing_files}. "
-                f"Path: {local_model_path}. "
-                f"Please re-download the model using the model exporter utility."
-            )
-            self.__logger.error(error_msg)
-            raise FileNotFoundError(error_msg)
+            raise FileNotFoundError(f"Local model directory exists but is incomplete; Missing files: {missing_files}; Path: {local_model_path}")
         
-        self.__logger.info(f"Using local model from: {local_model_path}")
+        # Determine device
+        device = "cuda" if torch.cuda.is_available() else "cpu"
         
         # Load the tokenizer
         self.__tokenizer = AutoTokenizer.from_pretrained(
@@ -58,23 +44,13 @@ class TextTokenizer:
         # Load the embedding model
         self.__model = SentenceTransformer(
             local_model_path,
-            device=self.__device,
+            device=device,
             trust_remote_code=True
         )
         
-        self.__logger.info(f"TextTokenizer initialized with device: {self.__device}")
-        self.__logger.info(f"Model loaded from: {local_model_path}")
+        self.__logger.info(f"TextTokenizer initialized with device: {device} and model {local_model_path}")
 
     def tokenize_text(self, text: str) -> list[float]:
-        """
-        Generate embedding for a text.
-        
-        Args:
-            text: The input text
-            
-        Returns:
-            List of floats representing the text embedding vector
-        """
         if not text or not text.strip():
             return []
         
@@ -87,39 +63,17 @@ class TextTokenizer:
         
         return embedding.tolist()
     
-    def chunk_text(
-        self, 
-        text: str, 
-        max_chunk_size: int, 
-        max_chunk_overlap_size: int
-    ) -> list[TextChunkDetails]:
-        """
-        Tokenize and chunk text based on token limits with overlap, generating embeddings for each chunk.
-        
-        Args:
-            text: The input text to be chunked
-            max_chunk_size: Maximum number of tokens per chunk
-            chunk_overlap_size: Number of tokens to overlap between consecutive chunks
-            
-        Returns:
-            List of TextChunkDetails objects, each containing:
-                - text: The chunk text
-                - token_count: Number of tokens in the chunk
-                - start_char: Starting character position in original text
-                - end_char: Ending character position in original text
-                - embedding: The embedding vector for this chunk
-        """
-
+    def tokenize_and_chunk_text(self, text: str, max_chunk_size: int, chunk_overlap_size: int) -> list[TextChunkDetails]:
         if not text or not text.strip():
             return []
         
         if max_chunk_size <= 0:
             raise ValueError("max_chunk_size must be greater than 0")
         
-        if max_chunk_overlap_size < 0:
+        if chunk_overlap_size < 0:
             raise ValueError("chunk_overlap_size must be non-negative")
         
-        if max_chunk_overlap_size >= max_chunk_size:
+        if chunk_overlap_size >= max_chunk_size:
             raise ValueError("chunk_overlap_size must be less than max_chunk_size")
         
         # Tokenize the entire text
@@ -171,7 +125,7 @@ class TextTokenizer:
                 break
             
             # Move forward by (max_chunk_size - chunk_overlap_size)
-            start_idx = end_idx - max_chunk_overlap_size
+            start_idx = end_idx - chunk_overlap_size
         
         # Second pass: generate embeddings for all chunks in batch
         # Using "search_document" prefix for document embeddings as per nomic best practices
@@ -196,28 +150,3 @@ class TextTokenizer:
             text_chunks.append(text_chunk)
         
         return text_chunks
-    
-    def get_device(self) -> str:
-        """Return the device being used (cuda or cpu)."""
-        return self.__device
-    
-    def count_tokens(self, text: str) -> int:
-        """
-        Count the number of tokens in a text.
-        
-        Args:
-            text: The input text
-            
-        Returns:
-            Number of tokens
-        """
-        if not text:
-            return 0
-        
-        encoding = self.__tokenizer(
-            text,
-            add_special_tokens=False,
-            truncation=False
-        )
-        
-        return len(encoding['input_ids'])

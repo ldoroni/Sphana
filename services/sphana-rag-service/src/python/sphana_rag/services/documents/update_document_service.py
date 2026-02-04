@@ -35,10 +35,10 @@ class UpdateDocumentService:
         
         if content is not None:
             # Chunk new document content
-            chunks: list[TextChunkDetails] = self.__text_tokenizer.chunk_text(
+            chunks: list[TextChunkDetails] = self.__text_tokenizer.tokenize_and_chunk_text(
                 content, 
                 max_chunk_size=index_details.max_chunk_size, 
-                max_chunk_overlap_size=index_details.max_chunk_overlap_size
+                chunk_overlap_size=index_details.chunk_overlap_size
             )
 
             # Delete old chunks details

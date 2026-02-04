@@ -30,7 +30,7 @@ class ListIndicesHandler(RequestHandler[ListIndicesRequest, ListIndicesResponse]
                     index_name=index.index_name,
                     description=index.description,
                     max_chunk_size=index.max_chunk_size,
-                    max_chunk_overlap_size=index.max_chunk_overlap_size,
+                    chunk_overlap_size=index.chunk_overlap_size,
                     creation_timestamp=index.creation_timestamp,
                     modification_timestamp=index.modification_timestamp
                 ) for index in results.documents

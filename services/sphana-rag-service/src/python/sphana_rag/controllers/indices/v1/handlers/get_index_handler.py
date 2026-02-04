@@ -28,7 +28,7 @@ class GetIndexHandler(RequestHandler[GetIndexRequest, GetIndexResponse]):
                 index_name=index_details.index_name,
                 description=index_details.description,
                 max_chunk_size=index_details.max_chunk_size,
-                max_chunk_overlap_size=index_details.max_chunk_overlap_size,
+                chunk_overlap_size=index_details.chunk_overlap_size,
                 creation_timestamp=index_details.creation_timestamp,
                 modification_timestamp=index_details.modification_timestamp
             )
