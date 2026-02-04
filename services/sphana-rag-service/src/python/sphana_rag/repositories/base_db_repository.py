@@ -70,7 +70,7 @@ class BaseDbRepository[TDocument](ABC):
         # TODO: if one pod dropped the index, the other pod will not know about that!
         db_location: str = self.__get_table_location(table_name)
         shutil.rmtree(db_location, ignore_errors=True)
-        self.__table_map.pop(table_name)
+        self.__table_map.pop(table_name, None)
 
     def __get_table_location(self, table_name: str) -> str:
         return f"{self.__db_location}/{table_name}"
