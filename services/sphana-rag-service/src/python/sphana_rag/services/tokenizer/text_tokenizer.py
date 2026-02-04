@@ -1,6 +1,7 @@
 import logging
 import os
 import torch
+import sys
 from pathlib import Path
 from injector import singleton
 from sentence_transformers import SentenceTransformer
@@ -22,11 +23,11 @@ class TextTokenizer:
         self._device = "cuda" if torch.cuda.is_available() else "cpu"
         
         # Calculate absolute path to local model
-        # From: services/sphana-rag-service/src/python/sphana_rag/services/tokenizer/text_tokenizer.py
+        # From: services/sphana-rag-service/src/python/sphana_rag/__main__.py
         # To:   services/sphana-rag-service/src/resources/models/embedding
-        current_file = Path(__file__).resolve()
-        service_root = current_file.parents[5]  # Go up to sphana-rag-service/
-        self._local_model_path = str(service_root / "src" / "resources" / "models" / "embedding")
+        current_file = Path(sys.argv[0]).resolve()
+        service_root = current_file.parents[2]
+        self._local_model_path = str(service_root / "resources" / "models" / "embedding")
         
         # Verify local model exists
         if not os.path.exists(self._local_model_path):
