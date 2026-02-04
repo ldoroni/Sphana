@@ -33,6 +33,12 @@ class IndexVectorsRepository:
         index.add_with_ids(x, xids) # type: ignore
         self.__save_index(index_name, index)
 
+    def delete(self, index_name: str, chunk_id: str) -> None:
+        index: IndexIDMap2 = self.__get_index(index_name)
+        xids = numpy.array([int(chunk_id)]).astype(numpy.int64)
+        index.remove_ids(xids) # type: ignore
+        self.__save_index(index_name, index)
+
     def search(self, index_name: str, query_vector: list[float], max_results: int) -> list[TextChunkResult]:
         index: IndexIDMap2 = self.__get_index(index_name)
         if index.ntotal == 0:

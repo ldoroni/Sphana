@@ -20,7 +20,7 @@ class UpdateIndexHandler(RequestHandler[UpdateIndexRequest, UpdateIndexResponse]
         # Update index
         self.__update_index_service.update_index(
             index_name=request.index_name or "",
-            description=request.description or ""
+            description=request.description
         )
 
         # Return response
