@@ -20,50 +20,50 @@ class TextTokenizer:
         """Initialize the tokenizer and model. Loads model eagerly at startup."""
         self.__logger = logging.getLogger(self.__class__.__name__)
 
-        self._device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.__device = "cuda" if torch.cuda.is_available() else "cpu"
         
         # Calculate absolute path to local model
         # From: services/sphana-rag-service/src/python/sphana_rag/__main__.py
         # To:   services/sphana-rag-service/src/resources/models/embedding
         current_file = Path(sys.argv[0]).resolve()
         service_root = current_file.parents[2]
-        self._local_model_path = str(service_root / "resources" / "models" / "embedding")
+        local_model_path = str(service_root / "resources" / "models" / "embedding")
         
         # Verify local model exists
-        if not os.path.exists(self._local_model_path):
-            raise FileNotFoundError(f"Local model not found at: {self._local_model_path}")
+        if not os.path.exists(local_model_path):
+            raise FileNotFoundError(f"Local model not found at: {local_model_path}")
         
         # Verify it's a valid model directory
-        model_path = Path(self._local_model_path)
+        model_path = Path(local_model_path)
         required_files = ['config.json']
         missing_files = [f for f in required_files if not (model_path / f).exists()]
         
         if missing_files:
             error_msg = (
                 f"Local model directory exists but is incomplete. Missing files: {missing_files}. "
-                f"Path: {self._local_model_path}. "
+                f"Path: {local_model_path}. "
                 f"Please re-download the model using the model exporter utility."
             )
             self.__logger.error(error_msg)
             raise FileNotFoundError(error_msg)
         
-        self.__logger.info(f"Using local model from: {self._local_model_path}")
+        self.__logger.info(f"Using local model from: {local_model_path}")
         
         # Load the tokenizer
-        self._tokenizer = AutoTokenizer.from_pretrained(
-            self._local_model_path,
+        self.__tokenizer = AutoTokenizer.from_pretrained(
+            local_model_path,
             trust_remote_code=True
         )
         
         # Load the embedding model
-        self._model = SentenceTransformer(
-            self._local_model_path,
-            device=self._device,
+        self.__model = SentenceTransformer(
+            local_model_path,
+            device=self.__device,
             trust_remote_code=True
         )
         
-        self.__logger.info(f"TextTokenizer initialized with device: {self._device}")
-        self.__logger.info(f"Model loaded from: {self._local_model_path}")
+        self.__logger.info(f"TextTokenizer initialized with device: {self.__device}")
+        self.__logger.info(f"Model loaded from: {local_model_path}")
 
     def tokenize_text(self, text: str) -> list[float]:
         """
@@ -78,7 +78,7 @@ class TextTokenizer:
         if not text or not text.strip():
             return []
         
-        embedding = self._model.encode(
+        embedding = self.__model.encode(
             text,
             convert_to_tensor=False,
             show_progress_bar=False,
@@ -123,7 +123,7 @@ class TextTokenizer:
             raise ValueError("chunk_overlap_size must be less than max_chunk_size")
         
         # Tokenize the entire text
-        encoding = self._tokenizer(
+        encoding = self.__tokenizer(
             text,
             return_offsets_mapping=True,
             add_special_tokens=False,
@@ -176,7 +176,7 @@ class TextTokenizer:
         # Second pass: generate embeddings for all chunks in batch
         # Using "search_document" prefix for document embeddings as per nomic best practices
         prefixed_texts = [f"search_document: {chunk_text}" for chunk_text in chunk_texts]
-        embeddings = self._model.encode(
+        embeddings = self.__model.encode(
             prefixed_texts,
             convert_to_tensor=False,
             show_progress_bar=False,
@@ -199,7 +199,7 @@ class TextTokenizer:
     
     def get_device(self) -> str:
         """Return the device being used (cuda or cpu)."""
-        return self._device
+        return self.__device
     
     def count_tokens(self, text: str) -> int:
         """
@@ -214,7 +214,7 @@ class TextTokenizer:
         if not text:
             return 0
         
-        encoding = self._tokenizer(
+        encoding = self.__tokenizer(
             text,
             add_special_tokens=False,
             truncation=False
