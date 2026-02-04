@@ -1,5 +1,7 @@
 import logging
+import os
 import torch
+from pathlib import Path
 from injector import singleton
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer
@@ -17,20 +19,50 @@ class TextTokenizer:
         """Initialize the tokenizer and model. Loads model eagerly at startup."""
         self.__logger = logging.getLogger(self.__class__.__name__)
 
-        self._model_name = "nomic-ai/nomic-embed-text-v1.5" # TODO: make configurable
-        self._device = "cuda" if torch.cuda.is_available() else "cpu" #TODO: make configurable?
+        self._device = "cuda" if torch.cuda.is_available() else "cpu"
+        
+        # Calculate absolute path to local model
+        # From: services/sphana-rag-service/src/python/sphana_rag/services/tokenizer/text_tokenizer.py
+        # To:   services/sphana-rag-service/src/resources/models/embedding
+        current_file = Path(__file__).resolve()
+        service_root = current_file.parents[5]  # Go up to sphana-rag-service/
+        self._local_model_path = str(service_root / "src" / "resources" / "models" / "embedding")
+        
+        # Verify local model exists
+        if not os.path.exists(self._local_model_path):
+            raise FileNotFoundError(f"Local model not found at: {self._local_model_path}")
+        
+        # Verify it's a valid model directory
+        model_path = Path(self._local_model_path)
+        required_files = ['config.json']
+        missing_files = [f for f in required_files if not (model_path / f).exists()]
+        
+        if missing_files:
+            error_msg = (
+                f"Local model directory exists but is incomplete. Missing files: {missing_files}. "
+                f"Path: {self._local_model_path}. "
+                f"Please re-download the model using the model exporter utility."
+            )
+            self.__logger.error(error_msg)
+            raise FileNotFoundError(error_msg)
+        
+        self.__logger.info(f"Using local model from: {self._local_model_path}")
         
         # Load the tokenizer
-        self._tokenizer = AutoTokenizer.from_pretrained(self._model_name)
+        self._tokenizer = AutoTokenizer.from_pretrained(
+            self._local_model_path,
+            trust_remote_code=True
+        )
         
         # Load the embedding model
         self._model = SentenceTransformer(
-            self._model_name,
+            self._local_model_path,
             device=self._device,
             trust_remote_code=True
         )
         
         self.__logger.info(f"TextTokenizer initialized with device: {self._device}")
+        self.__logger.info(f"Model loaded from: {self._local_model_path}")
 
     def tokenize_text(self, text: str) -> list[float]:
         """
@@ -167,10 +199,6 @@ class TextTokenizer:
     def get_device(self) -> str:
         """Return the device being used (cuda or cpu)."""
         return self._device
-    
-    def get_model_name(self) -> str:
-        """Return the name of the loaded model."""
-        return self._model_name
     
     def count_tokens(self, text: str) -> int:
         """
