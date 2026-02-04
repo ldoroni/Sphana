@@ -8,7 +8,7 @@ packages = ["src/python/request_handler"]
 [project]
 name = "request_handler"
 version = "1.0.0"
-descriptions = "Managed Exceptions Library"
+description = "Request Handler Library"
 requires-python = "==3.12.*"
 dependencies = [
     "fastapi",
