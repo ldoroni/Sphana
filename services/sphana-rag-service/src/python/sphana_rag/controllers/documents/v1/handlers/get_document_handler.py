@@ -1,6 +1,7 @@
 from injector import inject, singleton
 from sphana_rag.controllers.documents.v1.schemas import GetDocumentRequest, GetDocumentResponse, DocumentDetails
 from sphana_rag.services.documents import GetDocumentService
+from sphana_rag.utils import CompressionUtil
 from request_handler import RequestHandler
 
 @singleton
@@ -17,7 +18,7 @@ class GetDocumentHandler(RequestHandler[GetDocumentRequest, GetDocumentResponse]
         pass
 
     async def _on_invoke(self, request: GetDocumentRequest) -> GetDocumentResponse:
-        # Delete document
+        # Get document
         document_details = self.__get_document_service.get_document(
             index_name=request.index_name or "",
             document_id=request.document_id or ""
@@ -28,7 +29,7 @@ class GetDocumentHandler(RequestHandler[GetDocumentRequest, GetDocumentResponse]
             document_details=DocumentDetails(
                 document_id=document_details.document_id,
                 title=document_details.title,
-                content=document_details.content,
+                content=CompressionUtil.decompress(document_details.content), # TODO: I dislike the decompression here!
                 metadata=document_details.metadata,
                 creation_timestamp=document_details.creation_timestamp,
                 modification_timestamp=document_details.modification_timestamp

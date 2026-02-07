@@ -4,6 +4,7 @@ from abc import ABC
 from typing import Optional
 from rocksdict import Rdict
 from sphana_rag.models import ListResults
+from sphana_rag.utils import Base64Util
 
 class BaseDbRepository[TDocument](ABC):
     def __init__(self, db_location: str, secondary: bool):
@@ -31,7 +32,7 @@ class BaseDbRepository[TDocument](ABC):
 
     def _list_documents(self, table_name: str, offset: Optional[str], limit: int) -> ListResults[TDocument]:
         table: Rdict = self._get_table(table_name)
-        plain_offset: Optional[str] = self.__from_base64(offset)
+        plain_offset: Optional[str] = Base64Util.from_nullable_base64(offset)
         items = table.items(from_key=plain_offset)
         completed: bool = True
         next_offset: Optional[str] = None
@@ -45,7 +46,7 @@ class BaseDbRepository[TDocument](ABC):
                 break
         return ListResults[TDocument](
             documents=documents, 
-            next_offset=self.__to_base64(next_offset), 
+            next_offset=Base64Util.to_nullable_base64(next_offset), 
             completed=completed
         )
     
@@ -75,18 +76,3 @@ class BaseDbRepository[TDocument](ABC):
     def __get_table_location(self, table_name: str) -> str:
         return f"{self.__db_location}/{table_name}"
     
-    def __to_base64(self, plain_string: Optional[str]) -> Optional[str]:
-        if plain_string is None:
-            return None
-        data_bytes = plain_string.encode('utf-8')
-        base64_bytes = base64.b64encode(data_bytes)
-        base64_string = base64_bytes.decode('utf-8')
-        return base64_string
-    
-    def __from_base64(self, base64_string: Optional[str]) -> Optional[str]:
-        if base64_string is None:
-            return None
-        base64_bytes = base64_string.encode('utf-8')
-        data_bytes = base64.b64decode(base64_bytes)
-        data = data_bytes.decode('utf-8')
-        return data

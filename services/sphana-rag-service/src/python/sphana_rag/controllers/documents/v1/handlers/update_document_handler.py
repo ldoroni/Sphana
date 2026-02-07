@@ -17,7 +17,7 @@ class UpdateDocumentHandler(RequestHandler[UpdateDocumentRequest, UpdateDocument
         pass
 
     async def _on_invoke(self, request: UpdateDocumentRequest) -> UpdateDocumentResponse:
-        # Ingest document
+        # Update document
         self.__update_document_service.update_document(
             index_name=request.index_name or "",
             document_id=request.document_id or "",

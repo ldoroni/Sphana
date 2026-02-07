@@ -5,20 +5,18 @@ from managed_exceptions import ItemNotFoundException
 from sphana_rag.models import IndexDetails, DocumentDetails, ChunkDetails, TextChunkDetails
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChunkDetailsRepository
 from sphana_rag.services.tokenizer import TextTokenizer
-from sphana_rag.services.utils import ShardUtil
+from sphana_rag.utils import ShardUtil, CompressionUtil
 
 @singleton
 class UpdateDocumentService:
     
     @inject
     def __init__(self,
-                 shard_util: ShardUtil,
                  index_details_repository: IndexDetailsRepository,
                  index_vectors_repository: IndexVectorsRepository,
                  document_details_repository: DocumentDetailsRepository,
                  chunk_details_repository: ChunkDetailsRepository,
                  text_tokenizer: TextTokenizer):
-        self.__shard_util = shard_util
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__document_details_repository = document_details_repository
@@ -32,7 +30,7 @@ class UpdateDocumentService:
             raise ItemNotFoundException(f"Index {index_name} does not exist")
         
         # Get shard name
-        shard_name: str = self.__shard_util.compute_shard_name(
+        shard_name: str = ShardUtil.compute_shard_name(
             index_name, 
             document_id, 
             index_details.number_of_shards
@@ -65,14 +63,14 @@ class UpdateDocumentService:
                     chunk_id=chunk_id,
                     document_id=document_id,
                     chunk_index=chunk_index,
-                    content=chunk.text
+                    content=CompressionUtil.compress(chunk.text)
                 )
                 self.__chunk_details_repository.upsert(shard_name, chunk_details)
                 self.__index_vectors_repository.ingest(shard_name, chunk_id, chunk.embedding)
                 chunk_ids.append(chunk_id)
 
             # Update document details
-            document_details.content = content
+            document_details.content = CompressionUtil.compress(content)
             document_details.chunk_ids = chunk_ids
         
         # Update other document details

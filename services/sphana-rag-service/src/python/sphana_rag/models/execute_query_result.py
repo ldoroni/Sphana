@@ -3,5 +3,5 @@ from pydantic import BaseModel
 class ExecuteQueryResult(BaseModel):
     document_id: str
     chunk_index: int
-    content: str
+    content: bytes
     score: float

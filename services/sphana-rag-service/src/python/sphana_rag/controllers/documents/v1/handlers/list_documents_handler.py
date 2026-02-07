@@ -1,6 +1,7 @@
 from injector import inject, singleton
 from sphana_rag.controllers.documents.v1.schemas import ListDocumentsRequest, ListDocumentsResponse, DocumentDetails
 from sphana_rag.services.documents import ListDocumentsService
+from sphana_rag.utils import CompressionUtil
 from request_handler import RequestHandler
 
 @singleton
@@ -30,7 +31,7 @@ class ListDocumentsHandler(RequestHandler[ListDocumentsRequest, ListDocumentsRes
                 DocumentDetails(
                     document_id=document.document_id,
                     title=document.title,
-                    content=document.content,
+                    content=CompressionUtil.decompress(document.content), # TODO: I dislike the decompression here!
                     metadata=document.metadata,
                     creation_timestamp=document.creation_timestamp,
                     modification_timestamp=document.modification_timestamp
