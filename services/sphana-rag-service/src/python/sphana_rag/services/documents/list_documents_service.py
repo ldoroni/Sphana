@@ -30,9 +30,11 @@ class ListDocumentsService:
         if offset is not None:
             try:
                 tokens: list[str] = offset.split('.')
-                start_shard_number_str: str = self.__from_base64(tokens[0])
-                start_shard_number = int(start_shard_number_str)
-                actual_offset = tokens[1]
+                if len(tokens) > 0:
+                    start_shard_number_str: str = self.__from_base64(tokens[0])
+                    start_shard_number = int(start_shard_number_str)
+                    if len(tokens) > 1:
+                        actual_offset = tokens[1]
             except Exception as e:
                 pass
         
