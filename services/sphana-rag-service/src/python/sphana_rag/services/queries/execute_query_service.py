@@ -4,16 +4,25 @@ from managed_exceptions import ItemNotFoundException
 from sphana_rag.models import IndexDetails, ChunkDetails, TextChunkResult, ExecuteQueryResult
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, ChunkDetailsRepository
 from sphana_rag.services.tokenizer import TextTokenizer
+from sphana_rag.services.utils import ShardUtil
+
+class SearchChunkResult:
+    def __init__(self, shard_name: str, chunk_id: str, score: float):
+        self.shard_name = shard_name
+        self.chunk_id = chunk_id
+        self.score = score
 
 @singleton
 class ExecuteQueryService:
 
     @inject
     def __init__(self,
+                 shard_util: ShardUtil,
                  index_details_repository: IndexDetailsRepository,
                  index_vectors_repository: IndexVectorsRepository,
                  chunk_details_repository: ChunkDetailsRepository,
                  text_tokenizer: TextTokenizer):
+        self.__shard_util = shard_util
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__chunk_details_repository = chunk_details_repository
@@ -31,12 +40,21 @@ class ExecuteQueryService:
         query_embedding: list[float] = self.__text_tokenizer.tokenize_text(prefixed_query)
 
         # Search for similar chunks
-        search_results: list[TextChunkResult] = self.__index_vectors_repository.search(index_name, query_embedding, max_results)
+        total_search_results: list[SearchChunkResult] = []
+        for shard_number in range(index_details.number_of_shards):
+            shard_name: str = self.__shard_util.get_shard_name(index_name, shard_number)
+            search_results: list[TextChunkResult] = self.__index_vectors_repository.search(shard_name, query_embedding, max_results)
+            for search_result in search_results:
+                total_search_results.append(SearchChunkResult(shard_name, search_result.chunk_id, search_result.score))
+
+        # Sort results by score and limit to max_results
+        total_search_results.sort(key=lambda x: x.score, reverse=False)
+        total_search_results = total_search_results[:max_results]
 
         # Retrieve chunks based on chunk IDs, and build results
         results: list[ExecuteQueryResult] = []
-        for search_result in search_results:
-            chunk_details: Optional[ChunkDetails] = self.__chunk_details_repository.read(index_name, search_result.chunk_id)
+        for search_result in total_search_results:
+            chunk_details: Optional[ChunkDetails] = self.__chunk_details_repository.read(search_result.shard_name, search_result.chunk_id)
             if chunk_details is None:
                 # TODO: This should not happen, log warning
                 continue

@@ -21,6 +21,7 @@ class CreateIndexHandler(RequestHandler[CreateIndexRequest, CreateIndexResponse]
         self.__create_index_service.create_index(
             index_name=request.index_name or "",
             description=request.description or "",
+            number_of_shards=request.number_of_shards or 0,
             max_chunk_size=request.max_chunk_size or 0,
             chunk_overlap_size=request.chunk_overlap_size or 0
         )

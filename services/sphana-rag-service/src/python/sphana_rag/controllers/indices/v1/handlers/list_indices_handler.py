@@ -29,6 +29,7 @@ class ListIndicesHandler(RequestHandler[ListIndicesRequest, ListIndicesResponse]
                 IndexDetails(
                     index_name=index.index_name,
                     description=index.description,
+                    number_of_shards=index.number_of_shards,
                     max_chunk_size=index.max_chunk_size,
                     chunk_overlap_size=index.chunk_overlap_size,
                     creation_timestamp=index.creation_timestamp,

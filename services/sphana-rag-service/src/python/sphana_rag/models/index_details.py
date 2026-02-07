@@ -4,6 +4,7 @@ from pydantic import BaseModel
 class IndexDetails(BaseModel):
     index_name: str
     description: str
+    number_of_shards: int
     max_chunk_size: int
     chunk_overlap_size: int
     creation_timestamp: datetime

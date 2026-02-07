@@ -5,17 +5,20 @@ from managed_exceptions import ItemNotFoundException
 from sphana_rag.models import IndexDetails, DocumentDetails, ChunkDetails, TextChunkDetails
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChunkDetailsRepository
 from sphana_rag.services.tokenizer import TextTokenizer
+from sphana_rag.services.utils import ShardUtil
 
 @singleton
 class UpdateDocumentService:
     
     @inject
     def __init__(self,
+                 shard_util: ShardUtil,
                  index_details_repository: IndexDetailsRepository,
                  index_vectors_repository: IndexVectorsRepository,
                  document_details_repository: DocumentDetailsRepository,
                  chunk_details_repository: ChunkDetailsRepository,
                  text_tokenizer: TextTokenizer):
+        self.__shard_util = shard_util
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__document_details_repository = document_details_repository
@@ -28,8 +31,15 @@ class UpdateDocumentService:
         if index_details is None:
             raise ItemNotFoundException(f"Index {index_name} does not exist")
         
+        # Get shard name
+        shard_name: str = self.__shard_util.compute_shard_name(
+            index_name, 
+            document_id, 
+            index_details.number_of_shards
+        )
+        
         # Get document details
-        document_details: Optional[DocumentDetails] = self.__document_details_repository.read(index_name, document_id)
+        document_details: Optional[DocumentDetails] = self.__document_details_repository.read(shard_name, document_id)
         if document_details is None:
             raise ItemNotFoundException(f"Document {document_id} does not exist in index {index_name}")
         
@@ -43,22 +53,22 @@ class UpdateDocumentService:
 
             # Delete old chunks details
             for chunk_id in document_details.chunk_ids:
-                self.__chunk_details_repository.delete(index_name, chunk_id)
-                self.__index_vectors_repository.delete(index_name, chunk_id)
+                self.__chunk_details_repository.delete(shard_name, chunk_id)
+                self.__index_vectors_repository.delete(shard_name, chunk_id)
 
             # Save new chunks details
             chunk_ids: list[str] = []
             for chunk_index in range(len(chunks)):
                 chunk: TextChunkDetails = chunks[chunk_index]
-                chunk_id: str = self.__chunk_details_repository.next_unique_id(index_name)
+                chunk_id: str = self.__chunk_details_repository.next_unique_id(shard_name)
                 chunk_details: ChunkDetails = ChunkDetails(
                     chunk_id=chunk_id,
                     document_id=document_id,
                     chunk_index=chunk_index,
                     content=chunk.text
                 )
-                self.__chunk_details_repository.upsert(index_name, chunk_details)
-                self.__index_vectors_repository.ingest(index_name, chunk_id, chunk.embedding)
+                self.__chunk_details_repository.upsert(shard_name, chunk_details)
+                self.__index_vectors_repository.ingest(shard_name, chunk_id, chunk.embedding)
                 chunk_ids.append(chunk_id)
 
             # Update document details
@@ -73,4 +83,4 @@ class UpdateDocumentService:
         document_details.modification_timestamp=datetime.now(timezone.utc)
         
         # Save document details
-        self.__document_details_repository.upsert(index_name, document_details)
+        self.__document_details_repository.upsert(shard_name, document_details)

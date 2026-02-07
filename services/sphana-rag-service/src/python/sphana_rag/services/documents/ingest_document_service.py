@@ -5,17 +5,20 @@ from managed_exceptions import ItemNotFoundException, ItemAlreadyExistsException
 from sphana_rag.models import IndexDetails, DocumentDetails, ChunkDetails, TextChunkDetails
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChunkDetailsRepository
 from sphana_rag.services.tokenizer import TextTokenizer
+from sphana_rag.services.utils import ShardUtil
 
 @singleton
 class IngestDocumentService:
     
     @inject
     def __init__(self,
+                 shard_util: ShardUtil,
                  index_details_repository: IndexDetailsRepository,
                  index_vectors_repository: IndexVectorsRepository,
                  document_details_repository: DocumentDetailsRepository,
                  chunk_details_repository: ChunkDetailsRepository,
                  text_tokenizer: TextTokenizer):
+        self.__shard_util = shard_util
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__document_details_repository = document_details_repository
@@ -28,8 +31,15 @@ class IngestDocumentService:
         if index_details is None:
             raise ItemNotFoundException(f"Index {index_name} does not exist")
         
+        # Get shard name
+        shard_name: str = self.__shard_util.compute_shard_name(
+            index_name, 
+            document_id, 
+            index_details.number_of_shards
+        )
+        
         # Assert document id
-        if self.__document_details_repository.exists(index_name, document_id):
+        if self.__document_details_repository.exists(shard_name, document_id):
             raise ItemAlreadyExistsException(f"Document {document_id} already exists in index {index_name}")
         
         # Chunk document content
@@ -43,15 +53,15 @@ class IngestDocumentService:
         chunk_ids: list[str] = []
         for chunk_index in range(len(chunks)):
             chunk: TextChunkDetails = chunks[chunk_index]
-            chunk_id: str = self.__chunk_details_repository.next_unique_id(index_name)
+            chunk_id: str = self.__chunk_details_repository.next_unique_id(shard_name)
             chunk_details: ChunkDetails = ChunkDetails(
                 chunk_id=chunk_id,
                 document_id=document_id,
                 chunk_index=chunk_index,
                 content=chunk.text
             )
-            self.__chunk_details_repository.upsert(index_name, chunk_details)
-            self.__index_vectors_repository.ingest(index_name, chunk_id, chunk.embedding)
+            self.__chunk_details_repository.upsert(shard_name, chunk_details)
+            self.__index_vectors_repository.ingest(shard_name, chunk_id, chunk.embedding)
             chunk_ids.append(chunk_id)
         
         # Save document details
@@ -64,4 +74,4 @@ class IngestDocumentService:
             creation_timestamp=datetime.now(timezone.utc),
             modification_timestamp=datetime.now(timezone.utc)
         )
-        self.__document_details_repository.upsert(index_name, document_details)
+        self.__document_details_repository.upsert(shard_name, document_details)
