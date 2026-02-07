@@ -25,6 +25,9 @@ class ListDocumentsService:
             raise ItemNotFoundException(f"Index {index_name} does not exist")
         
         # Compute starting shard id and actual offset
+        # Note that there is a possibility that the after the "." separator there is no offset,
+        # this happens when we have completed to iterate all documents in a shard, but still have more shards to iterate, 
+        # so we move to the next shard with no offset
         start_shard_number = 0
         actual_offset = None
         if offset is not None:
