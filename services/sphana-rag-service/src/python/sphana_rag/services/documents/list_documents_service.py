@@ -72,12 +72,12 @@ class ListDocumentsService:
         elif not completed:
             # Still have documents in the same last shard, keep the same shard id in the offset
             last_shard_number_str: str = self.__to_base64(str(last_shard_number))
-            actual_next_offset = f"{last_shard_number_str}.{next_offset}"
+            actual_next_offset = f"{last_shard_number_str}.{next_offset or ''}"
         else:
             # Completed to iterate the last shard, but still have more shards to iterate, move to the next shard in the offset
             next_shard_number = last_shard_number + 1
             next_shard_number_str: str = self.__to_base64(str(next_shard_number))
-            actual_next_offset = f"{next_shard_number_str}.{next_offset}"
+            actual_next_offset = f"{next_shard_number_str}.{next_offset or ''}"
 
         return ListResults(
             documents=documents, 

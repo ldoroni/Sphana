@@ -35,5 +35,7 @@ class ListDocumentsHandler(RequestHandler[ListDocumentsRequest, ListDocumentsRes
                     creation_timestamp=document.creation_timestamp,
                     modification_timestamp=document.modification_timestamp
                 ) for document in document_details.documents
-            ]
+            ],
+            next_offset=document_details.next_offset,
+            completed=document_details.completed
         )
