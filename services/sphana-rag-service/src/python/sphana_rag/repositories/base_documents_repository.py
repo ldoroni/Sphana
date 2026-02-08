@@ -1,4 +1,3 @@
-import base64
 import shutil
 from abc import ABC
 from typing import Optional
@@ -6,7 +5,8 @@ from rocksdict import Rdict
 from sphana_rag.models import ListResults
 from sphana_rag.utils import Base64Util
 
-class BaseDbRepository[TDocument](ABC):
+class BaseDocumentsRepository[TDocument](ABC):
+
     def __init__(self, db_location: str, secondary: bool):
         self.__db_location: str = db_location
         self.__table_map: dict[str, Rdict] = {}

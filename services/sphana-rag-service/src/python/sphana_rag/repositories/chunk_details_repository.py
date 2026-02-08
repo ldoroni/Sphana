@@ -4,10 +4,10 @@ from injector import singleton
 from rocksdict import Rdict
 from sphana_rag.models import ChunkDetails
 from sphana_rag.models import ListResults
-from .base_db_repository import BaseDbRepository
+from .base_documents_repository import BaseDocumentsRepository
 
 @singleton
-class ChunkDetailsRepository(BaseDbRepository[ChunkDetails]):
+class ChunkDetailsRepository(BaseDocumentsRepository[ChunkDetails]):
     
     def __init__(self):
         self.__last_unique_id_map: dict[str, int] = {}

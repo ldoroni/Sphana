@@ -2,10 +2,10 @@ from typing import Optional
 from injector import singleton
 from sphana_rag.models import DocumentDetails
 from sphana_rag.models import ListResults
-from .base_db_repository import BaseDbRepository
+from .base_documents_repository import BaseDocumentsRepository
 
 @singleton
-class DocumentDetailsRepository(BaseDbRepository[DocumentDetails]):
+class DocumentDetailsRepository(BaseDocumentsRepository[DocumentDetails]):
     
     def __init__(self):
         db_location: str = "./.database/document_details_db" # TODO: take from env variables
