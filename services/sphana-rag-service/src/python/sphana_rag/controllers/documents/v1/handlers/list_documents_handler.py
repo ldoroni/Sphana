@@ -13,11 +13,11 @@ class ListDocumentsHandler(RequestHandler[ListDocumentsRequest, ListDocumentsRes
         super().__init__()
         self.__list_documents_service = list_documents_service
 
-    async def _on_validate(self, request: ListDocumentsRequest):
+    def _on_validate(self, request: ListDocumentsRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: ListDocumentsRequest) -> ListDocumentsResponse:
+    def _on_invoke(self, request: ListDocumentsRequest) -> ListDocumentsResponse:
         # List documents
         document_details = self.__list_documents_service.list_documents(
             index_name=request.index_name or "",

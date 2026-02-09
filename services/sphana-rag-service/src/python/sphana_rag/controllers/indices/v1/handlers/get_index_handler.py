@@ -12,11 +12,11 @@ class GetIndexHandler(RequestHandler[GetIndexRequest, GetIndexResponse]):
         super().__init__()
         self.__get_index_service = get_index_service
 
-    async def _on_validate(self, request: GetIndexRequest):
+    def _on_validate(self, request: GetIndexRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: GetIndexRequest) -> GetIndexResponse:
+    def _on_invoke(self, request: GetIndexRequest) -> GetIndexResponse:
         # Get index
         index_details = self.__get_index_service.get_index(
             index_name=request.index_name or "",

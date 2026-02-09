@@ -12,11 +12,11 @@ class DeleteDocumentHandler(RequestHandler[DeleteDocumentRequest, DeleteDocument
         super().__init__()
         self.__delete_document_service = delete_document_service
 
-    async def _on_validate(self, request: DeleteDocumentRequest):
+    def _on_validate(self, request: DeleteDocumentRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: DeleteDocumentRequest) -> DeleteDocumentResponse:
+    def _on_invoke(self, request: DeleteDocumentRequest) -> DeleteDocumentResponse:
         # Delete document
         self.__delete_document_service.delete_document(
             index_name=request.index_name or "",

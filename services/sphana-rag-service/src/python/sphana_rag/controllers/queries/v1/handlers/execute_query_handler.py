@@ -13,11 +13,11 @@ class ExecuteQueryHandler(RequestHandler[ExecuteQueryRequest, ExecuteQueryRespon
         super().__init__()
         self.__execute_query_service = execute_query_service
 
-    async def _on_validate(self, request: ExecuteQueryRequest):
+    def _on_validate(self, request: ExecuteQueryRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: ExecuteQueryRequest) -> ExecuteQueryResponse:
+    def _on_invoke(self, request: ExecuteQueryRequest) -> ExecuteQueryResponse:
         # Execute query
         results = self.__execute_query_service.execute_query(
             index_name=request.index_name or "",

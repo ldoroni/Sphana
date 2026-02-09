@@ -12,11 +12,11 @@ class IngestDocumentHandler(RequestHandler[IngestDocumentRequest, IngestDocument
         super().__init__()
         self.__ingest_document_service = ingest_document_service
 
-    async def _on_validate(self, request: IngestDocumentRequest):
+    def _on_validate(self, request: IngestDocumentRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: IngestDocumentRequest) -> IngestDocumentResponse:
+    def _on_invoke(self, request: IngestDocumentRequest) -> IngestDocumentResponse:
         # Ingest document
         self.__ingest_document_service.ingest_document(
             index_name=request.index_name or "",

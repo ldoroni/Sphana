@@ -12,11 +12,11 @@ class ListIndicesHandler(RequestHandler[ListIndicesRequest, ListIndicesResponse]
         super().__init__()
         self.__list_indices_service = list_indices_service
 
-    async def _on_validate(self, request: ListIndicesRequest):
+    def _on_validate(self, request: ListIndicesRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: ListIndicesRequest) -> ListIndicesResponse:
+    def _on_invoke(self, request: ListIndicesRequest) -> ListIndicesResponse:
         # List indices
         results =self.__list_indices_service.list_indices(
             offset=request.offset,

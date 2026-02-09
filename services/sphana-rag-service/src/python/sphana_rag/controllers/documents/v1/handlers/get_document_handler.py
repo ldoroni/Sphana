@@ -13,11 +13,11 @@ class GetDocumentHandler(RequestHandler[GetDocumentRequest, GetDocumentResponse]
         super().__init__()
         self.__get_document_service = get_document_service
 
-    async def _on_validate(self, request: GetDocumentRequest):
+    def _on_validate(self, request: GetDocumentRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: GetDocumentRequest) -> GetDocumentResponse:
+    def _on_invoke(self, request: GetDocumentRequest) -> GetDocumentResponse:
         # Get document
         document_details = self.__get_document_service.get_document(
             index_name=request.index_name or "",

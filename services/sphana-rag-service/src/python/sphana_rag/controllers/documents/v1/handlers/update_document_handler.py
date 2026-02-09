@@ -12,11 +12,11 @@ class UpdateDocumentHandler(RequestHandler[UpdateDocumentRequest, UpdateDocument
         super().__init__()
         self.__update_document_service = update_document_service
 
-    async def _on_validate(self, request: UpdateDocumentRequest):
+    def _on_validate(self, request: UpdateDocumentRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: UpdateDocumentRequest) -> UpdateDocumentResponse:
+    def _on_invoke(self, request: UpdateDocumentRequest) -> UpdateDocumentResponse:
         # Update document
         self.__update_document_service.update_document(
             index_name=request.index_name or "",

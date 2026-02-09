@@ -12,11 +12,11 @@ class IndexExistsHandler(RequestHandler[IndexExistsRequest, IndexExistsResponse]
         super().__init__()
         self.__index_exists_service = index_exists_service
 
-    async def _on_validate(self, request: IndexExistsRequest):
+    def _on_validate(self, request: IndexExistsRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: IndexExistsRequest) -> IndexExistsResponse:
+    def _on_invoke(self, request: IndexExistsRequest) -> IndexExistsResponse:
         # Check if index exists
         exists: bool = self.__index_exists_service.index_exists(
             index_name=request.index_name or "",

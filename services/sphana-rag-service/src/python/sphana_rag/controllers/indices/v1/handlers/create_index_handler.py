@@ -12,11 +12,11 @@ class CreateIndexHandler(RequestHandler[CreateIndexRequest, CreateIndexResponse]
         super().__init__()
         self.__create_index_service = create_index_service
 
-    async def _on_validate(self, request: CreateIndexRequest):
+    def _on_validate(self, request: CreateIndexRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: CreateIndexRequest) -> CreateIndexResponse:
+    def _on_invoke(self, request: CreateIndexRequest) -> CreateIndexResponse:
         # Create index
         self.__create_index_service.create_index(
             index_name=request.index_name or "",
