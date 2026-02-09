@@ -46,6 +46,11 @@ Run the following commands:
 5. Start the local repository:
    `pypi-server run -a . -P . -p 61000 --overwrite C:\Users\ldoro\.pyrepo`
 
+## Monitor GPU
+```
+while ($true) { Clear-Host; nvidia-smi; Start-Sleep 1 }
+```
+
 ## Example for Update Library Flow:
 1. Build Library:
    `uv build --project .\libraries\managed-exceptions-lib`
