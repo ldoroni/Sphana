@@ -4,9 +4,14 @@ import torch
 import sys
 from pathlib import Path
 from injector import singleton
+from prometheus_client import Counter, Histogram
 from sentence_transformers import SentenceTransformer
+from time import time
 from transformers import AutoTokenizer
 from sphana_rag.models import TextChunkDetails
+
+REQUEST_COUNTER = Counter("spn_embedding_exe_total", "Total number of embedding operations executed", ["operation"])
+REQUEST_HISTOGRAM = Histogram("spn_embedding_exe_duration_seconds", "Duration of embedding operations in seconds", ["operation"])
 
 @singleton
 class TextTokenizer:
@@ -51,102 +56,114 @@ class TextTokenizer:
         self.__logger.info(f"TextTokenizer initialized with device: {device} and model {local_model_path}")
 
     def tokenize_text(self, text: str) -> list[float]:
-        if not text or not text.strip():
-            return []
-        
-        embedding = self.__model.encode(
-            text,
-            convert_to_tensor=False,
-            show_progress_bar=False,
-            normalize_embeddings=True
-        )
-        
-        return embedding.tolist()
+        start_time: float = time()
+        REQUEST_COUNTER.labels(operation="tokenize_text").inc()
+        try:
+            if not text or not text.strip():
+                return []
+            
+            embedding = self.__model.encode(
+                text,
+                convert_to_tensor=False,
+                show_progress_bar=False,
+                normalize_embeddings=True
+            )
+            
+            return embedding.tolist()
+        finally:
+            duration: float = time() - start_time
+            REQUEST_HISTOGRAM.labels(operation="tokenize_text").observe(duration)
     
     def tokenize_and_chunk_text(self, text: str, max_chunk_size: int, chunk_overlap_size: int) -> list[TextChunkDetails]:
-        if not text or not text.strip():
-            return []
-        
-        if max_chunk_size <= 0:
-            raise ValueError("max_chunk_size must be greater than 0")
-        
-        if chunk_overlap_size < 0:
-            raise ValueError("chunk_overlap_size must be non-negative")
-        
-        if chunk_overlap_size >= max_chunk_size:
-            raise ValueError("chunk_overlap_size must be less than max_chunk_size")
-        
-        # Tokenize the entire text
-        encoding = self.__tokenizer(
-            text,
-            return_offsets_mapping=True,
-            add_special_tokens=False,
-            truncation=False
-        )
-        
-        tokens = encoding['input_ids']
-        offsets = encoding['offset_mapping']
-        
-        if not tokens:
-            return []
-        
-        chunks = []
-        chunk_texts = []
-        start_idx = 0
-        
-        # First pass: create chunks and collect texts
-        while start_idx < len(tokens):
-            # Determine the end index for this chunk
-            end_idx = min(start_idx + max_chunk_size, len(tokens))
+        start_time: float = time()
+        REQUEST_COUNTER.labels(operation="tokenize_and_chunk_text").inc()
+        try:
+            if not text or not text.strip():
+                return []
             
-            # Extract chunk tokens and their offsets
-            chunk_tokens = tokens[start_idx:end_idx]
-            chunk_offsets = offsets[start_idx:end_idx]
+            if max_chunk_size <= 0:
+                raise ValueError("max_chunk_size must be greater than 0")
             
-            # Get character positions
-            start_char = chunk_offsets[0][0]
-            end_char = chunk_offsets[-1][1]
+            if chunk_overlap_size < 0:
+                raise ValueError("chunk_overlap_size must be non-negative")
             
-            # Extract the actual text for this chunk
-            chunk_text = text[start_char:end_char]
+            if chunk_overlap_size >= max_chunk_size:
+                raise ValueError("chunk_overlap_size must be less than max_chunk_size")
             
-            # Store chunk metadata (without embedding for now)
-            chunks.append({
-                'text': chunk_text,
-                'token_count': len(chunk_tokens),
-                'start_char': start_char,
-                'end_char': end_char
-            })
-            
-            chunk_texts.append(chunk_text)
-            
-            # Move to the next chunk with overlap
-            if end_idx >= len(tokens):
-                break
-            
-            # Move forward by (max_chunk_size - chunk_overlap_size)
-            start_idx = end_idx - chunk_overlap_size
-        
-        # Second pass: generate embeddings for all chunks in batch
-        # Using "search_document" prefix for document embeddings as per nomic best practices
-        prefixed_texts = [f"search_document: {chunk_text}" for chunk_text in chunk_texts]
-        embeddings = self.__model.encode(
-            prefixed_texts,
-            convert_to_tensor=False,
-            show_progress_bar=False,
-            normalize_embeddings=True
-        )
-        
-        # Third pass: create TextChunkDetails objects with embeddings
-        text_chunks = []
-        for i, chunk_data in enumerate(chunks):
-            text_chunk = TextChunkDetails(
-                text=chunk_data['text'],
-                token_count=chunk_data['token_count'],
-                start_char=chunk_data['start_char'],
-                end_char=chunk_data['end_char'],
-                embedding=embeddings[i].tolist()
+            # Tokenize the entire text
+            encoding = self.__tokenizer(
+                text,
+                return_offsets_mapping=True,
+                add_special_tokens=False,
+                truncation=False
             )
-            text_chunks.append(text_chunk)
-        
-        return text_chunks
+            
+            tokens = encoding['input_ids']
+            offsets = encoding['offset_mapping']
+            
+            if not tokens:
+                return []
+            
+            chunks = []
+            chunk_texts = []
+            start_idx = 0
+            
+            # First pass: create chunks and collect texts
+            while start_idx < len(tokens):
+                # Determine the end index for this chunk
+                end_idx = min(start_idx + max_chunk_size, len(tokens))
+                
+                # Extract chunk tokens and their offsets
+                chunk_tokens = tokens[start_idx:end_idx]
+                chunk_offsets = offsets[start_idx:end_idx]
+                
+                # Get character positions
+                start_char = chunk_offsets[0][0]
+                end_char = chunk_offsets[-1][1]
+                
+                # Extract the actual text for this chunk
+                chunk_text = text[start_char:end_char]
+                
+                # Store chunk metadata (without embedding for now)
+                chunks.append({
+                    'text': chunk_text,
+                    'token_count': len(chunk_tokens),
+                    'start_char': start_char,
+                    'end_char': end_char
+                })
+                
+                chunk_texts.append(chunk_text)
+                
+                # Move to the next chunk with overlap
+                if end_idx >= len(tokens):
+                    break
+                
+                # Move forward by (max_chunk_size - chunk_overlap_size)
+                start_idx = end_idx - chunk_overlap_size
+            
+            # Second pass: generate embeddings for all chunks in batch
+            # Using "search_document" prefix for document embeddings as per nomic best practices
+            prefixed_texts = [f"search_document: {chunk_text}" for chunk_text in chunk_texts]
+            embeddings = self.__model.encode(
+                prefixed_texts,
+                convert_to_tensor=False,
+                show_progress_bar=False,
+                normalize_embeddings=True
+            )
+            
+            # Third pass: create TextChunkDetails objects with embeddings
+            text_chunks = []
+            for i, chunk_data in enumerate(chunks):
+                text_chunk = TextChunkDetails(
+                    text=chunk_data['text'],
+                    token_count=chunk_data['token_count'],
+                    start_char=chunk_data['start_char'],
+                    end_char=chunk_data['end_char'],
+                    embedding=embeddings[i].tolist()
+                )
+                text_chunks.append(text_chunk)
+            
+            return text_chunks
+        finally:
+            duration: float = time() - start_time
+            REQUEST_HISTOGRAM.labels(operation="tokenize_and_chunk_text").observe(duration)

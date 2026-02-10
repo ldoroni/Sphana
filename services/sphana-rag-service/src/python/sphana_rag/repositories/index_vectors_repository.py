@@ -18,10 +18,10 @@ class IndexVectorsRepository(BaseVectorsRepository):
         self._drop_index(shard_name)
 
     def ingest(self, shard_name: str, chunk_id: str, chunk_vector: list[float]):
-        self._ingest(shard_name, chunk_id, chunk_vector)
+        self._ingest_chunk(shard_name, chunk_id, chunk_vector)
 
     def delete(self, shard_name: str, chunk_id: str) -> None:
-        self._delete(shard_name, chunk_id)
+        self._delete_chunk(shard_name, chunk_id)
 
     def search(self, shard_name: str, query_vector: list[float], max_results: int) -> list[TextChunkResult]:
         return self._search(shard_name, query_vector, max_results)

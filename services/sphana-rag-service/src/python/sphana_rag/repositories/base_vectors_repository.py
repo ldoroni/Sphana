@@ -2,9 +2,14 @@ import numpy
 import shutil
 from abc import ABC
 from pathlib import Path
+from prometheus_client import Counter, Histogram
+from time import time
 from typing import Optional
 from faiss import IndexFlatL2, IndexIDMap2, write_index, read_index
 from sphana_rag.models import TextChunkResult
+
+REQUEST_COUNTER = Counter("spn_faiss_exe_total", "Total number of Faiss operations executed", ["index", "operation"])
+REQUEST_HISTOGRAM = Histogram("spn_faiss_exe_duration_seconds", "Duration of Faiss operations in seconds", ["index", "operation"])
 
 class BaseVectorsRepository(ABC):
     
@@ -15,45 +20,75 @@ class BaseVectorsRepository(ABC):
         self.__index_map: dict[str, IndexIDMap2] = {}
 
     def _init_index(self, index_name: str) -> None:
-        if not(index_name in self.__index_map):
-            # TODO: check that it does not exist in the files system!
-            quantizer = IndexFlatL2(self.__dimension)
-            index = IndexIDMap2(quantizer)
-            self.__index_map[index_name] = index
-            self.__save_index(index_name, index)
+        start_time: float = time()
+        REQUEST_COUNTER.labels(index=index_name, operation="init_index").inc()
+        try:
+            if not(index_name in self.__index_map):
+                # TODO: check that it does not exist in the files system!
+                quantizer = IndexFlatL2(self.__dimension)
+                index = IndexIDMap2(quantizer)
+                self.__index_map[index_name] = index
+                self.__save_index(index_name, index)
+        finally:
+            duration: float = time() - start_time
+            REQUEST_HISTOGRAM.labels(index=index_name, operation="init_index").observe(duration)
 
     def _drop_index(self, index_name: str) -> None:
-        self.__drop_index(index_name)
+        start_time: float = time()
+        REQUEST_COUNTER.labels(index=index_name, operation="drop_index").inc()
+        try:
+            self.__drop_index(index_name)
+        finally:
+            duration: float = time() - start_time
+            REQUEST_HISTOGRAM.labels(index=index_name, operation="drop_index").observe(duration)
 
-    def _ingest(self, index_name: str, chunk_id: str, chunk_vector: list[float]):
-        index: IndexIDMap2 = self.__get_index(index_name)
-        x = numpy.array([chunk_vector]).astype(numpy.float32)
-        xids = numpy.array([int(chunk_id)]).astype(numpy.int64)
-        index.add_with_ids(x, xids) # type: ignore
-        self.__save_index(index_name, index)
+    def _ingest_chunk(self, index_name: str, chunk_id: str, chunk_vector: list[float]):
+        start_time: float = time()
+        REQUEST_COUNTER.labels(index=index_name, operation="ingest_chunk").inc()
+        try:
+            index: IndexIDMap2 = self.__get_index(index_name)
+            x = numpy.array([chunk_vector]).astype(numpy.float32)
+            xids = numpy.array([int(chunk_id)]).astype(numpy.int64)
+            index.add_with_ids(x, xids) # type: ignore
+            self.__save_index(index_name, index)
+        finally:
+            duration: float = time() - start_time
+            REQUEST_HISTOGRAM.labels(index=index_name, operation="ingest_chunk").observe(duration)
 
-    def _delete(self, index_name: str, chunk_id: str) -> None:
-        index: IndexIDMap2 = self.__get_index(index_name)
-        xids = numpy.array([int(chunk_id)]).astype(numpy.int64)
-        index.remove_ids(xids) # type: ignore
-        self.__save_index(index_name, index)
+    def _delete_chunk(self, index_name: str, chunk_id: str) -> None:
+        start_time: float = time()
+        REQUEST_COUNTER.labels(index=index_name, operation="delete_chunk").inc()
+        try:
+            index: IndexIDMap2 = self.__get_index(index_name)
+            xids = numpy.array([int(chunk_id)]).astype(numpy.int64)
+            index.remove_ids(xids) # type: ignore
+            self.__save_index(index_name, index)
+        finally:
+            duration: float = time() - start_time
+            REQUEST_HISTOGRAM.labels(index=index_name, operation="delete_chunk").observe(duration)
 
     def _search(self, index_name: str, query_vector: list[float], max_results: int) -> list[TextChunkResult]:
-        index: IndexIDMap2 = self.__get_index(index_name)
-        if index.ntotal == 0:
-            return []
-        xq = numpy.array([query_vector]).astype(numpy.float32)
-        D, I = index.search(xq, max_results)  # type: ignore
-        results: list[TextChunkResult] = []
-        for distance, idx in zip(D[0], I[0]):
-            if idx == -1:
-                continue
-            result: TextChunkResult = TextChunkResult(
-                chunk_id=str(idx), 
-                score=float(distance)
-            )
-            results.append(result)
-        return results
+        start_time: float = time()
+        REQUEST_COUNTER.labels(index=index_name, operation="search").inc()
+        try:
+            index: IndexIDMap2 = self.__get_index(index_name)
+            if index.ntotal == 0:
+                return []
+            xq = numpy.array([query_vector]).astype(numpy.float32)
+            D, I = index.search(xq, max_results)  # type: ignore
+            results: list[TextChunkResult] = []
+            for distance, idx in zip(D[0], I[0]):
+                if idx == -1:
+                    continue
+                result: TextChunkResult = TextChunkResult(
+                    chunk_id=str(idx), 
+                    score=float(distance)
+                )
+                results.append(result)
+            return results
+        finally:
+            duration: float = time() - start_time
+            REQUEST_HISTOGRAM.labels(index=index_name, operation="search").observe(duration)
 
     def __get_index(self, index_name: str) -> IndexIDMap2:
         index: Optional[IndexIDMap2] = self.__index_map.get(index_name)

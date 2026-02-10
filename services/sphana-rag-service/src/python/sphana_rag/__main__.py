@@ -4,6 +4,7 @@ from injector import Injector
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_injector import attach_injector
+from prometheus_client import make_asgi_app
 from sphana_rag.controllers.documents.v1 import router as document_management_controller_router
 from sphana_rag.controllers.indices.v1 import router as index_management_controller_router
 from sphana_rag.controllers.queries.v1 import router as query_executor_controller_router
@@ -52,6 +53,14 @@ def main(host='0.0.0.0', port=5001, max_threads=100, debug=False):
     fast_api.include_router(document_management_controller_router)
     fast_api.include_router(index_management_controller_router)
     fast_api.include_router(query_executor_controller_router)
+
+    ################################
+    # Initialize Prometheus Client #
+    ################################
+
+    # Create and mount Prometheus ASGI app
+    prometheus_app = make_asgi_app()
+    fast_api.mount("/metrics", prometheus_app)
 
     ##################################
     # Initialize Dependency Injector #
