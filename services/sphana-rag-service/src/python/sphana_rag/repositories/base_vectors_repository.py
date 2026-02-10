@@ -8,8 +8,8 @@ from typing import Optional
 from faiss import IndexFlatL2, IndexIDMap2, write_index, read_index
 from sphana_rag.models import TextChunkResult
 
-REQUEST_COUNTER = Counter("spn_faiss_exe_total", "Total number of Faiss operations executed", ["index", "operation"])
-REQUEST_HISTOGRAM = Histogram("spn_faiss_exe_duration_seconds", "Duration of Faiss operations in seconds", ["index", "operation"])
+FAISS_EXE_COUNTER = Counter("spn_faiss_exe_total", "Total number of Faiss operations executed", ["index", "operation"])
+FAISS_DURATION_HISTOGRAM = Histogram("spn_faiss_exe_duration_seconds", "Duration of Faiss operations in seconds", ["index", "operation"])
 
 class BaseVectorsRepository(ABC):
     
@@ -21,7 +21,7 @@ class BaseVectorsRepository(ABC):
 
     def _init_index(self, index_name: str) -> None:
         start_time: float = time()
-        REQUEST_COUNTER.labels(index=index_name, operation="init_index").inc()
+        FAISS_EXE_COUNTER.labels(index=index_name, operation="init_index").inc()
         try:
             if not(index_name in self.__index_map):
                 # TODO: check that it does not exist in the files system!
@@ -31,20 +31,20 @@ class BaseVectorsRepository(ABC):
                 self.__save_index(index_name, index)
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(index=index_name, operation="init_index").observe(duration)
+            FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="init_index").observe(duration)
 
     def _drop_index(self, index_name: str) -> None:
         start_time: float = time()
-        REQUEST_COUNTER.labels(index=index_name, operation="drop_index").inc()
+        FAISS_EXE_COUNTER.labels(index=index_name, operation="drop_index").inc()
         try:
             self.__drop_index(index_name)
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(index=index_name, operation="drop_index").observe(duration)
+            FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="drop_index").observe(duration)
 
     def _ingest_chunk(self, index_name: str, chunk_id: str, chunk_vector: list[float]):
         start_time: float = time()
-        REQUEST_COUNTER.labels(index=index_name, operation="ingest_chunk").inc()
+        FAISS_EXE_COUNTER.labels(index=index_name, operation="ingest_chunk").inc()
         try:
             index: IndexIDMap2 = self.__get_index(index_name)
             x = numpy.array([chunk_vector]).astype(numpy.float32)
@@ -53,11 +53,11 @@ class BaseVectorsRepository(ABC):
             self.__save_index(index_name, index)
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(index=index_name, operation="ingest_chunk").observe(duration)
+            FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="ingest_chunk").observe(duration)
 
     def _delete_chunk(self, index_name: str, chunk_id: str) -> None:
         start_time: float = time()
-        REQUEST_COUNTER.labels(index=index_name, operation="delete_chunk").inc()
+        FAISS_EXE_COUNTER.labels(index=index_name, operation="delete_chunk").inc()
         try:
             index: IndexIDMap2 = self.__get_index(index_name)
             xids = numpy.array([int(chunk_id)]).astype(numpy.int64)
@@ -65,11 +65,11 @@ class BaseVectorsRepository(ABC):
             self.__save_index(index_name, index)
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(index=index_name, operation="delete_chunk").observe(duration)
+            FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="delete_chunk").observe(duration)
 
     def _search(self, index_name: str, query_vector: list[float], max_results: int) -> list[TextChunkResult]:
         start_time: float = time()
-        REQUEST_COUNTER.labels(index=index_name, operation="search").inc()
+        FAISS_EXE_COUNTER.labels(index=index_name, operation="search").inc()
         try:
             index: IndexIDMap2 = self.__get_index(index_name)
             if index.ntotal == 0:
@@ -88,7 +88,7 @@ class BaseVectorsRepository(ABC):
             return results
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(index=index_name, operation="search").observe(duration)
+            FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="search").observe(duration)
 
     def __get_index(self, index_name: str) -> IndexIDMap2:
         index: Optional[IndexIDMap2] = self.__index_map.get(index_name)

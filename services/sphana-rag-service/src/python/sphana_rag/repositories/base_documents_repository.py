@@ -7,8 +7,8 @@ from rocksdict import Rdict
 from sphana_rag.models import ListResults
 from sphana_rag.utils import Base64Util
 
-REQUEST_COUNTER = Counter("spn_rocksdb_exe_total", "Total number of RocksDB operations executed", ["table", "operation"])
-REQUEST_HISTOGRAM = Histogram("spn_rocksdb_exe_duration_seconds", "Duration of RocksDB operations in seconds", ["table", "operation"])
+ROCKSDB_EXE_COUNTER = Counter("spn_rocksdb_exe_total", "Total number of RocksDB operations executed", ["table", "operation"])
+ROCKSDB_EXE_DURATION_HISTOGRAM = Histogram("spn_rocksdb_exe_duration_seconds", "Duration of RocksDB operations in seconds", ["table", "operation"])
 
 class BaseDocumentsRepository[TDocument](ABC):
 
@@ -19,55 +19,55 @@ class BaseDocumentsRepository[TDocument](ABC):
 
     def _init_table(self, table_name: str) -> None:
         start_time: float = time()
-        REQUEST_COUNTER.labels(table=table_name, operation="init_table").inc()
+        ROCKSDB_EXE_COUNTER.labels(table=table_name, operation="init_table").inc()
         try:
             self._get_table(table_name)
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(table=table_name, operation="init_table").observe(duration)
+            ROCKSDB_EXE_DURATION_HISTOGRAM.labels(table=table_name, operation="init_table").observe(duration)
 
     def _drop_table(self, table_name: str) -> None:
         start_time: float = time()
-        REQUEST_COUNTER.labels(table=table_name, operation="drop_table").inc()
+        ROCKSDB_EXE_COUNTER.labels(table=table_name, operation="drop_table").inc()
         try:
             self.__drop_table(table_name)
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(table=table_name, operation="drop_table").observe(duration)
+            ROCKSDB_EXE_DURATION_HISTOGRAM.labels(table=table_name, operation="drop_table").observe(duration)
 
     def _upsert_document(self, table_name: str, document_id: str, document: TDocument) -> None:
         start_time: float = time()
-        REQUEST_COUNTER.labels(table=table_name, operation="upsert_document").inc()
+        ROCKSDB_EXE_COUNTER.labels(table=table_name, operation="upsert_document").inc()
         try:
             table: Rdict = self._get_table(table_name)
             table.put(document_id, document)
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(table=table_name, operation="upsert_document").observe(duration)
+            ROCKSDB_EXE_DURATION_HISTOGRAM.labels(table=table_name, operation="upsert_document").observe(duration)
 
     def _delete_document(self, table_name: str, document_id: str) -> None:
         start_time: float = time()
-        REQUEST_COUNTER.labels(table=table_name, operation="delete_document").inc()
+        ROCKSDB_EXE_COUNTER.labels(table=table_name, operation="delete_document").inc()
         try:
             table: Rdict = self._get_table(table_name)
             table.delete(document_id)
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(table=table_name, operation="delete_document").observe(duration)
+            ROCKSDB_EXE_DURATION_HISTOGRAM.labels(table=table_name, operation="delete_document").observe(duration)
 
     def _read_document(self, table_name: str, document_id: str) -> Optional[TDocument]:
         start_time: float = time()
-        REQUEST_COUNTER.labels(table=table_name, operation="read_document").inc()
+        ROCKSDB_EXE_COUNTER.labels(table=table_name, operation="read_document").inc()
         try:
             table: Rdict = self._get_table(table_name)
             return table.get(document_id)
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(table=table_name, operation="read_document").observe(duration)
+            ROCKSDB_EXE_DURATION_HISTOGRAM.labels(table=table_name, operation="read_document").observe(duration)
 
     def _list_documents(self, table_name: str, offset: Optional[str], limit: int) -> ListResults[TDocument]:
         start_time: float = time()
-        REQUEST_COUNTER.labels(table=table_name, operation="list_documents").inc()
+        ROCKSDB_EXE_COUNTER.labels(table=table_name, operation="list_documents").inc()
         try:
             table: Rdict = self._get_table(table_name)
             plain_offset: Optional[str] = Base64Util.from_nullable_base64(offset)
@@ -89,17 +89,17 @@ class BaseDocumentsRepository[TDocument](ABC):
             )
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(table=table_name, operation="list_documents").observe(duration)
+            ROCKSDB_EXE_DURATION_HISTOGRAM.labels(table=table_name, operation="list_documents").observe(duration)
     
     def _document_exists(self, table_name: str, document_id: str) -> bool:
         start_time: float = time()
-        REQUEST_COUNTER.labels(table=table_name, operation="document_exists").inc()
+        ROCKSDB_EXE_COUNTER.labels(table=table_name, operation="document_exists").inc()
         try:
             table: Rdict = self._get_table(table_name)
             return document_id in table
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(table=table_name, operation="document_exists").observe(duration)
+            ROCKSDB_EXE_DURATION_HISTOGRAM.labels(table=table_name, operation="document_exists").observe(duration)
     
     def _get_table(self, table_name: str) -> Rdict:
         if table_name in self.__table_map:

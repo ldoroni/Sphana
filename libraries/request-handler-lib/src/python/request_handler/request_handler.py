@@ -12,10 +12,10 @@ from prometheus_client import Counter, Histogram, Gauge
 from request_handler.error_response import ErrorResponse
 from .request_thread_pool import RequestThreadPool
 
-CONCURRENT_REQUESTS = Gauge("spn_api_exe_concurrent", "Number of concurrent API requests being processed", ["handler"])
-REQUEST_COUNTER = Counter("spn_api_exe_total", "Total number of API requests executed", ["handler"])
-REQUEST_HISTOGRAM = Histogram("spn_api_exe_duration_seconds", "Duration of API requests in seconds", ["handler"])
-RESPONSE_ERROR_COUNTER = Counter("spn_api_exe_error_total", "Total number of API requests that resulted in error", ["handler", "status_code"])
+API_EXE_CONCURRENT_GAUGE = Gauge("spn_api_exe_concurrent", "Number of concurrent API requests being processed", ["handler"])
+API_EXE_COUNTER = Counter("spn_api_exe_total", "Total number of API requests executed", ["handler"])
+API_EXE_DURATION_HISTOGRAM = Histogram("spn_api_exe_duration_seconds", "Duration of API requests in seconds", ["handler"])
+API_EXE_ERROR_COUNTER = Counter("spn_api_exe_error_total", "Total number of API requests that resulted in error", ["handler", "status_code"])
 
 class RequestHandler[TRequest, TResponse](ABC):
 
@@ -28,8 +28,8 @@ class RequestHandler[TRequest, TResponse](ABC):
 
     async def invoke(self, request: Request) -> Response:
         start_time: float = time()
-        REQUEST_COUNTER.labels(handler=self.__class__.__name__).inc()
-        CONCURRENT_REQUESTS.labels(handler=self.__class__.__name__).inc()
+        API_EXE_COUNTER.labels(handler=self.__class__.__name__).inc()
+        API_EXE_CONCURRENT_GAUGE.labels(handler=self.__class__.__name__).inc()
         try:
             # Get request body
             body = await request.body()
@@ -44,18 +44,18 @@ class RequestHandler[TRequest, TResponse](ABC):
             # Return error response
             actual_error_response: ErrorResponse = self.__get_error_response(e)
             self.__logger.info(f"Full Response: <{e.status_code} | {actual_error_response}>")
-            RESPONSE_ERROR_COUNTER.labels(handler=self.__class__.__name__, status_code=e.status_code).inc()
+            API_EXE_ERROR_COUNTER.labels(handler=self.__class__.__name__, status_code=e.status_code).inc()
             return self.__get_response(e.status_code, actual_error_response)
         except Exception as e:
             # Return error response
             actual_error_response: ErrorResponse = self.__get_error_response(e)
             self.__logger.info(f"Full Response: <{HTTPStatus.INTERNAL_SERVER_ERROR} | {actual_error_response}>", exc_info=True)
-            RESPONSE_ERROR_COUNTER.labels(handler=self.__class__.__name__, status_code=HTTPStatus.INTERNAL_SERVER_ERROR).inc()
+            API_EXE_ERROR_COUNTER.labels(handler=self.__class__.__name__, status_code=HTTPStatus.INTERNAL_SERVER_ERROR).inc()
             return self.__get_response(HTTPStatus.INTERNAL_SERVER_ERROR, actual_error_response)
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(handler=self.__class__.__name__).observe(duration)
-            CONCURRENT_REQUESTS.labels(handler=self.__class__.__name__).dec()
+            API_EXE_DURATION_HISTOGRAM.labels(handler=self.__class__.__name__).observe(duration)
+            API_EXE_CONCURRENT_GAUGE.labels(handler=self.__class__.__name__).dec()
     
     def __invoke_sync(self, request: TRequest) -> TResponse:
         # Validate request

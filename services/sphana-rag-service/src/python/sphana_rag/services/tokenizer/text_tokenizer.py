@@ -10,8 +10,8 @@ from time import time
 from transformers import AutoTokenizer
 from sphana_rag.models import TextChunkDetails
 
-REQUEST_COUNTER = Counter("spn_embedding_exe_total", "Total number of embedding operations executed", ["operation"])
-REQUEST_HISTOGRAM = Histogram("spn_embedding_exe_duration_seconds", "Duration of embedding operations in seconds", ["operation"])
+EMBEDDING_EXE_COUNTER = Counter("spn_embedding_exe_total", "Total number of embedding operations executed", ["operation"])
+EMBEDDING_EXE_DURATION_HISTOGRAM = Histogram("spn_embedding_exe_duration_seconds", "Duration of embedding operations in seconds", ["operation"])
 
 @singleton
 class TextTokenizer:
@@ -57,7 +57,7 @@ class TextTokenizer:
 
     def tokenize_text(self, text: str) -> list[float]:
         start_time: float = time()
-        REQUEST_COUNTER.labels(operation="tokenize_text").inc()
+        EMBEDDING_EXE_COUNTER.labels(operation="tokenize_text").inc()
         try:
             if not text or not text.strip():
                 return []
@@ -72,11 +72,11 @@ class TextTokenizer:
             return embedding.tolist()
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(operation="tokenize_text").observe(duration)
+            EMBEDDING_EXE_DURATION_HISTOGRAM.labels(operation="tokenize_text").observe(duration)
     
     def tokenize_and_chunk_text(self, text: str, max_chunk_size: int, chunk_overlap_size: int) -> list[TextChunkDetails]:
         start_time: float = time()
-        REQUEST_COUNTER.labels(operation="tokenize_and_chunk_text").inc()
+        EMBEDDING_EXE_COUNTER.labels(operation="tokenize_and_chunk_text").inc()
         try:
             if not text or not text.strip():
                 return []
@@ -166,4 +166,4 @@ class TextTokenizer:
             return text_chunks
         finally:
             duration: float = time() - start_time
-            REQUEST_HISTOGRAM.labels(operation="tokenize_and_chunk_text").observe(duration)
+            EMBEDDING_EXE_DURATION_HISTOGRAM.labels(operation="tokenize_and_chunk_text").observe(duration)
