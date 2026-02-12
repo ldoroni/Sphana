@@ -2,7 +2,7 @@ from typing import Optional
 from injector import inject, singleton
 from managed_exceptions import ItemNotFoundException
 from sphana_rag.models import IndexDetails, DocumentDetails
-from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChunkDetailsRepository
+from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ParentChunkDetailsRepository, ChildChunkDetailsRepository
 from sphana_rag.utils import ShardUtil
 
 @singleton
@@ -13,11 +13,13 @@ class DeleteDocumentService:
                  index_details_repository: IndexDetailsRepository,
                  index_vectors_repository: IndexVectorsRepository,
                  document_details_repository: DocumentDetailsRepository,
-                 chunk_details_repository: ChunkDetailsRepository):
+                 parent_chunk_details_repository: ParentChunkDetailsRepository,
+                 child_chunk_details_repository: ChildChunkDetailsRepository):
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__document_details_repository = document_details_repository
-        self.__chunk_details_repository = chunk_details_repository
+        self.__parent_chunk_details_repository = parent_chunk_details_repository
+        self.__child_chunk_details_repository = child_chunk_details_repository
 
     def delete_document(self, index_name: str, document_id: str):
         # Get index details
@@ -37,10 +39,14 @@ class DeleteDocumentService:
         if document_details is None:
             raise ItemNotFoundException(f"Document {document_id} does not exist in index {index_name}")
         
-        # Delete chunks details
-        for chunk_id in document_details.chunk_ids:
-            self.__chunk_details_repository.delete(shard_name, chunk_id)
-            self.__index_vectors_repository.delete(shard_name, chunk_id)
+        # Delete parent chunks
+        for parent_chunk_id in document_details.parent_chunk_ids:
+            self.__parent_chunk_details_repository.delete(shard_name, parent_chunk_id)
+
+        # Delete child chunks and their vectors
+        for child_chunk_id in document_details.child_chunk_ids:
+            self.__child_chunk_details_repository.delete(shard_name, child_chunk_id)
+            self.__index_vectors_repository.delete(shard_name, child_chunk_id)
 
         # Delete document details
         self.__document_details_repository.delete(shard_name, document_id)

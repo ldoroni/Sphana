@@ -30,8 +30,10 @@ class ListIndicesHandler(RequestHandler[ListIndicesRequest, ListIndicesResponse]
                     index_name=index.index_name,
                     description=index.description,
                     number_of_shards=index.number_of_shards,
-                    max_chunk_size=index.max_chunk_size,
-                    chunk_overlap_size=index.chunk_overlap_size,
+                    max_parent_chunk_size=index.max_parent_chunk_size,
+                    max_child_chunk_size=index.max_child_chunk_size,
+                    parent_chunk_overlap_size=index.parent_chunk_overlap_size,
+                    child_chunk_overlap_size=index.child_chunk_overlap_size,
                     creation_timestamp=index.creation_timestamp,
                     modification_timestamp=index.modification_timestamp
                 ) for index in results.documents

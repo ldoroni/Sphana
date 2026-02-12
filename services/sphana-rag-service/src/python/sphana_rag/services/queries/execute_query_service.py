@@ -1,10 +1,10 @@
 from typing import Optional
 from injector import inject, singleton
 from managed_exceptions import ItemNotFoundException
-from sphana_rag.models import IndexDetails, ChunkDetails, TextChunkResult, ExecuteQueryResult
-from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, ChunkDetailsRepository
+from sphana_rag.models import IndexDetails, ChildChunkDetails, ParentChunkDetails, TextChunkResult, ExecuteQueryResult
+from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, ChildChunkDetailsRepository, ParentChunkDetailsRepository
 from sphana_rag.services.tokenizer import TextTokenizer
-from sphana_rag.utils import ShardUtil, CompressionUtil
+from sphana_rag.utils import ShardUtil
 
 class SearchChunkResult:
     def __init__(self, shard_name: str, chunk_id: str, score: float):
@@ -19,11 +19,13 @@ class ExecuteQueryService:
     def __init__(self,
                  index_details_repository: IndexDetailsRepository,
                  index_vectors_repository: IndexVectorsRepository,
-                 chunk_details_repository: ChunkDetailsRepository,
+                 child_chunk_details_repository: ChildChunkDetailsRepository,
+                 parent_chunk_details_repository: ParentChunkDetailsRepository,
                  text_tokenizer: TextTokenizer):
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
-        self.__chunk_details_repository = chunk_details_repository
+        self.__child_chunk_details_repository = child_chunk_details_repository
+        self.__parent_chunk_details_repository = parent_chunk_details_repository
         self.__text_tokenizer = text_tokenizer
 
     def execute_query(self, index_name: str, query: str, max_results: int) -> list[ExecuteQueryResult]:
@@ -37,7 +39,7 @@ class ExecuteQueryService:
         prefixed_query = f"search_query: {query}"
         query_embedding: list[float] = self.__text_tokenizer.tokenize_text(prefixed_query)
 
-        # Search for similar chunks
+        # Search for similar child chunks across all shards
         total_search_results: list[SearchChunkResult] = []
         for shard_number in range(index_details.number_of_shards):
             shard_name: str = ShardUtil.get_shard_name(index_name, shard_number)
@@ -45,22 +47,41 @@ class ExecuteQueryService:
             for search_result in search_results:
                 total_search_results.append(SearchChunkResult(shard_name, search_result.chunk_id, search_result.score))
 
-        # Sort results by score and limit to max_results
+        # Sort results by score and limit
         total_search_results.sort(key=lambda x: x.score, reverse=False)
-        total_search_results = total_search_results[:max_results]
 
-        # Retrieve chunks based on chunk IDs, and build results
+        # Deduplicate by parent chunk: for each child hit, look up its parent.
+        # Keep the best (first) score per unique parent chunk.
+        seen_parent_ids: set[str] = set()
         results: list[ExecuteQueryResult] = []
+        
         for search_result in total_search_results:
-            chunk_details: Optional[ChunkDetails] = self.__chunk_details_repository.read(search_result.shard_name, search_result.chunk_id)
-            if chunk_details is None:
+            if len(results) >= max_results:
+                break
+                
+            # Look up child chunk to find its parent
+            child_chunk: Optional[ChildChunkDetails] = self.__child_chunk_details_repository.read(search_result.shard_name, search_result.chunk_id)
+            if child_chunk is None:
                 # TODO: This should not happen, log warning
                 continue
+            
+            # Deduplicate by parent chunk id
+            if child_chunk.parent_chunk_id in seen_parent_ids:
+                continue
+            seen_parent_ids.add(child_chunk.parent_chunk_id)
+            
+            # Look up parent chunk to get content
+            parent_chunk: Optional[ParentChunkDetails] = self.__parent_chunk_details_repository.read(search_result.shard_name, child_chunk.parent_chunk_id)
+            if parent_chunk is None:
+                # TODO: This should not happen, log warning
+                continue
+            
             actual_result: ExecuteQueryResult = ExecuteQueryResult(
-                document_id=chunk_details.document_id,
-                chunk_index=chunk_details.chunk_index,
-                content=chunk_details.content,
+                document_id=parent_chunk.document_id,
+                chunk_index=parent_chunk.chunk_index,
+                content=parent_chunk.content,
                 score=search_result.score
             )
             results.append(actual_result)
+        
         return results

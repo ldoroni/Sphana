@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
-class ChunkDetails(BaseModel):
-    chunk_id: str
-    document_id: str
-    chunk_index: int
-    content: bytes
+class ChildChunkDetails(BaseModel):
+    child_chunk_id: str
+    parent_chunk_id: str
+    # document_id: str
+    # child_chunk_index: int

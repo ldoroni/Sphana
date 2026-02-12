@@ -74,21 +74,33 @@ class TextTokenizer:
             duration: float = time() - start_time
             EMBEDDING_EXE_DURATION_HISTOGRAM.labels(operation="tokenize_text").observe(duration)
     
-    def tokenize_and_chunk_text(self, text: str, max_chunk_size: int, chunk_overlap_size: int) -> list[TextChunkDetails]:
+    def tokenize_and_chunk_text(self, text: str, max_parent_chunk_size: int, max_child_chunk_size: int, parent_chunk_overlap_size: int, child_chunk_overlap_size: int) -> list[TextChunkDetails]:
         start_time: float = time()
         EMBEDDING_EXE_COUNTER.labels(operation="tokenize_and_chunk_text").inc()
         try:
             if not text or not text.strip():
                 return []
             
-            if max_chunk_size <= 0:
-                raise ValueError("max_chunk_size must be greater than 0")
+            if max_parent_chunk_size <= 0:
+                raise ValueError("max_parent_chunk_size must be greater than 0")
             
-            if chunk_overlap_size < 0:
-                raise ValueError("chunk_overlap_size must be non-negative")
+            if max_child_chunk_size <= 0:
+                raise ValueError("max_child_chunk_size must be greater than 0")
             
-            if chunk_overlap_size >= max_chunk_size:
-                raise ValueError("chunk_overlap_size must be less than max_chunk_size")
+            if max_child_chunk_size > max_parent_chunk_size:
+                raise ValueError("max_child_chunk_size must be less than or equal to max_parent_chunk_size")
+            
+            if parent_chunk_overlap_size < 0:
+                raise ValueError("parent_chunk_overlap_size must be non-negative")
+            
+            if parent_chunk_overlap_size >= max_parent_chunk_size:
+                raise ValueError("parent_chunk_overlap_size must be less than max_parent_chunk_size")
+            
+            if child_chunk_overlap_size < 0:
+                raise ValueError("child_chunk_overlap_size must be non-negative")
+            
+            if child_chunk_overlap_size >= max_child_chunk_size:
+                raise ValueError("child_chunk_overlap_size must be less than max_child_chunk_size")
             
             # Tokenize the entire text
             encoding = self.__tokenizer(
@@ -104,46 +116,64 @@ class TextTokenizer:
             if not tokens:
                 return []
             
-            chunks = []
-            chunk_texts = []
+            # First pass: create parent chunks with overlap
+            parent_chunks = []
             start_idx = 0
             
-            # First pass: create chunks and collect texts
             while start_idx < len(tokens):
-                # Determine the end index for this chunk
-                end_idx = min(start_idx + max_chunk_size, len(tokens))
+                end_idx = min(start_idx + max_parent_chunk_size, len(tokens))
                 
-                # Extract chunk tokens and their offsets
-                chunk_tokens = tokens[start_idx:end_idx]
-                chunk_offsets = offsets[start_idx:end_idx]
+                parent_offsets = offsets[start_idx:end_idx]
+                parent_start_char = parent_offsets[0][0]
+                parent_end_char = parent_offsets[-1][1]
+                parent_text = text[parent_start_char:parent_end_char]
                 
-                # Get character positions
-                start_char = chunk_offsets[0][0]
-                end_char = chunk_offsets[-1][1]
-                
-                # Extract the actual text for this chunk
-                chunk_text = text[start_char:end_char]
-                
-                # Store chunk metadata (without embedding for now)
-                chunks.append({
-                    'text': chunk_text,
-                    'token_count': len(chunk_tokens),
-                    'start_char': start_char,
-                    'end_char': end_char
+                parent_chunks.append({
+                    'text': parent_text,
+                    'token_start': start_idx,
+                    'token_end': end_idx,
+                    'start_char': parent_start_char,
+                    'end_char': parent_end_char
                 })
                 
-                chunk_texts.append(chunk_text)
-                
-                # Move to the next chunk with overlap
                 if end_idx >= len(tokens):
                     break
                 
-                # Move forward by (max_chunk_size - chunk_overlap_size)
-                start_idx = end_idx - chunk_overlap_size
+                start_idx = end_idx - parent_chunk_overlap_size
             
-            # Second pass: generate embeddings for all chunks in batch
+            # Second pass: subdivide each parent into non-overlapping child chunks
+            child_chunks = []
+            child_texts = []
+            
+            for parent in parent_chunks:
+                child_start_idx = parent['token_start']
+                
+                while child_start_idx < parent['token_end']:
+                    child_end_idx = min(child_start_idx + max_child_chunk_size, parent['token_end'])
+                    
+                    child_offsets = offsets[child_start_idx:child_end_idx]
+                    child_start_char = child_offsets[0][0]
+                    child_end_char = child_offsets[-1][1]
+                    child_text = text[child_start_char:child_end_char]
+                    
+                    child_chunks.append({
+                        'text': child_text,
+                        'parent_text': parent['text'],
+                        'token_count': child_end_idx - child_start_idx,
+                        'start_char': child_start_char,
+                        'end_char': child_end_char
+                    })
+                    
+                    child_texts.append(child_text)
+                    
+                    if child_end_idx >= parent['token_end']:
+                        break
+                    
+                    child_start_idx = child_end_idx - child_chunk_overlap_size
+            
+            # Third pass: generate embeddings for all child chunks in batch
             # Using "search_document" prefix for document embeddings as per nomic best practices
-            prefixed_texts = [f"search_document: {chunk_text}" for chunk_text in chunk_texts]
+            prefixed_texts = [f"search_document: {child_text}" for child_text in child_texts]
             embeddings = self.__model.encode(
                 prefixed_texts,
                 convert_to_tensor=False,
@@ -151,11 +181,12 @@ class TextTokenizer:
                 normalize_embeddings=True
             )
             
-            # Third pass: create TextChunkDetails objects with embeddings
+            # Fourth pass: create TextChunkDetails objects with embeddings
             text_chunks = []
-            for i, chunk_data in enumerate(chunks):
+            for i, chunk_data in enumerate(child_chunks):
                 text_chunk = TextChunkDetails(
                     text=chunk_data['text'],
+                    parent_text=chunk_data['parent_text'],
                     token_count=chunk_data['token_count'],
                     start_char=chunk_data['start_char'],
                     end_char=chunk_data['end_char'],

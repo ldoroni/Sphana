@@ -2,7 +2,7 @@ from typing import Optional
 from injector import inject, singleton
 from managed_exceptions import ItemNotFoundException
 from sphana_rag.models import IndexDetails
-from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChunkDetailsRepository
+from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChildChunkDetailsRepository, ParentChunkDetailsRepository
 from sphana_rag.utils import ShardUtil
 
 @singleton
@@ -13,11 +13,13 @@ class DeleteIndexService:
                  index_details_repository: IndexDetailsRepository,
                  index_vectors_repository: IndexVectorsRepository,
                  document_details_repository: DocumentDetailsRepository,
-                 chunk_details_repository: ChunkDetailsRepository):
+                 child_chunk_details_repository: ChildChunkDetailsRepository,
+                 parent_chunk_details_repository: ParentChunkDetailsRepository):
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__document_details_repository = document_details_repository
-        self.__chunk_details_repository = chunk_details_repository
+        self.__child_chunk_details_repository = child_chunk_details_repository
+        self.__parent_chunk_details_repository = parent_chunk_details_repository
 
     def delete_index(self, index_name: str) -> None:
         # Get index details
@@ -29,8 +31,11 @@ class DeleteIndexService:
             # Get shard name
             shard_name: str = ShardUtil.get_shard_name(index_name, shard_number)
 
-            # Drop chunk details table
-            self.__chunk_details_repository.drop_table(shard_name)
+            # Drop parent chunk details table
+            self.__parent_chunk_details_repository.drop_table(shard_name)
+
+            # Drop child chunk details table
+            self.__child_chunk_details_repository.drop_table(shard_name)
 
             # Drop document details table
             self.__document_details_repository.drop_table(shard_name)

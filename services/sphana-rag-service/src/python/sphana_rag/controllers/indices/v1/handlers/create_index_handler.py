@@ -22,8 +22,10 @@ class CreateIndexHandler(RequestHandler[CreateIndexRequest, CreateIndexResponse]
             index_name=request.index_name or "",
             description=request.description or "",
             number_of_shards=request.number_of_shards or 0,
-            max_chunk_size=request.max_chunk_size or 0,
-            chunk_overlap_size=request.chunk_overlap_size or 0
+            max_parent_chunk_size=request.max_parent_chunk_size or 0,
+            max_child_chunk_size=request.max_child_chunk_size or 0,
+            parent_chunk_overlap_size=request.parent_chunk_overlap_size or 0,
+            child_chunk_overlap_size=request.child_chunk_overlap_size or 0
         )
 
         # Return response
