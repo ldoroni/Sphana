@@ -2,7 +2,7 @@ from typing import Optional
 from injector import inject, singleton
 from managed_exceptions import ItemNotFoundException
 from sphana_rag.models import IndexDetails
-from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChildChunkDetailsRepository, ParentChunkDetailsRepository
+from sphana_rag.repositories import IndexDetailsRepository, ShardDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChildChunkDetailsRepository, ParentChunkDetailsRepository
 from sphana_rag.utils import ShardUtil
 
 @singleton
@@ -11,11 +11,13 @@ class DeleteIndexService:
     @inject
     def __init__(self, 
                  index_details_repository: IndexDetailsRepository,
+                 shard_details_repository: ShardDetailsRepository,
                  index_vectors_repository: IndexVectorsRepository,
                  document_details_repository: DocumentDetailsRepository,
                  child_chunk_details_repository: ChildChunkDetailsRepository,
                  parent_chunk_details_repository: ParentChunkDetailsRepository):
         self.__index_details_repository = index_details_repository
+        self.__shard_details_repository = shard_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__document_details_repository = document_details_repository
         self.__child_chunk_details_repository = child_chunk_details_repository
@@ -42,6 +44,9 @@ class DeleteIndexService:
 
             # Drop index vectors index
             self.__index_vectors_repository.drop_index(shard_name)
+
+            # Delete shard details
+            self.__shard_details_repository.delete(shard_name)
 
         # Delete index details
         self.__index_details_repository.delete(index_name)

@@ -4,6 +4,7 @@ from .execute_query_result import ExecuteQueryResult
 from .index_details import IndexDetails
 from .list_results import ListResults
 from .parent_chunk_details import ParentChunkDetails
+from .shard_details import ShardDetails
 from .text_chunk_details import TextChunkDetails
 from .text_chunk_result import TextChunkResult
 from .tokenized_text import TokenizedText
@@ -15,6 +16,7 @@ __all__ = [
     "IndexDetails",
     "ListResults",
     "ParentChunkDetails",
+    "ShardDetails",
     "TextChunkDetails",
     "TextChunkResult",
     "TokenizedText"

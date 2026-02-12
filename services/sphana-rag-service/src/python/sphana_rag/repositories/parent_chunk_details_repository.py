@@ -12,7 +12,7 @@ class ParentChunkDetailsRepository(BaseDocumentsRepository[ParentChunkDetails]):
     def __init__(self):
         self.__last_unique_id_map: dict[str, int] = {}
         self.__last_unique_id_lock = threading.Lock()
-        db_location: str = "./.database/parent_chunk_details_db" # TODO: take from env variables
+        db_location: str = "./.database/parent_chunk_details" # TODO: take from env variables
         secondary: bool = False # TODO: take from env variables
         super().__init__(db_location, secondary)
 

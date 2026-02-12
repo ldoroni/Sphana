@@ -8,7 +8,7 @@ from .base_documents_repository import BaseDocumentsRepository
 class DocumentDetailsRepository(BaseDocumentsRepository[DocumentDetails]):
     
     def __init__(self):
-        db_location: str = "./.database/document_details_db" # TODO: take from env variables
+        db_location: str = "./.database/document_details" # TODO: take from env variables
         secondary: bool = False # TODO: take from env variables
         super().__init__(db_location, secondary)
 

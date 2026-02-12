@@ -6,7 +6,7 @@ from .base_vectors_repository import BaseVectorsRepository
 class IndexVectorsRepository(BaseVectorsRepository):
     
     def __init__(self):
-        db_location: str = "./.database/index_vectors_db" # TODO: take from env variables
+        db_location: str = "./.database/index_vectors" # TODO: take from env variables
         secondary: bool = False # TODO: take from env variables
         dimension = 768 # TODO: take from env variables
         super().__init__(db_location, secondary, dimension)

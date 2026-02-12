@@ -1,8 +1,8 @@
 from datetime import datetime, timezone
 from injector import inject, singleton
 from managed_exceptions import ItemAlreadyExistsException
-from sphana_rag.models import IndexDetails
-from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChildChunkDetailsRepository, ParentChunkDetailsRepository
+from sphana_rag.models import IndexDetails, ShardDetails
+from sphana_rag.repositories import IndexDetailsRepository, ShardDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ChildChunkDetailsRepository, ParentChunkDetailsRepository
 from sphana_rag.utils import ShardUtil
 
 @singleton
@@ -11,11 +11,13 @@ class CreateIndexService:
     @inject
     def __init__(self, 
                  index_details_repository: IndexDetailsRepository,
+                 shard_details_repository: ShardDetailsRepository,
                  index_vectors_repository: IndexVectorsRepository,
                  document_details_repository: DocumentDetailsRepository,
                  child_chunk_details_repository: ChildChunkDetailsRepository,
                  parent_chunk_details_repository: ParentChunkDetailsRepository):
         self.__index_details_repository = index_details_repository
+        self.__shard_details_repository = shard_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__document_details_repository = document_details_repository
         self.__child_chunk_details_repository = child_chunk_details_repository
@@ -41,6 +43,15 @@ class CreateIndexService:
 
             # Init index vectors index
             self.__index_vectors_repository.init_index(shard_name)
+
+            # Save shard details
+            shard_details: ShardDetails = ShardDetails(
+                shard_name=shard_name,
+                index_name=index_name,
+                creation_timestamp=datetime.now(timezone.utc),
+                modification_timestamp=datetime.now(timezone.utc)
+            )
+            self.__shard_details_repository.upsert(shard_details)
 
         # Save index details
         index_details: IndexDetails = IndexDetails(

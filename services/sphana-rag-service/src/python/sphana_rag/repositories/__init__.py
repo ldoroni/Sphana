@@ -3,6 +3,7 @@ from .document_details_repository import DocumentDetailsRepository
 from .index_details_repository import IndexDetailsRepository
 from .index_vectors_repository import IndexVectorsRepository
 from .parent_chunk_details_repository import ParentChunkDetailsRepository
+from .shard_details_repository import ShardDetailsRepository
 
 __all__ = [
     "ChildChunkDetailsRepository",
@@ -10,4 +11,5 @@ __all__ = [
     "IndexDetailsRepository",
     "IndexVectorsRepository",
     "ParentChunkDetailsRepository",
+    "ShardDetailsRepository"
 ]

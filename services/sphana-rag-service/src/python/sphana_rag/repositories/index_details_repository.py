@@ -10,7 +10,7 @@ SHARD_NAME: str = "global"
 class IndexDetailsRepository(BaseDocumentsRepository[IndexDetails]):
     
     def __init__(self):
-        db_location: str = "./.database/index_details_db" # TODO: take from env variables
+        db_location: str = "./.database/index_details" # TODO: take from env variables
         secondary: bool = False # TODO: take from env variables
         super().__init__(db_location, secondary)
         self._init_table(SHARD_NAME)
