@@ -12,7 +12,7 @@ TOKENIZER_EXE_COUNTER = Counter("spn_tokenizer_exe_total", "Total number of toke
 TOKENIZER_EXE_DURATION_HISTOGRAM = Histogram("spn_tokenizer_exe_duration_seconds", "Duration of tokenizer operations in seconds", ["operation"])
 
 @singleton
-class TextTokenizer:
+class TextTokenizerService:
     
     def __init__(self):
         self.__logger = logging.getLogger(self.__class__.__name__)

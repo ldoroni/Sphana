@@ -1,9 +1,9 @@
-from .text_tokenizer import TextTokenizer
-from .token_chunker import TokenChunker
-from .text_embedder import TextEmbedder
+from .text_tokenizer_service import TextTokenizerService
+from .token_chunker_service import TokenChunkerService
+from .text_embedder_service import TextEmbedderService
 
 __all__ = [
-    "TextTokenizer",
-    "TokenChunker",
-    "TextEmbedder"
+    "TextTokenizerService",
+    "TokenChunkerService",
+    "TextEmbedderService"
 ]

@@ -4,7 +4,7 @@ from injector import inject, singleton
 from managed_exceptions import ItemNotFoundException
 from sphana_rag.models import IndexDetails, DocumentDetails, ParentChunkDetails, ChildChunkDetails, TokenizedText
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, DocumentDetailsRepository, ParentChunkDetailsRepository, ChildChunkDetailsRepository
-from sphana_rag.services.tokenizer import TextTokenizer, TokenChunker, TextEmbedder
+from sphana_rag.services.tokenizer import TextTokenizerService, TokenChunkerService, TextEmbedderService
 from sphana_rag.utils import ShardUtil, CompressionUtil
 
 @singleton
@@ -17,9 +17,9 @@ class UpdateDocumentService:
                  document_details_repository: DocumentDetailsRepository,
                  parent_chunk_details_repository: ParentChunkDetailsRepository,
                  child_chunk_details_repository: ChildChunkDetailsRepository,
-                 text_tokenizer: TextTokenizer,
-                 token_chunker: TokenChunker,
-                 text_embedder: TextEmbedder):
+                 text_tokenizer: TextTokenizerService,
+                 token_chunker: TokenChunkerService,
+                 text_embedder: TextEmbedderService):
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__document_details_repository = document_details_repository

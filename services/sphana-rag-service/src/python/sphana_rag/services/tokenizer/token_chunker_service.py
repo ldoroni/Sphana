@@ -2,7 +2,7 @@ from injector import singleton
 from sphana_rag.models.tokenized_text import TokenizedText
 
 @singleton
-class TokenChunker:
+class TokenChunkerService:
 
     def __init__(self):
         pass

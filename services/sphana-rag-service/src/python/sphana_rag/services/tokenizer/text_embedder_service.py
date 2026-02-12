@@ -11,7 +11,7 @@ EMBEDDER_EXE_COUNTER = Counter("spn_embedder_exe_total", "Total number of embedd
 EMBEDDER_EXE_DURATION_HISTOGRAM = Histogram("spn_embedder_exe_duration_seconds", "Duration of embedder operations in seconds", ["operation"])
 
 @singleton
-class TextEmbedder:
+class TextEmbedderService:
     
     def __init__(self):
         self.__logger = logging.getLogger(self.__class__.__name__)
