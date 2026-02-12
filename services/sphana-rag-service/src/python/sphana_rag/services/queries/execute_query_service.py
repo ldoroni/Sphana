@@ -3,7 +3,7 @@ from injector import inject, singleton
 from managed_exceptions import ItemNotFoundException
 from sphana_rag.models import IndexDetails, ChildChunkDetails, ParentChunkDetails, TextChunkResult, ExecuteQueryResult
 from sphana_rag.repositories import IndexDetailsRepository, IndexVectorsRepository, ChildChunkDetailsRepository, ParentChunkDetailsRepository
-from sphana_rag.services.tokenizer import TextTokenizer
+from sphana_rag.services.tokenizer import TextEmbedder
 from sphana_rag.utils import ShardUtil
 
 class SearchChunkResult:
@@ -21,12 +21,12 @@ class ExecuteQueryService:
                  index_vectors_repository: IndexVectorsRepository,
                  child_chunk_details_repository: ChildChunkDetailsRepository,
                  parent_chunk_details_repository: ParentChunkDetailsRepository,
-                 text_tokenizer: TextTokenizer):
+                 token_embedder: TextEmbedder):
         self.__index_details_repository = index_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__child_chunk_details_repository = child_chunk_details_repository
         self.__parent_chunk_details_repository = parent_chunk_details_repository
-        self.__text_tokenizer = text_tokenizer
+        self.__text_embedder = token_embedder
 
     def execute_query(self, index_name: str, query: str, max_results: int) -> list[ExecuteQueryResult]:
         # Get index details
@@ -37,7 +37,7 @@ class ExecuteQueryService:
         # Generate embedding for the query
         # Using "search_query" prefix for query embeddings as per nomic best practices
         prefixed_query = f"search_query: {query}"
-        query_embedding: list[float] = self.__text_tokenizer.tokenize_text(prefixed_query)
+        query_embedding: list[float] = self.__text_embedder.embed_text(prefixed_query)
 
         # Search for similar child chunks across all shards
         total_search_results: list[SearchChunkResult] = []

@@ -1,180 +1,204 @@
 # """
-# Test script for TextTokenizer class.
+# Test script for TextTokenizer, TokenChunker, and TokenEmbedder classes.
 # Run this after installing dependencies with: pip install -e .
 # """
 
-# from sphana_rag.services.tokenizer import TextTokenizer
-# from sphana_rag.models import TextChunkDetails
+# from sphana_rag.services.tokenizer import TextTokenizer, TokenChunker, TokenEmbedder
+# from sphana_rag.models import TokenizedText, TokenChunk
 
-# def test_basic_parent_child_chunking():
-#     """Test basic parent-child text chunking functionality."""
+# def test_tokenizer():
+#     """Test TextTokenizer produces token IDs and offsets."""
 #     print("=" * 80)
-#     print("Testing TextTokenizer - Parent-Child Chunking")
+#     print("Testing TextTokenizer")
 #     print("=" * 80)
     
-#     # Initialize the tokenizer
 #     tokenizer = TextTokenizer()
     
-#     # Sample text
+#     sample_text = "Artificial intelligence is intelligence demonstrated by machines."
+#     result: TokenizedText = tokenizer.tokenize(sample_text)
+    
+#     print(f"Text: {sample_text}")
+#     print(f"Token IDs ({len(result.token_ids)}): {result.token_ids}")
+#     print(f"Offsets ({len(result.offsets)}): {result.offsets}")
+    
+#     assert len(result.token_ids) > 0, "Should produce tokens"
+#     assert len(result.token_ids) == len(result.offsets), "Token IDs and offsets should have same length"
+#     print("✓ TextTokenizer works correctly")
+
+#     # Empty text
+#     empty_result = tokenizer.tokenize("")
+#     assert len(empty_result.token_ids) == 0, "Empty text should produce no tokens"
+#     print("✓ Empty text handled correctly")
+
+# def test_token_chunker():
+#     """Test TokenChunker produces correct chunks from token arrays."""
+#     print("\n" + "=" * 80)
+#     print("Testing TokenChunker")
+#     print("=" * 80)
+    
+#     tokenizer = TextTokenizer()
+    
 #     sample_text = """
 #     Artificial intelligence (AI) is intelligence demonstrated by machines, in contrast to the natural 
 #     intelligence displayed by humans and animals. Leading AI textbooks define the field as the study 
 #     of "intelligent agents": any device that perceives its environment and takes actions that maximize 
-#     its chance of successfully achieving its goals. Colloquially, the term "artificial intelligence" 
-#     is often used to describe machines (or computers) that mimic "cognitive" functions that humans 
-#     associate with the human mind, such as "learning" and "problem solving".
+#     its chance of successfully achieving its goals.
 #     """
     
-#     print(f"\n{'='*80}")
-#     print("Sample Text:")
-#     print(f"{'='*80}")
-#     print(sample_text.strip())
+#     # Step 1: Tokenize
+#     tokenized: TokenizedText = tokenizer.tokenize(sample_text)
+#     print(f"Total tokens: {len(tokenized.token_ids)}")
     
-#     # Chunk the text with parent-child approach
-#     max_parent_chunk_size = 100
-#     max_child_chunk_size = 25
-#     parent_chunk_overlap_size = 10
-#     child_chunk_overlap_size = 5
-    
-#     print(f"\nChunking with max_parent_chunk_size={max_parent_chunk_size}, max_child_chunk_size={max_child_chunk_size}, parent_chunk_overlap_size={parent_chunk_overlap_size}, child_chunk_overlap_size={child_chunk_overlap_size}")
-#     chunks = tokenizer.tokenize_and_chunk_text(
-#         sample_text,
-#         max_parent_chunk_size=max_parent_chunk_size,
-#         max_child_chunk_size=max_child_chunk_size,
-#         parent_chunk_overlap_size=parent_chunk_overlap_size,
-#         child_chunk_overlap_size=child_chunk_overlap_size
+#     # Step 2: Chunk into parent chunks
+#     parent_chunks: list[TokenChunk] = TokenChunker.chunk_tokens(
+#         token_ids=tokenized.token_ids,
+#         offsets=tokenized.offsets,
+#         text=sample_text,
+#         chunk_size=50,
+#         overlap_size=5
 #     )
     
-#     print(f"\n{'='*80}")
-#     print(f"Generated {len(chunks)} child chunks:")
-#     print(f"{'='*80}")
+#     print(f"\nParent chunks ({len(parent_chunks)}):")
+#     for i, chunk in enumerate(parent_chunks):
+#         print(f"  Parent {i}: {chunk.token_count} tokens, chars [{chunk.start_char}:{chunk.end_char}]")
+#         print(f"    Text: {chunk.text[:80]}..." if len(chunk.text) > 80 else f"    Text: {chunk.text}")
     
-#     for i, chunk in enumerate(chunks, 1):
-#         print(f"\nChild Chunk {i}:")
-#         print(f"  Token count: {chunk.token_count}")
-#         print(f"  Character range: {chunk.start_char}-{chunk.end_char}")
-#         print(f"  Embedding length: {len(chunk.embedding)}")
-#         print(f"  Embedding sample (first 5): {chunk.embedding[:5]}")
-#         print(f"  Child text: {chunk.text[:80]}..." if len(chunk.text) > 80 else f"  Child text: {chunk.text}")
-#         print(f"  Parent text length: {len(chunk.parent_text)} chars")
-#         print(f"  Parent text: {chunk.parent_text[:80]}..." if len(chunk.parent_text) > 80 else f"  Parent text: {chunk.parent_text}")
+#     assert len(parent_chunks) > 0, "Should produce parent chunks"
     
-#     # Verify parent text is always larger or equal to child text
-#     for chunk in chunks:
-#         assert len(chunk.parent_text) >= len(chunk.text), "Parent text should be >= child text"
+#     # Step 3: Chunk each parent into child chunks
+#     for i, parent_chunk in enumerate(parent_chunks):
+#         child_chunks: list[TokenChunk] = TokenChunker.chunk_tokens(
+#             token_ids=parent_chunk.token_ids,
+#             offsets=parent_chunk.offsets,
+#             text=parent_chunk.text,
+#             chunk_size=15,
+#             overlap_size=3
+#         )
+#         print(f"\n  Parent {i} -> {len(child_chunks)} child chunks:")
+#         for j, child in enumerate(child_chunks):
+#             print(f"    Child {j}: {child.token_count} tokens, text: {child.text[:60]}...")
     
-#     print(f"\n{'='*80}")
-#     print("Test completed successfully!")
-#     print(f"{'='*80}")
+#     print("✓ TokenChunker parent-child chunking works correctly")
 
-# def test_edge_cases():
-#     """Test edge cases."""
-#     print("\n" + "="*80)
-#     print("Testing Edge Cases")
-#     print("="*80)
-    
-#     tokenizer = TextTokenizer()
-    
-#     # Empty text
-#     chunks = tokenizer.tokenize_and_chunk_text("", max_parent_chunk_size=100, max_child_chunk_size=25, parent_chunk_overlap_size=10, child_chunk_overlap_size=5)
-#     assert len(chunks) == 0, "Empty text should return empty list"
-#     print("✓ Empty text handled correctly")
-    
-#     # Single token text
-#     chunks = tokenizer.tokenize_and_chunk_text("Hello", max_parent_chunk_size=100, max_child_chunk_size=25, parent_chunk_overlap_size=10, child_chunk_overlap_size=5)
-#     assert len(chunks) == 1, "Single word should return one chunk"
-#     assert isinstance(chunks[0], TextChunkDetails), "Chunk should be a TextChunkDetails instance"
-#     assert len(chunks[0].embedding) > 0, "Chunk should have an embedding"
-#     assert chunks[0].parent_text == chunks[0].text, "For single token, parent and child text should match"
-#     print("✓ Single token text handled correctly")
-#     print(f"  Embedding dimension: {len(chunks[0].embedding)}")
-    
-#     # max_parent_chunk_size == max_child_chunk_size (no subdivision)
-#     chunks = tokenizer.tokenize_and_chunk_text("This is a test sentence for chunking.", max_parent_chunk_size=50, max_child_chunk_size=50, parent_chunk_overlap_size=0, child_chunk_overlap_size=0)
-#     for chunk in chunks:
-#         assert chunk.parent_text == chunk.text, "When sizes are equal, parent and child text should match"
-#     print("✓ Equal parent/child chunk size handled correctly")
-    
-#     # Small child chunk size
-#     chunks = tokenizer.tokenize_and_chunk_text("This is a test sentence.", max_parent_chunk_size=20, max_child_chunk_size=5, parent_chunk_overlap_size=2, child_chunk_overlap_size=1)
-#     assert len(chunks) > 1, "Small child chunk size should create multiple chunks"
-#     assert all(isinstance(chunk, TextChunkDetails) for chunk in chunks), "All chunks should be TextChunkDetails instances"
-#     assert all(len(chunk.embedding) > 0 for chunk in chunks), "All chunks should have embeddings"
-#     assert all(len(chunk.parent_text) >= len(chunk.text) for chunk in chunks), "Parent text should always be >= child text"
-#     print(f"✓ Small child chunk size created {len(chunks)} child chunks")
-    
+#     # Edge case: empty tokens
+#     empty_chunks = TokenChunker.chunk_tokens([], [], "", chunk_size=10, overlap_size=2)
+#     assert len(empty_chunks) == 0, "Empty tokens should produce no chunks"
+#     print("✓ Empty tokens handled correctly")
+
 #     # Validation errors
 #     try:
-#         tokenizer.tokenize_and_chunk_text("test", max_parent_chunk_size=0, max_child_chunk_size=25, parent_chunk_overlap_size=10, child_chunk_overlap_size=5)
+#         TokenChunker.chunk_tokens([1], [(0, 1)], "a", chunk_size=0, overlap_size=0)
 #         assert False, "Should have raised ValueError"
 #     except ValueError:
-#         print("✓ max_parent_chunk_size=0 raises ValueError")
+#         print("✓ chunk_size=0 raises ValueError")
     
 #     try:
-#         tokenizer.tokenize_and_chunk_text("test", max_parent_chunk_size=100, max_child_chunk_size=0, parent_chunk_overlap_size=10, child_chunk_overlap_size=0)
+#         TokenChunker.chunk_tokens([1], [(0, 1)], "a", chunk_size=5, overlap_size=5)
 #         assert False, "Should have raised ValueError"
 #     except ValueError:
-#         print("✓ max_child_chunk_size=0 raises ValueError")
-    
-#     try:
-#         tokenizer.tokenize_and_chunk_text("test", max_parent_chunk_size=25, max_child_chunk_size=100, parent_chunk_overlap_size=10, child_chunk_overlap_size=5)
-#         assert False, "Should have raised ValueError"
-#     except ValueError:
-#         print("✓ max_child_chunk_size > max_parent_chunk_size raises ValueError")
-    
-#     try:
-#         tokenizer.tokenize_and_chunk_text("test", max_parent_chunk_size=100, max_child_chunk_size=25, parent_chunk_overlap_size=100, child_chunk_overlap_size=5)
-#         assert False, "Should have raised ValueError"
-#     except ValueError:
-#         print("✓ parent_chunk_overlap_size >= max_parent_chunk_size raises ValueError")
-    
-#     try:
-#         tokenizer.tokenize_and_chunk_text("test", max_parent_chunk_size=100, max_child_chunk_size=25, parent_chunk_overlap_size=10, child_chunk_overlap_size=25)
-#         assert False, "Should have raised ValueError"
-#     except ValueError:
-#         print("✓ child_chunk_overlap_size >= max_child_chunk_size raises ValueError")
-    
-#     print("\nAll edge cases passed!")
+#         print("✓ overlap_size >= chunk_size raises ValueError")
 
-# def test_text_chunk_details_model():
-#     """Test the TextChunkDetails Pydantic model."""
-#     print("\n" + "="*80)
-#     print("Testing TextChunkDetails Model")
-#     print("="*80)
+# def test_token_embedder():
+#     """Test TokenEmbedder produces embeddings."""
+#     print("\n" + "=" * 80)
+#     print("Testing TokenEmbedder")
+#     print("=" * 80)
     
-#     # Create a sample chunk
-#     chunk = TextChunkDetails(
-#         text="Sample child text",
-#         parent_text="Sample parent text with more context around the child text",
-#         token_count=3,
-#         start_char=0,
-#         end_char=17,
-#         embedding=[0.1, 0.2, 0.3]
+#     embedder = TokenEmbedder()
+    
+#     # Single text
+#     embedding = embedder.embed_text("search_query: What is artificial intelligence?")
+#     print(f"Single embedding dimension: {len(embedding)}")
+#     print(f"Sample (first 5): {embedding[:5]}")
+#     assert len(embedding) > 0, "Should produce an embedding"
+#     print("✓ Single text embedding works")
+    
+#     # Batch texts
+#     texts = [
+#         "search_document: AI is demonstrated by machines.",
+#         "search_document: Natural language processing is a subfield of AI.",
+#         "search_document: Machine learning uses statistical methods."
+#     ]
+#     embeddings = embedder.embed_texts(texts)
+#     print(f"Batch embeddings: {len(embeddings)} x {len(embeddings[0])}")
+#     assert len(embeddings) == 3, "Should produce 3 embeddings"
+#     assert all(len(e) == len(embedding) for e in embeddings), "All embeddings should have same dimension"
+#     print("✓ Batch text embedding works")
+    
+#     # Empty batch
+#     empty_embeddings = embedder.embed_texts([])
+#     assert len(empty_embeddings) == 0, "Empty batch should return empty list"
+#     print("✓ Empty batch handled correctly")
+
+# def test_full_pipeline():
+#     """Test the full tokenize -> chunk -> embed pipeline."""
+#     print("\n" + "=" * 80)
+#     print("Testing Full Pipeline: Tokenize -> Chunk -> Embed")
+#     print("=" * 80)
+    
+#     tokenizer = TextTokenizer()
+#     embedder = TokenEmbedder()
+    
+#     sample_text = """
+#     Artificial intelligence (AI) is intelligence demonstrated by machines, in contrast to the natural 
+#     intelligence displayed by humans and animals. Leading AI textbooks define the field as the study 
+#     of "intelligent agents": any device that perceives its environment and takes actions that maximize 
+#     its chance of successfully achieving its goals.
+#     """
+    
+#     # Step 1: Tokenize
+#     tokenized = tokenizer.tokenize(sample_text)
+#     print(f"1. Tokenized: {len(tokenized.token_ids)} tokens")
+    
+#     # Step 2: Parent chunks
+#     parent_chunks = TokenChunker.chunk_tokens(
+#         token_ids=tokenized.token_ids,
+#         offsets=tokenized.offsets,
+#         text=sample_text,
+#         chunk_size=50,
+#         overlap_size=5
 #     )
+#     print(f"2. Parent chunks: {len(parent_chunks)}")
     
-#     print(f"✓ TextChunkDetails created successfully")
-#     print(f"  Child text: {chunk.text}")
-#     print(f"  Parent text: {chunk.parent_text}")
-#     print(f"  Token count: {chunk.token_count}")
-#     print(f"  Char range: {chunk.start_char}-{chunk.end_char}")
-#     print(f"  Embedding: {chunk.embedding}")
+#     # Step 3: Child chunks from each parent
+#     all_child_texts = []
+#     parent_child_map = []
+#     for pi, parent in enumerate(parent_chunks):
+#         children = TokenChunker.chunk_tokens(
+#             token_ids=parent.token_ids,
+#             offsets=parent.offsets,
+#             text=parent.text,
+#             chunk_size=15,
+#             overlap_size=3
+#         )
+#         for child in children:
+#             parent_child_map.append((pi, child))
+#             all_child_texts.append(f"search_document: {child.text}")
     
-#     # Test JSON serialization
-#     chunk_json = chunk.model_dump_json()
-#     print(f"✓ TextChunkDetails can be serialized to JSON")
-#     print(f"  JSON length: {len(chunk_json)} characters")
+#     print(f"3. Child chunks: {len(parent_child_map)}")
     
-#     # Test JSON deserialization
-#     chunk_restored = TextChunkDetails.model_validate_json(chunk_json)
-#     assert chunk_restored.text == chunk.text, "Restored chunk text should match original"
-#     assert chunk_restored.parent_text == chunk.parent_text, "Restored parent_text should match original"
-#     print(f"✓ TextChunkDetails can be deserialized from JSON")
+#     # Step 4: Batch embed all child texts
+#     embeddings = embedder.embed_texts(all_child_texts)
+#     print(f"4. Embeddings: {len(embeddings)} x {len(embeddings[0])}")
+    
+#     assert len(embeddings) == len(parent_child_map), "Should have one embedding per child chunk"
+    
+#     # Display summary
+#     for i, (pi, child) in enumerate(parent_child_map):
+#         print(f"  Child {i} (parent {pi}): {child.token_count} tokens, embedding dim={len(embeddings[i])}")
+#         print(f"    Text: {child.text[:60]}...")
+    
+#     print("\n✓ Full pipeline works correctly!")
 
 # if __name__ == "__main__":
 #     try:
-#         test_basic_parent_child_chunking()
-#         test_edge_cases()
-#         test_text_chunk_details_model()
+#         test_tokenizer()
+#         test_token_chunker()
+#         test_token_embedder()
+#         test_full_pipeline()
+#         print("\n" + "=" * 80)
+#         print("ALL TESTS PASSED!")
+#         print("=" * 80)
 #     except Exception as e:
 #         print(f"\n❌ Error: {e}")
 #         import traceback

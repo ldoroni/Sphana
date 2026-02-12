@@ -6,6 +6,7 @@ from .list_results import ListResults
 from .parent_chunk_details import ParentChunkDetails
 from .text_chunk_details import TextChunkDetails
 from .text_chunk_result import TextChunkResult
+from .tokenized_text import TokenizedText
 
 __all__ = [
     "ChildChunkDetails",
@@ -15,5 +16,6 @@ __all__ = [
     "ListResults",
     "ParentChunkDetails",
     "TextChunkDetails",
-    "TextChunkResult"
+    "TextChunkResult",
+    "TokenizedText"
 ]
