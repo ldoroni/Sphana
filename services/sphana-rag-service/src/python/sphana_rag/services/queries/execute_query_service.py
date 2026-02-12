@@ -28,7 +28,7 @@ class ExecuteQueryService:
         self.__parent_chunk_details_repository = parent_chunk_details_repository
         self.__text_embedder = token_embedder
 
-    def execute_query(self, index_name: str, query: str, max_results: int) -> list[ExecuteQueryResult]:
+    def execute_query(self, index_name: str, query: str, max_results: int, score_threshold: Optional[float] = None) -> list[ExecuteQueryResult]:
         # Get index details
         index_details: Optional[IndexDetails] = self.__index_details_repository.read(index_name)
         if index_details is None:
@@ -58,6 +58,10 @@ class ExecuteQueryService:
         for search_result in total_search_results:
             if len(results) >= max_results:
                 break
+            
+            # Filter by score threshold (L2 distance: lower = better)
+            if score_threshold is not None and search_result.score > score_threshold:
+                break  # Results are sorted ascending, so all remaining are worse
                 
             # Look up child chunk to find its parent
             child_chunk: Optional[ChildChunkDetails] = self.__child_chunk_details_repository.read(search_result.shard_name, search_result.chunk_id)

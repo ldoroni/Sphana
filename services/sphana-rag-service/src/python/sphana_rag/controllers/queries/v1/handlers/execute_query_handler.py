@@ -22,7 +22,8 @@ class ExecuteQueryHandler(RequestHandler[ExecuteQueryRequest, ExecuteQueryRespon
         results = self.__execute_query_service.execute_query(
             index_name=request.index_name or "",
             query=request.query or "",
-            max_results=request.max_results or 0
+            max_results=request.max_results or 0,
+            score_threshold=request.score_threshold
         )
 
         # Return response
