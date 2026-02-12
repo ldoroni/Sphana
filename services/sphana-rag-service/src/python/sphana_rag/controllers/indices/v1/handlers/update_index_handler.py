@@ -12,11 +12,11 @@ class UpdateIndexHandler(RequestHandler[UpdateIndexRequest, UpdateIndexResponse]
         super().__init__()
         self.__update_index_service = update_index_service
 
-    async def _on_validate(self, request: UpdateIndexRequest):
+    def _on_validate(self, request: UpdateIndexRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: UpdateIndexRequest) -> UpdateIndexResponse:
+    def _on_invoke(self, request: UpdateIndexRequest) -> UpdateIndexResponse:
         # Update index
         self.__update_index_service.update_index(
             index_name=request.index_name or "",

@@ -12,11 +12,11 @@ class DeleteIndexHandler(RequestHandler[DeleteIndexRequest, DeleteIndexResponse]
         super().__init__()
         self.__delete_index_service = delete_index_service
 
-    async def _on_validate(self, request: DeleteIndexRequest):
+    def _on_validate(self, request: DeleteIndexRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: DeleteIndexRequest) -> DeleteIndexResponse:
+    def _on_invoke(self, request: DeleteIndexRequest) -> DeleteIndexResponse:
         # Delete index
         self.__delete_index_service.delete_index(
             index_name=request.index_name or "",

@@ -28,6 +28,35 @@ https://visualstudio.microsoft.com/visual-cpp-build-tools/
    https://docs.nvidia.com/deeplearning/cudnn/backend/v9.8.0/reference/support-matrix.html
    https://developer.nvidia.com/cudnn-9-8-0-download-archive
 
+### For Monitoring
+
+1. Install Prometheus:
+   https://prometheus.io/download/
+2. In prometheus.yml, update 'scrape_configs' value:
+   ```
+   scrape_configs:
+   # 1. Prometheus monitoring itself
+   - job_name: "prometheus"
+      # metrics_path: "/metrics"
+      # scheme: "http"
+      static_configs:
+         - targets: ["localhost:9090"]
+         labels:
+            app: "prometheus"
+
+   # 2. Sphana-RAG service monitoring
+   - job_name: "sphana_rag"
+      # metrics_path: "/metrics"
+      # scheme: "http"
+      scrape_interval: 10s
+      static_configs:
+         - targets: ["localhost:5001"]
+         labels:
+            env: "local"
+            component: "sphana-rag"
+            pod_name: "sphana-rag-0"
+   ```
+
 ## Create Local PyPi Repository
 Run the following commands:
 1. Install the server tool:
@@ -45,6 +74,11 @@ Run the following commands:
    ```
 5. Start the local repository:
    `pypi-server run -a . -P . -p 61000 --overwrite C:\Users\ldoro\.pyrepo`
+
+## Monitor GPU
+```
+while ($true) { Clear-Host; nvidia-smi; Start-Sleep 1 }
+```
 
 ## Example for Update Library Flow:
 1. Build Library:

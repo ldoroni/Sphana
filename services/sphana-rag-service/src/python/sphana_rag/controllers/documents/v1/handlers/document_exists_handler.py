@@ -12,11 +12,11 @@ class DocumentExistsHandler(RequestHandler[DocumentExistsRequest, DocumentExists
         super().__init__()
         self.__document_exists_service = document_exists_service
 
-    async def _on_validate(self, request: DocumentExistsRequest):
+    def _on_validate(self, request: DocumentExistsRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: DocumentExistsRequest) -> DocumentExistsResponse:
+    def _on_invoke(self, request: DocumentExistsRequest) -> DocumentExistsResponse:
         # Check if document exists
         exists: bool = self.__document_exists_service.document_exists(
             index_name=request.index_name or "",

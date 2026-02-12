@@ -12,11 +12,11 @@ class GetIndexHandler(RequestHandler[GetIndexRequest, GetIndexResponse]):
         super().__init__()
         self.__get_index_service = get_index_service
 
-    async def _on_validate(self, request: GetIndexRequest):
+    def _on_validate(self, request: GetIndexRequest):
         # Validate request
         pass
 
-    async def _on_invoke(self, request: GetIndexRequest) -> GetIndexResponse:
+    def _on_invoke(self, request: GetIndexRequest) -> GetIndexResponse:
         # Get index
         index_details = self.__get_index_service.get_index(
             index_name=request.index_name or "",
@@ -27,8 +27,11 @@ class GetIndexHandler(RequestHandler[GetIndexRequest, GetIndexResponse]):
             index_details=IndexDetails(
                 index_name=index_details.index_name,
                 description=index_details.description,
-                max_chunk_size=index_details.max_chunk_size,
-                chunk_overlap_size=index_details.chunk_overlap_size,
+                number_of_shards=index_details.number_of_shards,
+                max_parent_chunk_size=index_details.max_parent_chunk_size,
+                max_child_chunk_size=index_details.max_child_chunk_size,
+                parent_chunk_overlap_size=index_details.parent_chunk_overlap_size,
+                child_chunk_overlap_size=index_details.child_chunk_overlap_size,
                 creation_timestamp=index_details.creation_timestamp,
                 modification_timestamp=index_details.modification_timestamp
             )
