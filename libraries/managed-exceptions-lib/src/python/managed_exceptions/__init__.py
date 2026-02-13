@@ -7,6 +7,7 @@ from managed_exceptions.authorization.unauthenticated_exception import Unauthent
 from managed_exceptions.authorization.unauthorized_exception import UnauthorizedException
 from managed_exceptions.internal.internal_error_exception import InternalErrorException
 from managed_exceptions.internal.unimplemented_exception import UnimplementedException
+from managed_exceptions.upstreams.upstream_exception import UpstreamException
 
 __all__ = [
     "ErrorDetails",
@@ -17,5 +18,6 @@ __all__ = [
     "UnauthenticatedException",
     "UnauthorizedException",
     "InternalErrorException",
-    "UnimplementedException"
+    "UnimplementedException",
+    "UpstreamException"
 ]
