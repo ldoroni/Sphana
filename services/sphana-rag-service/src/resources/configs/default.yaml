@@ -8,5 +8,6 @@ sphana:
     #   document_details_dir: "./document_details"
     #   parent_chunk_details_dir: "./parent_chunk_details"
     #   child_chunk_details_dir: "./child_chunk_details"
+    self_node: "http://localhost2:5001"
     nodes:
-      - "http://localhost:8000"
+      - "http://localhost:5001"
