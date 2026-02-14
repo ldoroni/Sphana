@@ -81,9 +81,9 @@ class IngestDocumentService:
         child_embeddings: list[list[float]] = self.__text_embedder_service.embed_texts(child_texts)
 
         # Step 5: Aggregate child chunks by parent (list[tuple[parent index, single child embedding]])
-        parent_child_embeddings: list[tuple[int, list[float]]] = []
+        child_chunk_embeddings: list[tuple[int, list[float]]] = []
         for i, parent_index in enumerate(child_texts_to_parent):
-            parent_child_embeddings.append((parent_index, child_embeddings[i]))
+            child_chunk_embeddings.append((parent_index, child_embeddings[i]))
 
         # Step 6: Route write operations to the shard owner
         message: dict = {
@@ -92,8 +92,8 @@ class IngestDocumentService:
             "title": title,
             "content": content,
             "metadata": metadata,
-            "parent_chunks": parent_chunks,
-            "parent_child_embeddings": parent_child_embeddings
+            "parent_chunk_texts": [parent_chunk.text for parent_chunk in parent_chunks],
+            "child_chunk_embeddings": child_chunk_embeddings
         }
         self.__cluster_router_service.route(shard_name, TOPIC_INGEST_DOCUMENT, message)
 
@@ -104,8 +104,8 @@ class IngestDocumentService:
         title: str = message["title"]
         content: str = message["content"]
         metadata: dict[str, str] = message["metadata"]
-        parent_chunks: list[TokenizedText] = message["parent_chunks"]
-        parent_child_embeddings: list[tuple[int, list[float]]] = message["parent_child_embeddings"]
+        parent_chunk_texts: list[str] = message["parent_chunk_texts"]
+        child_chunk_embeddings: list[tuple[int, list[float]]] = message["child_chunk_embeddings"]
 
         # Assert document does not already exist
         if self.__document_details_repository.exists(shard_name, document_id):
@@ -113,20 +113,20 @@ class IngestDocumentService:
         
         # Step 7: Save parent chunks
         parent_chunk_ids: list[str] = []
-        for parent_index, parent_chunk in enumerate(parent_chunks):
+        for parent_index, parent_chunk_text in enumerate(parent_chunk_texts):
             parent_chunk_id: str = self.__parent_chunk_details_repository.next_unique_id(shard_name)
             parent_chunk_details: ParentChunkDetails = ParentChunkDetails(
                 parent_chunk_id=parent_chunk_id,
                 document_id=document_id,
                 chunk_index=parent_index,
-                content=CompressionUtil.compress(parent_chunk.text) # TODO: compress in the client before sending to reduce payload size?
+                content=CompressionUtil.compress(parent_chunk_text) # TODO: compress in the client before sending to reduce payload size?
             )
             self.__parent_chunk_details_repository.upsert(shard_name, parent_chunk_details)
             parent_chunk_ids.append(parent_chunk_id)
         
         # Step 8: Save child chunks with embeddings
         child_chunk_ids: list[str] = []
-        for parent_index, child_embedding in parent_child_embeddings:
+        for parent_index, child_embedding in child_chunk_embeddings:
             parent_chunk_id = parent_chunk_ids[parent_index]
             child_chunk_id: str = self.__child_chunk_details_repository.next_unique_id(shard_name)
             child_chunk_details: ChildChunkDetails = ChildChunkDetails(

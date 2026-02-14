@@ -1,7 +1,7 @@
-from http import HTTPStatus
 import httpx
 import logging
-from typing import Callable, Optional
+from http import HTTPStatus
+from typing import Any, Callable, Optional
 from injector import inject, singleton
 from managed_exceptions import UpstreamException
 from sphana_rag.configs import RagConfig
@@ -121,16 +121,20 @@ class ClusterRouterService:
         Raises:
             httpx.HTTPStatusError: If the remote node returns a non-2xx status.
         """
-        url = f"{node_url.rstrip('/')}{self.INTERNAL_ROUTE_PATH}"
-        payload = {
+        url: str = f"{node_url.rstrip('/')}{self.INTERNAL_ROUTE_PATH}"
+        self.__logger.info(f"Forwarding message to {url} for topic={topic_name}")
+        
+        # Prepare payload
+        payload: dict[str, Any] = {
             "topic_name": topic_name,
             "shard_name": shard_name,
             "message": message
         }
         
-        self.__logger.info(f"Forwarding message to {url} for topic={topic_name}")
-        
+        # Execute HTTP request
         response = self.__http_client.post(url, json=payload)
+
+        # Parse response
         response_data: dict = response.json()
         if response.status_code == 200:
             return response_data.get("response", {})
