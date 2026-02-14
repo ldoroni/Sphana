@@ -56,6 +56,7 @@ from .partitioning.partition_migrator import PartitionMigrator
 from .partitioning.partition_rebalancer import PartitionRebalancer
 from .partitioning.partition_strategy import PartitionStrategy
 from .partitioning.partition_table import PartitionTable
+from .routing.task_router import DistributedTaskRouter
 from .storage.backup_replicator import BackupReplicator
 from .storage.lock_store import LockStore
 from .storage.partition_store import PartitionStore
@@ -173,6 +174,14 @@ class DistributedCache:
             max_segment_bytes=wal_max_segment_bytes,
             fsync=wal_fsync,
             enabled=wal_enabled,
+        )
+
+        # ── Task routing ──────────────────────────────────────────
+        self._task_router = DistributedTaskRouter(
+            self_address=self_address,
+            partition_strategy=self._strategy,
+            partition_table=self._table,
+            rpc_client=self._rpc_client,
         )
 
         # ── Locking ───────────────────────────────────────────────
@@ -426,6 +435,20 @@ class DistributedCache:
         """Force-release a lock regardless of owner."""
         return self._lock_manager.force_release(key)
 
+    # ── Task Router API ───────────────────────────────────────────
+
+    def get_task_router(self) -> DistributedTaskRouter:
+        """Return the :class:`DistributedTaskRouter` for this node.
+
+        Use the task router to register topic handlers and submit
+        partition-routed tasks across the cluster::
+
+            router = cache.get_task_router()
+            router.listen("shard.ingest_document", my_handler)
+            result = router.submit("shard-0", "shard.ingest_document", {...})
+        """
+        return self._task_router
+
     # ── Info ──────────────────────────────────────────────────────
 
     @property
@@ -586,6 +609,10 @@ class DistributedCache:
 
             if msg_type == RpcMessageType.BACKUP_SYNC:
                 return self._handle_backup_sync(payload)
+
+            # Task routing
+            if msg_type == RpcMessageType.TASK_SUBMIT:
+                return self._task_router.handle_task_submit(payload)
 
             # Partition migration
             if msg_type == RpcMessageType.PARTITION_MIGRATE:

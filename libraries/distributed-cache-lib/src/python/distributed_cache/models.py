@@ -66,6 +66,9 @@ class RpcMessageType(str, enum.Enum):
     NODE_JOIN = "node_join"
     NODE_LEAVE = "node_leave"
 
+    # Task routing operations
+    TASK_SUBMIT = "task_submit"
+
     # Responses
     RESPONSE = "response"
     ERROR_RESPONSE = "error_response"
