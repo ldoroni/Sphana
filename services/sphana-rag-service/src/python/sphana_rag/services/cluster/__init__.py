@@ -1,7 +1,7 @@
-from .cluster_nodes_service import ClusterNodesService
 from .cluster_router_service import ClusterRouterService
+from .file_cluster_nodes_provider import FileClusterNodesProvider
 
 __all__ = [
-    "ClusterNodesService",
-    "ClusterRouterService"
+    "ClusterRouterService",
+    "FileClusterNodesProvider",
 ]

@@ -36,8 +36,11 @@ class RagConfig:
         # self.database_parent_chunk_details_dir: str = database_config.get("parent_chunk_details_dir", "./parent_chunk_details")
         # self.database_child_chunk_details_dir: str = database_config.get("child_chunk_details_dir", "./child_chunk_details")
 
-        # Cluster nodes
-        self.self_node: str = rag_config.get("self_node", "http://localhost:5001")
-        self.nodes: list[str] = rag_config.get("nodes", [])
-        
+        # Cluster settings
+        cluster_config = rag_config.get("cluster", {})
+        self.cluster_self_address: str = cluster_config.get("self_address", "localhost:9100")
+        self.cluster_nodes_file: str = cluster_config.get("nodes_file", "./nodes.txt")
+        self.cluster_backup_count: int = cluster_config.get("backup_count", 1)
+        self.cluster_wal_dir: str | None = cluster_config.get("wal_dir", None)
+
         self.__logger.info(f"RagConfig loaded from {config_path}")

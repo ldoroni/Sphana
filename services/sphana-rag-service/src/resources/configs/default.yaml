@@ -8,6 +8,9 @@ sphana:
     #   document_details_dir: "./document_details"
     #   parent_chunk_details_dir: "./parent_chunk_details"
     #   child_chunk_details_dir: "./child_chunk_details"
-    self_node: "http://127.0.0.2:5001"
-    nodes:
-      - "http://127.0.0.1:5001"
+
+    cluster:
+      self_address: "127.0.0.2:9100"
+      nodes_file: "./services/sphana-rag-service/src/resources/configs/nodes.txt"
+      backup_count: 1
+      wal_dir: null
