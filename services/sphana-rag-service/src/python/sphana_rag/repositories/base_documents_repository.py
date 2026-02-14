@@ -3,7 +3,7 @@ from abc import ABC
 from prometheus_client import Counter, Histogram
 from time import time
 from typing import Optional
-from rocksdict import Rdict
+from rocksdict import Rdict, AccessType
 from sphana_rag.models import ListResults
 from sphana_rag.utils import Base64Util
 
@@ -16,6 +16,7 @@ class BaseDocumentsRepository[TDocument](ABC):
         self.__db_location: str = db_location
         self.__table_map: dict[str, Rdict] = {}
         self.__secondary: bool = secondary
+        self.__secondary_path: str = "" # TODO: take from env variables - should be local path in the pod (not in PCV!)
 
     def _init_table(self, table_name: str) -> None:
         start_time: float = time()
@@ -110,7 +111,16 @@ class BaseDocumentsRepository[TDocument](ABC):
 
         # TODO: need lock
         table_location: str = self.__get_table_location(table_name)
-        table: Rdict = Rdict(table_location)
+        if self.__secondary:
+            table: Rdict = Rdict(
+                path=table_location, 
+                access_type=AccessType.secondary(self.__secondary_path)
+            )
+        else:
+            table: Rdict = Rdict(
+                path=table_location,
+                access_type=AccessType.read_write()
+            )
         self.__table_map[table_name] = table
         return table
 
