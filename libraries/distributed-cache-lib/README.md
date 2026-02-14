@@ -35,6 +35,7 @@ A production-ready, embedded distributed cache for Python applications running a
 | **Anti-Entropy** | Background repair of backup drift via periodic snapshots |
 | **Dynamic Membership** | Pods can join/leave at any time; cluster auto-rebalances |
 | **Batch Operations** | `put_many`, `get_many`, `delete_many` for bulk operations |
+| **Task Routing** | Route arbitrary tasks to partition owners with automatic failover |
 | **Context Manager** | Locks and cache lifecycle support `with` statement |
 
 ## Architecture
@@ -43,13 +44,13 @@ A production-ready, embedded distributed cache for Python applications running a
 ┌──────────────────────────────────────────────────────────────────┐
 │                       DistributedCache                           │
 │                                                                  │
-│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────┐   │
-│  │  CacheCollection  │  │  CacheCollection  │  │  Global Locks │   │
-│  │  "sessions"       │  │  "users"          │  │  .lock()      │   │
-│  │  .put/.get/.del   │  │  .put/.get/.del   │  │  .try_lock()  │   │
-│  └────────┬──────────┘  └────────┬──────────┘  └──────┬────────┘   │
-│           │                      │                     │           │
-│  ┌────────▼──────────────────────▼─────────────────────▼────────┐ │
+│  ┌────────────────┐ ┌────────────────┐ ┌────────────┐ ┌──────────┐│
+│  │CacheCollection │ │CacheCollection │ │Global Locks│ │TaskRouter││
+│  │ "sessions"     │ │ "users"        │ │ .lock()    │ │ .submit()││
+│  │ .put/.get/.del │ │ .put/.get/.del │ │ .try_lock()│ │ .listen()││
+│  └───────┬────────┘ └───────┬────────┘ └─────┬──────┘ └────┬─────┘│
+│           │                      │                     │        │  │
+│  ┌────────▼──────────────────────▼─────────────────────▼────────▼┐ │
 │  │                    Partitioning Layer                         │ │
 │  │  ┌─────────────────┐ ┌────────────────┐ ┌─────────────────┐  │ │
 │  │  │PartitionStrategy│ │ PartitionTable │ │PartitionMigrator│  │ │
@@ -145,6 +146,8 @@ A production-ready, embedded distributed cache for Python applications running a
 | `BackupReplicator` | Synchronous in-memory replication to backup nodes |
 | `WalStore` | Write-Ahead Log for crash-recovery disk persistence |
 | `LockManager` | Distributed locking with fencing tokens |
+| `DistributedTaskRouter` | Routes arbitrary tasks to partition owners with retry and failover |
+| `TaskResult` | Result model for task routing (success/failure, response, error, node address) |
 | `RpcServer` / `RpcClient` | TCP-based RPC with msgpack serialization |
 | `ConnectionPool` | Reusable TCP connection pool to peers |
 
@@ -185,6 +188,11 @@ sessions.get("sess:abc")
 with cache.acquire_lock("resource-x", hold_timeout=30):
     # Critical section — only one node can execute this at a time
     pass
+
+# Task routing (route operations to partition owners)
+router = cache.get_task_router()
+router.listen("shard.ingest", lambda routing_key, msg: {"status": "ok"})
+result = router.submit("shard-0", "shard.ingest", {"doc": "..."})
 
 # Non-blocking lock attempt
 lock = cache.try_acquire_lock("resource-y")
@@ -335,6 +343,191 @@ When a `get()` request fails because the primary partition owner is unreachable,
 
 A background thread periodically pushes full partition snapshots from primary owners to their backup nodes, repairing any drift caused by missed replication messages. This runs every 60 seconds when `backup_count >= 1`.
 
+## Distributed Task Routing
+
+The `DistributedTaskRouter` extends the partition-based architecture beyond cache data — it lets you route **arbitrary tasks** (function calls, operations, commands) to the node that owns a given partition, based on a routing key.
+
+This is the mechanism that makes write operations (document ingest, index creation, etc.) fault-tolerant: instead of directly calling a specific pod, you submit a task with a routing key, and the library handles node resolution, local-vs-remote dispatch, retries, and automatic failover when nodes die.
+
+### Core Concepts
+
+| Concept | Description |
+|---|---|
+| **Routing key** | A string (e.g. shard name) hashed to determine which node owns the task |
+| **Topic** | A named operation type (e.g. `"shard.ingest_document"`) — like a message topic |
+| **Listener** | A local handler function registered for a topic — invoked when the task lands on this node |
+| **TaskResult** | The result of a task submission — contains status, response, error, and node address |
+
+### Getting the Task Router
+
+```python
+router = cache.get_task_router()
+```
+
+The router is a singleton per `DistributedCache` instance. It uses the same partition strategy and partition table as the cache itself.
+
+### Registering Listeners
+
+Register a handler for a topic on the current node. The handler receives the routing key and the message dict:
+
+```python
+def handle_ingest(routing_key: str, message: dict) -> dict | None:
+    shard_name = routing_key
+    document = message["document"]
+    # ... perform the ingest operation locally ...
+    return {"document_id": "abc123"}
+
+router.listen("shard.ingest_document", handle_ingest)
+```
+
+Every node in the cluster should register the same set of listeners during startup. When a task is routed to a node, the listener for the matching topic is invoked locally.
+
+### Submitting Tasks (Single Target)
+
+Submit a task to the node that owns the partition for the given routing key:
+
+```python
+from distributed_cache import TaskResult
+
+result: TaskResult = router.submit(
+    routing_key="shard-0",                # Determines which node handles this
+    topic="shard.ingest_document",        # Which listener to invoke
+    message={"document": {...}},          # Arbitrary payload dict
+    timeout=120.0,                        # RPC timeout (seconds)
+    max_retries=2,                        # Retry on connection/timeout errors
+)
+
+if result.is_success:
+    print(result.response)   # The dict returned by the listener
+else:
+    print(result.error)      # Error message string
+    print(result.node_address)  # Which node failed
+```
+
+### How Routing Works
+
+```
+  router.submit("shard-0", "shard.ingest_document", {...})
+    │
+    ▼
+  PartitionStrategy: hash("shard-0") → partition #42
+    │
+    ▼
+  PartitionTable: partition #42 → owner: Node B
+    │
+    ├──── Node B is this node? ──► Invoke listener directly
+    │                                 └──► Return TaskResult.success(response)
+    │
+    └──── Node B is remote? ──► RPC TASK_SUBMIT to Node B
+                                    │
+                                    ├──── Success ──► Return TaskResult.success(response)
+                                    │
+                                    └──── Failure ──► Retry with backoff
+                                                        └──► Return TaskResult.failure(error)
+```
+
+### Broadcasting to All Nodes
+
+For operations that must execute on **every** node (e.g. `create_index`, `delete_index`), use `submit_to_all`:
+
+```python
+results: dict[str, TaskResult] = router.submit_to_all(
+    topic="shard.create_index",
+    message={"index_name": "my-index", "config": {...}},
+    timeout=120.0,
+)
+
+for node_address, result in results.items():
+    if result.is_success:
+        print(f"{node_address}: OK")
+    else:
+        print(f"{node_address}: FAILED — {result.error}")
+```
+
+`submit_to_all` iterates all unique node addresses in the partition table and executes the task on each one (locally if this node, via RPC if remote).
+
+### TaskResult
+
+`TaskResult` is a Pydantic model returned by `submit()` and `submit_to_all()`:
+
+```python
+from distributed_cache import TaskResult, TaskStatus
+
+# Fields
+result.status         # TaskStatus.SUCCESS or TaskStatus.FAILURE
+result.response       # dict | None — the handler's return value
+result.error          # str | None — error message on failure
+result.node_address   # str | None — which node executed (or failed)
+
+# Convenience properties
+result.is_success     # True if status == SUCCESS
+result.is_failure     # True if status == FAILURE
+
+# Factory methods (used internally)
+TaskResult.success(response={"id": "123"}, node_address="10.0.0.2:9100")
+TaskResult.failure(error="Connection refused", node_address="10.0.0.2:9100")
+```
+
+### Fault Tolerance
+
+The task router provides automatic fault tolerance through several mechanisms:
+
+1. **Retry with exponential backoff**: When `max_retries > 0`, transient RPC failures (connection errors, timeouts) trigger retries with increasing delay. Logical errors (the handler raised an exception) are **not** retried.
+
+2. **Automatic rerouting after node failure**: When a node dies, the coordinator detects the missing heartbeat, the rebalancer reassigns its partitions to surviving nodes, and the partition table is updated cluster-wide. Subsequent `submit()` calls with the same routing key are automatically routed to the new owner — no caller-side logic needed.
+
+3. **Local fast-path**: When the routing key maps to the current node, the listener is invoked directly in-process — no network overhead.
+
+### Listener Handler Signature
+
+```python
+def handler(routing_key: str, message: dict) -> dict | None:
+    """
+    Args:
+        routing_key: The routing key from the submit() call (e.g. shard name).
+        message: The message dict from the submit() call.
+
+    Returns:
+        A dict that becomes TaskResult.response, or None.
+
+    Raises:
+        Any exception — caught and returned as TaskResult.failure(error=str(exc)).
+    """
+```
+
+### Example: Shard-Routed Write Operations
+
+```python
+# ── Startup (every pod) ──────────────────────────────
+router = cache.get_task_router()
+
+def handle_ingest(routing_key: str, message: dict) -> dict:
+    shard_name = routing_key
+    doc_data = message["document"]
+    # ... write to local shard storage ...
+    return {"document_id": "doc-123", "shard": shard_name}
+
+def handle_delete(routing_key: str, message: dict) -> dict:
+    shard_name = routing_key
+    doc_id = message["document_id"]
+    # ... delete from local shard storage ...
+    return {"deleted": True}
+
+router.listen("shard.ingest_document", handle_ingest)
+router.listen("shard.delete_document", handle_delete)
+
+# ── Request handling (any pod) ────────────────────────
+# The request can arrive at any pod — it will be routed to the correct one
+result = router.submit("shard-0", "shard.ingest_document", {
+    "document": {"title": "Hello", "content": "..."}
+})
+
+if result.is_success:
+    return result.response  # {"document_id": "doc-123", "shard": "shard-0"}
+else:
+    raise Exception(f"Ingest failed on {result.node_address}: {result.error}")
+```
+
 ## Distributed Locking
 
 Locks are partitioned like cache entries — the lock key determines which node is responsible:
@@ -379,6 +572,10 @@ distributed_cache/
 ├── cache_collection.py             # Per-collection facade
 ├── models.py                       # Data models (RPC message types, etc.)
 ├── exceptions.py                   # Exception hierarchy
+├── routing/
+│   ├── __init__.py                 # Routing module exports
+│   ├── task_router.py              # DistributedTaskRouter — partition-based task dispatch
+│   └── task_result.py              # TaskResult / TaskStatus models
 ├── cluster/
 │   ├── cluster_nodes_provider.py   # Abstract node discovery interface
 │   ├── coordinator.py              # Oldest-member coordinator election

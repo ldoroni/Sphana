@@ -58,6 +58,8 @@ from .exceptions import (
     WalCorruptionError,
 )
 from .locking.lock_handle import LockHandle
+from .routing.task_result import TaskResult, TaskStatus
+from .routing.task_router import DistributedTaskRouter
 from .models import (
     CacheEntry,
     LockEntry,
@@ -76,6 +78,10 @@ __all__ = [
     "CacheCollection",
     # Locking
     "LockHandle",
+    # Task routing
+    "DistributedTaskRouter",
+    "TaskResult",
+    "TaskStatus",
     # Models
     "CacheEntry",
     "LockEntry",
