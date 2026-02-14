@@ -33,7 +33,8 @@ dependencies = [
     "prometheus-client",
     # Others
     "managed_exceptions",
-    "request_handler"
+    "request_handler",
+    "distributed_cache"
 ]
 
 [[tool.uv.index]]
