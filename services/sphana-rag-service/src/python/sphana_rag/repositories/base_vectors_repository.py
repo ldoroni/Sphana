@@ -1,4 +1,6 @@
+import uuid
 import numpy
+import os
 import shutil
 from abc import ABC
 from pathlib import Path
@@ -98,9 +100,17 @@ class BaseVectorsRepository(ABC):
     
     def __save_index(self, index_name: str, index: IndexIDMap2) -> None:
         index_location: str = self.__get_index_location(index_name)
+        # 0. Ensure directory exists
         index_path = Path(index_location)
         index_path.parent.mkdir(parents=True, exist_ok=True)
-        write_index(index, index_location)
+        # 1. Write to a temporary file on the SAME volume
+        index_location_tmp: str = f"{index_location}.{uuid.uuid4()}.tmp"
+        write_index(index, index_location_tmp)
+        # 2. Force the OS to flush data to the physical storage
+        with open(index_location_tmp, 'a') as f:
+            os.fsync(f.fileno())
+        # 3. Atomically replace the old index with the new one
+        os.replace(index_location_tmp, index_location)
 
     def __load_index(self, index_name: str) -> IndexIDMap2:
         index_location: str = self.__get_index_location(index_name)
