@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/python/sphana_store"]
+
+[project]
+name = "sphana_store"
+version = "1.0.0"
+description = "Sphana Store Service"
+requires-python = "==3.12.*"
+dependencies = [
+    # Compile to C
+    "nuitka",
+    # Dependency Injection
+    "injector",
+    "fastapi-injector",
+    # APIs
+    "fastapi",
+    "pydantic",
+    "uvicorn[standard]",
+    # Embedded Databases
+    "rocksdict",
+    "faiss-cpu",
+    # Monitoring
+    "prometheus-client",
+    # Others
+    "managed_exceptions",
+    "request_handler"
+]

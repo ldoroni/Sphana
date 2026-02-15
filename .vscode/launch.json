@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python Debugger: Sphana-RAG",
+            "name": "Python Debugger: Sphana-Store",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/services/sphana-rag-service/src/python/sphana_rag/__main__.py",
-            "python": "${workspaceFolder}/services/sphana-rag-service/.venv/Scripts/python.exe",
+            "program": "${workspaceFolder}/services/sphana-store-service/src/python/sphana_store/__main__.py",
+            "python": "${workspaceFolder}/services/sphana-store-service/.venv/Scripts/python.exe",
             "console": "integratedTerminal"
         }
     ]

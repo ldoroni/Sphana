@@ -16,7 +16,7 @@ uv pip install -e .\utils\models-exporter-util\ --refresh --reinstall
 
 ### Download Embediding Model
 ```
-uv run python .\utils\models-exporter-util\ --model-name nomic-ai/nomic-embed-text-v1.5 --output-path .\services\sphana-rag-service\src\resources\models\embedding
+uv run python .\utils\models-exporter-util\ --model-name nomic-ai/nomic-embed-text-v1.5 --output-path .\services\sphana-store-service\src\resources\models\embedding
 ```
 
 
