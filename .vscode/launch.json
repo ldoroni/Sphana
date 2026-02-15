@@ -11,6 +11,14 @@
             "program": "${workspaceFolder}/services/sphana-store-service/src/python/sphana_store/__main__.py",
             "python": "${workspaceFolder}/services/sphana-store-service/.venv/Scripts/python.exe",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Python Debugger: Sphana-Processor",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/services/sphana-processor-service/src/python/sphana_processor/__main__.py",
+            "python": "${workspaceFolder}/services/sphana-processor-service/.venv/Scripts/python.exe",
+            "console": "integratedTerminal"
         }
     ]
 }
