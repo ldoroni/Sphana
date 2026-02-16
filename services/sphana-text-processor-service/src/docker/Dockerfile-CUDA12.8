@@ -1,0 +1,65 @@
+# STAGE 1: Build on Alpine (The "Heavy" part)
+FROM python:3.12-slim-bookworm AS builder
+
+# Install C compiler and Nuitka dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    python3-dev \
+    libffi-dev \
+    patchelf \
+    ccache \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy source code
+WORKDIR /source
+COPY ./services/sphana-text-processor-service/pyproject.toml .
+COPY ./services/sphana-text-processor-service/src/python/ ./python/
+COPY ./services/sphana-text-processor-service/src/resources ./resources/
+
+# Install application's dependencies
+# Note that "http://host.docker.internal:61000/" is the pointer to the local pypi server
+# Note that "https://download.pytorch.org/whl/cu128" is the pointer to the PyTorch CUDA 12.8 wheels
+RUN pip install --no-cache-dir . \
+    --extra-index-url http://host.docker.internal:61000/ \
+    --extra-index-url https://download.pytorch.org/whl/cu128 \
+    --trusted-host host.docker.internal
+
+# Compile to standalone
+RUN python -m nuitka \
+    # --mingw64 \
+    --standalone \
+    --remove-output \
+    --prefer-source-code \
+    --lto=no \
+    --module-parameter=torch-disable-jit=yes \
+    --python-flag=no_docstrings \
+    --noinclude-pytest-mode=nofollow \
+    --nofollow-import-to=numpy.testing \
+    --nofollow-import-to=numpy.distutils \
+    --assume-yes-for-downloads \
+    --output-dir=/target \
+    --include-data-dir=./resources=resources \
+    ./python/sphana_text_processor
+
+# STAGE 2: The Final CUDA Image (The "Light" part)
+FROM nvidia/cuda:12.8.0-runtime-ubuntu24.04
+WORKDIR /app/
+
+# 1. You need the runtime dependencies for Torch/CUDA
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# 2. Use the absolute path from the builder stage
+# 3. Copy the specific file created by Nuitka
+# On Linux, Nuitka creates <name>.bin for onefile mode
+COPY --from=builder /target/sphana_text_processor.dist /app/
+
+# 4. Ensure the binary is executable
+RUN chmod +x /app/
+
+# 5. Expose application's port
+EXPOSE 5001
+
+# 6. Run the application
+CMD ["./sphana_text_processor.bin"]

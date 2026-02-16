@@ -3,21 +3,31 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "Python Debugger: Sphana-All",
+            "configurations": [
+                "Python Debugger: Sphana-Data-Store",
+                "Python Debugger: Sphana-Text-Processor"
+            ],
+            "stopAll": true
+        }
+    ],
     "configurations": [
         {
-            "name": "Python Debugger: Sphana-Store",
+            "name": "Python Debugger: Sphana-Data-Store",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/services/sphana-store-service/src/python/sphana_store/__main__.py",
-            "python": "${workspaceFolder}/services/sphana-store-service/.venv/Scripts/python.exe",
+            "program": "${workspaceFolder}/services/sphana-data-store-service/src/python/sphana_data_store/__main__.py",
+            "python": "${workspaceFolder}/services/sphana-data-store-service/.venv/Scripts/python.exe",
             "console": "integratedTerminal"
         },
         {
-            "name": "Python Debugger: Sphana-Processor",
+            "name": "Python Debugger: Sphana-Text-Processor",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/services/sphana-processor-service/src/python/sphana_processor/__main__.py",
-            "python": "${workspaceFolder}/services/sphana-processor-service/.venv/Scripts/python.exe",
+            "program": "${workspaceFolder}/services/sphana-text-processor-service/src/python/sphana_text_processor/__main__.py",
+            "python": "${workspaceFolder}/services/sphana-text-processor-service/.venv/Scripts/python.exe",
             "console": "integratedTerminal"
         }
     ]
