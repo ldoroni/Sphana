@@ -12,7 +12,7 @@ API_EXE_COUNTER = Counter("spn_client_exe_total", "Total number of API requests 
 API_EXE_DURATION_HISTOGRAM = Histogram("spn_client_exe_duration_seconds", "Duration of API requests in seconds", ["handler"])
 API_EXE_ERROR_COUNTER = Counter("spn_client_exe_error_total", "Total number of API requests that resulted in error", ["handler", "status_code"])
 
-class RequestHandler[TRequest, TResponse](ABC):
+class ClientHandler[TRequest, TResponse](ABC):
 
     def __init__(self, host: str, default_timeout: float = 10.0):
         self.__logger = logging.getLogger(self.__class__.__name__)
