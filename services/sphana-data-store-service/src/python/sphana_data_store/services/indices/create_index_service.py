@@ -23,7 +23,7 @@ class CreateIndexService:
         self.__chunk_details_repository = chunk_details_repository
         self.__embedding_details_repository = embedding_details_repository
 
-    def create_index(self, index_name: str, description: str, number_of_shards: int, max_parent_chunk_size: int, max_child_chunk_size: int, parent_chunk_overlap_size: int, child_chunk_overlap_size: int) -> None:
+    def create_index(self, index_name: str, description: str, number_of_shards: int) -> None:
         # Assert index name
         if self.__index_details_repository.exists(index_name):
             raise ItemAlreadyExistsException(f"Index {index_name} already exists")
@@ -58,10 +58,6 @@ class CreateIndexService:
             index_name=index_name,
             description=description,
             number_of_shards=number_of_shards,
-            max_parent_chunk_size=max_parent_chunk_size,
-            max_child_chunk_size=max_child_chunk_size,
-            parent_chunk_overlap_size=parent_chunk_overlap_size,
-            child_chunk_overlap_size=child_chunk_overlap_size,
             creation_timestamp=datetime.now(timezone.utc),
             modification_timestamp=datetime.now(timezone.utc)
         )

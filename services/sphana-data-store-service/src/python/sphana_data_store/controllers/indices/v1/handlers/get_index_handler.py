@@ -28,10 +28,6 @@ class GetIndexHandler(RequestHandler[GetIndexRequest, GetIndexResponse]):
                 index_name=index_details.index_name,
                 description=index_details.description,
                 number_of_shards=index_details.number_of_shards,
-                max_parent_chunk_size=index_details.max_parent_chunk_size,
-                max_child_chunk_size=index_details.max_child_chunk_size,
-                parent_chunk_overlap_size=index_details.parent_chunk_overlap_size,
-                child_chunk_overlap_size=index_details.child_chunk_overlap_size,
                 creation_timestamp=index_details.creation_timestamp,
                 modification_timestamp=index_details.modification_timestamp
             )
