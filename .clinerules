@@ -1,0 +1,293 @@
+# Sphana Platform – Cline Rules
+# ══════════════════════════════════════════════════════════════
+
+## Project Overview
+
+Sphana is a Python-based microservices platform for vector storage, RAG (Retrieval-Augmented Generation),
+and text processing. Communication between services uses **gRPC** with **Protocol Buffers**.
+The monorepo is organized into `services/`, `libraries/`, `apps/`, `utils/`, and `docs/`.
+
+---
+
+## Repository Layout
+
+```
+Sphana9/
+├── services/          # Deployable gRPC microservices
+│   ├── sphana-data-store-service/
+│   ├── sphana-rag-service/
+│   ├── sphana-text-processor-service/
+│   └── sphana-agent-service/
+├── libraries/         # Shared reusable libraries (pip-installable)
+│   ├── managed-exceptions-lib/
+│   ├── request-handler-lib/
+│   ├── client-handler-lib/
+│   ├── distributed-cache-lib/
+│   ├── rocksdb-wrapper-lib/
+│   ├── faiss-wrapper-lib/
+│   └── metrics-wrapper-lib/
+├── apps/              # Frontend / admin applications
+├── utils/             # Build-time and dev utilities
+└── docs/              # Documentation
+```
+
+### Service internal layout
+
+Every service follows this structure:
+
+```
+sphana-<name>-service/
+├── pyproject.toml
+├── README.md
+├── .gitignore
+└── src/
+    ├── docker/
+    │   ├── DockerFile
+    │   └── Dockerfile-CUDA12.8
+    ├── helm/                        # Helm charts (when present)
+    ├── python/sphana_<name>/
+    │   ├── __main__.py              # Service entry point
+    │   ├── configs/                 # Typed config dataclasses
+    │   ├── constants/               # Module-level constants
+    │   ├── controllers/<domain>/v1/ # gRPC servicers + .proto + generated code
+    │   ├── models/<domain>/         # Domain dataclasses
+    │   ├── repositories/            # Data-access layer
+    │   ├── services/                # Business-logic orchestration
+    │   └── utils/                   # Helper functions
+    └── resources/
+        ├── configs/default.yaml     # Runtime configuration
+        └── models/                  # ML model artifacts (git-ignored)
+```
+
+### Library internal layout
+
+```
+<name>-lib/
+├── pyproject.toml
+├── README.md
+├── .gitignore
+└── src/python/<package_name>/
+    ├── __init__.py                  # Public re-exports with __all__
+    └── ...                          # Implementation modules
+```
+
+---
+
+## Naming Conventions
+
+### Python
+
+| Element                 | Convention                    | Example                                      |
+|-------------------------|-------------------------------|----------------------------------------------|
+| Package (import name)   | `snake_case`                  | `sphana_data_store`, `managed_exceptions`     |
+| Module (file name)      | `snake_case.py`               | `index_controller.py`, `partition_table.py`   |
+| Class                   | `PascalCase`                  | `IndexController`, `ChunkService`             |
+| Function / method       | `snake_case`                  | `split_text`, `add_chunks`                    |
+| Constants               | `UPPER_SNAKE_CASE`            | `DEFAULT_SHARD_NAME`, `_CF_NAME`              |
+| Private members         | Single leading underscore     | `self._index_details_repo`, `_load_config()`  |
+| Type aliases / generics | PascalCase or `snake_case`    |                                               |
+| Dataclass fields        | `snake_case`                  | `index_name`, `created_at`, `ttl_seconds`     |
+
+### Project artifacts
+
+| Artifact              | Convention                        | Example                          |
+|-----------------------|-----------------------------------|----------------------------------|
+| Service directory     | `sphana-<name>-service`           | `sphana-data-store-service`      |
+| Library directory     | `<name>-lib`                      | `managed-exceptions-lib`         |
+| pyproject.toml `name` | Matches directory name (kebab)    | `sphana-data-store-service`      |
+| Python package        | Underscore version of dir name    | `sphana_data_store`              |
+| Proto package         | `sphana.<service>.<domain>.v1`    | `sphana.data_store.indices.v1`   |
+
+### gRPC / Protobuf
+
+| Element          | Convention               | Example                                |
+|------------------|--------------------------|----------------------------------------|
+| Proto file       | `<entity>_controller.proto` | `index_controller.proto`            |
+| Service name     | `<Entity>Service`        | `IndexService`, `QueryService`         |
+| RPC method       | `PascalCase` (verb+noun) | `CreateIndex`, `ProcessText`           |
+| Message          | `PascalCase`             | `CreateIndexRequest`, `IndexSummary`   |
+| Message fields   | `snake_case`             | `index_name`, `created_at`             |
+
+---
+
+## Architectural Patterns
+
+### Layered Architecture (per service)
+
+```
+Controller  →  Service  →  Repository
+   (gRPC)      (logic)     (persistence)
+```
+
+- **Controllers**: gRPC servicer classes that inherit from generated `*Servicer` base.
+  Responsible only for proto ↔ domain conversion and delegation to services/repositories.
+- **Services**: Business-logic orchestration. Injected with repositories via constructor DI.
+- **Repositories**: Data-access objects. Inherit from `BaseDocumentsRepository` (RocksDB)
+  or `BaseVectorsRepository` (FAISS). Encapsulate serialization/deserialization.
+
+### Dependency Injection (Manual, Constructor-Based)
+
+All wiring happens in `__main__.py → _build_server()`:
+
+1. Instantiate repositories
+2. Instantiate services (injecting repositories)
+3. Instantiate controllers (injecting services/repositories)
+4. Register controllers on the gRPC server
+
+No DI framework is used. Dependencies flow top-down and are explicit.
+
+### Cross-Cutting Concerns via gRPC Interceptors
+
+- **Server-side**: `RequestHandlerInterceptor` (error handling), `MetricsInterceptor` (Prometheus)
+- **Client-side**: `ClientHandlerInterceptor` (error unwrapping)
+
+Interceptors are always applied in `_build_server()` via the `interceptors=` parameter.
+
+### Structured Exception Handling
+
+- All domain errors extend `ManagedException` → maps to a gRPC status code + rich `ErrorDetails`.
+- Exception hierarchy lives in `managed-exceptions-lib`, organized by category:
+  - `arguments/` – `InvalidArgumentException`, `ItemAlreadyExistsException`, `ItemNotFoundException`
+  - `authorization/` – `UnauthenticatedException`, `UnauthorizedException`
+  - `internal/` – `InternalErrorException`, `UnimplementedException`
+  - `upstreams/` – `UpstreamException`
+- Controllers raise `ManagedException` subclasses directly; the `RequestHandlerInterceptor`
+  catches them and translates to gRPC status + `google.rpc.Status` rich error details.
+- On the client side, `ClientHandlerInterceptor` reverses the process.
+
+### API Versioning
+
+Controllers are versioned under `controllers/<domain>/v1/` directories.
+Proto files, generated `_pb2.py` / `_pb2_grpc.py`, and the servicer implementation
+all live together in the same versioned directory.
+
+### Configuration
+
+- YAML-based config in `src/resources/configs/default.yaml`
+- Loaded at startup via `_load_config()` using `PyYAML`
+- Optionally wrapped in a frozen `@dataclass` for type safety (e.g., `StoreConfig`)
+- Config values: `grpc_port`, `prometheus_port`, `max_workers`, `log_level`, `log_format`, plus service-specific keys
+
+---
+
+## Coding Standards
+
+### Python Version & Type Hints
+
+- **Minimum Python**: 3.11
+- Use modern type hints: `list[str]`, `dict[str, str]`, `X | None` (PEP 604 union syntax)
+- Type-annotate all function signatures (parameters and return types)
+- Use `Iterator[T]` for generator return types
+
+### Dataclasses
+
+- Domain models are `@dataclass` or `@dataclass(frozen=True)` (immutable for value objects)
+- Timestamps default to `field(default_factory=lambda: datetime.now(timezone.utc))`
+- Config objects use `@dataclass(frozen=True)`
+- No Pydantic; plain dataclasses throughout
+
+### Logging
+
+- Module-level logger: `logger = logging.getLogger(__name__)`
+- Use `logger.info()` for entry-point logging in controller methods
+- Use `logger.warning()` for managed exceptions, `logger.exception()` for unhandled
+- Format configured via YAML `log_format` key
+
+### Imports
+
+- Standard library first, then third-party, then local (implicit isort grouping)
+- Library public APIs re-exported from `__init__.py` with explicit `__all__`
+- Within services, use absolute imports from the package root (e.g., `from sphana_data_store.models...`)
+
+### Docstrings
+
+- Classes: one-line or short docstring describing purpose
+- Public methods: docstring when the behavior is non-obvious
+- Style: imperative mood, concise (e.g., "Persist chunk metadata + embeddings and return count of chunks stored.")
+
+### Build System
+
+- **setuptools** as the build backend (`pyproject.toml`)
+- `[tool.setuptools.packages.find] where = ["src/python"]`
+- No `setup.py` or `setup.cfg`; everything in `pyproject.toml`
+- Dependencies on internal libraries referenced by name (installed from monorepo paths)
+
+### Docker
+
+- Base image: `python:3.13-slim`
+- Multi-stage not currently used, but CUDA variants exist (`Dockerfile-CUDA12.8`)
+- Libraries are `COPY`-ed and `pip install`-ed in order of dependency
+- Entrypoint: `CMD ["python", "-m", "<package_name>"]`
+- Expose gRPC port (50051) and Prometheus port (9090)
+
+---
+
+## Key Libraries & Their Roles
+
+| Library                  | Purpose                                                       |
+|--------------------------|---------------------------------------------------------------|
+| `managed-exceptions-lib` | Structured exception hierarchy mapping to gRPC status codes   |
+| `request-handler-lib`    | Server-side gRPC interceptor for error handling + thread pool |
+| `client-handler-lib`     | Client-side gRPC interceptor for error unwrapping             |
+| `metrics-wrapper-lib`    | Prometheus metrics initialization and gRPC interceptor        |
+| `rocksdb-wrapper-lib`    | RocksDB storage abstraction (column families)                 |
+| `faiss-wrapper-lib`      | FAISS vector index abstraction                                |
+| `distributed-cache-lib`  | Distributed in-memory cache with consistent hashing           |
+
+---
+
+## Rules for Code Generation
+
+1. **New controllers** must follow the versioned directory pattern: `controllers/<domain>/v1/`
+   containing a `.proto`, generated `_pb2.py` + `_pb2_grpc.py`, and the servicer implementation.
+2. **New models** go in `models/<domain>/` as `@dataclass` classes.
+3. **New repositories** inherit from `BaseDocumentsRepository` or `BaseVectorsRepository`.
+4. **New services** coordinate repositories; they do NOT import gRPC-generated code.
+5. **All wiring** happens in `__main__.py`'s `_build_server()` function.
+6. **All domain errors** must be `ManagedException` subclasses from `managed-exceptions-lib`.
+7. **Never** catch exceptions in controllers — let `RequestHandlerInterceptor` handle them.
+8. **Proto package** follows `sphana.<service_short_name>.<domain>.v1` convention.
+9. **README.md** should exist for every library and service with Overview, Installation,
+   Quick Start, API Reference, and Project Structure sections.
+10. **`__init__.py`** in libraries must re-export the public API with `__all__`.
+
+---
+
+## Development Pipeline Workflow
+
+This project uses a **multi-phase development pipeline** with specialized sub-agents.
+Workflow definitions are in `.cline/workflows/`.
+
+### How to Invoke
+
+Tell Cline:
+
+> Follow the development-pipeline workflow in `.cline/workflows/development-pipeline.md` to implement: [your request]
+
+### Pipeline Phases
+
+| Phase | Role | Workflow File | Responsibility |
+|-------|------|---------------|----------------|
+| 1 | Requirements Researcher | `.cline/workflows/requirements-researcher.md` | Analyze request, produce requirements doc |
+| 2 | Python Architect | `.cline/workflows/python-architect.md` | Design SOLID-compliant solution |
+| 3 | Architecture Reviewer | `.cline/workflows/architecture-reviewer.md` | Review architecture vs requirements |
+| 4 | Python Developer | `.cline/workflows/python-developer.md` | Implement code with metrics, logs, comments |
+| 5 | Code Reviewer | `.cline/workflows/code-reviewer.md` | Review code for quality, security, SOLID |
+
+### Feedback Loops
+
+- Architecture Reviewer can reject back to Phase 1 (unclear requirements) or Phase 2 (design issues)
+- Code Reviewer can reject back to Phase 4 (code issues) or Phase 2 (fundamental design flaws)
+- Maximum 3 iterations per review loop; escalate to user if exceeded
+
+### Cross-Cutting Concerns (Enforced in Phases 2–5)
+
+1. **SOLID Design Principles** — SRP, OCP, LSP, ISP, DIP
+2. **Python Best Practices** — PEP 8, modern type hints, dataclasses, proper imports
+3. **Observability** — Prometheus metrics, structured logging (`logging.getLogger(__name__)`)
+4. **Security** — No PII/secrets/sensitive data in logs, input validation, secure defaults
+
+### Artifacts
+
+Intermediate artifacts are stored in `.cline/artifacts/` during pipeline execution
+and cleaned up on successful completion.

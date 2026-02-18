@@ -1,0 +1,12 @@
+.database/
+.venv/
+.pytest_cache/
+__pycache__/
+dist/
+uv.lock
+target*/
+
+# Downloaded models - these are large binary files that should not be committed
+src/resources/models/*/
+# Keep the models directory structure but ignore contents
+!src/resources/models/.gitkeep
