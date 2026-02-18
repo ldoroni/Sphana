@@ -4,6 +4,7 @@ from abc import ABC
 from http import HTTPStatus
 from time import time
 from typing import Optional
+from pydantic import BaseModel
 from managed_exceptions import ManagedException, InternalErrorException, UpstreamException
 from prometheus_client import Counter, Histogram
 from .error_response import ErrorResponse
@@ -12,14 +13,14 @@ API_EXE_COUNTER = Counter("spn_client_exe_total", "Total number of API requests 
 API_EXE_DURATION_HISTOGRAM = Histogram("spn_client_exe_duration_seconds", "Duration of API requests in seconds", ["handler"])
 API_EXE_ERROR_COUNTER = Counter("spn_client_exe_error_total", "Total number of API requests that resulted in error", ["handler", "status_code"])
 
-class ClientHandler[TRequest, TResponse](ABC):
+class ClientHandler(ABC):
 
     def __init__(self, host: str, default_timeout: float = 10.0):
         self.__logger = logging.getLogger(self.__class__.__name__)
         self.__http_client = httpx.Client(timeout=default_timeout)
         self.__host = host
 
-    def invoke(self, api: str, request: TRequest, timeout: Optional[float] = None, headers: Optional[dict] = None, cookies: Optional[dict] = None) -> TResponse:
+    def invoke[TRequest, TResponse](self, api: str, request: TRequest, timeout: Optional[float] = None, headers: Optional[dict] = None, cookies: Optional[dict] = None) -> TResponse:
         start_time: float = time()
         API_EXE_COUNTER.labels(handler=self.__class__.__name__).inc()
         url: str = f"{self.__host.rstrip('/')}:{api}"
