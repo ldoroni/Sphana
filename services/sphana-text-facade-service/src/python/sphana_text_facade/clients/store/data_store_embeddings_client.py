@@ -6,7 +6,7 @@ from .schemas import AddEmbeddingsRequest, AddEmbeddingsResponse
 class DataStoreEmbeddingsClient(ClientHandler):
 
     def __init__(self) -> None:
-        super().__init__(host="http://localhost:5001/v1/embeddings")
+        super().__init__(host="http://127.0.0.1:5001/v1/embeddings")
 
     def add_embeddings(self, request: AddEmbeddingsRequest) -> AddEmbeddingsResponse:
         result = self.invoke(api="add", request=request.model_dump())

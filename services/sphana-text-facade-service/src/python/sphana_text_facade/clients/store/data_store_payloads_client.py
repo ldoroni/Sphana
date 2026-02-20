@@ -6,7 +6,7 @@ from .schemas import UploadPayloadRequest, UploadPayloadResponse
 class DataStorePayloadsClient(ClientHandler):
 
     def __init__(self) -> None:
-        super().__init__(host="http://localhost:5001/v1/payloads")
+        super().__init__(host="http://127.0.0.1:5001/v1/payloads")
 
     def upload_payload(self, request: UploadPayloadRequest) -> UploadPayloadResponse:
         result = self.invoke(api="upload", request=request.model_dump())
