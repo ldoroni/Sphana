@@ -5,6 +5,7 @@ from pathlib import Path
 from injector import singleton
 from prometheus_client import Counter, Histogram
 from time import time
+import torch
 from sentence_transformers import SentenceTransformer
 
 EMBEDDER_EXE_COUNTER = Counter("spn_embedder_exe_total", "Total number of embedder operations executed", ["operation"])
@@ -27,13 +28,17 @@ class TextEmbedderService:
         if not os.path.exists(local_model_path):
             raise FileNotFoundError(f"Local model not found at: {local_model_path}")
         
+        # Detect compute device (prefer CUDA if available)
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        
         # Load the embedding model
         self.__embedding_model = SentenceTransformer(
             local_model_path,
-            trust_remote_code=True
+            trust_remote_code=True,
+            device=device
         )
         
-        self.__logger.info(f"TokenEmbedder initialized with model {local_model_path}")
+        self.__logger.info(f"TextEmbedder initialized with model {local_model_path} on device: {device}")
 
     def embed_text(self, text: str) -> list[float]:
         """Embed a single text string into a vector.
