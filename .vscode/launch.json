@@ -8,7 +8,7 @@
             "name": "Python Debugger: Sphana-All",
             "configurations": [
                 "Python Debugger: Sphana-Data-Store",
-                "Python Debugger: Sphana-Text-Processor"
+                "Python Debugger: Sphana-Text-Facade"
             ],
             "stopAll": true
         }
@@ -23,11 +23,11 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Python Debugger: Sphana-Text-Processor",
+            "name": "Python Debugger: Sphana-Text-Facade",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/services/sphana-text-processor-service/src/python/sphana_text_processor/__main__.py",
-            "python": "${workspaceFolder}/services/sphana-text-processor-service/.venv/Scripts/python.exe",
+            "program": "${workspaceFolder}/services/sphana-text-facade-service/src/python/sphana_text_facade/__main__.py",
+            "python": "${workspaceFolder}/services/sphana-text-facade-service/.venv/Scripts/python.exe",
             "console": "integratedTerminal"
         }
     ]
