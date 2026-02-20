@@ -23,6 +23,8 @@ dependencies = [
     # Embedded Databases
     "rocksdict",
     "faiss-cpu",
+    # Embedded Blob Storage
+    "zarr",
     # Monitoring
     "prometheus-client",
     # Others

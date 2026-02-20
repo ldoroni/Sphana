@@ -8,7 +8,8 @@ from prometheus_client import Counter, Histogram
 from time import time
 from typing import Optional
 from faiss import IndexFlatL2, IndexIDMap2, write_index, read_index
-from sphana_data_store.models import TextChunkResult
+from sphana_data_store.models import EmbeddingResult
+from .base_vectors_details_repository import BaseVectorsDetailsRepository
 
 FAISS_EXE_COUNTER = Counter("spn_faiss_exe_total", "Total number of Faiss operations executed", ["index", "operation"])
 FAISS_DURATION_HISTOGRAM = Histogram("spn_faiss_exe_duration_seconds", "Duration of Faiss operations in seconds", ["index", "operation"])
@@ -20,6 +21,10 @@ class BaseVectorsRepository(ABC):
         self.__secondary: bool = secondary
         self.__dimension: int = dimension
         self.__index_map: dict[str, IndexIDMap2] = {}
+        self.__vectors_details_repository: BaseVectorsDetailsRepository = BaseVectorsDetailsRepository(
+            db_location=f"{db_location}_details",
+            secondary=secondary
+        )
 
     def _init_index(self, index_name: str) -> None:
         start_time: float = time()
@@ -31,6 +36,7 @@ class BaseVectorsRepository(ABC):
                 index = IndexIDMap2(quantizer)
                 self.__index_map[index_name] = index
                 self.__save_index(index_name, index)
+                self.__vectors_details_repository.init_table(index_name)
         finally:
             duration: float = time() - start_time
             FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="init_index").observe(duration)
@@ -39,37 +45,43 @@ class BaseVectorsRepository(ABC):
         start_time: float = time()
         FAISS_EXE_COUNTER.labels(index=index_name, operation="drop_index").inc()
         try:
+            self.__vectors_details_repository.drop_table(index_name)
             self.__drop_index(index_name)
         finally:
             duration: float = time() - start_time
             FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="drop_index").observe(duration)
 
-    def _ingest_chunk(self, index_name: str, chunk_id: str, chunk_vector: list[float]):
+    def _add_embedding(self, index_name: str, embedding_id: str, embedding: list[float]):
         start_time: float = time()
-        FAISS_EXE_COUNTER.labels(index=index_name, operation="ingest_chunk").inc()
+        FAISS_EXE_COUNTER.labels(index=index_name, operation="add_embedding").inc()
         try:
+            vector_id: int = self.__vectors_details_repository.next_vector_id(index_name)
             index: IndexIDMap2 = self.__get_index(index_name)
-            x = numpy.array([chunk_vector]).astype(numpy.float32)
-            xids = numpy.array([int(chunk_id)]).astype(numpy.int64)
+            x = numpy.array([embedding]).astype(numpy.float32)
+            xids = numpy.array([vector_id]).astype(numpy.int64)
             index.add_with_ids(x, xids) # type: ignore
             self.__save_index(index_name, index)
+            self.__vectors_details_repository.save_vector_ids(index_name, embedding_id, vector_id)
         finally:
             duration: float = time() - start_time
-            FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="ingest_chunk").observe(duration)
+            FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="add_embedding").observe(duration)
 
-    def _delete_chunk(self, index_name: str, chunk_id: str) -> None:
+    def _delete_embedding(self, index_name: str, embedding_id: str) -> None:
         start_time: float = time()
-        FAISS_EXE_COUNTER.labels(index=index_name, operation="delete_chunk").inc()
+        FAISS_EXE_COUNTER.labels(index=index_name, operation="delete_embedding").inc()
         try:
-            index: IndexIDMap2 = self.__get_index(index_name)
-            xids = numpy.array([int(chunk_id)]).astype(numpy.int64)
-            index.remove_ids(xids) # type: ignore
-            self.__save_index(index_name, index)
+            vector_id: Optional[int] = self.__vectors_details_repository.read_vector_id(index_name, embedding_id)
+            if vector_id is not None:
+                index: IndexIDMap2 = self.__get_index(index_name)
+                xids = numpy.array([vector_id]).astype(numpy.int64)
+                index.remove_ids(xids) # type: ignore
+                self.__save_index(index_name, index)
+            self.__vectors_details_repository.delete_vector_ids(index_name, embedding_id)
         finally:
             duration: float = time() - start_time
-            FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="delete_chunk").observe(duration)
+            FAISS_DURATION_HISTOGRAM.labels(index=index_name, operation="delete_embedding").observe(duration)
 
-    def _search(self, index_name: str, query_vector: list[float], max_results: int) -> list[TextChunkResult]:
+    def _search(self, index_name: str, query_vector: list[float], max_results: int) -> list[EmbeddingResult]:
         start_time: float = time()
         FAISS_EXE_COUNTER.labels(index=index_name, operation="search").inc()
         try:
@@ -78,15 +90,17 @@ class BaseVectorsRepository(ABC):
                 return []
             xq = numpy.array([query_vector]).astype(numpy.float32)
             D, I = index.search(xq, max_results)  # type: ignore
-            results: list[TextChunkResult] = []
-            for distance, idx in zip(D[0], I[0]):
-                if idx == -1:
+            results: list[EmbeddingResult] = []
+            for distance, vector_id in zip(D[0], I[0]):
+                if vector_id == -1:
                     continue
-                result: TextChunkResult = TextChunkResult(
-                    embedding_id=str(idx), 
-                    score=float(distance)
-                )
-                results.append(result)
+                embedding_id: Optional[str] = self.__vectors_details_repository.read_embedding_id(index_name, vector_id)
+                if embedding_id is not None:
+                    result: EmbeddingResult = EmbeddingResult(
+                        embedding_id=embedding_id, 
+                        score=float(distance)
+                    )
+                    results.append(result)
             return results
         finally:
             duration: float = time() - start_time

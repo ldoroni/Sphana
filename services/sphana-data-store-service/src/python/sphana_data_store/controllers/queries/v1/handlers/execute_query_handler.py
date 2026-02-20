@@ -30,7 +30,6 @@ class ExecuteQueryHandler(RequestHandler[ExecuteQueryRequest, ExecuteQueryRespon
             results=[
                 ExecuteQueryResult(
                     entry_id=result.entry_id,
-                    chunk_id=result.chunk_id,
                     payload=result.payload,
                     score=result.score
                 )

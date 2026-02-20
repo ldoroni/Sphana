@@ -6,7 +6,7 @@ from sphana_data_store.repositories import IndexDetailsRepository, EntryDetailsR
 from sphana_data_store.utils import ShardUtil
 
 @singleton
-class DeleteEntryService:
+class DeletePayloadService:
     
     @inject
     def __init__(self,
@@ -17,7 +17,7 @@ class DeleteEntryService:
         self.__entry_details_repository = entry_details_repository
         self.__entry_payloads_repository = entry_payloads_repository
 
-    def delete_entry(self, index_name: str, entry_id: str):
+    def delete_payload(self, index_name: str, entry_id: str):
         # Get index details
         index_details: Optional[IndexDetails] = self.__index_details_repository.read(index_name)
         if index_details is None:
@@ -37,6 +37,3 @@ class DeleteEntryService:
         
         # Delete entry payloads
         self.__entry_payloads_repository.delete(shard_name, entry_id)
-
-        # Delete entry details
-        self.__entry_details_repository.delete(shard_name, entry_id)

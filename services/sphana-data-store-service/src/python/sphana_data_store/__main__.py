@@ -5,9 +5,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_injector import attach_injector
 from prometheus_client import make_asgi_app
-from sphana_data_store.controllers.chunks.v1 import router as chunks_management_controller_router
+from sphana_data_store.controllers.embeddings.v1 import router as embeddings_management_controller_router
 from sphana_data_store.controllers.entries.v1 import router as entries_management_controller_router
 from sphana_data_store.controllers.indices.v1 import router as index_management_controller_router
+from sphana_data_store.controllers.payloads.v1 import router as payloads_executor_controller_router
 from sphana_data_store.controllers.queries.v1 import router as query_executor_controller_router
 from request_handler import RequestThreadPool
 
@@ -51,9 +52,10 @@ def main(host='0.0.0.0', port=5001, max_threads=100, debug=False):
     )
 
     # Include routers
-    fast_api.include_router(chunks_management_controller_router)
+    fast_api.include_router(embeddings_management_controller_router)
     fast_api.include_router(entries_management_controller_router)
     fast_api.include_router(index_management_controller_router)
+    fast_api.include_router(payloads_executor_controller_router)
     fast_api.include_router(query_executor_controller_router)
 
     ################################

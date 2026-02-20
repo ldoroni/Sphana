@@ -2,7 +2,7 @@ from typing import Optional
 from injector import inject, singleton
 from managed_exceptions import ItemNotFoundException
 from sphana_data_store.models import IndexDetails
-from sphana_data_store.repositories import IndexDetailsRepository, ShardDetailsRepository, IndexVectorsRepository, EntryDetailsRepository, ChunkDetailsRepository, EmbeddingDetailsRepository
+from sphana_data_store.repositories import IndexDetailsRepository, ShardDetailsRepository, IndexVectorsRepository, EntryDetailsRepository, EntryPayloadsRepository, EmbeddingDetailsRepository
 from sphana_data_store.utils import ShardUtil
 
 @singleton
@@ -14,13 +14,13 @@ class DeleteIndexService:
                  shard_details_repository: ShardDetailsRepository,
                  index_vectors_repository: IndexVectorsRepository,
                  entry_details_repository: EntryDetailsRepository,
-                 chunk_details_repository: ChunkDetailsRepository,
+                 entry_payloads_repository: EntryPayloadsRepository,
                  embedding_details_repository: EmbeddingDetailsRepository):
         self.__index_details_repository = index_details_repository
         self.__shard_details_repository = shard_details_repository
         self.__index_vectors_repository = index_vectors_repository
         self.__entry_details_repository = entry_details_repository
-        self.__chunk_details_repository = chunk_details_repository
+        self.__entry_payloads_repository = entry_payloads_repository
         self.__embedding_details_repository = embedding_details_repository
 
     def delete_index(self, index_name: str) -> None:
@@ -36,8 +36,8 @@ class DeleteIndexService:
             # Drop embedding details table
             self.__embedding_details_repository.drop_table(shard_name)
 
-            # Drop chunk details table
-            self.__chunk_details_repository.drop_table(shard_name)
+            # Drop entry payloads storage
+            self.__entry_payloads_repository.drop_storage(shard_name)
 
             # Drop entry details table
             self.__entry_details_repository.drop_table(shard_name)

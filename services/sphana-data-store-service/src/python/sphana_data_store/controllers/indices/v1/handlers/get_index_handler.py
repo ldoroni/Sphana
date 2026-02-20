@@ -27,6 +27,8 @@ class GetIndexHandler(RequestHandler[GetIndexRequest, GetIndexResponse]):
             index_details=IndexDetails(
                 index_name=index_details.index_name,
                 description=index_details.description,
+                media_type=index_details.media_type,
+                dimension=index_details.dimension,
                 number_of_shards=index_details.number_of_shards,
                 creation_timestamp=index_details.creation_timestamp,
                 modification_timestamp=index_details.modification_timestamp

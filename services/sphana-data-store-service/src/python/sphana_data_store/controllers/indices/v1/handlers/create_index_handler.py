@@ -21,6 +21,8 @@ class CreateIndexHandler(RequestHandler[CreateIndexRequest, CreateIndexResponse]
         self.__create_index_service.create_index(
             index_name=request.index_name or "",
             description=request.description or "",
+            media_type=request.media_type or "",
+            dimension=request.dimension or 0,
             number_of_shards=request.number_of_shards or 0
         )
 

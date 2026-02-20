@@ -29,6 +29,8 @@ class ListIndicesHandler(RequestHandler[ListIndicesRequest, ListIndicesResponse]
                 IndexDetails(
                     index_name=index.index_name,
                     description=index.description,
+                    media_type=index.media_type,
+                    dimension=index.dimension,
                     number_of_shards=index.number_of_shards,
                     creation_timestamp=index.creation_timestamp,
                     modification_timestamp=index.modification_timestamp
