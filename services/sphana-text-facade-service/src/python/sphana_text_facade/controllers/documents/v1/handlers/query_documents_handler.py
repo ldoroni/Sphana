@@ -28,7 +28,7 @@ class QueryDocumentsHandler(RequestHandler[QueryDocumentsRequest, QueryDocuments
             results=[
                 QueryDocumentsResult(
                     entry_id=r.entry_id,
-                    payload=r.payload.decode("utf-8") if r.payload else None, # TODO: I dislike the decode operation done here!
+                    payload=r.payload,
                     score=r.score
                 ) for r in results
             ]

@@ -4,28 +4,51 @@ from typing import Optional
 class Base64Util:
 
     @staticmethod
-    def to_base64(plain_value: str | bytes) -> str:
+    def encode_to_bytes(plain_value: str | bytes) -> bytes:
         if isinstance(plain_value, str):
             plain_bytes = plain_value.encode('utf-8')
         else:
             plain_bytes = plain_value
-        base64_bytes = base64.b64encode(plain_bytes)
+        return base64.b64encode(plain_bytes)
+
+    @staticmethod
+    def encode_to_str(plain_value: str | bytes) -> str:
+        base64_bytes = Base64Util.encode_to_bytes(plain_value)
         return base64_bytes.decode('utf-8')
 
     @staticmethod
-    def from_base64(base64_value: str) -> str:
-        base64_bytes = base64_value.encode('utf-8')
-        input_bytes = base64.b64decode(base64_bytes)
-        return input_bytes.decode('utf-8')
+    def decode_to_bytes(base64_value: str | bytes) -> bytes:
+        if isinstance(base64_value, str):
+            base64_bytes = base64_value.encode('utf-8')
+        else:
+            base64_bytes = base64_value
+        return base64.b64decode(base64_bytes)
     
     @staticmethod
-    def to_nullable_base64(plain_value: Optional[str | bytes]) -> Optional[str]:
+    def decode_to_str(base64_value: str | bytes) -> str:
+        plain_bytes = Base64Util.decode_to_bytes(base64_value)
+        return plain_bytes.decode('utf-8')
+    
+    @staticmethod
+    def encode_nullable_to_bytes(plain_value: Optional[str | bytes]) -> Optional[bytes]:
         if not plain_value:
             return None
-        return Base64Util.to_base64(plain_value)
+        return Base64Util.encode_to_bytes(plain_value)
     
     @staticmethod
-    def from_nullable_base64(base64_value: Optional[str]) -> Optional[str]:
+    def encode_nullable_to_str(plain_value: Optional[str | bytes]) -> Optional[str]:
+        if not plain_value:
+            return None
+        return Base64Util.encode_to_str(plain_value)
+    
+    @staticmethod
+    def decode_nullable_to_bytes(base64_value: Optional[str | bytes]) -> Optional[bytes]:
         if not base64_value:
             return None
-        return Base64Util.from_base64(base64_value)
+        return Base64Util.decode_to_bytes(base64_value)
+    
+    @staticmethod
+    def decode_nullable_to_str(base64_value: Optional[str | bytes]) -> Optional[str]:
+        if not base64_value:
+            return None
+        return Base64Util.decode_to_str(base64_value)

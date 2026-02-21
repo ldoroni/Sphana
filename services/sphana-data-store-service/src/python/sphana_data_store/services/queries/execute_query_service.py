@@ -3,7 +3,7 @@ from injector import inject, singleton
 from managed_exceptions import ItemNotFoundException
 from sphana_data_store.models import IndexDetails, EmbeddingDetails, EmbeddingResult, ExecuteQueryResult
 from sphana_data_store.repositories import IndexDetailsRepository, IndexVectorsRepository, EmbeddingDetailsRepository, EntryPayloadsRepository
-from sphana_data_store.utils import ShardUtil
+from sphana_data_store.utils import ShardUtil, Base64Util
 
 class EmbeddingResultEx:
     def __init__(self, shard_name: str, embedding_id: str, score: float):
@@ -88,7 +88,7 @@ class ExecuteQueryService:
             
             actual_result: ExecuteQueryResult = ExecuteQueryResult(
                 entry_id=embedding_details.entry_id,
-                payload=payload,
+                payload=Base64Util.encode_to_bytes(payload),
                 score=search_result.score
             )
             results.append(actual_result)

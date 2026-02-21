@@ -228,7 +228,7 @@ class BaseBlobRepository(ABC):
             all_keys: list[str] = sorted(group.keys())
 
             # Determine the starting position based on the decoded offset
-            plain_offset: Optional[str] = Base64Util.from_nullable_base64(offset)
+            plain_offset: Optional[str] = Base64Util.decode_nullable_to_str(offset)
             if plain_offset is not None:
                 try:
                     start_idx: int = all_keys.index(plain_offset)
@@ -250,7 +250,7 @@ class BaseBlobRepository(ABC):
 
             next_offset: Optional[str] = None
             if has_more:
-                next_offset = Base64Util.to_nullable_base64(all_keys[start_idx + limit])
+                next_offset = Base64Util.encode_nullable_to_str(all_keys[start_idx + limit])
 
             return ListResults[str](
                 documents=page,

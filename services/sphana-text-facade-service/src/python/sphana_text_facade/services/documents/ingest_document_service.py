@@ -47,7 +47,7 @@ class IngestDocumentService:
         upload_payload_request: UploadPayloadRequest = UploadPayloadRequest(
             index_name=index_name,
             entry_id=entry_id,
-            payload=Base64Util.to_nullable_base64(content),
+            payload=Base64Util.encode_nullable_to_str(content),
         )
         self.__data_store_payloads_client.upload_payload(upload_payload_request)
 

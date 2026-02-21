@@ -20,7 +20,7 @@ class ClientHandler(ABC):
         self.__http_client = httpx.Client(timeout=default_timeout)
         self.__host = host
 
-    def invoke[TRequest, TResponse](self, api: str, request: TRequest, timeout: Optional[float] = None, headers: Optional[dict] = None, cookies: Optional[dict] = None) -> TResponse:
+    def invoke(self, api: str, request: dict, timeout: Optional[float] = None, headers: Optional[dict] = None, cookies: Optional[dict] = None) -> dict:
         start_time: float = time()
         API_EXE_COUNTER.labels(handler=self.__class__.__name__).inc()
         url: str = f"{self.__host.rstrip('/')}:{api}"
@@ -39,7 +39,7 @@ class ClientHandler(ABC):
             # Parse response
             response_data: dict = response.json()
             if response.status_code == 200:
-                return response_data.get("response", {})
+                return response_data or {}
             else:
                 # Return error response
                 e1: UpstreamException = UpstreamException(

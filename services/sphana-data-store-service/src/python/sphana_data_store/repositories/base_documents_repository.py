@@ -71,7 +71,7 @@ class BaseDocumentsRepository[TDocument](ABC):
         ROCKSDB_EXE_COUNTER.labels(table=table_name, operation="list_documents").inc()
         try:
             table: Rdict = self._get_table(table_name)
-            plain_offset: Optional[str] = Base64Util.from_nullable_base64(offset)
+            plain_offset: Optional[str] = Base64Util.decode_nullable_to_str(offset)
             items = table.items(from_key=plain_offset)
             completed: bool = True
             next_offset: Optional[str] = None
@@ -85,7 +85,7 @@ class BaseDocumentsRepository[TDocument](ABC):
                     break
             return ListResults[TDocument](
                 documents=documents, 
-                next_offset=Base64Util.to_nullable_base64(next_offset), 
+                next_offset=Base64Util.encode_nullable_to_str(next_offset), 
                 completed=completed
             )
         finally:

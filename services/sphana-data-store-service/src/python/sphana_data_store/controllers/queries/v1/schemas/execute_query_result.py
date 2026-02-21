@@ -1,6 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Base64Bytes
 
 class ExecuteQueryResult(BaseModel):
     entry_id: str
-    payload: bytes
+    payload: Base64Bytes
     score: float
