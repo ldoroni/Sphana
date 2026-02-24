@@ -1,0 +1,114 @@
+# escape=`
+# ─────────────────────────────────────────────────────────────
+# FAISS C API Compiler — Windows x64 with CUDA 12.8 GPU Support
+# Produces: C:\output\faiss.dll  and  C:\output\faiss_c.dll
+# ─────────────────────────────────────────────────────────────
+#
+# IMPORTANT: This Dockerfile requires Docker in WINDOWS CONTAINER MODE.
+#   Switch via: Docker Desktop → Settings → Docker Engine → Windows containers
+#   Or from CLI: & 'C:\Program Files\Docker\Docker\DockerCli.exe' -SwitchDaemon
+#
+# Usage:
+#   docker build -f Dockerfile-windows-cuda -t faiss-win-cuda .
+#   docker create --name faiss-extract faiss-win-cuda
+#   docker cp faiss-extract:C:\output . && docker rm faiss-extract
+#
+# No GPU is required for BUILDING — only the CUDA dev toolkit (downloaded
+# during the build). Running the resulting DLLs requires an NVIDIA GPU.
+# ─────────────────────────────────────────────────────────────
+
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
+
+SHELL ["powershell", "-Command", "$ErrorActionPreference='Stop'; $ProgressPreference='SilentlyContinue';"]
+
+# ── 1. Install Chocolatey ──────────────────────────────────────
+RUN Set-ExecutionPolicy Bypass -Scope Process -Force; `
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; `
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+# ── 2. Install build tools via Chocolatey ──────────────────────
+RUN choco install -y git cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+
+# ── 3. Install Visual Studio 2022 Build Tools with C++ ────────
+# Uses the official VS Build Tools bootstrapper
+RUN Invoke-WebRequest -Uri 'https://aka.ms/vs/17/release/vs_buildtools.exe' -OutFile 'C:\vs_buildtools.exe'; `
+    Start-Process -FilePath 'C:\vs_buildtools.exe' -ArgumentList `
+        '--quiet', '--wait', '--norestart', '--nocache', `
+        '--add', 'Microsoft.VisualStudio.Workload.VCTools', `
+        '--add', 'Microsoft.VisualStudio.Component.VC.Tools.x86.x64', `
+        '--add', 'Microsoft.VisualStudio.Component.Windows11SDK.22621' `
+    -Wait -PassThru; `
+    Remove-Item 'C:\vs_buildtools.exe' -Force
+
+# ── 4. Install CUDA Toolkit 12.8 ──────────────────────────────
+ARG CUDA_VERSION=12.8.0
+ARG CUDA_INSTALLER=cuda_12.8.0_571.96_windows.exe
+
+RUN Invoke-WebRequest -Uri "https://developer.download.nvidia.com/compute/cuda/$env:CUDA_VERSION/local_installers/$env:CUDA_INSTALLER" `
+        -OutFile "C:\$env:CUDA_INSTALLER"; `
+    Start-Process -FilePath "C:\$env:CUDA_INSTALLER" -ArgumentList '-s', 'nvcc_12.8', 'cudart_12.8', 'cublas_12.8', 'cublas_dev_12.8', 'visual_studio_integration_12.8' `
+        -Wait -PassThru; `
+    Remove-Item "C:\$env:CUDA_INSTALLER" -Force
+
+# Add CUDA to PATH
+RUN $cudaPath = 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8'; `
+    [Environment]::SetEnvironmentVariable('CUDA_PATH', $cudaPath, 'Machine'); `
+    [Environment]::SetEnvironmentVariable('PATH', "$cudaPath\bin;$env:PATH", 'Machine')
+
+# ── 5. Download OpenBLAS ──────────────────────────────────────
+ARG OPENBLAS_VERSION=0.3.28
+
+RUN Invoke-WebRequest -Uri "https://github.com/OpenMathLib/OpenBLAS/releases/download/v$env:OPENBLAS_VERSION/OpenBLAS-$env:OPENBLAS_VERSION-x64.zip" `
+        -OutFile 'C:\openblas.zip'; `
+    Expand-Archive -Path 'C:\openblas.zip' -DestinationPath 'C:\openblas'; `
+    Remove-Item 'C:\openblas.zip' -Force
+
+# ── 6. Clone FAISS ────────────────────────────────────────────
+ARG FAISS_VERSION=v1.9.0
+
+RUN git clone --depth 1 --branch $env:FAISS_VERSION https://github.com/facebookresearch/faiss.git C:\faiss
+
+WORKDIR C:\faiss
+
+# ── 7. Configure & Build with CMake ───────────────────────────
+# Use vcvarsall to set up MSVC environment, then configure + build
+# CMAKE_CUDA_ARCHITECTURES: 70=Volta, 75=Turing, 80/86=Ampere, 89=Ada, 90=Hopper
+RUN $vsPath = & 'C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe' `
+        -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+        -property installationPath; `
+    $vcvars = Join-Path $vsPath 'VC\Auxiliary\Build\vcvars64.bat'; `
+    $blasLib = (Get-ChildItem -Recurse -Path 'C:\openblas' -Filter 'libopenblas.lib' | Select-Object -First 1).FullName; `
+    $blasInc = (Get-ChildItem -Recurse -Path 'C:\openblas' -Directory -Filter 'include' | Select-Object -First 1).FullName; `
+    cmd /c "`"$vcvars`" && cmake -S C:\faiss -B C:\faiss\build `
+        -G `"Visual Studio 17 2022`" -A x64 `
+        -DFAISS_ENABLE_GPU=ON `
+        -DFAISS_ENABLE_PYTHON=OFF `
+        -DFAISS_ENABLE_C_API=ON `
+        -DBUILD_SHARED_LIBS=ON `
+        -DBUILD_TESTING=OFF `
+        -DCMAKE_BUILD_TYPE=Release `
+        -DBLAS_LIBRARIES=`"$blasLib`" `
+        -DBLAS_INCLUDE_DIRS=`"$blasInc`" `
+        -DLAPACK_LIBRARIES=`"`" `
+        -DCMAKE_CUDA_ARCHITECTURES=`"70;75;80;86;89;90`" `
+    && cmake --build C:\faiss\build --config Release --target faiss faiss_c -- /m"
+
+# ── 8. Collect output DLLs ────────────────────────────────────
+RUN New-Item -ItemType Directory -Force -Path 'C:\output'; `
+    $faissDll = Get-ChildItem -Recurse -Path 'C:\faiss\build' -Filter 'faiss.dll' | `
+        Where-Object { $_.DirectoryName -match 'Release' } | Select-Object -First 1; `
+    $faissCDll = Get-ChildItem -Recurse -Path 'C:\faiss\build' -Filter 'faiss_c.dll' | `
+        Where-Object { $_.DirectoryName -match 'Release' } | Select-Object -First 1; `
+    if (-not $faissDll) { $faissDll = Get-ChildItem -Recurse -Path 'C:\faiss\build' -Filter 'faiss.dll' | Select-Object -First 1 }; `
+    if (-not $faissCDll) { $faissCDll = Get-ChildItem -Recurse -Path 'C:\faiss\build' -Filter 'faiss_c.dll' | Select-Object -First 1 }; `
+    if (-not $faissDll -or -not $faissCDll) { `
+        Write-Error 'Could not find built DLLs'; `
+        Get-ChildItem -Recurse -Path 'C:\faiss\build' -Filter '*faiss*'; `
+        exit 1 `
+    }; `
+    Copy-Item $faissDll.FullName 'C:\output\faiss.dll'; `
+    Copy-Item $faissCDll.FullName 'C:\output\faiss_c.dll'; `
+    $openblasDll = Get-ChildItem -Recurse -Path 'C:\openblas' -Filter 'libopenblas.dll' | Select-Object -First 1; `
+    if ($openblasDll) { Copy-Item $openblasDll.FullName 'C:\output\libopenblas.dll' }; `
+    Write-Host '=== Output DLLs ==='; `
+    Get-ChildItem 'C:\output'

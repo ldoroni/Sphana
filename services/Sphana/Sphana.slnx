@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Libraries/">
+    <Project Path="Libraries/Sphana.ManagedException/Sphana.ManagedException.csproj" />
+    <Project Path="Libraries/Sphana.RequestHandler/Sphana.RequestHandler.csproj" />
+  </Folder>
+  <Folder Name="/Services/">
+    <Project Path="Services/Sphana.DataStore/Sphana.DataStore.csproj" />
+  </Folder>
+</Solution>

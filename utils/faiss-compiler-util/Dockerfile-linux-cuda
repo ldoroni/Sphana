@@ -1,0 +1,60 @@
+# ─────────────────────────────────────────────────────────────
+# FAISS C API Compiler — Linux x64 with CUDA 12.8 GPU Support
+# Produces: /output/libfaiss_c.so  and  /output/libfaiss.so
+# ─────────────────────────────────────────────────────────────
+# Usage:
+#   docker build -f Dockerfile-linux-cuda --output "type=local,dest=./output-linux-cuda" .
+#
+# NOTE: Building does NOT require a GPU — only the CUDA dev toolkit
+#       (included in the base image). Running the resulting library
+#       requires an NVIDIA GPU with compatible drivers.
+# ─────────────────────────────────────────────────────────────
+
+FROM nvidia/cuda:12.8.0-devel-ubuntu24.04 AS builder
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        git \
+        cmake \
+        g++ \
+        make \
+        libopenblas-dev \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+ARG FAISS_VERSION=v1.9.0
+
+RUN git clone --depth 1 --branch ${FAISS_VERSION} \
+        https://github.com/facebookresearch/faiss.git /faiss
+
+WORKDIR /faiss
+
+# Build FAISS with GPU (CUDA) support enabled
+# CMAKE_CUDA_ARCHITECTURES covers common GPU generations:
+#   70 = Volta (V100)
+#   75 = Turing (T4, RTX 2080)
+#   80 = Ampere (A100, RTX 3090)
+#   86 = Ampere (RTX 3060/3070/3080)
+#   89 = Ada Lovelace (RTX 4090, L40)
+#   90 = Hopper (H100)
+RUN cmake -B build \
+        -DFAISS_ENABLE_GPU=ON \
+        -DFAISS_ENABLE_PYTHON=OFF \
+        -DFAISS_ENABLE_C_API=ON \
+        -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_TESTING=OFF \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBLA_VENDOR=OpenBLAS \
+        -DCMAKE_CUDA_ARCHITECTURES="70;75;80;86;89;90" \
+    && cmake --build build -j$(nproc) --target faiss faiss_c
+
+# Collect the output shared libraries
+RUN mkdir -p /output \
+    && cp build/c_api/libfaiss_c.so /output/ \
+    && cp build/faiss/libfaiss.so /output/ \
+    && echo "=== Output libraries ===" && ls -lh /output/
+
+# ── Final minimal stage with just the artifacts ──
+FROM scratch
+COPY --from=builder /output/ /output/

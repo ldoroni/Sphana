@@ -1,0 +1,117 @@
+# ─────────────────────────────────────────────────────────────
+# FAISS C API Cross-Compiler — Windows x64 (via MinGW-w64)
+# Produces: /output/faiss.dll  and  /output/faiss_c.dll
+# ─────────────────────────────────────────────────────────────
+# Usage:
+#   docker build -f Dockerfile-windows --output "type=local,dest=./output-windows" .
+# ─────────────────────────────────────────────────────────────
+
+FROM ubuntu:24.04 AS builder
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install MinGW-w64 cross-compiler, native gcc+libc6-dev (for host tools), CMake, and build tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        git \
+        cmake \
+        make \
+        gcc \
+        libc6-dev \
+        g++-mingw-w64-x86-64 \
+        gcc-mingw-w64-x86-64 \
+        ca-certificates \
+        curl \
+        python3 \
+        unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Use the POSIX threading variant of MinGW (required for C++ threading / std::mutex)
+RUN update-alternatives --set x86_64-w64-mingw32-g++ /usr/bin/x86_64-w64-mingw32-g++-posix 2>/dev/null || true \
+    && update-alternatives --set x86_64-w64-mingw32-gcc /usr/bin/x86_64-w64-mingw32-gcc-posix 2>/dev/null || true
+
+ARG FAISS_VERSION=v1.9.0
+
+# Download pre-built OpenBLAS Windows binaries instead of compiling from source
+ARG OPENBLAS_VERSION=0.3.28
+RUN curl -L -o /tmp/openblas.zip \
+        "https://github.com/OpenMathLib/OpenBLAS/releases/download/v${OPENBLAS_VERSION}/OpenBLAS-${OPENBLAS_VERSION}-x64.zip" \
+    && mkdir -p /openblas-win \
+    && unzip /tmp/openblas.zip -d /openblas-win \
+    && rm /tmp/openblas.zip \
+    && echo "=== OpenBLAS contents ===" && find /openblas-win -type f | head -30
+
+# Clone FAISS source
+RUN git clone --depth 1 --branch ${FAISS_VERSION} \
+        https://github.com/facebookresearch/faiss.git /faiss
+
+WORKDIR /faiss
+
+# Create a MinGW compatibility shim that provides posix_memalign using _aligned_malloc
+RUN cat > /faiss/mingw_compat.h <<'SHIMEOF'
+#ifndef FAISS_MINGW_COMPAT_H
+#define FAISS_MINGW_COMPAT_H
+#if defined(__MINGW32__) || defined(__MINGW64__)
+#include <malloc.h>
+#include <errno.h>
+static inline int posix_memalign(void **memptr, size_t alignment, size_t size) {
+    *memptr = _aligned_malloc(size, alignment);
+    return (*memptr) ? 0 : errno;
+}
+static inline void posix_memalign_free(void *ptr) {
+    _aligned_free(ptr);
+}
+#endif
+#endif
+SHIMEOF
+
+# Patch out OnDiskInvertedLists which depends on mmap (unavailable on Windows)
+# Remove the line that registers OnDiskInvertedListsIOHook and its include
+RUN sed -i '/OnDiskInvertedListsIOHook/d' faiss/invlists/InvertedListsIOHook.cpp \
+    && sed -i '/OnDiskInvertedLists\.h/d' faiss/invlists/InvertedListsIOHook.cpp \
+    && echo "=== Patched InvertedListsIOHook.cpp ==="
+
+# Create a CMake toolchain file for MinGW-w64 cross-compilation
+RUN cat > /mingw-toolchain.cmake <<'EOF'
+set(CMAKE_SYSTEM_NAME Windows)
+set(CMAKE_SYSTEM_PROCESSOR x86_64)
+
+set(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
+set(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
+set(CMAKE_RC_COMPILER x86_64-w64-mingw32-windres)
+
+set(CMAKE_FIND_ROOT_PATH /usr/x86_64-w64-mingw32 /openblas-win)
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+EOF
+
+# Configure FAISS for Windows cross-compilation
+# The pre-built OpenBLAS zip has lib/libopenblas.dll.a (import lib) and include/
+RUN cmake -B build \
+        -DCMAKE_TOOLCHAIN_FILE=/mingw-toolchain.cmake \
+        -DFAISS_ENABLE_GPU=OFF \
+        -DFAISS_ENABLE_PYTHON=OFF \
+        -DFAISS_ENABLE_C_API=ON \
+        -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_TESTING=OFF \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBLAS_LIBRARIES="/openblas-win/lib/libopenblas.dll.a" \
+        -DBLAS_INCLUDE_DIRS="/openblas-win/include" \
+        -DLAPACK_LIBRARIES="" \
+        -DCMAKE_CXX_FLAGS="-include /faiss/mingw_compat.h" \
+        -DCMAKE_SHARED_LINKER_FLAGS="-static-libgcc -static-libstdc++ -Wl,--allow-multiple-definition" \
+    && cmake --build build -j$(nproc) --target faiss faiss_c
+
+# Collect the output DLLs
+RUN mkdir -p /output \
+    && cp build/c_api/libfaiss_c.dll /output/faiss_c.dll 2>/dev/null \
+    || cp build/c_api/faiss_c.dll /output/faiss_c.dll 2>/dev/null \
+    || (echo "=== Looking for faiss_c DLL ===" && find build -name "*faiss_c*" -type f && exit 1) \
+    && cp build/faiss/libfaiss.dll /output/faiss.dll 2>/dev/null \
+    || cp build/faiss/faiss.dll /output/faiss.dll 2>/dev/null \
+    || (echo "=== Looking for faiss DLL ===" && find build -name "*faiss*" -type f && exit 1) \
+    && echo "=== Output DLLs ===" && ls -lh /output/
+
+# ── Final minimal stage with just the artifacts ──
+FROM scratch
+COPY --from=builder /output/ /output/

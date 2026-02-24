@@ -1,0 +1,23 @@
+@Sphana.DataStore_HostAddress = http://localhost:5025
+
+### List all indices
+POST {{Sphana.DataStore_HostAddress}}/v1/indices/list
+Content-Type: application/json
+
+{}
+
+###
+
+### Create an index
+POST {{Sphana.DataStore_HostAddress}}/v1/indices/create
+Content-Type: application/json
+
+{
+  "index_name": "my-index",
+  "description": "Sample index",
+  "media_type": "text",
+  "dimension": 384,
+  "number_of_shards": 1
+}
+
+###

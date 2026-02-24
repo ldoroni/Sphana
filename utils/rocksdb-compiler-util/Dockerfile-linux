@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────────────────────
+# RocksDB C Library Compiler — Linux x64
+# Produces: /output/librocksdb.so
+# ─────────────────────────────────────────────────────────────
+# Usage:
+#   docker build -f Dockerfile-linux --output "type=local,dest=./output-linux" .
+# ─────────────────────────────────────────────────────────────
+
+FROM ubuntu:24.04 AS builder
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        git \
+        cmake \
+        make \
+        g++ \
+        libgflags-dev \
+        libsnappy-dev \
+        zlib1g-dev \
+        libbz2-dev \
+        liblz4-dev \
+        libzstd-dev \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+ARG ROCKSDB_VERSION=v9.10.0
+
+RUN git clone --depth 1 --branch ${ROCKSDB_VERSION} \
+        https://github.com/facebook/rocksdb.git /rocksdb
+
+WORKDIR /rocksdb
+
+# Build RocksDB as a shared library (includes the C API)
+RUN cmake -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DWITH_TESTS=OFF \
+        -DWITH_BENCHMARK_TOOLS=OFF \
+        -DWITH_TOOLS=OFF \
+        -DWITH_CORE_TOOLS=OFF \
+        -DWITH_GFLAGS=OFF \
+        -DROCKSDB_BUILD_SHARED=ON \
+        -DFAIL_ON_WARNINGS=OFF \
+    && cmake --build build -j$(nproc) --target rocksdb-shared
+
+# Collect the output
+RUN mkdir -p /output \
+    && cp build/librocksdb.so* /output/ \
+    && echo "=== Output libraries ===" && ls -lh /output/
+
+# ── Final minimal stage with just the artifacts ──
+FROM scratch
+COPY --from=builder /output/ /output/

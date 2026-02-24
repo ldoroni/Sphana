@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PublishAot>true</PublishAot>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
+	<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="LightningDB" Version="0.16.0" />
+	<PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Sphana.ManagedException\Sphana.ManagedException.csproj" />
+    <ProjectReference Include="..\..\Libraries\Sphana.RequestHandler\Sphana.RequestHandler.csproj" />
+  </ItemGroup>
+
+  <!-- Native libraries: RocksDB -->
+  <ItemGroup>
+    <Content Include="runtimes\linux-x64\native\librocksdb.so" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="runtimes\linux-x64\native\librocksdb.so" />
+    <Content Include="runtimes\win-x64\native\rocksdb.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="runtimes\win-x64\native\rocksdb.dll" />
+  </ItemGroup>
+
+  <!-- Native libraries: FAISS -->
+  <ItemGroup Condition="Exists('runtimes\linux-x64\native\libfaiss_c.so')">
+    <Content Include="runtimes\linux-x64\native\libfaiss_c.so" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="runtimes\linux-x64\native\libfaiss_c.so" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('runtimes\linux-x64\native\libfaiss.so')">
+    <Content Include="runtimes\linux-x64\native\libfaiss.so" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="runtimes\linux-x64\native\libfaiss.so" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('runtimes\win-x64\native\faiss_c.dll')">
+    <Content Include="runtimes\win-x64\native\faiss_c.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="runtimes\win-x64\native\faiss_c.dll" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('runtimes\win-x64\native\faiss.dll')">
+    <Content Include="runtimes\win-x64\native\faiss.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" Link="runtimes\win-x64\native\faiss.dll" />
+  </ItemGroup>
+
+</Project>

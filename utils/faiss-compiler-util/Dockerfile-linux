@@ -1,0 +1,50 @@
+# ─────────────────────────────────────────────────────────────
+# FAISS C API Compiler — Linux x64
+# Produces: /output/libfaiss_c.so  and  /output/libfaiss.so
+# ─────────────────────────────────────────────────────────────
+# Usage:
+#   docker build -f Dockerfile-linux -t faiss-linux-builder .
+#   docker create --name faiss-extract faiss-linux-builder
+#   docker cp faiss-extract:/output/libfaiss_c.so .
+#   docker cp faiss-extract:/output/libfaiss.so .
+#   docker rm faiss-extract
+# ─────────────────────────────────────────────────────────────
+
+FROM ubuntu:24.04 AS builder
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        git \
+        cmake \
+        g++ \
+        make \
+        libopenblas-dev \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+ARG FAISS_VERSION=v1.9.0
+
+RUN git clone --depth 1 --branch ${FAISS_VERSION} \
+        https://github.com/facebookresearch/faiss.git /faiss
+
+WORKDIR /faiss
+
+RUN cmake -B build \
+        -DFAISS_ENABLE_GPU=OFF \
+        -DFAISS_ENABLE_PYTHON=OFF \
+        -DFAISS_ENABLE_C_API=ON \
+        -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_TESTING=OFF \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBLA_VENDOR=OpenBLAS \
+    && cmake --build build -j$(nproc) --target faiss faiss_c
+
+# Collect the output shared libraries
+RUN mkdir -p /output \
+    && cp build/c_api/libfaiss_c.so /output/ \
+    && cp build/faiss/libfaiss.so /output/
+
+# ── Final minimal stage with just the artifacts ──
+FROM scratch
+COPY --from=builder /output/ /output/
